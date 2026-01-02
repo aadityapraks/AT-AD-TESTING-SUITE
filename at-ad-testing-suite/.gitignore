@@ -1,3 +1,6 @@
+# Amazon Q (local-only configs)
+.amazonq/
+
 # Node
 node_modules/
 
