@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
