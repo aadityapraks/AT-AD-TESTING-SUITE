@@ -1,0 +1,36 @@
+{
+  "baseUrl": "https://hub-ui-admin-dev.swarajability.org",
+  "ssoCredentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "interestExpressedUrl": "/partner/interest-expressed",
+  "dashboardUrl": "/partner/product-management",
+  "testProduct": {
+    "name": "Smart Cane V2",
+    "category": "Mobility Aids"
+  },
+  "searchTerms": {
+    "name": "John",
+    "location": "Mumbai",
+    "product": "Smart Cane"
+  },
+  "filters": {
+    "state": "Maharashtra",
+    "disabilityType": "Visual Impairment"
+  },
+  "sortOptions": {
+    "newestFirst": "Newest First",
+    "oldestFirst": "Oldest First"
+  },
+  "expectedMessages": {
+    "emptyState": "No interests recorded yet for your products",
+    "dataError": "Unable to load interest data at this time. Please try again later",
+    "emailSubject": "New Interest Expressed in Your Product"
+  },
+  "modalContent": {
+    "personalInfo": ["age", "disability type"],
+    "contactMasked": ["phone", "email"],
+    "location": ["city", "state", "address"]
+  }
+}

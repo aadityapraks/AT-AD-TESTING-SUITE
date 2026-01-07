@@ -34,12 +34,17 @@ model: Claude Sonnet 4
 mcp-servers:
   playwright-test:
     type: stdio
-    command: npx
+    command: cmd
     args:
-      - playwright
-      - run-test-mcp-server
+      - /c
+      - cd /d d:\AT-AD-Testing-Suite\at-ad-testing-suite && npx playwright run-test-mcp-server
     tools:
       - "*"
+environment:
+  build_url: "https://hub-ui-admin-dev.swarajability.org/"
+  credentials:
+    username: "aadityap@byteridge.com"
+    password: "aadityap@byteridge.com"     
 ---
 
 You are a Playwright Test Generator, an expert in browser automation and end-to-end testing.

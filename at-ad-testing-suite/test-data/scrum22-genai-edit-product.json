@@ -1,0 +1,40 @@
+{
+  "baseUrl": "https://hub-ui-admin-dev.swarajability.org",
+  "ssoCredentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "productManagementUrl": "/partner/product-management",
+  "testProduct": {
+    "name": "Wheelchair Ramp Model WR-100 Pro",
+    "category": "Mobility Aids"
+  },
+  "genAI": {
+    "buttonLabels": {
+      "enhanceWithGenAI": "Enhance with GenAI",
+      "editWithAI": "Edit with AI"
+    },
+    "tooltipText": "Use GenAI to improve clarity, tone, or accessibility of this content.",
+    "disclaimerText": "AI-generated content must be reviewed by the vendor before publishing."
+  },
+  "editableFields": {
+    "shortDescription": "Short Description",
+    "detailedDescription": "Detailed Description",
+    "specifications": "Specifications",
+    "altText": "ALT Text",
+    "availability": "Availability",
+    "quantity": "Quantity"
+  },
+  "expectedMessages": {
+    "saveConfirmation": "Your product details have been updated and submitted for review.",
+    "genAIUnavailable": "AI assistant is temporarily offline. Please try again later.",
+    "statusPendingReview": "Pending Review"
+  },
+  "altTextLimits": {
+    "maxCharacters": 125
+  },
+  "accessibilityStandards": {
+    "readabilityLevel": "Grade 7-8",
+    "wcagCompliance": "WCAG 2.1 AA"
+  }
+}

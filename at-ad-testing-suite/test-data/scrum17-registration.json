@@ -1,0 +1,26 @@
+{
+  "baseUrl": "https://hub-ui-admin-dev.swarajability.org",
+  "registrationUrl": "/register",
+  "ssoUrl": "/sso-login",
+  "ssoCredentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "validRegistration": {
+    "orgName": "Test Assistive Tech",
+    "orgType": "Manufacturer",
+    "contactPerson": "John Doe",
+    "email": "john@testassistive.com",
+    "phone": "9876543210",
+    "address": "123 Tech Street, City",
+    "description": "Assistive devices for mobility",
+    "website": "www.testassistive.com"
+  },
+  "duplicateEmail": "existing@test.com",
+  "invalidEmail": "invalidemail",
+  "expectedMessages": {
+    "success": "Thank you for registering",
+    "duplicateEmail": "This email is already registered. Please log in or contact Y4J support.",
+    "invalidEmail": "Please enter a valid email address"
+  }
+}
