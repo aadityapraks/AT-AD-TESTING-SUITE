@@ -1,0 +1,244 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - 'button "🔔 4 Notifications Mark all read 4 unread notifications ♡ Interest New interest expressed in your product Product: Smart Cane V2 5 Nov 2025, 2:30 pm ✓ × ✓ Update Product listing has been approved Product: Voice Assistant Device 4 Nov 2025, 4:20 pm ✓ × ⓘ Admin Message Portal maintenance scheduled for Nov 10, 2025 Product: General 3 Nov 2025, 10:00 am ✓ × 📄 Review Product requires documentation update Product: Hearing Aid Premium 2 Nov 2025, 2:15 pm ✓ × ♡ Interest New interest expressed in your product Product: Braille Display Pro 5 Nov 2025, 11:15 am × View All Notifications" [active] [ref=e18] [cursor=pointer]':
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - heading "Notifications" [level=3] [ref=e23]
+            - button "Mark all read" [ref=e24]
+          - generic [ref=e25]: 4 unread notifications
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - generic [ref=e28]: ♡
+              - generic [ref=e29]:
+                - generic [ref=e30]: Interest
+                - generic [ref=e31]: New interest expressed in your product
+                - generic [ref=e32]: "Product: Smart Cane V2"
+                - generic [ref=e33]: 5 Nov 2025, 2:30 pm
+              - generic [ref=e34]:
+                - button "✓" [ref=e35]
+                - button "×" [ref=e36]
+            - generic [ref=e37]:
+              - generic [ref=e38]: ✓
+              - generic [ref=e39]:
+                - generic [ref=e40]: Update
+                - generic [ref=e41]: Product listing has been approved
+                - generic [ref=e42]: "Product: Voice Assistant Device"
+                - generic [ref=e43]: 4 Nov 2025, 4:20 pm
+              - generic [ref=e44]:
+                - button "✓" [ref=e45]
+                - button "×" [ref=e46]
+            - generic [ref=e47]:
+              - generic [ref=e48]: ⓘ
+              - generic [ref=e49]:
+                - generic [ref=e50]: Admin Message
+                - generic [ref=e51]: Portal maintenance scheduled for Nov 10, 2025
+                - generic [ref=e52]: "Product: General"
+                - generic [ref=e53]: 3 Nov 2025, 10:00 am
+              - generic [ref=e54]:
+                - button "✓" [ref=e55]
+                - button "×" [ref=e56]
+            - generic [ref=e57]:
+              - generic [ref=e58]: 📄
+              - generic [ref=e59]:
+                - generic [ref=e60]: Review
+                - generic [ref=e61]: Product requires documentation update
+                - generic [ref=e62]: "Product: Hearing Aid Premium"
+                - generic [ref=e63]: 2 Nov 2025, 2:15 pm
+              - generic [ref=e64]:
+                - button "✓" [ref=e65]
+                - button "×" [ref=e66]
+            - generic [ref=e67]:
+              - generic [ref=e68]: ♡
+              - generic [ref=e69]:
+                - generic [ref=e70]: Interest
+                - generic [ref=e71]: New interest expressed in your product
+                - generic [ref=e72]: "Product: Braille Display Pro"
+                - generic [ref=e73]: 5 Nov 2025, 11:15 am
+              - button "×" [ref=e75]
+          - button "View All Notifications" [ref=e77]
+      - button "Profile" [ref=e78] [cursor=pointer]
+      - button "Logout" [ref=e79] [cursor=pointer]:
+        - img [ref=e82]
+        - text: Logout
+  - generic [ref=e85]:
+    - generic [ref=e87]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e88]
+      - paragraph [ref=e89]: Product upload & Product management
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e93]: Total Products
+          - img [ref=e96]
+        - generic [ref=e100]: "6"
+        - generic [ref=e101]: All products
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - generic [ref=e105]: Total Interest
+          - img [ref=e108]
+        - generic [ref=e111]: "89"
+        - generic [ref=e112]: +10 this week
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e116]: Total Listings
+          - img [ref=e119]
+        - generic [ref=e122]: "4"
+        - generic [ref=e123]: 2 approved, 2 pending
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e127]: Avg. Rating
+          - img [ref=e130]
+        - generic [ref=e132]: "4.5"
+        - generic [ref=e133]: 68 total reviews
+    - generic [ref=e135]:
+      - link "Product Management" [ref=e136] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e137] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e138] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e139] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e140] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e142]:
+      - generic [ref=e143]:
+        - img [ref=e146]
+        - generic [ref=e150]:
+          - heading "Product Management" [level=2] [ref=e151]
+          - paragraph [ref=e152]: Manage your product inventory, listings, and approval status
+      - generic [ref=e153]:
+        - button "All 39" [ref=e154] [cursor=pointer]:
+          - text: All
+          - generic [ref=e155]: "39"
+        - button "Approved 26" [ref=e156] [cursor=pointer]:
+          - img [ref=e159]
+          - text: Approved
+          - generic [ref=e162]: "26"
+        - button "Under Review 9" [ref=e163] [cursor=pointer]:
+          - img [ref=e166]
+          - text: Under Review
+          - generic [ref=e169]: "9"
+        - button "Draft 3" [ref=e170] [cursor=pointer]:
+          - img [ref=e173]
+          - text: Draft
+          - generic [ref=e176]: "3"
+        - button "Rejected 3" [ref=e177] [cursor=pointer]:
+          - img [ref=e180]
+          - text: Rejected
+          - generic [ref=e182]: "3"
+      - generic [ref=e183]:
+        - generic [ref=e184]:
+          - generic:
+            - generic:
+              - img
+          - textbox "Search by product name or category..." [ref=e185]
+        - button "Category filter" [ref=e186] [cursor=pointer]:
+          - img [ref=e189]
+          - generic [ref=e191]: All Categories
+          - img [ref=e194]
+        - button "Sort options" [ref=e196] [cursor=pointer]:
+          - img [ref=e199]
+          - generic [ref=e202]: Newest First
+          - img [ref=e205]
+      - generic [ref=e207]:
+        - generic [ref=e208]:
+          - generic [ref=e210]: Product
+          - generic [ref=e211]: Disability Type
+          - generic [ref=e212]: Stock
+          - generic [ref=e213]: Listing Status
+          - generic [ref=e214]: Website
+          - generic [ref=e215]: Submitted
+          - generic [ref=e216]: Actions
+        - 'button "Product: Wheelchair Ramp Model XR-100, Status: approved" [ref=e217]':
+          - generic [ref=e220]:
+            - img [ref=e224] [cursor=pointer]
+            - img [ref=e229]
+          - generic [ref=e235]:
+            - generic [ref=e236]: Wheelchair Ramp Model XR-100
+            - button "View edited changes" [ref=e237] [cursor=pointer]:
+              - img [ref=e240]
+              - generic [ref=e243]: Edited
+              - img [ref=e246]
+          - generic [ref=e248]: Mobility Aids
+          - generic [ref=e249]: 15 units
+          - generic [ref=e251]: Approved
+          - generic [ref=e252]: Active
+          - generic [ref=e253]: Dec 1, 2025
+          - button "Product actions menu" [ref=e255] [cursor=pointer]:
+            - img [ref=e257]
+        - 'button "Product: Wheelchair Ramp Model WR-100 Pro, Status: under-review" [ref=e261]':
+          - img [ref=e268]
+          - generic [ref=e275]: Wheelchair Ramp Model WR-100 Pro
+          - generic [ref=e276]: Mobility Aids
+          - generic [ref=e277]: 20 units
+          - generic [ref=e279]: Under Review
+          - generic [ref=e280]: Active
+          - generic [ref=e281]: Dec 1, 2025
+          - button "Product actions menu" [ref=e283] [cursor=pointer]:
+            - img [ref=e285]
+        - 'button "Product: Walk-in Bathtub Model WB-2000, Status: under-review" [ref=e289]':
+          - img [ref=e296]
+          - generic [ref=e303]: Walk-in Bathtub Model WB-2000
+          - generic [ref=e304]: Daily Living Aids
+          - generic [ref=e305]: 3 units
+          - generic [ref=e307]: Under Review
+          - generic [ref=e308]: Active
+          - generic [ref=e309]: Nov 30, 2025
+          - button "Product actions menu" [ref=e311] [cursor=pointer]:
+            - img [ref=e313]
+        - 'button "Product: Talking Glucose Meter, Status: under-review" [ref=e317]':
+          - img [ref=e324]
+          - generic [ref=e331]: Talking Glucose Meter
+          - generic [ref=e332]: Daily Living Aids
+          - generic [ref=e333]: 45 units
+          - generic [ref=e335]: Under Review
+          - generic [ref=e336]: Active
+          - generic [ref=e337]: Nov 29, 2025
+          - button "Product actions menu" [ref=e339] [cursor=pointer]:
+            - img [ref=e341]
+        - 'button "Product: Shower Chair SC-300, Status: draft" [ref=e345]':
+          - img [ref=e352]
+          - generic [ref=e359]: Shower Chair SC-300
+          - generic [ref=e360]: Daily Living Aids
+          - generic [ref=e361]: 12 units
+          - generic [ref=e363]: Draft
+          - generic [ref=e364]: Active
+          - generic [ref=e365]: Nov 28, 2025
+          - button "Product actions menu" [ref=e367] [cursor=pointer]:
+            - img [ref=e369]
+      - generic "Discard Changes?"
+      - generic "Duplicate Product?"
+      - generic "Mark as Inactive?"
+      - generic "Delete Product?"
+      - generic "Save Pricing Changes?"
+      - generic [ref=e373]:
+        - generic [ref=e374]: Showing 1 to 5 of 39 products
+        - generic [ref=e375]:
+          - button "Previous" [disabled] [ref=e376] [cursor=pointer]:
+            - img [ref=e378]
+            - text: Previous
+          - button "1" [ref=e380] [cursor=pointer]
+          - button "2" [ref=e381] [cursor=pointer]
+          - button "3" [ref=e382] [cursor=pointer]
+          - button "4" [ref=e383] [cursor=pointer]
+          - button "5" [ref=e384] [cursor=pointer]
+          - button "6" [ref=e385] [cursor=pointer]
+          - button "7" [ref=e386] [cursor=pointer]
+          - button "8" [ref=e387] [cursor=pointer]
+          - button "Next" [ref=e388] [cursor=pointer]:
+            - text: Next
+            - img [ref=e390]
+```

@@ -1,0 +1,449 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - img [ref=e89]
+        - generic [ref=e92]:
+          - heading "Interest Expressed" [level=2] [ref=e93]
+          - paragraph [ref=e94]: View and manage PwD interests in your products
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]: Search
+          - generic [ref=e98]:
+            - textbox "Search" [ref=e99]:
+              - /placeholder: Search by name, location, or product
+            - generic:
+              - img
+        - generic [ref=e100]:
+          - generic [ref=e101]: State
+          - generic [ref=e102]:
+            - combobox [ref=e103] [cursor=pointer]:
+              - option "All States" [selected]
+              - option "Maharashtra"
+              - option "Karnataka"
+              - option "Tamil Nadu"
+              - option "Delhi"
+              - option "Punjab"
+            - generic:
+              - generic:
+                - img
+        - generic [ref=e104]:
+          - generic [ref=e105]: Disability Type
+          - generic [ref=e106]:
+            - combobox [ref=e107] [cursor=pointer]:
+              - option "All Disabilities" [selected]
+              - option "Visual Impairment"
+              - option "Mobility Impairment"
+              - option "Hearing Impairment"
+              - option "Blind"
+              - option "Low Vision"
+            - generic:
+              - generic:
+                - img
+        - generic [ref=e108]:
+          - generic [ref=e109]: Sort By
+          - generic [ref=e110]:
+            - combobox [ref=e111] [cursor=pointer]:
+              - option "Newest First" [selected]
+              - option "Oldest First"
+              - option "Name (A-Z)"
+              - option "Name (Z-A)"
+            - generic:
+              - generic:
+                - img
+      - table [ref=e114]:
+        - rowgroup [ref=e115]:
+          - row "Name Location Product Interests Shares Interest Date Actions" [ref=e116]:
+            - columnheader "Name" [ref=e117]
+            - columnheader "Location" [ref=e118]:
+              - generic [ref=e119]:
+                - img [ref=e121]
+                - text: Location
+            - columnheader "Product Interests" [ref=e124]:
+              - generic [ref=e125]:
+                - img [ref=e127]
+                - text: Product Interests
+            - columnheader "Shares" [ref=e131]:
+              - generic [ref=e132]:
+                - img [ref=e134]
+                - text: Shares
+            - columnheader "Interest Date" [ref=e140]:
+              - generic [ref=e141]:
+                - img [ref=e143]
+                - text: Interest Date
+            - columnheader "Actions" [ref=e145]
+        - rowgroup [ref=e146]:
+          - row "Rajesh Kumar Mumbai Maharashtra Smart Cane V2 Voice Assistant Device 3 5 Nov 2025 View Details" [ref=e147] [cursor=pointer]:
+            - cell "Rajesh Kumar" [ref=e148]:
+              - generic [ref=e149]:
+                - img [ref=e152]
+                - paragraph [ref=e156]: Rajesh Kumar
+            - cell "Mumbai Maharashtra" [ref=e157]:
+              - generic [ref=e158]:
+                - img [ref=e160]
+                - generic [ref=e163]:
+                  - paragraph [ref=e164]: Mumbai
+                  - paragraph [ref=e165]: Maharashtra
+            - cell "Smart Cane V2 Voice Assistant Device" [ref=e166]:
+              - generic [ref=e167]:
+                - generic [ref=e168]: Smart Cane V2
+                - generic [ref=e169]: Voice Assistant Device
+            - cell "3" [ref=e170]:
+              - generic [ref=e171]:
+                - img [ref=e173]
+                - generic [ref=e179]: "3"
+            - cell "5 Nov 2025" [ref=e180]:
+              - generic [ref=e181]:
+                - img [ref=e183]
+                - generic [ref=e185]: 5 Nov 2025
+            - cell "View Details" [ref=e186]:
+              - button "View Details" [ref=e187]
+          - row "Arjun Nair Bangalore Karnataka Braille Display Pro Voice Assistant Device 3 5 Nov 2025 View Details" [ref=e188] [cursor=pointer]:
+            - cell "Arjun Nair" [ref=e189]:
+              - generic [ref=e190]:
+                - img [ref=e193]
+                - paragraph [ref=e197]: Arjun Nair
+            - cell "Bangalore Karnataka" [ref=e198]:
+              - generic [ref=e199]:
+                - img [ref=e201]
+                - generic [ref=e204]:
+                  - paragraph [ref=e205]: Bangalore
+                  - paragraph [ref=e206]: Karnataka
+            - cell "Braille Display Pro Voice Assistant Device" [ref=e207]:
+              - generic [ref=e208]:
+                - generic [ref=e209]: Braille Display Pro
+                - generic [ref=e210]: Voice Assistant Device
+            - cell "3" [ref=e211]:
+              - generic [ref=e212]:
+                - img [ref=e214]
+                - generic [ref=e220]: "3"
+            - cell "5 Nov 2025" [ref=e221]:
+              - generic [ref=e222]:
+                - img [ref=e224]
+                - generic [ref=e226]: 5 Nov 2025
+            - cell "View Details" [ref=e227]:
+              - button "View Details" [ref=e228]
+          - row "Lakshmi Krishnan Coimbatore Tamil Nadu Voice Assistant Device 1 4 Nov 2025 View Details" [ref=e229] [cursor=pointer]:
+            - cell "Lakshmi Krishnan" [ref=e230]:
+              - generic [ref=e231]:
+                - img [ref=e234]
+                - paragraph [ref=e238]: Lakshmi Krishnan
+            - cell "Coimbatore Tamil Nadu" [ref=e239]:
+              - generic [ref=e240]:
+                - img [ref=e242]
+                - generic [ref=e245]:
+                  - paragraph [ref=e246]: Coimbatore
+                  - paragraph [ref=e247]: Tamil Nadu
+            - cell "Voice Assistant Device" [ref=e248]:
+              - generic [ref=e250]: Voice Assistant Device
+            - cell "1" [ref=e251]:
+              - generic [ref=e252]:
+                - img [ref=e254]
+                - generic [ref=e260]: "1"
+            - cell "4 Nov 2025" [ref=e261]:
+              - generic [ref=e262]:
+                - img [ref=e264]
+                - generic [ref=e266]: 4 Nov 2025
+            - cell "View Details" [ref=e267]:
+              - button "View Details" [ref=e268]
+          - row "Divya Menon Mumbai Maharashtra Braille Display Pro 2 4 Nov 2025 View Details" [ref=e269] [cursor=pointer]:
+            - cell "Divya Menon" [ref=e270]:
+              - generic [ref=e271]:
+                - img [ref=e274]
+                - paragraph [ref=e278]: Divya Menon
+            - cell "Mumbai Maharashtra" [ref=e279]:
+              - generic [ref=e280]:
+                - img [ref=e282]
+                - generic [ref=e285]:
+                  - paragraph [ref=e286]: Mumbai
+                  - paragraph [ref=e287]: Maharashtra
+            - cell "Braille Display Pro" [ref=e288]:
+              - generic [ref=e290]: Braille Display Pro
+            - cell "2" [ref=e291]:
+              - generic [ref=e292]:
+                - img [ref=e294]
+                - generic [ref=e300]: "2"
+            - cell "4 Nov 2025" [ref=e301]:
+              - generic [ref=e302]:
+                - img [ref=e304]
+                - generic [ref=e306]: 4 Nov 2025
+            - cell "View Details" [ref=e307]:
+              - button "View Details" [ref=e308]
+          - row "Priya Sharma Pune Maharashtra Smart Cane V2 1 4 Nov 2025 View Details" [ref=e309] [cursor=pointer]:
+            - cell "Priya Sharma" [ref=e310]:
+              - generic [ref=e311]:
+                - img [ref=e314]
+                - paragraph [ref=e318]: Priya Sharma
+            - cell "Pune Maharashtra" [ref=e319]:
+              - generic [ref=e320]:
+                - img [ref=e322]
+                - generic [ref=e325]:
+                  - paragraph [ref=e326]: Pune
+                  - paragraph [ref=e327]: Maharashtra
+            - cell "Smart Cane V2" [ref=e328]:
+              - generic [ref=e330]: Smart Cane V2
+            - cell "1" [ref=e331]:
+              - generic [ref=e332]:
+                - img [ref=e334]
+                - generic [ref=e340]: "1"
+            - cell "4 Nov 2025" [ref=e341]:
+              - generic [ref=e342]:
+                - img [ref=e344]
+                - generic [ref=e346]: 4 Nov 2025
+            - cell "View Details" [ref=e347]:
+              - button "View Details" [ref=e348]
+          - row "Amit Patel Bangalore Karnataka Smart Cane V2 Braille Display Pro 2 3 Nov 2025 View Details" [ref=e349] [cursor=pointer]:
+            - cell "Amit Patel" [ref=e350]:
+              - generic [ref=e351]:
+                - img [ref=e354]
+                - paragraph [ref=e358]: Amit Patel
+            - cell "Bangalore Karnataka" [ref=e359]:
+              - generic [ref=e360]:
+                - img [ref=e362]
+                - generic [ref=e365]:
+                  - paragraph [ref=e366]: Bangalore
+                  - paragraph [ref=e367]: Karnataka
+            - cell "Smart Cane V2 Braille Display Pro" [ref=e368]:
+              - generic [ref=e369]:
+                - generic [ref=e370]: Smart Cane V2
+                - generic [ref=e371]: Braille Display Pro
+            - cell "2" [ref=e372]:
+              - generic [ref=e373]:
+                - img [ref=e375]
+                - generic [ref=e381]: "2"
+            - cell "3 Nov 2025" [ref=e382]:
+              - generic [ref=e383]:
+                - img [ref=e385]
+                - generic [ref=e387]: 3 Nov 2025
+            - cell "View Details" [ref=e388]:
+              - button "View Details" [ref=e389]
+          - row "Karthik Rao Gurgaon Delhi Braille Display Pro Wheelchair Ramp Portable 3 3 Nov 2025 View Details" [ref=e390] [cursor=pointer]:
+            - cell "Karthik Rao" [ref=e391]:
+              - generic [ref=e392]:
+                - img [ref=e395]
+                - paragraph [ref=e399]: Karthik Rao
+            - cell "Gurgaon Delhi" [ref=e400]:
+              - generic [ref=e401]:
+                - img [ref=e403]
+                - generic [ref=e406]:
+                  - paragraph [ref=e407]: Gurgaon
+                  - paragraph [ref=e408]: Delhi
+            - cell "Braille Display Pro Wheelchair Ramp Portable" [ref=e409]:
+              - generic [ref=e410]:
+                - generic [ref=e411]: Braille Display Pro
+                - generic [ref=e412]: Wheelchair Ramp Portable
+            - cell "3" [ref=e413]:
+              - generic [ref=e414]:
+                - img [ref=e416]
+                - generic [ref=e422]: "3"
+            - cell "3 Nov 2025" [ref=e423]:
+              - generic [ref=e424]:
+                - img [ref=e426]
+                - generic [ref=e428]: 3 Nov 2025
+            - cell "View Details" [ref=e429]:
+              - button "View Details" [ref=e430]
+          - row "Rahul Deshmukh Nagpur Maharashtra Wheelchair Ramp Portable 2 3 Nov 2025 View Details" [ref=e431] [cursor=pointer]:
+            - cell "Rahul Deshmukh" [ref=e432]:
+              - generic [ref=e433]:
+                - img [ref=e436]
+                - paragraph [ref=e440]: Rahul Deshmukh
+            - cell "Nagpur Maharashtra" [ref=e441]:
+              - generic [ref=e442]:
+                - img [ref=e444]
+                - generic [ref=e447]:
+                  - paragraph [ref=e448]: Nagpur
+                  - paragraph [ref=e449]: Maharashtra
+            - cell "Wheelchair Ramp Portable" [ref=e450]:
+              - generic [ref=e452]: Wheelchair Ramp Portable
+            - cell "2" [ref=e453]:
+              - generic [ref=e454]:
+                - img [ref=e456]
+                - generic [ref=e462]: "2"
+            - cell "3 Nov 2025" [ref=e463]:
+              - generic [ref=e464]:
+                - img [ref=e466]
+                - generic [ref=e468]: 3 Nov 2025
+            - cell "View Details" [ref=e469]:
+              - button "View Details" [ref=e470]
+          - row "Ananya Kapoor Chandigarh Punjab Hearing Aid Premium 1 2 Nov 2025 View Details" [ref=e471] [cursor=pointer]:
+            - cell "Ananya Kapoor" [ref=e472]:
+              - generic [ref=e473]:
+                - img [ref=e476]
+                - paragraph [ref=e480]: Ananya Kapoor
+            - cell "Chandigarh Punjab" [ref=e481]:
+              - generic [ref=e482]:
+                - img [ref=e484]
+                - generic [ref=e487]:
+                  - paragraph [ref=e488]: Chandigarh
+                  - paragraph [ref=e489]: Punjab
+            - cell "Hearing Aid Premium" [ref=e490]:
+              - generic [ref=e492]: Hearing Aid Premium
+            - cell "1" [ref=e493]:
+              - generic [ref=e494]:
+                - img [ref=e496]
+                - generic [ref=e502]: "1"
+            - cell "2 Nov 2025" [ref=e503]:
+              - generic [ref=e504]:
+                - img [ref=e506]
+                - generic [ref=e508]: 2 Nov 2025
+            - cell "View Details" [ref=e509]:
+              - button "View Details" [ref=e510]
+          - row "Sneha Reddy Mysore Karnataka Smart Cane V2 Hearing Aid Premium 4 2 Nov 2025 View Details" [ref=e511] [cursor=pointer]:
+            - cell "Sneha Reddy" [ref=e512]:
+              - generic [ref=e513]:
+                - img [ref=e516]
+                - paragraph [ref=e520]: Sneha Reddy
+            - cell "Mysore Karnataka" [ref=e521]:
+              - generic [ref=e522]:
+                - img [ref=e524]
+                - generic [ref=e527]:
+                  - paragraph [ref=e528]: Mysore
+                  - paragraph [ref=e529]: Karnataka
+            - cell "Smart Cane V2 Hearing Aid Premium" [ref=e530]:
+              - generic [ref=e531]:
+                - generic [ref=e532]: Smart Cane V2
+                - generic [ref=e533]: Hearing Aid Premium
+            - cell "4" [ref=e534]:
+              - generic [ref=e535]:
+                - img [ref=e537]
+                - generic [ref=e543]: "4"
+            - cell "2 Nov 2025" [ref=e544]:
+              - generic [ref=e545]:
+                - img [ref=e547]
+                - generic [ref=e549]: 2 Nov 2025
+            - cell "View Details" [ref=e550]:
+              - button "View Details" [ref=e551]
+      - generic [ref=e552]:
+        - generic [ref=e553]: Showing 1 to 10 of 10 results
+        - generic [ref=e554]:
+          - button "Previous" [disabled] [ref=e555]:
+            - img [ref=e557]
+            - text: Previous
+          - generic [ref=e559]:
+            - button "1" [ref=e560] [cursor=pointer]
+            - button "2" [ref=e561] [cursor=pointer]
+          - button "Next" [ref=e562] [cursor=pointer]:
+            - text: Next
+            - img [ref=e564]
+      - generic [ref=e567]:
+        - generic [ref=e568]:
+          - generic [ref=e569]:
+            - img [ref=e572]
+            - generic [ref=e575]:
+              - heading "Rajesh Kumar" [level=2] [ref=e576]
+              - paragraph [ref=e577]: Complete profile and interest details
+          - button [ref=e578] [cursor=pointer]:
+            - img [ref=e580]
+        - generic [ref=e583]:
+          - generic [ref=e584]:
+            - heading "PERSONAL INFORMATION" [level=3] [ref=e585]
+            - generic [ref=e586]:
+              - generic [ref=e587]:
+                - img [ref=e590]
+                - generic [ref=e593]:
+                  - paragraph [ref=e594]: Age & Disability
+                  - paragraph [ref=e595]: 45 years • Visual Impairment
+              - generic [ref=e596]:
+                - img [ref=e599]
+                - generic [ref=e601]:
+                  - paragraph [ref=e602]: Interest Expressed On
+                  - paragraph [ref=e603]: 5 Nov 2025, 05:30
+          - generic [ref=e604]:
+            - heading "CONTACT INFORMATION" [level=3] [ref=e606]
+            - generic [ref=e607]:
+              - generic [ref=e608]:
+                - img [ref=e611]
+                - generic [ref=e613]:
+                  - paragraph [ref=e614]: Phone Number
+                  - paragraph [ref=e615]: +91 98765 43210
+              - generic [ref=e616]:
+                - img [ref=e619]
+                - generic [ref=e622]:
+                  - paragraph [ref=e623]: Email Address
+                  - paragraph [ref=e624]:
+                    - link "rajesh.kumar@email.com" [ref=e625] [cursor=pointer]:
+                      - /url: mailto:rajesh.kumar@email.com
+              - generic [ref=e626]:
+                - img [ref=e629]
+                - generic [ref=e633]:
+                  - paragraph [ref=e634]: Location
+                  - paragraph [ref=e635]: Mumbai, Maharashtra
+              - generic [ref=e636]:
+                - img [ref=e639]
+                - generic [ref=e642]:
+                  - paragraph [ref=e643]: Full Address
+                  - paragraph [ref=e644]: Flat 302, Sunshine Apartments, Andheri West, Mumbai - 400053
+          - generic [ref=e645]:
+            - heading "PRODUCT INTERESTS (2)" [level=3] [ref=e646]:
+              - img [ref=e648]
+              - text: PRODUCT INTERESTS (2)
+            - generic [ref=e652]:
+              - generic [ref=e654]:
+                - paragraph [ref=e655]: Smart Cane V2
+                - generic [ref=e656]:
+                  - img [ref=e658]
+                  - generic [ref=e664]: 2 shares
+              - generic [ref=e666]:
+                - paragraph [ref=e667]: Voice Assistant Device
+                - generic [ref=e668]:
+                  - img [ref=e670]
+                  - generic [ref=e676]: 1 shares
+```
