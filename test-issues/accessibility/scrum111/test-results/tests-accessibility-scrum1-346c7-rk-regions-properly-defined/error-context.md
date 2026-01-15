@@ -1,0 +1,189 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - img [ref=e89]
+        - generic [ref=e93]:
+          - heading "Product Management" [level=2] [ref=e94]
+          - paragraph [ref=e95]: Manage your product inventory, listings, and approval status
+      - generic [ref=e96]:
+        - button "All 39" [ref=e97] [cursor=pointer]:
+          - text: All
+          - generic [ref=e98]: "39"
+        - button "Approved 26" [ref=e99] [cursor=pointer]:
+          - img [ref=e102]
+          - text: Approved
+          - generic [ref=e105]: "26"
+        - button "Under Review 9" [ref=e106] [cursor=pointer]:
+          - img [ref=e109]
+          - text: Under Review
+          - generic [ref=e112]: "9"
+        - button "Draft 3" [ref=e113] [cursor=pointer]:
+          - img [ref=e116]
+          - text: Draft
+          - generic [ref=e119]: "3"
+        - button "Rejected 3" [ref=e120] [cursor=pointer]:
+          - img [ref=e123]
+          - text: Rejected
+          - generic [ref=e125]: "3"
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - generic:
+            - generic:
+              - img
+          - textbox "Search by product name or category..." [ref=e128]
+        - button "Category filter" [ref=e129] [cursor=pointer]:
+          - img [ref=e132]
+          - generic [ref=e134]: All Categories
+          - img [ref=e137]
+        - button "Sort options" [ref=e139] [cursor=pointer]:
+          - img [ref=e142]
+          - generic [ref=e145]: Newest First
+          - img [ref=e148]
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - generic [ref=e153]: Product
+          - generic [ref=e154]: Disability Type
+          - generic [ref=e155]: Stock
+          - generic [ref=e156]: Listing Status
+          - generic [ref=e157]: Website
+          - generic [ref=e158]: Submitted
+          - generic [ref=e159]: Actions
+        - 'button "Product: Wheelchair Ramp Model XR-100, Status: approved" [ref=e160]':
+          - generic [ref=e163]:
+            - img [ref=e167] [cursor=pointer]
+            - img [ref=e172]
+          - generic [ref=e178]:
+            - generic [ref=e179]: Wheelchair Ramp Model XR-100
+            - button "View edited changes" [ref=e180] [cursor=pointer]:
+              - img [ref=e183]
+              - generic [ref=e186]: Edited
+              - img [ref=e189]
+          - generic [ref=e191]: Mobility Aids
+          - generic [ref=e192]: 15 units
+          - generic [ref=e194]: Approved
+          - generic [ref=e195]: Active
+          - generic [ref=e196]: Dec 1, 2025
+          - button "Product actions menu" [ref=e198] [cursor=pointer]:
+            - img [ref=e200]
+        - 'button "Product: Wheelchair Ramp Model WR-100 Pro, Status: under-review" [ref=e204]':
+          - img [ref=e211]
+          - generic [ref=e218]: Wheelchair Ramp Model WR-100 Pro
+          - generic [ref=e219]: Mobility Aids
+          - generic [ref=e220]: 20 units
+          - generic [ref=e222]: Under Review
+          - generic [ref=e223]: Active
+          - generic [ref=e224]: Dec 1, 2025
+          - button "Product actions menu" [ref=e226] [cursor=pointer]:
+            - img [ref=e228]
+        - 'button "Product: Walk-in Bathtub Model WB-2000, Status: under-review" [ref=e232]':
+          - img [ref=e239]
+          - generic [ref=e246]: Walk-in Bathtub Model WB-2000
+          - generic [ref=e247]: Daily Living Aids
+          - generic [ref=e248]: 3 units
+          - generic [ref=e250]: Under Review
+          - generic [ref=e251]: Active
+          - generic [ref=e252]: Nov 30, 2025
+          - button "Product actions menu" [ref=e254] [cursor=pointer]:
+            - img [ref=e256]
+        - 'button "Product: Talking Glucose Meter, Status: under-review" [ref=e260]':
+          - img [ref=e267]
+          - generic [ref=e274]: Talking Glucose Meter
+          - generic [ref=e275]: Daily Living Aids
+          - generic [ref=e276]: 45 units
+          - generic [ref=e278]: Under Review
+          - generic [ref=e279]: Active
+          - generic [ref=e280]: Nov 29, 2025
+          - button "Product actions menu" [ref=e282] [cursor=pointer]:
+            - img [ref=e284]
+        - 'button "Product: Shower Chair SC-300, Status: draft" [ref=e288]':
+          - img [ref=e295]
+          - generic [ref=e302]: Shower Chair SC-300
+          - generic [ref=e303]: Daily Living Aids
+          - generic [ref=e304]: 12 units
+          - generic [ref=e306]: Draft
+          - generic [ref=e307]: Active
+          - generic [ref=e308]: Nov 28, 2025
+          - button "Product actions menu" [ref=e310] [cursor=pointer]:
+            - img [ref=e312]
+      - generic "Discard Changes?"
+      - generic "Duplicate Product?"
+      - generic "Mark as Inactive?"
+      - generic "Delete Product?"
+      - generic "Save Pricing Changes?"
+      - generic [ref=e316]:
+        - generic [ref=e317]: Showing 1 to 5 of 39 products
+        - generic [ref=e318]:
+          - button "Previous" [disabled] [ref=e319] [cursor=pointer]:
+            - img [ref=e321]
+            - text: Previous
+          - button "1" [ref=e323] [cursor=pointer]
+          - button "2" [ref=e324] [cursor=pointer]
+          - button "3" [ref=e325] [cursor=pointer]
+          - button "4" [ref=e326] [cursor=pointer]
+          - button "5" [ref=e327] [cursor=pointer]
+          - button "6" [ref=e328] [cursor=pointer]
+          - button "7" [ref=e329] [cursor=pointer]
+          - button "8" [ref=e330] [cursor=pointer]
+          - button "Next" [ref=e331] [cursor=pointer]:
+            - text: Next
+            - img [ref=e333]
+```

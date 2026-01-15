@@ -1,0 +1,293 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - img [ref=e89]
+        - generic [ref=e92]:
+          - heading "Upload New Product" [level=2] [ref=e93]
+          - paragraph [ref=e94]: Add a new assistive technology product to your inventory
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - heading "Basic Information" [level=3] [ref=e97]: Basic Information
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - text: Product Name
+              - generic [ref=e101]: "*"
+            - textbox "e.g., Ergonomic Wheelchair Model XR-100" [ref=e102]
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - generic [ref=e105]:
+                - text: Product Type
+                - generic [ref=e106]: "*"
+              - combobox [ref=e107]:
+                - option "Select product type" [disabled] [selected]
+                - option "Device"
+                - option "Technology"
+            - generic [ref=e108]:
+              - generic [ref=e109]:
+                - text: Disability Type
+                - generic [ref=e110]: "*"
+              - generic [ref=e114]: Select disability types
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - text: Category
+                - generic [ref=e119]: "*"
+              - combobox [ref=e120]:
+                - option "Select category" [disabled] [selected]
+                - option "Mobility Aids"
+                - option "Vision Aids"
+                - option "Hearing Aids"
+                - option "Communication Devices"
+                - option "Cognitive Aids"
+                - option "Daily Living Aids"
+                - option "Workspace Equipment"
+                - option "Educational Tools"
+                - option "Recreation & Sports"
+                - option "Home Modifications"
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - text: Disability Percentage
+                - generic [ref=e123]: "*"
+              - combobox [ref=e124]:
+                - option "Select disability percentage range" [disabled] [selected]
+                - option "0-40%"
+                - option "40-60%"
+                - option "60-80%"
+                - option "80-100%"
+                - option "All Ranges"
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - text: Short Description
+              - generic [ref=e127]: "*"
+              - generic [ref=e128]: (0/200 characters)
+              - button "Short Description * (0/200 characters)" [ref=e129] [cursor=pointer]:
+                - img [ref=e131]
+                - text: Assist with GenAI
+            - textbox "Brief summary that appears on catalog listing card (max 200 characters)" [ref=e134]
+            - generic [ref=e135]: This appears as summary text on the catalog listing card
+          - generic [ref=e136]:
+            - generic [ref=e137]:
+              - text: Detailed Description
+              - generic [ref=e138]: "*"
+              - button "Detailed Description *" [ref=e139] [cursor=pointer]:
+                - img [ref=e141]
+                - text: Assist with GenAI
+            - textbox "Comprehensive product description with features, benefits, and use cases. Supports bullet points and paragraphs." [ref=e144]
+            - generic [ref=e145]: This appears on the product details page. You can use bullet points and paragraphs.
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - text: Product's Unique Feature
+              - button "Product's Unique Feature" [ref=e148] [cursor=pointer]:
+                - img [ref=e150]
+                - text: Assist with GenAI
+            - textbox "Describe what makes this product unique or stand out from similar products in the market." [ref=e153]
+            - generic [ref=e154]: Optional - Highlight unique features, innovations, or advantages of this product.
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - text: Buying Guide
+              - button "Buying Guide" [ref=e157] [cursor=pointer]:
+                - img [ref=e159]
+                - text: Assist with GenAI
+            - textbox "Provide helpful information to guide customers in making a purchase decision. Include factors to consider, usage scenarios, compatibility information, etc." [ref=e162]
+            - generic [ref=e163]: Optional - Help customers understand how to choose the right product variant or configuration for their needs.
+        - generic [ref=e164]:
+          - heading "Product Images" [level=3] [ref=e165]: Product Images
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - text: Primary Image
+                - generic [ref=e170]: "*"
+              - img [ref=e173]
+            - generic [ref=e176]: This appears as the thumbnail on the catalog card. JPG or PNG, max 5MB
+            - generic [ref=e177] [cursor=pointer]:
+              - img [ref=e180]
+              - generic [ref=e183]: Upload Primary Image
+          - generic [ref=e184]:
+            - generic [ref=e185]:
+              - text: Additional Images
+              - generic [ref=e186]: (0/5 images)
+            - generic [ref=e187]: Upload up to 5 additional images showcasing different angles, usage, packaging, etc.
+            - generic [ref=e188] [cursor=pointer]:
+              - img [ref=e191]
+              - generic [ref=e194]: Upload Additional Images
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - text: 3D Mockup Images
+              - generic [ref=e197]: (0/3 images)
+            - generic [ref=e198]: Upload up to 3 3D mockup images showcasing the product in a 3D environment.
+            - generic [ref=e199] [cursor=pointer]:
+              - img [ref=e202]
+              - generic [ref=e205]: Upload 3D Mockup Images
+          - generic [ref=e206]:
+            - img [ref=e208]
+            - text: "Tip: Upload high-quality images from multiple angles. Products with detailed images receive more interest expressions."
+        - generic [ref=e210]:
+          - heading "Demo Video (Optional)" [level=3] [ref=e211]:
+            - text: Demo Video (Optional)
+            - img [ref=e215]
+          - generic [ref=e218]: Choose to upload a video file or provide a YouTube/Vimeo link. Videos will appear on the product details page.
+          - generic [ref=e219]:
+            - generic [ref=e220]: Video Type
+            - generic [ref=e221]:
+              - generic [ref=e222] [cursor=pointer]:
+                - radio "Upload Video File" [checked] [ref=e223]
+                - text: Upload Video File
+              - generic [ref=e224] [cursor=pointer]:
+                - radio "YouTube/Vimeo Link" [ref=e225]
+                - text: YouTube/Vimeo Link
+          - generic [ref=e226]:
+            - generic [ref=e227]: Upload Video File
+            - generic [ref=e228] [cursor=pointer]:
+              - img [ref=e231]
+              - generic [ref=e234]:
+                - strong [ref=e235]: Click to upload video file
+                - text: MP4, MOV, or WebM, max 50MB, up to 2 minutes
+        - generic [ref=e236]:
+          - heading "Technical & Accessibility Specifications" [level=3] [ref=e237]: Technical & Accessibility Specifications
+          - generic [ref=e239]:
+            - generic [ref=e240]:
+              - generic [ref=e241]: Dimensions
+              - textbox "e.g., 24' x 18' x 36'" [ref=e242]
+            - generic [ref=e243]:
+              - generic [ref=e244]: Weight
+              - textbox "e.g., 25 lbs or 11 kg" [ref=e245]
+          - generic [ref=e246]:
+            - generic [ref=e247]:
+              - generic [ref=e248]: Material / Build Type
+              - textbox "e.g., Aluminum alloy, Plastic, Steel" [ref=e249]
+            - generic [ref=e250]:
+              - generic [ref=e251]: Power / Battery Requirements
+              - textbox "e.g., Rechargeable Li-ion, 8 hours battery" [ref=e252]
+          - generic [ref=e253]:
+            - generic [ref=e254]: Accessibility Features
+            - textbox "Describe specific accessibility features, compliance standards (ADA, WCAG), and how this product assists users with disabilities." [ref=e255]
+            - generic [ref=e256]: Detail how this product addresses specific accessibility needs and any compliance certifications.
+        - generic [ref=e257]:
+          - heading "Geographical Availability" [level=3] [ref=e258]: Geographical Availability
+          - generic [ref=e260]:
+            - generic [ref=e261]: Available Locations
+            - textbox "Search" [ref=e262]
+            - generic [ref=e263]: Start typing to see location suggestions. Select "Pan-India" for nationwide availability.
+          - generic [ref=e264]:
+            - generic [ref=e265]: Product Serviceable Areas
+            - generic [ref=e266]:
+              - generic [ref=e267] [cursor=pointer]:
+                - radio "Pan India" [checked] [ref=e268]
+                - text: Pan India
+              - generic [ref=e269] [cursor=pointer]:
+                - radio "Specific States/Districts" [ref=e270]
+                - text: Specific States/Districts
+              - generic [ref=e271] [cursor=pointer]:
+                - radio "Not Applicable" [ref=e272]
+                - text: Not Applicable
+        - generic [ref=e273]:
+          - heading "Product Quantity & Pricing" [level=3] [ref=e274]: Product Quantity & Pricing
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - generic [ref=e278]: Available Quantity
+              - spinbutton [ref=e279]
+            - generic [ref=e280]:
+              - generic [ref=e281]: Inventory Type
+              - generic [ref=e282]:
+                - checkbox "Made to Order (No fixed inventory)" [ref=e283]
+                - generic [ref=e284]: Made to Order (No fixed inventory)
+          - generic [ref=e285]:
+            - generic [ref=e286]:
+              - text: Pricing
+              - img [ref=e289]
+            - combobox [ref=e292]:
+              - option "Single Price" [disabled] [selected]
+              - option "Single Price"
+              - option "Bulk Pricing"
+              - option "Tiered Pricing"
+          - generic [ref=e293]:
+            - spinbutton [ref=e294]
+            - generic [ref=e295]: Enter the price in rupees
+          - generic [ref=e296]:
+            - generic [ref=e297]:
+              - text: Support Helpline Number
+              - generic [ref=e298]: "*"
+            - textbox "e.g., +91 98765 43210" [ref=e299]
+            - generic [ref=e300]: Enter a valid 10-digit Indian mobile number with country code (optional)
+          - generic [ref=e301]:
+            - generic [ref=e302]: Expected Delivery Time (in days)
+            - spinbutton [ref=e303]
+            - generic [ref=e304]: Enter the estimated number of days for delivery from order date
+        - generic [ref=e305]:
+          - heading "Additional Information" [level=3] [ref=e306]: Additional Information
+          - generic [ref=e308]:
+            - generic [ref=e309]: Tags / Metadata
+            - textbox "wheelchair, portable, foldable, lightweight (comma separated)" [ref=e310]
+            - generic [ref=e311]: Add relevant keywords separated by commas to improve product discoverability
+          - generic [ref=e312]:
+            - generic [ref=e313]:
+              - text: Product Links
+              - generic [ref=e314]: (0/6 links)
+            - generic [ref=e315]: Add links where users can purchase or learn more about your product
+            - button "+ Add Link" [ref=e317]
+        - generic [ref=e318]:
+          - button "Cancel" [ref=e319] [cursor=pointer]
+          - button "Save as Draft" [ref=e320] [cursor=pointer]
+          - button "Upload Product" [ref=e321] [cursor=pointer]:
+            - img [ref=e324]
+            - text: Upload Product
+```
