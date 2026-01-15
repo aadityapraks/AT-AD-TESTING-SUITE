@@ -1,0 +1,16 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "buttons": {
+    "editProduct": "Edit",
+    "enhanceWithGenAI": "Assist with GenAI",
+    "acceptAll": "Accept All",
+    "editMerge": "Edit/Merge",
+    "reject": "Reject",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "productUpload": {
+    "productName": "Test Accessibility Product",
+    "shortDescription": "This is a short description for accessibility testing purposes",
+    "detailedDescription": "This is a detailed description that provides comprehensive information about the product for accessibility testing",
+    "productType": "Mobility Aid",
+    "disabilityTypes": ["Physical Disability", "Visual Impairment"],
+    "specifications": {
+      "key1": "Material",
+      "value1": "Aluminum",
+      "key2": "Weight",
+      "value2": "2.5 kg"
+    },
+    "geography": {
+      "panIndia": "Pan-India",
+      "specificAreas": "Specific Areas",
+      "state": "Maharashtra",
+      "district": "Mumbai"
+    },
+    "quantity": "100",
+    "additionalInfo": {
+      "amazonLink": "https://www.amazon.in/test-product",
+      "websiteLink": "https://www.testproduct.com",
+      "priceRange": "Single Price",
+      "price": "5000",
+      "supportHelpline": "+91-9876543210",
+      "tags": ["mobility", "wheelchair", "accessible"]
+    }
+  },
+  "validation": {
+    "invalidUrl": "not-a-valid-url",
+    "invalidPhone": "123",
+    "invalidFileType": "document.pdf"
+  }
+}

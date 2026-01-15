@@ -1,0 +1,21 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "preview": {
+    "buttons": {
+      "viewProduct": "View Product",
+      "edit": "Edit Product",
+      "viewLive": "View Live Product"
+    },
+    "sections": {
+      "catalogCard": "Catalog Card",
+      "productDetails": "Product Details",
+      "specifications": "Specifications",
+      "availability": "Availability",
+      "compliance": "Accessibility Compliance"
+    }
+  }
+}

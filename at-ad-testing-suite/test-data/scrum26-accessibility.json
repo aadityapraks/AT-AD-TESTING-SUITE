@@ -1,0 +1,17 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/partner/product-upload",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "validUrls": {
+    "amazon": "https://www.amazon.in/product/B08XYZ123",
+    "flipkart": "https://www.flipkart.com/product/xyz123",
+    "website": "https://example.com/product"
+  },
+  "invalidUrls": {
+    "noProtocol": "example.com",
+    "invalidFormat": "invalid-url",
+    "wrongDomain": "https://example.com/product"
+  }
+}

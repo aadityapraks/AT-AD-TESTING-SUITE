@@ -1,0 +1,23 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "navigation": {
+    "buttons": ["Dashboard", "Help & Resources", "Profile", "Logout"]
+  },
+  "widgets": {
+    "totalProducts": "Total Products",
+    "totalInterest": "Total Interest",
+    "totalListings": "Total Listings",
+    "avgRating": "Avg. Rating"
+  },
+  "tabs": {
+    "productManagement": "Product Management",
+    "productUpload": "Product Upload",
+    "interestExpressed": "Interest Expressed",
+    "queries": "Queries",
+    "reviewsRatings": "Reviews & Ratings"
+  }
+}

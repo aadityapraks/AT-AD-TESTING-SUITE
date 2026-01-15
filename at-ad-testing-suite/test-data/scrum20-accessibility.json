@@ -1,0 +1,33 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "genai": {
+    "inputs": {
+      "productName": "Wheelchair Ramp",
+      "typeCategory": "Mobility Aid",
+      "keyFeatures": "Portable, Lightweight, Durable",
+      "tone": "Simple"
+    },
+    "refinement": {
+      "examples": ["make it simpler", "add safety information"],
+      "customPrompt": "Add more details about installation"
+    },
+    "expectedContent": {
+      "shortDescription": "150-200 characters",
+      "detailedDescription": "Comprehensive product information",
+      "specifications": "Bullet points or key-value pairs",
+      "altText": "Image description"
+    }
+  },
+  "buttons": {
+    "assist": "Assist with GenAI",
+    "generate": "Generate Content",
+    "regenerate": "Regenerate",
+    "edit": "Edit",
+    "accept": "Accept",
+    "close": "Close GenAI Assistant"
+  }
+}
