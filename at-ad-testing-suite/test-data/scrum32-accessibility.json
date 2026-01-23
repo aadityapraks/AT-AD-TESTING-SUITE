@@ -1,0 +1,19 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "uniqueFeature": "Ergonomic design with adjustable height and tilt for maximum comfort",
+    "featureTitle": "Adjustable Height",
+    "featureDescription": "Height can be adjusted from 24 to 36 inches to accommodate different user needs"
+  },
+  "expected": {
+    "fieldLabel": "Product's Unique Feature",
+    "helpText": "Optional - Highlight unique features, innovations, or advantages of this product.",
+    "genAIButtonText": "Assist with GenAI",
+    "characterLimit": 100,
+    "maxFeatures": 3
+  }
+}

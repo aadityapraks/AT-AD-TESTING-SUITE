@@ -1,0 +1,21 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "searchQuery": "product listing",
+    "partialQuery": "prod",
+    "noResultsQuery": "xyzabc123nonexistent"
+  },
+  "expected": {
+    "pageHeading": "Help & Resources",
+    "searchPlaceholder": "Search articles, FAQs, or guides…",
+    "noResultsMessage": "No results found. Please try a different keyword or contact support.",
+    "systemErrorMessage": "Help Center is temporarily unavailable. Please check back later.",
+    "categories": ["Best Practices", "Getting Started", "Product Management", "Technical Support"],
+    "faqCategories": ["Account & Registration", "Product Listings", "GenAI Assistance", "Review and Ratings", "Technical Support"],
+    "tabs": ["Categories", "FAQs", "Contact"]
+  }
+}

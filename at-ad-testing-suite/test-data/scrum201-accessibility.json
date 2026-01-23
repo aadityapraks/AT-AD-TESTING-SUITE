@@ -1,0 +1,21 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "responseText": "Thank you for your inquiry. We would be happy to provide more information about this product. Please feel free to contact us directly for detailed specifications and pricing.",
+    "shortResponse": "Thank you for asking.",
+    "searchQuery": "product availability"
+  },
+  "expected": {
+    "pageHeading": "Queries",
+    "successMessage": "Response marked as Pending Admin Approval",
+    "validationError": "Response must be at least 10 words",
+    "pendingApprovalLabel": "Pending Admin Approval",
+    "approvedLabel": "Your Response (Approved)",
+    "adminResponseLabel": "Admin Response (on your behalf)",
+    "minWordCount": 10
+  }
+}

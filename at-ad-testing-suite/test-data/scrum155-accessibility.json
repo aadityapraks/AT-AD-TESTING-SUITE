@@ -1,0 +1,23 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "organizationName": "AccessTech Solutions Pvt. Ltd.",
+    "organizationType": "Private Limited Company",
+    "contactPerson": "Rajesh Kumar",
+    "email": "rajesh.kumar@accesstech.com",
+    "phone": "+91 98765 43210",
+    "website": "https://www.accesstech.com"
+  },
+  "expected": {
+    "pageTitle": "Assistive Partner Profile",
+    "statusActive": "Active",
+    "verificationStatus": "Verified",
+    "documentsHeading": "Documents",
+    "organizationDetailsHeading": "Organization Details",
+    "contactInfoHeading": "Contact Information"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "responseText": "Thank you for your review. We appreciate your feedback and are glad you found our product helpful.",
+    "longResponse": "Thank you for taking the time to share your detailed feedback. We truly appreciate your insights and are committed to continuously improving our products and services. Your experience matters to us, and we're glad we could meet your expectations. If you have any further questions or need assistance, please don't hesitate to reach out to our support team.",
+    "emptyResponse": "",
+    "exceedLimitResponse": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam.",
+    "editedResponse": "Thank you for your review. We have updated our response to provide more clarity on your feedback."
+  },
+  "expected": {
+    "pageHeading": "Reviews & Ratings",
+    "characterLimit": 500,
+    "moderationNotice": "Your response will be visible publicly after admin approval",
+    "reModerationNotice": "Edited responses re-enter admin moderation queue",
+    "withdrawConfirmation": "Are you sure you want to withdraw this response?",
+    "successMessage": "Response submitted successfully",
+    "errorMessage": "Unable to save your response at this time. Please try again later.",
+    "pendingStatus": "Pending Moderation",
+    "approvedStatus": "Approved",
+    "rejectedStatus": "Rejected",
+    "apResponseLabel": "Response from Assistive Partner"
+  }
+}

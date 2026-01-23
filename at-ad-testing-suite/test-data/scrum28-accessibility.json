@@ -1,0 +1,28 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "singlePrice": "12000",
+    "singlePriceDecimal": "12000.50",
+    "invalidPrice": "12abc",
+    "minPrice": "10000",
+    "maxPrice": "15000",
+    "invalidMaxPrice": "5000",
+    "customLabel": "Contact for details",
+    "longCustomLabel": "This is a very long custom label that exceeds the limit"
+  },
+  "expected": {
+    "formattedSinglePrice": "₹12,000",
+    "formattedSinglePriceDecimal": "₹12,000.50",
+    "formattedPriceRange": "₹10,000 – ₹15,000",
+    "catalogPriceText": "Starting at ₹10,000",
+    "errorInvalidNumber": "Please enter a valid number",
+    "errorBothRequired": "Both minimum and maximum required",
+    "errorMaxGreaterThanMin": "Maximum must be greater than minimum",
+    "characterLimit": 25,
+    "successMessage": "Pricing updated successfully"
+  }
+}

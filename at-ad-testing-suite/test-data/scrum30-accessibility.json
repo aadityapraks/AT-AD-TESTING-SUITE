@@ -1,0 +1,22 @@
+{
+  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "credentials": {
+    "email": "aadityap@byteridge.com",
+    "password": "aadityap@byteridge.com"
+  },
+  "inputs": {
+    "searchProduct": "Smart Hearing Aid",
+    "filterRating": "Highest Rated",
+    "sortOption": "Most Recent"
+  },
+  "expected": {
+    "pageHeading": "Reviews & Ratings",
+    "averageRating": "4.3 out of 5 stars",
+    "totalReviews": "68",
+    "productsReviewed": "6",
+    "noRatingsMessage": "No ratings available",
+    "noReviewsMessage": "No reviews received yet",
+    "errorMessage": "Unable to load reviews",
+    "newReviewNotification": "New review received"
+  }
+}
