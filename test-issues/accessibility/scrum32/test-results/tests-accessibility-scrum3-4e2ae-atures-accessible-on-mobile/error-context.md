@@ -1,0 +1,114 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic:
+    - generic:
+      - button "Toggle navigation menu" [ref=e12] [cursor=pointer]:
+        - img [ref=e14]
+      - navigation [ref=e16]:
+        - list [ref=e17]:
+          - listitem [ref=e18]:
+            - link "Dashboard" [ref=e19] [cursor=pointer]:
+              - /url: /partner/dashboard
+              - img [ref=e21]
+              - text: Dashboard
+          - listitem [ref=e26]:
+            - link "Product Management" [ref=e27] [cursor=pointer]:
+              - /url: /partner/product-management
+              - img [ref=e29]
+              - text: Product Management
+          - listitem [ref=e33]:
+            - link "Product Upload" [ref=e34] [cursor=pointer]:
+              - /url: /partner/product-upload
+              - img [ref=e36]
+              - text: Product Upload
+          - listitem [ref=e39]:
+            - link "Interest Expressed" [ref=e40] [cursor=pointer]:
+              - /url: /partner/interest-expressed
+              - img [ref=e42]
+              - text: Interest Expressed
+          - listitem [ref=e44]:
+            - link "Queries" [ref=e45] [cursor=pointer]:
+              - /url: /partner/queries
+              - img [ref=e47]
+              - text: Queries
+          - listitem [ref=e49]:
+            - link "Reviews & Ratings" [ref=e50] [cursor=pointer]:
+              - /url: /partner/reviews-ratings
+              - img [ref=e52]
+              - text: Reviews & Ratings
+          - listitem [ref=e54]:
+            - link "Help & Resources" [ref=e55] [cursor=pointer]:
+              - /url: /partner/help-resources
+              - img [ref=e57]
+              - text: Help & Resources
+          - listitem [ref=e60]:
+            - link "Notifications" [ref=e61] [cursor=pointer]:
+              - /url: /partner/notifications
+              - img [ref=e63]
+              - text: Notifications
+    - generic [ref=e66]:
+      - generic [ref=e68]: Y4J
+      - navigation [ref=e69]:
+        - button "Profile" [ref=e70] [cursor=pointer]
+        - button "Logout" [ref=e71] [cursor=pointer]:
+          - img [ref=e74]
+          - text: Logout
+  - generic [ref=e79]:
+    - generic [ref=e80]:
+      - img [ref=e83]
+      - generic [ref=e87]:
+        - heading "Product Management" [level=2] [ref=e88]
+        - paragraph [ref=e89]: Manage your product inventory, listings, and approval status
+    - generic [ref=e90]:
+      - button "All 0" [ref=e91] [cursor=pointer]:
+        - text: All
+        - generic [ref=e92]: "0"
+      - button "Approved 0" [ref=e93] [cursor=pointer]:
+        - img [ref=e96]
+        - text: Approved
+        - generic [ref=e99]: "0"
+      - button "Under Review 0" [ref=e100] [cursor=pointer]:
+        - img [ref=e103]
+        - text: Under Review
+        - generic [ref=e106]: "0"
+      - button "Draft 0" [ref=e107] [cursor=pointer]:
+        - img [ref=e110]
+        - text: Draft
+        - generic [ref=e113]: "0"
+      - button "Rejected 0" [ref=e114] [cursor=pointer]:
+        - img [ref=e117]
+        - text: Rejected
+        - generic [ref=e119]: "0"
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - generic:
+          - generic:
+            - img
+        - textbox "Search products by name or category" [ref=e122]:
+          - /placeholder: Search by product name or category...
+      - combobox "Category filter" [ref=e123] [cursor=pointer]:
+        - generic [ref=e124]: All Disability Types
+        - img [ref=e127]
+      - combobox "Sort options" [ref=e129] [cursor=pointer]:
+        - generic [ref=e130]: Newest First
+        - img [ref=e133]
+    - generic [ref=e136]:
+      - img [ref=e139]
+      - heading "No Products Found" [level=3] [ref=e143]
+      - paragraph [ref=e144]: You haven't added any products yet. Start by uploading your first product to get started.
+      - button "Add Your First Product" [ref=e145] [cursor=pointer]:
+        - img [ref=e148]
+        - text: Add Your First Product
+    - generic "Discard Changes?"
+    - generic "Duplicate Product?"
+    - generic "Delete Product?"
+    - generic "Save Pricing Changes?"
+    - generic:
+      - generic "Notifications"
+```

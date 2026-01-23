@@ -1,0 +1,370 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - button "Back to Reviews" [ref=e88] [cursor=pointer]:
+          - img [ref=e90]
+          - generic [ref=e92]: Back to Reviews
+        - heading "Large Button Phone" [level=1] [ref=e94]
+        - generic [ref=e95]: Customer reviews and ratings
+        - generic [ref=e96]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: Average Rating
+              - generic [ref=e101]:
+                - generic [ref=e102]: "4.5"
+                - generic [ref=e103]: / 5.0
+              - generic [ref=e104]:
+                - img [ref=e106]
+                - img [ref=e109]
+                - img [ref=e112]
+                - img [ref=e115]
+                - img [ref=e118]
+              - paragraph [ref=e120]: Based on 22 reviews
+            - generic [ref=e121]:
+              - paragraph [ref=e122]: Rating Distribution
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125]:
+                    - generic [ref=e126]: "5"
+                    - img [ref=e128]
+                  - generic "14 reviews with 5 stars" [ref=e130]
+                  - generic [ref=e132]: "14"
+                - generic [ref=e133]:
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: "4"
+                    - img [ref=e137]
+                  - generic "6 reviews with 4 stars" [ref=e139]
+                  - generic [ref=e141]: "6"
+                - generic [ref=e142]:
+                  - generic [ref=e143]:
+                    - generic [ref=e144]: "3"
+                    - img [ref=e146]
+                  - generic "2 reviews with 3 stars" [ref=e148]
+                  - generic [ref=e150]: "2"
+                - generic [ref=e151]:
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: "2"
+                    - img [ref=e155]
+                  - generic "0 reviews with 2 stars" [ref=e157]
+                  - generic [ref=e158]: "0"
+                - generic [ref=e159]:
+                  - generic [ref=e160]:
+                    - generic [ref=e161]: "1"
+                    - img [ref=e163]
+                  - generic "0 reviews with 1 star" [ref=e165]
+                  - generic [ref=e166]: "0"
+          - generic [ref=e167]:
+            - generic [ref=e169]:
+              - paragraph [ref=e171]: "22"
+              - paragraph [ref=e173]: Total Reviews
+            - generic [ref=e175]:
+              - generic [ref=e177]:
+                - paragraph [ref=e178]: "1"
+                - paragraph [ref=e179]: Nov 2025
+              - paragraph [ref=e181]: Latest Review
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - heading "Customer Reviews" [level=2] [ref=e185]
+              - generic [ref=e186]: All approved reviews from verified users
+            - generic [ref=e187]:
+              - combobox "Filter reviews by rating" [ref=e188] [cursor=pointer]:
+                - option "All Ratings" [selected]
+                - option "5 Stars"
+                - option "4 Stars"
+                - option "3 Stars"
+                - option "2 Stars"
+                - option "1 Star"
+              - combobox "Sort reviews by" [ref=e189] [cursor=pointer]:
+                - option "Most Recent" [selected]
+                - option "Oldest First"
+                - option "Highest Rated"
+                - option "Lowest Rated"
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e193]:
+                - generic [ref=e194]:
+                  - img [ref=e196]
+                  - generic [ref=e199]: Verified User 9876
+                - generic [ref=e200]:
+                  - generic [ref=e201]:
+                    - img [ref=e203]
+                    - img [ref=e206]
+                    - img [ref=e209]
+                    - img [ref=e212]
+                    - img [ref=e215]
+                  - generic [ref=e217]: Nov 1, 2025
+              - paragraph [ref=e219]: Perfect for seniors! The large buttons are easy to see and press. Great sound quality too.
+              - generic [ref=e220]:
+                - generic [ref=e221]:
+                  - img [ref=e223]
+                  - generic [ref=e226]: Your Response
+                  - generic [ref=e227]: Published
+                - generic [ref=e228]:
+                  - paragraph [ref=e229]: We're so glad to hear that our phone is meeting your needs! Accessibility and ease of use are our top priorities.
+                  - generic [ref=e230]: Nov 2, 2025
+            - generic [ref=e231]:
+              - generic [ref=e232]:
+                - generic [ref=e233]:
+                  - generic [ref=e234]:
+                    - img [ref=e236]
+                    - generic [ref=e239]: PwD User 3456
+                  - generic [ref=e240]:
+                    - generic [ref=e241]:
+                      - img [ref=e243]
+                      - img [ref=e246]
+                      - img [ref=e249]
+                      - img [ref=e252]
+                      - img [ref=e255]
+                    - generic [ref=e257]: Oct 30, 2025
+                - button "Flag" [ref=e258] [cursor=pointer]:
+                  - img [ref=e260]
+                  - generic [ref=e262]: Flag
+              - paragraph [ref=e264]: Very helpful device. The emergency button feature gives peace of mind.
+              - button "Respond to Review" [ref=e267] [cursor=pointer]:
+                - img [ref=e269]
+                - generic [ref=e272]: Respond to Review
+            - generic [ref=e273]:
+              - generic [ref=e274]:
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - generic [ref=e281]: Verified User 7412
+                  - generic [ref=e282]:
+                    - generic [ref=e283]:
+                      - img [ref=e285]
+                      - img [ref=e288]
+                      - img [ref=e291]
+                      - img [ref=e294]
+                      - img [ref=e297]
+                    - generic [ref=e299]: Oct 28, 2025
+                - button "Flag" [ref=e300] [cursor=pointer]:
+                  - img [ref=e302]
+                  - generic [ref=e304]: Flag
+              - paragraph [ref=e306]: Excellent phone for my elderly mother. The large display and loud ringer are perfect.
+              - button "Respond to Review" [ref=e309] [cursor=pointer]:
+                - img [ref=e311]
+                - generic [ref=e314]: Respond to Review
+            - generic [ref=e315]:
+              - generic [ref=e316]:
+                - generic [ref=e317]:
+                  - generic [ref=e318]:
+                    - img [ref=e320]
+                    - generic [ref=e323]: PwD User 8529
+                  - generic [ref=e324]:
+                    - generic [ref=e325]:
+                      - img [ref=e327]
+                      - img [ref=e330]
+                      - img [ref=e333]
+                      - img [ref=e336]
+                      - img [ref=e339]
+                    - generic [ref=e341]: Oct 25, 2025
+                - button "Flag" [ref=e342] [cursor=pointer]:
+                  - img [ref=e344]
+                  - generic [ref=e346]: Flag
+              - paragraph [ref=e348]: Good quality phone. The buttons are well-spaced and the sound is clear.
+              - button "Respond to Review" [ref=e351] [cursor=pointer]:
+                - img [ref=e353]
+                - generic [ref=e356]: Respond to Review
+            - generic [ref=e357]:
+              - generic [ref=e358]:
+                - generic [ref=e359]:
+                  - generic [ref=e360]:
+                    - img [ref=e362]
+                    - generic [ref=e365]: Verified User 1963
+                  - generic [ref=e366]:
+                    - generic [ref=e367]:
+                      - img [ref=e369]
+                      - img [ref=e372]
+                      - img [ref=e375]
+                      - img [ref=e378]
+                      - img [ref=e381]
+                    - generic [ref=e383]: Oct 22, 2025
+                - button "Flag" [ref=e384] [cursor=pointer]:
+                  - img [ref=e386]
+                  - generic [ref=e388]: Flag
+              - paragraph [ref=e390]: This phone has been a game-changer. The amplified sound and large buttons make calls effortless.
+              - button "Respond to Review" [ref=e393] [cursor=pointer]:
+                - img [ref=e395]
+                - generic [ref=e398]: Respond to Review
+            - generic [ref=e399]:
+              - generic [ref=e400]:
+                - generic [ref=e401]:
+                  - generic [ref=e402]:
+                    - img [ref=e404]
+                    - generic [ref=e407]: PwD User 4785
+                  - generic [ref=e408]:
+                    - generic [ref=e409]:
+                      - img [ref=e411]
+                      - img [ref=e414]
+                      - img [ref=e417]
+                      - img [ref=e420]
+                      - img [ref=e423]
+                    - generic [ref=e425]: Oct 20, 2025
+                - button "Flag" [ref=e426] [cursor=pointer]:
+                  - img [ref=e428]
+                  - generic [ref=e430]: Flag
+              - paragraph [ref=e432]: Reliable and easy to use. The memory buttons for important numbers are very convenient.
+              - button "Respond to Review" [ref=e435] [cursor=pointer]:
+                - img [ref=e437]
+                - generic [ref=e440]: Respond to Review
+            - generic [ref=e441]:
+              - generic [ref=e442]:
+                - generic [ref=e443]:
+                  - generic [ref=e444]:
+                    - img [ref=e446]
+                    - generic [ref=e449]: Verified User 6147
+                  - generic [ref=e450]:
+                    - generic [ref=e451]:
+                      - img [ref=e453]
+                      - img [ref=e456]
+                      - img [ref=e459]
+                      - img [ref=e462]
+                      - img [ref=e465]
+                    - generic [ref=e467]: Oct 18, 2025
+                - button "Flag" [ref=e468] [cursor=pointer]:
+                  - img [ref=e470]
+                  - generic [ref=e472]: Flag
+              - paragraph [ref=e474]: Outstanding accessibility features. The talking caller ID is incredibly helpful.
+              - button "Respond to Review" [ref=e477] [cursor=pointer]:
+                - img [ref=e479]
+                - generic [ref=e482]: Respond to Review
+            - generic [ref=e483]:
+              - generic [ref=e484]:
+                - generic [ref=e485]:
+                  - generic [ref=e486]:
+                    - img [ref=e488]
+                    - generic [ref=e491]: PwD User 2593
+                  - generic [ref=e492]:
+                    - generic [ref=e493]:
+                      - img [ref=e495]
+                      - img [ref=e498]
+                      - img [ref=e501]
+                      - img [ref=e504]
+                      - img [ref=e507]
+                    - generic [ref=e509]: Oct 15, 2025
+                - button "Flag" [ref=e510] [cursor=pointer]:
+                  - img [ref=e512]
+                  - generic [ref=e514]: Flag
+              - paragraph [ref=e516]: Great phone overall. The visual ringer and vibrating alert work perfectly.
+              - button "Respond to Review" [ref=e519] [cursor=pointer]:
+                - img [ref=e521]
+                - generic [ref=e524]: Respond to Review
+            - generic [ref=e525]:
+              - generic [ref=e526]:
+                - generic [ref=e527]:
+                  - generic [ref=e528]:
+                    - img [ref=e530]
+                    - generic [ref=e533]: Verified User 8741
+                  - generic [ref=e534]:
+                    - generic [ref=e535]:
+                      - img [ref=e537]
+                      - img [ref=e540]
+                      - img [ref=e543]
+                      - img [ref=e546]
+                      - img [ref=e549]
+                    - generic [ref=e551]: Oct 12, 2025
+                - button "Flag" [ref=e552] [cursor=pointer]:
+                  - img [ref=e554]
+                  - generic [ref=e556]: Flag
+              - paragraph [ref=e558]: Perfect communication device. The large buttons and clear display exceed expectations.
+              - button "Respond to Review" [ref=e561] [cursor=pointer]:
+                - img [ref=e563]
+                - generic [ref=e566]: Respond to Review
+            - generic [ref=e567]:
+              - generic [ref=e568]:
+                - generic [ref=e569]:
+                  - generic [ref=e570]:
+                    - img [ref=e572]
+                    - generic [ref=e575]: PwD User 3692
+                  - generic [ref=e576]:
+                    - generic [ref=e577]:
+                      - img [ref=e579]
+                      - img [ref=e582]
+                      - img [ref=e585]
+                      - img [ref=e588]
+                      - img [ref=e591]
+                    - generic [ref=e593]: Oct 10, 2025
+                - button "Flag" [ref=e594] [cursor=pointer]:
+                  - img [ref=e596]
+                  - generic [ref=e598]: Flag
+              - paragraph [ref=e600]: Very satisfied with this purchase. Setup was simple and it works exactly as described.
+              - button "Respond to Review" [ref=e603] [cursor=pointer]:
+                - img [ref=e605]
+                - generic [ref=e608]: Respond to Review
+          - generic [ref=e609]:
+            - generic [ref=e610]: Showing 1 to 10 of 12 reviews
+            - generic [ref=e611]:
+              - button "‹ Previous" [disabled] [ref=e612]
+              - button "1" [ref=e613] [cursor=pointer]
+              - button "2" [ref=e614] [cursor=pointer]
+              - button "Next ›" [ref=e615] [cursor=pointer]
+        - generic [ref=e616]:
+          - generic [ref=e617]:
+            - img [ref=e619]
+            - generic [ref=e621]: About Reviews
+          - list [ref=e622]:
+            - listitem [ref=e623]: • Reviews are automatically recalculated with each new submission
+            - listitem [ref=e624]: • All displayed reviews have been approved by our moderation team
+            - listitem [ref=e625]: • User identities are protected - only anonymous identifiers are shown
+      - generic "Flag Review"
+```

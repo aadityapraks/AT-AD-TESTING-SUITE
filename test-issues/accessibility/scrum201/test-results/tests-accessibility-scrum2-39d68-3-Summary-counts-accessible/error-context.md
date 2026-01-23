@@ -1,0 +1,236 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [active] [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - img [ref=e89]
+        - generic [ref=e91]:
+          - heading "PWD Queries" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Manage and respond to queries from persons with disabilities
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]: Total Queries
+              - img [ref=e100]
+            - generic [ref=e102]: "5"
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - generic [ref=e105]: Pending Response
+              - img [ref=e107]
+            - generic [ref=e110]: "2"
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - generic [ref=e113]: Responded
+              - img [ref=e115]
+            - generic [ref=e118]: "3"
+        - alert [ref=e119]:
+          - img [ref=e121]
+          - generic [ref=e123]: All queries are private. Your responses require admin approval before being sent to the PWD. Minimum 10 words required.
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: Search
+            - generic [ref=e128]:
+              - textbox "Search" [ref=e129]:
+                - /placeholder: Search by name, product, or query
+              - generic:
+                - img
+          - generic [ref=e130]:
+            - generic [ref=e131]: Status
+            - generic [ref=e132]:
+              - combobox "Status" [ref=e133] [cursor=pointer]:
+                - option "All Status" [selected]
+                - option "Pending Response"
+                - option "Responded"
+              - generic:
+                - generic:
+                  - img
+        - generic [ref=e135]:
+          - img [ref=e138]
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - generic [ref=e144]:
+                - heading "Smart Cane V2" [level=3] [ref=e145]
+                - generic [ref=e146]:
+                  - img [ref=e148]
+                  - text: Pending Response
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - img [ref=e154]
+                  - text: Rajesh Kumar
+                - generic [ref=e157]:
+                  - img [ref=e159]
+                  - text: 8 Dec 2025, 10:30 am
+            - paragraph [ref=e162]: I am interested in purchasing the Smart Cane V2. Could you please provide more details about the battery life and charging time? Also, is it suitable for outdoor use in rainy conditions?
+            - button "Respond to Query" [ref=e164] [cursor=pointer]:
+              - img [ref=e166]
+              - text: Respond to Query
+        - generic [ref=e170]:
+          - img [ref=e173]
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e179]:
+                - heading "Braille Display Pro" [level=3] [ref=e180]
+                - generic [ref=e181]:
+                  - img [ref=e183]
+                  - text: Responded
+              - generic [ref=e186]:
+                - generic [ref=e187]:
+                  - img [ref=e189]
+                  - text: Priya Sharma
+                - generic [ref=e192]:
+                  - img [ref=e194]
+                  - text: 7 Dec 2025, 02:20 pm
+            - paragraph [ref=e197]: What is the warranty period for the Braille Display Pro? Does it come with customer support? I need to know if spare parts are readily available in case of any issues with the device.
+            - generic [ref=e198]:
+              - generic [ref=e199]:
+                - img [ref=e201]
+                - text: Your Response (Approved)
+              - generic [ref=e204]: Thank you for your query. The Braille Display Pro comes with a 2-year comprehensive warranty covering all manufacturing defects. We provide 24/7 customer support through phone, email, and chat. Spare parts are available across all major cities in India through our authorised service centers.
+        - generic [ref=e206]:
+          - img [ref=e209]
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - heading "Voice Assistant Device" [level=3] [ref=e216]
+                - generic [ref=e217]:
+                  - img [ref=e219]
+                  - text: Pending Response
+              - generic [ref=e222]:
+                - generic [ref=e223]:
+                  - img [ref=e225]
+                  - text: Amit Patel
+                - generic [ref=e228]:
+                  - img [ref=e230]
+                  - text: 6 Dec 2025, 04:45 pm
+            - paragraph [ref=e233]: Does this voice assistant support regional languages like Gujarati and Hindi? I would also like to know if it can be integrated with smart home devices. What is the range of voice recognition in a noisy environment?
+            - generic [ref=e234]:
+              - generic [ref=e235]:
+                - img [ref=e237]
+                - text: Your Response (Rejected by Admin)
+              - generic [ref=e241]: Yes it supports Hindi.
+              - generic [ref=e242]:
+                - img [ref=e244]
+                - text: "Rejection Reason: Response is too brief and does not adequately address all questions. Please provide comprehensive information about language support, smart home integration, and voice recognition range."
+            - button "Edit Response" [ref=e247] [cursor=pointer]:
+              - img [ref=e249]
+              - text: Edit Response
+        - generic [ref=e253]:
+          - img [ref=e256]
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - heading "Wheelchair Ramp Portable" [level=3] [ref=e263]
+                - generic [ref=e264]:
+                  - img [ref=e266]
+                  - text: Admin Response
+              - generic [ref=e270]:
+                - generic [ref=e271]:
+                  - img [ref=e273]
+                  - text: Sneha Reddy
+                - generic [ref=e276]:
+                  - img [ref=e278]
+                  - text: 5 Dec 2025, 11:30 am
+            - paragraph [ref=e281]: What is the maximum weight capacity of this portable ramp? Can it be folded and carried easily during travel? I need to know the dimensions when folded for storage purposes.
+            - generic [ref=e282]:
+              - generic [ref=e283]:
+                - img [ref=e285]
+                - text: Admin Response (on your behalf)
+              - generic [ref=e289]: Hello Sneha, the portable wheelchair ramp has a maximum weight capacity of 300 kg. It can be easily folded to dimensions of 90cm x 15cm, making it highly portable for travel. The ramp is constructed from aircraft-grade aluminum with an anti-slip surface.
+        - generic [ref=e291]:
+          - img [ref=e294]
+          - generic [ref=e298]:
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - heading "Smart Cane V2" [level=3] [ref=e301]
+                - generic [ref=e302]:
+                  - img [ref=e304]
+                  - text: Responded
+              - generic [ref=e307]:
+                - generic [ref=e308]:
+                  - img [ref=e310]
+                  - text: Vikram Singh
+                - generic [ref=e313]:
+                  - img [ref=e315]
+                  - text: 4 Dec 2025, 08:15 am
+            - paragraph [ref=e318]: Can you provide information about the obstacle detection range of the Smart Cane? Does it work effectively in crowded places like markets and bus stations? What kind of alerts does it provide?
+            - generic [ref=e319]:
+              - generic [ref=e320]:
+                - img [ref=e322]
+                - text: Your Response (Pending Approval)
+              - generic [ref=e325]: "Thank you for reaching out. The Smart Cane V2 features advanced ultrasonic sensors with an obstacle detection range of up to 3 meters. It performs excellently in crowded environments and provides three types of alerts: vibration, audio beeps, and optional voice alerts."
+        - generic [ref=e326]:
+          - generic [ref=e327]: Showing 1 to 5 of 35 queries
+          - generic [ref=e328]:
+            - button "Previous" [disabled] [ref=e329]:
+              - img [ref=e331]
+              - text: Previous
+            - generic [ref=e333]:
+              - button "1" [ref=e334] [cursor=pointer]
+              - button "2" [ref=e335] [cursor=pointer]
+              - button "3" [ref=e336] [cursor=pointer]
+              - button "4" [ref=e337] [cursor=pointer]
+              - button "5" [ref=e338] [cursor=pointer]
+              - button "6" [ref=e339] [cursor=pointer]
+              - button "7" [ref=e340] [cursor=pointer]
+            - button "Next" [ref=e341] [cursor=pointer]:
+              - text: Next
+              - img [ref=e343]
+```

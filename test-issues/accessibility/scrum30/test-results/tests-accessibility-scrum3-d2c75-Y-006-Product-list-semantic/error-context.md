@@ -1,0 +1,270 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - heading "Welcome to your Dashboard" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Product upload & Product management
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Total Products
+          - img [ref=e39]
+        - generic [ref=e43]: "6"
+        - generic [ref=e44]: All products
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Total Interest
+          - img [ref=e51]
+        - generic [ref=e54]: "89"
+        - generic [ref=e55]: +10 this week
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Total Listings
+          - img [ref=e62]
+        - generic [ref=e65]: "4"
+        - generic [ref=e66]: 2 approved, 2 pending
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Avg. Rating
+          - img [ref=e73]
+        - generic [ref=e75]: "4.5"
+        - generic [ref=e76]: 68 total reviews
+    - generic [ref=e78]:
+      - link "Product Management" [ref=e79] [cursor=pointer]:
+        - /url: /partner/product-management
+      - link "Product Upload" [ref=e80] [cursor=pointer]:
+        - /url: /partner/product-upload
+      - link "Interest Expressed" [ref=e81] [cursor=pointer]:
+        - /url: /partner/interest-expressed
+      - link "Queries" [ref=e82] [cursor=pointer]:
+        - /url: /partner/queries
+      - link "Reviews & Ratings" [active] [ref=e83] [cursor=pointer]:
+        - /url: /partner/reviews-ratings
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - img [ref=e89]
+        - generic [ref=e91]:
+          - heading "Reviews & Ratings" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Monitor customer feedback and ratings for your products
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]: Average Rating
+              - img [ref=e101]
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - generic [ref=e105]: "4.5"
+                - generic [ref=e106]: / 5.0
+              - generic [ref=e107]:
+                - img [ref=e109]
+                - img [ref=e112]
+                - img [ref=e115]
+                - img [ref=e118]
+                - img [ref=e121]
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]: Total Reviews
+              - img [ref=e128]
+            - generic [ref=e130]:
+              - generic [ref=e131]: "86"
+              - generic [ref=e132]: Across all products
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - generic [ref=e135]: Products Reviewed
+              - img [ref=e138]
+            - generic [ref=e141]:
+              - generic [ref=e142]: "5"
+              - generic [ref=e143]: With customer feedback
+        - alert [ref=e144]:
+          - img [ref=e146]
+          - generic [ref=e148]: Click on a product to view detailed reviews and ratings
+        - generic [ref=e149]:
+          - generic [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153]: Search
+              - generic [ref=e154]:
+                - textbox "Search by product name..." [ref=e155]
+                - generic:
+                  - img
+            - generic [ref=e156]:
+              - generic [ref=e157]: Rating
+              - generic [ref=e158]:
+                - combobox "Filter by rating" [ref=e159] [cursor=pointer]:
+                  - option "All Ratings" [selected]
+                  - option "5 Stars"
+                  - option "4 Stars"
+                  - option "3 Stars"
+                  - option "2 Stars"
+                  - option "1 Star"
+                - generic:
+                  - img
+            - generic [ref=e160]:
+              - generic [ref=e161]: Sort By
+              - generic [ref=e162]:
+                - combobox "Sort products by" [ref=e163] [cursor=pointer]:
+                  - option "Highest Rated" [selected]
+                  - option "Lowest Rated"
+                  - option "Most Reviews"
+                  - option "Least Reviews"
+                  - option "Most Recent"
+                - generic:
+                  - img
+          - generic [ref=e165]:
+            - generic [ref=e167] [cursor=pointer]:
+              - img [ref=e172]
+              - generic [ref=e176]:
+                - generic [ref=e177]:
+                  - heading "Braille Display BD-40" [level=3] [ref=e178]
+                  - generic [ref=e179]: 2 New
+                - generic [ref=e180]:
+                  - generic [ref=e181]:
+                    - generic [ref=e182]:
+                      - img [ref=e184]
+                      - img [ref=e187]
+                      - img [ref=e190]
+                      - img [ref=e193]
+                      - img [ref=e196]
+                    - generic [ref=e198]: "4.6"
+                  - generic [ref=e199]: 12 reviews
+                  - generic [ref=e200]: "Latest: Nov 2, 2025"
+                - generic [ref=e201]:
+                  - generic "2 reviews with 1 star" [ref=e203]
+                  - generic "3 reviews with 2 stars" [ref=e206]
+                  - generic "5 reviews with 3 stars" [ref=e209]
+                  - generic "8 reviews with 4 stars" [ref=e212]
+                  - generic "12 reviews with 5 stars" [ref=e215]
+              - img [ref=e219]
+            - generic [ref=e222] [cursor=pointer]:
+              - img [ref=e227]
+              - generic [ref=e231]:
+                - generic [ref=e232]:
+                  - heading "Wheelchair Ramp Model XR-100" [level=3] [ref=e233]
+                  - generic [ref=e234]: 5 New
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - generic [ref=e237]:
+                      - img [ref=e239]
+                      - img [ref=e242]
+                      - img [ref=e245]
+                      - img [ref=e248]
+                      - img [ref=e251]
+                    - generic [ref=e253]: "4.7"
+                  - generic [ref=e254]: 28 reviews
+                  - generic [ref=e255]: "Latest: Nov 4, 2025"
+                - generic [ref=e256]:
+                  - generic "2 reviews with 1 star" [ref=e258]
+                  - generic "3 reviews with 2 stars" [ref=e261]
+                  - generic "5 reviews with 3 stars" [ref=e264]
+                  - generic "8 reviews with 4 stars" [ref=e267]
+                  - generic "12 reviews with 5 stars" [ref=e270]
+              - img [ref=e274]
+            - generic [ref=e277] [cursor=pointer]:
+              - img [ref=e282]
+              - generic [ref=e286]:
+                - generic [ref=e287]:
+                  - heading "Large Button Phone" [level=3] [ref=e288]
+                  - generic [ref=e289]: 4 New
+                - generic [ref=e290]:
+                  - generic [ref=e291]:
+                    - generic [ref=e292]:
+                      - img [ref=e294]
+                      - img [ref=e297]
+                      - img [ref=e300]
+                      - img [ref=e303]
+                      - img [ref=e306]
+                    - generic [ref=e308]: "4.5"
+                  - generic [ref=e309]: 22 reviews
+                  - generic [ref=e310]: "Latest: Nov 1, 2025"
+                - generic [ref=e311]:
+                  - generic "2 reviews with 1 star" [ref=e313]
+                  - generic "3 reviews with 2 stars" [ref=e316]
+                  - generic "5 reviews with 3 stars" [ref=e319]
+                  - generic "8 reviews with 4 stars" [ref=e322]
+                  - generic "12 reviews with 5 stars" [ref=e325]
+              - img [ref=e329]
+            - generic [ref=e332] [cursor=pointer]:
+              - img [ref=e337]
+              - generic [ref=e341]:
+                - generic [ref=e342]:
+                  - heading "Voice Amplifier Pro" [level=3] [ref=e343]
+                  - generic [ref=e344]: 3 New
+                - generic [ref=e345]:
+                  - generic [ref=e346]:
+                    - generic [ref=e347]:
+                      - img [ref=e349]
+                      - img [ref=e352]
+                      - img [ref=e355]
+                      - img [ref=e358]
+                      - img [ref=e361]
+                    - generic [ref=e363]: "4.3"
+                  - generic [ref=e364]: 15 reviews
+                  - generic [ref=e365]: "Latest: Nov 3, 2025"
+                - generic [ref=e366]:
+                  - generic "2 reviews with 1 star" [ref=e368]
+                  - generic "3 reviews with 2 stars" [ref=e371]
+                  - generic "5 reviews with 3 stars" [ref=e374]
+                  - generic "8 reviews with 4 stars" [ref=e377]
+                  - generic "12 reviews with 5 stars" [ref=e380]
+              - img [ref=e384]
+            - generic [ref=e387] [cursor=pointer]:
+              - img [ref=e392]
+              - generic [ref=e396]:
+                - generic [ref=e397]:
+                  - heading "Adjustable Walker with Seat" [level=3] [ref=e398]
+                  - generic [ref=e399]: 1 New
+                - generic [ref=e400]:
+                  - generic [ref=e401]:
+                    - generic [ref=e402]:
+                      - img [ref=e404]
+                      - img [ref=e407]
+                      - img [ref=e410]
+                      - img [ref=e413]
+                      - img [ref=e416]
+                    - generic [ref=e418]: "3.8"
+                  - generic [ref=e419]: 9 reviews
+                  - generic [ref=e420]: "Latest: Oct 30, 2025"
+                - generic [ref=e421]:
+                  - generic "2 reviews with 1 star" [ref=e423]
+                  - generic "3 reviews with 2 stars" [ref=e426]
+                  - generic "5 reviews with 3 stars" [ref=e429]
+                  - generic "8 reviews with 4 stars" [ref=e432]
+                  - generic "12 reviews with 5 stars" [ref=e435]
+              - img [ref=e439]
+          - generic [ref=e441]:
+            - generic [ref=e442]: Showing 1 to 5 of 6 products
+            - generic [ref=e443]:
+              - button "Previous" [disabled] [ref=e444]:
+                - img [ref=e446]
+                - text: Previous
+              - button "1" [ref=e448] [cursor=pointer]
+              - button "2" [ref=e449] [cursor=pointer]
+              - button "Next" [ref=e450] [cursor=pointer]:
+                - text: Next
+                - img [ref=e452]
+        - generic [ref=e455]:
+          - generic [ref=e456]:
+            - img [ref=e459]
+            - heading "Privacy & Review Guidelines" [level=4] [ref=e461]
+          - list [ref=e462]:
+            - listitem [ref=e463]: • All reviews are displayed anonymously to protect user privacy
+            - listitem [ref=e464]: • Only approved reviews are visible in your dashboard
+```

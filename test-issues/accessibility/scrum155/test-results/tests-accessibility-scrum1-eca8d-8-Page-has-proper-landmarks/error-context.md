@@ -1,0 +1,142 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [active] [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e30]:
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - img [ref=e35]
+        - generic [ref=e38]:
+          - heading "Assistive Partner Profile" [level=1] [ref=e39]
+          - paragraph [ref=e40]: Manage your organization details and account information
+      - button "Edit Profile" [ref=e42] [cursor=pointer]:
+        - img [ref=e43]
+        - text: Edit Profile
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - img "Organization Logo" [ref=e50]
+          - heading "AccessTech Solutions Pvt. Ltd." [level=3] [ref=e51]
+          - paragraph [ref=e52]: Private Limited Company
+        - generic [ref=e53]:
+          - heading "Account Status" [level=4] [ref=e54]
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - img [ref=e58]
+              - generic [ref=e61]:
+                - generic [ref=e62]: Status
+                - generic [ref=e63]: Active
+            - generic [ref=e64]:
+              - img [ref=e66]
+              - generic [ref=e68]:
+                - generic [ref=e69]: Verification
+                - generic [ref=e70]: Verified
+            - generic [ref=e71]:
+              - img [ref=e73]
+              - generic [ref=e75]:
+                - generic [ref=e76]: Member Since
+                - generic [ref=e77]: 15 Jun 2024
+        - generic [ref=e78]:
+          - heading "Documents" [level=4] [ref=e80]
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - img [ref=e84]
+              - generic [ref=e87]:
+                - generic [ref=e88]: GST Certificate
+                - generic [ref=e89]: 15 Jun 2024
+            - generic [ref=e90]:
+              - img [ref=e92]
+              - generic [ref=e95]:
+                - generic [ref=e96]: MoU Agreement
+                - generic [ref=e97]: 15 Jun 2024
+            - generic [ref=e98]:
+              - img [ref=e100]
+              - generic [ref=e103]:
+                - generic [ref=e104]: Registration Certificate
+                - generic [ref=e105]: 15 Jun 2024
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - heading "Organization Details" [level=4] [ref=e109]
+            - paragraph [ref=e110]: Basic information about your organization
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - generic [ref=e114]: Organization Name *
+                - generic [ref=e115]:
+                  - img [ref=e116]
+                  - text: AccessTech Solutions Pvt. Ltd.
+              - generic [ref=e119]:
+                - generic [ref=e120]: Organization Type *
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - text: Private Limited Company
+            - generic [ref=e125]:
+              - generic [ref=e126]: Organization Description *
+              - generic [ref=e127]: AccessTech Solutions is a leading provider of assistive technology products designed to empower individuals with disabilities. We specialize in innovative mobility aids, communication devices, and adaptive equipment.
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e130]: GST Number
+                - generic [ref=e131]:
+                  - img [ref=e132]
+                  - text: 29ABCDE1234F1Z5
+              - generic [ref=e135]:
+                - generic [ref=e136]: PAN Number
+                - generic [ref=e137]:
+                  - img [ref=e138]
+                  - text: ABCDE1234F
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - heading "Contact Information" [level=4] [ref=e143]
+            - paragraph [ref=e144]: How customers and partners can reach you
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - generic [ref=e147]:
+                - generic [ref=e148]: Contact Person Name *
+                - generic [ref=e149]:
+                  - img [ref=e150]
+                  - text: Rajesh Kumar
+              - generic [ref=e153]:
+                - generic [ref=e154]: Email Address *
+                - generic [ref=e155]:
+                  - img [ref=e156]
+                  - text: rajesh.kumar@accesstech.com
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - generic [ref=e161]: Phone Number *
+                - generic [ref=e162]:
+                  - img [ref=e163]
+                  - text: +91 98765 43210
+              - generic [ref=e165]:
+                - generic [ref=e166]: Website
+                - generic [ref=e167]:
+                  - img [ref=e168]
+                  - link "https://www.accesstech.com" [ref=e171] [cursor=pointer]:
+                    - /url: https://www.accesstech.com
+            - generic [ref=e172]:
+              - generic [ref=e173]: Address *
+              - generic [ref=e174]:
+                - img [ref=e175]
+                - text: 123, Innovation Hub, MG Road, Bangalore, Karnataka - 560001
+            - generic [ref=e178]:
+              - generic [ref=e179]: Social Media Links
+              - generic [ref=e180]:
+                - img [ref=e181]
+                - text: linkedin.com/company/accesstech-solutions
+```

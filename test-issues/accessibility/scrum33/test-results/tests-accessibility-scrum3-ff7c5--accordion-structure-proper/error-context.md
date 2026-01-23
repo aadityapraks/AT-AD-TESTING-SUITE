@@ -1,0 +1,184 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e30]:
+    - banner [ref=e31]:
+      - generic [ref=e33]:
+        - img "Bosch Logo" [ref=e35]
+        - generic [ref=e37]: A CSR initiative by Bosch
+    - generic [ref=e38]:
+      - generic [ref=e40]: Y4J
+      - navigation [ref=e41]:
+        - button "Dashboard" [ref=e42] [cursor=pointer]
+        - button "Help & Resources" [ref=e43] [cursor=pointer]
+        - button "🔔 4" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 🔔
+          - generic [ref=e46]: "4"
+        - button "Profile" [ref=e47] [cursor=pointer]
+        - button "Logout" [ref=e48] [cursor=pointer]:
+          - img [ref=e51]
+          - text: Logout
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59]
+        - generic [ref=e61]:
+          - heading "Help & Resources" [level=1] [ref=e62]
+          - paragraph [ref=e63]: Find guides, tutorials, and answers to help you succeed as a partner
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic:
+            - img
+          - textbox "Search articles, FAQs, or guides" [active] [ref=e66]:
+            - /placeholder: Search articles, FAQs, or guides...
+        - generic [ref=e68]:
+          - tablist "Help resources navigation" [ref=e69]:
+            - tab "Categories" [ref=e70] [cursor=pointer]:
+              - img [ref=e72]
+              - text: Categories
+            - tab "FAQs" [selected] [ref=e74] [cursor=pointer]:
+              - img [ref=e76]
+              - text: FAQs
+            - tab "Contact" [ref=e79] [cursor=pointer]:
+              - img [ref=e81]
+              - text: Contact
+          - tabpanel "FAQs" [ref=e84]:
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - generic [ref=e87]:
+                  - img [ref=e90]
+                  - heading "Account & Registration" [level=3] [ref=e93]
+                - generic [ref=e94]:
+                  - generic [ref=e95]:
+                    - button "How do I create a vendor account?" [ref=e96] [cursor=pointer]:
+                      - generic [ref=e97]: How do I create a vendor account?
+                      - img [ref=e99]
+                    - region "How do I create a vendor account?":
+                      - paragraph [ref=e102]: To create a vendor account, click on the "Register" button and fill out the required information including your business details, contact information, and necessary documentation.
+                  - generic [ref=e103]:
+                    - button "What documents are required for vendor registration?" [ref=e104] [cursor=pointer]:
+                      - generic [ref=e105]: What documents are required for vendor registration?
+                      - img [ref=e107]
+                    - region "What documents are required for vendor registration?":
+                      - paragraph [ref=e110]: You will need to provide business registration documents, tax identification, contact verification, and any relevant certifications for assistive technology products.
+                  - generic [ref=e111]:
+                    - button "How long does the approval process take?" [ref=e112] [cursor=pointer]:
+                      - generic [ref=e113]: How long does the approval process take?
+                      - img [ref=e115]
+                    - region "How long does the approval process take?":
+                      - paragraph [ref=e118]: The vendor approval process typically takes 3-5 business days. You will receive email notifications about the status of your application.
+              - generic [ref=e119]:
+                - generic [ref=e120]:
+                  - img [ref=e123]
+                  - heading "Product Listings" [level=3] [ref=e127]
+                - generic [ref=e128]:
+                  - generic [ref=e129]:
+                    - button "How many products can I list?" [ref=e130] [cursor=pointer]:
+                      - generic [ref=e131]: How many products can I list?
+                      - img [ref=e133]
+                    - region "How many products can I list?":
+                      - paragraph [ref=e136]: There is no limit to the number of products you can list. However, each product must meet our quality and compliance standards.
+                  - generic [ref=e137]:
+                    - button "What image formats are supported?" [ref=e138] [cursor=pointer]:
+                      - generic [ref=e139]: What image formats are supported?
+                      - img [ref=e141]
+                    - region "What image formats are supported?":
+                      - paragraph [ref=e144]: We support JPG, PNG, and WebP formats. Images should be at least 1200x1200 pixels with a maximum file size of 5MB per image.
+                  - generic [ref=e145]:
+                    - button "Is pricing mandatory for product listings?" [ref=e146] [cursor=pointer]:
+                      - generic [ref=e147]: Is pricing mandatory for product listings?
+                      - img [ref=e149]
+                    - region "Is pricing mandatory for product listings?":
+                      - paragraph [ref=e152]: Yes, pricing information is required for all product listings to help customers make informed decisions.
+                  - generic [ref=e153]:
+                    - button "Can I edit a product after approval?" [ref=e154] [cursor=pointer]:
+                      - generic [ref=e155]: Can I edit a product after approval?
+                      - img [ref=e157]
+                    - region "Can I edit a product after approval?":
+                      - paragraph [ref=e160]: Yes, you can edit product details after approval. However, significant changes may require re-approval.
+              - generic [ref=e161]:
+                - generic [ref=e162]:
+                  - img [ref=e165]
+                  - heading "GenAI Assistance" [level=3] [ref=e168]
+                - generic [ref=e169]:
+                  - generic [ref=e170]:
+                    - button "What is GenAI assistance?" [ref=e171] [cursor=pointer]:
+                      - generic [ref=e172]: What is GenAI assistance?
+                      - img [ref=e174]
+                    - region "What is GenAI assistance?":
+                      - paragraph [ref=e177]: GenAI assistance is our AI-powered tool that helps you create compelling product descriptions, optimize content, and improve your listings automatically.
+                  - generic [ref=e178]:
+                    - button "Is GenAI-generated content automatically approved?" [ref=e179] [cursor=pointer]:
+                      - generic [ref=e180]: Is GenAI-generated content automatically approved?
+                      - img [ref=e182]
+                    - region "Is GenAI-generated content automatically approved?":
+                      - paragraph [ref=e185]: No, all content goes through the same approval process regardless of whether it was generated by AI or written manually.
+                  - generic [ref=e186]:
+                    - button "How do I use GenAI for AT text generation?" [ref=e187] [cursor=pointer]:
+                      - generic [ref=e188]: How do I use GenAI for AT text generation?
+                      - img [ref=e190]
+                    - region "How do I use GenAI for AT text generation?":
+                      - paragraph [ref=e193]: When creating or editing a product listing, look for the GenAI assistance button. Click it to generate suggestions based on your product information.
+              - generic [ref=e194]:
+                - generic [ref=e195]:
+                  - img [ref=e198]
+                  - heading "Reviews & Ratings" [level=3] [ref=e200]
+                - generic [ref=e201]:
+                  - generic [ref=e202]:
+                    - button "How do customers leave reviews?" [ref=e203] [cursor=pointer]:
+                      - generic [ref=e204]: How do customers leave reviews?
+                      - img [ref=e206]
+                    - region "How do customers leave reviews?":
+                      - paragraph [ref=e209]: Customers can leave reviews after purchasing or expressing interest in your products. Reviews help build trust and credibility.
+                  - generic [ref=e210]:
+                    - button "Can I respond to customer reviews?" [ref=e211] [cursor=pointer]:
+                      - generic [ref=e212]: Can I respond to customer reviews?
+                      - img [ref=e214]
+                    - region "Can I respond to customer reviews?":
+                      - paragraph [ref=e217]: Yes, you can respond to customer reviews through your vendor dashboard. Professional responses help build customer relationships.
+                  - generic [ref=e218]:
+                    - button "How do I handle negative reviews?" [ref=e219] [cursor=pointer]:
+                      - generic [ref=e220]: How do I handle negative reviews?
+                      - img [ref=e222]
+                    - region "How do I handle negative reviews?":
+                      - paragraph [ref=e225]: Address negative reviews professionally and promptly. Offer solutions and show that you value customer feedback to improve your services.
+              - generic [ref=e226]:
+                - generic [ref=e227]:
+                  - img [ref=e230]
+                  - heading "Technical Support" [level=3] [ref=e232]
+                - generic [ref=e233]:
+                  - generic [ref=e234]:
+                    - button "How do I contact technical support?" [ref=e235] [cursor=pointer]:
+                      - generic [ref=e236]: How do I contact technical support?
+                      - img [ref=e238]
+                    - region "How do I contact technical support?":
+                      - paragraph [ref=e241]: You can reach our technical support team via email at support@youth4jobs.org or through the contact form in the portal.
+                  - generic [ref=e242]:
+                    - button "What are the system requirements?" [ref=e243] [cursor=pointer]:
+                      - generic [ref=e244]: What are the system requirements?
+                      - img [ref=e246]
+                    - region "What are the system requirements?":
+                      - paragraph [ref=e249]: The portal works on all modern browsers including Chrome, Firefox, Safari, and Edge. Ensure JavaScript is enabled for full functionality.
+                  - generic [ref=e250]:
+                    - button "I'm having trouble uploading images. What should I do?" [ref=e251] [cursor=pointer]:
+                      - generic [ref=e252]: I'm having trouble uploading images. What should I do?
+                      - img [ref=e254]
+                    - region "I'm having trouble uploading images. What should I do?":
+                      - paragraph [ref=e257]: Check that your images meet the size and format requirements. If issues persist, try clearing your browser cache or contact support.
+```

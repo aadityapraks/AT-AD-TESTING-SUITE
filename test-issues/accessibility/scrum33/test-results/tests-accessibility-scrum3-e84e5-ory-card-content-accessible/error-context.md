@@ -1,0 +1,95 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e12]:
+    - generic [ref=e14]: Y4J
+    - navigation [ref=e15]:
+      - button "Dashboard" [ref=e16] [cursor=pointer]
+      - button "Help & Resources" [ref=e17] [cursor=pointer]
+      - button "🔔 4" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 🔔
+        - generic [ref=e20]: "4"
+      - button "Profile" [ref=e21] [cursor=pointer]
+      - button "Logout" [ref=e22] [cursor=pointer]:
+        - img [ref=e25]
+        - text: Logout
+  - generic [ref=e30]:
+    - banner [ref=e31]:
+      - generic [ref=e33]:
+        - img "Bosch Logo" [ref=e35]
+        - generic [ref=e37]: A CSR initiative by Bosch
+    - generic [ref=e38]:
+      - generic [ref=e40]: Y4J
+      - navigation [ref=e41]:
+        - button "Dashboard" [ref=e42] [cursor=pointer]
+        - button "Help & Resources" [ref=e43] [cursor=pointer]
+        - button "🔔 4" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: 🔔
+          - generic [ref=e46]: "4"
+        - button "Profile" [ref=e47] [cursor=pointer]
+        - button "Logout" [ref=e48] [cursor=pointer]:
+          - img [ref=e51]
+          - text: Logout
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59]
+        - generic [ref=e61]:
+          - heading "Help & Resources" [level=1] [ref=e62]
+          - paragraph [ref=e63]: Find guides, tutorials, and answers to help you succeed as a partner
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic:
+            - img
+          - textbox "Search articles, FAQs, or guides" [active] [ref=e66]:
+            - /placeholder: Search articles, FAQs, or guides...
+        - generic [ref=e68]:
+          - tablist "Help resources navigation" [ref=e69]:
+            - tab "Categories" [selected] [ref=e70] [cursor=pointer]:
+              - img [ref=e72]
+              - text: Categories
+            - tab "FAQs" [ref=e74] [cursor=pointer]:
+              - img [ref=e76]
+              - text: FAQs
+            - tab "Contact" [ref=e79] [cursor=pointer]:
+              - img [ref=e81]
+              - text: Contact
+          - tabpanel "Categories" [ref=e84]:
+            - generic [ref=e85]:
+              - button "Best Practices 3 articles Learn industry standards and recommended approaches" [ref=e86] [cursor=pointer]:
+                - generic [ref=e87]:
+                  - img [ref=e90]
+                  - generic [ref=e92]:
+                    - heading "Best Practices" [level=3] [ref=e93]
+                    - generic [ref=e94]: 3 articles
+                  - paragraph [ref=e95]: Learn industry standards and recommended approaches
+              - button "Product Management 3 articles Master the tools for managing your product catalog" [ref=e96] [cursor=pointer]:
+                - generic [ref=e97]:
+                  - img [ref=e100]
+                  - generic [ref=e104]:
+                    - heading "Product Management" [level=3] [ref=e105]
+                    - generic [ref=e106]: 3 articles
+                  - paragraph [ref=e107]: Master the tools for managing your product catalog
+              - button "GenAI Features 3 articles Leverage AI-powered tools for product listings" [ref=e108] [cursor=pointer]:
+                - generic [ref=e109]:
+                  - img [ref=e112]
+                  - generic [ref=e115]:
+                    - heading "GenAI Features" [level=3] [ref=e116]
+                    - generic [ref=e117]: 3 articles
+                  - paragraph [ref=e118]: Leverage AI-powered tools for product listings
+              - button "Compliance & Approvals 3 articles Navigate approvals and compliance requirements" [ref=e119] [cursor=pointer]:
+                - generic [ref=e120]:
+                  - img [ref=e123]
+                  - generic [ref=e125]:
+                    - heading "Compliance & Approvals" [level=3] [ref=e126]
+                    - generic [ref=e127]: 3 articles
+                  - paragraph [ref=e128]: Navigate approvals and compliance requirements
+            - generic [ref=e130]:
+              - img [ref=e133]
+              - heading "Select a Category to View Articles" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Click on any category above to explore related help articles and guides
+```

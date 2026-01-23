@@ -1,0 +1,76 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - img "Bosch Logo" [ref=e9]
+      - generic [ref=e11]: A CSR initiative by Bosch
+  - generic [ref=e13]:
+    - generic [ref=e14]: Y4J
+    - generic [ref=e15]: Assistive Partner Portal
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - img [ref=e21]
+        - generic [ref=e23]:
+          - heading "Youth4Jobs" [level=2] [ref=e24]
+          - paragraph [ref=e25]: Assistive Partner Portal
+      - generic [ref=e26]:
+        - heading "Welcome to the Assistive Partner Portal" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Access your partner dashboard to manage assistive technology products, track listings, and connect with customers.
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img [ref=e33]
+          - generic [ref=e37]:
+            - heading "Product Management" [level=3] [ref=e38]
+            - paragraph [ref=e39]: Upload and manage your AT products with ease
+        - generic [ref=e40]:
+          - img [ref=e43]
+          - generic [ref=e45]:
+            - heading "Track Interest" [level=3] [ref=e46]
+            - paragraph [ref=e47]: Monitor customer interest and inquiries
+        - generic [ref=e48]:
+          - img [ref=e51]
+          - generic [ref=e54]:
+            - heading "Official Listings" [level=3] [ref=e55]
+            - paragraph [ref=e56]: Apply for official AT listings
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - heading "Sign In" [level=2] [ref=e60]
+        - paragraph [ref=e61]: Use your Swarajability SSO credentials to access the partner dashboard
+      - generic [ref=e62]:
+        - generic [ref=e64]:
+          - img [ref=e67]
+          - generic [ref=e69]:
+            - strong [ref=e70]: Swarajability Single Sign-On
+            - paragraph [ref=e71]: Login securely using your Swarajability credentials for seamless access.
+        - button "Sign in with Swarajability Secure SSO authentication" [ref=e74] [cursor=pointer]:
+          - img [ref=e77]
+          - generic [ref=e80]:
+            - generic [ref=e81]: Sign in with Swarajability
+            - generic [ref=e82]: Secure SSO authentication
+          - img [ref=e85]
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - img [ref=e92]
+            - text: Single credentials for all Youth4Jobs services
+          - generic [ref=e95]:
+            - img [ref=e98]
+            - text: Enterprise-grade security and encryption
+          - generic [ref=e101]:
+            - img [ref=e104]
+            - text: Seamless access across devices
+        - generic [ref=e107]:
+          - paragraph [ref=e108]: New partner?
+          - button "Register as Assistive Partner" [ref=e109] [cursor=pointer]
+          - paragraph [ref=e110]: After registration, you will receive SSO credentials
+      - generic [ref=e111]:
+        - paragraph [ref=e112]:
+          - img [ref=e114]
+          - text: Secured by Swarajability SSO
+        - paragraph [ref=e117]:
+          - text: Having trouble?
+          - link "Contact support" [ref=e118] [cursor=pointer]:
+            - /url: "#"
+```
