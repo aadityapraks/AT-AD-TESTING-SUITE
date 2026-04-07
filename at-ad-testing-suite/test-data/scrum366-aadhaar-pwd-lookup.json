@@ -1,0 +1,121 @@
+{
+  "TC_AADHAAR_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "emptyInput": "",
+      "shortAadhaar": "12345678",
+      "longAadhaar": "1234567890123",
+      "alphabeticInput": "abcdefghijkl",
+      "specialChars": "!@#$%^&*()_+",
+      "validAadhaar": "234567890123"
+    },
+    "expected": {
+      "aadhaarFieldVisible": true,
+      "verifyButtonDisabledWhenEmpty": true,
+      "verifyButtonEnabledForValid": true
+    }
+  },
+  "TC_AADHAAR_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "oneDigit": "1",
+      "sixDigits": "123456",
+      "elevenDigits": "12345678901",
+      "twelveDigits": "123456789012"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "existingPwDAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "existingPwDAadhaar": "766789123456",
+      "incorrectOtp": "000000",
+      "correctOtp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_006": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "partialAadhaar": "12345678"
+    },
+    "expected": {
+      "myPwdsHeading": "My Persons with Disabilities"
+    }
+  },
+  "TC_AADHAAR_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "shortAadhaar": "12345",
+      "alphanumericAadhaar": "12345abc9012",
+      "leadingZeroAadhaar": "012345678901",
+      "allZeroAadhaar": "000000000000"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "validAadhaar": "234567890123"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "validAadhaar": "234567890123"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_010": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "cg1@yopmail.com",
+      "caregiverPassword": "cg1@141G",
+      "linkedAadhaar": "766789123456"
+    },
+    "expected": {}
+  },
+  "TC_AADHAAR_011": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "aadhaarNumber": "234567890123"
+    },
+    "expected": {}
+  }
+}

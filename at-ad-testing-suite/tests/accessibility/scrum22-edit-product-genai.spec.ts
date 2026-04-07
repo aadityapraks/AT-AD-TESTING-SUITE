@@ -23,7 +23,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     test('TC_A11Y_001: Verify Edit Product button accessibility', async ({ page }) => {
       await login(page);
       // 1. Navigate to Product Management
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 2. Tab to Edit Product button in actions column
       const actionsButton = page.getByRole('button', { name: /Product:.*Status:/ }).first().getByLabel('Product actions menu');
@@ -41,7 +41,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_002: Verify Edit button screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Enable screen reader
       // 2. Navigate to Edit button
@@ -59,7 +59,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_003: Verify edit form structure', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open edit form
       // 2. Use screen reader heading navigation
@@ -80,7 +80,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_004: Verify Enhance with GenAI button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open edit form with existing content
       await page.getByRole('textbox', { name: /Brief summary/ }).fill('Test description');
@@ -102,7 +102,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_005: Verify Enhance button screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Navigate to Enhance buttons
@@ -120,7 +120,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_006: Verify button tooltip accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to Enhance button
       const enhanceButton = page.getByRole('button', { name: /Assist with GenAI/ }).first();
@@ -140,7 +140,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_007: Verify button disabled state', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open edit form with empty field
       // 2. Navigate to Enhance button
@@ -159,7 +159,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_008: Verify ALT text generation button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to image section
       await page.getByRole('heading', { name: 'Product Images' }).scrollIntoViewIfNeeded();
@@ -173,7 +173,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_009: Verify ALT text field accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Generate ALT text
       // 2. Navigate to ALT text field
@@ -185,7 +185,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_010: Verify ALT text quality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Generate ALT text for various images
       // 2. Review generated text
@@ -197,7 +197,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_011: Verify ALT text editing accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Generate ALT text
       // 2. Edit ALT text with keyboard
@@ -212,7 +212,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_012: Verify comparison view structure', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Trigger GenAI enhancement
       // 2. Verify comparison view appears
@@ -225,7 +225,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_013: Verify comparison screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Enable screen reader
       // 2. Navigate comparison view
@@ -237,7 +237,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_014: Verify comparison visual accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Inspect comparison view colors
       // 2. Verify text contrast ratios
@@ -249,7 +249,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_015: Verify difference highlighting accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Review highlighted differences
       // 2. Verify text labels present
@@ -264,7 +264,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_016: Verify action buttons keyboard accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. View AI suggestions
       // 2. Tab through action buttons
@@ -287,7 +287,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_017: Verify action buttons screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Navigate to action buttons
@@ -303,7 +303,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_018: Verify action buttons visual accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Inspect button colors
       // 2. Verify text contrast
@@ -319,7 +319,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_019: Verify Accept All functionality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. View AI suggestions
       // 2. Activate Accept All button
@@ -331,7 +331,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_020: Verify Accept All announcement', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Accept AI suggestions
       // 2. Verify aria-live announcement
@@ -346,7 +346,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_021: Verify Edit/Merge mode accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Activate Edit/Merge button
       // 2. Verify textarea appears
@@ -364,7 +364,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_022: Verify Edit/Merge screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Activate Edit/Merge
@@ -382,7 +382,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_023: Verify Edit/Merge action buttons', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enter edit mode
       // 2. Tab to Save/Cancel buttons
@@ -406,7 +406,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_024: Verify Reject functionality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. View AI suggestions
       // 2. Activate Reject button
@@ -418,7 +418,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_025: Verify Reject announcement', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Reject AI suggestions
       // 2. Verify aria-live announcement
@@ -433,7 +433,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_026: Verify Save Changes button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Make edits to product
       await page.getByRole('textbox', { name: /e.g., Ergonomic Wheelchair/ }).fill('Test Product');
@@ -452,7 +452,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_027: Verify Save button screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Navigate to Save button
@@ -468,7 +468,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_028: Verify save confirmation accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Save changes
       // 2. Verify confirmation appears
@@ -483,7 +483,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_029: Verify version control accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Save edited product
       // 2. Locate version indicator
@@ -495,7 +495,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_030: Verify status change announcement', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Save changes
       // 2. Verify status updates
@@ -510,7 +510,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_031: Verify GenAI unavailable error accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Trigger GenAI when service unavailable
       // 2. Verify error message appears
@@ -522,7 +522,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_032: Verify error keyboard handling', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Trigger error
       // 2. Verify focus management
@@ -534,7 +534,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_033: Verify form validation errors', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Submit form with errors
       await page.getByRole('button', { name: 'Upload Product' }).click();
@@ -551,7 +551,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_034: Verify audit log indicator accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Save AI-edited content
       // 2. Verify indicator appears
@@ -563,7 +563,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_035: Verify audit indicator details', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Locate audit indicator
       // 2. Check icon accessibility
@@ -578,7 +578,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_036: Verify disclaimer accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open GenAI panel
       // 2. Locate disclaimer text
@@ -590,7 +590,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_037: Verify disclaimer structure', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Inspect disclaimer markup
       // 2. Check ARIA attributes
@@ -605,7 +605,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_038: Verify help icon accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to help icons
       const helpIcon = page.locator('img[alt*="info"], img[alt*="help"]').first();
@@ -619,7 +619,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_039: Verify help icon screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Navigate to help icons
@@ -631,7 +631,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_040: Verify help tip content accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open help tips
       // 2. Review tip content
@@ -646,7 +646,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     
     test('TC_A11Y_041: Verify complete keyboard navigation', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate entire edit workflow
       // 2. Tab through all elements
@@ -665,7 +665,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_042: Verify complete screen reader accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Enable screen reader
       // 2. Navigate entire workflow
@@ -679,7 +679,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
 
     test('TC_A11Y_043: Verify color and contrast compliance', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Inspect all text elements
       // 2. Verify text contrast ratios
@@ -696,7 +696,7 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
       await page.setViewportSize({ width: 375, height: 667 });
       
       // 2. Zoom to 200%
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 3. Verify content reflows
       // 4. Measure touch targets
@@ -705,3 +705,4 @@ test.describe('SCRUM-22: Edit Product with GenAI Accessibility', () => {
     });
   });
 });
+

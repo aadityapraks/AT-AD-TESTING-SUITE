@@ -1,0 +1,734 @@
+{
+  "jiraStory": "SCRUM-20",
+  "title": "GenAI Assistant for Product Information - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the GenAI writing assistant feature for Assistive Partners (APs) on the PwD Catalog Portal. This feature enables APs to generate accessibility-compliant product information including Short Description, Detailed Description, Specifications, and ALT Text using an integrated AI assistant.",
+  "scope": {
+    "inScope": [
+      "GenAI button visibility and access control",
+      "Input and context handling for content generation",
+      "Generated content quality and format validation",
+      "Editing and customization workflows",
+      "Accessibility compliance of generated content",
+      "Transparency and control features",
+      "UI/UX integration and experience",
+      "Data privacy verification",
+      "Audit and traceability logging"
+    ],
+    "outOfScope": [
+      "Backend AI model performance testing",
+      "Load testing of GenAI service",
+      "Cross-browser compatibility (covered separately)"
+    ]
+  },
+  "dependencies": {
+    "blockedBy": "SCRUM-41 - GenAI model for content generation",
+    "blocks": "SCRUM-691 - GenAI content generation bug",
+    "parentEpic": "SCRUM-87 - Vendor Portal"
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": [
+      "Registered AP",
+      "Approved AP",
+      "Admin"
+    ],
+    "prerequisites": [
+      "Valid AP account with approved status",
+      "Product upload/edit access"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_GENAI_001",
+      "title": "Verify GenAI button visibility on Short Description field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC1 - Access to GenAI Assistance",
+      "preconditions": "User is logged in as approved AP, navigated to Product Upload form",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Upload",
+        "Locate the Short Description field",
+        "Verify 'Assist with GenAI' button/icon is visible next to the field"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Upload form loads correctly",
+        "Short Description field is visible",
+        "GenAI assist button/icon is displayed next to Short Description field"
+      ],
+      "postconditions": "GenAI button is accessible for interaction",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_002",
+      "title": "Verify GenAI button visibility on Detailed Description field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC1 - Access to GenAI Assistance",
+      "preconditions": "User is logged in as approved AP, navigated to Product Upload form",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Upload",
+        "Locate the Detailed Description field",
+        "Verify 'Assist with GenAI' button/icon is visible next to the field"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Upload form loads correctly",
+        "Detailed Description field is visible",
+        "GenAI assist button/icon is displayed next to Detailed Description field"
+      ],
+      "postconditions": "GenAI button is accessible for interaction",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_003",
+      "title": "Verify GenAI button visibility on Specifications field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC1 - Access to GenAI Assistance",
+      "preconditions": "User is logged in as approved AP, navigated to Product Upload form",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Upload",
+        "Locate the Specifications field",
+        "Verify 'Assist with GenAI' button/icon is visible next to the field"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Upload form loads correctly",
+        "Specifications field is visible",
+        "GenAI assist button/icon is displayed next to Specifications field"
+      ],
+      "postconditions": "GenAI button is accessible for interaction",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_004",
+      "title": "Verify GenAI button is hidden for non-logged-in users",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC1 - Access to GenAI Assistance",
+      "preconditions": "User is not logged in",
+      "steps": [
+        "Open the application without logging in",
+        "Attempt to access Product Upload page directly via URL",
+        "Verify access is denied or redirected to login"
+      ],
+      "expectedResults": [
+        "Application loads",
+        "User is redirected to login page or access denied message shown",
+        "GenAI buttons are not accessible to unauthenticated users"
+      ],
+      "postconditions": "User remains unauthenticated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_006",
+      "title": "Generate Short Description with minimal product inputs",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context, AC3 - Generated Content",
+      "preconditions": "User is logged in as approved AP, on Product Upload form",
+      "steps": [
+        "Navigate to Product Upload form",
+        "Enter Product Name: 'Portable Braille Display'",
+        "Select Category: 'Assistive Technology'",
+        "Click 'Assist with GenAI' button next to Short Description",
+        "Wait for GenAI panel/popup to appear",
+        "Verify generated Short Description is displayed"
+      ],
+      "expectedResults": [
+        "Product Upload form loads",
+        "Product name is entered",
+        "Category is selected",
+        "GenAI panel/popup opens",
+        "Short Description is generated within 150-200 characters",
+        "Generated text is clear and accessibility-friendly"
+      ],
+      "postconditions": "Generated Short Description is available for review",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_007",
+      "title": "Generate Detailed Description with product context",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context, AC3 - Generated Content",
+      "preconditions": "User is logged in as approved AP, on Product Upload form",
+      "steps": [
+        "Navigate to Product Upload form",
+        "Enter Product Name: 'Screen Reader Software'",
+        "Select Category: 'Software'",
+        "Enter Key Features: 'voice output, keyboard navigation, multi-language support'",
+        "Click 'Assist with GenAI' button next to Detailed Description",
+        "Wait for GenAI to generate content"
+      ],
+      "expectedResults": [
+        "Product details are entered",
+        "GenAI panel opens",
+        "Detailed Description includes usage information",
+        "Description mentions accessibility benefits",
+        "Unique features are highlighted",
+        "Content uses inclusive language"
+      ],
+      "postconditions": "Detailed Description is generated and ready for review",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_013",
+      "title": "Verify Short Description character limit (150-200 chars)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC3 - Generated Content",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Open GenAI assistant for Short Description",
+        "Enter product details",
+        "Generate Short Description",
+        "Count characters in generated text"
+      ],
+      "expectedResults": [
+        "GenAI generates Short Description",
+        "Character count is between 150-200 characters",
+        "Content is suitable for catalog cards",
+        "No truncation or overflow issues"
+      ],
+      "postconditions": "Short Description meets character requirements",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_014",
+      "title": "Verify generated content avoids jargon and ambiguous terms",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC3 - Generated Content, AC5 - Accessibility Compliance",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Generate content for multiple product types",
+        "Review generated Short Description",
+        "Review generated Detailed Description",
+        "Review generated Specifications",
+        "Check for terms like 'normal', 'abnormal', medical jargon"
+      ],
+      "expectedResults": [
+        "Content is generated for all fields",
+        "No jargon or technical slang used",
+        "Terms like 'normal' or 'abnormal' are avoided",
+        "Inclusive and respectful language throughout",
+        "Accessibility-friendly writing standards followed"
+      ],
+      "postconditions": "All generated content is accessibility-compliant",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_015",
+      "title": "Edit GenAI-generated text before submission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC4 - Editing and Customization",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Short Description using GenAI",
+        "Click 'Edit' button on generated content",
+        "Modify the generated text",
+        "Save the edited content",
+        "Verify changes are preserved"
+      ],
+      "expectedResults": [
+        "Content is generated",
+        "Edit mode is activated",
+        "Text is editable",
+        "Changes are saved successfully",
+        "Modified content is displayed in the field"
+      ],
+      "postconditions": "Edited content is saved in draft state",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_016",
+      "title": "Regenerate content using 'Regenerate' button",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC4 - Editing and Customization",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Detailed Description using GenAI",
+        "Review the generated content",
+        "Click 'Regenerate' button",
+        "Wait for new content to be generated",
+        "Compare with previous generation"
+      ],
+      "expectedResults": [
+        "Initial content is generated",
+        "Regenerate button is visible and clickable",
+        "New content is generated",
+        "New content differs from previous generation",
+        "Quality standards are maintained"
+      ],
+      "postconditions": "New generated content is available for review",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_017",
+      "title": "Accept generated content using 'Accept' button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC4 - Editing and Customization, AC7 - Integration and Experience",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Short Description using GenAI",
+        "Review the generated content",
+        "Click 'Accept' button",
+        "Verify content is inserted into the input field"
+      ],
+      "expectedResults": [
+        "Content is generated",
+        "Accept button is visible and clickable",
+        "Content is inserted directly into Short Description field",
+        "GenAI panel closes or minimizes",
+        "Field shows accepted content"
+      ],
+      "postconditions": "Accepted content is in the form field",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_021",
+      "title": "Verify AI-generated content disclaimer is displayed",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC6 - Transparency and Control",
+      "preconditions": "User is logged in as approved AP, GenAI panel is open",
+      "steps": [
+        "Open GenAI assistant panel",
+        "Generate any content",
+        "Look for disclaimer text below the GenAI section",
+        "Verify disclaimer content"
+      ],
+      "expectedResults": [
+        "GenAI panel opens",
+        "Content is generated",
+        "Disclaimer is visible below GenAI section",
+        "Disclaimer states content is AI-generated",
+        "Disclaimer advises review before publishing"
+      ],
+      "postconditions": "User is informed about AI-generated nature of content",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_022",
+      "title": "Verify AP can discard GenAI-generated text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC6 - Transparency and Control",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate content using GenAI",
+        "Review the generated content",
+        "Click discard/cancel button",
+        "Verify content is not inserted into the field"
+      ],
+      "expectedResults": [
+        "Content is generated",
+        "Discard option is available",
+        "Content is discarded",
+        "Original field remains unchanged",
+        "GenAI panel closes"
+      ],
+      "postconditions": "No AI content is inserted, field remains as before",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_023",
+      "title": "Verify GenAI panel appears as right-side panel or popup",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC7 - Integration and Experience",
+      "preconditions": "User is logged in as approved AP, on Product Upload form",
+      "steps": [
+        "Click 'Assist with GenAI' button on any field",
+        "Observe the GenAI interface appearance",
+        "Verify it appears as right-side panel or popup"
+      ],
+      "expectedResults": [
+        "GenAI button is clicked",
+        "GenAI interface appears",
+        "Interface is a right-side panel or popup",
+        "Does not obstruct the main form completely",
+        "User can see both form and GenAI panel"
+      ],
+      "postconditions": "GenAI panel is properly positioned",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_024",
+      "title": "Verify conversational refinement - 'make it simpler'",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC7 - Integration and Experience",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Detailed Description",
+        "Type instruction: 'make it simpler'",
+        "Submit the refinement request",
+        "Compare refined content with original"
+      ],
+      "expectedResults": [
+        "Initial content is generated",
+        "Refinement instruction is accepted",
+        "New simplified content is generated",
+        "Content is noticeably simpler",
+        "Meaning is preserved"
+      ],
+      "postconditions": "Simplified content is available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_025",
+      "title": "Verify conversational refinement - 'add safety information'",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC7 - Integration and Experience",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Detailed Description for a medical device",
+        "Type instruction: 'add safety information'",
+        "Submit the refinement request",
+        "Verify safety information is added"
+      ],
+      "expectedResults": [
+        "Initial content is generated",
+        "Refinement instruction is accepted",
+        "Updated content includes safety information",
+        "Safety warnings are clear and visible",
+        "Original content context is maintained"
+      ],
+      "postconditions": "Content with safety information is available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_028",
+      "title": "Verify GenAI handles empty/minimal input gracefully",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Open GenAI assistant without entering product details",
+        "Attempt to generate content",
+        "Observe system behavior"
+      ],
+      "expectedResults": [
+        "GenAI panel opens",
+        "System prompts for required inputs",
+        "Or generates generic content with warning",
+        "No system crash or error",
+        "User-friendly message displayed"
+      ],
+      "postconditions": "System handles edge case gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_029",
+      "title": "Verify GenAI handles special characters in input",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Enter product name with special characters: 'Braille Display™ (Model-X)'",
+        "Enter keywords with special characters",
+        "Generate content using GenAI",
+        "Verify output handles special characters"
+      ],
+      "expectedResults": [
+        "Special characters are accepted in input",
+        "GenAI processes input correctly",
+        "Generated content is valid",
+        "Special characters are preserved where appropriate",
+        "No encoding issues in output"
+      ],
+      "postconditions": "Content with special characters is generated correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_030",
+      "title": "Verify GenAI handles very long input text",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Enter very long product name (500+ characters)",
+        "Enter extensive keywords list",
+        "Attempt to generate content",
+        "Observe system behavior"
+      ],
+      "expectedResults": [
+        "System accepts or truncates long input",
+        "Appropriate validation message if limit exceeded",
+        "No system crash",
+        "Generated content is reasonable length",
+        "User is informed of any limitations"
+      ],
+      "postconditions": "System handles long input appropriately",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_031",
+      "title": "Verify GenAI service unavailable error handling",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "Error Handling",
+      "preconditions": "User is logged in as approved AP, GenAI service is unavailable (simulated)",
+      "steps": [
+        "Open GenAI assistant",
+        "Attempt to generate content when service is down",
+        "Observe error message displayed"
+      ],
+      "expectedResults": [
+        "GenAI panel opens",
+        "Generation attempt is made",
+        "User-friendly error message is displayed",
+        "Message indicates service unavailability",
+        "User can retry or continue manually"
+      ],
+      "postconditions": "User is informed of service issue",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_033",
+      "title": "Verify multiple consecutive generations",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC4 - Editing and Customization",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Generate Short Description",
+        "Regenerate 3 times consecutively",
+        "Generate Detailed Description",
+        "Regenerate 3 times consecutively",
+        "Verify all generations complete successfully"
+      ],
+      "expectedResults": [
+        "All generations complete without error",
+        "Each regeneration produces different content",
+        "No rate limiting issues",
+        "System remains responsive",
+        "Quality is maintained across generations"
+      ],
+      "postconditions": "Multiple generations work correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_035",
+      "title": "Verify generated content avoids bias and discriminatory phrasing",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC5 - Accessibility Compliance",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Generate content for various disability-related products",
+        "Review all generated content for bias",
+        "Check for discriminatory language",
+        "Verify neutral and respectful tone"
+      ],
+      "expectedResults": [
+        "Content is generated",
+        "No bias detected in language",
+        "No discriminatory phrasing",
+        "Neutral terms used for disabilities",
+        "Respectful and inclusive throughout"
+      ],
+      "postconditions": "Content is bias-free and inclusive",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_036",
+      "title": "Verify GenAI panel keyboard accessibility",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC5 - Accessibility Compliance",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Navigate to GenAI button using keyboard only",
+        "Open GenAI panel using Enter/Space",
+        "Navigate through panel options using Tab",
+        "Activate buttons using keyboard",
+        "Close panel using Escape"
+      ],
+      "expectedResults": [
+        "GenAI button is keyboard focusable",
+        "Panel opens with keyboard activation",
+        "All panel elements are tab-navigable",
+        "Buttons respond to Enter/Space",
+        "Escape closes the panel"
+      ],
+      "postconditions": "GenAI panel is fully keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_040",
+      "title": "Verify GenAI loading state indicator",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC7 - Integration and Experience",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Click 'Assist with GenAI' button",
+        "Observe loading state during content generation",
+        "Verify loading indicator is displayed"
+      ],
+      "expectedResults": [
+        "GenAI button is clicked",
+        "Loading indicator appears immediately",
+        "User knows generation is in progress",
+        "Loading indicator disappears when complete",
+        "Content is displayed after loading"
+      ],
+      "postconditions": "User experience is smooth with clear feedback",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_041",
+      "title": "Verify GenAI works with multilingual product names",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC2 - Input and Context",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Enter product name in non-English language",
+        "Enter keywords in mixed languages",
+        "Generate content using GenAI",
+        "Verify output language and quality"
+      ],
+      "expectedResults": [
+        "Non-English input is accepted",
+        "GenAI processes multilingual input",
+        "Output is generated (in English or appropriate language)",
+        "Content quality is maintained",
+        "No encoding or display issues"
+      ],
+      "postconditions": "Multilingual support is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_GENAI_042",
+      "title": "Verify complete rewrite of GenAI-generated text",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-20",
+      "acceptanceCriteria": "AC4 - Editing and Customization",
+      "preconditions": "User is logged in as approved AP, GenAI has generated content",
+      "steps": [
+        "Generate Short Description using GenAI",
+        "Select all generated text",
+        "Delete and write completely new text",
+        "Save the manually written content",
+        "Verify manual content is preserved"
+      ],
+      "expectedResults": [
+        "Content is generated",
+        "Text is fully selectable",
+        "Complete deletion is possible",
+        "Manual text can be entered",
+        "Manual content is saved correctly"
+      ],
+      "postconditions": "AP has full control over content",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC4_Editing_and_Customization": [
+      "TC_GENAI_015",
+      "TC_GENAI_016",
+      "TC_GENAI_017",
+      "TC_GENAI_042"
+    ],
+    "AC3_Generated_Content": [
+      "TC_GENAI_006",
+      "TC_GENAI_007",
+      "TC_GENAI_014",
+      "TC_GENAI_035"
+    ],
+    "Error_Handling": [
+      "TC_GENAI_031"
+    ],
+    "AC2_Input_and_Context": [
+      "TC_GENAI_006",
+      "TC_GENAI_007",
+      "TC_GENAI_013",
+      "TC_GENAI_028",
+      "TC_GENAI_029",
+      "TC_GENAI_030",
+      "TC_GENAI_033",
+      "TC_GENAI_041"
+    ],
+    "AC1_Access_to_GenAI_Assistance": [
+      "TC_GENAI_001",
+      "TC_GENAI_002",
+      "TC_GENAI_003",
+      "TC_GENAI_004"
+    ],
+    "AC7_Integration_and_Experience": [
+      "TC_GENAI_017",
+      "TC_GENAI_023",
+      "TC_GENAI_024",
+      "TC_GENAI_025",
+      "TC_GENAI_040"
+    ],
+    "AC5_Accessibility_Compliance": [
+      "TC_GENAI_014",
+      "TC_GENAI_035",
+      "TC_GENAI_036"
+    ],
+    "AC6_Transparency_and_Control": [
+      "TC_GENAI_021",
+      "TC_GENAI_022"
+    ]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Approved Assistive Partner account",
+      "Unapproved Assistive Partner account",
+      "Admin account for audit verification"
+    ],
+    "productData": [
+      "Sample product names across categories (Mobility Aids, Hearing Devices, Vision Aids, Software)",
+      "Product keywords and features",
+      "Product images for ALT text testing",
+      "Special character test data",
+      "Multilingual product names"
+    ],
+    "categories": [
+      "Assistive Technology",
+      "Medical Devices",
+      "Software",
+      "Mobility Aids",
+      "Hearing Devices",
+      "Vision Aids"
+    ]
+  },
+  "assumptions": [
+    "GenAI service (Amazon Bedrock with Claude 3 Sonnet) is operational and accessible",
+    "AP accounts have been properly set up with appropriate permissions",
+    "Product Upload and Edit forms are functional",
+    "Network connectivity is stable for API calls",
+    "Test environment mirrors production GenAI configuration"
+  ],
+  "openQuestions": [
+    "What is the exact character limit validation for Short Description (150-200)?",
+    "Is there a rate limit for GenAI generations per session/user?",
+    "What languages are supported for tone guidance input?",
+    "How long is the session context stored before automatic cleanup?",
+    "What specific accessibility hints are configured in the system?"
+  ],
+  "risks": [
+    "GenAI service availability may affect test execution",
+    "Generated content quality may vary between test runs",
+    "Linked bug SCRUM-691 indicates existing GenAI generation failures"
+  ]
+}

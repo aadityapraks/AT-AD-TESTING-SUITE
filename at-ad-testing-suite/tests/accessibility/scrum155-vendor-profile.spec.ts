@@ -314,3 +314,4 @@ test.describe('SCRUM-155: Vendor Profile Accessibility', () => {
     });
   });
 });
+

@@ -24,7 +24,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
       await login(page);
       // 1. Login as approved AP
       // 2. Navigate to Vendor Product Management page
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 3. Tab through product list to Edit Product button
       const actionsButton = page.getByRole('button', { name: /Product:.*Status:/ }).first().getByLabel('Product actions menu');
@@ -40,7 +40,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_002: Verify screen reader announces Edit Product button', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. Enable screen reader
       // 2. Navigate to product list
@@ -59,7 +59,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_003: Verify media gallery view accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open Edit Product media section
       // 2. Verify gallery has proper landmark role
@@ -73,7 +73,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_004: Verify gallery visual accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Inspect gallery text contrast
       // 2. Test gallery at 200% zoom
@@ -88,7 +88,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_005: Verify primary image indicator accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to media gallery
       // 2. Locate primary image
@@ -100,7 +100,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_006: Verify replace primary image button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Focus on primary image
       // 2. Tab to Replace button
@@ -116,7 +116,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_007: Verify reassign primary image functionality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to non-primary image
       // 2. Tab to "Set as Primary" button
@@ -128,7 +128,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_008: Verify primary image preview update', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Update primary image
       // 2. Verify preview updates automatically
@@ -143,7 +143,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_009: Verify upload button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to upload section
       // 2. Tab to Upload Images button
@@ -160,7 +160,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_010: Verify file format validation messages', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to upload unsupported format
       // 2. Verify error message appears
@@ -172,7 +172,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_011: Verify image preview accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload valid images
       // 2. Verify previews are keyboard accessible
@@ -184,7 +184,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_012: Verify reorder images functionality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Focus on image in gallery
       // 2. Locate reorder controls (up/down arrows)
@@ -196,7 +196,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_013: Verify delete image functionality', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Focus on image preview
       // 2. Tab to Delete button
@@ -211,7 +211,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_014: Verify 3D mockup section accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to 3D mockup section
       // 2. Verify section has proper heading
@@ -227,7 +227,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_015: Verify 3D mockup image tip accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Focus on image tip icon
       // 2. Verify tooltip appears on focus/hover
@@ -242,7 +242,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_016: Verify video upload button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to demo video section
       await expect(page.getByRole('heading', { name: /Demo Video/ })).toBeVisible();
@@ -258,7 +258,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_017: Verify video embed link input accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to embed link option
       // 2. Tab to input field
@@ -270,7 +270,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_018: Verify video preview player accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload or embed video
       // 2. Navigate to video preview
@@ -282,7 +282,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_019: Verify video file validation messages', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to upload invalid file type
       // 2. Verify error message appears
@@ -297,7 +297,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_020: Verify ALT text input field accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload image
       // 2. Navigate to ALT text field
@@ -309,7 +309,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_021: Verify missing ALT text prompt', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload image without ALT text
       // 2. Attempt to save
@@ -323,7 +323,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_022: Verify Generate ALT Text with GenAI button', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to Generate ALT Text button
       // 2. Verify button is keyboard accessible
@@ -335,7 +335,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_023: Verify video caption upload accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to caption upload section
       // 2. Tab to Upload Captions button
@@ -347,7 +347,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_024: Verify caption warning message', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload video without captions
       // 2. Verify warning message appears
@@ -362,7 +362,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_025: Verify Preview Media button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to Preview Media button
       // 2. Verify button is keyboard accessible
@@ -374,7 +374,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_026: Verify preview modal accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open preview modal
       // 2. Verify focus trap within modal
@@ -386,7 +386,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_027: Verify preview primary image display', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Open preview modal
       // 2. Navigate to primary image
@@ -398,7 +398,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_028: Verify preview gallery/carousel accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to image carousel in preview
       // 2. Tab through carousel controls
@@ -410,7 +410,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_029: Verify preview video player accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to video in preview
       // 2. Tab through player controls
@@ -425,7 +425,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_030: Verify Save Changes button accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Make media updates
       // 2. Navigate to Save Changes button
@@ -442,7 +442,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_031: Verify mandatory field validation', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to save without ALT text
       await page.getByRole('button', { name: 'Upload Product' }).click();
@@ -456,7 +456,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_032: Verify confirmation message accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Successfully save changes
       // 2. Verify confirmation message appears
@@ -468,7 +468,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_033: Verify Pending Review status indicator', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-management');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-management');
       
       // 1. After saving, verify status updates
       // 2. Navigate to status indicator
@@ -483,7 +483,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_034: Verify upload progress bar accessibility', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload large image file
       // 2. Verify progress bar appears
@@ -495,7 +495,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_035: Verify upload status indicators', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Upload multiple files
       // 2. Verify status for each file shown
@@ -507,7 +507,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_036: Verify interrupted upload resume', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Start file upload
       // 2. Interrupt upload (simulate network issue)
@@ -522,7 +522,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_037: Verify file size error message', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to upload oversized image (>5MB)
       // 2. Verify error message appears
@@ -534,7 +534,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_038: Verify unsupported format error', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to upload unsupported format
       // 2. Verify error message appears
@@ -546,7 +546,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_039: Verify upload failure error handling', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Simulate upload failure
       // 2. Verify error message appears
@@ -558,7 +558,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_040: Verify image limit exceeded error', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Attempt to upload more than 5 images
       // 2. Verify error message appears
@@ -573,7 +573,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     
     test('TC_A11Y_041: Verify page title and landmarks', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to media update page
       // 2. Verify page title is descriptive
@@ -587,7 +587,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_042: Verify heading hierarchy', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate through page
       // 2. Use screen reader to list headings
@@ -603,7 +603,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_043: Verify help text and tooltips', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate to help icons
       // 2. Focus on help icon
@@ -615,7 +615,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_044: Verify overall keyboard navigation', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Navigate entire page using only keyboard
       await page.keyboard.press('Tab');
@@ -634,7 +634,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
 
     test('TC_A11Y_045: Verify color contrast throughout interface', async ({ page }) => {
       await login(page);
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 1. Inspect all text elements
       // 2. Verify normal text has 4.5:1 contrast
@@ -651,7 +651,7 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
       await page.setViewportSize({ width: 640, height: 360 });
       
       // 2. Navigate through entire interface
-      await page.goto('https://hub-ui-admin-dev.swarajability.org/partner/product-upload');
+      await page.goto('https://hub-ui-admin-qa.swarajability.org/partner/product-upload');
       
       // 3. Verify all content remains visible
       // 4. Verify no horizontal scrolling required
@@ -660,3 +660,4 @@ test.describe('SCRUM-23: Update Product Media Accessibility', () => {
     });
   });
 });
+

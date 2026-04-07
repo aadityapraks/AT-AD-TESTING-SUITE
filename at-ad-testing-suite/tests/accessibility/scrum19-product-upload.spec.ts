@@ -67,7 +67,7 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
       await page.waitForURL(/partner/);
 
       await page.getByRole('link', { name: 'Product Upload' }).click();
-      const productNameInput = page.getByLabel(/product name/i).or(page.locator('input[name*="name"]')).first();
+      const productNameInput = page.getByPlaceholder('e.g., Ergonomic Wheelchair Model XR-100');
       await expect(productNameInput).toBeVisible();
     });
 
@@ -413,15 +413,14 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
       await page.waitForURL(/auth-d\.swarajability\.org/);
       await page.getByRole('textbox', { name: 'Email' }).fill(testData.credentials.email);
       await page.getByRole('button', { name: 'Log in' }).click();
+      await page.waitForURL(/auth-d\.swarajability\.org/);
       await page.getByRole('textbox', { name: 'Please enter your password' }).fill(testData.credentials.password);
       await page.getByRole('button', { name: 'Continue' }).click();
       await page.waitForURL(/partner/);
 
       await page.getByRole('link', { name: 'Product Upload' }).click();
-      const quantityInput = page.getByLabel(/quantity/i).or(page.locator('input[type="number"]')).first();
-      if (await quantityInput.isVisible()) {
-        await expect(quantityInput).toBeVisible();
-      }
+      const quantityInput = page.getByRole('spinbutton').first();
+      await expect(quantityInput).toBeVisible();
     });
 
     test('TC_A11Y_025: Verify Made to Order toggle accessibility', async ({ page }) => {
@@ -524,14 +523,10 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
       await page.waitForURL(/partner/);
 
       await page.getByRole('link', { name: 'Product Upload' }).click();
-      const draftButton = page.getByRole('button', { name: /draft/i });
-      const submitButton = page.getByRole('button', { name: /upload|submit/i });
-      if (await draftButton.isVisible()) {
-        await expect(draftButton).toBeVisible();
-      }
-      if (await submitButton.isVisible()) {
-        await expect(submitButton).toBeVisible();
-      }
+      const draftButton = page.getByRole('button', { name: 'Save as Draft' });
+      const submitButton = page.getByRole('button', { name: 'Upload Product' });
+      await expect(draftButton).toBeVisible();
+      await expect(submitButton).toBeVisible();
     });
 
     test('TC_A11Y_031: Verify form validation on submission', async ({ page }) => {
@@ -647,12 +642,15 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
       await page.waitForURL(/auth-d\.swarajability\.org/);
       await page.getByRole('textbox', { name: 'Email' }).fill(testData.credentials.email);
       await page.getByRole('button', { name: 'Log in' }).click();
+      await page.waitForURL(/auth-d\.swarajability\.org/);
       await page.getByRole('textbox', { name: 'Please enter your password' }).fill(testData.credentials.password);
       await page.getByRole('button', { name: 'Continue' }).click();
       await page.waitForURL(/partner/);
 
-      await page.getByRole('link', { name: 'Product Upload' }).click();
-      await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
+      const productUploadLink = page.getByRole('link', { name: 'Product Upload' });
+      await productUploadLink.scrollIntoViewIfNeeded();
+      await productUploadLink.click();
+      await expect(page.getByRole('heading', { name: 'Upload New Product', level: 2 })).toBeVisible();
     });
 
     test('TC_A11Y_038: Verify form at 200% zoom', async ({ page }) => {
@@ -747,7 +745,7 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
       await page.waitForURL(/partner/);
 
       await page.getByRole('link', { name: 'Product Upload' }).click();
-      const ariaElements = page.locator('[aria-label]').or(page.locator('[aria-labelledby]'));
+      const ariaElements = page.locator('[aria-label]:visible');
       await expect(ariaElements.first()).toBeVisible();
     });
   });
@@ -804,3 +802,4 @@ test.describe('SCRUM-19: Product Upload Form Accessibility', () => {
     });
   });
 });
+

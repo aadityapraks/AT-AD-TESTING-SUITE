@@ -1,8 +1,8 @@
 {
-  "baseUrl": "https://hub-ui-admin-dev.swarajability.org",
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org",
   "ssoCredentials": {
-    "email": "aadityap@byteridge.com",
-    "password": "aadityap@byteridge.com"
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
   },
   "productManagementUrl": "/partner/product-management",
   "testProduct": {
@@ -36,5 +36,205 @@
   "accessibilityStandards": {
     "readabilityLevel": "Grade 7-8",
     "wcagCompliance": "WCAG 2.1 AA"
+  },
+  "TC_EDIT_002": {
+    "inputs": {},
+    "expected": {
+      "editableFields": [
+        "Product Category",
+        "Short Description",
+        "Long Description",
+        "Unique Feature",
+        "Buying Guide",
+        "Technical Specification",
+        "Product Media",
+        "Youtube",
+        "Support",
+        "Delivery",
+        "Geographical",
+        "Links"
+      ]
+    }
+  },
+  "TC_EDIT_003": {
+    "inputs": {},
+    "expected": {
+      "allFieldsEditable": true
+    }
+  },
+  "TC_EDIT_004": {
+    "inputs": {},
+    "expected": {
+      "shortDescriptionButtonVisible": true,
+      "longDescriptionButtonVisible": true,
+      "technicalSpecButtonVisible": true,
+      "tooltipText": "Use GenAI to improve clarity, tone, or accessibility of this content."
+    }
+  },
+  "TC_EDIT_007": {
+    "inputs": {},
+    "expected": {
+      "buttonInactiveWhenEmpty": true
+    }
+  },
+  "TC_EDIT_008": {
+    "inputs": {
+      "complexTextWithErrors": "This product is very good for peoples with disabilitys. It help them to do there daily task more easier and it have many feature that is usefull for user who need assistive technology device."
+    },
+    "expected": {
+      "minContentLength": 20,
+      "grammarPatterns": ["people with disabilities", "helps them", "their daily", "easier", "has many features", "useful"],
+      "forbiddenPatterns": ["disabilitys", "peoples with", "there daily", "more easier", "is usefull"]
+    }
+  },
+  "TC_EDIT_011": {
+    "inputs": {
+      "basicDescription": "A ramp for home use. Made of metal. Can be folded."
+    },
+    "expected": {
+      "hasAccessibilityLanguage": true,
+      "minAccessibilityTerms": 1
+    }
+  },
+  "TC_EDIT_013": {
+    "inputs": {},
+    "expected": {
+      "altTextButtonsVisible": true
+    }
+  },
+  "TC_EDIT_014": {
+    "inputs": {},
+    "expected": {
+      "altTextGenerated": true,
+      "maxCharacters": 125,
+      "noDecorativePhrasing": true
+    }
+  },
+  "TC_EDIT_017": {
+    "inputs": {
+      "customAltText": "Portable aluminum wheelchair ramp with non-slip surface for safe home accessibility"
+    },
+    "expected": {
+      "editSuccessful": true
+    }
+  },
+  "TC_EDIT_018": {
+    "inputs": {
+      "sampleText": "Basic product description for testing side-by-side comparison."
+    },
+    "expected": {
+      "sideBySideDisplayed": true
+    }
+  },
+  "TC_EDIT_019": {
+    "inputs": {
+      "sampleText": "Simple wheelchair ramp for indoor use."
+    },
+    "expected": {
+      "suggestionsAccepted": true
+    }
+  },
+  "TC_EDIT_020": {
+    "inputs": {
+      "originalText": "Basic wheelchair ramp for home use. Made of aluminum. Lightweight and portable."
+    },
+    "expected": {
+      "minContentLength": 20,
+      "editedTextSuffix": " - Manually edited for accessibility."
+    }
+  },
+  "TC_EDIT_021": {
+    "inputs": {
+      "originalText": "Original product description that should be retained after rejection."
+    },
+    "expected": {
+      "originalRetained": true
+    }
+  },
+  "TC_EDIT_025": {
+    "inputs": {
+      "productDescription": "A mobility device for users who need assistance with movement."
+    },
+    "expected": {
+      "hasSensoryFeatures": true,
+      "hasPhysicalFeatures": true
+    }
+  },
+  "TC_EDIT_026": {
+    "inputs": {},
+    "expected": {
+      "saveSuccessful": true,
+      "newVersionCreated": true
+    }
+  },
+  "TC_EDIT_027": {
+    "inputs": {},
+    "expected": {
+      "statusPendingReview": true
+    }
+  },
+  "TC_EDIT_028": {
+    "inputs": {},
+    "expected": {
+      "confirmationMessage": "Your product details have been updated and submitted for review."
+    }
+  },
+  "TC_EDIT_033": {
+    "inputs": {},
+    "expected": {
+      "keyboardNavigable": true
+    }
+  },
+  "TC_EDIT_035": {
+    "inputs": {},
+    "expected": {
+      "focusIndicatorsVisible": true
+    }
+  },
+  "TC_EDIT_036": {
+    "inputs": {
+      "sampleText": "Portable mobility aid designed for daily use. Features adjustable height and foldable design."
+    },
+    "expected": {
+      "minContentLength": 20,
+      "originalLabelPatterns": ["Original", "Your text", "Current"],
+      "aiSuggestedLabelPatterns": ["AI", "Suggested", "Generated", "Enhanced"]
+    }
+  },
+  "TC_EDIT_040": {
+    "inputs": {},
+    "expected": {
+      "versionHistoryAccessible": true,
+      "previousVersionsListed": true,
+      "rollbackOptionAvailable": true,
+      "rollbackSuccessPatterns": ["restored", "reverted", "rolled back", "success"]
+    }
+  },
+  "TC_EDIT_041": {
+    "inputs": {
+      "firstText": "First edit text for consecutive testing.",
+      "secondText": "Second edit text for consecutive testing."
+    },
+    "expected": {
+      "multipleEditsSuccessful": true,
+      "systemResponsive": true
+    }
+  },
+  "TC_EDIT_043": {
+    "inputs": {
+      "manualShortDescription": "Manually edited short description without using GenAI assistance.",
+      "manualLongDescription": "This is a manually edited long description that demonstrates the ability to edit product details without relying on AI assistance."
+    },
+    "expected": {
+      "manualEditsSaved": true
+    }
+  },
+  "TC_EDIT_048": {
+    "inputs": {
+      "unsavedEdit": "This edit should not be saved after cancellation."
+    },
+    "expected": {
+      "originalPreserved": true
+    }
   }
 }

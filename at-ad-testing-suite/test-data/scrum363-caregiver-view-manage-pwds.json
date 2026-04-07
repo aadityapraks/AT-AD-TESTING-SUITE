@@ -1,0 +1,155 @@
+{
+  "TC_MANAGE_PWD_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "myPwdsPageHeading": "My Persons with Disabilities",
+      "careNetworkHeading": "Your Care Network",
+      "totalPwdsLabel": "Total PwDs",
+      "availableSlotsLabel": "Available Slots"
+    }
+  },
+  "TC_MY_PWD_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "myPwdsPageHeading": "My Persons with Disabilities",
+      "careNetworkHeading": "Your Care Network",
+      "totalPwdsLabel": "Total PwDs",
+      "availableSlotsLabel": "Available Slots",
+      "pwdLimit": 5
+    }
+  },
+  "TC_MANAGE_PWD_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverWithSlotsEmail": "gikekylu@forexnews.bg",
+      "caregiverWithSlotsPassword": "Aaditya@14",
+      "caregiverAtLimitEmail": "",
+      "caregiverAtLimitPassword": ""
+    },
+    "expected": {
+      "addPwdButtonText": "Add PwD",
+      "addNewPwdCardHeading": "Add New PwD",
+      "slotsAvailableText": "slots available"
+    }
+  },
+  "TC_MANAGE_PWD_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "viewProfileLinkText": "View Profile",
+      "profilePageHeading": "PwD Profile – Caregiver",
+      "personalDetailsSection": "Personal Details",
+      "contactInfoSection": "Contact Information",
+      "disabilityInfoSection": "Disability Information"
+    }
+  },
+  "TC_MY_PWD_010": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "myPwdsPageHeading": "My Persons with Disabilities",
+      "addPwdPageLoaded": true,
+      "pwdLimit": 5
+    }
+  },
+  "TC_MY_PWD_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "viewProfileLinkText": "View Profile"
+    }
+  },
+  "TC_MY_PWD_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "pwdLimit": 5
+    }
+  },
+  "TC_MY_PWD_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "addNewPwdCardHeading": "Add New PwD",
+      "slotsAvailableText": "slots available",
+      "pwdLimit": 5
+    }
+  },
+  "TC_MY_PWD_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "personalDetailsSection": "Personal Details",
+      "contactInfoSection": "Contact Information",
+      "disabilityInfoSection": "Disability Information"
+    }
+  },
+  "TC_MY_PWD_006": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverAtLimitEmail": "",
+      "caregiverAtLimitPassword": ""
+    },
+    "expected": {
+      "pwdLimit": 5,
+      "expectedRemaining": 0
+    }
+  },
+  "TC_MY_PWD_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmptyEmail": "",
+      "caregiverEmptyPassword": ""
+    },
+    "expected": {
+      "pwdLimit": 5,
+      "expectedRemaining": 5
+    }
+  },
+  "TC_MY_PWD_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "minPwdCards": 2
+    }
+  },
+  "TC_MY_PWD_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "pwdLimit": 5
+    }
+  }
+}

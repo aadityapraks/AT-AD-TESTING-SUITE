@@ -1,0 +1,42 @@
+{
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+  "vendor": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "pwdUser": {
+    "email": "pwd@swarajability.org",
+    "password": "TestPassword123"
+  },
+  "uniqueFeatures": {
+    "feature1": {
+      "title": "Foldable Design",
+      "description": "Easy portability for travel and storage"
+    },
+    "feature2": {
+      "title": "Voice Prompts",
+      "description": "Includes tactile buttons and voice prompts"
+    },
+    "feature3": {
+      "title": "Adjustable Height",
+      "description": "Adjustable height for customized comfort"
+    }
+  },
+  "genAIFeature": {
+    "basicDescription": "Good for disabled people",
+    "expectedRefinement": "Designed to be accessible and inclusive for people with disabilities, with ease of use and intuitive navigation"
+  },
+  "validationMessages": {
+    "characterLimit": "You can highlight up to 3 features, with a maximum of 100 characters each.",
+    "maxFeaturesReached": "You can highlight up to 3 features",
+    "titleRequired": "Title is required if description is provided"
+  },
+  "testProduct": {
+    "name": "Smart Mobility Walker",
+    "productType": "Device",
+    "usageEnvironment": "Both",
+    "disabilityPercentage": "60–80%",
+    "shortDescription": "A smart walker designed for enhanced mobility and independence"
+  },
+  "longDescription": "This is a very long description that exceeds the one hundred character limit and should trigger validation error message"
+}

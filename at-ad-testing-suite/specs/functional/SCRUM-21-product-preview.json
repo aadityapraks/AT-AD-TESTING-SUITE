@@ -1,0 +1,1115 @@
+{
+  "jiraStory": "SCRUM-21",
+  "title": "AP Views Product Details as Displayed to PwD Users - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Product Preview feature for Assistive Partners (APs) on the PwD Catalog Portal. This feature enables APs to view how their uploaded product details appear to PwD users on the catalog, ensuring information, images, video, and specifications are displayed correctly and are accessibility-compliant.",
+  "scope": {
+    "inScope": [
+      "Access to Preview Mode via View Product option",
+      "Catalog Card Display verification",
+      "Full Product Details Page preview",
+      "Media Verification (images, gallery, alt text, video)",
+      "Specifications and Availability display",
+      "Accessibility Compliance Indicators",
+      "Edit and Update Options from preview",
+      "Post-Approval Visibility (View Live Product)",
+      "System Feedback for media errors",
+      "UI and Accessibility for Vendors"
+    ],
+    "outOfScope": [
+      "Admin approval workflow testing",
+      "Backend media processing",
+      "Cross-browser compatibility (covered separately)",
+      "Load testing of preview functionality"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedStories": ["SCRUM-19 - Product Upload", "SCRUM-22 - Edit Product with GenAI"]
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": ["Approved AP"],
+    "prerequisites": ["Valid AP account with approved status", "Existing products in various states (Draft, Pending, Approved)"]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_PREVIEW_001",
+      "title": "Verify View Product option in Product Management action column",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC1 - Access to Preview Mode",
+      "preconditions": "User is logged in as approved AP with existing products",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Management",
+        "Locate a product in the list",
+        "Verify 'View Product' option in action column"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Management page loads with product list",
+        "Product is visible in the list",
+        "View Product option is visible in action column"
+      ],
+      "postconditions": "View Product option is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_002",
+      "title": "Verify View Product opens public view template",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC1 - Access to Preview Mode",
+      "preconditions": "User is on Product Management page with existing product",
+      "steps": [
+        "Click 'View Product' for an existing product",
+        "Wait for preview to load",
+        "Verify public view template is displayed"
+      ],
+      "expectedResults": [
+        "View Product action is triggered",
+        "Preview page loads successfully",
+        "Product is displayed as it would appear to PwD users in catalog"
+      ],
+      "postconditions": "Preview mode is active showing public view",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_003",
+      "title": "Verify View Product available after uploading new product",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC1 - Access to Preview Mode",
+      "preconditions": "User has just uploaded a new product",
+      "steps": [
+        "Complete product upload process",
+        "Navigate to Product Management",
+        "Locate newly uploaded product",
+        "Verify View Product option is available"
+      ],
+      "expectedResults": [
+        "Product upload is complete",
+        "Product appears in Product Management list",
+        "View Product option is visible for new product",
+        "Preview can be accessed immediately after upload"
+      ],
+      "postconditions": "New product can be previewed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_004",
+      "title": "Verify View Product available after editing product",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC1 - Access to Preview Mode",
+      "preconditions": "User has just edited a product",
+      "steps": [
+        "Edit an existing product",
+        "Save changes",
+        "Navigate to Product Management",
+        "Verify View Product option is available"
+      ],
+      "expectedResults": [
+        "Product edit is saved",
+        "Product Management page loads",
+        "View Product option is visible",
+        "Preview shows updated content"
+      ],
+      "postconditions": "Edited product can be previewed",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_005",
+      "title": "Verify Catalog Card displays product name correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC2 - Catalog Card Display",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Locate the catalog card section",
+        "Verify product name is displayed",
+        "Compare with entered product name"
+      ],
+      "expectedResults": [
+        "Preview page loads",
+        "Catalog card is visible",
+        "Product name is displayed correctly",
+        "Name matches what was entered during upload"
+      ],
+      "postconditions": "Product name displays correctly in card format",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_006",
+      "title": "Verify Catalog Card displays short description",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC2 - Catalog Card Display",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Locate the catalog card section",
+        "Verify short description is displayed",
+        "Check text length and truncation"
+      ],
+      "expectedResults": [
+        "Preview page loads",
+        "Short description is visible in card",
+        "Text length appears correctly",
+        "Truncation (if any) is handled properly"
+      ],
+      "postconditions": "Short description displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_007",
+      "title": "Verify Catalog Card displays primary image",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC2 - Catalog Card Display",
+      "preconditions": "User is viewing product preview with uploaded image",
+      "steps": [
+        "Open View Product for a product with primary image",
+        "Locate the catalog card section",
+        "Verify primary image is displayed",
+        "Check image cropping and aspect ratio"
+      ],
+      "expectedResults": [
+        "Preview page loads",
+        "Primary image is visible in card",
+        "Image cropping appears correctly",
+        "Aspect ratio is maintained"
+      ],
+      "postconditions": "Primary image displays correctly in card format",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_008",
+      "title": "Verify text length appears correctly in card format",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC2 - Catalog Card Display",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for products with varying description lengths",
+        "Check short descriptions of different lengths",
+        "Verify text truncation behavior",
+        "Confirm ellipsis or 'Read more' if applicable"
+      ],
+      "expectedResults": [
+        "Short descriptions display correctly",
+        "Long text is truncated appropriately",
+        "Truncation indicator is visible if needed",
+        "Card layout is not broken by text length"
+      ],
+      "postconditions": "Text length handling is verified",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_009",
+      "title": "Verify Full Product Details page displays product name and category",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Navigate to full product details view",
+        "Verify product name is displayed",
+        "Verify product category is displayed"
+      ],
+      "expectedResults": [
+        "Full details page loads",
+        "Product name is prominently displayed",
+        "Product category is visible",
+        "Both match entered values"
+      ],
+      "postconditions": "Name and category display correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_010",
+      "title": "Verify Full Product Details displays short and detailed description",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing full product details",
+      "steps": [
+        "Open full product details view",
+        "Locate short description section",
+        "Locate detailed description section",
+        "Verify both descriptions are complete"
+      ],
+      "expectedResults": [
+        "Short description is displayed",
+        "Detailed description is displayed",
+        "Both descriptions are complete (not truncated)",
+        "Formatting is preserved"
+      ],
+      "postconditions": "Descriptions display correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_011",
+      "title": "Verify Full Product Details displays main and additional images",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product with multiple images",
+      "steps": [
+        "Open full product details for product with multiple images",
+        "Verify main image is displayed",
+        "Verify additional images are visible",
+        "Check image quality and resolution"
+      ],
+      "expectedResults": [
+        "Main image is prominently displayed",
+        "Additional images are visible",
+        "All uploaded images are present",
+        "Image quality is maintained"
+      ],
+      "postconditions": "All images display correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_012",
+      "title": "Verify Full Product Details displays specifications",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product with specifications",
+      "steps": [
+        "Open full product details",
+        "Locate specifications section",
+        "Verify all specifications are displayed",
+        "Check formatting and layout"
+      ],
+      "expectedResults": [
+        "Specifications section is visible",
+        "All entered specifications are displayed",
+        "Formatting is clean and readable",
+        "Technical details are accurate"
+      ],
+      "postconditions": "Specifications display correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_013",
+      "title": "Verify Full Product Details displays availability information",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product with availability info",
+      "steps": [
+        "Open full product details",
+        "Locate availability section",
+        "Verify geographical availability is shown",
+        "Verify quantity or Made to Order status"
+      ],
+      "expectedResults": [
+        "Availability section is visible",
+        "Geographical availability is displayed",
+        "Quantity or Made to Order label is shown",
+        "Information matches entered values"
+      ],
+      "postconditions": "Availability information displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_014",
+      "title": "Verify Full Product Details displays demo video",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product with uploaded demo video",
+      "steps": [
+        "Open full product details for product with video",
+        "Locate demo video section",
+        "Verify video player is displayed",
+        "Attempt to play the video"
+      ],
+      "expectedResults": [
+        "Demo video section is visible",
+        "Video player is functional",
+        "Video plays correctly",
+        "Video controls are accessible"
+      ],
+      "postconditions": "Demo video displays and plays correctly",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_015",
+      "title": "Verify main image is properly displayed on top of page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC4 - Media Verification",
+      "preconditions": "User is viewing product preview with main image",
+      "steps": [
+        "Open View Product for a product",
+        "Verify main image position",
+        "Check image is at top of page",
+        "Verify image quality and size"
+      ],
+      "expectedResults": [
+        "Main image is displayed at top of page",
+        "Image is properly sized",
+        "Image quality is maintained",
+        "No distortion or cropping issues"
+      ],
+      "postconditions": "Main image displays correctly at top",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_016",
+      "title": "Verify additional images appear in gallery/carousel format",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC4 - Media Verification",
+      "preconditions": "User is viewing product with multiple images",
+      "steps": [
+        "Open View Product for product with multiple images",
+        "Locate image gallery or carousel",
+        "Navigate through additional images",
+        "Verify all images are accessible"
+      ],
+      "expectedResults": [
+        "Gallery or carousel is visible",
+        "Navigation controls work correctly",
+        "All additional images are accessible",
+        "Images display in proper order"
+      ],
+      "postconditions": "Image gallery functions correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_017",
+      "title": "Verify ALT text appears correctly in accessibility tools",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC4 - Media Verification",
+      "preconditions": "User is viewing product with images that have ALT text",
+      "steps": [
+        "Open View Product for product with ALT text on images",
+        "Inspect image elements",
+        "Verify ALT text attribute is present",
+        "Test with screen reader if available"
+      ],
+      "expectedResults": [
+        "Images have ALT text attribute",
+        "ALT text matches entered values",
+        "Screen reader announces ALT text",
+        "ALT text is descriptive and meaningful"
+      ],
+      "postconditions": "ALT text is properly implemented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_018",
+      "title": "Verify demo video plays correctly with captions",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC4 - Media Verification",
+      "preconditions": "User is viewing product with demo video and captions",
+      "steps": [
+        "Open View Product for product with captioned video",
+        "Play the demo video",
+        "Enable captions if not auto-enabled",
+        "Verify captions display correctly"
+      ],
+      "expectedResults": [
+        "Video plays without issues",
+        "Captions option is available",
+        "Captions display correctly when enabled",
+        "Captions are synchronized with audio"
+      ],
+      "postconditions": "Video captions work correctly",
+      "testResult": "FAIL",
+      "defectNotes": "Test product 'goggles' does not have a demo video configured. The verifyVideoPlayerFunctional() method returns false as no video player element is present in the Product Details dialog."
+    },
+    {
+      "id": "TC_PREVIEW_019",
+      "title": "Verify demo video has transcripts if available",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC4 - Media Verification",
+      "preconditions": "User is viewing product with video transcript",
+      "steps": [
+        "Open View Product for product with video transcript",
+        "Locate transcript section or link",
+        "Access the transcript",
+        "Verify transcript content"
+      ],
+      "expectedResults": [
+        "Transcript is accessible",
+        "Transcript link or section is visible",
+        "Transcript content matches video",
+        "Transcript is readable and complete"
+      ],
+      "postconditions": "Video transcript is available",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_020",
+      "title": "Verify specifications shown in clean structured layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC5 - Specifications and Availability",
+      "preconditions": "User is viewing product with specifications",
+      "steps": [
+        "Open View Product for product with specifications",
+        "Locate specifications section",
+        "Verify key-value or bullet point format",
+        "Check layout cleanliness and readability"
+      ],
+      "expectedResults": [
+        "Specifications section is visible",
+        "Layout is clean and structured",
+        "Key-value pairs or bullet points are used",
+        "Information is easy to read and scan"
+      ],
+      "postconditions": "Specifications layout is clean",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_021",
+      "title": "Verify geographical availability displays as All Areas",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC5 - Specifications and Availability",
+      "preconditions": "User is viewing product with All Areas availability",
+      "steps": [
+        "Open View Product for product with All Areas availability",
+        "Locate availability section",
+        "Verify 'All Areas' is displayed",
+        "Confirm accuracy of display"
+      ],
+      "expectedResults": [
+        "Availability section is visible",
+        "'All Areas' is displayed correctly",
+        "Display matches entered value",
+        "No incorrect region restrictions shown"
+      ],
+      "postconditions": "All Areas availability displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_022",
+      "title": "Verify geographical availability displays selected regions",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC5 - Specifications and Availability",
+      "preconditions": "User is viewing product with specific region availability",
+      "steps": [
+        "Open View Product for product with selected regions",
+        "Locate availability section",
+        "Verify selected regions are displayed",
+        "Confirm all selected regions are listed"
+      ],
+      "expectedResults": [
+        "Availability section is visible",
+        "Selected regions are displayed",
+        "All chosen regions are listed",
+        "No extra or missing regions"
+      ],
+      "postconditions": "Regional availability displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_023",
+      "title": "Verify product quantity is visible to PwD users",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC5 - Specifications and Availability",
+      "preconditions": "User is viewing product with quantity specified",
+      "steps": [
+        "Open View Product for product with quantity",
+        "Locate quantity information",
+        "Verify quantity is displayed",
+        "Confirm quantity matches entered value"
+      ],
+      "expectedResults": [
+        "Quantity section is visible",
+        "Quantity value is displayed",
+        "Value matches what vendor entered",
+        "Format is clear and readable"
+      ],
+      "postconditions": "Product quantity displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_024",
+      "title": "Verify Made to Order label is visible when applicable",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC5 - Specifications and Availability",
+      "preconditions": "User is viewing Made to Order product",
+      "steps": [
+        "Open View Product for Made to Order product",
+        "Locate availability/quantity section",
+        "Verify 'Made to Order' label is displayed",
+        "Confirm label is clearly visible"
+      ],
+      "expectedResults": [
+        "Made to Order label is visible",
+        "Label is prominently displayed",
+        "No conflicting quantity shown",
+        "Label is clear to PwD users"
+      ],
+      "postconditions": "Made to Order label displays correctly",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_025",
+      "title": "Verify screen-reader friendly structure in preview",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC6 - Accessibility Compliance Indicators",
+      "preconditions": "User is viewing product preview with screen reader",
+      "steps": [
+        "Open View Product for a product",
+        "Enable screen reader (NVDA/JAWS/VoiceOver)",
+        "Navigate through preview content",
+        "Verify all content is announced correctly"
+      ],
+      "expectedResults": [
+        "Screen reader navigates smoothly",
+        "All content is announced",
+        "Logical reading order is maintained",
+        "No content is skipped or inaccessible"
+      ],
+      "postconditions": "Preview is screen-reader friendly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_026",
+      "title": "Verify ALT text availability indicator for images",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC6 - Accessibility Compliance Indicators",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for product with images",
+        "Check for ALT text availability indicator",
+        "Verify indicator shows ALT text status",
+        "Test with images with and without ALT text"
+      ],
+      "expectedResults": [
+        "ALT text indicator is visible",
+        "Indicator shows correct status",
+        "Images with ALT text are marked compliant",
+        "Images without ALT text are flagged"
+      ],
+      "postconditions": "ALT text availability is indicated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_027",
+      "title": "Verify proper heading hierarchy in preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC6 - Accessibility Compliance Indicators",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Inspect heading structure",
+        "Verify H1, H2, H3 hierarchy",
+        "Check for skipped heading levels"
+      ],
+      "expectedResults": [
+        "Heading hierarchy is logical",
+        "H1 is used for main title",
+        "Subheadings follow proper order",
+        "No heading levels are skipped"
+      ],
+      "postconditions": "Heading hierarchy is correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_028",
+      "title": "Verify contrast and text visibility compliance",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC6 - Accessibility Compliance Indicators",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Check text contrast ratios",
+        "Verify text is readable",
+        "Test with accessibility tools if available"
+      ],
+      "expectedResults": [
+        "Text has sufficient contrast",
+        "Contrast meets WCAG 2.1 AA standards",
+        "All text is readable",
+        "No low-contrast issues"
+      ],
+      "postconditions": "Contrast compliance is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_029",
+      "title": "Verify accessibility readiness status badge",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC6 - Accessibility Compliance Indicators",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Locate accessibility status badge",
+        "Verify badge shows compliance status",
+        "Check for 'Compliant' or 'Minor Adjustments Suggested'"
+      ],
+      "expectedResults": [
+        "Accessibility status badge is visible",
+        "Badge shows appropriate status",
+        "Status reflects actual compliance",
+        "Clear indication of any needed adjustments"
+      ],
+      "postconditions": "Accessibility status is displayed",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_030",
+      "title": "Verify return to edit mode from preview screen",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC7 - Edit and Update Options",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Locate 'Edit' or 'Return to Edit' option",
+        "Click to return to edit mode",
+        "Verify edit form opens"
+      ],
+      "expectedResults": [
+        "Edit option is visible in preview",
+        "Click triggers navigation to edit mode",
+        "Edit form opens with product data",
+        "All fields are editable"
+      ],
+      "postconditions": "User can edit from preview",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_031",
+      "title": "Verify edits from preview are auto-saved as draft",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC7 - Edit and Update Options",
+      "preconditions": "User has returned to edit mode from preview",
+      "steps": [
+        "Return to edit mode from preview",
+        "Make changes to product details",
+        "Navigate away without explicit save",
+        "Return to product and verify draft status"
+      ],
+      "expectedResults": [
+        "Edit mode is active",
+        "Changes are made",
+        "Auto-save occurs",
+        "Product shows as draft with changes preserved"
+      ],
+      "postconditions": "Edits are auto-saved as draft",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_032",
+      "title": "Verify modify descriptions option from preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC7 - Edit and Update Options",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Navigate to edit mode",
+        "Modify short and long descriptions",
+        "Save and return to preview"
+      ],
+      "expectedResults": [
+        "Edit mode is accessible",
+        "Descriptions can be modified",
+        "Changes are saved",
+        "Preview shows updated descriptions"
+      ],
+      "postconditions": "Descriptions can be modified from preview flow",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_033",
+      "title": "Verify replace images option from preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC7 - Edit and Update Options",
+      "preconditions": "User is viewing product preview with images",
+      "steps": [
+        "Open View Product for product with images",
+        "Navigate to edit mode",
+        "Replace an existing image",
+        "Save and return to preview"
+      ],
+      "expectedResults": [
+        "Edit mode is accessible",
+        "Image replacement is possible",
+        "New image is saved",
+        "Preview shows updated image"
+      ],
+      "postconditions": "Images can be replaced from preview flow",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_034",
+      "title": "Verify update specifications option from preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC7 - Edit and Update Options",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Navigate to edit mode",
+        "Update specifications",
+        "Save and return to preview"
+      ],
+      "expectedResults": [
+        "Edit mode is accessible",
+        "Specifications can be updated",
+        "Changes are saved",
+        "Preview shows updated specifications"
+      ],
+      "postconditions": "Specifications can be updated from preview flow",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_035",
+      "title": "Verify View Live Product link for approved products",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC8 - Post-Approval Visibility",
+      "preconditions": "User has approved and published products",
+      "steps": [
+        "Navigate to Dashboard",
+        "Locate published products section",
+        "Find 'View Live Product' link",
+        "Click to view live product"
+      ],
+      "expectedResults": [
+        "Dashboard shows published products",
+        "View Live Product link is visible",
+        "Link opens live product page",
+        "Product appears as seen by PwD users"
+      ],
+      "postconditions": "Live product is viewable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_036",
+      "title": "Verify live version matches approved content",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC8 - Post-Approval Visibility",
+      "preconditions": "User is viewing live product",
+      "steps": [
+        "Open View Live Product for approved product",
+        "Compare content with what was approved",
+        "Verify all details match",
+        "Check images, descriptions, specifications"
+      ],
+      "expectedResults": [
+        "Live product page loads",
+        "Content matches approved version",
+        "All details are accurate",
+        "No discrepancies between approved and live"
+      ],
+      "postconditions": "Live version is accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_037",
+      "title": "Verify View Live Product available on vendor dashboard",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC8 - Post-Approval Visibility",
+      "preconditions": "User has published products",
+      "steps": [
+        "Navigate to vendor dashboard",
+        "Locate published items section",
+        "Verify View Live Product link is present",
+        "Confirm link is functional"
+      ],
+      "expectedResults": [
+        "Dashboard loads successfully",
+        "Published items are listed",
+        "View Live Product link is visible",
+        "Link works correctly"
+      ],
+      "postconditions": "Dashboard provides live product access",
+      "testResult": "FAIL",
+      "defectNotes": "The 'View Live Product' feature is not available on the vendor dashboard. The verifyViewLiveProductOnDashboard() method returns false as the feature does not exist in the current UI implementation."
+    },
+
+    {
+      "id": "TC_PREVIEW_038",
+      "title": "Verify error message for image that fails to load",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC9 - System Feedback",
+      "preconditions": "User is viewing product with problematic image",
+      "steps": [
+        "Open View Product for product with failed image",
+        "Observe image loading behavior",
+        "Verify error message is displayed",
+        "Check message clarity"
+      ],
+      "expectedResults": [
+        "Image fails to load",
+        "Clear error message is shown",
+        "Message explains the issue (e.g., 'Image exceeds allowed size')",
+        "User understands the problem"
+      ],
+      "postconditions": "Image error is communicated clearly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_039",
+      "title": "Verify error message for video format not supported",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC9 - System Feedback",
+      "preconditions": "User is viewing product with unsupported video",
+      "steps": [
+        "Open View Product for product with unsupported video",
+        "Observe video loading behavior",
+        "Verify error message is displayed",
+        "Check message clarity"
+      ],
+      "expectedResults": [
+        "Video fails to load",
+        "Clear error message is shown",
+        "Message says 'Video format not supported' or similar",
+        "User understands the issue"
+      ],
+      "postconditions": "Video error is communicated clearly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_040",
+      "title": "Verify re-upload option for failed media",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC9 - System Feedback",
+      "preconditions": "User is viewing product with failed media",
+      "steps": [
+        "Open View Product with failed image or video",
+        "Locate re-upload option",
+        "Click to re-upload media",
+        "Verify upload interface opens"
+      ],
+      "expectedResults": [
+        "Failed media is identified",
+        "Re-upload option is visible",
+        "Click opens upload interface",
+        "User can correct the issue immediately"
+      ],
+      "postconditions": "Re-upload option is available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_041",
+      "title": "Verify error message for text that fails to load",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC9 - System Feedback",
+      "preconditions": "User is viewing product with loading issues",
+      "steps": [
+        "Open View Product when content fails to load",
+        "Observe loading behavior",
+        "Verify appropriate error message",
+        "Check retry or refresh option"
+      ],
+      "expectedResults": [
+        "Content loading issue occurs",
+        "Error message is displayed",
+        "Message is clear and helpful",
+        "Retry option is available"
+      ],
+      "postconditions": "Loading errors are handled gracefully",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PREVIEW_042",
+      "title": "Verify preview mode supports keyboard navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC10 - UI and Accessibility for Vendors",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Navigate using Tab key",
+        "Activate elements using Enter/Space",
+        "Navigate through all interactive elements"
+      ],
+      "expectedResults": [
+        "All elements are keyboard focusable",
+        "Tab order is logical",
+        "Enter/Space activates elements",
+        "No keyboard traps exist"
+      ],
+      "postconditions": "Preview is fully keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_043",
+      "title": "Verify preview mode works with screen readers",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC10 - UI and Accessibility for Vendors",
+      "preconditions": "Screen reader is enabled",
+      "steps": [
+        "Enable screen reader (NVDA/JAWS/VoiceOver)",
+        "Open View Product for a product",
+        "Navigate through preview content",
+        "Verify all content is announced"
+      ],
+      "expectedResults": [
+        "Screen reader is active",
+        "All content is announced",
+        "Navigation is smooth",
+        "No content is inaccessible"
+      ],
+      "postconditions": "Preview is screen reader compatible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_044",
+      "title": "Verify tooltips for key sections in preview",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC10 - UI and Accessibility for Vendors",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Hover over key sections",
+        "Verify tooltips appear",
+        "Check tooltip content is helpful"
+      ],
+      "expectedResults": [
+        "Tooltips appear on hover",
+        "Tooltips explain section purpose",
+        "Example: 'This is how your short description appears in the PwD catalog'",
+        "Tooltips are accessible via keyboard"
+      ],
+      "postconditions": "Tooltips provide helpful guidance",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_045",
+      "title": "Verify preview follows accessibility standards for APs with disabilities",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC10 - UI and Accessibility for Vendors",
+      "preconditions": "User is viewing product preview",
+      "steps": [
+        "Open View Product for a product",
+        "Test with various assistive technologies",
+        "Verify WCAG 2.1 AA compliance",
+        "Check for any accessibility barriers"
+      ],
+      "expectedResults": [
+        "Preview meets WCAG 2.1 AA standards",
+        "Works with assistive technologies",
+        "No accessibility barriers",
+        "APs with disabilities can review products easily"
+      ],
+      "postconditions": "Preview is accessible to all APs",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PREVIEW_046",
+      "title": "Verify focus indicators are visible in preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-21",
+      "acceptanceCriteria": "AC10 - UI and Accessibility for Vendors",
+      "preconditions": "User is navigating preview with keyboard",
+      "steps": [
+        "Open View Product for a product",
+        "Tab through interactive elements",
+        "Observe focus indicators",
+        "Verify visibility and clarity"
+      ],
+      "expectedResults": [
+        "Focus indicators are visible",
+        "Indicators are clearly distinguishable",
+        "All interactive elements show focus",
+        "Focus is never lost or hidden"
+      ],
+      "postconditions": "Focus indicators are properly implemented",
+      "testResult": "PASS"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Access_to_Preview_Mode": ["TC_PREVIEW_001", "TC_PREVIEW_002", "TC_PREVIEW_003", "TC_PREVIEW_004"],
+    "AC2_Catalog_Card_Display": ["TC_PREVIEW_005", "TC_PREVIEW_006", "TC_PREVIEW_007", "TC_PREVIEW_008"],
+    "AC3_Full_Product_Details_Page": ["TC_PREVIEW_009", "TC_PREVIEW_010", "TC_PREVIEW_011", "TC_PREVIEW_012", "TC_PREVIEW_013", "TC_PREVIEW_014"],
+    "AC4_Media_Verification": ["TC_PREVIEW_015", "TC_PREVIEW_016", "TC_PREVIEW_017", "TC_PREVIEW_018", "TC_PREVIEW_019"],
+    "AC5_Specifications_and_Availability": ["TC_PREVIEW_020", "TC_PREVIEW_021", "TC_PREVIEW_022", "TC_PREVIEW_023", "TC_PREVIEW_024"],
+    "AC6_Accessibility_Compliance_Indicators": ["TC_PREVIEW_025", "TC_PREVIEW_026", "TC_PREVIEW_027", "TC_PREVIEW_028", "TC_PREVIEW_029"],
+    "AC7_Edit_and_Update_Options": ["TC_PREVIEW_030", "TC_PREVIEW_031", "TC_PREVIEW_032", "TC_PREVIEW_033", "TC_PREVIEW_034"],
+    "AC8_Post_Approval_Visibility": ["TC_PREVIEW_035", "TC_PREVIEW_036", "TC_PREVIEW_037"],
+    "AC9_System_Feedback": ["TC_PREVIEW_038", "TC_PREVIEW_039", "TC_PREVIEW_040", "TC_PREVIEW_041"],
+    "AC10_UI_and_Accessibility_for_Vendors": ["TC_PREVIEW_042", "TC_PREVIEW_043", "TC_PREVIEW_044", "TC_PREVIEW_045", "TC_PREVIEW_046"]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Approved Assistive Partner account with existing products"
+    ],
+    "productData": [
+      "Products in Draft status",
+      "Products in Pending Review status",
+      "Products in Approved/Published status",
+      "Products with complete media (images, video)",
+      "Products with ALT text on images",
+      "Products with captions on videos",
+      "Products with All Areas availability",
+      "Products with specific regional availability",
+      "Products with quantity specified",
+      "Products marked as Made to Order",
+      "Products with failed/problematic media for error testing"
+    ],
+    "mediaAssets": [
+      "Valid product images in various formats",
+      "Demo videos with captions",
+      "Oversized images for error testing",
+      "Unsupported video formats for error testing"
+    ]
+  },
+  "assumptions": [
+    "AP accounts have been properly set up with approved status",
+    "Products exist in various states for testing",
+    "Media files are properly uploaded and accessible",
+    "Network connectivity is stable",
+    "Test environment mirrors production configuration"
+  ],
+  "risks": [
+    "Media loading may be affected by network conditions",
+    "Accessibility compliance indicators depend on backend implementation",
+    "Live product visibility requires admin approval workflow"
+  ],
+  "openQuestions": [
+    "What specific accessibility compliance indicators are implemented?",
+    "Is there a specific format for the accessibility status badge?",
+    "What is the exact behavior of auto-save for drafts?"
+  ]
+}

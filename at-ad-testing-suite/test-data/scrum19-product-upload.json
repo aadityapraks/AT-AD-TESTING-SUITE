@@ -1,0 +1,419 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "inputs": {
+    "productName": "Test Mobility Device",
+    "productType": "Device",
+    "disabilityType": "Mobility",
+    "disabilityPercentage": "60-80%",
+    "shortDescription": "A smart walker designed for enhanced mobility and independence for users with mobility challenges.",
+    "detailedDescription": "The Smart Mobility Walker is an innovative assistive device featuring advanced sensors, adjustable height, ergonomic handles, and built-in safety features. Designed specifically for individuals with mobility impairments, it provides stable support and promotes independent movement.",
+    "dimensions": "24x18x36 inches",
+    "weight": "15 kg",
+    "material": "Aluminum frame with fabric seat",
+    "powerRequirements": "Rechargeable lithium battery",
+    "accessibilityFeatures": "Voice control, tactile feedback",
+    "tags": "wheelchair, portable, foldable",
+    "singlePrice": "15000",
+    "minPrice": "12000",
+    "maxPrice": "18000"
+  },
+  "expected": {
+    "dashboardTitle": "Dashboard",
+    "productUploadTab": "Product Upload",
+    "uploadButtonText": "Upload Product",
+    "saveAsDraftButtonText": "Save as Draft",
+    "confirmationMessage": "Your product has been submitted for review and will be published after approval",
+    "draftSavedMessage": "Product saved as draft",
+    "mandatoryFieldError": "This field is required",
+    "priceValidationError": "Minimum price cannot be greater than maximum price"
+  },
+  "TC_UPLOAD_001": {
+    "expected": {
+      "productUploadVisible": true,
+      "productUploadClickable": true
+    }
+  },
+  "TC_UPLOAD_002": {
+    "expected": {
+      "tabNavigationVisible": true,
+      "tabCount": 5,
+      "dedicatedSectionAvailable": true
+    }
+  },
+  "TC_UPLOAD_003": {
+    "inputs": {
+      "productName": "Test Assistive Device"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "fieldMandatory": true,
+      "inputAccepted": true
+    }
+  },
+  "TC_UPLOAD_004": {
+    "inputs": {
+      "selectedOption": "Device"
+    },
+    "expected": {
+      "dropdownVisible": true,
+      "optionsAvailable": ["Device", "Technology"],
+      "selectionSaved": true
+    }
+  },
+  "TC_UPLOAD_005": {
+    "inputs": {
+      "selectedOption": "Mobility"
+    },
+    "expected": {
+      "dropdownVisible": true,
+      "optionsAvailable": ["Mobility", "Visual", "Hearing", "Speech", "Cognitive", "Multiple Disabilities"],
+      "selectionSaved": true
+    }
+  },
+  "TC_UPLOAD_006": {
+    "inputs": {
+      "selectedOption": "60–80%"
+    },
+    "expected": {
+      "dropdownVisible": true,
+      "optionsAvailable": ["0–40%", "40–60%", "60–80%", "80–100%", "All Ranges"]
+    }
+  },
+  "TC_UPLOAD_007": {
+    "inputs": {
+      "textWithin200Chars": "This is a test short description for the assistive mobility device. It helps users with mobility challenges to move independently and safely. Designed with ergonomic features.",
+      "textExceeding200Chars": "This is a very long description that exceeds the 200 character limit. It contains detailed information about the product features, specifications, and benefits. The purpose is to test whether the character limit is properly enforced by the application when users try to enter more text than allowed."
+    },
+    "expected": {
+      "characterLimit": 200,
+      "fieldVisible": true,
+      "limitEnforced": true,
+      "counterVisible": true
+    }
+  },
+  "TC_UPLOAD_008": {
+    "inputs": {
+      "shortDescriptionText": "A mobility device for users"
+    },
+    "expected": {
+      "genAIButtonVisible": true,
+      "suggestionDisplayed": true
+    }
+  },
+  "TC_UPLOAD_009": {
+    "inputs": {
+      "detailedDescription": "This is a detailed description of the assistive device."
+    },
+    "expected": {
+      "fieldVisible": true,
+      "genAIButtonAvailable": true,
+      "suggestionGenerated": true
+    }
+  },
+  "TC_UPLOAD_010": {
+    "inputs": {
+      "textWithBullets": "• Feature 1\n• Feature 2\n• Feature 3",
+      "textWithParagraphs": "First paragraph.\n\nSecond paragraph."
+    },
+    "expected": {
+      "bulletPointsSupported": true,
+      "paragraphsPreserved": true
+    }
+  },
+  "TC_UPLOAD_011": {
+    "inputs": {
+      "uniqueFeatureText": "Voice-activated controls"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "helpIconPresent": true,
+      "guidanceAppears": true,
+      "inputAccepted": true
+    }
+  },
+  "TC_UPLOAD_012": {
+    "inputs": {
+      "uniqueFeatureText": "Ergonomic design"
+    },
+    "expected": {
+      "genAIButtonWorks": true,
+      "suggestionGenerated": true,
+      "userCanAcceptModify": true
+    }
+  },
+  "TC_UPLOAD_013": {
+    "inputs": {
+      "buyingGuideContent": "Consider these factors when purchasing"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "genAIButtonGeneratesSuggestion": true,
+      "suggestionCanBeAccepted": true
+    }
+  },
+  "TC_UPLOAD_027": {
+    "inputs": {
+      "dimensions": "24x18x36 inches",
+      "weight": "15 kg",
+      "material": "Aluminum",
+      "powerRequirements": "Rechargeable battery",
+      "accessibilityFeatures": "Voice control"
+    },
+    "expected": {
+      "sectionVisible": true,
+      "allFieldsPresent": true,
+      "inputsAccepted": true
+    }
+  },
+  "TC_UPLOAD_028": {
+    "expected": {
+      "genAIButtonVisible": true,
+      "specificationsGenerated": true,
+      "specificationsRelevant": true,
+      "userCanAcceptModify": true
+    }
+  },
+  "TC_UPLOAD_029": {
+    "expected": {
+      "sectionVisible": true,
+      "panIndiaAvailable": true,
+      "selectionSaved": true
+    }
+  },
+  "TC_UPLOAD_030": {
+    "inputs": {
+      "searchTerms": ["Maharashtra", "Delhi"],
+      "areas": ["Maharashtra", "Delhi", "Karnataka"]
+    },
+    "expected": {
+      "specificAreasAvailable": true,
+      "searchFunctionalityWorks": true,
+      "multipleSelectionsAllowed": true,
+      "selectionsAreSaved": true
+    }
+  },
+  "TC_UPLOAD_031": {
+    "inputs": {
+      "state": "Maharashtra",
+      "district": "Mumbai"
+    },
+    "expected": {
+      "sectionVisible": true,
+      "allOptionsAvailable": true,
+      "stateDropdownWorks": true,
+      "districtPopulatesBasedOnState": true
+    }
+  },
+  "TC_UPLOAD_032": {
+    "inputs": {
+      "validQuantity": "100",
+      "invalidQuantity": "abc"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "numericAccepted": true,
+      "nonNumericRejected": true
+    }
+  },
+  "TC_UPLOAD_033": {
+    "expected": {
+      "toggleVisible": true,
+      "toggleCanBeEnabled": true,
+      "quantityFieldAdjusts": true,
+      "toggleStateSaved": true
+    }
+  },
+  "TC_UPLOAD_034": {
+    "inputs": {
+      "amazonUrl": "https://www.amazon.in/product/12345"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "urlAccepted": true,
+      "urlSaved": true
+    }
+  },
+  "TC_UPLOAD_035": {
+    "inputs": {
+      "websiteUrl": "https://www.example.com/product"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "urlAccepted": true,
+      "urlSaved": true
+    }
+  },
+  "TC_UPLOAD_036": {
+    "expected": {
+      "dropdownVisible": true,
+      "singlePriceAvailable": true,
+      "priceRangeAvailable": true,
+      "customLabelAvailable": true
+    }
+  },
+  "TC_UPLOAD_037": {
+    "inputs": {
+      "price": "15000"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "priceAccepted": true
+    }
+  },
+  "TC_UPLOAD_038": {
+    "inputs": {
+      "minPrice": "10000",
+      "maxPrice": "20000"
+    },
+    "expected": {
+      "priceRangeSelected": true,
+      "minMaxFieldsVisible": true,
+      "valuesAccepted": true,
+      "rangeSaved": true
+    }
+  },
+  "TC_UPLOAD_039": {
+    "inputs": {
+      "customLabel": "Contact for pricing"
+    },
+    "expected": {
+      "customLabelSelected": true,
+      "textInputVisible": true,
+      "customTextAccepted": true,
+      "labelSaved": true
+    }
+  },
+  "TC_UPLOAD_040": {
+    "inputs": {
+      "helplineNumber": "1800-123-4567"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "numberAccepted": true,
+      "numberSaved": true
+    }
+  },
+  "TC_UPLOAD_041": {
+    "inputs": {
+      "deliveryDays": "7"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "daysAccepted": true,
+      "valueSaved": true
+    }
+  },
+  "TC_UPLOAD_042": {
+    "inputs": {
+      "tags": "wheelchair, portable, foldable"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "tagsEntered": true,
+      "tagsSaved": true
+    }
+  },
+  "TC_UPLOAD_043": {
+    "inputs": {
+      "otherLinks": "https://www.example.com/manual"
+    },
+    "expected": {
+      "fieldVisible": true,
+      "urlsEntered": true,
+      "linksSaved": true
+    }
+  },
+  "TC_UPLOAD_044": {
+    "inputs": {
+      "productName": "Draft Test Product",
+      "shortDescription": "This is a test product saved as draft for testing purposes."
+    },
+    "expected": {
+      "saveAsDraftButtonVisible": true,
+      "draftSavedSuccessfully": true,
+      "confirmationMessageShown": true
+    }
+  },
+  "TC_UPLOAD_045": {
+    "expected": {
+      "draftSaved": true,
+      "productManagementLoads": true,
+      "draftProductVisible": true,
+      "statusShowsDraft": true
+    }
+  },
+  "TC_UPLOAD_046": {
+    "expected": {
+      "draftProductFound": true,
+      "editOpensForm": true,
+      "savedDataLoaded": true,
+      "productCanBeUploaded": true
+    }
+  },
+  "TC_UPLOAD_047": {
+    "expected": {
+      "draftSaved": true,
+      "statusIsDraft": true,
+      "notInAdminQueue": true
+    }
+  },
+  "TC_UPLOAD_048": {
+    "expected": {
+      "validationErrorsDisplayed": true,
+      "submissionBlocked": true
+    }
+  },
+  "TC_UPLOAD_050": {
+    "inputs": {
+      "productName": "Complete Test Product",
+      "productType": "Device",
+      "disabilityType": "Mobility",
+      "shortDescription": "A complete test product for submission verification."
+    },
+    "expected": {
+      "submissionSuccessful": true,
+      "confirmationMessageShown": true,
+      "expectedMessage": "Your product has been submitted for review and will be published after approval"
+    }
+  },
+  "TC_UPLOAD_051": {
+    "expected": {
+      "keyboardNavigationWorks": true,
+      "allFieldsFocusable": true,
+      "buttonsActivateWithKeyboard": true
+    }
+  },
+  "TC_UPLOAD_052": {
+    "expected": {
+      "focusIndicatorsVisible": true,
+      "focusClearlyDistinguishable": true,
+      "allElementsShowFocus": true
+    }
+  },
+  "TC_UPLOAD_053": {
+    "expected": {
+      "allFieldsHaveLabels": true,
+      "labelsLinked": true,
+      "buttonsAccessible": true,
+      "wcagCompliant": true
+    }
+  },
+  "TC_UPLOAD_057": {
+    "inputs": {
+      "productName": "Test Product for Submission",
+      "productType": "Device",
+      "disabilityType": "Mobility",
+      "shortDescription": "Test product description"
+    },
+    "expected": {
+      "submissionAttempted": true,
+      "submissionFails": true,
+      "errorMessageShown": true,
+      "dataNotLost": true
+    }
+  }
+}

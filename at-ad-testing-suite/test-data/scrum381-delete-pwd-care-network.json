@@ -1,0 +1,15 @@
+{
+  "TC_SCRUM381_001": {
+    "url": "https://qa-atad.swarajability.org/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "myPwdsPageHeading": "My Persons with Disabilities",
+      "careNetworkHeading": "Your Care Network",
+      "confirmModalHeading": "Confirm Deletion",
+      "irreversibleWarningText": "This action cannot be undone"
+    }
+  }
+}

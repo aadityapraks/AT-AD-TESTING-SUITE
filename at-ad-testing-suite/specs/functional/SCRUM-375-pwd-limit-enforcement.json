@@ -1,0 +1,440 @@
+{
+  "jiraStory": "SCRUM-375",
+  "title": "Caregiver - PwD Limit Enforcement - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the PwD Limit Enforcement feature on the AT/AD platform. Ensures the system enforces a maximum number of PwDs per caregiver (e.g., max 5). Covers limit enforcement, Add New PwD button disabling when limit reached, informational message display, dynamic slot updates on add/remove, and edge cases including UI-backend mismatch rejection and admin-updated limit reflection.",
+  "scope": {
+    "inScope": [
+      "PwD limit enforcement (e.g., max 5)",
+      "Add New PwD button disabled when limit reached",
+      "Informational message shown when limit reached",
+      "Dynamic slot updates when PwDs are added",
+      "Dynamic slot updates when PwDs are removed",
+      "UI allows add but backend rejects → error shown",
+      "Limit updated by admin → reflected immediately"
+    ],
+    "outOfScope": [
+      "PwD registration form details (covered in SCRUM-372)",
+      "My PwDs dashboard layout (covered in SCRUM-363)",
+      "PwD deletion flow (covered in SCRUM-381)",
+      "Backend limit configuration internals"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_LIMIT_001",
+      "title": "Verify PwD limit is enforced and displayed correctly",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Limit Enforcement",
+      "preconditions": "Caregiver is logged in; PwD limit is configured (e.g., max 5); Caregiver has fewer PwDs than the limit",
+      "steps": [
+        "1. Log in as caregiver",
+        "2. Navigate to My PwDs page",
+        "3. Verify the PwD limit is displayed (e.g., 'Max 5 PwDs')",
+        "4. Verify current PwD count is displayed (e.g., '2 of 5')",
+        "5. Verify remaining slots are shown (e.g., '3 remaining')",
+        "6. Add PwDs one by one until the limit is reached",
+        "7. After each addition, verify the count updates correctly",
+        "8. Verify the limit number itself does not change during additions"
+      ],
+      "testData": {
+        "pwdLimit": 5,
+        "initialPwDCount": 2
+      },
+      "expectedResults": [
+        "PwD limit is clearly displayed on My PwDs page",
+        "Current count and remaining slots are accurate",
+        "Count updates correctly after each PwD addition",
+        "Limit value remains constant (e.g., always shows max 5)"
+      ],
+      "postconditions": "PwD limit display and enforcement is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_002",
+      "title": "Verify 'Add New PwD' button is disabled when limit is reached",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Limit Reached - Button State",
+      "preconditions": "Caregiver has added the maximum number of PwDs (e.g., 5 of 5)",
+      "steps": [
+        "1. Log in as caregiver with maximum PwDs",
+        "2. Navigate to My PwDs page",
+        "3. Verify PwD count shows maximum (e.g., 5/5)",
+        "4. Verify remaining slots shows 0",
+        "5. Locate the 'Add New PwD' button",
+        "6. Verify the button is disabled (greyed out, not clickable)",
+        "7. Attempt to click the disabled button",
+        "8. Verify no navigation occurs and no action is triggered",
+        "9. Verify the 'Add Another PwD' card is also disabled or hidden"
+      ],
+      "testData": {
+        "pwdLimit": 5,
+        "currentPwDCount": 5
+      },
+      "expectedResults": [
+        "Add New PwD button is visually disabled when limit reached",
+        "Button does not respond to clicks",
+        "No navigation to PwD registration occurs",
+        "Add Another PwD card is disabled or hidden"
+      ],
+      "postconditions": "Button disabled state at limit is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_003",
+      "title": "Verify informational message is shown when limit is reached",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Limit Reached - Message",
+      "preconditions": "Caregiver has added the maximum number of PwDs",
+      "steps": [
+        "1. Log in as caregiver with maximum PwDs (5/5)",
+        "2. Navigate to My PwDs page",
+        "3. Verify an informational message is displayed about the limit",
+        "4. Verify the message is clear (e.g., 'You have reached the maximum PwD limit')",
+        "5. Verify the message is prominently visible (not hidden or truncated)",
+        "6. Verify the message does not block other page functionality"
+      ],
+      "testData": {
+        "pwdLimit": 5,
+        "currentPwDCount": 5
+      },
+      "expectedResults": [
+        "Informational message is displayed when limit is reached",
+        "Message clearly states the limit has been reached",
+        "Message is visible and readable",
+        "Message does not obstruct other page elements"
+      ],
+      "postconditions": "Limit reached informational message is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_004",
+      "title": "Verify slots update dynamically when a PwD is added",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Dynamic Slot Updates - Add",
+      "preconditions": "Caregiver has fewer PwDs than the limit (e.g., 3 of 5)",
+      "steps": [
+        "1. Navigate to My PwDs page",
+        "2. Note current count (e.g., 3/5, 2 remaining)",
+        "3. Add a new PwD via the registration flow",
+        "4. Return to My PwDs page",
+        "5. Verify PwD count increased by 1 (e.g., 4/5)",
+        "6. Verify remaining slots decreased by 1 (e.g., 1 remaining)",
+        "7. Verify Add New PwD button is still enabled (if below limit)",
+        "8. Add another PwD to reach the limit (5/5)",
+        "9. Verify count shows 5/5 and remaining shows 0",
+        "10. Verify Add New PwD button is now disabled",
+        "11. Verify informational message appears"
+      ],
+      "testData": {
+        "initialCount": 3,
+        "pwdLimit": 5
+      },
+      "expectedResults": [
+        "Count increases by 1 after each PwD addition",
+        "Remaining slots decrease by 1 after each addition",
+        "Button remains enabled while below limit",
+        "Button becomes disabled when limit is reached",
+        "Informational message appears at limit"
+      ],
+      "postconditions": "Dynamic slot update on addition is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_005",
+      "title": "Verify slots update dynamically when a PwD is removed",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Dynamic Slot Updates - Remove",
+      "preconditions": "Caregiver has maximum PwDs (5/5); PwD deletion is functional",
+      "steps": [
+        "1. Log in as caregiver with 5/5 PwDs",
+        "2. Verify Add New PwD button is disabled",
+        "3. Verify informational message is shown",
+        "4. Delete one PwD from the care network",
+        "5. Verify PwD count decreases to 4/5",
+        "6. Verify remaining slots increases to 1",
+        "7. Verify Add New PwD button becomes enabled again",
+        "8. Verify informational message is removed",
+        "9. Verify the Add Another PwD card shows updated remaining count"
+      ],
+      "testData": {
+        "initialCount": 5,
+        "pwdLimit": 5,
+        "expectedCountAfterRemoval": 4,
+        "expectedRemainingAfterRemoval": 1
+      },
+      "expectedResults": [
+        "Count decreases by 1 after PwD removal",
+        "Remaining slots increase by 1",
+        "Add New PwD button re-enables after dropping below limit",
+        "Informational message disappears when below limit",
+        "Slot updates happen dynamically without page refresh"
+      ],
+      "postconditions": "Dynamic slot update on removal is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_006",
+      "title": "Verify UI allows add but backend rejects when limit exceeded shows error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Edge Case - UI-Backend Mismatch",
+      "preconditions": "Caregiver is at the PwD limit; A race condition or stale UI allows the Add button to appear enabled",
+      "steps": [
+        "1. Log in as caregiver with maximum PwDs (5/5)",
+        "2. Open My PwDs page in two browser tabs",
+        "3. In Tab 1, verify limit is reached (5/5)",
+        "4. In Tab 2, if Add button is somehow enabled (stale state), click it",
+        "5. Complete the PwD registration form in Tab 2",
+        "6. Submit the registration",
+        "7. Verify the backend rejects the submission",
+        "8. Verify an error message is shown to the user",
+        "9. Verify the error message is clear (e.g., 'PwD limit reached. Cannot add more PwDs.')",
+        "10. Verify no PwD is created despite the submission attempt"
+      ],
+      "testData": {
+        "pwdLimit": 5,
+        "currentPwDCount": 5
+      },
+      "expectedResults": [
+        "Backend rejects the add request when limit is exceeded",
+        "Clear error message is displayed to the user",
+        "No PwD is created beyond the limit",
+        "User is not left in a broken state",
+        "Error is handled gracefully without crashes"
+      ],
+      "postconditions": "Backend limit enforcement and error handling is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_007",
+      "title": "Verify admin-updated PwD limit is reflected immediately",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Edge Case - Admin Limit Update",
+      "preconditions": "Caregiver has 5/5 PwDs; Admin has access to change PwD limit",
+      "steps": [
+        "1. Log in as caregiver with 5/5 PwDs (limit = 5)",
+        "2. Verify Add New PwD button is disabled",
+        "3. Have admin increase the PwD limit to 7",
+        "4. Refresh My PwDs page",
+        "5. Verify the new limit is reflected (e.g., 5/7)",
+        "6. Verify remaining slots shows 2",
+        "7. Verify Add New PwD button is now enabled",
+        "8. Verify informational message is removed",
+        "9. Have admin decrease the limit to 3 (below current count)",
+        "10. Refresh My PwDs page",
+        "11. Verify the new limit is reflected (e.g., 5/3 or appropriate display)",
+        "12. Verify Add New PwD button is disabled",
+        "13. Verify informational message is shown"
+      ],
+      "testData": {
+        "initialLimit": 5,
+        "increasedLimit": 7,
+        "decreasedLimit": 3,
+        "currentPwDCount": 5
+      },
+      "expectedResults": [
+        "Increased limit is reflected after page refresh",
+        "Remaining slots update to reflect new limit",
+        "Add button re-enables when limit increases above current count",
+        "Decreased limit is reflected after page refresh",
+        "Add button disables when limit decreases below or equal to current count",
+        "Limit changes are reflected immediately (on refresh)"
+      ],
+      "postconditions": "Admin limit update reflection is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_008",
+      "title": "Verify limit enforcement with exactly one slot remaining",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Boundary - One Slot Remaining",
+      "preconditions": "Caregiver has 4 of 5 PwDs (one slot remaining)",
+      "steps": [
+        "1. Log in as caregiver with 4/5 PwDs",
+        "2. Verify remaining slots shows 1",
+        "3. Verify Add New PwD button is enabled",
+        "4. Verify no limit-reached message is shown",
+        "5. Add one more PwD",
+        "6. Verify count becomes 5/5",
+        "7. Verify remaining slots shows 0",
+        "8. Verify Add New PwD button becomes disabled",
+        "9. Verify informational message appears"
+      ],
+      "testData": {
+        "initialCount": 4,
+        "pwdLimit": 5
+      },
+      "expectedResults": [
+        "With one slot remaining, button is enabled and no limit message shown",
+        "After adding the last PwD, button disables and message appears",
+        "Transition from enabled to disabled happens correctly at boundary"
+      ],
+      "postconditions": "Boundary behavior at one slot remaining is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LIMIT_009",
+      "title": "Verify limit enforcement with zero PwDs (all slots available)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-375",
+      "category": "Boundary - Zero PwDs",
+      "preconditions": "Caregiver has 0 PwDs; Limit is 5",
+      "steps": [
+        "1. Log in as caregiver with 0 PwDs",
+        "2. Navigate to My PwDs page",
+        "3. Verify count shows 0/5",
+        "4. Verify remaining slots shows 5",
+        "5. Verify Add New PwD button is enabled",
+        "6. Verify no limit-reached message is shown",
+        "7. Verify empty state message is shown instead"
+      ],
+      "testData": {
+        "currentPwDCount": 0,
+        "pwdLimit": 5
+      },
+      "expectedResults": [
+        "Count shows 0/5 with all slots available",
+        "Add New PwD button is enabled",
+        "No limit-reached message shown",
+        "Empty state message may be shown for zero PwDs"
+      ],
+      "postconditions": "Zero PwDs boundary is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_pwd_limit_enforced": {
+      "description": "PwD limit enforced (e.g., max 5)",
+      "testCases": ["TC_LIMIT_001", "TC_LIMIT_008", "TC_LIMIT_009"]
+    },
+    "AC2_add_button_disabled": {
+      "description": "When limit reached: Add New PwD disabled",
+      "testCases": ["TC_LIMIT_002", "TC_LIMIT_004"]
+    },
+    "AC3_informational_message": {
+      "description": "When limit reached: Informational message shown",
+      "testCases": ["TC_LIMIT_003"]
+    },
+    "AC4_dynamic_slot_updates": {
+      "description": "Slots update dynamically when PwDs are added/removed",
+      "testCases": ["TC_LIMIT_004", "TC_LIMIT_005"]
+    },
+    "EC1_ui_backend_mismatch": {
+      "description": "UI allows add but backend rejects → error shown",
+      "testCases": ["TC_LIMIT_006"]
+    },
+    "EC2_admin_limit_update": {
+      "description": "Limit updated by admin → reflected immediately",
+      "testCases": ["TC_LIMIT_007"]
+    }
+  },
+  "test_data_requirements": {
+    "caregiver_accounts": [
+      {
+        "scenario": "Below limit",
+        "email": "caregiver.below@example.com",
+        "pwdCount": 3,
+        "pwdLimit": 5
+      },
+      {
+        "scenario": "At limit",
+        "email": "caregiver.max@example.com",
+        "pwdCount": 5,
+        "pwdLimit": 5
+      },
+      {
+        "scenario": "One slot remaining",
+        "email": "caregiver.one@example.com",
+        "pwdCount": 4,
+        "pwdLimit": 5
+      },
+      {
+        "scenario": "Zero PwDs",
+        "email": "caregiver.empty@example.com",
+        "pwdCount": 0,
+        "pwdLimit": 5
+      }
+    ],
+    "admin_account": {
+      "purpose": "For changing PwD limit in TC_LIMIT_007",
+      "access": "Admin panel with limit configuration"
+    },
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "PwD limit is configured as 5 in QA environment",
+      "PwD registration (SCRUM-372) and deletion (SCRUM-381) flows are functional",
+      "Admin has ability to change PwD limit for testing",
+      "My PwDs page (SCRUM-363) is functional for verifying counts",
+      "Multiple caregiver accounts with varying PwD counts are available"
+    ],
+    "dependencies": [
+      "SCRUM-363: My PwDs page must display limit and slot information",
+      "SCRUM-372: PwD registration must be functional for adding PwDs",
+      "SCRUM-381: PwD deletion must be functional for removing PwDs",
+      "Admin panel must support PwD limit configuration changes"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What is the exact PwD limit? Is it always 5 or configurable per caregiver?",
+      "impact": "Affects all test cases - need to know the configured limit"
+    },
+    {
+      "question": "What happens when admin decreases the limit below the current PwD count?",
+      "impact": "Affects TC_LIMIT_007 - are existing PwDs removed or just new additions blocked?"
+    },
+    {
+      "question": "Does the slot update happen in real-time (WebSocket) or on page refresh?",
+      "impact": "Affects TC_LIMIT_004 and TC_LIMIT_005 - dynamic vs refresh-based updates"
+    },
+    {
+      "question": "What is the exact wording of the informational message when limit is reached?",
+      "impact": "Affects TC_LIMIT_003 expected message text"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_LIMIT_001-004) first - core limit enforcement, button disable, message, dynamic add",
+      "High priority tests (005-008) - dynamic remove, UI-backend mismatch, admin update, boundary one slot",
+      "Medium priority tests (009) - zero PwDs boundary"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 9,
+      "estimated_hours": "10-14 hours for full manual testing",
+      "estimated_automation_hours": "16-20 hours for test automation",
+      "critical_path": "3-4 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "Multiple caregiver accounts with varying PwD counts (0, 3, 4, 5)",
+      "PwD registration and deletion flows functional",
+      "Admin access for limit configuration changes",
+      "Multiple browser tabs for race condition testing"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "My PwDs dashboard (SCRUM-363)",
+      "PwD registration (SCRUM-372)",
+      "PwD deletion (SCRUM-381)",
+      "Add Another PwD card display"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 9,
+    "coverage": "100% of acceptance criteria and all edge cases covered"
+  }
+}

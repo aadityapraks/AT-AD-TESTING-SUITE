@@ -1,0 +1,1371 @@
+{
+  "jiraStory": "SCRUM-19",
+  "title": "AP Uploads Product/Technology - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Product Upload feature for Assistive Partners (APs) on the PwD Catalog Portal. Covers product information entry, media uploads (images, 3D mockups, videos), specifications, geographical availability, pricing, GenAI assistance, draft saving, form validation, and accessibility compliance.",
+  "scope": {
+    "inScope": [
+      "Access to Product Upload from Dashboard",
+      "Basic Product Information fields",
+      "Product's Unique Feature with GenAI assist",
+      "Buying Guide with GenAI assist",
+      "Product Images upload (primary + additional)",
+      "3D Mockup Images upload",
+      "Demo Video upload/embed",
+      "Specifications Section with GenAI assist",
+      "Geographical Availability selection",
+      "Product Quantity and Made to Order",
+      "Additional Information (links, pricing, delivery)",
+      "Save as Draft functionality",
+      "Form Validation and Feedback",
+      "Accessibility & UI Compliance"
+    ],
+    "outOfScope": [
+      "Admin review and approval workflow (requires admin access)",
+      "Email delivery testing (backend)",
+      "GenAI model performance testing"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedStories": ["SCRUM-20", "SCRUM-21", "SCRUM-23", "SCRUM-26", "SCRUM-32"]
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": ["Approved AP"],
+    "prerequisites": ["Valid AP account with approved status", "Test images and videos"]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_SCRUM19_001",
+      "title": "Verify Product Upload option is accessible from AP Dashboard",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC1 - Access to Product Upload",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to AP Dashboard",
+        "Locate Product Upload option/tab",
+        "Verify it is visible and accessible"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Dashboard loads successfully",
+        "Product Upload option is visible",
+        "Option is clickable and accessible"
+      ],
+      "postconditions": "Product Upload is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_002",
+      "title": "Verify Product Upload tab navigation with 4 tabs",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC1 - Access to Product Upload",
+      "preconditions": "User is on AP Dashboard",
+      "steps": [
+        "Navigate to Product Upload section",
+        "Verify tab-based navigation is present",
+        "Count the number of tabs",
+        "Verify dedicated section for upload"
+      ],
+      "expectedResults": [
+        "Product Upload section loads",
+        "Tab navigation is visible",
+        "4 tabs are present",
+        "Dedicated upload section is available"
+      ],
+      "postconditions": "Tab navigation works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_003",
+      "title": "Verify Product Name mandatory field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Navigate to Upload New Product form",
+        "Locate Product Name field",
+        "Verify field is marked as mandatory",
+        "Enter product name"
+      ],
+      "expectedResults": [
+        "Form loads successfully",
+        "Product Name field is visible",
+        "Field is marked as required",
+        "Text input is accepted"
+      ],
+      "postconditions": "Product Name is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_004",
+      "title": "Verify Product Type dropdown (Device or Technology)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Product Type field",
+        "Click to expand dropdown",
+        "Verify options: Device, Technology",
+        "Select an option"
+      ],
+      "expectedResults": [
+        "Product Type dropdown is visible",
+        "Dropdown expands on click",
+        "Options include: Device, Technology",
+        "Selection is saved"
+      ],
+      "postconditions": "Product Type is selected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_005",
+      "title": "Verify Disability Type dropdown options",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Disability Type field",
+        "Click to expand dropdown",
+        "Verify all disability types are listed"
+      ],
+      "expectedResults": [
+        "Disability Type dropdown is visible",
+        "Options: Mobility, Visual, Hearing, Speech, Cognitive, Multiple Disabilities",
+        "Selection can be made"
+      ],
+      "postconditions": "Disability Type is selectable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_006",
+      "title": "Verify Disability Percentage dropdown options",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Disability Percentage field",
+        "Click to expand dropdown",
+        "Verify all percentage ranges are listed"
+      ],
+      "expectedResults": [
+        "Disability Percentage dropdown is visible",
+        "Options: 0-40%, 40-60%, 60-80%, 80-100%, All Ranges",
+        "Selection can be made"
+      ],
+      "postconditions": "Disability Percentage is selectable",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_007",
+      "title": "Verify Short Description field with ~200 character limit",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Short Description field",
+        "Enter text up to 200 characters",
+        "Attempt to enter more than 200 characters",
+        "Verify character limit enforcement"
+      ],
+      "expectedResults": [
+        "Short Description field is visible",
+        "Text up to 200 chars is accepted",
+        "Character limit is enforced",
+        "Character count indicator is shown"
+      ],
+      "postconditions": "Short Description respects limit",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_008",
+      "title": "Verify Assist with GenAI button for Short Description",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form with some text entered",
+      "steps": [
+        "Enter text in Short Description",
+        "Locate 'Assist with GenAI' button",
+        "Click the GenAI button",
+        "Verify AI-generated suggestion appears"
+      ],
+      "expectedResults": [
+        "Text is entered",
+        "GenAI button is visible",
+        "AI processes the request",
+        "Suggestion is displayed for review"
+      ],
+      "postconditions": "GenAI assistance works for Short Description",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_009",
+      "title": "Verify Detailed Description field with GenAI assist",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Detailed Description field",
+        "Enter detailed product description",
+        "Verify 'Assist with GenAI' button is present",
+        "Click GenAI button and verify suggestion"
+      ],
+      "expectedResults": [
+        "Detailed Description field is visible",
+        "Text input is accepted",
+        "GenAI button is available",
+        "AI suggestion is generated"
+      ],
+      "postconditions": "Detailed Description with GenAI works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_010",
+      "title": "Verify text fields support basic formatting",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC3 - Basic Product Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Enter text with bullet points in description",
+        "Enter text with paragraphs",
+        "Save and verify formatting is preserved"
+      ],
+      "expectedResults": [
+        "Bullet points are supported",
+        "Paragraphs are preserved",
+        "Formatting is maintained after save"
+      ],
+      "postconditions": "Text formatting works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_011",
+      "title": "Verify Product's Unique Feature field with help icon",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC4 - Product's Unique Feature",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Product's Unique Feature field",
+        "Verify help icon is present",
+        "Click help icon to see guidance",
+        "Enter unique feature text"
+      ],
+      "expectedResults": [
+        "Unique Feature field is visible",
+        "Help icon is present",
+        "Guidance tooltip/popup appears",
+        "Text input is accepted"
+      ],
+      "postconditions": "Unique Feature field works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_012",
+      "title": "Verify GenAI assist for Product's Unique Feature",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC4 - Product's Unique Feature",
+      "preconditions": "User has entered text in Unique Feature field",
+      "steps": [
+        "Enter text in Unique Feature field",
+        "Click 'Assist with GenAI' button",
+        "Review AI-generated suggestion",
+        "Accept or modify suggestion"
+      ],
+      "expectedResults": [
+        "Text is entered",
+        "GenAI button works",
+        "AI suggestion is generated",
+        "User can accept/modify"
+      ],
+      "postconditions": "GenAI works for Unique Feature",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_013",
+      "title": "Verify Buying Guide field with GenAI assist",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC5 - Buying Guide",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Buying Guide field",
+        "Enter buying guide content",
+        "Click 'Assist with GenAI' button",
+        "Review and accept suggestion"
+      ],
+      "expectedResults": [
+        "Buying Guide field is visible",
+        "Text input is accepted",
+        "GenAI button generates suggestion",
+        "Suggestion can be accepted"
+      ],
+      "postconditions": "Buying Guide with GenAI works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_014",
+      "title": "Verify Primary Image upload",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Primary Image upload section",
+        "Click to upload image",
+        "Select valid JPG/PNG file under 5MB",
+        "Verify image is uploaded and preview shown"
+      ],
+      "expectedResults": [
+        "Primary Image section is visible",
+        "File browser opens",
+        "Image is uploaded successfully",
+        "Preview thumbnail is displayed"
+      ],
+      "postconditions": "Primary image is uploaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_015",
+      "title": "Verify up to 5 additional images can be uploaded",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User has uploaded primary image",
+      "steps": [
+        "Locate additional images section",
+        "Upload 5 additional images",
+        "Attempt to upload 6th image",
+        "Verify limit is enforced"
+      ],
+      "expectedResults": [
+        "Additional images section is visible",
+        "5 images are uploaded successfully",
+        "6th image upload is blocked or warned",
+        "Maximum 5 additional images enforced"
+      ],
+      "postconditions": "Image limit is enforced",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_016",
+      "title": "Verify accepted image formats (JPG, PNG)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Attempt to upload JPG image",
+        "Attempt to upload PNG image",
+        "Attempt to upload unsupported format (GIF, BMP)",
+        "Verify format validation"
+      ],
+      "expectedResults": [
+        "JPG image is accepted",
+        "PNG image is accepted",
+        "Unsupported formats are rejected",
+        "Error message for invalid format"
+      ],
+      "postconditions": "Format validation works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_017",
+      "title": "Verify image file size limit (5MB)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Attempt to upload image under 5MB",
+        "Attempt to upload image over 5MB",
+        "Verify size validation message"
+      ],
+      "expectedResults": [
+        "Image under 5MB is accepted",
+        "Image over 5MB is rejected",
+        "Clear error message for oversized file"
+      ],
+      "postconditions": "Size limit is enforced",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_018",
+      "title": "Verify image preview thumbnails are displayed",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User has uploaded images",
+      "steps": [
+        "Upload primary image",
+        "Upload additional images",
+        "Verify preview thumbnails for all images"
+      ],
+      "expectedResults": [
+        "Primary image thumbnail is shown",
+        "Additional image thumbnails are shown",
+        "Thumbnails are clear and identifiable"
+      ],
+      "postconditions": "Thumbnails are displayed",
+      "testResult": "NOT RUN"
+    },
+
+    {
+      "id": "TC_SCRUM19_019",
+      "title": "Verify remove/replace uploaded image functionality",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User has uploaded images",
+      "steps": [
+        "Locate uploaded image",
+        "Click remove/delete option",
+        "Verify image is removed",
+        "Upload replacement image"
+      ],
+      "expectedResults": [
+        "Remove option is available",
+        "Image is removed on click",
+        "Slot becomes available",
+        "New image can be uploaded"
+      ],
+      "postconditions": "Image replacement works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_020",
+      "title": "Verify Alt Text option for all images including Primary",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User has uploaded images",
+      "steps": [
+        "Locate Alt Text field for primary image",
+        "Enter Alt Text for primary image",
+        "Locate Alt Text fields for additional images",
+        "Enter Alt Text for each additional image"
+      ],
+      "expectedResults": [
+        "Alt Text field available for primary image",
+        "Alt Text is saved for primary",
+        "Alt Text fields available for all additional images",
+        "All Alt Text entries are saved"
+      ],
+      "postconditions": "Alt Text is entered for all images",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_021",
+      "title": "Verify tips and help icons for image upload",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC6 - Product Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate help icons in image upload section",
+        "Click/hover on help icons",
+        "Verify tips are displayed"
+      ],
+      "expectedResults": [
+        "Help icons are visible",
+        "Tips/guidance appear on interaction",
+        "Tips explain image requirements"
+      ],
+      "postconditions": "Help guidance is available",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_022",
+      "title": "Verify 3D Mockup Images upload (max 3)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC7 - 3D Mockup Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate 3D Mockup Images section",
+        "Upload 3 mockup images",
+        "Attempt to upload 4th image",
+        "Verify limit is enforced"
+      ],
+      "expectedResults": [
+        "3D Mockup section is visible",
+        "3 images are uploaded successfully",
+        "4th image upload is blocked",
+        "Maximum 3 images enforced"
+      ],
+      "postconditions": "3D Mockup limit works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_023",
+      "title": "Verify Image tip for 3D Mockup section",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC7 - 3D Mockup Images",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate 3D Mockup section",
+        "Find image tip/help icon",
+        "View the tip content"
+      ],
+      "expectedResults": [
+        "3D Mockup section is visible",
+        "Image tip is present",
+        "Tip provides helpful guidance"
+      ],
+      "postconditions": "3D Mockup tip is available",
+      "testResult": "NOT RUN"
+    },
+
+    {
+      "id": "TC_SCRUM19_024",
+      "title": "Verify Demo Video file upload",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC8 - Demo Video",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Demo Video section",
+        "Click to upload video file",
+        "Select valid video file",
+        "Verify upload completes"
+      ],
+      "expectedResults": [
+        "Demo Video section is visible",
+        "File upload option is available",
+        "Video file is uploaded",
+        "Upload progress is shown"
+      ],
+      "postconditions": "Demo video is uploaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_025",
+      "title": "Verify YouTube/Vimeo link embedding for Demo Video",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC8 - Demo Video",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Demo Video section",
+        "Find YouTube/Vimeo link input",
+        "Enter valid YouTube URL",
+        "Verify link is accepted"
+      ],
+      "expectedResults": [
+        "Link input field is available",
+        "YouTube URL is accepted",
+        "Video preview or confirmation shown",
+        "Link is saved"
+      ],
+      "postconditions": "Video link is embedded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_026",
+      "title": "Verify video file size and duration limits",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC8 - Demo Video",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Attempt to upload video within limits",
+        "Attempt to upload oversized video",
+        "Verify limit enforcement"
+      ],
+      "expectedResults": [
+        "Valid video is accepted",
+        "Oversized video is rejected",
+        "Clear error message shown"
+      ],
+      "postconditions": "Video limits are enforced",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_027",
+      "title": "Verify Specifications Section with structured fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC9 - Specifications Section",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Specifications section",
+        "Verify fields: Dimensions, Weight, Material",
+        "Verify fields: Power/Battery, Accessibility features",
+        "Enter specifications"
+      ],
+      "expectedResults": [
+        "Specifications section is visible",
+        "All specification fields are present",
+        "Fields accept input",
+        "Key-value or free-text format works"
+      ],
+      "postconditions": "Specifications are entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_028",
+      "title": "Verify Generate Specifications with GenAI",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC9 - Specifications Section",
+      "preconditions": "User has entered product information",
+      "steps": [
+        "Locate 'Generate Specifications' GenAI button",
+        "Click the button",
+        "Review AI-generated specifications",
+        "Accept or modify"
+      ],
+      "expectedResults": [
+        "GenAI button is visible",
+        "AI generates specifications",
+        "Specifications are relevant",
+        "User can accept/modify"
+      ],
+      "postconditions": "GenAI specifications work",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_029",
+      "title": "Verify Geographical Availability - Pan-India option",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC10 - Geographical Availability",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Geographical Availability section",
+        "Select 'Pan-India' option",
+        "Verify selection is saved"
+      ],
+      "expectedResults": [
+        "Geographical Availability section is visible",
+        "Pan-India option is available",
+        "Selection is saved correctly"
+      ],
+      "postconditions": "Pan-India availability is set",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_030",
+      "title": "Verify Geographical Availability - Specific Areas with search",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC10 - Geographical Availability",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Select 'Specific Areas' option",
+        "Use search to find states/cities",
+        "Select multiple areas",
+        "Verify selections are saved"
+      ],
+      "expectedResults": [
+        "Specific Areas option is available",
+        "Search functionality works",
+        "Multiple selections allowed",
+        "All selections are saved"
+      ],
+      "postconditions": "Specific areas are selected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_031",
+      "title": "Verify Product Serviceable Area dropdowns",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC10 - Geographical Availability",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Product Serviceable Area section",
+        "Verify options: Pan India, Specific states/districts, Not Applicable",
+        "Select Specific states/districts",
+        "Use dropdowns to select state and district"
+      ],
+      "expectedResults": [
+        "Serviceable Area section is visible",
+        "All options are available",
+        "State dropdown works",
+        "District dropdown populates based on state"
+      ],
+      "postconditions": "Serviceable area is configured",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_032",
+      "title": "Verify Product Quantity numeric field",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC11 - Product Quantity",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Product Quantity field",
+        "Enter numeric value",
+        "Attempt to enter non-numeric value",
+        "Verify validation"
+      ],
+      "expectedResults": [
+        "Quantity field is visible",
+        "Numeric input is accepted",
+        "Non-numeric input is rejected",
+        "Validation message shown"
+      ],
+      "postconditions": "Quantity field works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_033",
+      "title": "Verify Made to Order toggle",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC11 - Product Quantity",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Made to Order toggle",
+        "Enable the toggle",
+        "Verify quantity field behavior changes",
+        "Disable toggle and verify"
+      ],
+      "expectedResults": [
+        "Made to Order toggle is visible",
+        "Toggle can be enabled",
+        "Quantity field adjusts accordingly",
+        "Toggle state is saved"
+      ],
+      "postconditions": "Made to Order toggle works",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_034",
+      "title": "Verify Amazon Buy Link field",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Amazon Buy Link field",
+        "Enter valid Amazon URL",
+        "Verify URL is accepted"
+      ],
+      "expectedResults": [
+        "Amazon Buy Link field is visible",
+        "Valid URL is accepted",
+        "URL is saved"
+      ],
+      "postconditions": "Amazon link is saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_035",
+      "title": "Verify Product Website Link field",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Product Website Link field",
+        "Enter valid website URL",
+        "Verify URL is accepted"
+      ],
+      "expectedResults": [
+        "Website Link field is visible",
+        "Valid URL is accepted",
+        "URL is saved"
+      ],
+      "postconditions": "Website link is saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_036",
+      "title": "Verify Price Range dropdown options",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Price Range dropdown",
+        "Verify options: Single Price, Price Range, Custom label",
+        "Select each option and verify fields"
+      ],
+      "expectedResults": [
+        "Price Range dropdown is visible",
+        "All three options are available",
+        "Appropriate fields appear for each option"
+      ],
+      "postconditions": "Price options work",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_037",
+      "title": "Verify Single Price numeric field",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User has selected Single Price option",
+      "steps": [
+        "Select Single Price option",
+        "Verify numeric field appears",
+        "Enter amount in rupees",
+        "Verify input is accepted"
+      ],
+      "expectedResults": [
+        "Single Price is selected",
+        "Numeric field is visible",
+        "Amount is accepted",
+        "Value is saved in rupees"
+      ],
+      "postconditions": "Single price is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_038",
+      "title": "Verify Price Range Min and Max fields",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User has selected Price Range option",
+      "steps": [
+        "Select Price Range option",
+        "Verify Min and Max fields appear",
+        "Enter Min value",
+        "Enter Max value"
+      ],
+      "expectedResults": [
+        "Price Range is selected",
+        "Min and Max fields are visible",
+        "Both values are accepted",
+        "Range is saved correctly"
+      ],
+      "postconditions": "Price range is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_039",
+      "title": "Verify Custom label text input for pricing",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User has selected Custom label option",
+      "steps": [
+        "Select Custom label option",
+        "Verify text input field appears",
+        "Enter custom pricing text",
+        "Verify input is saved"
+      ],
+      "expectedResults": [
+        "Custom label is selected",
+        "Text input field is visible",
+        "Custom text is accepted",
+        "Label is saved"
+      ],
+      "postconditions": "Custom price label is entered",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_040",
+      "title": "Verify Support Helpline Number field",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Support Helpline Number field",
+        "Enter valid phone number",
+        "Verify input is accepted"
+      ],
+      "expectedResults": [
+        "Helpline field is visible",
+        "Phone number is accepted",
+        "Number is saved"
+      ],
+      "postconditions": "Helpline number is saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_041",
+      "title": "Verify Expected Delivery Time field",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Expected Delivery Time field",
+        "Enter delivery time in days",
+        "Verify input is accepted"
+      ],
+      "expectedResults": [
+        "Delivery Time field is visible",
+        "Days value is accepted",
+        "Value is saved"
+      ],
+      "postconditions": "Delivery time is saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_042",
+      "title": "Verify Tags/Metadata field",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Tags/Metadata field",
+        "Enter tags",
+        "Verify tags are saved"
+      ],
+      "expectedResults": [
+        "Tags field is visible",
+        "Tags can be entered",
+        "Tags are saved"
+      ],
+      "postconditions": "Tags are saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_043",
+      "title": "Verify Other Links field",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC12 - Additional Information",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Locate Other Links field",
+        "Enter additional URLs",
+        "Verify links are saved"
+      ],
+      "expectedResults": [
+        "Other Links field is visible",
+        "URLs can be entered",
+        "Links are saved"
+      ],
+      "postconditions": "Other links are saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_044",
+      "title": "Verify Save as Draft button functionality",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC13 - Save as Draft",
+      "preconditions": "User has partially filled the form",
+      "steps": [
+        "Fill some product details",
+        "Locate 'Save as Draft' button on left side",
+        "Click Save as Draft",
+        "Verify draft is saved"
+      ],
+      "expectedResults": [
+        "Some details are entered",
+        "Save as Draft button is visible",
+        "Draft is saved successfully",
+        "Confirmation message shown"
+      ],
+      "postconditions": "Product is saved as draft",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_045",
+      "title": "Verify draft product appears in Product Management",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC13 - Save as Draft",
+      "preconditions": "User has saved product as draft",
+      "steps": [
+        "Save product as draft",
+        "Navigate to Product Management page",
+        "Locate the draft product",
+        "Verify draft status is shown"
+      ],
+      "expectedResults": [
+        "Draft is saved",
+        "Product Management page loads",
+        "Draft product is visible",
+        "Status shows as Draft"
+      ],
+      "postconditions": "Draft is visible in management",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_046",
+      "title": "Verify draft product can be edited and uploaded",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC13 - Save as Draft",
+      "preconditions": "Draft product exists in Product Management",
+      "steps": [
+        "Locate draft product",
+        "Click Edit",
+        "Complete remaining fields",
+        "Click Upload Product"
+      ],
+      "expectedResults": [
+        "Draft product is found",
+        "Edit opens the form with saved data",
+        "Remaining fields can be filled",
+        "Product can be uploaded"
+      ],
+      "postconditions": "Draft is converted to submission",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_047",
+      "title": "Verify draft does not go for admin review",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC13 - Save as Draft",
+      "preconditions": "User saves product as draft",
+      "steps": [
+        "Save product as draft",
+        "Verify product status",
+        "Confirm no admin notification sent"
+      ],
+      "expectedResults": [
+        "Draft is saved",
+        "Status is Draft (not Pending Review)",
+        "Product is not in admin queue"
+      ],
+      "postconditions": "Draft remains in draft state",
+      "testResult": "NOT RUN"
+    },
+
+    {
+      "id": "TC_SCRUM19_048",
+      "title": "Verify mandatory field validation before submission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC14 - Form Validation and Feedback",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Leave mandatory fields empty",
+        "Click Upload Product button",
+        "Verify validation errors appear"
+      ],
+      "expectedResults": [
+        "Mandatory fields are empty",
+        "Submission is blocked",
+        "Validation errors shown for each required field"
+      ],
+      "postconditions": "Validation prevents incomplete submission",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_049",
+      "title": "Verify image/video file type validation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC14 - Form Validation and Feedback",
+      "preconditions": "User is uploading media",
+      "steps": [
+        "Attempt to upload invalid image type",
+        "Attempt to upload invalid video type",
+        "Verify validation errors"
+      ],
+      "expectedResults": [
+        "Invalid image type is rejected",
+        "Invalid video type is rejected",
+        "Clear error messages shown"
+      ],
+      "postconditions": "File type validation works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_050",
+      "title": "Verify successful submission confirmation message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC14 - Form Validation and Feedback",
+      "preconditions": "User has filled all required fields",
+      "steps": [
+        "Fill all mandatory fields",
+        "Upload required media",
+        "Click Upload Product button",
+        "Verify confirmation message"
+      ],
+      "expectedResults": [
+        "All fields are filled",
+        "Submission is successful",
+        "Message: 'Your product has been submitted for review and will be published after approval.'",
+        "Message is clearly visible"
+      ],
+      "postconditions": "Product is submitted",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_051",
+      "title": "Verify form supports keyboard navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC16 - Accessibility & UI Compliance",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Navigate through form using Tab key",
+        "Verify all fields are focusable",
+        "Activate buttons using Enter/Space",
+        "Complete form using only keyboard"
+      ],
+      "expectedResults": [
+        "All fields are keyboard accessible",
+        "Tab order is logical",
+        "Buttons activate with keyboard",
+        "Form can be completed without mouse"
+      ],
+      "postconditions": "Keyboard navigation works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_052",
+      "title": "Verify visual focus indicators on form elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC16 - Accessibility & UI Compliance",
+      "preconditions": "User is navigating with keyboard",
+      "steps": [
+        "Tab through form elements",
+        "Observe focus indicators",
+        "Verify focus is clearly visible"
+      ],
+      "expectedResults": [
+        "Focus indicators are visible",
+        "Focus is clearly distinguishable",
+        "All interactive elements show focus"
+      ],
+      "postconditions": "Focus indicators work",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM19_053",
+      "title": "Verify all labels and buttons meet WCAG 2.1 AA",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC16 - Accessibility & UI Compliance",
+      "preconditions": "User is on Product Upload form",
+      "steps": [
+        "Check all form labels",
+        "Verify labels are associated with fields",
+        "Check button accessibility",
+        "Run accessibility audit"
+      ],
+      "expectedResults": [
+        "All fields have proper labels",
+        "Labels are programmatically linked",
+        "Buttons are accessible",
+        "WCAG 2.1 AA standards met"
+      ],
+      "postconditions": "Accessibility compliance verified",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM19_054",
+      "title": "Verify image upload progress indicator",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC17 - Performance and System Handling",
+      "preconditions": "User is uploading images",
+      "steps": [
+        "Start image upload",
+        "Observe progress indicator",
+        "Wait for upload completion"
+      ],
+      "expectedResults": [
+        "Upload starts",
+        "Progress indicator is visible",
+        "Progress updates during upload",
+        "Completion is indicated"
+      ],
+      "postconditions": "Progress indicator works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_055",
+      "title": "Verify video upload progress indicator",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC17 - Performance and System Handling",
+      "preconditions": "User is uploading video",
+      "steps": [
+        "Start video upload",
+        "Observe progress indicator",
+        "Wait for upload completion"
+      ],
+      "expectedResults": [
+        "Upload starts",
+        "Progress indicator is visible",
+        "Progress updates during upload",
+        "Completion is indicated"
+      ],
+      "postconditions": "Video progress indicator works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_056",
+      "title": "Verify user-friendly error for incomplete upload",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC17 - Performance and System Handling",
+      "preconditions": "User is uploading media",
+      "steps": [
+        "Start upload",
+        "Simulate upload failure (network issue)",
+        "Observe error message"
+      ],
+      "expectedResults": [
+        "Upload starts",
+        "Upload fails",
+        "User-friendly error message shown",
+        "Retry option available"
+      ],
+      "postconditions": "Error handling works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM19_057",
+      "title": "Verify user-friendly error for failed submission",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC17 - Performance and System Handling",
+      "preconditions": "User is submitting product",
+      "steps": [
+        "Fill all fields",
+        "Submit product",
+        "Simulate submission failure",
+        "Observe error message"
+      ],
+      "expectedResults": [
+        "Submission is attempted",
+        "Submission fails",
+        "User-friendly error message shown",
+        "Data is not lost"
+      ],
+      "postconditions": "Submission error handling works",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_SCRUM19_058",
+      "title": "Verify complete product upload end-to-end flow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-19",
+      "acceptanceCriteria": "AC1-AC17 - Complete Flow",
+      "preconditions": "User is logged in as approved AP",
+      "steps": [
+        "Navigate to Product Upload",
+        "Fill all Basic Product Information",
+        "Add Unique Feature and Buying Guide",
+        "Upload Primary and Additional Images with Alt Text",
+        "Upload 3D Mockups",
+        "Add Demo Video",
+        "Fill Specifications",
+        "Set Geographical Availability",
+        "Set Quantity",
+        "Fill Additional Information (links, pricing)",
+        "Click Upload Product",
+        "Verify confirmation"
+      ],
+      "expectedResults": [
+        "All sections are accessible",
+        "All fields accept valid input",
+        "Media uploads successfully",
+        "GenAI assistance works",
+        "Submission is successful",
+        "Confirmation message displayed"
+      ],
+      "postconditions": "Product is submitted for review",
+      "testResult": "PASS"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Access_to_Product_Upload": ["TC_SCRUM19_001", "TC_SCRUM19_002"],
+    "AC3_Basic_Product_Information": ["TC_SCRUM19_003", "TC_SCRUM19_004", "TC_SCRUM19_005", "TC_SCRUM19_006", "TC_SCRUM19_007", "TC_SCRUM19_008", "TC_SCRUM19_009", "TC_SCRUM19_010"],
+    "AC4_Products_Unique_Feature": ["TC_SCRUM19_011", "TC_SCRUM19_012"],
+    "AC5_Buying_Guide": ["TC_SCRUM19_013"],
+    "AC6_Product_Images": ["TC_SCRUM19_014", "TC_SCRUM19_015", "TC_SCRUM19_016", "TC_SCRUM19_017", "TC_SCRUM19_018", "TC_SCRUM19_019", "TC_SCRUM19_020", "TC_SCRUM19_021"],
+    "AC7_3D_Mockup_Images": ["TC_SCRUM19_022", "TC_SCRUM19_023"],
+    "AC8_Demo_Video": ["TC_SCRUM19_024", "TC_SCRUM19_025", "TC_SCRUM19_026"],
+    "AC9_Specifications_Section": ["TC_SCRUM19_027", "TC_SCRUM19_028"],
+    "AC10_Geographical_Availability": ["TC_SCRUM19_029", "TC_SCRUM19_030", "TC_SCRUM19_031"],
+    "AC11_Product_Quantity": ["TC_SCRUM19_032", "TC_SCRUM19_033"],
+    "AC12_Additional_Information": ["TC_SCRUM19_034", "TC_SCRUM19_035", "TC_SCRUM19_036", "TC_SCRUM19_037", "TC_SCRUM19_038", "TC_SCRUM19_039", "TC_SCRUM19_040", "TC_SCRUM19_041", "TC_SCRUM19_042", "TC_SCRUM19_043"],
+    "AC13_Save_as_Draft": ["TC_SCRUM19_044", "TC_SCRUM19_045", "TC_SCRUM19_046", "TC_SCRUM19_047"],
+    "AC14_Form_Validation_and_Feedback": ["TC_SCRUM19_048", "TC_SCRUM19_049", "TC_SCRUM19_050"],
+    "AC15_Admin_Workflow": "Out of Scope - Requires Admin Access",
+    "AC16_Accessibility_and_UI_Compliance": ["TC_SCRUM19_051", "TC_SCRUM19_052", "TC_SCRUM19_053"],
+    "AC17_Performance_and_System_Handling": ["TC_SCRUM19_054", "TC_SCRUM19_055", "TC_SCRUM19_056", "TC_SCRUM19_057"],
+    "End_to_End_Flow": ["TC_SCRUM19_058"]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Approved Assistive Partner account"
+    ],
+    "productData": [
+      "Product names",
+      "Short descriptions (~200 chars)",
+      "Detailed descriptions",
+      "Unique feature descriptions",
+      "Buying guide content",
+      "Technical specifications"
+    ],
+    "mediaAssets": [
+      "Primary product images (JPG/PNG, under 5MB)",
+      "Additional product images (up to 5)",
+      "3D mockup images (up to 3)",
+      "Demo video files",
+      "YouTube/Vimeo URLs for embedding",
+      "Invalid file types for error testing",
+      "Oversized files for limit testing"
+    ],
+    "locationData": [
+      "State and district combinations",
+      "City names",
+      "Pan-India selection"
+    ],
+    "pricingData": [
+      "Single price values",
+      "Price range (min/max)",
+      "Custom price labels"
+    ],
+    "linkData": [
+      "Amazon product URLs",
+      "Product website URLs",
+      "Other relevant links"
+    ]
+  },
+  "assumptions": [
+    "AP account has been approved and can access upload feature",
+    "GenAI service (Amazon Bedrock) is operational",
+    "File upload service is available",
+    "State/District master data is populated",
+    "Network connectivity is stable for uploads"
+  ],
+  "risks": [
+    "Large file uploads may be affected by network conditions",
+    "GenAI service availability may affect test execution",
+    "Video upload limits depend on platform policy configuration"
+  ],
+  "openQuestions": [
+    "What are the exact video file size and duration limits?",
+    "What video formats are supported for upload?",
+    "Are there character limits for detailed description?",
+    "What is the maximum number of tags allowed?",
+    "Is there validation for Amazon/website URLs?"
+  ]
+}

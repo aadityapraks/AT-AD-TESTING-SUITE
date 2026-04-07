@@ -1,0 +1,459 @@
+{
+  "jiraStory": "SCRUM-354",
+  "title": "Caregiver Account Type Selection - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Caregiver Account Type Selection feature on the AT/AD platform. This feature enables users to select 'Caregiver' as their account type during sign-up, routing them to the correct onboarding flow (sign-in for existing users, registration for new users). The test plan covers account type display, selection behavior, routing logic, session persistence, dark mode support, and static content validation.",
+  "scope": {
+    "inScope": [
+      "Account type options display on sign-up page",
+      "Caregiver selection routing to sign-in or registration",
+      "All four account type options visibility (PwD, Caregiver, Donor, Assistive Partner)",
+      "Role persistence in session and analytics",
+      "Static card 'Why choose the Portal' display",
+      "Dark mode availability and rendering",
+      "Account type switching mid-flow with form reset and warning",
+      "Page refresh retaining selected role with active session"
+    ],
+    "outOfScope": [
+      "Caregiver registration form details (covered in SCRUM-357)",
+      "Caregiver sign-in flow (covered in SCRUM-360)",
+      "PwD registration by caregiver (covered in SCRUM-281)",
+      "Backend session management internals",
+      "Analytics tracking implementation details"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_ACCT_SEL_001",
+      "title": "Verify all four account type options are displayed on sign-up page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Account Type Display",
+      "preconditions": "User is not logged in; Sign-up page is accessible",
+      "steps": [
+        "1. Navigate to the AT/AD platform home page",
+        "2. Click on 'Sign Up' button/link",
+        "3. Verify the sign-up page loads successfully",
+        "4. Locate the account type selection section",
+        "5. Verify 'Person with Disability' option is displayed",
+        "6. Verify 'Caregiver' option is displayed",
+        "7. Verify 'Donor' option is displayed",
+        "8. Verify 'Assistive Partner' option is displayed",
+        "9. Verify all four options are visually distinct and selectable"
+      ],
+      "testData": {
+        "expectedAccountTypes": ["Person with Disability", "Caregiver", "Donor", "Assistive Partner"],
+        "url": "https://qa-atad.swarajability.org"
+      },
+      "expectedResults": [
+        "Sign-up page loads without errors",
+        "Account type selection section is clearly visible",
+        "All four account type options are displayed: Person with Disability, Caregiver, Donor, Assistive Partner",
+        "Each option is visually distinct with clear labels",
+        "No account type is pre-selected by default (or default is clearly indicated)",
+        "Options are interactive and clickable"
+      ],
+      "postconditions": "User is on sign-up page with all account type options visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_002",
+      "title": "Verify selecting Caregiver routes new user to Caregiver Registration",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Routing - New User",
+      "preconditions": "User is not logged in; User does not have an existing caregiver account; Sign-up page is displayed with account type options",
+      "steps": [
+        "1. Navigate to the sign-up page",
+        "2. Locate the account type selection options",
+        "3. Click on 'Caregiver' account type option",
+        "4. Verify visual feedback indicates Caregiver is selected (highlight, border, checkmark)",
+        "5. Click 'Continue' or 'Sign Up' button to proceed",
+        "6. Verify the user is routed to the Caregiver Registration page",
+        "7. Verify the registration form is specific to Caregiver role",
+        "8. Verify the page title or heading indicates Caregiver Registration"
+      ],
+      "testData": {
+        "selectedAccountType": "Caregiver",
+        "expectedDestination": "Caregiver Registration Page"
+      },
+      "expectedResults": [
+        "Caregiver option shows selected state (visual indicator)",
+        "Clicking continue/sign-up navigates to Caregiver Registration page",
+        "Registration page is specific to Caregiver onboarding flow",
+        "Page heading or breadcrumb confirms Caregiver Registration",
+        "No errors or unexpected redirects occur"
+      ],
+      "postconditions": "New user is on Caregiver Registration page ready to fill details",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_003",
+      "title": "Verify selecting Caregiver routes existing user to Caregiver Sign-In",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Routing - Existing User",
+      "preconditions": "A caregiver account already exists in the system; User is not logged in; Sign-up page is displayed",
+      "steps": [
+        "1. Navigate to the sign-up page",
+        "2. Select 'Caregiver' account type",
+        "3. Click 'Continue' or proceed button",
+        "4. If the flow presents a 'Already have an account? Sign In' option, click it",
+        "5. Verify the user is routed to Caregiver Sign-In page",
+        "6. Verify the sign-in page is specific to Caregiver role",
+        "7. Verify email and password fields are present",
+        "8. Enter existing caregiver credentials and sign in",
+        "9. Verify successful login redirects to Caregiver Dashboard"
+      ],
+      "testData": {
+        "selectedAccountType": "Caregiver",
+        "existingEmail": "caregiver@example.com",
+        "existingPassword": "SecurePass@123",
+        "expectedDestination": "Caregiver Sign-In Page"
+      },
+      "expectedResults": [
+        "Existing user can navigate to Caregiver Sign-In from sign-up flow",
+        "Sign-in page is specific to Caregiver role",
+        "Email and password fields are functional",
+        "Successful login redirects to Caregiver Dashboard",
+        "Session is established with Caregiver role"
+      ],
+      "postconditions": "Existing caregiver is logged in and on Caregiver Dashboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_005",
+      "title": "Verify 'Why choose the Portal' static card is displayed as per design",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Static Content",
+      "preconditions": "User is on sign-up page with account type options visible",
+      "steps": [
+        "1. Navigate to the sign-up page",
+        "2. Locate the 'Why choose the Portal' static card/section",
+        "3. Verify the card is visible on the page",
+        "4. Verify the card content matches the design specification",
+        "5. Verify the card layout, typography, and spacing match design",
+        "6. Verify the card is positioned correctly relative to account type options",
+        "7. Verify any images or icons in the card render correctly",
+        "8. Verify the card is readable and not truncated"
+      ],
+      "testData": {
+        "expectedCardTitle": "Why choose the Portal",
+        "designReference": "Figma design for SCRUM-354"
+      },
+      "expectedResults": [
+        "'Why choose the Portal' static card is visible on sign-up page",
+        "Card content matches the approved design specification",
+        "Layout, typography, and spacing are consistent with design",
+        "Card is properly positioned and does not overlap other elements",
+        "All images/icons within the card render correctly",
+        "Card content is fully readable without truncation"
+      ],
+      "postconditions": "Static card is verified to match design specifications",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_006",
+      "title": "Verify sign-up page and account type selection work in Dark Mode",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Dark Mode",
+      "preconditions": "User is on sign-up page; Dark mode toggle is available",
+      "steps": [
+        "1. Navigate to the sign-up page in default (light) mode",
+        "2. Toggle to Dark Mode using the platform's dark mode switch",
+        "3. Verify the sign-up page renders correctly in dark mode",
+        "4. Verify all four account type options are visible and readable in dark mode",
+        "5. Verify text contrast meets readability standards in dark mode",
+        "6. Select 'Caregiver' option and verify selection indicator is visible in dark mode",
+        "7. Verify 'Why choose the Portal' static card renders correctly in dark mode",
+        "8. Verify buttons and interactive elements are visible and functional in dark mode",
+        "9. Proceed through the flow and verify subsequent pages also support dark mode"
+      ],
+      "testData": {
+        "mode": "Dark Mode"
+      },
+      "expectedResults": [
+        "Sign-up page renders correctly in dark mode without visual artifacts",
+        "All account type options are visible with proper contrast in dark mode",
+        "Text is readable against dark background",
+        "Selection indicator (highlight/border) is visible in dark mode",
+        "'Why choose the Portal' card renders correctly in dark mode",
+        "Buttons and links are visible and functional",
+        "No elements are invisible or unreadable due to dark mode colors"
+      ],
+      "postconditions": "Dark mode rendering is verified for sign-up page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_007",
+      "title": "Verify user can switch account type mid-flow with form reset and warning",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Edge Case - Account Type Switch",
+      "preconditions": "User is on sign-up page; User has selected Caregiver and started filling registration form",
+      "steps": [
+        "1. Navigate to sign-up page",
+        "2. Select 'Caregiver' account type",
+        "3. Proceed to registration form",
+        "4. Fill in some registration fields (e.g., name, email)",
+        "5. Navigate back to account type selection",
+        "6. Select a different account type (e.g., 'Person with Disability')",
+        "7. Verify a warning message is displayed about form reset",
+        "8. Confirm the account type switch",
+        "9. Verify the form is reset and previous data is cleared",
+        "10. Verify the user is routed to the correct flow for the new account type"
+      ],
+      "testData": {
+        "initialSelection": "Caregiver",
+        "switchedSelection": "Person with Disability",
+        "partialFormData": {
+          "firstName": "Test",
+          "email": "test@example.com"
+        }
+      },
+      "expectedResults": [
+        "Warning message is displayed when switching account type mid-flow",
+        "Warning clearly states that form data will be reset",
+        "On confirming switch, form data is cleared completely",
+        "User is routed to the correct onboarding flow for the new account type",
+        "No residual data from previous selection remains",
+        "If user cancels the switch, original selection and data are preserved"
+      ],
+      "postconditions": "User is on the new account type's onboarding flow with a clean form",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_008",
+      "title": "Verify page refresh retains selected role when session is active",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Edge Case - Session Persistence",
+      "preconditions": "User is on sign-up page; User has selected Caregiver account type; Session is active",
+      "steps": [
+        "1. Navigate to sign-up page",
+        "2. Select 'Caregiver' account type",
+        "3. Verify Caregiver is visually selected",
+        "4. Refresh the page (F5 or browser refresh)",
+        "5. Verify the page reloads successfully",
+        "6. Check if 'Caregiver' is still selected after refresh",
+        "7. Verify the user can continue the flow without re-selecting",
+        "8. If session is not active, verify the selection is not retained"
+      ],
+      "testData": {
+        "selectedRole": "Caregiver"
+      },
+      "expectedResults": [
+        "Page refresh does not cause errors or blank page",
+        "If session is active, 'Caregiver' selection is retained after refresh",
+        "User can continue the onboarding flow without re-selecting account type",
+        "If session is not active, selection is cleared and user must re-select"
+      ],
+      "postconditions": "Selected role is retained (or appropriately cleared) after page refresh",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_009",
+      "title": "Verify selecting each non-Caregiver account type routes correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Routing - Other Account Types",
+      "preconditions": "User is on sign-up page with all account type options visible",
+      "steps": [
+        "1. Navigate to sign-up page",
+        "2. Select 'Person with Disability' option",
+        "3. Click continue/proceed",
+        "4. Verify routing to PwD onboarding flow",
+        "5. Navigate back to sign-up page",
+        "6. Select 'Donor' option",
+        "7. Click continue/proceed",
+        "8. Verify routing to Donor onboarding flow",
+        "9. Navigate back to sign-up page",
+        "10. Select 'Assistive Partner' option",
+        "11. Click continue/proceed",
+        "12. Verify routing to Assistive Partner onboarding flow"
+      ],
+      "testData": {
+        "accountTypes": ["Person with Disability", "Donor", "Assistive Partner"]
+      },
+      "expectedResults": [
+        "Person with Disability selection routes to PwD registration/sign-in flow",
+        "Donor selection routes to Donor registration/sign-in flow",
+        "Assistive Partner selection routes to AP registration/sign-in flow",
+        "Each account type routes to its specific onboarding flow",
+        "No cross-routing or incorrect flow assignment occurs"
+      ],
+      "postconditions": "All account type routing is verified to be correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_010",
+      "title": "Verify user cannot proceed without selecting an account type",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Validation - No Selection",
+      "preconditions": "User is on sign-up page; No account type is selected",
+      "steps": [
+        "1. Navigate to sign-up page",
+        "2. Do NOT select any account type",
+        "3. Attempt to click 'Continue' or 'Sign Up' button",
+        "4. Verify the system prevents navigation without selection",
+        "5. Verify an error message or visual cue prompts user to select an account type",
+        "6. Select 'Caregiver' account type",
+        "7. Verify the continue button becomes active/enabled",
+        "8. Click continue and verify successful navigation"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Continue/Sign Up button is disabled or shows error when no account type is selected",
+        "Error message or visual cue indicates account type selection is required",
+        "User cannot proceed to any onboarding flow without selecting an account type",
+        "After selecting an account type, the continue button becomes active",
+        "Successful navigation occurs after selection"
+      ],
+      "postconditions": "Validation for mandatory account type selection is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACCT_SEL_013",
+      "title": "Verify sign-up page loads correctly when accessed directly via URL",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-354",
+      "category": "Navigation - Direct Access",
+      "preconditions": "User is not logged in; Direct URL to sign-up page is known",
+      "steps": [
+        "1. Open browser and enter the direct sign-up page URL",
+        "2. Verify the page loads without errors",
+        "3. Verify all four account type options are displayed",
+        "4. Verify 'Why choose the Portal' static card is visible",
+        "5. Select 'Caregiver' and proceed",
+        "6. Verify routing works correctly from direct URL access"
+      ],
+      "testData": {
+        "directUrl": "https://qa-atad.swarajability.org/signup"
+      },
+      "expectedResults": [
+        "Sign-up page loads correctly from direct URL",
+        "All account type options are displayed",
+        "Static card is visible",
+        "Selection and routing work correctly",
+        "No authentication errors or redirects to unexpected pages"
+      ],
+      "postconditions": "Direct URL access to sign-up page is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_account_type_options_display": {
+      "description": "User can see account type options: Person with Disability, Caregiver, Donor, Assistive Partner",
+      "testCases": ["TC_ACCT_SEL_001", "TC_ACCT_SEL_009"]
+    },
+    "AC2_caregiver_routing_signin": {
+      "description": "Selecting Caregiver routes existing user to Caregiver Sign-in",
+      "testCases": ["TC_ACCT_SEL_003"]
+    },
+    "AC3_caregiver_routing_registration": {
+      "description": "Selecting Caregiver routes new user to Caregiver Registration",
+      "testCases": ["TC_ACCT_SEL_002"]
+    },
+    "AC5_static_card_design": {
+      "description": "Static card on Why choose the Portal should be as per the design",
+      "testCases": ["TC_ACCT_SEL_005"]
+    },
+    "AC6_dark_mode": {
+      "description": "Available in Dark mode as well",
+      "testCases": ["TC_ACCT_SEL_006"]
+    },
+    "EC1_switch_account_type_midflow": {
+      "description": "User switches account type mid-flow → form resets with warning",
+      "testCases": ["TC_ACCT_SEL_007"]
+    },
+    "EC2_page_refresh_retains_role": {
+      "description": "Page refresh retains selected role (if session active)",
+      "testCases": ["TC_ACCT_SEL_008"]
+    }
+  },
+  "test_data_requirements": {
+    "user_accounts": [
+      {
+        "role": "Caregiver",
+        "email": "existing.caregiver@example.com",
+        "status": "Registered",
+        "purpose": "Testing existing user sign-in routing"
+      },
+      {
+        "role": "New User",
+        "email": "new.caregiver@example.com",
+        "status": "Not Registered",
+        "purpose": "Testing new user registration routing"
+      }
+    ],
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Sign-up page is accessible at the QA environment URL",
+      "All four account types (PwD, Caregiver, Donor, Assistive Partner) are enabled in QA",
+      "Dark mode toggle is available on the sign-up page",
+      "Session management is functional in QA environment",
+      "Design specifications for 'Why choose the Portal' card are finalized",
+      "Caregiver registration flow (SCRUM-357) is at least partially functional for routing verification"
+    ],
+    "dependencies": [
+      "SCRUM-357: Caregiver Registration flow must be available for routing verification",
+      "SCRUM-360: Caregiver Sign-In flow must be available for existing user routing",
+      "Dark mode feature must be implemented platform-wide",
+      "Session/analytics infrastructure must be operational"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "Is there a default pre-selected account type, or must the user explicitly select one?",
+      "impact": "Affects TC_ACCT_SEL_010 validation behavior"
+    },
+    {
+      "question": "How does the system differentiate between new and existing users after Caregiver selection?",
+      "impact": "Affects TC_ACCT_SEL_002 and TC_ACCT_SEL_003 routing logic"
+    },
+    {
+      "question": "Is the 'Why choose the Portal' card the same for all account types or does it change based on selection?",
+      "impact": "Affects TC_ACCT_SEL_005 expected content"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_ACCT_SEL_001, 002, 003) should be executed first as they cover core functionality",
+      "High priority tests (005, 006, 007) cover static content, dark mode, and edge cases",
+      "Medium priority tests (008, 009, 010) cover persistence, other account types, and validation",
+      "Low priority tests (013) cover direct URL access"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 10,
+      "estimated_hours": "16-20 hours for full manual testing",
+      "estimated_automation_hours": "24-30 hours for test automation",
+      "critical_path": "4-6 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "Pre-registered caregiver account for existing user tests",
+      "Dark mode toggle available",
+      "Multiple browser support (Chrome, Firefox, Edge)"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "Sign-up page rendering and navigation",
+      "Account type routing logic",
+      "Session management across page refreshes",
+      "Dark mode rendering consistency"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 10,
+    "coverage": "100% of acceptance criteria and edge cases covered"
+  }
+}

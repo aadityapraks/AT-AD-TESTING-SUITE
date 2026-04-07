@@ -1,0 +1,404 @@
+{
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "TC_PRICE_001": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "productManagementPageLoaded": true,
+      "editPricingQuantityOptionVisible": true
+    }
+  },
+  "TC_PRICE_002": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "popupOpens": true,
+      "pricingFieldsVisible": true,
+      "quantityFieldsVisible": true
+    }
+  },
+  "TC_PRICE_003": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "numericValue": "100",
+      "alphabeticValue": "abc",
+      "specialCharValue": "@#$%"
+    },
+    "expected": {
+      "quantityFieldVisible": true,
+      "numericValueAccepted": true,
+      "alphabeticRejected": true,
+      "specialCharsRejected": true
+    }
+  },
+  "TC_PRICE_004": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "negativeValue": "-10"
+    },
+    "expected": {
+      "negativeRejected": true,
+      "validationErrorShown": true
+    }
+  },
+  "TC_PRICE_005": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "madeToOrderVisible": true,
+      "quantityDisabledWhenMadeToOrder": true
+    }
+  },
+  "TC_PRICE_006": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "noValidationErrorForEmptyQuantity": true
+    }
+  },
+  "TC_PRICE_007": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "validationErrorForEmptyQuantity": true
+    }
+  },
+  "TC_PRICE_008": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "dropdownOptions": ["Single Price", "Price Range", "Custom Label"]
+    }
+  },
+  "TC_PRICE_009": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "price": "12000"
+    },
+    "expected": {
+      "priceAccepted": true
+    }
+  },
+  "TC_PRICE_010": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "minPrice": "10000",
+      "maxPrice": "15000"
+    },
+    "expected": {
+      "minMaxFieldsVisible": true
+    }
+  },
+  "TC_PRICE_011": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "customLabel": "Contact for details"
+    },
+    "expected": {
+      "customLabelAccepted": true
+    }
+  },
+  "TC_PRICE_012": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "price": "12000"
+    },
+    "expected": {
+      "currencySymbolDisplayed": true,
+      "formattedPrice": "₹12,000"
+    }
+  },
+  "TC_PRICE_014": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "nonNumericValue": "abc",
+      "mixedValue": "12abc"
+    },
+    "expected": {
+      "singlePriceOptionSelected": true,
+      "nonNumericRejected": true,
+      "mixedInputShowsError": true,
+      "validationErrorMessage": "Please enter a valid number"
+    }
+  },
+  "TC_PRICE_015": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "minPrice": "10000"
+    },
+    "expected": {
+      "validationErrorForMissingMax": true
+    }
+  },
+  "TC_PRICE_016": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "longLabel": "This is a very long custom label that exceeds the limit"
+    },
+    "expected": {
+      "characterLimitEnforced": true,
+      "maxCharacters": 25
+    }
+  },
+  "TC_PRICE_024": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "newPrice": "15000"
+    },
+    "expected": {
+      "priceUpdated": true
+    }
+  },
+  "TC_PRICE_025": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "priceRemoved": true
+    }
+  },
+  "TC_PRICE_029": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "locations": ["Delhi", "Mumbai", "Bangalore"]
+    },
+    "expected": {
+      "geographicAvailabilitySectionVisible": true,
+      "multipleLocationsCanBeSelected": true,
+      "selectedLocationCount": 3
+    }
+  },
+  "TC_PRICE_038": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "quantity": "50"
+    },
+    "expected": {
+      "saveSuccessfulWithoutPrice": true
+    }
+  },
+  "TC_PRICE_041": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "minPrice": "20000",
+      "maxPrice": "10000"
+    },
+    "expected": {
+      "validationErrorForMinGreaterThanMax": true
+    }
+  },
+  "TC_PRICE_013": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "largePrice": "1250000"
+    },
+    "expected": {
+      "formattedPrice": "₹12,50,000"
+    }
+  },
+  "TC_PRICE_017": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "price": "12000"
+    },
+    "expected": {
+      "pricingInfoSectionVisible": true,
+      "displayedPrice": "₹12,000"
+    }
+  },
+  "TC_PRICE_018": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "minPrice": "10000",
+      "maxPrice": "15000"
+    },
+    "expected": {
+      "displayedPriceRange": "₹10,000 – ₹15,000"
+    }
+  },
+  "TC_PRICE_019": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "customLabel": "Contact for details"
+    },
+    "expected": {
+      "displayedLabel": "Pricing: Contact for details"
+    }
+  },
+  "TC_PRICE_020": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "pricingSectionHidden": true
+    }
+  },
+  "TC_PRICE_021": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "startingPriceDisplayed": true,
+      "displayFormat": "Starting at ₹10,000"
+    }
+  },
+  "TC_PRICE_022": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "singlePriceDisplayed": true,
+      "displayFormat": "₹12,000 approx."
+    }
+  },
+  "TC_PRICE_023": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "noPlaceholderShown": true
+    }
+  },
+  "TC_PRICE_026": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "newPrice": "18000"
+    },
+    "expected": {
+      "statusRemainsApproved": true
+    }
+  },
+  "TC_PRICE_027": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "newPrice": "19000"
+    },
+    "expected": {
+      "realTimeUpdateVisible": true
+    }
+  },
+  "TC_PRICE_028": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "searchLocation": "Delhi"
+    },
+    "expected": {
+      "searchResultsVisible": true
+    }
+  },
+  "TC_PRICE_030": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "locations": ["Delhi", "Mumbai"]
+    },
+    "expected": {
+      "tagsDisplayed": true,
+      "tagsRemovable": true
+    }
+  },
+  "TC_PRICE_031": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "allFieldsHaveLabels": true
+    }
+  },
+  "TC_PRICE_032": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "currencySymbolProperlyPlaced": true,
+      "spacingCorrect": true
+    }
+  },
+  "TC_PRICE_033": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "tooltipsAccessible": true,
+      "helpText": "Price is optional. Provide approximate or range if available."
+    }
+  },
+  "TC_PRICE_034": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "allFieldsKeyboardAccessible": true,
+      "tabOrderLogical": true
+    }
+  },
+  "TC_PRICE_035": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "screenReaderCompatible": true
+    }
+  },
+  "TC_PRICE_036": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "invalidValue": "12abc"
+    },
+    "expected": {
+      "errorMessageVisible": true,
+      "errorMessage": "Please enter a valid number"
+    }
+  },
+  "TC_PRICE_037": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "invalidPrice": "abc123",
+      "validPrice": "15000"
+    },
+    "expected": {
+      "formBlockedWithInvalid": true,
+      "formSubmitsAfterCorrection": true
+    }
+  },
+  "TC_PRICE_039": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "productPublishableWithoutPrice": true
+    }
+  },
+  "TC_PRICE_040": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "expected": {
+      "noMissingFieldError": true
+    }
+  },
+  "TC_PRICE_042": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "productName": "goggles",
+    "inputs": {
+      "quantity": "50",
+      "minPrice": "10000",
+      "maxPrice": "15000"
+    },
+    "expected": {
+      "completeFlowSuccessful": true
+    }
+  }
+}

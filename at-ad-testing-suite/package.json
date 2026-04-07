@@ -7,13 +7,16 @@
     "test": "playwright test",
     "test:a11y": "playwright test specs/a11y",
     "test:headed": "playwright test --headed",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "jira:sync": "node utils/jira/uploadTests.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@playwright/test": "^1.57.0",
+    "axios": "^1.13.6",
+    "dotenv": "^17.3.1",
     "playwright": "^1.57.0"
   },
   "devDependencies": {

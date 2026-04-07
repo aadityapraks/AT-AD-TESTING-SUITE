@@ -1,0 +1,490 @@
+{
+  "jiraStory": "SCRUM-18",
+  "title": "AP Dashboard Functional Test Plan",
+  "overview": "Functional testing of the Assistive Partner Dashboard Homepage covering navigation, widgets, tabs, notifications, and user interactions on the Y4J platform.",
+  "testCases": [
+    {
+      "id": "TC_SCRUM18_001",
+      "title": "Verify successful login and dashboard access",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Valid AP credentials available, login page is accessible",
+      "steps": [
+        "Navigate to login page",
+        "Enter valid AP credentials (aadityap@byteridge.com)",
+        "Click Sign In button",
+        "Verify redirect to dashboard",
+        "Verify welcome message displays organization name"
+      ],
+      "expectedResults": [
+        "Login successful without errors",
+        "Dashboard page loads completely",
+        "Welcome message shows 'Welcome, [Organization Name]'",
+        "All navigation buttons are visible",
+        "Page title contains 'Dashboard'"
+      ],
+      "postconditions": "User is on dashboard page",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_002",
+      "title": "Verify main navigation functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in and on dashboard",
+      "steps": [
+        "Login as approved AP",
+        "Click Dashboard button",
+        "Click Help & Resources button",
+        "Click Profile button",
+        "Click Logout button",
+        "Verify logout confirmation"
+      ],
+      "expectedResults": [
+        "Dashboard button shows active state",
+        "Help & Resources page opens",
+        "Profile page opens",
+        "Logout confirmation appears",
+        "User is logged out successfully"
+      ],
+      "postconditions": "User is logged out",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_003",
+      "title": "Verify unapproved AP access restrictions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Unapproved AP credentials available",
+      "steps": [
+        "Login with unapproved AP credentials",
+        "Verify 'under review' message appears",
+        "Attempt to access restricted features",
+        "Verify limited functionality"
+      ],
+      "expectedResults": [
+        "'Under review' message displayed prominently",
+        "Limited access to dashboard features",
+        "Clear instructions for approval process",
+        "Contact information provided"
+      ],
+      "postconditions": "User sees restricted dashboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_004",
+      "title": "Verify Total Products widget accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in with at least one product",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to dashboard",
+        "Verify Total Products widget displays",
+        "Compare count with actual products in system",
+        "Add a new product",
+        "Verify widget updates automatically"
+      ],
+      "expectedResults": [
+        "Total Products widget shows correct count",
+        "Widget displays numeric value clearly",
+        "Count matches actual products in database",
+        "Widget updates in real-time after product addition",
+        "Widget is clickable and navigates to Product Management"
+      ],
+      "postconditions": "Dashboard remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_005",
+      "title": "Verify Total Interest widget functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, interest data exists",
+      "steps": [
+        "Login as approved AP",
+        "Verify Total Interest widget displays",
+        "Compare with Interest Expressed tab data",
+        "Simulate new interest expression",
+        "Verify widget count updates"
+      ],
+      "expectedResults": [
+        "Total Interest widget shows correct count",
+        "Count matches Interest Expressed section",
+        "Widget updates when new interest is expressed",
+        "Widget links to Interest Expressed tab",
+        "Zero state handled appropriately"
+      ],
+      "postconditions": "Dashboard remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_006",
+      "title": "Verify Total Listings widget accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in with published products",
+      "steps": [
+        "Login as approved AP",
+        "Verify Total Listings widget displays",
+        "Compare with published products count",
+        "Publish/unpublish a product",
+        "Verify widget reflects changes"
+      ],
+      "expectedResults": [
+        "Total Listings shows published products only",
+        "Count excludes draft/unpublished products",
+        "Widget updates when product status changes",
+        "Widget navigates to published products view",
+        "Accurate count maintained"
+      ],
+      "postconditions": "Dashboard remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_007",
+      "title": "Verify Average Rating widget calculation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in with rated products",
+      "steps": [
+        "Login as approved AP",
+        "Verify Avg. Rating widget displays",
+        "Compare with Reviews & Ratings section",
+        "Verify rating calculation accuracy",
+        "Check decimal precision display"
+      ],
+      "expectedResults": [
+        "Average rating calculated correctly",
+        "Rating displayed with appropriate precision (1 decimal)",
+        "Widget shows 'No ratings' when applicable",
+        "Widget links to Reviews & Ratings section",
+        "Rating updates when new reviews added"
+      ],
+      "postconditions": "Dashboard remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_008",
+      "title": "Verify Product Management tab functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in with products in system",
+      "steps": [
+        "Login as approved AP",
+        "Click Product Management tab",
+        "Verify tab content loads",
+        "Verify product list displays",
+        "Test product actions (Edit, Delete, View)"
+      ],
+      "expectedResults": [
+        "Product Management tab activates",
+        "Product list loads completely",
+        "All user products displayed",
+        "Product actions work correctly",
+        "Tab remains active during navigation"
+      ],
+      "postconditions": "Product Management tab is active",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_009",
+      "title": "Verify Product Upload tab functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Click Product Upload tab",
+        "Verify upload form displays",
+        "Test form field functionality",
+        "Verify GenAI assistance availability"
+      ],
+      "expectedResults": [
+        "Product Upload tab activates",
+        "Upload form loads with all fields",
+        "Form validation works correctly",
+        "GenAI assistance button functional",
+        "File upload functionality works"
+      ],
+      "postconditions": "Product Upload tab is active",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_010",
+      "title": "Verify Interest Expressed tab functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, interest data exists",
+      "steps": [
+        "Login as approved AP",
+        "Click Interest Expressed tab",
+        "Verify interest list displays",
+        "Test filtering and sorting options",
+        "Verify contact details reveal functionality"
+      ],
+      "expectedResults": [
+        "Interest Expressed tab activates",
+        "Interest list loads with data",
+        "Filtering by state/disability type works",
+        "Sorting options function correctly",
+        "Contact details reveal after interaction"
+      ],
+      "postconditions": "Interest Expressed tab is active",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_011",
+      "title": "Verify Queries tab functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, queries exist in system",
+      "steps": [
+        "Login as approved AP",
+        "Click Queries tab",
+        "Verify queries list displays",
+        "Test response functionality",
+        "Verify response submission workflow"
+      ],
+      "expectedResults": [
+        "Queries tab activates",
+        "Queries list loads with pending items",
+        "Response form appears for each query",
+        "Response submission works correctly",
+        "Status updates to 'Pending Admin Approval'"
+      ],
+      "postconditions": "Queries tab is active",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_012",
+      "title": "Verify Reviews & Ratings tab functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, reviews exist in system",
+      "steps": [
+        "Login as approved AP",
+        "Click Reviews & Ratings tab",
+        "Verify reviews list displays",
+        "Test filtering by product/rating",
+        "Verify response to reviews functionality"
+      ],
+      "expectedResults": [
+        "Reviews & Ratings tab activates",
+        "Reviews list loads with ratings",
+        "Product filtering works correctly",
+        "Rating filtering functions properly",
+        "Response to reviews submission works"
+      ],
+      "postconditions": "Reviews & Ratings tab is active",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_013",
+      "title": "Verify notification bell icon functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, notifications exist",
+      "steps": [
+        "Login as approved AP",
+        "Verify bell icon displays in header",
+        "Check unread notification count badge",
+        "Click bell icon to open popup",
+        "Verify popup displays notifications"
+      ],
+      "expectedResults": [
+        "Bell icon visible in header",
+        "Unread count badge shows correct number",
+        "Popup opens on bell icon click",
+        "Recent notifications displayed in popup",
+        "Popup closes when clicking outside"
+      ],
+      "postconditions": "Notification popup is visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_014",
+      "title": "Verify notification popup interactions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, notification popup is open",
+      "steps": [
+        "Open notification popup",
+        "Click 'Mark as read' on individual notification",
+        "Click 'Mark all as read' button",
+        "Click 'View All Notifications' link",
+        "Verify navigation to detailed view"
+      ],
+      "expectedResults": [
+        "Individual notifications marked as read",
+        "All notifications marked as read simultaneously",
+        "Unread count updates correctly",
+        "Navigation to detailed notification centre works",
+        "Popup state persists appropriately"
+      ],
+      "postconditions": "Notifications are marked as read",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_015",
+      "title": "Verify detailed notification centre",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in, notification centre is accessible",
+      "steps": [
+        "Navigate to detailed notification centre",
+        "Verify filter tabs (All, Unread, Interest, Updates, Reviews, Admin)",
+        "Test filtering by notification type",
+        "Verify notification actions work",
+        "Test back to dashboard navigation"
+      ],
+      "expectedResults": [
+        "All filter tabs display with counts",
+        "Filtering works correctly for each type",
+        "Notification actions (read/dismiss) function",
+        "Back button returns to dashboard",
+        "Notification counts update after actions"
+      ],
+      "postconditions": "User is in notification centre",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_016",
+      "title": "Verify notification real-time updates",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Simulate new notification trigger",
+        "Verify bell icon count updates",
+        "Verify popup shows new notification",
+        "Test notification auto-refresh"
+      ],
+      "expectedResults": [
+        "New notifications appear in real-time",
+        "Bell icon count updates automatically",
+        "Popup refreshes with new notifications",
+        "Notification timestamps are accurate",
+        "No page refresh required for updates"
+      ],
+      "postconditions": "Dashboard remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_017",
+      "title": "Verify mobile viewport functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Resize browser to mobile viewport (375px)",
+        "Verify dashboard layout adapts",
+        "Test navigation menu functionality",
+        "Verify widgets display correctly"
+      ],
+      "expectedResults": [
+        "Dashboard layout responsive on mobile",
+        "Navigation collapses to hamburger menu",
+        "Widgets stack vertically",
+        "All functionality remains accessible",
+        "No horizontal scrolling required"
+      ],
+      "postconditions": "Dashboard is accessible on mobile viewport",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_018",
+      "title": "Verify tablet viewport functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Resize browser to tablet viewport (768px)",
+        "Verify layout adaptation",
+        "Test tab navigation",
+        "Verify notification centre functionality"
+      ],
+      "expectedResults": [
+        "Dashboard adapts to tablet viewport",
+        "Tab navigation remains functional",
+        "Widgets display in appropriate grid",
+        "Notification centre works on tablet",
+        "Touch interactions work properly"
+      ],
+      "postconditions": "Dashboard is accessible on tablet viewport",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_019",
+      "title": "Verify network error handling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Simulate network disconnection",
+        "Verify error messages display",
+        "Test retry functionality",
+        "Verify graceful degradation"
+      ],
+      "expectedResults": [
+        "Network error messages appear",
+        "Retry buttons function correctly",
+        "Cached data displayed when available",
+        "User informed of connectivity issues",
+        "Functionality restored when network returns"
+      ],
+      "postconditions": "Dashboard recovers after network restoration",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_020",
+      "title": "Verify empty state handling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "New AP account with no data is available",
+      "steps": [
+        "Login as new AP with no data",
+        "Verify empty state messages",
+        "Test call-to-action buttons",
+        "Verify guidance for new users",
+        "Test first-time user experience"
+      ],
+      "expectedResults": [
+        "Empty state messages are helpful",
+        "Call-to-action buttons work correctly",
+        "Clear guidance provided for new users",
+        "Links to relevant sections function",
+        "Onboarding flow is intuitive"
+      ],
+      "postconditions": "Empty state is displayed correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM18_021",
+      "title": "Verify session timeout handling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-18",
+      "preconditions": "Approved AP is logged in",
+      "steps": [
+        "Login as approved AP",
+        "Wait for session timeout warning",
+        "Test session extension functionality",
+        "Verify automatic logout behavior",
+        "Test re-login after timeout"
+      ],
+      "expectedResults": [
+        "Session timeout warning appears",
+        "Session extension works correctly",
+        "Automatic logout occurs after timeout",
+        "User redirected to login page",
+        "Re-login restores dashboard state"
+      ],
+      "postconditions": "Session is handled gracefully",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "jiraStory": "SCRUM-363",
+  "title": "Caregiver - View & Manage PwDs (End-to-End) - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the 'My PwDs' page on the AT/AD platform where caregivers view and manage PwDs under their care. Covers PwD limit display, slot tracking, PwD card information (name, contact, disability type, date added, View Profile CTA), Add New PwD button visibility, Add Another PwD card with remaining count, and edge cases including count mismatch sync, admin-removed PwD slot recovery, and session expiry redirect. Related stories SCRUM-375 (limit enforcement), SCRUM-378 (profile management), and SCRUM-381 (delete PwD) provide additional context.",
+  "scope": {
+    "inScope": [
+      "My PwDs page display with PwD limit and slot tracking",
+      "PwD card content: Name, Contact details (mobile/email), Disability type, Date added, View Profile CTA",
+      "Add New PwD button visibility based on remaining slots",
+      "Add Another PwD card with remaining count display",
+      "PwD count mismatch refresh sync",
+      "Admin-removed PwD slot recovery",
+      "Session expiry redirect to sign-in",
+      "Empty state when no PwDs are added",
+      "Multiple PwD cards display and layout"
+    ],
+    "outOfScope": [
+      "PwD registration flow (covered in SCRUM-372)",
+      "PwD profile view details (covered in SCRUM-378)",
+      "PwD deletion flow (covered in SCRUM-381)",
+      "PwD limit enforcement logic (covered in SCRUM-375)",
+      "Aadhaar-based PwD lookup (covered in SCRUM-366)",
+      "Backend API internals"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_MY_PWD_001",
+      "title": "Verify My PwDs page displays PwD limit and slots used/remaining",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "My PwDs Page Display",
+      "preconditions": "Caregiver is registered, logged in, and has at least one PwD added",
+      "steps": [
+        "1. Log in as caregiver with existing PwDs",
+        "2. Navigate to 'My PwDs' page",
+        "3. Verify the page loads successfully",
+        "4. Locate the PwD limit indicator (e.g., max 5)",
+        "5. Verify the total PwD limit is displayed",
+        "6. Verify the number of slots used is displayed",
+        "7. Verify the number of remaining slots is displayed",
+        "8. Verify the count matches the actual number of PwD cards shown"
+      ],
+      "testData": {
+        "caregiverEmail": "caregiver@example.com",
+        "expectedPwDLimit": 5,
+        "expectedPwDsAdded": 2,
+        "expectedSlotsRemaining": 3
+      },
+      "expectedResults": [
+        "My PwDs page loads without errors",
+        "PwD limit is clearly displayed (e.g., '5 PwDs allowed')",
+        "Slots used count matches actual PwD cards on page",
+        "Remaining slots count is accurate (limit - used)",
+        "Limit and slot information is prominently visible"
+      ],
+      "postconditions": "My PwDs page is displayed with accurate limit and slot information",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_002",
+      "title": "Verify each PwD card displays name, contact, disability type, date added, and View Profile CTA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "PwD Card Content",
+      "preconditions": "Caregiver is logged in with at least one PwD registered",
+      "steps": [
+        "1. Navigate to 'My PwDs' page",
+        "2. Locate the first PwD card",
+        "3. Verify PwD Name is displayed on the card",
+        "4. Verify Contact details are displayed (mobile number)",
+        "5. Verify Contact details are displayed (email address)",
+        "6. Verify Disability type is displayed",
+        "7. Verify Date added is displayed",
+        "8. Verify 'View Profile' CTA button/link is present",
+        "9. If multiple PwDs exist, verify all cards show the same information structure",
+        "10. Verify card layout is consistent across all PwD cards"
+      ],
+      "testData": {
+        "expectedPwDName": "Rajesh Kumar",
+        "expectedMobile": "9876543210",
+        "expectedEmail": "rajesh.kumar@example.com",
+        "expectedDisabilityType": "Visual Impairment",
+        "expectedDateAdded": "2026-03-15"
+      },
+      "expectedResults": [
+        "PwD Name is clearly visible on the card",
+        "Mobile number is displayed in contact details",
+        "Email address is displayed in contact details",
+        "Disability type is shown with clear label or tag",
+        "Date added is displayed in readable format",
+        "'View Profile' CTA is visible and clickable",
+        "All PwD cards follow the same layout structure"
+      ],
+      "postconditions": "PwD card content is verified for completeness",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_003",
+      "title": "Verify 'Add New PwD' button is visible when slots remain",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Add New PwD",
+      "preconditions": "Caregiver is logged in; PwD count is below the limit",
+      "steps": [
+        "1. Navigate to 'My PwDs' page",
+        "2. Verify current PwD count is below the limit",
+        "3. Locate the 'Add New PwD' button",
+        "4. Verify the button is visible and enabled",
+        "5. Click the 'Add New PwD' button",
+        "6. Verify user is navigated to PwD registration/add flow",
+        "7. Navigate back to My PwDs page",
+        "8. Verify the button is still visible"
+      ],
+      "testData": {
+        "currentPwDCount": 2,
+        "pwdLimit": 5
+      },
+      "expectedResults": [
+        "'Add New PwD' button is visible when slots remain",
+        "Button is enabled and clickable",
+        "Clicking the button navigates to PwD add/registration flow",
+        "Button remains visible as long as slots are available"
+      ],
+      "postconditions": "Add New PwD button visibility and functionality verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_004",
+      "title": "Verify 'Add Another PwD' card shows remaining slot count",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Add Another PwD Card",
+      "preconditions": "Caregiver is logged in with at least one PwD but below the limit",
+      "steps": [
+        "1. Navigate to 'My PwDs' page",
+        "2. Locate the 'Add Another PwD' card among the PwD cards",
+        "3. Verify the card displays the remaining slot count",
+        "4. Verify the remaining count is accurate (limit - current PwDs)",
+        "5. Add a new PwD (if possible)",
+        "6. Return to My PwDs page",
+        "7. Verify the remaining count has decreased by 1",
+        "8. Verify the card is visually distinct from PwD cards"
+      ],
+      "testData": {
+        "currentPwDCount": 2,
+        "pwdLimit": 5,
+        "expectedRemaining": 3
+      },
+      "expectedResults": [
+        "'Add Another PwD' card is visible among PwD cards",
+        "Remaining slot count is displayed (e.g., '3 slots remaining')",
+        "Count is accurate and matches (limit - used)",
+        "Count updates dynamically when PwDs are added",
+        "Card is visually distinct from PwD information cards"
+      ],
+      "postconditions": "Add Another PwD card with remaining count is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_005",
+      "title": "Verify View Profile CTA navigates to PwD profile details",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "PwD Card Interactions",
+      "preconditions": "Caregiver is logged in with at least one PwD registered",
+      "steps": [
+        "1. Navigate to 'My PwDs' page",
+        "2. Locate a PwD card",
+        "3. Click the 'View Profile' CTA on the card",
+        "4. Verify user is navigated to the PwD profile details page",
+        "5. Verify the profile page displays the correct PwD information",
+        "6. Verify the PwD name on profile matches the card",
+        "7. Navigate back to My PwDs page",
+        "8. Verify My PwDs page loads correctly after returning"
+      ],
+      "testData": {
+        "pwdName": "Rajesh Kumar"
+      },
+      "expectedResults": [
+        "'View Profile' CTA is clickable on each PwD card",
+        "Clicking navigates to the correct PwD's profile page",
+        "Profile page displays matching PwD information",
+        "Navigation back to My PwDs works correctly"
+      ],
+      "postconditions": "View Profile navigation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_006",
+      "title": "Verify My PwDs page with maximum PwD limit reached",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Limit Reached State",
+      "preconditions": "Caregiver has added the maximum number of PwDs (e.g., 5 of 5)",
+      "steps": [
+        "1. Log in as caregiver with maximum PwDs registered",
+        "2. Navigate to 'My PwDs' page",
+        "3. Verify all PwD cards are displayed",
+        "4. Verify slots used shows maximum (e.g., 5/5)",
+        "5. Verify remaining slots shows 0",
+        "6. Verify 'Add New PwD' button is NOT visible or is disabled",
+        "7. Verify 'Add Another PwD' card is NOT visible or shows 0 remaining",
+        "8. Verify an informational message about limit reached is shown (if applicable)"
+      ],
+      "testData": {
+        "currentPwDCount": 5,
+        "pwdLimit": 5,
+        "expectedRemaining": 0
+      },
+      "expectedResults": [
+        "All PwD cards are displayed correctly",
+        "Slots used shows maximum count",
+        "Remaining slots shows 0",
+        "'Add New PwD' button is hidden or disabled",
+        "'Add Another PwD' card is hidden or shows 0 remaining",
+        "Informational message may indicate limit reached"
+      ],
+      "postconditions": "Maximum limit state is verified on My PwDs page",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MY_PWD_007",
+      "title": "Verify My PwDs page with no PwDs added (empty state)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Empty State",
+      "preconditions": "Caregiver is registered and logged in; No PwDs have been added yet",
+      "steps": [
+        "1. Log in as caregiver with zero PwDs",
+        "2. Navigate to 'My PwDs' page",
+        "3. Verify the page loads without errors",
+        "4. Verify an empty state message is displayed (e.g., 'No PwDs added yet' or 'Add Your First PwD')",
+        "5. Verify PwD limit is still displayed (e.g., 0/5)",
+        "6. Verify 'Add New PwD' button is visible and enabled",
+        "7. Verify remaining slots shows full limit (e.g., 5 remaining)",
+        "8. Click 'Add New PwD' button",
+        "9. Verify navigation to PwD add flow"
+      ],
+      "testData": {
+        "currentPwDCount": 0,
+        "pwdLimit": 5,
+        "expectedRemaining": 5
+      },
+      "expectedResults": [
+        "Empty state message is displayed clearly",
+        "PwD limit information is shown (0 used, 5 remaining)",
+        "'Add New PwD' button is visible and enabled",
+        "Clicking Add New PwD navigates to PwD registration flow",
+        "No broken UI elements or error messages"
+      ],
+      "postconditions": "Empty state display is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MY_PWD_008",
+      "title": "Verify multiple PwD cards display correctly with different data",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Multiple PwD Cards",
+      "preconditions": "Caregiver has 3+ PwDs registered with different disability types and dates",
+      "steps": [
+        "1. Log in as caregiver with multiple PwDs",
+        "2. Navigate to 'My PwDs' page",
+        "3. Verify all PwD cards are displayed",
+        "4. Verify each card shows unique PwD name",
+        "5. Verify each card shows correct contact details for that PwD",
+        "6. Verify each card shows the correct disability type",
+        "7. Verify each card shows the correct date added",
+        "8. Verify each card has its own 'View Profile' CTA",
+        "9. Verify cards are laid out consistently without overlap",
+        "10. Verify slot count matches the number of cards displayed"
+      ],
+      "testData": {
+        "pwds": [
+          {"name": "Rajesh Kumar", "disability": "Visual Impairment", "dateAdded": "2026-03-10"},
+          {"name": "Priya Sharma", "disability": "Mobility Impairment", "dateAdded": "2026-03-15"},
+          {"name": "Amit Patel", "disability": "Hearing Impairment", "dateAdded": "2026-03-20"}
+        ]
+      },
+      "expectedResults": [
+        "All PwD cards are displayed with correct individual data",
+        "Each card shows unique name, contact, disability type, and date",
+        "Each card has a functional View Profile CTA",
+        "Cards are laid out consistently without visual issues",
+        "Slot count matches number of cards"
+      ],
+      "postconditions": "Multiple PwD card display is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_009",
+      "title": "Verify PwD count mismatch is resolved by page refresh/sync",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Edge Case - Count Mismatch",
+      "preconditions": "Caregiver is on My PwDs page; A PwD has been added or removed in another session/tab",
+      "steps": [
+        "1. Log in as caregiver and navigate to My PwDs page",
+        "2. Note the current PwD count and cards displayed",
+        "3. In a separate session/tab, add or remove a PwD (simulating concurrent change)",
+        "4. Return to the original My PwDs page",
+        "5. Refresh the page",
+        "6. Verify the PwD count updates to reflect the change",
+        "7. Verify the PwD cards match the updated count",
+        "8. Verify remaining slots are recalculated correctly"
+      ],
+      "testData": {
+        "initialCount": 2,
+        "expectedCountAfterSync": 3
+      },
+      "expectedResults": [
+        "Page refresh syncs the PwD count with backend data",
+        "PwD cards match the updated count after refresh",
+        "Remaining slots are recalculated correctly",
+        "No stale data is displayed after refresh"
+      ],
+      "postconditions": "Count mismatch sync behavior is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MY_PWD_010",
+      "title": "Verify slot count updates dynamically after adding a new PwD",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-363",
+      "category": "Dynamic Slot Updates",
+      "preconditions": "Caregiver is logged in with available PwD slots",
+      "steps": [
+        "1. Navigate to My PwDs page",
+        "2. Note current PwD count and remaining slots (e.g., 2/5, 3 remaining)",
+        "3. Click 'Add New PwD' button",
+        "4. Complete the PwD registration flow",
+        "5. Return to My PwDs page",
+        "6. Verify PwD count has increased by 1 (e.g., 3/5)",
+        "7. Verify remaining slots decreased by 1 (e.g., 2 remaining)",
+        "8. Verify the new PwD card is displayed with correct information",
+        "9. Verify 'Add Another PwD' card shows updated remaining count"
+      ],
+      "testData": {
+        "initialCount": 2,
+        "expectedCountAfterAdd": 3,
+        "expectedRemainingAfterAdd": 2
+      },
+      "expectedResults": [
+        "PwD count increases by 1 after adding a new PwD",
+        "Remaining slots decrease by 1",
+        "New PwD card appears with correct information",
+        "Add Another PwD card shows updated remaining count",
+        "All counts are accurate and consistent"
+      ],
+      "postconditions": "Dynamic slot update after PwD addition is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_my_pwds_page_limit_slots": {
+      "description": "My PwDs page displays PwD limit, slots used and remaining",
+      "testCases": ["TC_MY_PWD_001", "TC_MY_PWD_006", "TC_MY_PWD_007"]
+    },
+    "AC2_pwd_card_content": {
+      "description": "Each PwD card shows Name, Contact details, Disability type, Date added, View Profile CTA",
+      "testCases": ["TC_MY_PWD_002", "TC_MY_PWD_005", "TC_MY_PWD_008"]
+    },
+    "AC3_add_new_pwd_button": {
+      "description": "Add New PwD button is visible if slots remain",
+      "testCases": ["TC_MY_PWD_003", "TC_MY_PWD_006"]
+    },
+    "AC4_add_another_pwd_card": {
+      "description": "Add Another PwD card shows remaining count",
+      "testCases": ["TC_MY_PWD_004", "TC_MY_PWD_010"]
+    },
+    "EC1_count_mismatch_sync": {
+      "description": "PwD count mismatch → refresh syncs data",
+      "testCases": ["TC_MY_PWD_009"]
+    }
+  },
+  "test_data_requirements": {
+    "caregiver_accounts": [
+      {
+        "scenario": "Multiple PwDs",
+        "email": "caregiver.multi@example.com",
+        "pwdCount": 3,
+        "pwdLimit": 5
+      },
+      {
+        "scenario": "Maximum PwDs",
+        "email": "caregiver.max@example.com",
+        "pwdCount": 5,
+        "pwdLimit": 5
+      },
+      {
+        "scenario": "No PwDs (empty state)",
+        "email": "caregiver.empty@example.com",
+        "pwdCount": 0,
+        "pwdLimit": 5
+      }
+    ],
+    "pwd_profiles": [
+      {
+        "name": "Rajesh Kumar",
+        "mobile": "9876543210",
+        "email": "rajesh.kumar@example.com",
+        "disabilityType": "Visual Impairment",
+        "dateAdded": "2026-03-10"
+      },
+      {
+        "name": "Priya Sharma",
+        "mobile": "9876543211",
+        "email": "priya.sharma@example.com",
+        "disabilityType": "Mobility Impairment",
+        "dateAdded": "2026-03-15"
+      },
+      {
+        "name": "Amit Patel",
+        "mobile": "9876543212",
+        "email": "amit.patel@example.com",
+        "disabilityType": "Hearing Impairment",
+        "dateAdded": "2026-03-20"
+      }
+    ],
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver registration and sign-in flows are functional (SCRUM-357, SCRUM-360)",
+      "PwD registration flow is functional for adding PwDs (SCRUM-372)",
+      "PwD limit is configured as 5 in QA environment",
+      "Multiple caregiver accounts with varying PwD counts are available"
+    ],
+    "dependencies": [
+      "SCRUM-357: Caregiver registration must be functional to create test accounts",
+      "SCRUM-360: Caregiver sign-in must work for accessing My PwDs page",
+      "SCRUM-372: PwD registration flow needed for adding PwDs during testing",
+      "SCRUM-375: PwD limit enforcement logic must be implemented",
+      "SCRUM-378: PwD profile view must be available for View Profile CTA testing",
+      "SCRUM-381: PwD deletion must be available for slot recovery testing"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What is the exact PwD limit per caregiver? Is it always 5 or configurable?",
+      "impact": "Affects all test cases involving limit and slot calculations"
+    },
+    {
+      "question": "Is the 'Add Another PwD' card a separate visual element from the 'Add New PwD' button, or are they the same?",
+      "impact": "Affects TC_MY_PWD_003 and TC_MY_PWD_004 - may be testing the same element"
+    },
+    {
+      "question": "What date format is used for 'Date added' on PwD cards?",
+      "impact": "Affects TC_MY_PWD_002 expected date format verification"
+    },
+    {
+      "question": "Does the page auto-refresh to sync data, or does the user need to manually refresh?",
+      "impact": "Affects TC_MY_PWD_009 sync behavior"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_MY_PWD_001-004) should be executed first - core page display and slot tracking",
+      "High priority tests (005-010) cover card interactions, limit states, empty state, multiple cards, sync, dynamic slot updates"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 10,
+      "estimated_hours": "12-16 hours for full manual testing",
+      "estimated_automation_hours": "20-25 hours for test automation",
+      "critical_path": "4-6 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "Multiple caregiver accounts with varying PwD counts (0, 2-3, 5)",
+      "PwD registration flow functional for adding PwDs"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "Caregiver sign-in flow (SCRUM-360)",
+      "PwD registration flow (SCRUM-372)",
+      "PwD limit enforcement (SCRUM-375)",
+      "PwD profile view (SCRUM-378)",
+      "PwD deletion (SCRUM-381)"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 10,
+    "coverage": "100% of acceptance criteria covered; edge cases for admin removal, session expiry, partial data, and accessibility removed"
+  }
+}

@@ -1,0 +1,594 @@
+{
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "testProduct": {
+    "name": "Smart Mobility Walker",
+    "category": "Mobility Aids",
+    "shortDescription": "A smart walker designed for enhanced mobility",
+    "status": "Approved"
+  },
+  "draftProduct": {
+    "name": "Draft Test Product",
+    "status": "Draft"
+  },
+  "preview": {
+    "buttons": {
+      "viewProduct": "View Details",
+      "edit": "Edit",
+      "viewLive": "View Live Product"
+    },
+    "sections": {
+      "basicInfo": "Basic Information",
+      "specifications": "Specifications",
+      "availability": "Availability",
+      "compliance": "Accessibility Compliance"
+    }
+  },
+  "expected": {
+    "previewModeIndicator": "Preview Mode",
+    "publicTemplateUsed": true,
+    "editButtonVisible": true,
+    "complianceBadgeVisible": true,
+    "viewDetailsOptionVisible": true,
+    "productManagementUrlPattern": "partner/product-management"
+  },
+  "TC_PREVIEW_001": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "expected": {
+      "viewDetailsOptionVisible": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_008": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "products": [
+      {
+        "name": "goggles",
+        "shortDescription": "ioquroop iadodojo",
+        "detailedDescription": "hfdhioi kHDSFKHIO KHOIFSD"
+      },
+      {
+        "name": "Wheelchair 16-03",
+        "shortDescription": "Short description",
+        "detailedDescription": "ASDCFVBN BGFDESWAQZSXCVBN"
+      }
+    ],
+    "expected": {
+      "shortDescriptionsDisplayCorrectly": true,
+      "cardLayoutIntact": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_016": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "productWithImages": {
+      "name": "Wheelchair 16-03"
+    },
+    "productWithoutImages": {
+      "name": "goggles"
+    },
+    "expected": {
+      "galleryVisible": true,
+      "navigationControlsExist": true,
+      "imagesAccessible": true,
+      "indicatorButtonsVisible": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_021": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "productWithAllAreasAvailability": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "availabilitySectionVisible": true,
+      "hasQuantityInfo": true,
+      "quantityDisplayed": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_030": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "goggles"
+    },
+    "expected": {
+      "editOptionVisible": true,
+      "editFormOpens": true,
+      "hasProductData": true,
+      "fieldsEditable": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_043": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "dialogHasAccessibleName": true,
+      "sectionsHaveHeadings": true,
+      "imagesHaveAltText": true,
+      "interactiveElementsHaveLabels": true,
+      "contentIsAnnounced": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_002": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "previewLoads": true,
+      "publicViewDisplayed": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_005": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "productNameDisplayed": true,
+      "nameMatchesEntered": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_006": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03",
+      "shortDescription": "Short description"
+    },
+    "expected": {
+      "shortDescriptionVisible": true,
+      "textLengthCorrect": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_007": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "primaryImageVisible": true,
+      "aspectRatioMaintained": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_009": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "productNameDisplayed": true,
+      "categoryDisplayed": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_010": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "shortDescriptionDisplayed": true,
+      "detailedDescriptionDisplayed": true,
+      "descriptionsComplete": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_011": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "mainImageDisplayed": true,
+      "additionalImagesVisible": true,
+      "imageQualityMaintained": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_012": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "specificationsSectionVisible": true,
+      "specificationsDisplayed": true,
+      "formattingClean": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_013": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "availabilitySectionVisible": true,
+      "geographicalAvailabilityShown": true,
+      "quantityOrMadeToOrderShown": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_015": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "mainImageAtTop": true,
+      "imageProperlySized": true,
+      "imageQualityMaintained": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_017": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "imagesHaveAltText": true,
+      "altTextDescriptive": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_020": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "specificationsSectionVisible": true,
+      "layoutClean": true,
+      "keyValueFormat": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_042": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "elementsKeyboardFocusable": true,
+      "tabOrderLogical": true,
+      "enterSpaceActivates": true,
+      "noKeyboardTraps": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_046": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "focusIndicatorsVisible": true,
+      "indicatorsClearlyDistinguishable": true,
+      "allElementsShowFocus": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_003": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "expected": {
+      "viewProductAvailable": true,
+      "previewAccessible": true,
+      "productManagementUrlPattern": "partner/product-management",
+      "productUploadUrlPattern": "partner/product-upload"
+    }
+  },
+  "TC_PREVIEW_004": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "viewProductAvailable": true,
+      "previewShowsUpdatedContent": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_014": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "demoVideoSectionVisible": true,
+      "videoPlayerFunctional": true,
+      "videoControlsAccessible": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_018": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "videoPlays": true,
+      "captionsAvailable": true,
+      "captionsSynchronized": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_019": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "transcriptAccessible": true,
+      "transcriptMatchesVideo": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_022": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "availabilitySectionVisible": true,
+      "selectedRegionsDisplayed": true,
+      "allRegionsListed": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_023": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "quantityVisible": true,
+      "quantityMatchesEntered": true,
+      "formatClear": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_024": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "madeToOrderLabelVisible": true,
+      "labelProminentlyDisplayed": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_025": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "screenReaderNavigatesSmooth": true,
+      "allContentAnnounced": true,
+      "logicalReadingOrder": true,
+      "noContentSkipped": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_026": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "altTextIndicatorVisible": true,
+      "indicatorShowsCorrectStatus": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_027": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "headingHierarchyLogical": true,
+      "h1UsedForMainTitle": true,
+      "noSkippedLevels": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_028": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "textHasSufficientContrast": true,
+      "meetsWCAGAA": true,
+      "allTextReadable": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_029": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "accessibilityBadgeVisible": true,
+      "badgeShowsStatus": true,
+      "statusReflectsCompliance": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_031": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "editModeActive": true,
+      "autoSaveOccurs": true,
+      "changesPreserved": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_032": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "editModeAccessible": true,
+      "descriptionsModifiable": true,
+      "changesSaved": true,
+      "previewShowsUpdated": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_033": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "editModeAccessible": true,
+      "imageReplacementPossible": true,
+      "newImageSaved": true,
+      "previewShowsUpdated": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_034": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "editModeAccessible": true,
+      "specificationsUpdatable": true,
+      "changesSaved": true,
+      "previewShowsUpdated": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_035": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "viewLiveProductLinkVisible": true,
+      "linkOpensLivePage": true,
+      "productAppearsAsPwDSees": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_036": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "livePageLoads": true,
+      "contentMatchesApproved": true,
+      "allDetailsAccurate": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_037": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "dashboardLoads": true,
+      "publishedItemsListed": true,
+      "viewLiveProductVisible": true,
+      "linkWorks": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_038": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "errorMessageShown": true,
+      "messageExplainsIssue": true,
+      "userUnderstandsProblem": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_039": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "errorMessageShown": true,
+      "messageIndicatesFormat": true,
+      "userUnderstandsIssue": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_040": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "reUploadOptionVisible": true,
+      "uploadInterfaceOpens": true,
+      "userCanCorrectIssue": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_041": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "errorMessageDisplayed": true,
+      "messageClearAndHelpful": true,
+      "retryOptionAvailable": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_044": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "tooltipsAppearOnHover": true,
+      "tooltipsExplainPurpose": true,
+      "tooltipsAccessibleViaKeyboard": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  },
+  "TC_PREVIEW_045": {
+    "url": "https://hub-ui-admin-qa.swarajability.org",
+    "product": {
+      "name": "Wheelchair 16-03"
+    },
+    "expected": {
+      "meetsWCAG21AA": true,
+      "worksWithAssistiveTech": true,
+      "noAccessibilityBarriers": true,
+      "productManagementUrlPattern": "partner/product-management"
+    }
+  }
+}

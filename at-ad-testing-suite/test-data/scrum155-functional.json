@@ -1,0 +1,66 @@
+{
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "profileUrl": "https://hub-ui-admin-qa.swarajability.org/partner/profile",
+  "expected": {
+    "pageHeading": "Assistive Partner Profile",
+    "pageSubheading": "Manage your organization details and account information",
+    "orgCard": {
+      "logoAltText": "Organization Logo"
+    },
+    "accountStatus": {
+      "heading": "Account Status",
+      "statusLabel": "Status",
+      "verificationLabel": "Verification",
+      "memberSinceLabel": "Member Since"
+    },
+    "documents": {
+      "heading": "Documents",
+      "emptyStateMessage": "No documents uploaded yet."
+    },
+    "orgDetails": {
+      "heading": "Organization Details",
+      "mandatoryFields": ["Organization Name *", "Organization Type *", "Organization Description *"],
+      "optionalFields": ["GST Number", "PAN Number"]
+    },
+    "contactInfo": {
+      "heading": "Contact Information",
+      "contactPersonNameLabel": "Contact Person Name *",
+      "emailAddressLabel": "Email Address *",
+      "phoneNumberLabel": "Phone Number *",
+      "websiteLabel": "Website",
+      "addressLabel": "Address *",
+      "socialMediaLabel": "Social Media Links",
+      "socialMediaNotProvided": "Not provided"
+    },
+    "editMode": {
+      "cancelBtnLabel": "Cancel",
+      "saveChangesBtnLabel": "Save Changes",
+      "successAlertMessage": "Profile updated successfully",
+      "validationAlertMessage": "Please fill in all required fields correctly",
+      "orgDescriptionOriginal": "short description",
+      "orgDescriptionUpdated": "short description updated",
+      "invalidEmail": "invalid-email",
+      "invalidPhone": "abc",
+      "orgTypeOptions": ["Private Limited Company", "Public Limited Company", "Partnership", "Sole Proprietorship", "NGO", "Trust", "Other"]
+    },
+    "uiConsistency": {
+      "readOnlyBg": "rgb(249, 250, 251)",
+      "readOnlyBorder": "1px solid rgb(229, 231, 235)",
+      "mobileViewport": { "width": 375, "height": 667 },
+      "tabletViewport": { "width": 768, "height": 1024 }
+    },
+    "security": {
+      "ownProfileEmail": "vendor23@mailto.plus"
+    },
+    "navigation": {
+      "dashboard": "Dashboard",
+      "helpResources": "Help & Resources",
+      "profile": "Profile",
+      "logout": "Logout"
+    }
+  }
+}

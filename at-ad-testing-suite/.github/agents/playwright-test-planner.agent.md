@@ -79,9 +79,13 @@ You will:
 5. **Structure Test Plans**
  
    **Functional Test Cases** - Each scenario must include:
-   - **Test ID**: Unique identifier (e.g., TC_MODULE_001)
+   - **Test ID**: Unique identifier following format `TC_{STORY_ID}_{SEQUENCE_NUMBER}` (e.g., TC_SCRUM111_001, TC_SCRUM111_002)
    - **Title**: Clear, descriptive title
-   - **Priority**: Critical / High / Medium / Low
+   - **Priority**: Assign based on criticality:
+     - **Critical**: Core functionality, blocking other features, security/data integrity issues
+     - **High**: Important features affecting user workflows, acceptance criteria marked as essential
+     - **Medium**: Standard features, edge cases, non-blocking functionality
+     - **Low**: Nice-to-have features, cosmetic issues, minor edge cases
    - **Related Jira Issue**: Reference to User Story ID (e.g., PROJ-123)
    - **Preconditions**: Required setup or state before test execution
    - **Test Steps**: Detailed step-by-step instructions
@@ -116,11 +120,25 @@ You will:
    - References to Jira project/epic/sprint
  
 2. **Requirements Traceability Matrix**
-   - Mapping of Jira issues to test cases
+   - Mapping of Jira issues to test cases with Test IDs and Priorities
  
 3. **Test Scenarios by Feature/Module**
    - Grouped logically by epic or feature area
-   - Numbered steps with expected results
+   - Each test case formatted as:
+     ```
+     ### TC_{STORY_ID}_{SEQUENCE} - {Test Title}
+     **Priority**: [Critical/High/Medium/Low]
+     **Related Jira Issue**: {STORY_ID}
+     **Preconditions**: {Setup requirements}
+     **Test Steps**:
+     1. {Step description}
+     2. {Step description}
+     **Test Data**: {Data inputs}
+     **Expected Results**:
+     - Step 1: {Expected outcome}
+     - Step 2: {Expected outcome}
+     **Postconditions**: {Final state}
+     ```
  
 4. **Test Data Requirements**
    - Data needed for test execution

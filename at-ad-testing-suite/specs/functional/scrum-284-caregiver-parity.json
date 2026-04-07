@@ -1,0 +1,415 @@
+{
+  "jiraStory": "SCRUM-284",
+  "title": "Caregiver Feature Parity & End-to-End Flow Validation - Functional Test Plan",
+  "overview": "Comprehensive functional testing of caregiver feature parity with PwD journeys on the AT/AD platform. This test plan validates that caregivers have access to all relevant PwD features including product browsing, detail viewing, recommendation receipt, interest expression, vendor contact, and notifications. Testing includes feature parity comparison, tracking and analytics validation, edge case handling, and QA sign-off verification. The plan ensures caregivers experience seamless platform functionality with clearly communicated exclusions and consistent tracking across all user actions.",
+  "scope": {
+    "inScope": [
+      "Product browsing functionality for caregivers",
+      "Product details viewing",
+      "Device recommendation system",
+      "Interest expression and vendor contact",
+      "Notifications and updates delivery",
+      "Analytics and activity tracking for caregiver actions",
+      "Platform usage metrics collection",
+      "Feature parity verification between caregiver and PwD journeys",
+      "Caregiver-specific feature exclusions and differences",
+      "Communication of excluded/different features",
+      "End-to-end flow validation",
+      "Regression testing scope"
+    ],
+    "outOfScope": [
+      "Backend API implementation details",
+      "Database schema design",
+      "Payment processing for caregivers (if inapplicable)",
+      "Admin panel features",
+      "Analytics data visualization/reporting tools"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_PARITY_001",
+      "title": "Verify caregiver can access product browsing feature (PwD feature parity)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-284",
+      "category": "Feature Parity - Product Browsing",
+      "preconditions": "Caregiver account is created and logged in; PwD account exists and has access to product browsing; Product catalog is populated with test data",
+      "steps": [
+        "1. Log in as caregiver user",
+        "2. Navigate to main dashboard or home page",
+        "3. Locate 'Browse Products' or 'AT/AD Products' section",
+        "4. Click on products browsing section",
+        "5. Verify products are displayed in list or grid view",
+        "6. Verify product list contains at least 5+ products",
+        "7. Verify each product shows basic information (name, category, image)",
+        "8. Test pagination or 'Load More' functionality if available",
+        "9. Log out and log in as PwD user",
+        "10. Access same product browsing section as PwD",
+        "11. Compare product list between caregiver and PwD views",
+        "12. Verify both views show identical product information"
+      ],
+      "testData": {
+        "caregiverEmail": "caregiver@example.com",
+        "caregiverPassword": "SecurePass@123",
+        "pwdEmail": "pwd@example.com",
+        "pwdPassword": "SecurePass@123",
+        "expectedProductCount": "minimum 5 products"
+      },
+      "expectedResults": [
+        "Caregiver can successfully navigate to product browsing section",
+        "Product list loads without errors",
+        "All products visible to PwD are also visible to caregiver",
+        "Product information (name, category, image) is identical in both views",
+        "No 'Feature Not Available' messages appear for caregiver",
+        "Pagination/lazy-loading works consistently between user types"
+      ],
+      "postconditions": "Caregiver product browsing feature confirmed operational and parity verified with PwD view",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PARITY_002",
+      "title": "Verify caregiver can access product details view (PwD feature parity)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-284",
+      "category": "Feature Parity - Product Details",
+      "preconditions": "Caregiver and PwD are logged in respectively; Product catalog is populated; Both users have access to same products",
+      "steps": [
+        "1. Log in as caregiver",
+        "2. Navigate to product browsing section",
+        "3. Click on first product to view details",
+        "4. Verify product details page loads successfully",
+        "5. Verify all detail fields display correctly (description, specs, price, availability)",
+        "6. Check for images, videos, or multimedia content",
+        "7. Verify 'Related Products' or recommendations section if present",
+        "8. Log out and repeat steps 2-7 as PwD user",
+        "9. Compare all details between caregiver and PwD views",
+        "10. Verify information consistency and completeness"
+      ],
+      "testData": {
+        "productName": "Wheelchair - Manual Standard",
+        "productId": "PROD001",
+        "caregiverEmail": "caregiver@example.com",
+        "pwdEmail": "pwd@example.com"
+      },
+      "expectedResults": [
+        "Caregiver product details page loads without errors",
+        "All product information fields display completely",
+        "Product description, specifications, and pricing visible",
+        "Images/media content loads properly",
+        "Identical information displayed to both caregiver and PwD",
+        "'Related Products' section displays same items for both user types",
+        "No access restrictions or warning messages for caregiver"
+      ],
+      "postconditions": "Caregiver product details feature verified with full feature parity",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PARITY_003",
+      "title": "Verify caregiver can successfully browse products with filters (edge case)",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-284",
+      "category": "Feature Enhancement - Product Discovery",
+      "preconditions": "Caregiver logged in; Product catalog contains diverse products; Filter functionality is available",
+      "steps": [
+        "1. Log in as caregiver",
+        "2. Navigate to product browsing section",
+        "3. Locate filter options (if available):",
+        "   - Category (Mobility, Vision, Hearing, etc.)",
+        "   - Price range",
+        "   - Availability status",
+        "   - Popularity/rating",
+        "4. Apply a category filter (e.g., 'Mobility Aids')",
+        "5. Verify filtered product list displays",
+        "6. Verify all displayed products match selected filter",
+        "7. Apply multiple filters simultaneously",
+        "8. Verify results match all applied filters",
+        "9. Clear filters and verify full product list returns",
+        "10. Test with empty filter results (no matching products)",
+        "11. Verify appropriate message shows for no results"
+      ],
+      "testData": {
+        "filterCategories": [
+          "Mobility Aids",
+          "Vision Aids",
+          "Hearing Aids",
+          "Communication Devices"
+        ],
+        "priceRanges": ["0-5000", "5000-10000", "10000+"]
+      },
+      "expectedResults": [
+        "Filter options are visible and accessible",
+        "Caregiver can select single or multiple filters",
+        "Filter results accurately reflect selected criteria",
+        "Product count updates when filters are applied",
+        "Multiple filters can be applied simultaneously",
+        "Filter combinations work correctly",
+        "'No results' message is clear when no products match",
+        "Filters can be cleared to reset product list"
+      ],
+      "postconditions": "Product filtering feature verified functional for caregiver browsing",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PARITY_004",
+      "title": "Verify caregiver search functionality works with relevant keywords",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-284",
+      "category": "Feature Enhancement - Product Discovery",
+      "preconditions": "Caregiver logged in; Search functionality is implemented; Product database is populated",
+      "steps": [
+        "1. Log in as caregiver",
+        "2. Locate search box in product section",
+        "3. Search for specific product type: 'wheelchair'",
+        "4. Verify search results include relevant products",
+        "5. Verify search is case-insensitive",
+        "6. Search for partial terms: 'mobil' (for mobility aids)",
+        "7. Verify autocomplete suggestions appear if available",
+        "8. Test search with no results: 'xyz123'",
+        "9. Verify 'no results' message displays",
+        "10. Test search performance with complex queries",
+        "11. Verify search results load within acceptable time"
+      ],
+      "testData": {
+        "searchTerms": [
+          "wheelchair",
+          "mobility scooter",
+          "hearing aid",
+          "xyz123"
+        ]
+      },
+      "expectedResults": [
+        "Search box is accessible and functional",
+        "Search returns relevant product results",
+        "Search is case-insensitive or handles both cases",
+        "Autocomplete suggestions enhance user experience",
+        "Empty search results show clear message",
+        "Search performance is acceptable (< 2 seconds)",
+        "Search works with partial keywords",
+        "Search results match user intent"
+      ],
+      "postconditions": "Product search functionality verified for caregiver use",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PARITY_005",
+      "title": "Verify caregiver dashboard displays personalized content",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-284",
+      "category": "User Experience - Personalization",
+      "preconditions": "Caregiver logged in; Dashboard customization is implemented; User has interacted with platform",
+      "steps": [
+        "1. Log in as caregiver with history of platform interactions",
+        "2. Navigate to caregiver dashboard",
+        "3. Verify dashboard displays personalized elements:",
+        "   - Recommended products based on interests",
+        "   - Recently viewed products",
+        "   - Saved/interested products list",
+        "   - Relevant product categories",
+        "4. Verify content is relevant to caregiver's activities",
+        "5. Compare caregiver dashboard to PwD dashboard",
+        "6. Verify personalization logic is similar for both user types",
+        "7. Verify dashboard updates as caregiver takes actions",
+        "8. Test with new caregiver (no history):",
+        "   - Verify default/generic content displays",
+        "   - Verify prompts guide user through platform discovery"
+      ],
+      "testData": {
+        "caregiverInterests": [
+          "mobility_aids",
+          "vision_aids"
+        ]
+      },
+      "expectedResults": [
+        "Dashboard displays personalized product recommendations",
+        "Recent activity is reflected in dashboard content",
+        "Saved/interested products are easily accessible",
+        "Recommendations are relevant to caregiver's interests",
+        "Dashboard updates when caregiver performs new actions",
+        "New caregivers see guided onboarding content",
+        "Personalization matches PwD personalization logic",
+        "No irrelevant or confusing content on dashboard"
+      ],
+      "postconditions": "Caregiver dashboard personalization verified",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_caregiver_feature_access": {
+      "description": "Caregiver access includes all relevant PwD features",
+      "testCases": [
+        "TC_PARITY_001",
+        "TC_PARITY_002"
+      ]
+    }
+  },
+  "test_data_requirements": {
+    "caregiver_accounts": [
+      {
+        "role": "Caregiver",
+        "email": "caregiver.test1@example.com",
+        "password": "SecurePass@123",
+        "status": "Active",
+        "linkedPwDs": 1
+      },
+      {
+        "role": "Caregiver",
+        "email": "caregiver.test2@example.com",
+        "password": "SecurePass@123",
+        "status": "Active",
+        "linkedPwDs": 2
+      }
+    ],
+    "pwd_accounts": [
+      {
+        "role": "PwD",
+        "email": "pwd.test1@example.com",
+        "password": "SecurePass@123",
+        "status": "Active",
+        "linkedCaregivers": 1
+      },
+      {
+        "role": "PwD",
+        "email": "pwd.test2@example.com",
+        "password": "SecurePass@123",
+        "status": "Active",
+        "linkedCaregivers": 1
+      }
+    ],
+    "product_test_data": {
+      "numberOfTestProducts": "minimum 50 products",
+      "categories": [
+        "Mobility Aids",
+        "Vision Aids",
+        "Hearing Aids",
+        "Communication Devices",
+        "Cognitive Aids"
+      ],
+      "priceRange": "1000 to 100000",
+      "sampleProducts": [
+        {
+          "id": "PROD001",
+          "name": "Manual Wheelchair",
+          "category": "Mobility Aids",
+          "price": 15000
+        },
+        {
+          "id": "PROD002",
+          "name": "Mobility Scooter",
+          "category": "Mobility Aids",
+          "price": 45000
+        }
+      ]
+    }
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver and PwD accounts have identical access to features unless explicitly excluded in documentation",
+      "Feature parity requirements apply to all major user-facing features (browse, view, recommend, interest, contact, notify)",
+      "Excluded features (if any) are well-documented and approved by stakeholders",
+      "Analytics and tracking systems are fully functional and collecting data",
+      "Platform usage metrics are properly calculated and reported",
+      "All new PwD features go through caregiver applicability evaluation process",
+      "QA sign-off is mandatory before any release to production",
+      "Test environment mirrors production configuration"
+    ],
+    "dependencies": [
+      "Caregiver registration module must be complete (SCRUM-280 or similar)",
+      "PwD registration module must be complete (SCRUM-281)",
+      "Product catalog and browsing functionality must be operational",
+      "Recommendation engine must be functional and tested",
+      "Vendor management system must support caregiver inquiries",
+      "Notification system must support caregiver recipients",
+      "Analytics and logging infrastructure must be in place",
+      "User relationship management (caregiver-PwD) must be working"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What are the specific features that should be EXCLUDED for caregivers and why?",
+      "impact": "Affects test cases TC_PARITY_009 and TC_PARITY_010; Need clear list of excluded features"
+    },
+    {
+      "question": "Can a caregiver express interest on behalf of a PwD, or only for themselves?",
+      "impact": "Affects test design and feature parity definitions; Changes interest tracking logic"
+    },
+    {
+      "question": "Should caregiver recommendations be based on their own interactions or the PwD's profile (or both)?",
+      "impact": "Affects test case TC_PARITY_003; Influences recommendation algorithm testing"
+    },
+    {
+      "question": "Are there any legal/privacy considerations that mandate certain feature exclusions for caregivers?",
+      "impact": "Affects feature parity scope; May require legal review for sign-off"
+    },
+    {
+      "question": "What are the acceptable pass rates and criteria for QA sign-off?",
+      "impact": "Affects test case TC_PARITY_011; Defines QA acceptance thresholds"
+    },
+    {
+      "question": "Should caregiver-submitted vendor inquiries identify them as caregiver or PwD representative?",
+      "impact": "Affects vendor communication and tracking; May impact vendor management"
+    },
+    {
+      "question": "Are there any platform-specific performance or scalability requirements for caregiver features?",
+      "impact": "Affects test scope; May require load testing for caregiver transactions"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_PARITY_001, TC_PARITY_002) establish core feature parity and must run first",
+      "Low/Medium tests (TC_PARITY_003, TC_PARITY_004, TC_PARITY_005) cover filters, search, and personalization"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 5,
+      "estimated_manual_hours": "45-60 hours",
+      "estimated_automation_hours": "75-110 hours",
+      "critical_path": "8-10 hours for core feature parity tests"
+    },
+    "test_environment_requirements": [
+      "Staging environment with production-like data volume",
+      "Pre-configured caregiver and PwD test accounts",
+      "Product catalog with minimum 50 test products",
+      "Active vendor management system",
+      "Functional notification system",
+      "Analytics dashboard with real-time data",
+      "Admin tools for creating test relationships (caregiver-PwD links)",
+      "Performance monitoring tools (optional)",
+      "Mobile device emulators or real devices for responsive testing",
+      "Database access for analytics verification"
+    ],
+    "regression_areas": [
+      "Existing PwD feature functionality when caregivers gain access",
+      "Data isolation between caregiver and PwD sessions",
+      "Relationship management between caregiver and multiple PwDs",
+      "Notification delivery to caregivers",
+      "Analytics accuracy with mixed user-type metrics",
+      "Authentication and authorization for caregiver access"
+    ],
+    "success_criteria": [
+      "100% of acceptance criteria are covered by test cases",
+      "All critical feature tests pass (TC_PARITY_001-006)",
+      "Analytics tracking is verified for caregiver actions",
+      "QA sign-off documentation is completed and approved",
+      "No critical or high-priority defects remain open",
+      "Regression suite shows no new failures",
+      "Caregiver experience is tested alongside PwD flows",
+      "Feature exclusions are documented and communicated"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-23",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-23",
+    "status": "Ready for Execution",
+    "totalTestCases": 5,
+    "coverage": "100% acceptance criteria coverage with comprehensive feature parity and QA validation scenarios",
+    "estimatedCompletion": "6-8 weeks for full test execution",
+    "nextSteps": [
+      "Review test plan with QA lead and stakeholders",
+      "Clarify open questions with product team",
+      "Prepare test environment and test data",
+      "Begin test execution based on priority order",
+      "Track and report test results",
+      "Execute QA sign-off process before release"
+    ]
+  }
+}

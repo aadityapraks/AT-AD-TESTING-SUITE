@@ -1,0 +1,18 @@
+{
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "productManagementUrl": "/partner/product-management",
+  "productUploadUrl": "/partner/product-upload",
+  "expected": {
+    "mediaSection": "Product Images",
+    "primaryImageLabel": "Primary Image",
+    "additionalImagesLabel": "Additional Images",
+    "mockupImagesLabel": "3D Mockup Images",
+    "demoVideoLabel": "Demo Video",
+    "galleryViewVisible": true,
+    "videosDisplayed": true
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "TC_NEW_PWD_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "otp": "123456"
+    },
+    "expected": {
+      "formHeading": "Register New PwD",
+      "sections": ["Personal Information", "Disability & Education", "Address"],
+      "personalFields": ["First Name", "Last Name", "Mobile Number", "Email", "Date of Birth", "Gender"],
+      "registerButton": "Register & Add PwD",
+      "backButton": "Back to Aadhar"
+    }
+  },
+  "TC_NEW_PWD_006": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {
+      "disabilityTypeLabel": "Disability Type",
+      "firstSelection": "Blindness",
+      "secondSelection": "Multiple Disabilities"
+    }
+  },
+  "TC_NEW_PWD_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "selection": "Graduate"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "idType": "PAN",
+      "validIdNumber": "ABCDE1234F"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_010": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "shortPincode": "500",
+      "alphabeticPincode": "abcdef",
+      "validPincode": "500001"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_018": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_019": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "invalidNumeric": "12345",
+      "invalidSpecial": "@#$%",
+      "validName": "Rajesh"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_020": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "pwdMobile": "8765432109",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "pwdEmail": "testpwd.new@example.com",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "validUDID": "UP1234567890123456"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_011": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "validPastDate": "1995-06-15"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_012": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "duplicateMobile": "9733445566"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_013": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "duplicateEmail": "juziqycu@forexzig.com"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_014": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "idType": "PAN",
+      "validIdNumber": "ABCDE1234F"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777",
+      "firstName": "AutoPwd",
+      "lastName": "TestReg",
+      "pwdMobile": "8765432109",
+      "pwdEmail": "autopwd.test@example.com",
+      "dob": "1995-06-15",
+      "gender": "Male",
+      "disabilityType": "Blindness",
+      "qualification": "Graduate",
+      "pincode": "500001",
+      "address": "123 Auto Test Street, Hyderabad",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_015": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_016": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {}
+  },
+  "TC_NEW_PWD_017": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "unregisteredAadhaar": "999988887777"
+    },
+    "expected": {}
+  }
+}

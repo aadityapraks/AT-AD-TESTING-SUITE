@@ -1,0 +1,299 @@
+{
+  "TC_CG_REG_001": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "personalInfoHeading": "Personal Information",
+      "mobileCountryCode": "+91",
+      "aadharPrivacyText": "Your Aadhar number helps in verification and accessing government schemes",
+      "mandatoryFields": [
+        "First Name *",
+        "Last Name *",
+        "Mobile Number *",
+        "Email ID *",
+        "Password *",
+        "Confirm Password *",
+        "Aadhar Number *",
+        "Pincode *"
+      ],
+      "passwordHint": "At least 8 characters; mix of letters, numbers, and symbols recommended."
+    }
+  },
+  "TC_CG_REG_006": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "invalidEmail1": "notanemail",
+      "invalidEmail2": "user@",
+      "invalidEmail3": "user@domain",
+      "invalidEmail4": "user @domain.com",
+      "validEmail": "priya.sharma@example.com"
+    },
+    "expected": {
+      "emailValidationError": "Enter a valid email address"
+    }
+  },
+  "TC_CG_REG_016": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "Priya",
+      "lastName": "Sharma",
+      "mobileNumber": "9876543210",
+      "emailId": "priya.sharma@example.com",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhaarNumber": "123456789012",
+      "pincode": "500001",
+      "address": "123 Test Street, Hyderabad"
+    },
+    "expected": {
+      "requirementsHeading": "To complete registration, please:",
+      "mobileOtpRequirement": "Verify your mobile number with OTP",
+      "emailOtpRequirement": "Verify your email address with OTP",
+      "consentRequirement": "Provide consent for communication",
+      "fieldsRequirement": "Fill all required fields"
+    }
+  },
+  "TC_CG_REG_018": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "existingMobile": "9876543210"
+    },
+    "expected": {
+      "duplicateMobileError": "Phone number already exists"
+    }
+  },
+  "TC_CG_REG_003": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "Priya"
+    },
+    "expected": {
+      "lastNameRequiredError": "Last name is required"
+    }
+  },
+  "TC_CG_REG_007": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "weakPassword": "123456",
+      "noUppercase": "password@123",
+      "strongPassword": "SecurePass@123",
+      "mismatchPassword": "DifferentPass@123"
+    },
+    "expected": {
+      "weakPasswordError": "Password must be at least 8 characters",
+      "passwordStrengthWeak": "Password strength: Weak",
+      "passwordStrengthStrong": "Password strength: Strong",
+      "mismatchError": "Passwords do not match"
+    }
+  },
+  "TC_CG_REG_005": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "shortNumber": "98765",
+      "longNumber": "98765432101",
+      "alphabeticInput": "abcdefghij",
+      "validNumber": "9876543210"
+    },
+    "expected": {
+      "countryCode": "+91"
+    }
+  },
+  "TC_CG_REG_008": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "shortAadhaar": "12345678",
+      "longAadhaar": "1234567890123",
+      "alphabeticAadhaar": "abcdefghijkl",
+      "validAadhaar": "123456789012"
+    },
+    "expected": {
+      "aadharPrivacyText": "Your Aadhar number helps in verification and accessing government schemes"
+    }
+  },
+  "TC_CG_REG_009": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "shortPincode": "500",
+      "longPincode": "5000011",
+      "alphabeticPincode": "abcdef",
+      "invalidPincode": "000000",
+      "validPincode": "500001"
+    },
+    "expected": {}
+  },
+  "TC_CG_REG_015": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "consentWithdrawalText": "You can withdraw consent anytime from your profile settings."
+    }
+  },
+  "TC_CG_REG_022": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {}
+  },
+  "TC_CG_REG_023": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {}
+  },
+  "TC_CG_REG_024": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "privacySecurityText": "Privacy & Security:",
+      "registrationRequirementsText": "To complete registration, please:"
+    }
+  },
+  "TC_CG_REG_025": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {}
+  },
+  "TC_CG_REG_004": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "invalidNumeric": "12345",
+      "invalidSpecial": "@#$%",
+      "invalidAlphanumeric": "Priya123",
+      "validName": "Priya",
+      "nameWithSpace": "Mary Jane"
+    },
+    "expected": {}
+  },
+  "TC_CG_REG_019": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "existingEmail": "gikekylu@forexnews.bg"
+    },
+    "expected": {
+      "duplicateEmailError": "Email already exists"
+    }
+  },
+  "TC_CG_REG_021": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "Priya",
+      "lastName": "Sharma",
+      "mobileNumber": "9876543210",
+      "invalidEmail": "invalid-email",
+      "validEmail": "priya.sharma@example.com"
+    },
+    "expected": {
+      "emailValidationError": "Enter a valid email address"
+    }
+  },
+  "TC_CG_REG_020": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "TestAadhar",
+      "lastName": "Conflict",
+      "mobileNumber": "7654321098",
+      "emailId": "testuser.new123@example.com",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "linkedAadhaar": "766789123456",
+      "pincode": "500001",
+      "address": "123 Test Street, Hyderabad",
+      "otp": "123456"
+    },
+    "expected": {
+      "registrationSuccessHeading": "Registration Successful!"
+    }
+  },
+  "TC_CG_REG_002": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "AutoTest",
+      "lastName": "Caregiver",
+      "mobileNumber": "8765432109",
+      "emailId": "autotest.caregiver@example.com",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhaarNumber": "987654321012",
+      "pincode": "500001",
+      "address": "456 Auto Test Lane, Hyderabad",
+      "otp": "123456"
+    },
+    "expected": {
+      "registrationSuccessHeading": "Registration Successful!",
+      "registerPwdLink": "Register Person with Disability",
+      "goToDashboardLink": "Go to Dashboard"
+    }
+  },
+  "TC_CG_REG_010": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8765432109",
+      "otp": "123456"
+    },
+    "expected": {
+      "otpSentMessage": "OTP sent",
+      "verifiedIndicator": "Verified"
+    }
+  },
+  "TC_CG_REG_011": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "emailId": "autotest.otp@example.com",
+      "otp": "123456"
+    },
+    "expected": {
+      "otpSentMessage": "OTP sent",
+      "verifiedIndicator": "Verified"
+    }
+  },
+  "TC_CG_REG_012": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8765432109",
+      "incorrectOtp": "000000",
+      "correctOtp": "123456"
+    },
+    "expected": {
+      "invalidOtpError": "Invalid OTP"
+    }
+  },
+  "TC_CG_REG_013": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8765432109",
+      "otp": "123456"
+    },
+    "expected": {
+      "resendOtpAvailable": true
+    }
+  },
+  "TC_CG_REG_014": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8765432109",
+      "incorrectOtp": "000000"
+    },
+    "expected": {
+      "lockMessage": "Too many attempts"
+    }
+  },
+  "TC_CG_REG_017": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "PostReg",
+      "lastName": "Redirect",
+      "mobileNumber": "8765432109",
+      "emailId": "postreg.redirect@example.com",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhaarNumber": "111222333444",
+      "pincode": "500001",
+      "address": "789 Redirect Street, Hyderabad",
+      "otp": "123456"
+    },
+    "expected": {
+      "registrationSuccessHeading": "Registration Successful!",
+      "registerPwdLink": "Register Person with Disability",
+      "goToDashboardLink": "Go to Dashboard"
+    }
+  }
+}

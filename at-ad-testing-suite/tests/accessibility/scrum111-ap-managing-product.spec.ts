@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import testData from '../../test-data/scrum111-accessibility.json';
 
 async function loginAsPartner(page) {
-  await page.goto('https://hub-ui-admin-dev.swarajability.org/');
+  await page.goto('https://hub-ui-admin-qa.swarajability.org/');
   await page.getByRole('button', { name: 'Sign in with Swarajability' }).click();
   await page.waitForTimeout(3000);
   await page.getByRole('textbox', { name: 'Email' }).fill(testData.credentials.email);
@@ -394,3 +394,4 @@ test.describe('10. Responsive Design', () => {
     await expect(searchInput).toBeVisible();
   });
 });
+

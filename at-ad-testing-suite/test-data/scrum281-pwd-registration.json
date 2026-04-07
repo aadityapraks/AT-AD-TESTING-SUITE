@@ -1,0 +1,171 @@
+{
+  "TC_PWD_REG_001": {
+    "url": "https://qa-atad.swarajability.org/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456"
+    },
+    "expected": {
+      "portalTitle": "AT/AD Portal",
+      "profilePageHeading": "My Profile",
+      "isLoggedIn": true,
+      "welcomeMessageContains": "Welcome back",
+      "profileUrl": "/my-profile/",
+      "pwdRegistrationAccessible": false
+    }
+  },
+  "TC_PWD_REG_002": {
+    "url": "https://qa-atad.swarajability.org/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "consentCheckboxVisible": true,
+      "buttonDisabledWithoutConsent": true,
+      "consentRequirementText": "Provide consent for communication",
+      "privacyAlertContains": "Privacy & Security",
+      "registrationUrl": "/caregiver-registration/"
+    }
+  },
+  "TC_PWD_REG_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "firstName": "Rajesh",
+      "lastName": "Kumar",
+      "mobile": "9876543211",
+      "email": "rajesh.kumar.test@mailto.plus",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhar": "123456789012",
+      "pincode": "500001",
+      "address": "123 Main Street, Hyderabad, Telangana"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "personalInfoHeading": "Personal Information",
+      "passwordStrength": "Strong",
+      "autoPopulatedState": "Telangana",
+      "autoPopulatedDistrict": "Hyderabad",
+      "allFieldsVisible": true,
+      "buttonDisabledWithoutOtp": true,
+      "consentCheckboxVisible": true
+    }
+  },
+  "TC_PWD_REG_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "firstName": "Rajesh",
+      "lastName": "Kumar",
+      "mobile": "9876543211",
+      "email": "rajesh.kumar.tc004@mailto.plus",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhar": "123456789012",
+      "pincode": "500001",
+      "address": "456 Test Street, Hyderabad, Telangana"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "privacyAlertVisible": true,
+      "swarajAbilityMentionVisible": true,
+      "atAdPortalMentionVisible": true,
+      "termsOfServiceVisible": true,
+      "privacyPolicyVisible": true,
+      "consentWithdrawalMessageVisible": true,
+      "backToSignInVisible": true,
+      "agreementTextContains": "By registering, you agree"
+    }
+  },
+  "TC_PWD_REG_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "buttonDisabledWhenEmpty": true,
+      "requirementFillFields": "Fill all required fields"
+    }
+  },
+  "TC_PWD_REG_006": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "invalidEmail1": "notanemail",
+      "invalidEmail2": "user@",
+      "invalidEmail3": "user@domain",
+      "validEmail": "rajesh.kumar@example.com",
+      "plusAddressEmail": "rajesh+kumar@example.com"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration"
+    }
+  },
+  "TC_PWD_REG_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "weakPassword": "123456",
+      "noUppercasePassword": "password123",
+      "noSpecialCharPassword": "Password123",
+      "strongPassword": "SecurePass@123",
+      "mismatchConfirmPassword": "DifferentPass@456"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "passwordHintVisible": true,
+      "weakStrength": "Weak",
+      "noUppercaseStrength": "Medium",
+      "noSpecialCharStrength": "Strong",
+      "strongStrength": "Strong",
+      "weakPasswordAlert": "Password must be at least 8 characters",
+      "mismatchAlert": "Passwords do not match"
+    }
+  },
+  "TC_PWD_REG_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "existingEmail": "candidate8new1@mailto.plus",
+      "uniqueEmail": "unique.test.user@mailto.plus"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration"
+    }
+  },
+  "TC_PWD_REG_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration"
+    }
+  },
+  "TC_PWD_REG_010": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "invalidPhone": "abc123",
+      "shortPhone": "123",
+      "validPhone": "9876543210"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration"
+    }
+  },
+  "TC_PWD_REG_011": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "inputs": {
+      "nameWithApostrophe": "O'Brien",
+      "nameWithHyphen": "Jean-Paul",
+      "nameWithAccent": "José"
+    },
+    "expected": {
+      "registrationHeading": "Caregiver Registration"
+    }
+  },
+  "TC_PWD_REG_012": {
+    "url": "https://qa-atad.swarajability.org/caregiver-registration/",
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "allLabelsPresent": true,
+      "keyboardNavigable": true
+    }
+  }
+}

@@ -1,0 +1,519 @@
+{
+  "jiraStory": "SCRUM-24",
+  "title": "Product Deletion Functionality - Functional Test Plan",
+  "overview": "Functional testing of the product deletion feature for Assistive Partners on the Y4J platform. Covers delete option visibility, confirmation dialog, deletion rules for published/draft/pending products, soft/hard delete logic, user notifications, system feedback, error handling, media cleanup, accessibility, audit trail, and analytics impact.",
+  "testCases": [
+    {
+      "id": "TC_DEL_001",
+      "title": "Verify Delete Product Option Visibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has at least one product",
+      "steps": [
+        "Navigate to Product Management page",
+        "Locate product in list",
+        "Check for Delete Product option in action column"
+      ],
+      "expectedResults": [
+        "Delete Product option is visible for each owned product",
+        "Option is accessible in action column",
+        "Button is clearly labeled",
+        "Option is clickable"
+      ],
+      "postconditions": "Product Management page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_002",
+      "title": "Verify Delete Option Only for Owned Products",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, multiple APs have products in system",
+      "steps": [
+        "Navigate to Product Management page",
+        "View product list",
+        "Check delete option availability for each product",
+        "Verify authorization enforcement"
+      ],
+      "expectedResults": [
+        "Delete option available only for AP's own products",
+        "No delete option for products owned by others",
+        "Authorization is enforced at UI level",
+        "No unauthorized access is possible"
+      ],
+      "postconditions": "Product Management page remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_003",
+      "title": "Delete Product Under Review",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has product with 'Under Review' status",
+      "steps": [
+        "Locate product with 'Under Review' status",
+        "Click Delete Product option",
+        "Observe delete availability"
+      ],
+      "expectedResults": [
+        "Delete option is available for products under review",
+        "Product can be deleted before publishing",
+        "No restrictions on deletion"
+      ],
+      "postconditions": "Product Management page remains loaded",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_004",
+      "title": "Display Confirmation Dialog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has at least one product",
+      "steps": [
+        "Click Delete Product option",
+        "Observe confirmation dialog appearance",
+        "Verify dialog content"
+      ],
+      "expectedResults": [
+        "Confirmation dialog appears immediately",
+        "Warning message displays: 'This will permanently delete <Product Name>. This action cannot be undone.'",
+        "Dialog includes 'Delete Product' and 'Cancel' buttons",
+        "Product name is shown in message",
+        "Dialog is modal and blocks background interaction"
+      ],
+      "postconditions": "Confirmation dialog is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_005",
+      "title": "Cancel Deletion",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Confirmation dialog is displayed, product is ready to be deleted",
+      "steps": [
+        "Click Cancel button in confirmation dialog",
+        "Verify dialog closes",
+        "Check product status"
+      ],
+      "expectedResults": [
+        "Dialog closes without action",
+        "Product remains in list",
+        "No deletion occurs",
+        "Product status unchanged",
+        "User returns to Product Management page"
+      ],
+      "postconditions": "Product Management page is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_006",
+      "title": "Confirm Deletion",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Confirmation dialog is displayed, product is ready to be deleted",
+      "steps": [
+        "Click 'Delete Product' button in confirmation dialog",
+        "Wait for deletion to complete",
+        "Verify deletion result"
+      ],
+      "expectedResults": [
+        "Product is deleted after confirmation",
+        "Confirmation message appears",
+        "Product removed from list (or marked as deleted)",
+        "Action is logged",
+        "User receives success feedback"
+      ],
+      "postconditions": "Product is deleted, user is on Product Management page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_007",
+      "title": "Delete Published Product from Catalog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has published product in catalog",
+      "steps": [
+        "Delete published product",
+        "Confirm deletion",
+        "Login as PwD user",
+        "Search for deleted product in catalog"
+      ],
+      "expectedResults": [
+        "Product removed from public catalog immediately",
+        "Product not visible to PwD users",
+        "Deletion record is stored",
+        "Product shows deleted status to AP",
+        "Search results exclude deleted product"
+      ],
+      "postconditions": "Product is deleted from catalog",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_008",
+      "title": "Verify Deleted Product Visible to AP with Status",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, published product has been deleted",
+      "steps": [
+        "Navigate to Product Management page",
+        "Check product list",
+        "Locate deleted product",
+        "Verify status display"
+      ],
+      "expectedResults": [
+        "Deleted product still visible to AP",
+        "Product shows 'Deleted' status",
+        "AP can view deletion details",
+        "Product marked as inactive",
+        "Deletion date is displayed"
+      ],
+      "postconditions": "Product Management page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_009",
+      "title": "Delete Draft Product Completely",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has product in draft status",
+      "steps": [
+        "Locate product in draft status",
+        "Delete product",
+        "Confirm deletion",
+        "Check product list"
+      ],
+      "expectedResults": [
+        "Draft product is deleted completely",
+        "Product removed from AP's product list",
+        "No trace in active products",
+        "Deletion is logged",
+        "No 'Deleted' status shown"
+      ],
+      "postconditions": "Product is permanently removed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_010",
+      "title": "Delete Pending Product Completely",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has product in pending status",
+      "steps": [
+        "Locate product in pending status",
+        "Delete product",
+        "Confirm deletion",
+        "Check product list"
+      ],
+      "expectedResults": [
+        "Pending product is deleted completely",
+        "Product removed from AP's product list",
+        "Admin review queue is updated",
+        "Deletion is logged",
+        "No 'Deleted' status shown"
+      ],
+      "postconditions": "Product is permanently removed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_013",
+      "title": "Vendor Hard Deletes Under Review Product",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product under review exists",
+      "steps": [
+        "Locate product under review",
+        "Delete product",
+        "Confirm deletion",
+        "Verify deletion type"
+      ],
+      "expectedResults": [
+        "Under review products can be hard deleted by vendor",
+        "Product is permanently removed",
+        "No soft delete state",
+        "Deletion is complete",
+        "No admin recovery needed"
+      ],
+      "postconditions": "Product is hard deleted",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_014",
+      "title": "Vendor Hard Deletes Rejected Product",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, rejected product exists",
+      "steps": [
+        "Locate rejected product",
+        "Delete product",
+        "Confirm deletion",
+        "Verify deletion type"
+      ],
+      "expectedResults": [
+        "Rejected products can be hard deleted by vendor",
+        "Product is permanently removed",
+        "No soft delete state",
+        "Deletion is complete",
+        "No admin recovery needed"
+      ],
+      "postconditions": "Product is hard deleted",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_016",
+      "title": "Notify Users with Existing Interests",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "PwD user has saved product to interests, AP deletes the product",
+      "steps": [
+        "PwD user saves product to interests",
+        "AP deletes the product",
+        "Confirm deletion",
+        "Login as PwD user",
+        "Check notifications"
+      ],
+      "expectedResults": [
+        "Users with interests receive notification",
+        "Notification states product is unavailable",
+        "Message is clear and informative",
+        "Notification is accessible",
+        "User can view notification details"
+      ],
+      "postconditions": "Notification is delivered",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_017",
+      "title": "Display Success Confirmation Message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product is ready to be deleted",
+      "steps": [
+        "Delete product",
+        "Confirm deletion",
+        "Observe confirmation message"
+      ],
+      "expectedResults": [
+        "Confirmation message appears",
+        "Message states: \"Product 'X' has been deleted successfully and is no longer visible in the catalog.\"",
+        "Product name is included",
+        "Message is clearly visible",
+        "Message appears for adequate duration"
+      ],
+      "postconditions": "Product is deleted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_018",
+      "title": "Verify Product Removed from Lists",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product has been deleted",
+      "steps": [
+        "Check AP's product list",
+        "Login as PwD user",
+        "Check catalog",
+        "Perform search for deleted product"
+      ],
+      "expectedResults": [
+        "Product no longer in AP's active product list",
+        "Product not visible in PwD catalog",
+        "Search results exclude deleted product",
+        "Product is effectively hidden",
+        "All references are removed"
+      ],
+      "postconditions": "Product is removed from all lists",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_019",
+      "title": "Handle System Error During Deletion",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product is ready to be deleted, system error is simulated",
+      "steps": [
+        "Attempt to delete product",
+        "Simulate system error",
+        "Observe error message"
+      ],
+      "expectedResults": [
+        "Error message displays",
+        "Message states: 'Unable to delete the product at this time. Please try again later or contact support.'",
+        "Product remains in list",
+        "AP can retry later",
+        "No partial deletion occurs"
+      ],
+      "postconditions": "Product remains unchanged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_020",
+      "title": "Block Unauthorized Deletion Attempts",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product is owned by another AP",
+      "steps": [
+        "Attempt to delete product owned by another AP",
+        "Observe error message"
+      ],
+      "expectedResults": [
+        "Deletion is blocked",
+        "Error message: 'You do not have permission to delete this product.'",
+        "Authorization is enforced",
+        "Product remains unchanged",
+        "No deletion occurs"
+      ],
+      "postconditions": "Product remains unchanged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_021",
+      "title": "Mark Media Inactive on Deletion",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, product with images and videos exists",
+      "steps": [
+        "Delete product with media",
+        "Confirm deletion",
+        "Verify media status"
+      ],
+      "expectedResults": [
+        "All associated media marked inactive",
+        "Images removed from live content store",
+        "Videos removed from live content store",
+        "Documents marked inactive",
+        "Media cleanup is complete"
+      ],
+      "postconditions": "Media is marked inactive",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DEL_022",
+      "title": "Verify No Broken Links in Catalog",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "AP has deleted product with media, PwD user is browsing catalog",
+      "steps": [
+        "Login as PwD user",
+        "Browse catalog",
+        "Check for broken links or placeholders"
+      ],
+      "expectedResults": [
+        "No broken links visible",
+        "No placeholder images shown",
+        "Catalog displays cleanly",
+        "Media cleanup is complete",
+        "All references are removed"
+      ],
+      "postconditions": "Catalog is clean",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ACC_001",
+      "title": "Verify Keyboard Accessibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded",
+      "steps": [
+        "Navigate to Delete button using keyboard (Tab key)",
+        "Activate delete using Enter/Space",
+        "Navigate confirmation dialog with keyboard",
+        "Confirm or cancel deletion"
+      ],
+      "expectedResults": [
+        "Delete button is keyboard accessible",
+        "Tab order is logical",
+        "Enter/Space activates delete",
+        "Dialog is fully keyboard navigable",
+        "All buttons are reachable via keyboard"
+      ],
+      "postconditions": "Keyboard navigation is complete",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ACC_002",
+      "title": "Verify Screen Reader Compatibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, screen reader is enabled",
+      "steps": [
+        "Use screen reader to navigate to delete option",
+        "Activate delete option",
+        "Navigate confirmation dialog",
+        "Verify all content is announced"
+      ],
+      "expectedResults": [
+        "Screen reader announces delete button",
+        "Confirmation dialog is announced",
+        "Warning message is read clearly",
+        "All buttons are accessible",
+        "Dialog purpose is clear"
+      ],
+      "postconditions": "Screen reader compatibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ACC_003",
+      "title": "Verify Color Contrast and Focus States",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "Approved AP is logged in, Product Management page is loaded",
+      "steps": [
+        "Navigate to delete option",
+        "Check color contrast using accessibility tool",
+        "Test focus indicators",
+        "Verify visual states"
+      ],
+      "expectedResults": [
+        "Color contrast meets WCAG 2.1 AA",
+        "Focus indicators are clearly visible",
+        "Dialog text is readable",
+        "Buttons have clear visual states",
+        "All elements meet accessibility standards"
+      ],
+      "postconditions": "Accessibility standards verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ANALYTICS_001",
+      "title": "Exclude Deleted Products from Search",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "AP has deleted product, PwD user is searching catalog",
+      "steps": [
+        "Login as PwD user",
+        "Search for deleted product",
+        "Check search results"
+      ],
+      "expectedResults": [
+        "Deleted product not in search results",
+        "Search excludes deleted items",
+        "Only active products are shown",
+        "Search functionality is accurate",
+        "No deleted products appear"
+      ],
+      "postconditions": "Search results are accurate",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ANALYTICS_002",
+      "title": "Exclude from Recommendations",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "AP has deleted product, PwD user is viewing recommendations",
+      "steps": [
+        "Login as PwD user",
+        "View product recommendations",
+        "Check if deleted product appears"
+      ],
+      "expectedResults": [
+        "Deleted product not in recommendations",
+        "Recommendation engine excludes deleted items",
+        "Only active products are recommended",
+        "System is updated immediately",
+        "Recommendations are accurate"
+      ],
+      "postconditions": "Recommendations are accurate",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

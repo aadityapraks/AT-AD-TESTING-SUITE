@@ -1,0 +1,999 @@
+{
+  "jiraStory": "SCRUM-111",
+  "title": "Assistive Partner (AP) Managing Product - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Assistive Partner Product Management Dashboard on the Y4J platform. This test plan covers navigation, status tabs, product listing table, search/filter/sort controls, actions menu, edit/update behavior, duplicate product, visibility control, delete functionality, data accuracy, permissions, UI persistence, approval process panel, and empty state handling.",
+  "version": "1.0.0",
+  "date": "2026-03-23",
+  "author": "Kiro Test Planner",
+  "linkedBugs": [
+    {"key": "SCRUM-704", "summary": "Sort by Newest/Oldest First not functioning correctly"},
+    {"key": "SCRUM-703", "summary": "Incorrect submission date displayed as Jan 1, 1970"},
+    {"key": "SCRUM-701", "summary": "Disability Type field shows validation error"},
+    {"key": "SCRUM-700", "summary": "Mark as Active action fails to update visibility"},
+    {"key": "SCRUM-699", "summary": "Edit Pricing & Quantity fails to update product details"}
+  ],
+  "testCases": [
+    {
+      "id": "TC_NAV_001",
+      "title": "Access Product Management from Dashboard Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is logged in as an authenticated Assistive Partner",
+      "steps": [
+        "Navigate to the main dashboard",
+        "Locate the Product Management navigation link in the sidebar/header",
+        "Click on the Product Management link"
+      ],
+      "expectedResults": [
+        "Product Management section is accessible from main dashboard navigation",
+        "Product Management tab is visibly highlighted when active",
+        "Dashboard loads successfully showing product listing"
+      ],
+      "postconditions": "User is on the Product Management page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NAV_002",
+      "title": "Dashboard Loads Only Logged-in Partner's Products",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is logged in as Assistive Partner with existing products",
+      "steps": [
+        "Navigate to Product Management section",
+        "Observe the product listing displayed",
+        "Verify product ownership by checking product details"
+      ],
+      "expectedResults": [
+        "Only products created by the logged-in Assistive Partner are displayed",
+        "No products from other vendors are visible",
+        "Product count matches the partner's actual product count"
+      ],
+      "postconditions": "Product listing shows only authenticated partner's products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_001",
+      "title": "Status Summary Tabs Display Accurate Counts",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with products in various statuses",
+      "steps": [
+        "Navigate to Product Management section",
+        "Observe the status summary tabs (All, Approved, Under Review, Draft, Rejected)",
+        "Count products manually in each status",
+        "Compare with displayed counts on tabs"
+      ],
+      "expectedResults": [
+        "All tab shows total count of all products",
+        "Approved tab shows count of approved products",
+        "Under Review tab shows count of products under review",
+        "Draft tab shows count of draft products",
+        "Rejected tab shows count of rejected products",
+        "All counts are accurate and match actual product counts"
+      ],
+      "postconditions": "Status tabs display correct counts",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_002",
+      "title": "Status Tab Filtering - All Tab",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with products in various statuses",
+      "steps": [
+        "Click on the 'All' status tab",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "All products are displayed regardless of status",
+        "Product count matches the 'All' tab count"
+      ],
+      "postconditions": "All products are visible in the listing",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_003",
+      "title": "Status Tab Filtering - Approved Tab",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with approved products",
+      "steps": [
+        "Click on the 'Approved' status tab",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Only approved products are displayed",
+        "Products with edited changes pending review also appear (dual status)",
+        "Product count matches the 'Approved' tab count"
+      ],
+      "postconditions": "Only approved products are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_004",
+      "title": "Status Tab Filtering - Under Review Tab",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with products under review",
+      "steps": [
+        "Click on the 'Under Review' status tab",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Only products under review are displayed",
+        "Approved products with pending edit reviews also appear",
+        "Product count matches the 'Under Review' tab count"
+      ],
+      "postconditions": "Only under review products are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_005",
+      "title": "Status Tab Filtering - Draft Tab",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with draft products",
+      "steps": [
+        "Click on the 'Draft' status tab",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Only draft products are displayed",
+        "Product count matches the 'Draft' tab count"
+      ],
+      "postconditions": "Only draft products are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_006",
+      "title": "Status Tab Filtering - Rejected Tab",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with rejected products",
+      "steps": [
+        "Click on the 'Rejected' status tab",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Only rejected products are displayed",
+        "Approved products with rejected edit requests also appear",
+        "Product count matches the 'Rejected' tab count"
+      ],
+      "postconditions": "Only rejected products are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_007",
+      "title": "Dual Status - Approved Product with Pending Edit Review",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product has been edited and edit is pending review",
+      "steps": [
+        "Navigate to Product Management",
+        "Click on 'Approved' tab and note the product",
+        "Click on 'Under Review' tab",
+        "Verify the same product appears in both tabs"
+      ],
+      "expectedResults": [
+        "Product appears in both Approved and Under Review tabs",
+        "Product shows 'Edited' indicator",
+        "Product retains Approved status until review is completed"
+      ],
+      "postconditions": "Dual status logic is working correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_008",
+      "title": "Dual Status - Approved Product with Rejected Edit",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product has an edit that was rejected",
+      "steps": [
+        "Navigate to Product Management",
+        "Click on 'Approved' tab and note the product",
+        "Click on 'Rejected' tab",
+        "Verify the same product appears in both tabs"
+      ],
+      "expectedResults": [
+        "Product appears in both Approved and Rejected tabs",
+        "Product shows indication of rejected edit",
+        "Original approved version remains active"
+      ],
+      "postconditions": "Dual status for rejected edits is working correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_TABLE_001",
+      "title": "Product Listing Table - Display All Required Fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with existing products",
+      "steps": [
+        "Navigate to Product Management section",
+        "Observe a product row in the listing table",
+        "Verify all required fields are displayed"
+      ],
+      "expectedResults": [
+        "Product image is displayed",
+        "Product name is displayed",
+        "Edited icon appears for edited approved products",
+        "Disability type is displayed",
+        "Available stock quantity is displayed",
+        "Listing status (Approved/Under Review/Draft/Rejected) is displayed",
+        "Website visibility status (Active/Inactive) is displayed",
+        "Submission date is displayed",
+        "Actions menu (three-dot) is displayed"
+      ],
+      "postconditions": "All product fields are visible in the listing",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_TABLE_002",
+      "title": "Status Indicators Visual Distinction",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Products exist in all status types",
+      "steps": [
+        "Navigate to Product Management",
+        "View products with different statuses",
+        "Observe the visual indicators for each status"
+      ],
+      "expectedResults": [
+        "Approved status has distinct visual indicator (green border)",
+        "Under Review status has distinct visual indicator (blue border)",
+        "Draft status has distinct visual indicator",
+        "Rejected status has distinct visual indicator",
+        "Status labels/icons are clearly distinguishable"
+      ],
+      "postconditions": "Status indicators are visually distinct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_TABLE_003",
+      "title": "Color-Coded Left Borders for Product Cards",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Products exist in various statuses",
+      "steps": [
+        "Navigate to Product Management",
+        "Observe product cards with different statuses",
+        "Verify color-coded left borders"
+      ],
+      "expectedResults": [
+        "Blue border for Under Review / In Progress products",
+        "Orange border for Pending or Awaiting Documentation products",
+        "Green border for Approved products"
+      ],
+      "postconditions": "Color coding is correctly applied",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_TABLE_004",
+      "title": "Edited Icon Display for Approved Products with Edits",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product has been edited and is pending review",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product that has been edited",
+        "Observe the product row"
+      ],
+      "expectedResults": [
+        "Edited icon is displayed next to the product name",
+        "Product retains Approved status",
+        "Website visibility remains Active"
+      ],
+      "postconditions": "Edited indicator is visible for edited approved products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_TABLE_005",
+      "title": "Pending Changes Section for Edited Approved Products",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product has pending edit changes",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an edited approved product",
+        "Expand or view the Pending Changes section"
+      ],
+      "expectedResults": [
+        "Pending Changes section is displayed",
+        "Submission date of changes is shown",
+        "Side-by-side comparison of Current vs New values is displayed",
+        "All edited fields show comparison (name, image, description, specifications)"
+      ],
+      "postconditions": "Pending changes are clearly displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SEARCH_001",
+      "title": "Search Products by Product Name",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Multiple products exist with different names",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the search input field",
+        "Enter a product name in the search field",
+        "Observe the filtered results"
+      ],
+      "expectedResults": [
+        "Search field accepts input",
+        "Results filter to show only matching products",
+        "Partial name matches are included",
+        "Results update without page reload"
+      ],
+      "postconditions": "Search by product name works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SEARCH_002",
+      "title": "Search Products by Category",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Products exist in different categories",
+      "steps": [
+        "Navigate to Product Management",
+        "Enter a category name in the search field",
+        "Observe the filtered results"
+      ],
+      "expectedResults": [
+        "Results filter to show products matching the category",
+        "Results update dynamically"
+      ],
+      "postconditions": "Search by category works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_FILTER_001",
+      "title": "Filter Products by Disability Type",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Products exist for different disability types",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the Disability Type filter dropdown",
+        "Select a specific disability type",
+        "Observe the filtered results"
+      ],
+      "expectedResults": [
+        "Filter dropdown displays available disability types",
+        "Selecting a type filters the product list",
+        "Only products matching the selected disability type are shown",
+        "Results update without page reload"
+      ],
+      "postconditions": "Disability type filter works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SORT_001",
+      "title": "Sort Products - Newest First",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-704",
+      "preconditions": "Multiple products exist with different submission dates",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the Sort By dropdown",
+        "Select 'Newest First' option",
+        "Observe the product order"
+      ],
+      "expectedResults": [
+        "Products are sorted by submission date in descending order",
+        "Most recently submitted products appear first",
+        "Sort is applied without page reload"
+      ],
+      "postconditions": "Products are sorted newest first",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SORT_002",
+      "title": "Sort Products - Oldest First",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-704",
+      "preconditions": "Multiple products exist with different submission dates",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the Sort By dropdown",
+        "Select 'Oldest First' option",
+        "Observe the product order"
+      ],
+      "expectedResults": [
+        "Products are sorted by submission date in ascending order",
+        "Oldest submitted products appear first",
+        "Sort is applied without page reload"
+      ],
+      "postconditions": "Products are sorted oldest first",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SORT_003",
+      "title": "Sort Products - Name A-Z",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Multiple products exist with different names",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the Sort By dropdown",
+        "Select 'Name A-Z' option",
+        "Observe the product order"
+      ],
+      "expectedResults": [
+        "Products are sorted alphabetically by name (A to Z)",
+        "Sort is applied without page reload"
+      ],
+      "postconditions": "Products are sorted A-Z by name",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SORT_004",
+      "title": "Sort Products - Name Z-A",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Multiple products exist with different names",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate the Sort By dropdown",
+        "Select 'Name Z-A' option",
+        "Observe the product order"
+      ],
+      "expectedResults": [
+        "Products are sorted reverse alphabetically by name (Z to A)",
+        "Sort is applied without page reload"
+      ],
+      "postconditions": "Products are sorted Z-A by name",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERSIST_001",
+      "title": "Filter and Sort Persistence",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Apply a search filter",
+        "Apply a disability type filter",
+        "Apply a sort option",
+        "Navigate within the page (e.g., click on a status tab)",
+        "Return to the original view"
+      ],
+      "expectedResults": [
+        "Applied filters persist until changed or reset",
+        "Sort selection persists until changed",
+        "Filters remain applied when navigating within the Listing page"
+      ],
+      "postconditions": "Filters and sort persist correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_001",
+      "title": "Actions Menu - Open Three-Dot Menu",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with products",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a product row",
+        "Click on the three-dot (more) menu icon"
+      ],
+      "expectedResults": [
+        "Actions menu opens",
+        "Available actions are displayed based on product status"
+      ],
+      "postconditions": "Actions menu is open",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_002",
+      "title": "Actions Menu - Approved Product Actions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product",
+        "Click on the three-dot menu"
+      ],
+      "expectedResults": [
+        "View Details action is available",
+        "Edit action is available",
+        "Edit Pricing & Quantity action is available",
+        "Duplicate action is available",
+        "Mark as Inactive action is available",
+        "Delete action is available"
+      ],
+      "postconditions": "All actions are available for approved products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_003",
+      "title": "Actions Menu - Draft Product Actions",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A draft product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a draft product",
+        "Click on the three-dot menu"
+      ],
+      "expectedResults": [
+        "All actions are available for draft products",
+        "View Details, Edit, Edit Pricing & Quantity, Duplicate, Mark as Inactive, Delete are shown"
+      ],
+      "postconditions": "All actions are available for draft products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_004",
+      "title": "Actions Menu - Rejected Product Actions",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A rejected product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a rejected product",
+        "Click on the three-dot menu"
+      ],
+      "expectedResults": [
+        "All actions are available for rejected products",
+        "View Details, Edit, Edit Pricing & Quantity, Duplicate, Mark as Inactive, Delete are shown"
+      ],
+      "postconditions": "All actions are available for rejected products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_005",
+      "title": "Actions Menu - Under Review Product Restrictions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A product under review exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a product under review",
+        "Click on the three-dot menu"
+      ],
+      "expectedResults": [
+        "Edit actions are restricted as per system rules",
+        "View Details is available",
+        "Restricted actions are disabled or hidden"
+      ],
+      "postconditions": "Under review products have restricted actions",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ACTION_006",
+      "title": "View Details Action",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Click on three-dot menu for a product",
+        "Select 'View Details'"
+      ],
+      "expectedResults": [
+        "Product details page/modal opens",
+        "All product information is displayed"
+      ],
+      "postconditions": "Product details are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_001",
+      "title": "Edit Approved Product - Status Changes to Edited",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product",
+        "Click on three-dot menu and select 'Edit'",
+        "Make changes to the product",
+        "Save the changes"
+      ],
+      "expectedResults": [
+        "Edit form opens with current product data",
+        "Changes can be made to product fields",
+        "After save, product status shows 'Edited' indicator",
+        "Product retains Approved status",
+        "Website visibility remains Active"
+      ],
+      "postconditions": "Product shows edited state in listing",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_002",
+      "title": "Edit Pricing & Quantity - Immediate Update",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-699",
+      "preconditions": "An approved product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product",
+        "Click on three-dot menu and select 'Edit Pricing & Quantity'",
+        "Update the price and/or quantity",
+        "Save the changes"
+      ],
+      "expectedResults": [
+        "Edit Pricing & Quantity form opens",
+        "Price and quantity fields are editable",
+        "Changes save successfully",
+        "Stock and pricing updates reflect immediately after save",
+        "Updated values are visible in the product listing"
+      ],
+      "postconditions": "Pricing and quantity are updated immediately",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DUP_001",
+      "title": "Duplicate Product - Creates Draft with Suffix",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a product",
+        "Click on three-dot menu and select 'Duplicate'",
+        "Observe the new product entry"
+      ],
+      "expectedResults": [
+        "New product entry is created",
+        "New product has 'Draft' status",
+        "Product name has duplicate suffix (e.g., 'Product Name (Copy)')",
+        "All original details are retained except status and date",
+        "Submission date is reset to current date"
+      ],
+      "postconditions": "Duplicate product is created in Draft status",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DUP_002",
+      "title": "Duplicate Product - Rename Removes Suffix",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A duplicated product exists with suffix",
+      "steps": [
+        "Locate the duplicated product",
+        "Edit the product",
+        "Change the product name to a new unique name",
+        "Save the changes"
+      ],
+      "expectedResults": [
+        "Product name can be changed",
+        "Duplicate suffix is removed when new name is given",
+        "Product saves with new name"
+      ],
+      "postconditions": "Duplicated product has new name without suffix",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VIS_001",
+      "title": "Mark Approved Product as Inactive",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "An approved product with Active visibility exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product with Active status",
+        "Click on three-dot menu and select 'Mark as Inactive'",
+        "Confirm the action if prompted"
+      ],
+      "expectedResults": [
+        "Product visibility changes to Inactive",
+        "Visibility status is updated in the table",
+        "Product is hidden from public catalog views"
+      ],
+      "postconditions": "Product is marked as Inactive",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VIS_002",
+      "title": "Mark Inactive Product as Active",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-700",
+      "preconditions": "An approved product with Inactive visibility exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate an approved product with Inactive status",
+        "Click on three-dot menu and select 'Mark as Active'",
+        "Confirm the action if prompted"
+      ],
+      "expectedResults": [
+        "Product visibility changes to Active",
+        "Visibility status is updated in the table",
+        "Product becomes visible in public catalog"
+      ],
+      "postconditions": "Product is marked as Active",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_001",
+      "title": "Delete Product - Confirmation Prompt",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "A product exists",
+      "steps": [
+        "Navigate to Product Management",
+        "Locate a product",
+        "Click on three-dot menu and select 'Delete'",
+        "Observe the confirmation dialog"
+      ],
+      "expectedResults": [
+        "Confirmation dialog appears before deletion",
+        "Dialog clearly states the action",
+        "Cancel and Confirm options are available"
+      ],
+      "postconditions": "Confirmation dialog is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_002",
+      "title": "Delete Product - Confirm Deletion",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Delete confirmation dialog is displayed",
+      "steps": [
+        "Click 'Confirm' or 'Delete' button in the confirmation dialog",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Product is removed from the listing",
+        "Product counts are updated",
+        "Success message is displayed"
+      ],
+      "postconditions": "Product is deleted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DEL_003",
+      "title": "Delete Product - Cancel Deletion",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Delete confirmation dialog is displayed",
+      "steps": [
+        "Click 'Cancel' button in the confirmation dialog",
+        "Observe the product listing"
+      ],
+      "expectedResults": [
+        "Confirmation dialog closes",
+        "Product remains in the listing",
+        "No changes are made"
+      ],
+      "postconditions": "Product is not deleted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DATA_001",
+      "title": "Data Refresh After Action",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Perform any action (edit, delete, duplicate, etc.)",
+        "Observe the product listing and counts"
+      ],
+      "expectedResults": [
+        "Product counts refresh automatically after action",
+        "Listing data updates without manual refresh",
+        "No duplicate records are shown",
+        "No stale records are shown"
+      ],
+      "postconditions": "Data is refreshed and accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DATA_002",
+      "title": "Submission Date Display",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-703",
+      "preconditions": "Products exist with valid submission dates",
+      "steps": [
+        "Navigate to Product Management",
+        "Observe the submission date column for products"
+      ],
+      "expectedResults": [
+        "Submission dates are displayed correctly",
+        "No invalid dates (e.g., Jan 1, 1970) are shown",
+        "Date format is consistent and readable"
+      ],
+      "postconditions": "Submission dates are accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_001",
+      "title": "Cannot View Other Vendor's Products",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Multiple vendors exist with products",
+      "steps": [
+        "Log in as Vendor A",
+        "Navigate to Product Management",
+        "Attempt to view products",
+        "Log out and log in as Vendor B",
+        "Navigate to Product Management"
+      ],
+      "expectedResults": [
+        "Vendor A sees only their own products",
+        "Vendor B sees only their own products",
+        "No cross-vendor product visibility"
+      ],
+      "postconditions": "Product isolation is maintained",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_002",
+      "title": "Unauthorized Action Blocked",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User attempts unauthorized action",
+      "steps": [
+        "Attempt to access another vendor's product via URL manipulation",
+        "Attempt to perform action on restricted product"
+      ],
+      "expectedResults": [
+        "Unauthorized actions are blocked",
+        "Appropriate error message is displayed",
+        "User is not able to view or modify other vendor's products"
+      ],
+      "postconditions": "Security is maintained",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PANEL_001",
+      "title": "Approval Process Timeline Panel Display",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Navigate to Product Management",
+        "Scroll to the bottom of the page",
+        "Observe the Approval Process Timeline panel"
+      ],
+      "expectedResults": [
+        "Panel titled 'Approval Process Timeline' is displayed",
+        "Standard product listing timeline (1-2 business days) is shown",
+        "Official AT listing timeline (3-5 business days) is shown",
+        "Notification note about email updates is displayed",
+        "Panel remains fixed at the bottom of listing results"
+      ],
+      "postconditions": "Approval process panel is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EMPTY_001",
+      "title": "Empty State - No Products Found",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Apply a filter that produces zero results",
+        "Or search for a non-existent product name",
+        "Observe the listing area"
+      ],
+      "expectedResults": [
+        "Clear empty state message is displayed",
+        "Message indicates 'No products found' or similar",
+        "User understands no results match the criteria"
+      ],
+      "postconditions": "Empty state is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AUTH_001",
+      "title": "Unauthenticated User Access Denied",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is not logged in",
+      "steps": [
+        "Attempt to access Product Management URL directly",
+        "Observe the response"
+      ],
+      "expectedResults": [
+        "Access is denied",
+        "User is redirected to login page",
+        "Dashboard is not accessible without authentication"
+      ],
+      "postconditions": "Authentication is required",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NEG_001",
+      "title": "Search with Special Characters",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Enter special characters in search field (e.g., <script>, ', \", &)",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Application handles special characters gracefully",
+        "No errors or crashes occur",
+        "No XSS vulnerabilities",
+        "Results show no matches or appropriate message"
+      ],
+      "postconditions": "Special characters are handled safely",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NEG_002",
+      "title": "Search with Empty Input",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "User is on Product Management page with search applied",
+      "steps": [
+        "Clear the search input field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "All products are displayed when search is cleared",
+        "Filter resets to show all matching products"
+      ],
+      "postconditions": "Empty search shows all products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NEG_003",
+      "title": "Edit with Invalid Data",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-111",
+      "linkedBug": "SCRUM-701",
+      "preconditions": "User is editing a product",
+      "steps": [
+        "Open edit form for a product",
+        "Enter invalid data (empty required fields, invalid formats)",
+        "Attempt to save"
+      ],
+      "expectedResults": [
+        "Validation errors are displayed",
+        "Form does not submit with invalid data",
+        "Error messages are clear and specific",
+        "User can correct errors and resubmit"
+      ],
+      "postconditions": "Invalid data is rejected with clear feedback",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERF_001",
+      "title": "Page Load Performance",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Normal network conditions",
+      "steps": [
+        "Navigate to Product Management page",
+        "Measure page load time"
+      ],
+      "expectedResults": [
+        "Page loads key content within 3 seconds",
+        "Product listing is visible quickly",
+        "No significant delays in rendering"
+      ],
+      "postconditions": "Page loads within acceptable time",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ERR_001",
+      "title": "Error Handling - Network Failure",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-111",
+      "preconditions": "Simulate network failure or server error",
+      "steps": [
+        "Disconnect network or simulate server error",
+        "Attempt to load Product Management page",
+        "Observe the response"
+      ],
+      "expectedResults": [
+        "Clear error message is displayed",
+        "User understands there is a connectivity issue",
+        "Application does not crash"
+      ],
+      "postconditions": "Error is handled gracefully",
+      "testResult": "PASS"
+    }
+  ]
+}

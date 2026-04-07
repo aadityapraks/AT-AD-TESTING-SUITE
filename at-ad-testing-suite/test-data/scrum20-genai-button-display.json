@@ -1,0 +1,284 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "productUploadUrl": "https://hub-ui-admin-qa.swarajability.org/partner/product-upload",
+  "inputs": {
+    "productName": "Foldable Wheelchair",
+    "productType": "Device",
+    "disabilityType": "Physical Disability",
+    "disabilityPercentage": "60–80%",
+    "shortDescription": "A lightweight and portable wheelchair designed for easy mobility and independence.",
+    "detailedDescription": "This foldable wheelchair is engineered for users with mobility challenges, featuring a lightweight aluminum frame, ergonomic seating, and easy-fold mechanism for convenient transport.",
+    "keyFeatures": "Lightweight, Portable, Durable, Ergonomic",
+    "category": "Mobility Aids"
+  },
+  "expected": {
+    "genAIButtonText": "Assist with GenAI",
+    "shortDescriptionFieldLabel": "Short Description",
+    "detailedDescriptionFieldLabel": "Detailed Description",
+    "specificationsFieldLabel": "Specifications",
+    "genAIPanelVisible": true,
+    "disclaimerText": "AI-generated content must be reviewed",
+    "buttonClickable": true,
+    "shortDescriptionMinChars": 150,
+    "shortDescriptionMaxChars": 200,
+    "inclusiveLanguage": true,
+    "suitableForCatalog": true,
+    "detailedDescriptionIncludesUsage": true,
+    "detailedDescriptionHighlightsAccessibility": true,
+    "detailedDescriptionMentionsFeatures": true,
+    "detailedDescriptionClearAndInclusive": true,
+    "noJargonWithoutExplanation": true,
+    "avoidsNormalAbnormal": true,
+    "respectfulInclusiveLanguage": true,
+    "neutralTerms": true
+  },
+  "TC_GENAI_014": {
+    "forbiddenTerms": [
+      "normal",
+      "abnormal",
+      "handicapped",
+      "crippled",
+      "invalid",
+      "retarded",
+      "suffering from",
+      "afflicted with",
+      "confined to",
+      "wheelchair-bound",
+      "victim of",
+      "defect",
+      "defective"
+    ],
+    "testProducts": [
+      {
+        "productName": "Portable Braille Display",
+        "productType": "Device",
+        "disabilityPercentage": "60–80%"
+      },
+      {
+        "productName": "Screen Reader Software",
+        "productType": "Software",
+        "disabilityPercentage": "40–60%"
+      }
+    ]
+  },
+  "TC_GENAI_015": {
+    "productName": "Adaptive Keyboard",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "editedText": "This adaptive keyboard features large keys and high contrast colors for users with visual or motor impairments. Easy to use and highly durable.",
+    "expected": {
+      "editModeActivated": true,
+      "textEditable": true,
+      "changesSaved": true
+    }
+  },
+  "TC_GENAI_017": {
+    "productName": "Voice Amplifier Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "acceptButtonVisible": true,
+      "contentInserted": true,
+      "modalClosed": true
+    }
+  },
+  "TC_GENAI_024": {
+    "productName": "Smart Hearing Aid",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "refinementInstruction": "make it simpler",
+    "expected": {
+      "refinementAccepted": true,
+      "contentSimplified": true,
+      "meaningPreserved": true
+    }
+  },
+  "TC_GENAI_031": {
+    "productName": "Assistive Communication Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "genAIPanelOpens": true,
+      "errorMessageDisplayed": true,
+      "userFriendlyMessage": true,
+      "retryOptionAvailable": true,
+      "canContinueManually": true
+    }
+  },
+  "TC_GENAI_002": {
+    "productName": "Screen Reader Pro",
+    "productType": "Software",
+    "disabilityPercentage": "60–80%"
+  },
+  "TC_GENAI_003": {
+    "productName": "Hearing Enhancement Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%"
+  },
+  "TC_GENAI_006": {
+    "productName": "Portable Braille Display",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "shortDescriptionMinChars": 50,
+      "shortDescriptionMaxChars": 200
+    }
+  },
+  "TC_GENAI_016": {
+    "productName": "Mobility Scooter",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "regenerateButtonVisible": true,
+      "newContentGenerated": true
+    }
+  },
+  "TC_GENAI_021": {
+    "productName": "Speech Therapy App",
+    "productType": "Device",
+    "disabilityPercentage": "40–60%",
+    "expected": {
+      "disclaimerVisible": true,
+      "disclaimerText": "AI-generated"
+    }
+  },
+  "TC_GENAI_022": {
+    "productName": "Tactile Learning Kit",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "discardOptionAvailable": true,
+      "contentDiscarded": true
+    }
+  },
+  "TC_GENAI_025": {
+    "productName": "Medical Alert System",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "refinementInstruction": "add safety information",
+    "expected": {
+      "safetyInfoAdded": true
+    }
+  },
+  "TC_GENAI_028": {
+    "productName": "",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "handlesGracefully": true
+    }
+  },
+  "TC_GENAI_029": {
+    "productName": "Braille Display™ (Model-X) & Accessories",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "specialCharsHandled": true
+    }
+  },
+  "TC_GENAI_035": {
+    "productName": "Wheelchair Accessible Ramp",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "biasTerms": [
+      "handicapped",
+      "crippled",
+      "invalid",
+      "retarded",
+      "suffering from",
+      "afflicted with",
+      "confined to",
+      "wheelchair-bound",
+      "victim of"
+    ]
+  },
+  "TC_GENAI_040": {
+    "productName": "Assistive Reading Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "loadingIndicatorVisible": true
+    }
+  },
+  "TC_GENAI_004": {
+    "productUploadUrl": "https://hub-ui-admin-qa.swarajability.org/partner/product-upload",
+    "expected": {
+      "redirectedToLogin": true
+    }
+  },
+  "TC_GENAI_007": {
+    "productName": "Screen Reader Software",
+    "productType": "Software",
+    "disabilityPercentage": "40–60%",
+    "keyFeatures": "voice output, keyboard navigation, multi-language support",
+    "expected": {
+      "includesUsageInfo": true,
+      "mentionsAccessibility": true,
+      "highlightsFeatures": true
+    }
+  },
+  "TC_GENAI_013": {
+    "productName": "Compact Hearing Aid",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "minChars": 50,
+      "maxChars": 200
+    }
+  },
+  "TC_GENAI_023": {
+    "productName": "Ergonomic Mouse",
+    "productType": "Device",
+    "disabilityPercentage": "40–60%",
+    "expected": {
+      "panelAppearsAsDialog": true
+    }
+  },
+  "TC_GENAI_030": {
+    "productName": "This is an extremely long product name that exceeds normal limits and contains many words to test how the GenAI system handles very long input text that might cause issues with processing or display. The product is designed for accessibility and includes many features that help users with various disabilities to interact with technology more effectively and independently.",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "handlesLongInput": true
+    }
+  },
+  "TC_GENAI_033": {
+    "productName": "Multi-Function Assistive Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "regenerateCount": 3,
+    "expected": {
+      "allGenerationsComplete": true
+    }
+  },
+  "TC_GENAI_036": {
+    "productName": "Keyboard Accessible Device",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "keyboardNavigable": true,
+      "escapeCloses": true
+    }
+  },
+  "TC_GENAI_041": {
+    "productName": "सहायक उपकरण (Assistive Device)",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "expected": {
+      "multilingualHandled": true
+    }
+  },
+  "TC_GENAI_042": {
+    "productName": "Customizable Assistive Tool",
+    "productType": "Device",
+    "disabilityPercentage": "60–80%",
+    "manualText": "This is my completely custom description that I wrote manually without any AI assistance. It describes the product features clearly.",
+    "expected": {
+      "manualTextSaved": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "inputs": {
+    "searchTerm": "wheel chair",
+    "noMatchSearch": "xyznonexistent999",
+    "disabilityTypeFilter": "Locomotor",
+    "sortNewestFirst": "Newest First",
+    "sortOldestFirst": "Oldest First",
+    "sortNameAZ": "Name A-Z",
+    "sortNameZA": "Name Z-A"
+  },
+  "expected": {
+    "pageHeading": "Product Management",
+    "pageSubheading": "Manage your product inventory, listings, and approval status",
+    "statusTabs": ["All", "Approved", "Under Review", "Draft", "Rejected"],
+    "tableColumns": ["Product", "Disability Type", "Stock", "Listing Status", "Website Visibility", "Submitted", "Actions"],
+    "navTabs": ["Product Management", "Product Upload", "Interest Expressed", "Queries", "Reviews & Ratings"],
+    "actionsMenuItems": ["View Details", "Edit", "Edit Pricing & Quantity", "Duplicate", "Mark as Inactive", "Delete"],
+    "actionsMenuItemsDraft": ["View Details", "Edit", "Edit Pricing & Quantity", "Duplicate", "Mark as Active", "Delete"],
+    "emptyStateMessage": "No products found",
+    "approvalTimelineHeading": "Approval Process Timeline",
+    "productManagementUrl": "/partner/product-management",
+    "loginButtonText": "Sign in with Swarajability"
+  }
+}

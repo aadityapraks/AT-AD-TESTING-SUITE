@@ -12,6 +12,7 @@ node_modules/
 playwright-report/
 test-results/
 .playwright/
+tests/auth/.auth/
 
 # Build outputs
 dist/
@@ -22,3 +23,7 @@ coverage/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Local IDE settings with secrets
+.kiro/settings/mcp.json
+.amazonq/

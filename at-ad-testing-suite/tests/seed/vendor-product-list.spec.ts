@@ -18,3 +18,4 @@ test.describe('Seed: Vendor Product List', () => {
     await page.waitForURL(/partner\/product-management/);
   });
 });
+

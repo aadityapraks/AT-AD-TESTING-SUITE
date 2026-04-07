@@ -20,3 +20,4 @@ test.describe('Seed: Vendor Edit Product Images', () => {
     await page.getByText('Edit', { exact: true }).first().click();
   });
 });
+

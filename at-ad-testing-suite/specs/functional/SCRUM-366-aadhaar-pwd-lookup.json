@@ -1,0 +1,524 @@
+{
+  "jiraStory": "SCRUM-366",
+  "title": "Caregiver - Aadhaar-Based PwD Lookup - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Aadhaar-Based PwD Lookup feature on the AT/AD platform. This feature allows caregivers to verify a PwD's Aadhaar number to determine if they already exist in SwarajAbility. Covers Aadhaar input validation (12-digit numeric, mandatory), Verify button enablement logic, SwarajAbility lookup with two outcomes (PwD found → OTP verification → auto-population, PwD not found → new registration), back navigation, and edge cases including invalid format, service unavailability, excessive attempts lock, and Aadhaar already linked to another caregiver.",
+  "scope": {
+    "inScope": [
+      "Aadhaar number input field (mandatory, 12-digit numeric)",
+      "Verify Aadhaar Number button enablement logic",
+      "SwarajAbility lookup integration",
+      "PwD found flow: OTP sent to PwD mobile, OTP verification, auto-population",
+      "PwD not found flow: redirect to new registration",
+      "Invalid OTP handling",
+      "Back button navigation to adding new PwD",
+      "Invalid Aadhaar length/format validation",
+      "Aadhaar service unavailable retry message",
+      "Excessive attempts temporary lock",
+      "Aadhaar already linked to another caregiver block"
+    ],
+    "outOfScope": [
+      "Auto-population of PwD details (covered in SCRUM-369)",
+      "New PwD registration form (covered in SCRUM-372)",
+      "My PwDs dashboard (covered in SCRUM-363)",
+      "Backend Aadhaar verification service internals",
+      "SwarajAbility platform internals"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_AADHAAR_001",
+      "title": "Verify Aadhaar input field is mandatory and accepts only 12-digit numeric input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Aadhaar Input Validation",
+      "preconditions": "Caregiver is logged in; Navigated to Add New PwD / Aadhaar lookup page",
+      "steps": [
+        "1. Navigate to the Aadhaar-based PwD lookup page",
+        "2. Verify Aadhaar number input field is displayed",
+        "3. Verify the field is marked as mandatory",
+        "4. Leave the field empty and check if Verify button is disabled",
+        "5. Enter less than 12 digits: '12345678'",
+        "6. Verify Verify button remains disabled",
+        "7. Enter more than 12 digits: '1234567890123'",
+        "8. Verify field restricts to 12 digits or shows error",
+        "9. Enter alphabetic characters: 'abcdefghijkl'",
+        "10. Verify field rejects non-numeric input",
+        "11. Enter special characters: '!@#$%^&*()_+'",
+        "12. Verify field rejects special characters",
+        "13. Enter valid 12-digit Aadhaar: '234567890123'",
+        "14. Verify Verify Aadhaar Number button becomes enabled"
+      ],
+      "testData": {
+        "emptyInput": "",
+        "shortAadhaar": "12345678",
+        "longAadhaar": "1234567890123",
+        "alphabeticInput": "abcdefghijkl",
+        "specialChars": "!@#$%^&*()_+",
+        "validAadhaar": "234567890123"
+      },
+      "expectedResults": [
+        "Aadhaar field is displayed and marked as mandatory",
+        "Verify button is disabled when field is empty",
+        "Verify button is disabled for less than 12 digits",
+        "Field restricts input to 12 digits or shows validation error for excess",
+        "Non-numeric characters are rejected or trigger validation error",
+        "Special characters are rejected",
+        "Verify button is enabled only for valid 12-digit numeric input"
+      ],
+      "postconditions": "Aadhaar input validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_002",
+      "title": "Verify successful Aadhaar lookup when PwD is found in SwarajAbility",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "PwD Found Flow",
+      "preconditions": "Caregiver is logged in; A PwD with the test Aadhaar exists in SwarajAbility",
+      "steps": [
+        "1. Navigate to Aadhaar lookup page",
+        "2. Enter a valid 12-digit Aadhaar number of an existing PwD",
+        "3. Verify 'Verify Aadhaar Number' button is enabled",
+        "4. Click 'Verify Aadhaar Number' button",
+        "5. Verify system checks Aadhaar against SwarajAbility",
+        "6. Verify a clear message is shown indicating PwD was found",
+        "7. Verify OTP is sent to the PwD's registered mobile number",
+        "8. Verify OTP input field is displayed",
+        "9. Enter the correct OTP received",
+        "10. Click Verify/Submit OTP",
+        "11. Verify OTP verification succeeds",
+        "12. Verify the PwD is added to caregiver's care network (auto-population flow)"
+      ],
+      "testData": {
+        "existingPwDAadhaar": "234567890123",
+        "pwdMobile": "9876543210"
+      },
+      "expectedResults": [
+        "System successfully looks up Aadhaar in SwarajAbility",
+        "Clear message indicates PwD was found",
+        "OTP is sent to PwD's registered mobile",
+        "OTP input field appears after successful lookup",
+        "Correct OTP verifies successfully",
+        "Verified PwD is added to caregiver's network via auto-population flow"
+      ],
+      "postconditions": "PwD is found and verified via OTP; Auto-population flow initiated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_003",
+      "title": "Verify invalid OTP shows error message during PwD verification",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "PwD Found Flow - OTP Validation",
+      "preconditions": "Caregiver has entered valid Aadhaar; PwD found in SwarajAbility; OTP sent to PwD mobile",
+      "steps": [
+        "1. After PwD is found, verify OTP input field is displayed",
+        "2. Enter an incorrect OTP: '000000'",
+        "3. Click Verify/Submit OTP",
+        "4. Verify invalid OTP error message is displayed",
+        "5. Verify user can retry with correct OTP",
+        "6. Enter the correct OTP",
+        "7. Click Verify/Submit OTP",
+        "8. Verify successful verification after retry"
+      ],
+      "testData": {
+        "incorrectOTP": "000000",
+        "correctOTP": "received OTP"
+      },
+      "expectedResults": [
+        "Invalid OTP triggers clear error message (e.g., 'Invalid OTP. Please try again.')",
+        "User is allowed to retry OTP entry",
+        "Correct OTP after failed attempt still verifies successfully",
+        "PwD is added after successful OTP verification"
+      ],
+      "postconditions": "Invalid OTP handling is verified; Retry succeeds with correct OTP",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_004",
+      "title": "Verify Aadhaar lookup when PwD is NOT found redirects to new registration",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "PwD Not Found Flow",
+      "preconditions": "Caregiver is logged in; The test Aadhaar does NOT exist in SwarajAbility",
+      "steps": [
+        "1. Navigate to Aadhaar lookup page",
+        "2. Enter a valid 12-digit Aadhaar number not registered in SwarajAbility",
+        "3. Click 'Verify Aadhaar Number' button",
+        "4. Verify system checks Aadhaar against SwarajAbility",
+        "5. Verify a clear message is shown indicating PwD was NOT found",
+        "6. Verify user is redirected to new PwD registration flow",
+        "7. Verify the Aadhaar number is pre-filled in the registration form (if applicable)",
+        "8. Verify the registration form is ready for input"
+      ],
+      "testData": {
+        "unregisteredAadhaar": "999988887777"
+      },
+      "expectedResults": [
+        "System checks Aadhaar and determines PwD is not found",
+        "Clear message indicates PwD not found in SwarajAbility",
+        "User is redirected to new PwD registration flow",
+        "Aadhaar may be pre-filled in registration form",
+        "Registration form is functional and ready for input"
+      ],
+      "postconditions": "PwD not found; User is on new registration flow",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_005",
+      "title": "Verify 'Verify Aadhaar Number' button is enabled only for valid 12-digit input",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Button Enablement Logic",
+      "preconditions": "Caregiver is on Aadhaar lookup page",
+      "steps": [
+        "1. Verify button is disabled when field is empty",
+        "2. Enter 1 digit, verify button is disabled",
+        "3. Enter 6 digits, verify button is disabled",
+        "4. Enter 11 digits, verify button is disabled",
+        "5. Enter 12 digits (valid), verify button becomes enabled",
+        "6. Delete one digit (back to 11), verify button becomes disabled again",
+        "7. Re-enter the 12th digit, verify button re-enables"
+      ],
+      "testData": {
+        "oneDigit": "1",
+        "sixDigits": "123456",
+        "elevenDigits": "12345678901",
+        "twelveDigits": "123456789012"
+      },
+      "expectedResults": [
+        "Button is disabled for any input less than 12 digits",
+        "Button enables exactly at 12 valid numeric digits",
+        "Button dynamically toggles based on input length",
+        "No manual page refresh needed for button state change"
+      ],
+      "postconditions": "Button enablement logic is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_006",
+      "title": "Verify back button navigates to adding new PwD page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Navigation",
+      "preconditions": "Caregiver is on Aadhaar lookup page",
+      "steps": [
+        "1. Navigate to Aadhaar lookup page",
+        "2. Locate the back button",
+        "3. Click the back button before entering any data",
+        "4. Verify user is navigated back to adding new PwD / My PwDs page",
+        "5. Navigate to Aadhaar lookup page again",
+        "6. Enter a partial Aadhaar number",
+        "7. Click the back button",
+        "8. Verify user is navigated back without errors",
+        "9. Navigate to Aadhaar lookup page again",
+        "10. Verify the Aadhaar field is cleared (fresh state)"
+      ],
+      "testData": {
+        "partialAadhaar": "12345678"
+      },
+      "expectedResults": [
+        "Back button is visible and clickable",
+        "Clicking back navigates to adding new PwD / My PwDs page",
+        "Back navigation works with empty or partial input",
+        "No errors occur during back navigation",
+        "Returning to lookup page shows fresh/cleared state"
+      ],
+      "postconditions": "Back button navigation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_007",
+      "title": "Verify invalid Aadhaar length/format shows validation error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Edge Case - Invalid Format",
+      "preconditions": "Caregiver is on Aadhaar lookup page",
+      "steps": [
+        "1. Enter Aadhaar with less than 12 digits: '12345'",
+        "2. Attempt to click Verify (if enabled) or observe validation",
+        "3. Verify validation error message is displayed",
+        "4. Clear field and enter mixed alphanumeric: '12345abc9012'",
+        "5. Verify validation error or input rejection",
+        "6. Clear field and enter Aadhaar starting with 0: '012345678901'",
+        "7. Verify if leading zero is accepted or rejected",
+        "8. Clear field and enter all zeros: '000000000000'",
+        "9. Verify validation behavior for all-zero input"
+      ],
+      "testData": {
+        "shortAadhaar": "12345",
+        "alphanumericAadhaar": "12345abc9012",
+        "leadingZeroAadhaar": "012345678901",
+        "allZeroAadhaar": "000000000000"
+      },
+      "expectedResults": [
+        "Short Aadhaar triggers validation error or button remains disabled",
+        "Alphanumeric input is rejected or triggers error",
+        "Validation error messages are clear and actionable",
+        "All-zero input may be rejected as invalid Aadhaar"
+      ],
+      "postconditions": "Invalid format validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_008",
+      "title": "Verify Aadhaar service unavailable shows retry message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Edge Case - Service Unavailable",
+      "preconditions": "Caregiver is on Aadhaar lookup page; Aadhaar/SwarajAbility service is unavailable or simulated down",
+      "steps": [
+        "1. Enter a valid 12-digit Aadhaar number",
+        "2. Click 'Verify Aadhaar Number' button",
+        "3. Simulate or wait for service unavailability (network error, timeout)",
+        "4. Verify a retry message is displayed to the user",
+        "5. Verify the message is clear (e.g., 'Service temporarily unavailable. Please try again.')",
+        "6. Verify a retry option is provided (button or automatic)",
+        "7. Click retry after service is restored",
+        "8. Verify lookup proceeds normally"
+      ],
+      "testData": {
+        "validAadhaar": "234567890123"
+      },
+      "expectedResults": [
+        "Service unavailability is detected and handled gracefully",
+        "Retry message is displayed clearly",
+        "Retry option is provided",
+        "After service restoration, retry succeeds normally",
+        "No unhandled errors or blank screens"
+      ],
+      "postconditions": "Service unavailability handling is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AADHAAR_009",
+      "title": "Verify excessive Aadhaar verification attempts trigger temporary lock",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Edge Case - Excessive Attempts",
+      "preconditions": "Caregiver is on Aadhaar lookup page",
+      "steps": [
+        "1. Enter a valid 12-digit Aadhaar number",
+        "2. Click 'Verify Aadhaar Number' repeatedly (exceed max attempts)",
+        "3. Verify temporary lock is triggered after maximum attempts",
+        "4. Verify lock message is displayed with duration",
+        "5. Verify Verify button is disabled during lock period",
+        "6. Wait for lock period to expire",
+        "7. Verify Aadhaar verification is re-enabled"
+      ],
+      "testData": {
+        "validAadhaar": "234567890123"
+      },
+      "expectedResults": [
+        "After maximum attempts, temporary lock is triggered",
+        "Lock message clearly states duration and reason",
+        "Verify button is disabled during lock period",
+        "After lock expires, verification is re-enabled"
+      ],
+      "postconditions": "Excessive attempts lock behavior is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AADHAAR_010",
+      "title": "Verify Aadhaar already linked to another caregiver blocks access with guidance",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Edge Case - Already Linked",
+      "preconditions": "A PwD's Aadhaar is already linked to a different caregiver account",
+      "steps": [
+        "1. Log in as a different caregiver (not the one linked to the PwD)",
+        "2. Navigate to Aadhaar lookup page",
+        "3. Enter the Aadhaar number already linked to another caregiver",
+        "4. Click 'Verify Aadhaar Number'",
+        "5. Verify access is blocked",
+        "6. Verify an error message indicates Aadhaar is already linked",
+        "7. Verify guidance is provided (e.g., 'Contact support' or help link)",
+        "8. Verify no PwD data is exposed to the unauthorized caregiver"
+      ],
+      "testData": {
+        "linkedAadhaar": "234567890123",
+        "linkedToCaregiver": "other.caregiver@example.com"
+      },
+      "expectedResults": [
+        "Access is blocked for Aadhaar linked to another caregiver",
+        "Error message clearly indicates Aadhaar is already linked",
+        "Guidance is provided (support contact or help link)",
+        "No PwD data is exposed to the unauthorized caregiver",
+        "Caregiver remains on lookup page or is redirected appropriately"
+      ],
+      "postconditions": "Already-linked Aadhaar blocking is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AADHAAR_011",
+      "title": "Verify Aadhaar input field masks the entered number",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-366",
+      "category": "Security - Input Masking",
+      "preconditions": "Caregiver is on Aadhaar lookup page",
+      "steps": [
+        "1. Navigate to Aadhaar lookup page",
+        "2. Click on the Aadhaar input field",
+        "3. Enter a 12-digit Aadhaar number: '234567890123'",
+        "4. Verify the input is masked (e.g., XXXX-XXXX-0123 or dots)",
+        "5. Verify the full number is not visible in plain text",
+        "6. Verify the Verify button still works with masked input"
+      ],
+      "testData": {
+        "aadhaarNumber": "234567890123"
+      },
+      "expectedResults": [
+        "Aadhaar input is masked for privacy (partial or full masking)",
+        "Full 12-digit number is not visible in plain text on screen",
+        "Verify button functions correctly with masked input",
+        "Masking does not interfere with validation logic"
+      ],
+      "postconditions": "Aadhaar input masking is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_aadhaar_mandatory_12digit": {
+      "description": "Aadhaar number is mandatory, accepts only 12-digit numeric input",
+      "testCases": ["TC_AADHAAR_001", "TC_AADHAAR_007"]
+    },
+    "AC2_verify_button_enablement": {
+      "description": "Verify Aadhaar Number button enabled only for valid input",
+      "testCases": ["TC_AADHAAR_005"]
+    },
+    "AC3_swarajability_lookup": {
+      "description": "System checks Aadhaar against SwarajAbility",
+      "testCases": ["TC_AADHAAR_002", "TC_AADHAAR_004"]
+    },
+    "AC4_pwd_found_otp_flow": {
+      "description": "PwD found → OTP sent to PwD mobile, verified user added, invalid OTP message",
+      "testCases": ["TC_AADHAAR_002", "TC_AADHAAR_003"]
+    },
+    "AC5_pwd_not_found_registration": {
+      "description": "PwD not found → new registration flow",
+      "testCases": ["TC_AADHAAR_004"]
+    },
+    "AC6_back_button": {
+      "description": "Caregiver can go back to adding new PwD by clicking back button",
+      "testCases": ["TC_AADHAAR_006"]
+    },
+    "EC1_invalid_format": {
+      "description": "Invalid Aadhaar length/format → validation error",
+      "testCases": ["TC_AADHAAR_001", "TC_AADHAAR_007"]
+    },
+    "EC2_service_unavailable": {
+      "description": "Aadhaar service unavailable → retry message",
+      "testCases": ["TC_AADHAAR_008"]
+    },
+    "EC3_excessive_attempts": {
+      "description": "Excessive attempts → temporary lock",
+      "testCases": ["TC_AADHAAR_009"]
+    },
+    "EC4_already_linked": {
+      "description": "Aadhaar already linked to another caregiver → access blocked with guidance",
+      "testCases": ["TC_AADHAAR_010"]
+    }
+  },
+  "test_data_requirements": {
+    "aadhaar_numbers": [
+      {
+        "scenario": "PwD exists in SwarajAbility",
+        "aadhaar": "234567890123",
+        "pwdMobile": "9876543210",
+        "status": "Registered in SwarajAbility"
+      },
+      {
+        "scenario": "PwD NOT in SwarajAbility",
+        "aadhaar": "999988887777",
+        "status": "Not registered"
+      },
+      {
+        "scenario": "Aadhaar linked to another caregiver",
+        "aadhaar": "111122223333",
+        "linkedTo": "other.caregiver@example.com",
+        "status": "Already linked"
+      }
+    ],
+    "caregiver_account": {
+      "email": "caregiver@example.com",
+      "password": "SecurePass@123",
+      "status": "Registered and logged in"
+    },
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver is registered and logged in (SCRUM-357, SCRUM-360)",
+      "My PwDs page is functional with available slots (SCRUM-363)",
+      "SwarajAbility Aadhaar lookup service is available in QA",
+      "OTP delivery to PwD mobile is functional in QA",
+      "Test Aadhaar numbers are available for both found and not-found scenarios",
+      "An Aadhaar linked to another caregiver is available for testing"
+    ],
+    "dependencies": [
+      "SCRUM-363: My PwDs page must be functional for navigation context",
+      "SCRUM-369: Auto-populate flow must be available for PwD found scenario",
+      "SCRUM-372: New PwD registration must be available for PwD not found scenario",
+      "SwarajAbility Aadhaar verification API must be operational",
+      "OTP delivery infrastructure must be functional"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What is the maximum number of Aadhaar verification attempts before temporary lock?",
+      "impact": "Affects TC_AADHAAR_009 retry count"
+    },
+    {
+      "question": "What is the temporary lock duration after excessive attempts?",
+      "impact": "Affects TC_AADHAAR_009 wait time"
+    },
+    {
+      "question": "Is the Aadhaar input masked on the lookup page (similar to registration)?",
+      "impact": "Affects TC_AADHAAR_011 expected masking behavior"
+    },
+    {
+      "question": "Does the OTP for PwD verification have the same expiry/retry rules as registration OTPs?",
+      "impact": "Affects TC_AADHAAR_003 OTP retry behavior"
+    },
+    {
+      "question": "What specific error message is shown when Aadhaar is linked to another caregiver?",
+      "impact": "Affects TC_AADHAAR_010 expected error text"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_AADHAAR_001-004) should be executed first - core input validation, found/not-found flows, OTP",
+      "High priority tests (005-008, 010) cover button logic, back navigation, invalid format, service unavailable, already linked",
+      "Medium priority tests (009, 011) cover excessive attempts lock and input masking"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 11,
+      "estimated_hours": "14-18 hours for full manual testing",
+      "estimated_automation_hours": "22-28 hours for test automation",
+      "critical_path": "4-6 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "SwarajAbility Aadhaar lookup service operational",
+      "OTP delivery service functional for PwD mobile",
+      "Test Aadhaar numbers for found, not-found, and already-linked scenarios",
+      "Caregiver account with available PwD slots"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "Caregiver sign-in flow (SCRUM-360)",
+      "My PwDs page (SCRUM-363)",
+      "Auto-populate PwD details (SCRUM-369)",
+      "New PwD registration (SCRUM-372)"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 11,
+    "coverage": "100% of acceptance criteria and all edge cases covered"
+  }
+}

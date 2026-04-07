@@ -1,7 +1,16 @@
 {
-  "url": "https://hub-ui-admin-dev.swarajability.org/",
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
   "credentials": {
-    "email": "aadityap@byteridge.com",
-    "password": "aadityap@byteridge.com"
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "expected": {
+    "pageHeading": "Product Management",
+    "moreActionsButtonPattern": "More actions for",
+    "deleteMenuItemLabel": "Delete",
+    "confirmationDialogTitle": "Delete Product?",
+    "confirmationDialogMessage": "Are you sure you want to delete this product? This action cannot be undone.",
+    "deleteButtonLabel": "Delete",
+    "cancelButtonLabel": "Cancel"
   }
 }

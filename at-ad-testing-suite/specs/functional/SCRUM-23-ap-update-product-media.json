@@ -1,0 +1,798 @@
+{
+  "jiraStory": "SCRUM-23",
+  "title": "AP Updates Product Photos and Demo Videos - Functional Test Plan",
+  "version": "1.1",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the product media management feature for Assistive Partners (APs) on the PwD Catalog Portal. This feature enables APs to update, replace, and manage product images (primary, additional, 3D mockups) and demo videos with accessibility compliance including ALT text and captions.",
+  "scope": {
+    "inScope": [
+      "Access to Media Update Section via Edit Product",
+      "Primary Image Management (replace, reassign)",
+      "Additional Image Uploads (up to 5 images)",
+      "3D Mockup Images (up to 3 images)",
+      "Demo Video Updates (file upload and YouTube/Vimeo embed)",
+      "ALT Text and Captions management",
+      "GenAI ALT Text generation",
+      "Preview and Validation functionality",
+      "Saving and Approval Workflow",
+      "File and Performance Standards",
+      "Error Handling",
+      "Accessibility and UI Compliance (WCAG 2.1 AA)"
+    ],
+    "outOfScope": [
+      "Backend storage performance testing",
+      "CDN delivery optimization",
+      "Cross-browser compatibility (covered separately)",
+      "Admin-specific features (audit logging, version history, rollback)",
+      "Screen reader compatibility testing"
+    ]
+  },
+  "fileLimits": {
+    "imageMaxSize": "5 MB",
+    "videoMaxSize": "100 MB",
+    "supportedImageFormats": ["JPG", "PNG"],
+    "supportedVideoFormats": ["MP4"],
+    "maxAdditionalImages": 5,
+    "max3DMockupImages": 3
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedAPIs": ["SCRUM-323 - API EDIT/UPDATE IMAGES", "SCRUM-324 - API EDIT/UPDATE VIDEO", "SCRUM-325 - API Delete Images", "SCRUM-326 - API Delete Video"]
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": ["Approved AP"],
+    "prerequisites": ["Valid AP account with approved status", "Existing products with media in Product Management"]
+  },
+  "testCases": [
+    {
+      "id": "TC_MEDIA_001",
+      "title": "Verify Edit Product option access from Vendor Product Management page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC1 - Access to Media Update Section",
+      "preconditions": "User is logged in as approved AP with existing products",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Management",
+        "Locate a product in the list",
+        "Click on 'Edit Product' option in action column"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Management page loads with product list",
+        "Product is visible in the list",
+        "Edit Product form opens successfully"
+      ],
+      "postconditions": "Edit Product form is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_002",
+      "title": "Verify media gallery view displays all previously uploaded images and videos",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC1 - Access to Media Update Section",
+      "preconditions": "User is on Edit Product form for a product with existing media",
+      "steps": [
+        "Open Edit Product for a product with images and videos",
+        "Navigate to the Media section",
+        "Verify gallery view displays all uploaded images",
+        "Verify demo video is displayed"
+      ],
+      "expectedResults": [
+        "Edit Product form opens",
+        "Media section is accessible",
+        "All previously uploaded images are visible in gallery view",
+        "Demo video is visible with playback controls"
+      ],
+      "postconditions": "All media is displayed in clear gallery view",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_003",
+      "title": "Verify primary image is clearly marked as 'Primary'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC2 - Primary Image Management",
+      "preconditions": "User is on Edit Product form with existing images",
+      "steps": [
+        "Open Edit Product for a product with multiple images",
+        "Navigate to the Media/Images section",
+        "Identify the primary image",
+        "Verify 'Primary' label or indicator is visible"
+      ],
+      "expectedResults": [
+        "Edit Product form opens",
+        "Images section is visible",
+        "Primary image is identifiable",
+        "Primary image has clear 'Primary' label/badge"
+      ],
+      "postconditions": "Primary image is clearly distinguished from other images",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_004",
+      "title": "Verify AP can replace current primary image with a new one",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC2 - Primary Image Management",
+      "preconditions": "User is on Edit Product form with existing primary image",
+      "steps": [
+        "Navigate to Media section",
+        "Click on replace/upload option for primary image",
+        "Select a new image file (JPG/PNG, ≤5MB)",
+        "Confirm the replacement",
+        "Verify new image is set as primary"
+      ],
+      "expectedResults": [
+        "Media section is accessible",
+        "Replace option is available for primary image",
+        "New image is uploaded successfully",
+        "Replacement is confirmed",
+        "New image displays as primary with 'Primary' label"
+      ],
+      "postconditions": "Primary image is replaced with new image",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_005",
+      "title": "Verify AP can reassign another image as primary",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC2 - Primary Image Management",
+      "preconditions": "User is on Edit Product form with multiple images",
+      "steps": [
+        "Navigate to Media section with multiple images",
+        "Select a non-primary image",
+        "Click 'Set as Primary' or similar option",
+        "Verify the selected image becomes primary"
+      ],
+      "expectedResults": [
+        "Multiple images are displayed",
+        "Non-primary image is selectable",
+        "Set as Primary option is available",
+        "Selected image now shows 'Primary' label, previous primary loses the label"
+      ],
+      "postconditions": "Primary image is reassigned",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_006",
+      "title": "Verify primary image update reflects in product card preview",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC2 - Primary Image Management",
+      "preconditions": "User has changed the primary image",
+      "steps": [
+        "Change the primary image (replace or reassign)",
+        "Click 'Preview Media' or preview option",
+        "Verify product card preview shows the new primary image"
+      ],
+      "expectedResults": [
+        "Primary image is changed",
+        "Preview option is available",
+        "Product card preview displays the new primary image"
+      ],
+      "postconditions": "Primary image change is reflected in preview",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_007",
+      "title": "Verify AP can upload up to 5 additional product images",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Navigate to Additional Images section",
+        "Upload 5 images (JPG/PNG format)",
+        "Verify all 5 images are uploaded successfully",
+        "Verify previews are displayed for all images"
+      ],
+      "expectedResults": [
+        "Additional Images section is accessible",
+        "All 5 images upload successfully",
+        "Upload count shows 5/5 images",
+        "Preview thumbnails are displayed for all uploaded images"
+      ],
+      "postconditions": "5 additional images are uploaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_008",
+      "title": "Verify system prevents uploading more than 5 additional images",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User has already uploaded 5 additional images",
+      "steps": [
+        "Upload 5 additional images",
+        "Attempt to upload a 6th image",
+        "Verify system prevents the upload"
+      ],
+      "expectedResults": [
+        "5 images are uploaded",
+        "Upload button is disabled or shows limit reached",
+        "Error message indicates maximum limit reached"
+      ],
+      "postconditions": "System enforces 5 image limit",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_009",
+      "title": "Verify supported image formats (JPG, PNG) are accepted",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Upload a JPG format image",
+        "Upload a PNG format image",
+        "Verify both formats are accepted"
+      ],
+      "expectedResults": [
+        "JPG image uploads successfully",
+        "PNG image uploads successfully",
+        "Both images display in preview"
+      ],
+      "postconditions": "Supported formats are accepted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_010",
+      "title": "Verify AP can reorder additional images",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User has uploaded multiple additional images",
+      "steps": [
+        "Upload 3 or more additional images",
+        "Drag and drop to reorder images",
+        "Verify new order is reflected"
+      ],
+      "expectedResults": [
+        "Multiple images are uploaded",
+        "Drag and drop functionality works",
+        "Images display in new order"
+      ],
+      "postconditions": "Images are reordered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_011",
+      "title": "Verify AP can replace an additional image",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User has uploaded additional images",
+      "steps": [
+        "Select an existing additional image",
+        "Click replace option",
+        "Upload a new image",
+        "Verify image is replaced"
+      ],
+      "expectedResults": [
+        "Image is selected",
+        "Replace option is available",
+        "New image uploads successfully",
+        "Old image is replaced with new one"
+      ],
+      "postconditions": "Additional image is replaced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_012",
+      "title": "Verify AP can delete an additional image",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC3 - Additional Image Uploads",
+      "preconditions": "User has uploaded additional images",
+      "steps": [
+        "Select an existing additional image",
+        "Click delete option",
+        "Confirm deletion",
+        "Verify image is removed"
+      ],
+      "expectedResults": [
+        "Image is selected",
+        "Delete option is available",
+        "Confirmation prompt appears",
+        "Image is removed from gallery"
+      ],
+      "postconditions": "Additional image is deleted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_013",
+      "title": "Verify AP can upload up to 3 3D Mockup images",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC4 - 3D Mockup Images",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Navigate to 3D Mockup Images section",
+        "Upload 3 mockup images",
+        "Verify all 3 images are uploaded",
+        "Verify Image tip is displayed"
+      ],
+      "expectedResults": [
+        "3D Mockup section is accessible",
+        "All 3 images upload successfully",
+        "Upload count shows 3/3 images",
+        "Image tip/guidance is visible"
+      ],
+      "postconditions": "3 3D mockup images are uploaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_014",
+      "title": "Verify system prevents uploading more than 3 3D Mockup images",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC4 - 3D Mockup Images",
+      "preconditions": "User has uploaded 3 3D mockup images",
+      "steps": [
+        "Upload 3 3D mockup images",
+        "Attempt to upload a 4th image",
+        "Verify system prevents the upload"
+      ],
+      "expectedResults": [
+        "3 images are uploaded",
+        "Upload button is disabled or shows limit reached",
+        "Error message indicates maximum limit reached"
+      ],
+      "postconditions": "System enforces 3 image limit for 3D mockups",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_015",
+      "title": "Verify AP can update demo video by uploading new video file",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC5 - Demo Video Updates",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Navigate to Demo Video section",
+        "Click upload video option",
+        "Select an MP4 video file (≤100MB)",
+        "Wait for upload to complete",
+        "Verify video is uploaded"
+      ],
+      "expectedResults": [
+        "Demo Video section is accessible",
+        "Upload option is available",
+        "Video file is accepted",
+        "Upload progress is shown",
+        "Video is uploaded and preview is available"
+      ],
+      "postconditions": "Demo video is uploaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_016",
+      "title": "Verify AP can update demo video by embedding YouTube link",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC5 - Demo Video Updates",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Navigate to Demo Video section",
+        "Select embed video option",
+        "Enter a valid YouTube URL",
+        "Click embed/save",
+        "Verify video is embedded"
+      ],
+      "expectedResults": [
+        "Demo Video section is accessible",
+        "Embed option is available",
+        "YouTube URL is accepted",
+        "Video is embedded successfully",
+        "Video preview shows YouTube player"
+      ],
+      "postconditions": "YouTube video is embedded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_017",
+      "title": "Verify AP can update demo video by embedding Vimeo link",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC5 - Demo Video Updates",
+      "preconditions": "User is on Edit Product form",
+      "steps": [
+        "Navigate to Demo Video section",
+        "Select embed video option",
+        "Enter a valid Vimeo URL",
+        "Click embed/save",
+        "Verify video is embedded"
+      ],
+      "expectedResults": [
+        "Demo Video section is accessible",
+        "Embed option is available",
+        "Vimeo URL is accepted",
+        "Video is embedded successfully",
+        "Video preview shows Vimeo player"
+      ],
+      "postconditions": "Vimeo video is embedded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_020",
+      "title": "Verify AP can preview video before finalizing",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC5 - Demo Video Updates",
+      "preconditions": "User has uploaded or embedded a video",
+      "steps": [
+        "Upload or embed a demo video",
+        "Click preview option",
+        "Verify video plays in preview mode"
+      ],
+      "expectedResults": [
+        "Video is uploaded/embedded",
+        "Preview option is available",
+        "Video plays with playback controls"
+      ],
+      "postconditions": "Video preview is functional",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_021",
+      "title": "Verify AP is required to add ALT text for uploaded images",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC6 - ALT Text and Captions",
+      "preconditions": "User is uploading an image",
+      "steps": [
+        "Upload a new image",
+        "Observe ALT text field requirement",
+        "Attempt to save without ALT text",
+        "Verify system prompts for ALT text"
+      ],
+      "expectedResults": [
+        "Image is uploaded",
+        "ALT text field is displayed",
+        "Save is blocked without ALT text",
+        "System prompts: 'ALT text is required'"
+      ],
+      "postconditions": "ALT text is mandatory for images",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_022",
+      "title": "Verify 'Generate ALT Text with GenAI' option is available",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC6 - ALT Text and Captions",
+      "preconditions": "User is on image upload with missing ALT text",
+      "steps": [
+        "Upload an image without ALT text",
+        "Observe the ALT text field",
+        "Verify 'Generate ALT Text with GenAI' button is visible",
+        "Click the GenAI button"
+      ],
+      "expectedResults": [
+        "Image is uploaded",
+        "ALT text field shows empty",
+        "GenAI button is visible",
+        "GenAI generates ALT text suggestion"
+      ],
+      "postconditions": "GenAI ALT text option is functional",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_025",
+      "title": "Verify 'Preview Media' option shows PwD-facing product details view",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC7 - Preview and Validation",
+      "preconditions": "User has updated media (images and video)",
+      "steps": [
+        "Update product images and video",
+        "Click 'Preview Media' option",
+        "Verify preview displays primary image",
+        "Verify preview displays gallery/carousel for additional images",
+        "Verify preview displays video player with captions"
+      ],
+      "expectedResults": [
+        "Media is updated",
+        "Preview option opens",
+        "Primary image is displayed prominently",
+        "Gallery/carousel shows additional images",
+        "Video player with playback controls and captions is visible"
+      ],
+      "postconditions": "Preview accurately represents PwD-facing view",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_027",
+      "title": "Verify Save Changes validates mandatory accessibility elements",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC8 - Saving and Approval Workflow",
+      "preconditions": "User has updated media with missing ALT text",
+      "steps": [
+        "Update images without ALT text",
+        "Click 'Save Changes'",
+        "Verify system validates ALT text requirement",
+        "Verify save is blocked until ALT text is added"
+      ],
+      "expectedResults": [
+        "Images are updated without ALT text",
+        "Save Changes is clicked",
+        "Validation error appears for missing ALT text",
+        "Save is blocked until ALT text is provided"
+      ],
+      "postconditions": "Mandatory accessibility elements are validated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_028",
+      "title": "Verify confirmation message after successful media save",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC8 - Saving and Approval Workflow",
+      "preconditions": "User has updated media with all required fields",
+      "steps": [
+        "Update media with ALT text and captions",
+        "Click 'Save Changes'",
+        "Verify confirmation message appears"
+      ],
+      "expectedResults": [
+        "Media is updated with all required fields",
+        "Save Changes is clicked",
+        "Confirmation message: 'Your media updates have been submitted and will be visible after admin approval.'"
+      ],
+      "postconditions": "User is informed of successful submission",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_029",
+      "title": "Verify product moves to Pending Review status after media update",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC8 - Saving and Approval Workflow",
+      "preconditions": "User has saved media updates",
+      "steps": [
+        "Save media updates",
+        "Navigate to Product Management",
+        "Check product status"
+      ],
+      "expectedResults": [
+        "Media updates are saved",
+        "Product Management page loads",
+        "Product status shows 'Pending Review'"
+      ],
+      "postconditions": "Product is in Pending Review status",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_030",
+      "title": "Verify image file size limit (≤5MB) is enforced",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC9 - File and Performance Standards",
+      "preconditions": "User is uploading an image",
+      "steps": [
+        "Attempt to upload an image larger than 5MB",
+        "Verify system rejects the file"
+      ],
+      "expectedResults": [
+        "Large image file is selected",
+        "System displays error: 'File too large'",
+        "Upload is prevented"
+      ],
+      "postconditions": "Image size limit is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_032",
+      "title": "Verify upload progress bar is displayed during upload",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC9 - File and Performance Standards",
+      "preconditions": "User is uploading a file",
+      "steps": [
+        "Start uploading an image or video",
+        "Observe upload progress indicator"
+      ],
+      "expectedResults": [
+        "Upload starts",
+        "Progress bar or percentage indicator is displayed",
+        "Progress updates as upload continues"
+      ],
+      "postconditions": "Upload progress is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_033",
+      "title": "Verify upload status indicator shows completion",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC9 - File and Performance Standards",
+      "preconditions": "User is uploading a file",
+      "steps": [
+        "Upload an image or video",
+        "Wait for upload to complete",
+        "Verify status indicator shows success"
+      ],
+      "expectedResults": [
+        "Upload starts",
+        "Upload completes",
+        "Success indicator (checkmark, green status) is displayed"
+      ],
+      "postconditions": "Upload completion is indicated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_034",
+      "title": "Verify system prevents upload of unsupported image formats",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC10 - Error Handling",
+      "preconditions": "User is uploading an image",
+      "steps": [
+        "Attempt to upload an unsupported image format (e.g., GIF, BMP, TIFF)",
+        "Verify system rejects the file"
+      ],
+      "expectedResults": [
+        "Unsupported file is selected",
+        "System displays error: 'Format not supported'",
+        "Upload is prevented"
+      ],
+      "postconditions": "Unsupported image formats are rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_036",
+      "title": "Verify AP can retry uploads without losing previously added media",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC10 - Error Handling",
+      "preconditions": "User has uploaded some media and one upload fails",
+      "steps": [
+        "Upload 2 valid images",
+        "Attempt to upload an invalid file (fails)",
+        "Verify previously uploaded images are retained",
+        "Retry with a valid file"
+      ],
+      "expectedResults": [
+        "2 images are uploaded",
+        "Invalid file upload fails",
+        "Previously uploaded images remain",
+        "Retry with valid file succeeds"
+      ],
+      "postconditions": "Failed uploads don't affect existing media",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_037",
+      "title": "Verify all media controls are keyboard accessible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Compliance",
+      "preconditions": "User is on media management interface",
+      "steps": [
+        "Navigate to media section using Tab key",
+        "Access upload button using keyboard",
+        "Access delete button using keyboard",
+        "Access preview button using keyboard",
+        "Verify all controls are reachable via keyboard"
+      ],
+      "expectedResults": [
+        "Tab navigation works",
+        "Upload button is keyboard focusable and activatable",
+        "Delete button is keyboard accessible",
+        "Preview button is keyboard accessible",
+        "All controls can be operated without mouse"
+      ],
+      "postconditions": "Media interface is fully keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_038",
+      "title": "Verify high contrast and focus indicators are visible",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Compliance",
+      "preconditions": "User is on media management interface",
+      "steps": [
+        "Navigate through media controls using keyboard",
+        "Observe focus indicators on each element",
+        "Verify high contrast is maintained"
+      ],
+      "expectedResults": [
+        "Keyboard navigation works",
+        "Focus indicators are clearly visible on focused elements",
+        "High contrast is maintained for all controls"
+      ],
+      "postconditions": "Focus indicators and contrast meet WCAG 2.1 AA",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_039",
+      "title": "Verify tooltips explain how to write effective ALT text",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Compliance",
+      "preconditions": "User is on ALT text input field",
+      "steps": [
+        "Navigate to ALT text field",
+        "Hover over help icon or tooltip trigger",
+        "Verify tooltip explains ALT text best practices"
+      ],
+      "expectedResults": [
+        "ALT text field is accessible",
+        "Help icon/tooltip is visible",
+        "Tooltip provides guidance on writing effective ALT text"
+      ],
+      "postconditions": "ALT text guidance is available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_047",
+      "title": "Verify invalid YouTube URL is rejected",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC5 - Demo Video Updates (Negative)",
+      "preconditions": "User is embedding a video",
+      "steps": [
+        "Navigate to Demo Video section",
+        "Select embed video option",
+        "Enter an invalid YouTube URL",
+        "Attempt to embed"
+      ],
+      "expectedResults": [
+        "Embed option is selected",
+        "Invalid URL is entered",
+        "System displays validation error",
+        "Embed is prevented"
+      ],
+      "postconditions": "Invalid URLs are rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_048",
+      "title": "Verify empty ALT text field shows validation error on save",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC6 - ALT Text and Captions (Negative)",
+      "preconditions": "User has uploaded images without ALT text",
+      "steps": [
+        "Upload images without entering ALT text",
+        "Click Save Changes",
+        "Verify validation error for missing ALT text"
+      ],
+      "expectedResults": [
+        "Images are uploaded without ALT text",
+        "Save is attempted",
+        "Validation error highlights missing ALT text fields",
+        "Save is blocked"
+      ],
+      "postconditions": "ALT text validation works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MEDIA_049",
+      "title": "Verify deleting primary image prompts for new primary selection",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-23",
+      "acceptanceCriteria": "AC2 - Primary Image Management (Edge Case)",
+      "preconditions": "User has multiple images with one marked as primary",
+      "steps": [
+        "Navigate to media section with multiple images",
+        "Delete the primary image",
+        "Verify system prompts to select new primary"
+      ],
+      "expectedResults": [
+        "Multiple images exist",
+        "Primary image is deleted",
+        "System prompts to select new primary or auto-assigns"
+      ],
+      "postconditions": "Primary image is always defined",
+      "testResult": "PASS"
+    }
+  ]
+}

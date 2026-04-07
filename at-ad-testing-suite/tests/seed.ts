@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 
 test('seed', async ({ page }) => {
-  await page.goto('https://hub-ui-admin-dev.swarajability.org/');
+  await page.goto('https://hub-ui-admin-qa.swarajability.org/');
 });
+

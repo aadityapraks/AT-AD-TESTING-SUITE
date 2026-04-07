@@ -406,3 +406,4 @@ test.describe('SCRUM-20: GenAI Assistant Accessibility', () => {
     });
   });
 });
+

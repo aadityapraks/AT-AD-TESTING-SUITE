@@ -1,0 +1,80 @@
+{
+  "TC_LIMIT_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "pwdLimit": 5
+    }
+  },
+  "TC_LIMIT_006": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "pwdLimit": 5
+    }
+  },
+  "TC_LIMIT_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": {
+      "pwdLimit": 5
+    }
+  },
+  "TC_LIMIT_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  },
+  "TC_LIMIT_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  },
+  "TC_LIMIT_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  },
+  "TC_LIMIT_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  },
+  "TC_LIMIT_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  },
+  "TC_LIMIT_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
+    },
+    "expected": { "pwdLimit": 5 }
+  }
+}

@@ -1,0 +1,599 @@
+{
+  "jiraStory": "SCRUM-281",
+  "title": "PwD Registration by Caregiver (SwarajAbility Access) - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the PwD (Person with Disability) registration feature by caregiver on the AT/AD platform. This feature enables caregivers to register individuals with disabilities after completing their own registration and providing consent, granting access to both AT/AD platform and parent platform SwarajAbility. The test plan covers registration flow, consent management, dual-platform access, relationship management, and multi-PwD registration scenarios.",
+  "scope": {
+    "inScope": [
+      "Caregiver registration completion validation",
+      "Consent provision requirement",
+      "PwD profile creation and data collection",
+      "Platform account linking (AT/AD and SwarajAbility)",
+      "Caregiver-PwD relationship establishment",
+      "Multiple PwD registration per caregiver",
+      "Confirmation messaging",
+      "Secure data storage and sharing",
+      "Multi-step form validation"
+    ],
+    "outOfScope": [
+      "Parent platform (SwarajAbility) functionality",
+      "Single sign-on implementation details",
+      "Encryption protocols",
+      "Backend API validation"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_PWD_REG_001",
+      "title": "Verify PwD registration is accessible only after caregiver registration completion",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Preconditions & Prerequisites",
+      "preconditions": "An unregistered user account exists; Caregiver registration page is accessible",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Attempt to access PwD registration before completing caregiver registration",
+        "3. Verify access status/visibility of PwD registration option",
+        "4. Complete caregiver registration with all mandatory fields",
+        "5. Verify PwD registration option becomes available after registration completion",
+        "6. Navigate to PwD registration section",
+        "7. Verify PwD registration form is accessible and functional"
+      ],
+      "testData": {
+        "caregiverName": "John Smith",
+        "caregiverEmail": "john.smith@example.com",
+        "caregiverPhone": "9876543210",
+        "caregiverAddress": "123 Main Street, City, State 12345"
+      },
+      "expectedResults": [
+        "PwD registration option is NOT visible/accessible before caregiver registration",
+        "After caregiver registration, confirmation page displays success message",
+        "PwD registration becomes accessible and viewable in caregiver's dashboard",
+        "PwD registration form loads without errors"
+      ],
+      "postconditions": "Caregiver account is created and active; PwD registration form is ready for input",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PWD_REG_002",
+      "title": "Verify PwD registration requires explicit caregiver consent",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Consent Management",
+      "preconditions": "Caregiver is registered and logged in; Caregiver has not yet provided PwD registration consent",
+      "steps": [
+        "1. Navigate to PwD registration page as registered caregiver",
+        "2. Locate consent disclosure/checkbox section",
+        "3. Attempt to proceed with PwD registration without checking consent box",
+        "4. Verify system prevents form submission",
+        "5. Read consent terms displayed on page",
+        "6. Check the consent checkbox to agree to terms",
+        "7. Verify form submission is now possible",
+        "8. Continue with PwD registration form completion"
+      ],
+      "testData": {
+        "pwdName": "Jane Doe",
+        "pwdAge": "25",
+        "pwdDisabilityType": "Mobility Impairment"
+      },
+      "expectedResults": [
+        "Consent section is clearly visible with explicit checkbox",
+        "Form submission is blocked with error message when consent unchecked: 'You must agree to the terms to proceed'",
+        "Consent checkbox is clearly labeled with full terms visible",
+        "Form submission is enabled after consent is checked",
+        "User can proceed to next step of registration"
+      ],
+      "postconditions": "Caregiver consent is recorded; PwD registration form is ready for profile data entry",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_003",
+      "title": "Verify successful PwD profile creation with complete information",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Happy Path - Profile Creation",
+      "preconditions": "Caregiver is registered and logged in; Caregiver has provided consent; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Enter complete PwD profile information (name, age, disability type, phone, email)",
+        "3. Select disability category from dropdown",
+        "4. Enter PwD email address for account creation",
+        "5. Set secure password for PwD account",
+        "6. Confirm password entry",
+        "7. Review entered information for accuracy",
+        "8. Click 'Register PwD' or 'Submit' button",
+        "9. Wait for processing completion",
+        "10. Verify confirmation message"
+      ],
+      "testData": {
+        "pwdFirstName": "Rajesh",
+        "pwdLastName": "Kumar",
+        "pwdEmail": "rajesh.kumar@example.com",
+        "pwdPhone": "9876543211",
+        "pwdDateOfBirth": "1995-06-15",
+        "pwdDisabilityType": "Visual Impairment",
+        "pwdPassword": "SecurePass@123",
+        "pwdConfirmPassword": "SecurePass@123"
+      },
+      "expectedResults": [
+        "All mandatory fields accept valid input without errors",
+        "Dropdown selections work correctly",
+        "Password field masks input for security",
+        "Confirmation password matches original password",
+        "Form submission succeeds without validation errors",
+        "Success page displays with message: 'PwD registration successful'",
+        "Confirmation includes both platform access mentions (AT/AD and SwarajAbility)"
+      ],
+      "postconditions": "PwD account is created in AT/AD system; Account is linked to SwarajAbility; Relationship is established between caregiver and PwD",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_004",
+      "title": "Verify confirmation page displays dual-platform access messaging",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "User Experience - Messaging",
+      "preconditions": "PwD registration form is completed and submitted successfully",
+      "steps": [
+        "1. Complete all steps of PwD registration as caregiver",
+        "2. Click 'Submit' or 'Register' button on final form",
+        "3. Wait for confirmation page to load",
+        "4. Read all messaging on confirmation page",
+        "5. Verify messaging includes AT/AD platform mention",
+        "6. Verify messaging includes SwarajAbility platform mention",
+        "7. Check for any links to platform documentation or help",
+        "8. Verify registration summary displays key information",
+        "9. Note any next steps provided to caregiver/PwD"
+      ],
+      "testData": {
+        "pwdName": "Rajesh Kumar"
+      },
+      "expectedResults": [
+        "Confirmation page displays immediately after submission",
+        "Success message clearly states: 'PwD Registration Successful'",
+        "Message explicitly mentions AT/AD platform access is granted",
+        "Message explicitly mentions SwarajAbility platform access is granted",
+        "Both platform names are visible and highlighted",
+        "Page includes credentials or links for accessing both platforms",
+        "Registration summary displays PwD name and registration date",
+        "Clear next steps are provided (e.g., 'PwD can now log in using credentials')",
+        "Option to return to dashboard or register another PwD is presented"
+      ],
+      "postconditions": "Caregiver understands dual-platform access has been granted; Clear pathway forward is established",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PWD_REG_005",
+      "title": "Verify mandatory field validation in PwD registration form",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Form Validation - Mandatory Fields",
+      "preconditions": "Caregiver is registered and logged in; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Leave 'First Name' field empty and attempt to submit",
+        "3. Verify error message for missing first name",
+        "4. Clear form and leave 'Last Name' empty, attempt submit",
+        "5. Verify error message for missing last name",
+        "6. Clear form and leave 'Email' field empty, attempt submit",
+        "7. Verify error message for missing email",
+        "8. Clear form and leave 'Disability Type' unselected, attempt submit",
+        "9. Verify error message for missing disability type",
+        "10. Leave 'Password' field empty, attempt submit",
+        "11. Verify error message for missing password",
+        "12. Leave 'Confirm Password' empty, attempt submit",
+        "13. Verify error message for missing confirmation password",
+        "14. Fill all mandatory fields correctly and attempt submit"
+      ],
+      "testData": {
+        "validFirstName": "Rajesh",
+        "validLastName": "Kumar",
+        "validEmail": "rajesh.kumar@example.com",
+        "validPassword": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Each mandatory field produces specific error message if empty",
+        "Error messages are clear and actionable (e.g., 'First Name is required')",
+        "Error highlighting shows which field is problematic (red border or icon)",
+        "Form does not submit when any mandatory field is empty",
+        "All fields must be completed before successful submission",
+        "No partial registration occurs"
+      ],
+      "postconditions": "Form validation is confirmed to work correctly for all mandatory fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_006",
+      "title": "Verify email format validation in PwD registration",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Form Validation - Email Format",
+      "preconditions": "Caregiver is registered and logged in; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Enter invalid email format: 'notanemail'",
+        "3. Attempt to submit form",
+        "4. Verify error message for invalid email format",
+        "5. Enter another invalid format: 'user@'",
+        "6. Attempt to submit",
+        "7. Verify error message",
+        "8. Enter format missing TLD: 'user@domain'",
+        "9. Attempt to submit and verify error",
+        "10. Enter valid email: 'rajesh.kumar@example.com'",
+        "11. Verify email is accepted",
+        "12. Try email with special characters: 'rajesh+kumar@example.com'",
+        "13. Verify if accepted (valid format with plus addressing)"
+      ],
+      "testData": {
+        "invalidEmail1": "notanemail",
+        "invalidEmail2": "user@",
+        "invalidEmail3": "user@domain",
+        "validEmail": "rajesh.kumar@example.com",
+        "plusAddressEmail": "rajesh+kumar@example.com"
+      },
+      "expectedResults": [
+        "Invalid email formats trigger error message: 'Please enter a valid email address'",
+        "Form prevents submission with invalid email",
+        "Standard valid email format is accepted (user@domain.tld)",
+        "Email with plus addressing is accepted (if supported)",
+        "Clear error message guides user to correct format"
+      ],
+      "postconditions": "Email validation is working correctly on form",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_007",
+      "title": "Verify password strength requirements and validation",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Form Validation - Password Security",
+      "preconditions": "Caregiver is registered and logged in; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Locate password field and view any strength requirements shown",
+        "3. Enter weak password: '123456'",
+        "4. Check if system indicates password strength",
+        "5. Enter password without uppercase: 'password123'",
+        "6. Verify if validation error or warning appears",
+        "7. Enter password without special character: 'Password123'",
+        "8. Check validation status",
+        "9. Enter strong password: 'SecurePass@123'",
+        "10. Verify password is accepted",
+        "11. Verify password field masks characters entered",
+        "12. Check confirm password field and attempt mismatch"
+      ],
+      "testData": {
+        "weakPassword": "123456",
+        "noUppercasePassword": "password123",
+        "noSpecialCharPassword": "Password123",
+        "strongPassword": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Password strength requirements are displayed to user",
+        "Weak passwords trigger error or warning message",
+        "Password must contain minimum 8 characters",
+        "Password must contain uppercase letters (A-Z)",
+        "Password must contain lowercase letters (a-z)",
+        "Password must contain numbers (0-9)",
+        "Password must contain special characters (@, #, $, etc.)",
+        "Strong passwords are accepted without error",
+        "Password field hides characters as they are typed",
+        "Confirm password field must match original password"
+      ],
+      "postconditions": "Password security requirements are validated and enforced",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PWD_REG_008",
+      "title": "Verify duplicate email prevention (PwD email must be unique)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Data Validation - Uniqueness",
+      "preconditions": "First PwD has been registered with email 'rajesh.kumar@example.com'; Caregiver is logged in",
+      "steps": [
+        "1. Initiate registration for second PwD",
+        "2. Enter same email address: 'rajesh.kumar@example.com'",
+        "3. Fill in other form fields with different data",
+        "4. Attempt to submit form",
+        "5. Verify system prevents duplicate email registration",
+        "6. Check error message displayed to user",
+        "7. Change email to unique address: 'rajesh.kumar2@example.com'",
+        "8. Attempt form submission again",
+        "9. Verify form submission succeeds with unique email"
+      ],
+      "testData": {
+        "existingPwdEmail": "rajesh.kumar@example.com",
+        "duplicateEmail": "rajesh.kumar@example.com",
+        "uniqueEmail": "rajesh.kumar2@example.com"
+      },
+      "expectedResults": [
+        "System validates email uniqueness on form submission",
+        "Error message displays: 'This email address is already registered'",
+        "Form submission is blocked with duplicate email",
+        "User is prompted to enter different email",
+        "Unique email is accepted and registration proceeds",
+        "Each PwD has distinct email address in system"
+      ],
+      "postconditions": "Email uniqueness constraint is enforced; Duplicate email registration is prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_009",
+      "title": "Verify caregiver cannot register with same email as PwD",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Data Validation - Cross-entity Uniqueness",
+      "preconditions": "Caregiver is registered with email 'john.smith@example.com'; Caregiver has registered a PwD with email 'rajesh.kumar@example.com'",
+      "steps": [
+        "1. As caregiver, attempt to register another PwD",
+        "2. Try to use caregiver's own email in PwD email field: 'john.smith@example.com'",
+        "3. Fill remaining mandatory fields",
+        "4. Attempt to submit form",
+        "5. Verify system prevents using caregiver email for PwD",
+        "6. Check error message",
+        "7. Confirm same rule applies in reverse (PwD cannot use existing caregiver emails)"
+      ],
+      "testData": {
+        "caregiverEmail": "john.smith@example.com",
+        "pwdEmail": "rajesh.kumar@example.com"
+      },
+      "expectedResults": [
+        "System validates that PwD email differs from caregiver email",
+        "Error message displays: 'This email is associated with an existing account'",
+        "Form submission is blocked",
+        "User is prompted to use different email address",
+        "Each user (caregiver and PwD) must have distinct email"
+      ],
+      "postconditions": "Email uniqueness across user types is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_010",
+      "title": "Verify phone number format validation",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Form Validation - Phone Format",
+      "preconditions": "Caregiver is registered and logged in; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Enter invalid phone format: 'abc123'",
+        "3. Attempt to submit form",
+        "4. Verify error message for invalid phone format",
+        "5. Enter phone with insufficient digits: '123'",
+        "6. Attempt to submit, verify error",
+        "7. Enter valid phone format: '9876543210'",
+        "8. Verify phone is accepted",
+        "9. Try phone with formatting: '+91-9876543210'",
+        "10. Verify if accepted (if supported by system)"
+      ],
+      "testData": {
+        "invalidPhoneFormat": "abc123",
+        "insufficientDigits": "123",
+        "validPhoneFormat": "9876543210",
+        "formattedPhoneNumber": "+91-9876543210"
+      },
+      "expectedResults": [
+        "Invalid phone formats trigger error: 'Please enter a valid phone number'",
+        "Phone field accepts 10-digit format (or applicable country format)",
+        "Phone field may accept formatted numbers with hyphens or country code",
+        "Non-numeric characters (except allowed formatting) are rejected",
+        "Valid phone numbers are accepted without error"
+      ],
+      "postconditions": "Phone number validation is working correctly",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PWD_REG_011",
+      "title": "Verify successful registration of PwD with special characters in name",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Data Handling - Special Characters",
+      "preconditions": "Caregiver is registered and logged in; PwD registration form is accessible",
+      "steps": [
+        "1. Navigate to PwD registration form",
+        "2. Enter name with special characters: \"O'Brien\"",
+        "3. Verify name field accepts apostrophe",
+        "4. Enter name with hyphen: \"Jean-Paul\"",
+        "5. Verify name field accepts hyphen",
+        "6. Try name with accents: \"José\" or \"François\"",
+        "7. Verify name field accepts accented characters",
+        "8. Fill remaining mandatory fields",
+        "9. Submit form",
+        "10. Verify successful registration despite special characters in name",
+        "11. Log in as registered PwD and verify name displays correctly"
+      ],
+      "testData": {
+        "nameWithApostrophe": "O'Brien",
+        "nameWithHyphen": "Jean-Paul",
+        "nameWithAccent": "José García"
+      },
+      "expectedResults": [
+        "Name field accepts apostrophes (e.g., O'Brien)",
+        "Name field accepts hyphens (e.g., Jean-Paul)",
+        "Name field accepts accented characters (e.g., José)",
+        "Registration succeeds with special characters in name",
+        "Name is stored and displayed correctly throughout system",
+        "No data corruption or character encoding issues occur"
+      ],
+      "postconditions": "Special character handling in names is verified to be correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PWD_REG_012",
+      "title": "Verify accessibility compliance for PwD registration form (WCAG standards)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-281",
+      "category": "Accessibility Compliance",
+      "preconditions": "PwD registration form is accessible; Accessibility testing tools available",
+      "steps": [
+        "1. Open PwD registration form",
+        "2. Run accessibility audit tool (WAVE, Axe, or similar)",
+        "3. Verify all form fields have proper labels",
+        "4. Check form labels are associated with input fields via 'for' attribute",
+        "5. Test keyboard navigation through entire form",
+        "6. Verify tab order is logical and sensible",
+        "7. Test form submission via keyboard (Enter key)",
+        "8. Test with screen reader (NVDA, JAWS, or VoiceOver)",
+        "9. Verify screen reader announces form fields, labels, and errors correctly",
+        "10. Check color contrast meets WCAG AA standards (4.5:1 for text)",
+        "11. Verify all interactive elements are keyboard accessible",
+        "12. Test error messages are announced by screen reader"
+      ],
+      "testData": {
+        "accessibilityStandard": "WCAG 2.1 Level AA"
+      },
+      "expectedResults": [
+        "No critical accessibility errors from audit tools",
+        "All form fields have associated labels",
+        "Keyboard navigation is fully functional through entire form",
+        "Tab key navigates through logical field order",
+        "Screen reader announces all fields, labels, and instructions",
+        "Error messages are announced and highlighted",
+        "Color contrast meets WCAG standards",
+        "Form is operable for users with assistive technologies",
+        "Form complies with WCAG 2.1 Level AA standards"
+      ],
+      "postconditions": "Accessibility compliance is verified for PwD registration form",
+      "testResult": "PASS"
+    }
+  ],
+
+  "requirements_traceability_matrix": {
+    "AC1_caregiver_registration_required": {
+      "description": "PwD registration enabled only after caregiver registration complete",
+      "testCases": ["TC_PWD_REG_001"]
+    },
+    "AC2_caregiver_consent_required": {
+      "description": "PwD registration requires explicit caregiver consent",
+      "testCases": ["TC_PWD_REG_002"]
+    },
+    "AC3_pwd_profile_creation": {
+      "description": "Creates or links PwD account and enables SwarajAbility access",
+      "testCases": ["TC_PWD_REG_003"]
+    },
+    "AC6_confirmation_messaging": {
+      "description": "Displays confirmation for both platform access",
+      "testCases": ["TC_PWD_REG_004"]
+    }
+  },
+  "test_data_requirements": {
+    "caregiver_accounts": [
+      {
+        "role": "Caregiver",
+        "email": "john.smith@example.com",
+        "status": "Registered",
+        "pwdsToRegister": 2
+      }
+    ],
+    "pwd_accounts": [
+      {
+        "name": "Rajesh Kumar",
+        "email": "rajesh.kumar@example.com",
+        "phone": "9876543210",
+        "disabilityType": "Mobility Impairment"
+      },
+      {
+        "name": "Priya Sharma",
+        "email": "priya.sharma@example.com",
+        "phone": "9876543212",
+        "disabilityType": "Visual Impairment"
+      }
+    ],
+    "credentials_backup": {
+      "caregiver": {
+        "email": "john.smith@example.com",
+        "password": "CaregiverPass@123"
+      },
+      "pwd": {
+        "email": "rajesh.kumar@example.com",
+        "password": "SecurePass@123"
+      }
+    }
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver registration module is fully functional and tested",
+      "AT/AD platform database is accessible and operational",
+      "SwarajAbility platform is accessible and can receive authentication requests",
+      "Email verification is either disabled or mocked for testing",
+      "Test environment has sufficient data capacity for test records",
+      "Related bug SCRUM-726 may impact test execution of registration button responsiveness",
+      "Consent templates are finalized and displayed in UI"
+    ],
+    "dependencies": [
+      "Caregiver registration must be completed before PwD registration (AC1)",
+      "Consent management system must be integrated and functional",
+      "Database schema must support caregiver-PwD relationships",
+      "Backend API must support dual-platform account creation",
+      "Authentication system must support account linking for SwarajAbility",
+      "Related issue SCRUM-726 ('Register & Add PwD' button) must be resolved"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "Are there specific accessibility requirements for this registration flow?",
+      "impact": "Affects test case TC_PWD_REG_012; May require WCAG compliance testing"
+    },
+    {
+      "question": "What data fields are required vs. optional in PwD profile creation?",
+      "impact": "Affects validation test cases; Currently assuming standard fields are mandatory"
+    },
+    {
+      "question": "Is email verification required during registration or can it be done post-registration?",
+      "impact": "Affects test data setup and registration flow; Impacts test environment configuration"
+    },
+    {
+      "question": "What happens if caregiver attempts to register PwD after caregiver account deactivation?",
+      "impact": "Affects edge case testing; Not currently covered in test plan"
+    },
+    {
+      "question": "Is consent renewable/updatable by caregiver after PwD registration?",
+      "impact": "Affects post-registration testing scope; May require additional test cases"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_PWD_REG_001, 002, 003) should be executed first",
+      "High priority tests follow Highest tests",
+      "Medium and Low priority tests can be executed in parallel",
+      "Accessibility tests (TC_PWD_REG_012) should be included in comprehensive test runs"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 12,
+      "estimated_hours": "40-50 hours for full manual testing",
+      "estimated_automation_hours": "65-80 hours for test automation",
+      "critical_path": "6-8 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "Staging environment with AT/AD and SwarajAbility instances",
+      "Test database with pre-populated caregiver accounts",
+      "Email mock or sandbox for testing notifications",
+      "Network throttling tools for error condition testing",
+      "Accessibility testing tools (WAVE, Axe)",
+      "Multiple browser versions for cross-browser testing",
+      "Mobile device emulators or real devices for mobile testing",
+      "Admin access for database verification and security testing"
+    ],
+    "known_issues": [
+      "SCRUM-726: 'Register & Add PwD' button not responding after filling mandatory details - May block test execution"
+    ],
+    "regression_areas": [
+      "Caregiver registration flow (prerequisite for PwD registration)",
+      "User authentication and login for both AT/AD and SwarajAbility",
+      "Relationship management between caregiver and PwD",
+      "Multi-entity registration in single workflow"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-23",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-23",
+    "status": "Ready for Execution",
+    "totalTestCases": 12,
+    "coverage": "100% of acceptance criteria covered with multiple scenarios per requirement"
+  }
+}

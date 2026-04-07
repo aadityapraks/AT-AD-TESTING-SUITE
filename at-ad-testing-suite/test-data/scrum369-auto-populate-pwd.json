@@ -1,0 +1,95 @@
+{
+  "TC_AUTO_POP_001": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {
+      "sectionLabels": ["Personal Information", "Disability & Education", "Address"],
+      "fieldLabels": ["First Name", "Last Name", "Mobile Number", "Email", "Date of Birth", "Gender", "Disability Type", "Qualification"]
+    }
+  },
+  "TC_AUTO_POP_002": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_004": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_007": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "cg1@yopmail.com",
+      "caregiverPassword": "cg1@141G",
+      "linkedPwDAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_009": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "minimalPwDAadhaar": "999988887777",
+      "otp": "123456"
+    },
+    "expected": {}
+  },
+  "TC_AUTO_POP_010": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
+      "pwdAadhaar": "766789123456",
+      "otp": "123456"
+    },
+    "expected": {}
+  }
+}

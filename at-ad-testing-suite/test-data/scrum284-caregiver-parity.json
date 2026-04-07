@@ -1,0 +1,82 @@
+{
+  "TC_PARITY_001": {
+    "url": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456"
+    },
+    "expected": {
+      "isLoggedIn": true,
+      "catalogLinkVisible": true,
+      "productsVisible": true,
+      "minimumProductCount": 1,
+      "viewDetailsLinksPresent": true
+    }
+  },
+  "TC_PARITY_003": {
+    "url": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456",
+      "filterDisabilityType": "Visual",
+      "filterType": "Device"
+    },
+    "expected": {
+      "filtersVisible": true,
+      "disabilityTypeFilterVisible": true,
+      "priceRangeFilterVisible": true,
+      "typeFilterVisible": true,
+      "applyFiltersVisible": true,
+      "resetAllVisible": true,
+      "sortByVisible": true,
+      "productsAfterFilter": true,
+      "productsAfterReset": true
+    }
+  },
+  "TC_PARITY_005": {
+    "url": "https://qa-atad.swarajability.org/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456"
+    },
+    "expected": {
+      "isLoggedIn": true,
+      "dashboardPersonalized": true,
+      "welcomeMessageContains": "Welcome back",
+      "getRecommendationsVisible": true,
+      "browseAllDevicesVisible": true,
+      "dashboardDescriptionVisible": true,
+      "successStoriesVisible": true,
+      "myProfileVisible": true
+    }
+  },
+  "TC_PARITY_002": {
+    "url": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456"
+    },
+    "expected": {
+      "productDetailPageLoaded": true,
+      "productHeadingPresent": true
+    }
+  },
+  "TC_PARITY_004": {
+    "url": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "inputs": {
+      "caregiverEmail": "candidate8new1@mailto.plus",
+      "caregiverPassword": "123456",
+      "searchTermValid": "wheelchair",
+      "searchTermNoResults": "xyz123nonexistent"
+    },
+    "expected": {
+      "searchBoxVisible": true,
+      "searchResultsPresent": true
+    }
+  }
+}
+

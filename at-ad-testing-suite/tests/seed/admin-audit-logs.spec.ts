@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 
 test.describe('Seed: Admin Audit Logs', () => {
   test('Setup: Login as admin and navigate to audit logs', async ({ page }) => {
-    await page.goto('https://hub-ui-admin-dev.swarajability.org');
+    await page.goto('https://hub-ui-admin-qa.swarajability.org');
     await page.getByRole('button', { name: 'Sign in with Swarajability' }).click();
     await page.waitForURL(/auth-d\.swarajability\.org/);
     
@@ -15,3 +15,4 @@ test.describe('Seed: Admin Audit Logs', () => {
     await page.waitForURL(/admin/);
   });
 });
+

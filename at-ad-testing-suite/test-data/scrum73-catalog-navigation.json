@@ -1,0 +1,50 @@
+{
+  "url": "https://atad.moondroo.in/",
+  "catalogUrl": "https://atad.moondroo.in/catalog/",
+  "credentials": {
+    "email": "candidate8new1@mailto.plus",
+    "password": "123456"
+  },
+  "inputs": {
+    "searchTerm": "wheelchair",
+    "noMatchSearch": "nonexistentproduct123",
+    "disabilityType": "Mobility",
+    "productType": "Device",
+    "priceRange": "Under ₹20,000"
+  },
+  "expected": {
+    "pageTitle": "Assistive Device Catalog",
+    "catalogHeading": "Assistive Device Catalog",
+    "filterSectionTitle": "Filters",
+    "sortingOptions": [
+      "Latest",
+      "Most Popular", 
+      "Highest Rated",
+      "Price: Low to High",
+      "Price: High to Low",
+      "Name: A to Z"
+    ],
+    "disabilityTypes": [
+      "All",
+      "Amputation",
+      "Autism Spectrum",
+      "Cerebral Palsy",
+      "Mobility",
+      "Visual",
+      "Hearing"
+    ],
+    "productTypes": [
+      "All",
+      "Device",
+      "Technology",
+      "Both"
+    ],
+    "priceRanges": [
+      "All Prices",
+      "Under ₹20,000",
+      "₹20,000 – ₹50,000",
+      "₹50,000 – ₹1,00,000",
+      "₹1,00,000+"
+    ]
+  }
+}

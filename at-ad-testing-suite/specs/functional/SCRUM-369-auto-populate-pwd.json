@@ -1,0 +1,465 @@
+{
+  "jiraStory": "SCRUM-369",
+  "title": "Caregiver - Auto-Populate Existing PwD Details - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Auto-Populate Existing PwD Details feature on the AT/AD platform. When a PwD is found in SwarajAbility via Aadhaar lookup (SCRUM-366), their details are auto-filled for the caregiver to review and confirm linkage. Covers auto-population of PwD fields (Name, Date of Birth, Gender, Disability Type, Aadhaar), read-only/non-editable verified fields, confirmation to link PwD to caregiver profile, and edge cases including data fetch timeout with retry and PwD already linked to another caregiver.",
+  "scope": {
+    "inScope": [
+      "Auto-population of PwD details from SwarajAbility (Name, DOB, Gender, Disability Type, Aadhaar)",
+      "All fetched fields displayed as shown in Figma design",
+      "Verified fields are non-editable (read-only)",
+      "Aadhaar displayed as read-only",
+      "Confirmation action to link PwD to caregiver profile",
+      "Data fetch timeout with retry option",
+      "PwD already linked to other caregivers blocked"
+    ],
+    "outOfScope": [
+      "Aadhaar lookup and OTP verification (covered in SCRUM-366)",
+      "New PwD registration flow (covered in SCRUM-372)",
+      "My PwDs dashboard (covered in SCRUM-363)",
+      "PwD profile editing (covered in SCRUM-387)",
+      "SwarajAbility backend internals"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_AUTO_POP_001",
+      "title": "Verify PwD details are auto-populated from SwarajAbility after successful Aadhaar lookup",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Auto-Population - Happy Path",
+      "preconditions": "Caregiver is logged in; Aadhaar lookup (SCRUM-366) completed successfully; PwD found in SwarajAbility; OTP verified",
+      "steps": [
+        "1. Complete Aadhaar lookup and OTP verification for an existing PwD",
+        "2. Verify the auto-populate page/section loads after OTP verification",
+        "3. Verify PwD Name is auto-filled and displayed",
+        "4. Verify Date of Birth is auto-filled and displayed",
+        "5. Verify Gender is auto-filled and displayed",
+        "6. Verify Disability Type is auto-filled and displayed",
+        "7. Verify Aadhaar number is displayed (read-only)",
+        "8. Verify all displayed fields match the PwD's SwarajAbility profile data",
+        "9. Verify the layout matches the Figma design specification"
+      ],
+      "testData": {
+        "pwdAadhaar": "234567890123",
+        "expectedName": "Rajesh Kumar",
+        "expectedDOB": "1995-06-15",
+        "expectedGender": "Male",
+        "expectedDisabilityType": "Visual Impairment"
+      },
+      "expectedResults": [
+        "Auto-populate page loads after successful OTP verification",
+        "PwD Name is correctly auto-filled from SwarajAbility",
+        "Date of Birth is correctly auto-filled",
+        "Gender is correctly auto-filled",
+        "Disability Type is correctly auto-filled",
+        "Aadhaar is displayed in read-only format",
+        "All fields match the PwD's SwarajAbility profile",
+        "Layout matches Figma design"
+      ],
+      "postconditions": "PwD details are displayed for caregiver review",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_002",
+      "title": "Verify all auto-populated fields are non-editable (read-only)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Field Editability",
+      "preconditions": "PwD details are auto-populated on screen after successful Aadhaar lookup",
+      "steps": [
+        "1. Verify PwD Name field is non-editable (click on it, try typing)",
+        "2. Verify Date of Birth field is non-editable",
+        "3. Verify Gender field is non-editable (cannot change selection)",
+        "4. Verify Disability Type field is non-editable",
+        "5. Verify Aadhaar field is non-editable and read-only",
+        "6. Attempt to modify each field using keyboard input",
+        "7. Attempt to modify fields via browser developer tools (inspect element)",
+        "8. Verify no field accepts user input or modification"
+      ],
+      "testData": {
+        "attemptedNameChange": "Modified Name",
+        "attemptedDOBChange": "2000-01-01"
+      },
+      "expectedResults": [
+        "Name field does not accept keyboard input or modification",
+        "Date of Birth field does not accept changes",
+        "Gender field cannot be changed (dropdown disabled or no interaction)",
+        "Disability Type field cannot be changed",
+        "Aadhaar field is explicitly read-only",
+        "All verified fields are visually indicated as non-editable (greyed out, locked icon, or similar)",
+        "No field modification is possible through normal user interaction"
+      ],
+      "postconditions": "All auto-populated fields confirmed as non-editable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_003",
+      "title": "Verify confirmation action links PwD to caregiver profile",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Confirmation & Linking",
+      "preconditions": "PwD details are auto-populated and displayed; Caregiver has reviewed the details",
+      "steps": [
+        "1. Review all auto-populated PwD details on screen",
+        "2. Locate the confirmation button (e.g., 'Confirm & Link PwD', 'Add PwD')",
+        "3. Click the confirmation button",
+        "4. Verify a success message is displayed",
+        "5. Verify the PwD is now linked to the caregiver's profile",
+        "6. Navigate to My PwDs page",
+        "7. Verify the newly linked PwD appears in the PwD list",
+        "8. Verify the PwD card shows correct name, disability type, and date added",
+        "9. Verify PwD count and remaining slots are updated"
+      ],
+      "testData": {
+        "pwdName": "Rajesh Kumar",
+        "pwdDisabilityType": "Visual Impairment"
+      },
+      "expectedResults": [
+        "Confirmation button is visible and clickable",
+        "Clicking confirmation triggers PwD linking",
+        "Success message is displayed (e.g., 'PwD successfully linked to your profile')",
+        "PwD appears in My PwDs list with correct details",
+        "PwD count increases by 1",
+        "Remaining slots decrease by 1"
+      ],
+      "postconditions": "PwD is linked to caregiver profile; Visible in My PwDs dashboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_004",
+      "title": "Verify Aadhaar is displayed as read-only with masking",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Aadhaar Display",
+      "preconditions": "PwD details are auto-populated after successful Aadhaar lookup",
+      "steps": [
+        "1. Locate the Aadhaar field in the auto-populated details",
+        "2. Verify Aadhaar number is displayed",
+        "3. Verify Aadhaar is masked for privacy (e.g., XXXX-XXXX-0123)",
+        "4. Verify the field is explicitly marked as read-only",
+        "5. Attempt to click on the Aadhaar field",
+        "6. Verify no cursor or edit mode is activated",
+        "7. Attempt to copy the Aadhaar value (if applicable)"
+      ],
+      "testData": {
+        "aadhaarNumber": "234567890123",
+        "expectedMaskedDisplay": "XXXX-XXXX-0123"
+      },
+      "expectedResults": [
+        "Aadhaar is displayed on the auto-populate page",
+        "Aadhaar is masked for privacy (only last 4 digits visible or similar)",
+        "Field is clearly marked as read-only",
+        "No edit mode is activated on click",
+        "Aadhaar privacy is maintained"
+      ],
+      "postconditions": "Aadhaar read-only display is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_005",
+      "title": "Verify all fields displayed match Figma design specification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "UI Design Compliance",
+      "preconditions": "PwD details are auto-populated; Figma design is available for reference",
+      "steps": [
+        "1. Open the auto-populate page with PwD details",
+        "2. Compare field labels with Figma design",
+        "3. Verify field order matches design",
+        "4. Verify typography (font size, weight) matches design",
+        "5. Verify spacing and padding between fields matches design",
+        "6. Verify read-only visual indicators match design (greyed out, borders, icons)",
+        "7. Verify confirmation button styling matches design",
+        "8. Verify overall page layout matches Figma"
+      ],
+      "testData": {
+        "designReference": "Figma design for SCRUM-369"
+      },
+      "expectedResults": [
+        "All field labels match Figma design",
+        "Field order is consistent with design",
+        "Typography and spacing match design specification",
+        "Read-only indicators are as designed",
+        "Confirmation button styling matches design",
+        "Overall layout is consistent with Figma"
+      ],
+      "postconditions": "UI design compliance is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_006",
+      "title": "Verify data fetch timeout shows retry option",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Edge Case - Data Fetch Timeout",
+      "preconditions": "Aadhaar lookup succeeded; OTP verified; SwarajAbility data fetch is slow or times out",
+      "steps": [
+        "1. Complete Aadhaar lookup and OTP verification",
+        "2. Simulate or wait for data fetch timeout from SwarajAbility",
+        "3. Verify a timeout/error message is displayed",
+        "4. Verify a retry option is provided (button or link)",
+        "5. Click the retry option",
+        "6. Verify the system retries fetching PwD details",
+        "7. If retry succeeds, verify details are auto-populated correctly",
+        "8. Verify no partial or corrupted data is displayed on timeout"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Timeout is detected and handled gracefully",
+        "Clear message displayed (e.g., 'Unable to fetch details. Please try again.')",
+        "Retry option is visible and functional",
+        "Retry fetches data successfully when service is available",
+        "No partial or corrupted data is shown during timeout",
+        "No unhandled errors or blank screens"
+      ],
+      "postconditions": "Data fetch timeout handling is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_007",
+      "title": "Verify PwD already linked to another caregiver is blocked",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Edge Case - Already Linked",
+      "preconditions": "PwD's Aadhaar is found in SwarajAbility; PwD is already linked to a different caregiver",
+      "steps": [
+        "1. Complete Aadhaar lookup for a PwD already linked to another caregiver",
+        "2. Complete OTP verification",
+        "3. Verify the system detects the PwD is already linked",
+        "4. Verify an error/block message is displayed",
+        "5. Verify the message provides guidance (e.g., 'Contact support')",
+        "6. Verify the confirmation/link button is NOT available",
+        "7. Verify no PwD data is added to the current caregiver's profile",
+        "8. Verify the caregiver can navigate back"
+      ],
+      "testData": {
+        "linkedPwDAadhaar": "111122223333",
+        "linkedToCaregiver": "other.caregiver@example.com"
+      },
+      "expectedResults": [
+        "System detects PwD is already linked to another caregiver",
+        "Block message is displayed clearly",
+        "Guidance is provided (support contact or help link)",
+        "Confirmation/link button is disabled or hidden",
+        "No PwD is added to current caregiver's profile",
+        "Back navigation is available"
+      ],
+      "postconditions": "Already-linked PwD blocking is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_008",
+      "title": "Verify caregiver can cancel/go back without linking the PwD",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Navigation - Cancel",
+      "preconditions": "PwD details are auto-populated on screen",
+      "steps": [
+        "1. Review auto-populated PwD details",
+        "2. Locate the back/cancel button",
+        "3. Click back/cancel without confirming",
+        "4. Verify user is navigated back to previous page (Aadhaar lookup or My PwDs)",
+        "5. Verify the PwD is NOT linked to the caregiver's profile",
+        "6. Navigate to My PwDs page",
+        "7. Verify the PwD does not appear in the list",
+        "8. Verify PwD count has not changed"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Back/cancel button is visible and functional",
+        "Clicking back navigates away without linking",
+        "PwD is NOT added to caregiver's profile",
+        "My PwDs list does not include the PwD",
+        "PwD count remains unchanged"
+      ],
+      "postconditions": "Cancel/back navigation without linking is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_009",
+      "title": "Verify auto-populated details handle PwD with minimal data from SwarajAbility",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Data Handling - Minimal Data",
+      "preconditions": "PwD exists in SwarajAbility with only mandatory fields (some optional fields may be empty)",
+      "steps": [
+        "1. Complete Aadhaar lookup for a PwD with minimal data in SwarajAbility",
+        "2. Verify auto-populate page loads without errors",
+        "3. Verify available fields (Name, Aadhaar) are populated",
+        "4. Verify missing optional fields show appropriate placeholders or are hidden",
+        "5. Verify the page layout is not broken by missing data",
+        "6. Verify confirmation button is still functional",
+        "7. Click confirm and verify PwD is linked successfully"
+      ],
+      "testData": {
+        "minimalPwDAadhaar": "555566667777",
+        "expectedName": "Minimal Data PwD",
+        "missingFields": ["Gender", "Disability Type"]
+      },
+      "expectedResults": [
+        "Page loads without errors despite missing optional data",
+        "Available fields are correctly populated",
+        "Missing fields show placeholders or are gracefully hidden",
+        "Page layout remains intact",
+        "Confirmation still works and PwD is linked"
+      ],
+      "postconditions": "Minimal data handling is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTO_POP_010",
+      "title": "Verify duplicate confirmation attempt is blocked (prevent double-linking)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-369",
+      "category": "Data Integrity",
+      "preconditions": "PwD details are auto-populated; Confirmation button is visible",
+      "steps": [
+        "1. Review auto-populated PwD details",
+        "2. Click the confirmation button",
+        "3. Immediately click the confirmation button again (double-click)",
+        "4. Verify only one linking action is processed",
+        "5. Verify no duplicate PwD entry is created in caregiver's profile",
+        "6. Navigate to My PwDs page",
+        "7. Verify the PwD appears only once"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Confirmation button is disabled after first click",
+        "Only one linking request is processed",
+        "No duplicate PwD entry in caregiver's profile",
+        "PwD appears exactly once in My PwDs list"
+      ],
+      "postconditions": "Double-linking prevention is verified",
+      "testResult": "NOT RUN"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_pwd_details_fetched": {
+      "description": "PwD details fetched from SwarajAbility: Name, DOB, Gender, Disability Type, Aadhaar (read-only)",
+      "testCases": ["TC_AUTO_POP_001", "TC_AUTO_POP_004"]
+    },
+    "AC2_fields_as_per_figma": {
+      "description": "All fields as shown in Figma design",
+      "testCases": ["TC_AUTO_POP_005"]
+    },
+    "AC3_verified_fields_non_editable": {
+      "description": "Verified fields are non-editable",
+      "testCases": ["TC_AUTO_POP_002"]
+    },
+    "AC4_confirmation_links_pwd": {
+      "description": "Confirmation links PwD to caregiver profile",
+      "testCases": ["TC_AUTO_POP_003", "TC_AUTO_POP_008"]
+    },
+    "EC1_data_fetch_timeout": {
+      "description": "Data fetch timeout → retry option",
+      "testCases": ["TC_AUTO_POP_006"]
+    },
+    "EC2_already_linked": {
+      "description": "PwD already linked to other caregivers → blocked",
+      "testCases": ["TC_AUTO_POP_007"]
+    }
+  },
+  "test_data_requirements": {
+    "pwd_profiles_in_swarajability": [
+      {
+        "scenario": "Full data PwD",
+        "aadhaar": "234567890123",
+        "name": "Rajesh Kumar",
+        "dob": "1995-06-15",
+        "gender": "Male",
+        "disabilityType": "Visual Impairment",
+        "status": "Registered, not linked to any caregiver"
+      },
+      {
+        "scenario": "PwD linked to another caregiver",
+        "aadhaar": "111122223333",
+        "name": "Linked PwD",
+        "linkedTo": "other.caregiver@example.com",
+        "status": "Already linked"
+      },
+      {
+        "scenario": "PwD with minimal data",
+        "aadhaar": "555566667777",
+        "name": "Minimal Data PwD",
+        "dob": "2000-01-01",
+        "gender": null,
+        "disabilityType": null,
+        "status": "Registered with minimal fields"
+      }
+    ],
+    "caregiver_account": {
+      "email": "caregiver@example.com",
+      "password": "SecurePass@123",
+      "status": "Registered, logged in, with available PwD slots"
+    },
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Aadhaar lookup (SCRUM-366) and OTP verification are functional",
+      "SwarajAbility API returns PwD details correctly",
+      "Figma design for auto-populate page is finalized",
+      "Caregiver has available PwD slots for linking",
+      "Test PwD profiles exist in SwarajAbility with varying data completeness"
+    ],
+    "dependencies": [
+      "SCRUM-366: Aadhaar-based PwD lookup must be functional (prerequisite flow)",
+      "SCRUM-363: My PwDs page must be functional for verifying linked PwD",
+      "SCRUM-375: PwD limit enforcement must be active",
+      "SwarajAbility API must be operational for data fetch"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What is the exact timeout duration for SwarajAbility data fetch?",
+      "impact": "Affects TC_AUTO_POP_006 test timing"
+    },
+    {
+      "question": "Are there additional fields beyond Name, DOB, Gender, Disability Type, and Aadhaar shown in Figma?",
+      "impact": "Affects TC_AUTO_POP_001 and TC_AUTO_POP_005 field verification"
+    },
+    {
+      "question": "What happens if the PwD is already linked to the SAME caregiver (re-linking attempt)?",
+      "impact": "Not covered in current ACs; may need additional test case"
+    },
+    {
+      "question": "Is there a loading indicator while PwD details are being fetched from SwarajAbility?",
+      "impact": "Affects user experience verification during data fetch"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_AUTO_POP_001-003) should be executed first - core auto-population, read-only, and confirmation",
+      "High priority tests (004-008) cover Aadhaar display, Figma compliance, timeout retry, already linked, and cancel navigation",
+      "Medium priority tests (009-010) cover minimal data handling and double-linking prevention"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 10,
+      "estimated_hours": "12-16 hours for full manual testing",
+      "estimated_automation_hours": "18-24 hours for test automation",
+      "critical_path": "3-5 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "SwarajAbility API operational with test PwD profiles",
+      "Aadhaar lookup and OTP verification functional (SCRUM-366)",
+      "Caregiver account with available PwD slots",
+      "Figma design access for UI comparison"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "Aadhaar-based PwD lookup (SCRUM-366)",
+      "My PwDs dashboard (SCRUM-363)",
+      "PwD limit enforcement (SCRUM-375)"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 10,
+    "coverage": "100% of acceptance criteria and all edge cases covered"
+  }
+}

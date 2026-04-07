@@ -1,0 +1,238 @@
+{
+  "jiraStory": "SCRUM-26",
+  "title": "External Links Functionality - Functional Test Plan",
+  "overview": "Functional testing of the External Links feature allowing Assistive Partners to add Amazon, Flipkart, Official Website, and Other links to product listings on the Y4J platform. Covers link form controls, URL validation, PwD product details display, accessibility compliance, admin review, edit/update workflows, error handling, and audit trail.",
+  "testCases": [
+    {
+      "id": "TC_LINK_001",
+      "title": "Verify Add Link Button and Dropdown Options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded. Additional Information section is visible.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Locate Additional Information section",
+        "Click Add Link button",
+        "Observe link row appearance"
+      ],
+      "expectedResults": [
+        "Additional Information section is visible",
+        "Add Link button is present and clickable",
+        "Clicking Add Link adds a free-text row with Link Type and URL input fields",
+        "Link Type field has placeholder: 'e.g., Purchase Link, Demo Link, Documentation, Support'",
+        "URL field has placeholder: 'https://...'",
+        "Remove link 1 button is visible"
+      ],
+      "postconditions": "Add Link row is displayed with Link Type and URL fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LINK_002",
+      "title": "Add Amazon Purchase Link Field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section",
+        "Click Add Link button",
+        "Observe input field appearance"
+      ],
+      "expectedResults": [
+        "Link Type input field is visible and labelled correctly",
+        "URL input field is visible",
+        "Remove button is present (field is optional — can be removed)",
+        "Counter shows (1/6 links)"
+      ],
+      "postconditions": "Amazon link input field is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_LINK_003",
+      "title": "Add Multiple Link Types Simultaneously",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section",
+        "Add Amazon Purchase Link row and fill type and URL",
+        "Add Flipkart Purchase Link row and fill type and URL",
+        "Add Official Website Link row and fill type and URL",
+        "Verify all 3 rows are displayed with correct values",
+        "Verify each row has a Remove button"
+      ],
+      "expectedResults": [
+        "All 3 link rows are displayed simultaneously",
+        "Each row shows the correct Link Type and URL values",
+        "Counter shows (3/6 links)",
+        "Remove link 1, Remove link 2, Remove link 3 buttons are all visible"
+      ],
+      "postconditions": "All link fields are displayed and fillable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_001",
+      "title": "Validate Invalid URL Format",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section and add a link row",
+        "Enter invalid URL: 'invalid-url' in the URL field",
+        "Attempt to submit the form"
+      ],
+      "expectedResults": [
+        "Form does not submit",
+        "Page stays on /partner/product-upload",
+        "URL field still contains the invalid value (not cleared)"
+      ],
+      "postconditions": "Form remains on product upload page with invalid URL",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_002",
+      "title": "Validate URL Protocol Requirement",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section and add a link row",
+        "Enter URL without protocol: 'example.com' in the URL field",
+        "Attempt to submit the form"
+      ],
+      "expectedResults": [
+        "Form does not submit",
+        "Page stays on /partner/product-upload",
+        "URL field still contains the no-protocol value"
+      ],
+      "postconditions": "Form remains on product upload page with missing protocol URL",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_003",
+      "title": "Validate Amazon Domain Requirement",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section and add a link row",
+        "Set link type to 'Amazon Purchase Link'",
+        "Enter non-Amazon URL: 'https://example.com/product' in the URL field",
+        "Attempt to submit the form"
+      ],
+      "expectedResults": [
+        "Form does not submit",
+        "Page stays on /partner/product-upload",
+        "URL field still contains the non-Amazon URL"
+      ],
+      "postconditions": "Form remains on product upload page with invalid Amazon URL",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_004",
+      "title": "Validate Flipkart Domain Requirement",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section and add a link row",
+        "Set link type to 'Flipkart Purchase Link'",
+        "Enter non-Flipkart URL: 'https://example.com/product' in the URL field",
+        "Attempt to submit the form"
+      ],
+      "expectedResults": [
+        "Form does not submit",
+        "Page stays on /partner/product-upload",
+        "URL field still contains the non-Flipkart URL"
+      ],
+      "postconditions": "Form remains on product upload page with invalid Flipkart URL",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_005",
+      "title": "Accept Valid Amazon URL",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Product Upload Form is loaded.",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Upload Form",
+        "Scroll to Additional Information section and add a link row",
+        "Set link type to 'Amazon Purchase Link'",
+        "Enter valid Amazon URL: 'https://www.amazon.in/product/B08XYZ123'",
+        "Verify no error state on the URL field",
+        "Verify link row count shows 1 link"
+      ],
+      "expectedResults": [
+        "No error state on URL field",
+        "URL field retains the valid Amazon URL value",
+        "Counter shows (1/6 links)"
+      ],
+      "postconditions": "Amazon link row filled with valid URL",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_002",
+      "title": "Display Amazon Link with Proper Labeling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Public catalog product page is accessible. Product slug: 'wheelchair-16-03'.",
+      "steps": [
+        "Clear cookies and navigate to public product page at qa-atad.swarajability.org with ?bypass_auth=1",
+        "Verify product heading (h1) is visible",
+        "Verify Contact Vendor button is present and visible",
+        "Click Contact Vendor to open vendor details panel",
+        "Verify vendor details panel heading is visible",
+        "Verify product links container (.atad-product-links-root) is present in the panel"
+      ],
+      "expectedResults": [
+        "Product heading (h1) is visible",
+        "Contact Vendor button is visible",
+        "Vendor details panel opens after clicking Contact Vendor",
+        "Vendor Details heading is visible in the panel",
+        "Product links container is present in the panel"
+      ],
+      "postconditions": "Vendor details panel is open with product links container visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_001",
+      "title": "AP Updates Amazon Link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "Approved AP is logged in. Approved product 'goggles' exists with no existing links.",
+      "steps": [
+        "Login as AP",
+        "Navigate to Product Management page",
+        "Wait for approved products to be visible",
+        "Open Edit dialog for product 'goggles'",
+        "Add Amazon Purchase Link with valid URL: 'https://www.amazon.in/product/B08XYZ123'",
+        "Click Update Product to save changes",
+        "Verify Edit Product dialog closes",
+        "Verify product shows Edited badge",
+        "Verify Under Review count increased"
+      ],
+      "expectedResults": [
+        "Edit Product dialog opens successfully",
+        "Amazon link row added with correct type and URL",
+        "Update Product saves changes and closes dialog",
+        "Product shows 'Edited' badge (Toggle edit details for goggles button visible)",
+        "Under Review count is at least 1"
+      ],
+      "postconditions": "Product 'goggles' is in Under Review state with updated Amazon link",
+      "testResult": "PASS"
+    }
+  ]
+}

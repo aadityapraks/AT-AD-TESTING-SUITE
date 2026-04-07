@@ -388,3 +388,4 @@ test.describe('SCRUM-17: AP Registration Accessibility (WCAG 2.1 AA)', () => {
     });
   });
 });
+

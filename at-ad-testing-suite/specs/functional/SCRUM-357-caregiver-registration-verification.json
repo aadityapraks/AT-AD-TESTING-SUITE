@@ -1,0 +1,970 @@
+{
+  "jiraStory": "SCRUM-357",
+  "title": "Caregiver Registration, Verification, Consent & Feature Parity - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Caregiver Registration flow on the AT/AD platform. Covers personal & contact information form, inline validation, OTP verification for mobile and email, consent & communication preferences, registration completion, feature parity with PwD, dark mode, static content, and edge cases including duplicate accounts, OTP failures, and session expiry. Linked bug SCRUM-752 (Email OTP input field disappears after Resend OTP) may impact OTP test execution.",
+  "scope": {
+    "inScope": [
+      "Personal & contact information form (First Name, Last Name, Mobile, Email, Password, Aadhaar, Pincode)",
+      "Inline validation for all mandatory fields",
+      "Aadhaar privacy and usage information display",
+      "OTP verification for mobile number",
+      "OTP verification for email ID",
+      "OTP expiry, retry limits, resend with cooldown",
+      "Consent checkbox for AT/AD communication",
+      "Consent text clarity (purpose, withdrawal ability)",
+      "Complete Registration button enablement logic",
+      "Post-registration redirect to PwD registration flow",
+      "Confirmation messaging",
+      "Feature parity with PwD (catalog, product details, recommendations, interest, notifications)",
+      "Back to sign in navigation",
+      "Terms & conditions and Privacy policy links",
+      "Static cards (Privacy and Security, To complete registration)",
+      "Dark mode support",
+      "Edge cases: duplicate mobile/email, Aadhaar conflicts, OTP failures, session expiry"
+    ],
+    "outOfScope": [
+      "PwD registration flow details (covered in SCRUM-281/SCRUM-372)",
+      "Account type selection (covered in SCRUM-354)",
+      "Caregiver sign-in flow (covered in SCRUM-360)",
+      "Backend API internals and encryption protocols",
+      "SwarajAbility parent platform functionality"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_CG_REG_001",
+      "title": "Verify all mandatory fields are displayed on caregiver registration form",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User has selected Caregiver account type from sign-up page; Registration form is loaded",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Verify First Name field is displayed with label",
+        "3. Verify Last Name field is displayed with label",
+        "4. Verify Mobile Number field is displayed with +91 country code",
+        "5. Verify Email ID field is displayed with label",
+        "6. Verify Password field is displayed (masked input)",
+        "7. Verify Confirm Password field is displayed (masked input)",
+        "8. Verify Aadhaar Number field is displayed (masked input)",
+        "9. Verify Pincode field is displayed with label",
+        "10. Verify all fields are marked as mandatory (asterisk or required indicator)",
+        "11. Verify Aadhaar privacy and usage information text is clearly displayed"
+      ],
+      "testData": {
+        "url": "https://qa-atad.swarajability.org"
+      },
+      "expectedResults": [
+        "All mandatory fields are visible: First Name, Last Name, Mobile Number, Email ID, Password, Confirm Password, Aadhaar Number, Pincode",
+        "Mobile Number field shows +91 country code prefix",
+        "Password and Confirm Password fields mask input characters",
+        "Aadhaar Number field masks input characters",
+        "All fields have clear labels and mandatory indicators",
+        "Aadhaar privacy/usage information is displayed near the Aadhaar field"
+      ],
+      "postconditions": "Registration form is displayed with all mandatory fields visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_002",
+      "title": "Verify successful caregiver registration with all valid mandatory fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "D. Registration Completion & Access",
+      "preconditions": "User is on caregiver registration page; All OTP services are functional",
+      "steps": [
+        "1. Enter valid First Name (alphabetic characters only)",
+        "2. Enter valid Last Name (alphabetic characters only)",
+        "3. Enter valid 10-digit Mobile Number",
+        "4. Complete mobile OTP verification",
+        "5. Enter valid Email ID",
+        "6. Complete email OTP verification",
+        "7. Enter valid Password meeting strength requirements",
+        "8. Enter matching Confirm Password",
+        "9. Enter valid 12-digit Aadhaar Number",
+        "10. Enter valid 6-digit Pincode",
+        "11. Check the consent checkbox",
+        "12. Verify 'Complete Registration' button is enabled",
+        "13. Click 'Complete Registration' button",
+        "14. Verify confirmation message is displayed",
+        "15. Verify user is redirected to PwD registration flow"
+      ],
+      "testData": {
+        "firstName": "Priya",
+        "lastName": "Sharma",
+        "mobileNumber": "9876543210",
+        "emailId": "priya.sharma@example.com",
+        "password": "SecurePass@123",
+        "confirmPassword": "SecurePass@123",
+        "aadhaarNumber": "123456789012",
+        "pincode": "500001"
+      },
+      "expectedResults": [
+        "All fields accept valid input without errors",
+        "Mobile and email OTP verification completes successfully",
+        "Complete Registration button becomes enabled after all validations pass",
+        "Confirmation message indicates successful account creation",
+        "User is redirected to PwD registration flow",
+        "Caregiver account is created in the system"
+      ],
+      "postconditions": "Caregiver account is created; User is on PwD registration page",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_003",
+      "title": "Verify registration is blocked when mandatory fields are empty",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Leave all fields empty",
+        "2. Attempt to click 'Complete Registration' button",
+        "3. Verify button is disabled or form submission is blocked",
+        "4. Fill only First Name, leave rest empty, attempt submit",
+        "5. Verify inline validation errors appear for empty mandatory fields",
+        "6. Fill all fields except Aadhaar, attempt submit",
+        "7. Verify Aadhaar field shows required error",
+        "8. Fill all fields except Pincode, attempt submit",
+        "9. Verify Pincode field shows required error"
+      ],
+      "testData": {
+        "firstName": "Priya",
+        "lastName": "",
+        "mobileNumber": "",
+        "emailId": "",
+        "password": "",
+        "aadhaarNumber": "",
+        "pincode": ""
+      },
+      "expectedResults": [
+        "Complete Registration button is disabled when mandatory fields are empty",
+        "Inline validation errors appear for each empty mandatory field",
+        "Error messages are clear and specific (e.g., 'First Name is required')",
+        "Registration cannot proceed with any mandatory field missing",
+        "No partial registration occurs"
+      ],
+      "postconditions": "Form remains on registration page with validation errors displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_004",
+      "title": "Verify inline validation for First Name and Last Name (alphabetic only)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Enter numeric characters in First Name field: '12345'",
+        "2. Verify inline validation error for non-alphabetic input",
+        "3. Enter special characters in First Name: '@#$%'",
+        "4. Verify inline validation error",
+        "5. Enter alphanumeric mix: 'Priya123'",
+        "6. Verify inline validation error",
+        "7. Enter valid alphabetic First Name: 'Priya'",
+        "8. Verify no validation error",
+        "9. Repeat steps 1-8 for Last Name field",
+        "10. Enter name with spaces: 'Mary Jane'",
+        "11. Verify if spaces are accepted in name fields"
+      ],
+      "testData": {
+        "invalidNumeric": "12345",
+        "invalidSpecial": "@#$%",
+        "invalidAlphanumeric": "Priya123",
+        "validName": "Priya",
+        "nameWithSpace": "Mary Jane"
+      },
+      "expectedResults": [
+        "Numeric characters trigger validation error: 'Only alphabetic characters allowed'",
+        "Special characters trigger validation error",
+        "Alphanumeric mix triggers validation error",
+        "Valid alphabetic names are accepted without error",
+        "Inline validation appears immediately on invalid input (not just on submit)"
+      ],
+      "postconditions": "Name field validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_005",
+      "title": "Verify Mobile Number field accepts only 10 digits with +91 country code",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Verify +91 country code is displayed as prefix",
+        "2. Enter less than 10 digits: '98765'",
+        "3. Verify validation error for insufficient digits",
+        "4. Enter more than 10 digits: '98765432101'",
+        "5. Verify field restricts to 10 digits or shows error",
+        "6. Enter alphabetic characters: 'abcdefghij'",
+        "7. Verify field rejects non-numeric input",
+        "8. Enter valid 10-digit number: '9876543210'",
+        "9. Verify number is accepted without error",
+        "10. Verify Send OTP button becomes available"
+      ],
+      "testData": {
+        "shortNumber": "98765",
+        "longNumber": "98765432101",
+        "alphabeticInput": "abcdefghij",
+        "validNumber": "9876543210"
+      },
+      "expectedResults": [
+        "+91 country code is displayed and non-editable",
+        "Less than 10 digits triggers validation error",
+        "More than 10 digits is either blocked or triggers error",
+        "Non-numeric characters are rejected",
+        "Valid 10-digit number is accepted",
+        "Send OTP button is enabled after valid number entry"
+      ],
+      "postconditions": "Mobile number validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_006",
+      "title": "Verify Email ID format validation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Enter invalid email: 'notanemail'",
+        "2. Verify inline validation error for invalid format",
+        "3. Enter email without domain: 'user@'",
+        "4. Verify validation error",
+        "5. Enter email without TLD: 'user@domain'",
+        "6. Verify validation error",
+        "7. Enter email with spaces: 'user @domain.com'",
+        "8. Verify validation error",
+        "9. Enter valid email: 'priya.sharma@example.com'",
+        "10. Verify email is accepted without error",
+        "11. Verify Send OTP button becomes available for email"
+      ],
+      "testData": {
+        "invalidEmail1": "notanemail",
+        "invalidEmail2": "user@",
+        "invalidEmail3": "user@domain",
+        "invalidEmail4": "user @domain.com",
+        "validEmail": "priya.sharma@example.com"
+      },
+      "expectedResults": [
+        "Invalid email formats trigger inline validation error",
+        "Error message: 'Please enter a valid email address'",
+        "Valid email format is accepted without error",
+        "Send OTP button is enabled after valid email entry"
+      ],
+      "postconditions": "Email validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_007",
+      "title": "Verify Password and Confirm Password validation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Enter weak password: '123456'",
+        "2. Verify password strength indicator or validation error",
+        "3. Enter password without uppercase: 'password@123'",
+        "4. Verify validation feedback",
+        "5. Enter strong password: 'SecurePass@123'",
+        "6. Verify password is accepted",
+        "7. Verify password field masks characters",
+        "8. Enter mismatched Confirm Password: 'DifferentPass@123'",
+        "9. Verify mismatch error message",
+        "10. Enter matching Confirm Password: 'SecurePass@123'",
+        "11. Verify passwords match and no error shown"
+      ],
+      "testData": {
+        "weakPassword": "123456",
+        "noUppercase": "password@123",
+        "strongPassword": "SecurePass@123",
+        "mismatchPassword": "DifferentPass@123"
+      },
+      "expectedResults": [
+        "Weak passwords trigger validation error or strength warning",
+        "Password field masks all characters",
+        "Confirm Password mismatch shows error: 'Passwords do not match'",
+        "Matching strong passwords are accepted without error",
+        "Password requirements are displayed to user"
+      ],
+      "postconditions": "Password validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_008",
+      "title": "Verify Aadhaar Number field accepts only 12 digits with masked input",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Locate Aadhaar Number field",
+        "2. Verify Aadhaar privacy and usage information is displayed",
+        "3. Enter less than 12 digits: '12345678'",
+        "4. Verify validation error for insufficient digits",
+        "5. Enter more than 12 digits: '1234567890123'",
+        "6. Verify field restricts to 12 digits or shows error",
+        "7. Enter alphabetic characters: 'abcdefghijkl'",
+        "8. Verify field rejects non-numeric input",
+        "9. Enter valid 12-digit Aadhaar: '123456789012'",
+        "10. Verify input is masked (e.g., XXXX-XXXX-9012)",
+        "11. Verify Aadhaar is accepted without error"
+      ],
+      "testData": {
+        "shortAadhaar": "12345678",
+        "longAadhaar": "1234567890123",
+        "alphabeticAadhaar": "abcdefghijkl",
+        "validAadhaar": "123456789012"
+      },
+      "expectedResults": [
+        "Aadhaar privacy/usage information is clearly visible",
+        "Less than 12 digits triggers validation error",
+        "More than 12 digits is blocked or triggers error",
+        "Non-numeric characters are rejected",
+        "Valid 12-digit Aadhaar is accepted",
+        "Aadhaar input is masked for privacy"
+      ],
+      "postconditions": "Aadhaar validation and masking verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_009",
+      "title": "Verify Pincode field accepts only valid 6-digit input",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "A. Personal & Contact Information",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Enter less than 6 digits: '500'",
+        "2. Verify validation error for insufficient digits",
+        "3. Enter more than 6 digits: '5000011'",
+        "4. Verify field restricts to 6 digits or shows error",
+        "5. Enter alphabetic characters: 'abcdef'",
+        "6. Verify field rejects non-numeric input",
+        "7. Enter invalid pincode: '000000'",
+        "8. Verify validation error for invalid pincode",
+        "9. Enter valid 6-digit pincode: '500001'",
+        "10. Verify pincode is accepted without error"
+      ],
+      "testData": {
+        "shortPincode": "500",
+        "longPincode": "5000011",
+        "alphabeticPincode": "abcdef",
+        "invalidPincode": "000000",
+        "validPincode": "500001"
+      },
+      "expectedResults": [
+        "Less than 6 digits triggers validation error",
+        "More than 6 digits is blocked or triggers error",
+        "Non-numeric characters are rejected",
+        "Invalid pincode triggers validation error",
+        "Valid 6-digit pincode is accepted without error"
+      ],
+      "postconditions": "Pincode validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_010",
+      "title": "Verify Mobile OTP verification flow (send, enter, verify)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "B. OTP Verification",
+      "preconditions": "User has entered valid 10-digit mobile number on registration form",
+      "steps": [
+        "1. Enter valid mobile number: '9876543210'",
+        "2. Click 'Send OTP' button for mobile",
+        "3. Verify OTP is sent (success message displayed)",
+        "4. Verify OTP input field appears",
+        "5. Enter the received OTP",
+        "6. Click 'Verify' button",
+        "7. Verify success message: 'Mobile number verified successfully'",
+        "8. Verify mobile field shows verified status (checkmark or green indicator)",
+        "9. Verify mobile number field becomes read-only after verification"
+      ],
+      "testData": {
+        "mobileNumber": "9876543210"
+      },
+      "expectedResults": [
+        "Send OTP button triggers OTP delivery to mobile",
+        "Success message confirms OTP sent",
+        "OTP input field is displayed",
+        "Correct OTP entry results in successful verification",
+        "Verified status indicator is shown",
+        "Mobile field becomes non-editable after verification"
+      ],
+      "postconditions": "Mobile number is verified; Verification status is stored",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_011",
+      "title": "Verify Email OTP verification flow (send, enter, verify)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "B. OTP Verification",
+      "preconditions": "User has entered valid email on registration form",
+      "steps": [
+        "1. Enter valid email: 'priya.sharma@example.com'",
+        "2. Click 'Send OTP' button for email",
+        "3. Verify OTP is sent (success message displayed)",
+        "4. Verify OTP input field appears",
+        "5. Enter the received OTP",
+        "6. Click 'Verify' button",
+        "7. Verify success message: 'Email verified successfully'",
+        "8. Verify email field shows verified status (checkmark or green indicator)",
+        "9. Verify email field becomes read-only after verification"
+      ],
+      "testData": {
+        "emailId": "priya.sharma@example.com"
+      },
+      "expectedResults": [
+        "Send OTP button triggers OTP delivery to email",
+        "Success message confirms OTP sent",
+        "OTP input field is displayed",
+        "Correct OTP entry results in successful verification",
+        "Verified status indicator is shown",
+        "Email field becomes non-editable after verification"
+      ],
+      "postconditions": "Email is verified; Verification status is stored",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_012",
+      "title": "Verify incorrect OTP entry shows retry error message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "B. OTP Verification - Edge Cases",
+      "preconditions": "OTP has been sent to mobile or email; OTP input field is visible",
+      "steps": [
+        "1. Send OTP to mobile number",
+        "2. Enter incorrect OTP: '000000'",
+        "3. Click 'Verify' button",
+        "4. Verify error message is displayed",
+        "5. Verify retry is allowed",
+        "6. Enter incorrect OTP again",
+        "7. Verify error message and remaining retry count (if shown)",
+        "8. Enter correct OTP",
+        "9. Verify successful verification"
+      ],
+      "testData": {
+        "incorrectOTP": "000000",
+        "correctOTP": "received OTP"
+      },
+      "expectedResults": [
+        "Incorrect OTP triggers error message: 'Invalid OTP. Please try again'",
+        "Retry is allowed with clear indication",
+        "Retry count or remaining attempts may be shown",
+        "Correct OTP after failed attempts still verifies successfully"
+      ],
+      "postconditions": "OTP retry error handling is verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_013",
+      "title": "Verify OTP expiry and resend with cooldown",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "B. OTP Verification - Edge Cases",
+      "preconditions": "OTP has been sent to mobile or email",
+      "steps": [
+        "1. Send OTP to mobile number",
+        "2. Wait for OTP to expire (observe expiry timer if displayed)",
+        "3. Enter the expired OTP",
+        "4. Click 'Verify' button",
+        "5. Verify error message indicating OTP has expired",
+        "6. Verify 'Resend OTP' option is available",
+        "7. Verify Resend OTP has a cooldown timer",
+        "8. Wait for cooldown to complete",
+        "9. Click 'Resend OTP'",
+        "10. Verify new OTP is sent successfully",
+        "11. Enter new OTP and verify successfully"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Expired OTP triggers error: 'OTP has expired. Please resend'",
+        "Resend OTP option is available after expiry",
+        "Resend OTP has cooldown timer preventing immediate resend",
+        "New OTP is sent after cooldown completes",
+        "New OTP verifies successfully"
+      ],
+      "postconditions": "OTP expiry and resend flow is verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_014",
+      "title": "Verify excessive OTP failures trigger temporary verification lock",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "B. OTP Verification - Edge Cases",
+      "preconditions": "OTP has been sent to mobile or email",
+      "steps": [
+        "1. Send OTP to mobile number",
+        "2. Enter incorrect OTP and click Verify (repeat until max retries exceeded)",
+        "3. Verify temporary lock message is displayed",
+        "4. Verify OTP input and Verify button are disabled",
+        "5. Verify lock duration is communicated to user",
+        "6. Wait for lock period to expire",
+        "7. Verify OTP verification is re-enabled"
+      ],
+      "testData": {
+        "incorrectOTP": "000000"
+      },
+      "expectedResults": [
+        "After maximum retry attempts, temporary lock is triggered",
+        "Lock message clearly states duration and reason",
+        "OTP input is disabled during lock period",
+        "After lock period, verification is re-enabled"
+      ],
+      "postconditions": "Temporary verification lock behavior is verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_015",
+      "title": "Verify consent checkbox is mandatory for registration completion",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "C. Consent & Communication Preferences",
+      "preconditions": "User has filled all mandatory fields and completed OTP verification",
+      "steps": [
+        "1. Complete all mandatory fields with valid data",
+        "2. Complete mobile and email OTP verification",
+        "3. Do NOT check the consent checkbox",
+        "4. Verify 'Complete Registration' button is disabled",
+        "5. Read the consent text displayed",
+        "6. Verify consent text states purpose of communication",
+        "7. Verify consent text mentions ability to withdraw consent from profile settings",
+        "8. Check the consent checkbox",
+        "9. Verify 'Complete Registration' button becomes enabled",
+        "10. Uncheck the consent checkbox",
+        "11. Verify button becomes disabled again"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Complete Registration button is disabled without consent",
+        "Consent text clearly states purpose of communication",
+        "Consent text mentions ability to withdraw consent later from profile settings",
+        "Checking consent enables the Complete Registration button",
+        "Unchecking consent disables the button again",
+        "Registration is blocked without explicit consent"
+      ],
+      "postconditions": "Consent checkbox mandatory behavior is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_016",
+      "title": "Verify Complete Registration button enablement logic",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "D. Registration Completion & Access",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Verify Complete Registration button is disabled initially",
+        "2. Fill all mandatory fields with valid data",
+        "3. Verify button is still disabled (OTPs not verified)",
+        "4. Complete mobile OTP verification",
+        "5. Verify button is still disabled (email OTP not verified)",
+        "6. Complete email OTP verification",
+        "7. Verify button is still disabled (consent not provided)",
+        "8. Check the consent checkbox",
+        "9. Verify Complete Registration button is now enabled",
+        "10. Click the button and verify registration proceeds"
+      ],
+      "testData": {
+        "firstName": "Priya",
+        "lastName": "Sharma",
+        "mobileNumber": "9876543210",
+        "emailId": "priya.sharma@example.com",
+        "password": "SecurePass@123",
+        "confirmPassword": "SecurePass@123",
+        "aadhaarNumber": "123456789012",
+        "pincode": "500001"
+      },
+      "expectedResults": [
+        "Button is disabled when: fields invalid, OTPs not verified, or consent not given",
+        "Button is enabled ONLY when ALL three conditions are met: valid fields + both OTPs verified + consent checked",
+        "Clicking enabled button proceeds with registration"
+      ],
+      "postconditions": "Button enablement logic is verified for all prerequisite conditions",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_017",
+      "title": "Verify post-registration redirect to PwD registration flow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "D. Registration Completion & Access",
+      "preconditions": "User has completed all registration steps and clicked Complete Registration",
+      "steps": [
+        "1. Complete full registration flow (fields, OTPs, consent)",
+        "2. Click 'Complete Registration' button",
+        "3. Verify confirmation message is displayed indicating successful account creation",
+        "4. Verify user is automatically redirected to PwD registration flow",
+        "5. Verify the PwD registration page loads correctly",
+        "6. Verify caregiver session is active on the redirected page"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Confirmation message: 'Registration successful' or similar",
+        "User is redirected to PwD registration flow",
+        "PwD registration page loads without errors",
+        "Caregiver session is active and authenticated"
+      ],
+      "postconditions": "Caregiver is registered and on PwD registration page",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_018",
+      "title": "Verify duplicate mobile number shows 'Account exists' with sign-in option",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "Edge Case - Validation & Identity",
+      "preconditions": "A caregiver account already exists with mobile number '9876543210'",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Enter the already-registered mobile number: '9876543210'",
+        "3. Attempt to send OTP or proceed",
+        "4. Verify error message: 'Account already exists'",
+        "5. Verify sign-in option/link is provided",
+        "6. Click the sign-in link",
+        "7. Verify user is redirected to caregiver sign-in page"
+      ],
+      "testData": {
+        "existingMobile": "9876543210"
+      },
+      "expectedResults": [
+        "Duplicate mobile number triggers 'Account already exists' message",
+        "Sign-in option is provided alongside the error",
+        "Clicking sign-in redirects to caregiver sign-in page",
+        "Registration is blocked for duplicate mobile"
+      ],
+      "postconditions": "Duplicate mobile detection is verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_CG_REG_019",
+      "title": "Verify duplicate email shows 'Account exists' with sign-in option",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "Edge Case - Validation & Identity",
+      "preconditions": "A caregiver account already exists with email 'existing@example.com'",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Enter the already-registered email: 'existing@example.com'",
+        "3. Attempt to send OTP or proceed",
+        "4. Verify error message: 'Account already exists'",
+        "5. Verify sign-in option/link is provided",
+        "6. Click the sign-in link",
+        "7. Verify user is redirected to caregiver sign-in page"
+      ],
+      "testData": {
+        "existingEmail": "existing@example.com"
+      },
+      "expectedResults": [
+        "Duplicate email triggers 'Account already exists' message",
+        "Sign-in option is provided alongside the error",
+        "Clicking sign-in redirects to caregiver sign-in page",
+        "Registration is blocked for duplicate email"
+      ],
+      "postconditions": "Duplicate email detection is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_021",
+      "title": "Verify partial form submission retains data on validation error",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "Edge Case - Validation & Identity",
+      "preconditions": "User is on caregiver registration page with some fields filled",
+      "steps": [
+        "1. Fill First Name, Last Name, and Mobile Number with valid data",
+        "2. Enter invalid email format: 'invalid-email'",
+        "3. Attempt to proceed or trigger validation",
+        "4. Verify validation error appears for email",
+        "5. Verify First Name, Last Name, and Mobile Number data is retained",
+        "6. Correct the email to valid format",
+        "7. Verify all previously entered data is still present"
+      ],
+      "testData": {
+        "firstName": "Priya",
+        "lastName": "Sharma",
+        "mobileNumber": "9876543210",
+        "invalidEmail": "invalid-email"
+      },
+      "expectedResults": [
+        "Validation error appears for invalid field",
+        "All previously entered valid data is retained",
+        "User does not need to re-enter valid fields after fixing errors",
+        "Form state is preserved on validation failure"
+      ],
+      "postconditions": "Data retention on partial submission is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_022",
+      "title": "Verify 'Back to sign in' navigation works at any point during registration",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "F. General",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Locate 'Back to sign in' link/button",
+        "3. Click 'Back to sign in' before filling any fields",
+        "4. Verify user is redirected to sign-in page",
+        "5. Navigate back to registration page",
+        "6. Fill some fields with valid data",
+        "7. Click 'Back to sign in' mid-form",
+        "8. Verify user is redirected to sign-in page",
+        "9. Navigate back to registration and verify form is reset"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "'Back to sign in' link is visible at all times during registration",
+        "Clicking it redirects to sign-in page from any point in the flow",
+        "No errors occur during navigation",
+        "Returning to registration shows a fresh/reset form"
+      ],
+      "postconditions": "Back to sign in navigation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_023",
+      "title": "Verify Terms & Conditions and Privacy Policy links redirect correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "F. General",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Locate 'Terms & Conditions' link on registration page",
+        "2. Click the link",
+        "3. Verify it opens the Terms & Conditions page",
+        "4. Verify the page content loads correctly",
+        "5. Navigate back to registration page",
+        "6. Locate 'Privacy Policy' link",
+        "7. Click the link",
+        "8. Verify it opens the Privacy Policy page",
+        "9. Verify the page content loads correctly",
+        "10. Navigate back to registration page",
+        "11. Verify registration form data is retained after returning"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Terms & Conditions link is visible and clickable",
+        "Clicking opens the correct Terms & Conditions page",
+        "Privacy Policy link is visible and clickable",
+        "Clicking opens the correct Privacy Policy page",
+        "Both pages load with proper content",
+        "Registration form data is retained when navigating back"
+      ],
+      "postconditions": "Legal links are verified to redirect correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_024",
+      "title": "Verify static cards (Privacy and Security, To complete registration) match design",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "F. General",
+      "preconditions": "User is on caregiver registration page",
+      "steps": [
+        "1. Navigate to caregiver registration page",
+        "2. Locate 'Privacy and Security' static card",
+        "3. Verify card content matches design specification",
+        "4. Verify card layout and positioning",
+        "5. Locate 'To complete registration' static card/text",
+        "6. Verify content matches design specification",
+        "7. Verify both cards are readable and properly formatted"
+      ],
+      "testData": {
+        "designReference": "Figma design for SCRUM-357"
+      },
+      "expectedResults": [
+        "'Privacy and Security' static card is visible and matches design",
+        "'To complete registration' text/card is visible and matches design",
+        "Layout, typography, and spacing are consistent with design",
+        "Cards are properly positioned and do not overlap form elements"
+      ],
+      "postconditions": "Static card content is verified against design",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_REG_025",
+      "title": "Verify registration page works correctly in Dark Mode",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-357",
+      "category": "F. General",
+      "preconditions": "User is on caregiver registration page; Dark mode toggle is available",
+      "steps": [
+        "1. Navigate to caregiver registration page in light mode",
+        "2. Toggle to Dark Mode",
+        "3. Verify all form fields are visible and readable in dark mode",
+        "4. Verify labels and placeholder text have proper contrast",
+        "5. Verify validation error messages are visible in dark mode",
+        "6. Verify OTP input fields render correctly in dark mode",
+        "7. Verify consent checkbox and text are visible",
+        "8. Verify buttons (Send OTP, Complete Registration) are visible",
+        "9. Verify static cards render correctly in dark mode",
+        "10. Complete a full registration flow in dark mode"
+      ],
+      "testData": {
+        "mode": "Dark Mode"
+      },
+      "expectedResults": [
+        "All form elements are visible with proper contrast in dark mode",
+        "Text is readable against dark background",
+        "Validation errors are visible and distinguishable",
+        "OTP fields and buttons render correctly",
+        "Static cards display properly in dark mode",
+        "Full registration flow works without visual issues in dark mode"
+      ],
+      "postconditions": "Dark mode rendering is verified for registration page",
+      "testResult": "PASS"
+    }
+  ],
+  "requirements_traceability_matrix": {
+    "AC_A_personal_contact_info": {
+      "description": "Caregiver must provide mandatory details with inline validation",
+      "testCases": ["TC_CG_REG_001", "TC_CG_REG_003", "TC_CG_REG_004", "TC_CG_REG_005", "TC_CG_REG_006", "TC_CG_REG_007", "TC_CG_REG_008", "TC_CG_REG_009"]
+    },
+    "AC_B_otp_verification": {
+      "description": "OTP verification for mobile and email with expiry, retry, and resend",
+      "testCases": ["TC_CG_REG_010", "TC_CG_REG_011", "TC_CG_REG_012", "TC_CG_REG_013", "TC_CG_REG_014"]
+    },
+    "AC_C_consent_communication": {
+      "description": "Mandatory consent checkbox with clear text about purpose and withdrawal",
+      "testCases": ["TC_CG_REG_015"]
+    },
+    "AC_D_registration_completion": {
+      "description": "Complete Registration button enablement, redirect to PwD flow, confirmation",
+      "testCases": ["TC_CG_REG_002", "TC_CG_REG_016", "TC_CG_REG_017"]
+    },
+    "AC_E_feature_parity": {
+      "description": "Caregiver access to PwD-equivalent features (requires OTP/account infrastructure)",
+      "testCases": []
+    },
+    "AC_F_general": {
+      "description": "Back to sign in, T&C/Privacy links, static cards, dark mode",
+      "testCases": ["TC_CG_REG_022", "TC_CG_REG_023", "TC_CG_REG_024", "TC_CG_REG_025"]
+    },
+    "EC_validation_identity": {
+      "description": "Duplicate mobile/email, invalid pincode, partial submission",
+      "testCases": ["TC_CG_REG_018", "TC_CG_REG_019", "TC_CG_REG_021"]
+    },
+    "EC_otp_verification": {
+      "description": "Incorrect OTP, expired OTP, excessive failures, network failure",
+      "testCases": ["TC_CG_REG_012", "TC_CG_REG_013", "TC_CG_REG_014"]
+    },
+    "EC_registration_access": {
+      "description": "Duplicate submission, session expiry (requires OTP/account infrastructure)",
+      "testCases": []
+    }
+  },
+  "test_data_requirements": {
+    "new_caregiver_accounts": [
+      {
+        "firstName": "Priya",
+        "lastName": "Sharma",
+        "mobileNumber": "9876543210",
+        "emailId": "priya.sharma@example.com",
+        "password": "SecurePass@123",
+        "aadhaarNumber": "123456789012",
+        "pincode": "500001"
+      }
+    ],
+    "existing_accounts_for_duplicate_tests": [
+      {
+        "mobileNumber": "9876543210",
+        "emailId": "existing@example.com",
+        "aadhaarNumber": "123456789012"
+      }
+    ],
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver registration page is accessible from account type selection (SCRUM-354)",
+      "OTP services (mobile and email) are functional in QA environment",
+      "Aadhaar validation service is available in QA",
+      "Pincode validation service is available",
+      "Dark mode toggle is available on the registration page",
+      "Design specifications for static cards are finalized",
+      "Feature parity features (catalog, recommendations) are deployed in QA"
+    ],
+    "dependencies": [
+      "SCRUM-354: Account type selection must route to caregiver registration",
+      "SCRUM-281/SCRUM-372: PwD registration flow must be available for post-registration redirect",
+      "SCRUM-360: Caregiver sign-in page must be available for 'Back to sign in' and duplicate account flows",
+      "OTP delivery infrastructure must be operational",
+      "SCRUM-752 (Bug): Email OTP input field disappears after Resend OTP - may impact TC_CG_REG_013"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "What are the exact password strength requirements (min length, required character types)?",
+      "impact": "Affects TC_CG_REG_007 expected validation behavior"
+    },
+    {
+      "question": "What is the OTP expiry duration and maximum retry count?",
+      "impact": "Affects TC_CG_REG_013 and TC_CG_REG_014 timing and retry counts"
+    },
+    {
+      "question": "Is the Aadhaar field optional or mandatory? Story says mandatory but AC mentions 'unless mandated by policy'",
+      "impact": "Affects TC_CG_REG_008 and TC_CG_REG_003 mandatory field validation"
+    },
+    {
+      "question": "What is the cooldown duration for Resend OTP?",
+      "impact": "Affects TC_CG_REG_013 test timing"
+    },
+    {
+      "question": "Does the consent checkbox include WhatsApp communication preference?",
+      "impact": "Edge case mentions 'WhatsApp selected without verified mobile' but AC doesn't detail WhatsApp option"
+    },
+    {
+      "question": "SCRUM-752 bug: Email OTP input field disappears after Resend OTP - is this resolved?",
+      "impact": "Directly impacts TC_CG_REG_013 email OTP resend testing"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_CG_REG_001, 002, 003, 010, 011, 015) should be executed first - core registration flow",
+      "High priority tests (004-008, 012, 013, 016-019, 022) cover field validation, OTP edge cases, and navigation",
+      "Medium priority tests (009, 014, 020, 021, 023-027) cover pincode, Aadhaar conflicts, static content, feature parity",
+      "Low priority tests (028, 029) cover session expiry and accessibility"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 29,
+      "estimated_hours": "50-60 hours for full manual testing",
+      "estimated_automation_hours": "80-100 hours for test automation",
+      "critical_path": "8-10 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "OTP delivery service (mobile and email) functional",
+      "Aadhaar validation service available",
+      "Pre-registered caregiver accounts for duplicate tests",
+      "Dark mode toggle available",
+      "Accessibility testing tools (axe-core)",
+      "Browser developer tools for session verification"
+    ],
+    "known_issues": [
+      "SCRUM-752: Email OTP input field disappears after clicking Resend OTP - may block TC_CG_REG_013"
+    ],
+    "regression_areas": [
+      "Account type selection flow (SCRUM-354)",
+      "Caregiver sign-in flow (SCRUM-360)",
+      "PwD registration redirect (SCRUM-281/SCRUM-372)",
+      "OTP verification infrastructure",
+      "Session management"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 29,
+    "coverage": "100% of acceptance criteria (A-F) and edge cases covered"
+  }
+}

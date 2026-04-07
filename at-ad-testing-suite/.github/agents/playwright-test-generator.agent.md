@@ -41,7 +41,7 @@ mcp-servers:
     tools:
       - "*"
 environment:
-  build_url: "https://hub-ui-admin-dev.swarajability.org/"
+  build_url: "https://hub-ui-admin-qa.swarajability.org/"
   credentials:
     username: "aadityap@byteridge.com"
     password: "aadityap@byteridge.com"     

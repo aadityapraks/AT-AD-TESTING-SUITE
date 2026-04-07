@@ -1,0 +1,119 @@
+{
+  "TC_ACCT_SEL_001": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "accountTypes": [
+        "Person with Disability",
+        "Caregiver",
+        "Donor",
+        "Assistive Partner"
+      ],
+      "selectionPrompt": "Select the type of account you'd like to register",
+      "chooseAccountTypeLabel": "Choose Account Type"
+    }
+  },
+  "TC_ACCT_SEL_005": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "ssoCardHeading": "Secure SSO Authentication",
+      "ssoCardDescription": "AT/AD Portal uses SwarajAbility's secure Single Sign-On (SSO) system to protect your data and provide seamless access to personalized assistive technology recommendations, device catalog, and accessibility resources.",
+      "chooseAccountTypeLabel": "Choose Account Type",
+      "selectionPrompt": "Select the type of account you'd like to register",
+      "accountTypeDescriptions": {
+        "Person with Disability": "Access personalized AT recommendations",
+        "Caregiver": "Support those in your care",
+        "Donor": "Contribute to accessibility initiatives",
+        "Assistive Partner": "List and sell AT devices"
+      }
+    }
+  },
+  "TC_ACCT_SEL_007": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "initialSelection": "Caregiver",
+      "switchedSelection": "Person with Disability",
+      "partialFormData": {
+        "firstName": "Test",
+        "email": "test@example.com"
+      }
+    },
+    "expected": {
+      "caregiverRegistrationHeading": "Caregiver Registration",
+      "pwdRegistrationUrlPattern": "candidate-register",
+      "pwdRegistrationHeading": "Candidate Registration"
+    }
+  },
+  "TC_ACCT_SEL_002": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "selectedAccountType": "Caregiver"
+    },
+    "expected": {
+      "caregiverPortalHeading": "Caregiver Portal",
+      "caregiverRegistrationHeading": "Caregiver Registration",
+      "personalInfoHeading": "Personal Information",
+      "registrationUrlPattern": "caregiver-registration"
+    }
+  },
+  "TC_ACCT_SEL_003": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "selectedAccountType": "Caregiver",
+      "email": "gikekylu@forexnews.bg",
+      "password": "Aaditya@14"
+    },
+    "expected": {
+      "caregiverPortalHeading": "Caregiver Portal",
+      "caregiverPortalUrlPattern": "caregiver-portal",
+      "logoutLinkVisible": true,
+      "myProfileLinkVisible": true
+    }
+  },
+  "TC_ACCT_SEL_006": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "accountTypes": ["Person with Disability", "Caregiver", "Donor", "Assistive Partner"],
+      "chooseAccountTypeLabel": "Choose Account Type"
+    }
+  },
+  "TC_ACCT_SEL_008": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "selectedAccountType": "Caregiver"
+    },
+    "expected": {
+      "caregiverPortalUrlPattern": "caregiver-portal",
+      "caregiverPortalHeading": "Caregiver Portal"
+    }
+  },
+  "TC_ACCT_SEL_009": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "routingMap": {
+        "Person with Disability": "candidate-register",
+        "Caregiver": "caregiver-portal",
+        "Assistive Partner": "hub-ui-admin-qa"
+      }
+    }
+  },
+  "TC_ACCT_SEL_010": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "accountTypes": ["Person with Disability", "Caregiver", "Donor", "Assistive Partner"],
+      "chooseAccountTypeLabel": "Choose Account Type"
+    }
+  },
+  "TC_ACCT_SEL_013": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {},
+    "expected": {
+      "caregiverPortalHeading": "Caregiver Portal",
+      "accountTypes": ["Person with Disability", "Caregiver", "Donor", "Assistive Partner"]
+    }
+  }
+}

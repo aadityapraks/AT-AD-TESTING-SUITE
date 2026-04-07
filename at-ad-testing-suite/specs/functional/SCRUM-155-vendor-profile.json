@@ -1,0 +1,628 @@
+{
+  "jiraStory": "SCRUM-155",
+  "title": "AP Vendor Profile - Functional Test Plan",
+  "overview": "Functional testing of the Assistive Partner (AP) Vendor Profile page on the Y4J platform. Covers navigation, page structure, organization card, account status, documents, organization details, contact information, edit profile functionality, data validation, UI consistency, security, accessibility, error handling, and data privacy.",
+  "testCases": [
+    {
+      "id": "TC_NAV_001",
+      "title": "Verify Top Navigation Bar Elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP account is approved and active. AP is logged in. Dashboard is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Observe top navigation bar"
+      ],
+      "expectedResults": [
+        "Dashboard link is visible",
+        "Help & Resources link is visible",
+        "Profile link is visible and highlighted when active",
+        "Logout link is visible"
+      ],
+      "postconditions": "Navigation bar is fully visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NAV_002",
+      "title": "Navigate to Vendor Profile Page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Dashboard is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Profile in navigation bar"
+      ],
+      "expectedResults": [
+        "User is redirected to Vendor Profile page",
+        "Profile link is highlighted",
+        "Page loads successfully"
+      ],
+      "postconditions": "Vendor Profile page is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_NAV_003",
+      "title": "Verify Authentication Requirement",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is not logged in. Browser session is cleared.",
+      "steps": [
+        "Logout from portal",
+        "Attempt to access profile page directly via URL"
+      ],
+      "expectedResults": [
+        "Unauthenticated users are redirected to login page",
+        "Profile page is not accessible without valid session",
+        "Security is enforced"
+      ],
+      "postconditions": "User is on login page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_001",
+      "title": "Verify Page Title and Subtitle",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate page title and subtitle"
+      ],
+      "expectedResults": [
+        "Page title displays: \"Vendor Profile\"",
+        "Subtitle displays: \"Manage your organization details and account information\"",
+        "Header is clearly visible"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_002",
+      "title": "Verify Edit Profile Button",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate Edit Profile button"
+      ],
+      "expectedResults": [
+        "Edit Profile button appears on top-right",
+        "Button is functional and clickable",
+        "Button is clearly labeled"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ORG_001",
+      "title": "Verify Organization Card Elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate left profile panel"
+      ],
+      "expectedResults": [
+        "Organization image/logo is displayed",
+        "Organization name is visible (read-only)",
+        "Organization type is visible (read-only)",
+        "All elements are properly formatted"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_001",
+      "title": "Verify Account Status Display",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate Account Status card"
+      ],
+      "expectedResults": [
+        "Status badge displays (Active/Inactive)",
+        "Verification status displays with icon (Verified/Pending)",
+        "Member Since date is shown",
+        "All data is fetched from backend"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_STATUS_002",
+      "title": "Verify Status Badge Colors",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check status badge colors"
+      ],
+      "expectedResults": [
+        "Green badge for Active status",
+        "Blue badge for Verified status",
+        "Colors follow UI theme",
+        "Badges are clearly visible"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DOC_003",
+      "title": "Verify Empty State Message",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP account exists without uploaded documents. AP is logged in.",
+      "steps": [
+        "Login as Assistive Partner without documents",
+        "Navigate to Vendor Profile page",
+        "Check Documents section"
+      ],
+      "expectedResults": [
+        "Empty state message displays",
+        "Message states: \"No documents uploaded yet.\"",
+        "Message is clearly visible"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ORGDET_001",
+      "title": "Verify Organization Details Fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate Organization Details section"
+      ],
+      "expectedResults": [
+        "Organization Name field is visible (read-only)",
+        "Organization Type field is visible (read-only)",
+        "Organization Description field is visible (read-only)",
+        "GST Number field is visible (read-only)",
+        "PAN Number field is visible (read-only)"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ORGDET_002",
+      "title": "Verify Mandatory Field Indicators",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check field labels"
+      ],
+      "expectedResults": [
+        "Mandatory fields show red * indicator",
+        "Indicators are clearly visible",
+        "UI follows consistent styling"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CONTACT_001",
+      "title": "Verify Contact Information Fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Locate Contact Information section"
+      ],
+      "expectedResults": [
+        "Contact Person Name is displayed",
+        "Email Address is displayed",
+        "Phone Number is displayed",
+        "Website is displayed as clickable link",
+        "Address is displayed",
+        "Social Media Links are displayed"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CONTACT_003",
+      "title": "Verify Social Media Links",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in with social media links on profile. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check social media links"
+      ],
+      "expectedResults": [
+        "Social media links have appropriate icons",
+        "Links open in new tab",
+        "Icons are clearly visible",
+        "All platforms are supported"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_001",
+      "title": "Switch to Editable Mode",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded in read-only mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Click Edit Profile button"
+      ],
+      "expectedResults": [
+        "Organization Details fields become editable",
+        "Contact Information fields become editable",
+        "Document section remains non-editable",
+        "Save and Cancel buttons appear"
+      ],
+      "postconditions": "Profile page is in edit mode",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_002",
+      "title": "Verify Editable Mode Elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Check form elements"
+      ],
+      "expectedResults": [
+        "Input fields have correct labels",
+        "Required field indicators are shown",
+        "Save button is visible",
+        "Cancel button is visible"
+      ],
+      "postconditions": "Profile page remains in edit mode",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_003",
+      "title": "Cancel Editing and Revert Changes",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Modify some fields",
+        "Click Cancel"
+      ],
+      "expectedResults": [
+        "All fields revert to last saved values",
+        "User returns to read-only mode",
+        "No changes are saved",
+        "Form state is restored"
+      ],
+      "postconditions": "Profile page is in read-only mode with original values",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_004",
+      "title": "Save Profile Changes Successfully",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Update valid information",
+        "Click Save"
+      ],
+      "expectedResults": [
+        "Success toast message appears",
+        "Fields return to read-only mode",
+        "Updated values are displayed",
+        "Changes are persisted"
+      ],
+      "postconditions": "Profile page is in read-only mode with updated values",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_001",
+      "title": "Validate Mandatory Fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Clear mandatory field",
+        "Attempt to save"
+      ],
+      "expectedResults": [
+        "Validation error appears",
+        "Error message indicates field is required",
+        "Form does not submit",
+        "Field is highlighted"
+      ],
+      "postconditions": "Profile page remains in edit mode with validation errors shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_002",
+      "title": "Validate Email Format",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Enter invalid email format",
+        "Attempt to save"
+      ],
+      "expectedResults": [
+        "Validation error appears",
+        "Error indicates invalid email format",
+        "Form does not submit",
+        "Field is highlighted"
+      ],
+      "postconditions": "Profile page remains in edit mode with validation errors shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_VAL_003",
+      "title": "Validate Phone Number Format",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Enter invalid phone number",
+        "Attempt to save"
+      ],
+      "expectedResults": [
+        "Validation error appears",
+        "Error indicates phone must be numeric",
+        "Country code format is enforced",
+        "Form does not submit"
+      ],
+      "postconditions": "Profile page remains in edit mode with validation errors shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_UI_001",
+      "title": "Verify Card Layout Consistency",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Inspect all cards"
+      ],
+      "expectedResults": [
+        "All cards follow rounded card layout",
+        "Spacing is consistent",
+        "Layout matches design specifications",
+        "Cards are properly aligned"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_UI_002",
+      "title": "Verify Icon Theme Consistency",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check all icons"
+      ],
+      "expectedResults": [
+        "Icons match theme (solid line icons)",
+        "Icon style is consistent",
+        "Icons are clearly visible",
+        "Appropriate icons for each element"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_UI_003",
+      "title": "Verify Input Field Styling",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Profile page is in edit mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Click Edit Profile",
+        "Inspect input fields"
+      ],
+      "expectedResults": [
+        "Grey border on input fields",
+        "Clear placeholder text",
+        "Required * indicator present",
+        "Styling is consistent"
+      ],
+      "postconditions": "Profile page remains in edit mode",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_UI_004",
+      "title": "Verify Read-Only Field Styling",
+      "priority": "Lowest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded in read-only mode.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check read-only fields"
+      ],
+      "expectedResults": [
+        "Read-only fields show disabled state styling",
+        "Visual distinction from editable fields",
+        "Styling is consistent",
+        "Fields are clearly marked"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_UI_005",
+      "title": "Verify Responsive Layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Resize browser to desktop and tablet sizes"
+      ],
+      "expectedResults": [
+        "Layout is responsive for desktop",
+        "Layout is responsive for tablet",
+        "Elements adjust appropriately",
+        "No layout breaks or overlaps"
+      ],
+      "postconditions": "Profile page remains functional at all tested sizes",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SEC_001",
+      "title": "Verify User Can Only Edit Own Profile",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to profile page",
+        "Verify profile data matches logged-in user"
+      ],
+      "expectedResults": [
+        "User can only edit their own profile data",
+        "Profile data belongs to logged-in user",
+        "No access to other profiles"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify Keyboard Navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Use Tab key to navigate all elements",
+        "Use Enter/Space to activate controls"
+      ],
+      "expectedResults": [
+        "Page is fully navigable via keyboard",
+        "Tab order is logical",
+        "All interactive elements are accessible",
+        "Focus indicators are visible"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify Screen Reader Compatibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded. Screen reader is available.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Use screen reader to navigate",
+        "Test all sections and fields"
+      ],
+      "expectedResults": [
+        "Field labels are screen-reader friendly",
+        "Status indicators are announced",
+        "All content is accessible",
+        "ARIA labels are present"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify Color Contrast",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Check color contrast ratios"
+      ],
+      "expectedResults": [
+        "Color contrast meets WCAG 2.1 AA",
+        "Status badges have clear contrast",
+        "Text is readable",
+        "Visual elements are distinguishable"
+      ],
+      "postconditions": "Profile page remains loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify Text Size Adjustability",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Navigate to Vendor Profile page",
+        "Adjust browser text size",
+        "Check layout and readability"
+      ],
+      "expectedResults": [
+        "Text size is adjustable",
+        "Layout remains functional",
+        "Readability is maintained",
+        "No content is cut off"
+      ],
+      "postconditions": "Profile page remains functional at adjusted text size",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRIV_001",
+      "title": "Verify No External Data Sharing",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "AP is logged in. Vendor Profile page is loaded.",
+      "steps": [
+        "Login as Assistive Partner",
+        "Update profile information",
+        "Monitor network requests"
+      ],
+      "expectedResults": [
+        "No personal information shared outside portal",
+        "All communication remains internal",
+        "Data privacy is maintained",
+        "Secure transmission"
+      ],
+      "postconditions": "Profile data remains within the portal",
+      "testResult": "PASS"
+    }
+  ]
+}

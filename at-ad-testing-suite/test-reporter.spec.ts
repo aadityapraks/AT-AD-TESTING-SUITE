@@ -1,0 +1,1 @@
+import { test, expect } from '@playwright/test';\n\ntest('Test Reporter - This will fail intentionally', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // This will fail intentionally to generate test results\n  await expect(page.getByText('This text does not exist')).toBeVisible();\n});

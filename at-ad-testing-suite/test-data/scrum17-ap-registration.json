@@ -1,0 +1,363 @@
+{
+  "TC_REG_001": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "registerLinkText": "Register as Assistive Partner",
+      "registerLinkVisible": true
+    }
+  },
+  "TC_REG_002": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "redirectToRegistrationPage": true
+    }
+  },
+  "TC_REG_003": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "purposeStatementVisible": true,
+      "eligibilityCriteriaVisible": true
+    }
+  },
+  "TC_REG_004": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "signInLinkVisible": true,
+      "signInLinkText": "Sign in with Swarajability"
+    }
+  },
+  "TC_REG_005": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "email": "vendor23@mailto.plus",
+      "password": "12345678"
+    },
+    "expected": {
+      "dashboardLoaded": true
+    }
+  },
+  "TC_REG_006": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "organizationNameVisible": true,
+      "organizationTypeVisible": true,
+      "contactPersonVisible": true,
+      "emailVisible": true,
+      "phoneVisible": true,
+      "addressVisible": true,
+      "shortDescriptionVisible": true
+    }
+  },
+  "TC_REG_007": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "organizationTypes": ["Manufacturer", "Distributor", "NGO", "Service Provider"]
+    }
+  },
+  "TC_REG_008": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "state": "Karnataka"
+    },
+    "expected": {
+      "districtPopulated": true,
+      "mandalPopulated": true
+    }
+  },
+  "TC_REG_009": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "addressFieldVisible": true,
+      "pincodeFieldVisible": true,
+      "cityFieldVisible": true
+    }
+  },
+  "TC_REG_010": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "websiteLinksFieldVisible": true,
+      "fileUploadVisible": true
+    }
+  },
+  "TC_REG_011": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "email": "test@example.com"
+    },
+    "expected": {
+      "sendOtpButtonVisible": true
+    }
+  },
+  "TC_REG_012": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "phone": "9876543210"
+    },
+    "expected": {
+      "sendOtpButtonVisible": true
+    }
+  },
+  "TC_REG_013": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "email": "test@example.com"
+    },
+    "expected": {
+      "otpInputVisible": true
+    }
+  },
+  "TC_REG_014": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com",
+      "alphabeticChars": "abcdef",
+      "specialChars": "!@#$%^",
+      "numericValue": "123456"
+    },
+    "expected": {
+      "alphabeticRejected": true,
+      "specialCharsRejected": true,
+      "numericAccepted": true
+    }
+  },
+  "TC_REG_015": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com",
+      "fiveDigits": "12345",
+      "sevenDigits": "1234567"
+    },
+    "expected": {
+      "maxLength": 6
+    }
+  },
+  "TC_REG_016": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com",
+      "partialOtp": "123",
+      "fullOtp": "123456"
+    },
+    "expected": {
+      "buttonDisabledWhenEmpty": true,
+      "buttonDisabledWhenPartial": true,
+      "buttonEnabledWhenFull": true
+    }
+  },
+  "TC_REG_017": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "vendor23@mailto.plus",
+      "validOtp": "123456"
+    },
+    "expected": {
+      "verificationStatusVerified": true
+    }
+  },
+  "TC_REG_018": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com",
+      "incorrectOtp": "000000"
+    },
+    "expected": {
+      "errorMessageVisible": true,
+      "verificationStatusUnverified": true
+    }
+  },
+  "TC_REG_019": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com"
+    },
+    "expected": {
+      "resendOtpVisible": true
+    }
+  },
+  "TC_REG_020": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "testEmail": "test@example.com",
+      "expiredOtp": "123456"
+    },
+    "expected": {
+      "expiredOtpError": true
+    }
+  },
+  "TC_REG_021": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "submissionBlockedWithOnlyEmail": true,
+      "submissionBlockedWithOnlyMobile": true
+    }
+  },
+  "TC_REG_022": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "validationErrorsDisplayed": true,
+      "formNotSubmitted": true
+    }
+  },
+  "TC_REG_023": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "errorMessageForOrgName": true,
+      "errorMessageForContactPerson": true,
+      "errorMessageForEmail": true
+    }
+  },
+  "TC_REG_024": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "invalidEmail1": "test@",
+      "invalidEmail2": "test.com"
+    },
+    "expected": {
+      "validationErrorVisible": true
+    }
+  },
+  "TC_REG_025": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "shortPhone": "12345",
+      "alphabeticPhone": "abcdefghij"
+    },
+    "expected": {
+      "validationErrorVisible": true
+    }
+  },
+  "TC_REG_026": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "alphabeticPincode": "abcdef",
+      "wrongLengthPincode": "123",
+      "validPincode": "560001"
+    },
+    "expected": {
+      "invalidPincodeError": true,
+      "validPincodeAccepted": true
+    }
+  },
+  "TC_REG_027": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "organizationName": "Test Organization",
+      "contactPerson": "Test Contact",
+      "email": "vendor23@mailto.plus",
+      "phone": "9876543210",
+      "address": "123 Test Street",
+      "city": "Test City",
+      "state": "Karnataka",
+      "pincode": "560001",
+      "emailOtp": "123456",
+      "mobileOtp": "123456"
+    },
+    "expected": {
+      "confirmationMessageVisible": true,
+      "confirmationMessage": "Thank you for registering. The Y4J team will review your details and contact you shortly."
+    }
+  },
+  "TC_REG_029": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "duplicateEmail": "vendor23@mailto.plus"
+    },
+    "expected": {
+      "duplicateErrorVisible": true,
+      "duplicateErrorMessage": "This email is already registered"
+    }
+  },
+  "TC_REG_030": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "loginOptionVisible": true,
+      "supportOptionMentioned": true
+    }
+  },
+  "TC_REG_032": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "allFieldsHaveLabels": true
+    }
+  },
+  "TC_REG_033": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "errorMessagesDisplayed": true,
+      "errorMessagePatterns": ["required", "enter", "valid", "please", "field"],
+      "errorsAssociatedWithFields": true
+    }
+  },
+  "TC_REG_036": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "keyboardNavigationWorks": true,
+      "tabOrderLogical": true
+    }
+  },
+  "TC_REG_037": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "expected": {
+      "focusIndicatorsVisible": true
+    }
+  },
+  "TC_REG_038": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "validFilePath": "test-assets/sample-logo.png"
+    },
+    "expected": {
+      "fileUploadSuccess": true
+    }
+  },
+  "TC_REG_039": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "invalidFilePath": "test-assets/invalid-file.exe"
+    },
+    "expected": {
+      "fileTypeError": true
+    }
+  },
+  "TC_REG_040": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "organizationName": "E2E Test Organization",
+      "organizationType": "Manufacturer",
+      "contactPerson": "E2E Test Contact",
+      "email": "e2etest@mailto.plus",
+      "phone": "9876543210",
+      "password": "Test@12345",
+      "address": "123 E2E Test Street",
+      "description": "E2E Test Description",
+      "website": "https://www.e2etest.com"
+    },
+    "expected": {
+      "registrationComplete": true
+    }
+  },
+  "TC_REG_041": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "description": "We provide assistive technology products and services for people with disabilities."
+    },
+    "expected": {
+      "descriptionAccepted": true
+    }
+  },
+  "TC_REG_042": {
+    "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "validUrl": "https://www.example.com",
+      "invalidUrl": "not-a-valid-url"
+    },
+    "expected": {
+      "validUrlAccepted": true,
+      "invalidUrlError": true
+    }
+  },
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "baseUrl": "https://hub-ui-admin-qa.swarajability.org",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "adminCredentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "pwdCredentials": {
+    "email": "najytulo@fxzig.com",
+    "password": "Aaditya@14"
+  },
+  "inputs": {
+    "validAmazonUrl": "https://www.amazon.in/product/B08XYZ123",
+    "validFlipkartUrl": "https://www.flipkart.com/product/xyz123",
+    "validWebsiteUrl": "https://www.example.com/product",
+    "invalidUrl": "invalid-url",
+    "noProtocolUrl": "example.com",
+    "nonAmazonUrl": "https://example.com/product",
+    "nonFlipkartUrl": "https://example.com/product",
+    "productSlug": "wheelchair-16-03",
+    "editProductName": "goggles",
+    "links": [
+      { "type": "Amazon Purchase Link", "url": "https://www.amazon.in/product/B08XYZ123" },
+      { "type": "Flipkart Purchase Link", "url": "https://www.flipkart.com/product/xyz123" },
+      { "type": "Official Website Link", "url": "https://www.example.com/product" }
+    ]
+  },
+  "expected": {
+    "additionalInfoHeading": "Additional Information",
+    "addLinkButtonText": "+ Add Link",
+    "dropdownOptions": [
+      "Amazon Purchase Link",
+      "Flipkart Purchase Link",
+      "Official Website Link",
+      "Other Link"
+    ],
+    "linkCounterAfterThree": "(3/6 links)",
+    "contactVendorButton": "Contact Vendor",
+    "vendorDetailsPanelHeading": "Vendor Details",
+    "underReviewStatus": "Under Review",
+    "editedBadge": "Edited"
+  }
+}

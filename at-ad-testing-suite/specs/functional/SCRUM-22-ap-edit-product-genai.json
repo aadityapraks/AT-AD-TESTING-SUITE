@@ -1,0 +1,703 @@
+{
+  "jiraStory": "SCRUM-22",
+  "title": "AP Edits Product Details with GenAI - Functional Test Plan",
+  "version": "1.1",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the GenAI-assisted product editing feature for Assistive Partners (APs) on the PwD Catalog Portal. This feature enables APs to edit and improve existing product details using AI assistance for accessibility-compliant content including Short Description, Long Description, Specifications, ALT Text, and other product fields.",
+  "scope": {
+    "inScope": [
+      "Edit Product access from Product Management",
+      "GenAI button visibility and tooltip functionality",
+      "GenAI editing capabilities for text fields",
+      "ALT Text generation and editing for images",
+      "Side-by-side comparison of original vs AI suggestions",
+      "Accept/Edit/Reject AI suggestions workflow",
+      "Accessibility compliance of generated content",
+      "Version control and save functionality",
+      "Confirmation messages and error handling",
+      "WCAG 2.1 AA compliance of GenAI interface"
+    ],
+    "outOfScope": [
+      "Backend AI model performance testing",
+      "Load testing of GenAI service",
+      "Cross-browser compatibility (covered separately)",
+      "Admin audit logging verification (requires admin access)"
+    ]
+  },
+  "editableFields": [
+    "Product Category",
+    "Short Description",
+    "Long Description",
+    "Product's unique feature",
+    "Buying Guide",
+    "Technical specification",
+    "Product Media with ALT Text",
+    "Youtube links",
+    "Support and delivery Info",
+    "Geographical availability",
+    "Links and additional info",
+    "Product links"
+  ],
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedStory": "SCRUM-20 - GenAI Assistant for Product Upload"
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": ["Approved AP"],
+    "prerequisites": ["Valid AP account with approved status", "Existing products in Product Management"]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_EDIT_001",
+      "title": "Verify Edit Product option in Product Management action column",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC1 - Access to Edit Mode",
+      "preconditions": "User is logged in as approved AP with existing products",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Dashboard → Product Management",
+        "Locate a product in the list",
+        "Verify 'Edit Product' option in action column"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Management page loads with product list",
+        "Product is visible in the list",
+        "Edit Product option is visible in action column"
+      ],
+      "postconditions": "Edit Product option is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_002",
+      "title": "Verify Product Edit Form opens with all editable fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC1 - Access to Edit Mode",
+      "preconditions": "User is logged in as approved AP, on Product Management page",
+      "steps": [
+        "Click 'Edit Product' for an existing product",
+        "Wait for Product Edit Form to load",
+        "Verify all editable fields are displayed"
+      ],
+      "expectedResults": [
+        "Product Edit Form opens",
+        "Form displays: Product Category, Short Description, Long Description",
+        "Form displays: Product's unique feature, Buying Guide, Technical specification",
+        "Form displays: Product Media with ALT Text, Youtube links",
+        "Form displays: Support and delivery Info, Geographical availability",
+        "Form displays: Links and additional info, Product links"
+      ],
+      "postconditions": "All editable fields are visible and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_003",
+      "title": "Verify all fields are editable for draft products",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC1 - Access to Edit Mode (Comment: For draft all fields will be editable)",
+      "preconditions": "User is logged in as approved AP with a draft product",
+      "steps": [
+        "Navigate to Product Management",
+        "Click Edit on a product in Draft status",
+        "Attempt to edit each field",
+        "Verify all fields accept input"
+      ],
+      "expectedResults": [
+        "Product Edit Form opens for draft product",
+        "All fields are editable",
+        "Input is accepted in all fields",
+        "No fields are disabled or read-only"
+      ],
+      "postconditions": "Draft product fields are fully editable",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_004",
+      "title": "Verify 'Enhance with GenAI' button visibility on all text fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC2 - GenAI Assistance Availability",
+      "preconditions": "User is on Product Edit Form with existing content",
+      "steps": [
+        "Open Product Edit Form for a product with content",
+        "Verify GenAI button on Short Description field",
+        "Verify GenAI button on Long Description field",
+        "Verify GenAI button on Technical Specification field",
+        "Hover over each button to see tooltip"
+      ],
+      "expectedResults": [
+        "Product Edit Form is open",
+        "GenAI button visible next to Short Description",
+        "GenAI button visible next to Long Description",
+        "GenAI button visible next to Technical Specification",
+        "Tooltip shows: 'Use GenAI to improve clarity, tone, or accessibility of this content.'"
+      ],
+      "postconditions": "GenAI buttons are ready for interaction on all text fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_007",
+      "title": "Verify GenAI button is inactive when field is empty",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC2 - GenAI Assistance Availability",
+      "preconditions": "User is on Product Edit Form",
+      "steps": [
+        "Open Product Edit Form",
+        "Clear the Short Description field",
+        "Observe the GenAI button state",
+        "Verify button is inactive/disabled"
+      ],
+      "expectedResults": [
+        "Field is cleared",
+        "GenAI button becomes inactive or disabled",
+        "Button does not respond to clicks when field is empty"
+      ],
+      "postconditions": "GenAI requires text to be present",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_008",
+      "title": "Verify GenAI improves text quality (readability, grammar, tone)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC3 - GenAI Editing Capabilities",
+      "preconditions": "User is on Product Edit Form with text content",
+      "steps": [
+        "Enter complex/technical text with grammatical errors in Short Description",
+        "Click 'Enhance with GenAI' button",
+        "Wait for AI suggestions",
+        "Review the improved text for readability, grammar, and tone"
+      ],
+      "expectedResults": [
+        "Complex text with errors is entered",
+        "GenAI processes the text",
+        "Simplified version is suggested with grammar corrections",
+        "Text is more readable, grammatically correct, and well-structured"
+      ],
+      "postconditions": "Improved text is available for review",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_011",
+      "title": "Verify GenAI adds accessibility language",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC3 - GenAI Editing Capabilities",
+      "preconditions": "User is on Product Edit Form with basic product description",
+      "steps": [
+        "Enter basic product description without accessibility focus",
+        "Click GenAI button",
+        "Review AI suggestions",
+        "Verify accessibility language is added"
+      ],
+      "expectedResults": [
+        "Basic description is entered",
+        "GenAI enhances the text",
+        "Accessibility-focused language is added",
+        "PwD-relevant features are highlighted"
+      ],
+      "postconditions": "Accessibility-enhanced text is available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_013",
+      "title": "Verify 'Add/Improve ALT Text with GenAI' button for images",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC4 - ALT Text Generation and Editing",
+      "preconditions": "User is on Product Edit Form with uploaded images",
+      "steps": [
+        "Open Product Edit Form with existing product images",
+        "Locate the Product Media section",
+        "Verify 'Add/Improve ALT Text with GenAI' button for each image"
+      ],
+      "expectedResults": [
+        "Product Edit Form opens",
+        "Product Media section shows uploaded images",
+        "GenAI ALT Text button is visible for each image"
+      ],
+      "postconditions": "ALT Text GenAI button is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_014",
+      "title": "Verify GenAI generates proper ALT text (context-based, no decorative phrasing, ~125 chars)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC4 - ALT Text Generation and Editing",
+      "preconditions": "User is on Product Edit Form with product image",
+      "steps": [
+        "Locate an image without ALT text",
+        "Click 'Add/Improve ALT Text with GenAI'",
+        "Wait for GenAI to analyze and generate ALT text",
+        "Review the generated ALT text for quality",
+        "Verify no 'image of...' or similar redundant phrases",
+        "Verify character count is ~125 or less"
+      ],
+      "expectedResults": [
+        "Image is identified",
+        "GenAI analyzes image name, context, and product info",
+        "ALT text is generated with clear, neutral description",
+        "No decorative phrasing like 'image of...' or 'picture of...'",
+        "Character count is approximately 125 or less"
+      ],
+      "postconditions": "ALT text is generated following best practices",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_017",
+      "title": "Verify AP can manually edit generated ALT text",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC4 - ALT Text Generation and Editing",
+      "preconditions": "User has generated ALT text using GenAI",
+      "steps": [
+        "Generate ALT text for an image",
+        "Click to edit the generated ALT text",
+        "Modify the text manually",
+        "Save the edited ALT text"
+      ],
+      "expectedResults": [
+        "ALT text is generated",
+        "Edit mode is available",
+        "Manual edits are accepted",
+        "Edited ALT text is saved"
+      ],
+      "postconditions": "Custom ALT text is saved",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_018",
+      "title": "Verify side-by-side comparison of original vs AI suggestions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC5 - AI-Generated Suggestions",
+      "preconditions": "User has triggered GenAI for text improvement",
+      "steps": [
+        "Enter text in Short Description",
+        "Click GenAI button",
+        "Wait for suggestions",
+        "Verify side-by-side display of original and suggested text"
+      ],
+      "expectedResults": [
+        "Original text is displayed",
+        "AI-suggested text is displayed alongside",
+        "Clear visual distinction between original and suggested",
+        "Easy comparison is possible"
+      ],
+      "postconditions": "Comparison view is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_019",
+      "title": "Verify 'Accept all AI suggestions' functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC5 - AI-Generated Suggestions",
+      "preconditions": "User is viewing AI suggestions side-by-side",
+      "steps": [
+        "Generate AI suggestions for a field",
+        "Click 'Accept all' or similar button",
+        "Verify original text is replaced with AI suggestions"
+      ],
+      "expectedResults": [
+        "AI suggestions are displayed",
+        "Accept all option is available",
+        "Original text is replaced",
+        "AI-suggested text is now in the field"
+      ],
+      "postconditions": "AI suggestions are accepted",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_020",
+      "title": "Verify 'Edit or merge parts manually' functionality",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC5 - AI-Generated Suggestions",
+      "preconditions": "User is viewing AI suggestions",
+      "steps": [
+        "Generate AI suggestions",
+        "Select portions of AI-suggested text",
+        "Merge with original text manually",
+        "Save the merged content"
+      ],
+      "expectedResults": [
+        "AI suggestions are displayed",
+        "Partial selection is possible",
+        "Manual merging is supported",
+        "Merged content is saved"
+      ],
+      "postconditions": "Merged content is in the field",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_021",
+      "title": "Verify 'Reject and retain original content' functionality",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC5 - AI-Generated Suggestions",
+      "preconditions": "User is viewing AI suggestions",
+      "steps": [
+        "Generate AI suggestions",
+        "Click 'Reject' or 'Cancel' button",
+        "Verify original content is retained"
+      ],
+      "expectedResults": [
+        "AI suggestions are displayed",
+        "Reject option is available",
+        "Original content is retained",
+        "AI suggestions are discarded"
+      ],
+      "postconditions": "Original content remains unchanged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_025",
+      "title": "Verify generated text includes sensory/physical feature cues",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC6 - Accessibility & Compliance Focus",
+      "preconditions": "User has generated AI suggestions",
+      "steps": [
+        "Generate AI suggestions for product description",
+        "Review the suggested text",
+        "Check for sensory feature descriptions",
+        "Verify physical feature cues"
+      ],
+      "expectedResults": [
+        "AI suggestions are generated",
+        "Sensory features mentioned (e.g., 'audible alert')",
+        "Physical features described (e.g., 'textured grip', 'lightweight design')",
+        "Features help PwDs understand usability"
+      ],
+      "postconditions": "Text includes helpful feature cues",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_026",
+      "title": "Verify Save Changes creates new version",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC7 - Saving and Version Control",
+      "preconditions": "User has made edits to product details",
+      "steps": [
+        "Make edits to product description using GenAI",
+        "Click 'Save Changes' button",
+        "Verify new version is created",
+        "Check that previous version is preserved"
+      ],
+      "expectedResults": [
+        "Edits are made",
+        "Save Changes is clicked",
+        "New version is created",
+        "Previous version is available for rollback"
+      ],
+      "postconditions": "Version history is maintained",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_027",
+      "title": "Verify product status changes to Pending Review after save",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC7 - Saving and Version Control",
+      "preconditions": "User has made and saved edits",
+      "steps": [
+        "Edit product details",
+        "Click 'Save Changes'",
+        "Check product status",
+        "Verify status is 'Pending Review'"
+      ],
+      "expectedResults": [
+        "Edits are saved",
+        "Product status changes",
+        "Status shows 'Pending Review'",
+        "Product awaits admin approval"
+      ],
+      "postconditions": "Product is in Pending Review status",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_028",
+      "title": "Verify confirmation message after successful save",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC8 - Confirmation and System Feedback",
+      "preconditions": "User has made edits and clicked Save",
+      "steps": [
+        "Edit product details",
+        "Click 'Save Changes'",
+        "Wait for save to complete",
+        "Verify confirmation message"
+      ],
+      "expectedResults": [
+        "Edits are saved",
+        "Confirmation message appears",
+        "Message says: 'Your product details have been updated and submitted for review.'",
+        "Message is clearly visible"
+      ],
+      "postconditions": "User is informed of successful save",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_029",
+      "title": "Verify error message when GenAI service is unavailable",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC8 - Confirmation and System Feedback",
+      "preconditions": "GenAI service is unavailable (simulated)",
+      "steps": [
+        "Open Product Edit Form",
+        "Click GenAI button when service is down",
+        "Observe error message"
+      ],
+      "expectedResults": [
+        "GenAI button is clicked",
+        "Error message appears",
+        "Message says: 'AI assistant is temporarily offline. Please try again later.'",
+        "User can continue editing manually"
+      ],
+      "postconditions": "User is informed of service unavailability",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_033",
+      "title": "Verify GenAI interface supports keyboard navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC10 - Usability and Accessibility of GenAI Interface",
+      "preconditions": "User is on Product Edit Form",
+      "steps": [
+        "Navigate to GenAI button using Tab key",
+        "Activate button using Enter/Space",
+        "Navigate through GenAI panel using keyboard",
+        "Activate Accept/Reject buttons using keyboard"
+      ],
+      "expectedResults": [
+        "GenAI button is keyboard focusable",
+        "Button activates with Enter/Space",
+        "All panel elements are tab-navigable",
+        "All actions can be performed via keyboard"
+      ],
+      "postconditions": "GenAI interface is fully keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_034",
+      "title": "Verify GenAI interface works with screen readers",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC10 - Usability and Accessibility of GenAI Interface",
+      "preconditions": "Screen reader is enabled",
+      "steps": [
+        "Enable screen reader (NVDA/JAWS/VoiceOver)",
+        "Navigate to GenAI button",
+        "Open GenAI panel",
+        "Verify all elements are announced correctly"
+      ],
+      "expectedResults": [
+        "Screen reader is active",
+        "GenAI button is announced",
+        "Panel content is readable",
+        "Original vs AI text is distinguishable"
+      ],
+      "postconditions": "Screen reader compatibility verified",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_035",
+      "title": "Verify clear contrast and focus states in GenAI interface",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC10 - Usability and Accessibility of GenAI Interface",
+      "preconditions": "User is viewing GenAI panel",
+      "steps": [
+        "Open GenAI panel",
+        "Tab through all interactive elements",
+        "Observe focus indicators",
+        "Check color contrast of text and buttons"
+      ],
+      "expectedResults": [
+        "GenAI panel is open",
+        "Focus indicators are visible on all elements",
+        "Contrast meets WCAG 2.1 AA standards",
+        "Focus states are clearly distinguishable"
+      ],
+      "postconditions": "Visual accessibility is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_036",
+      "title": "Verify visual distinction between original and AI-generated text",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC10 - Usability and Accessibility of GenAI Interface",
+      "preconditions": "User is viewing side-by-side comparison",
+      "steps": [
+        "Generate AI suggestions",
+        "View side-by-side comparison",
+        "Check visual distinction between original and AI text",
+        "Verify labels or indicators"
+      ],
+      "expectedResults": [
+        "Both texts are displayed",
+        "Clear visual distinction exists",
+        "Labels identify 'Original' and 'AI Suggested'",
+        "Different styling or colors used"
+      ],
+      "postconditions": "Text sources are clearly distinguishable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_040",
+      "title": "Verify version rollback functionality",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC7 - Saving and Version Control",
+      "preconditions": "Product has multiple versions saved",
+      "steps": [
+        "Open Product Edit Form",
+        "Access version history",
+        "Select a previous version",
+        "Rollback to previous version"
+      ],
+      "expectedResults": [
+        "Version history is accessible",
+        "Previous versions are listed",
+        "Rollback option is available",
+        "Product reverts to selected version"
+      ],
+      "postconditions": "Previous version is restored",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_EDIT_041",
+      "title": "Verify GenAI handles multiple consecutive edits",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC3 - GenAI Editing Capabilities",
+      "preconditions": "User is on Product Edit Form",
+      "steps": [
+        "Generate AI suggestions for Short Description",
+        "Accept suggestions",
+        "Generate AI suggestions again for same field",
+        "Repeat for Long Description and Specifications"
+      ],
+      "expectedResults": [
+        "First suggestions are generated and accepted",
+        "Second generation works on updated text",
+        "Multiple fields can be enhanced consecutively",
+        "System remains responsive"
+      ],
+      "postconditions": "Multiple edits are successful",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_043",
+      "title": "Verify edit without using GenAI (manual edit)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC1 - Access to Edit Mode",
+      "preconditions": "User is on Product Edit Form",
+      "steps": [
+        "Open Product Edit Form",
+        "Edit fields manually without using GenAI",
+        "Save changes",
+        "Verify manual edits are saved"
+      ],
+      "expectedResults": [
+        "Edit form is open",
+        "Manual edits are made",
+        "Save is successful",
+        "Manual edits are preserved"
+      ],
+      "postconditions": "Manual editing works independently of GenAI",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_048",
+      "title": "Verify cancel edit without saving",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-22",
+      "acceptanceCriteria": "AC1 - Access to Edit Mode",
+      "preconditions": "User has made edits but not saved",
+      "steps": [
+        "Make edits to product details",
+        "Click Cancel or navigate away",
+        "Confirm cancellation if prompted",
+        "Verify original content is preserved"
+      ],
+      "expectedResults": [
+        "Edits are made",
+        "Cancel action is triggered",
+        "Confirmation prompt appears (if applicable)",
+        "Original content is preserved"
+      ],
+      "postconditions": "Unsaved changes are discarded",
+      "testResult": "PASS"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Access_to_Edit_Mode": ["TC_EDIT_001", "TC_EDIT_002", "TC_EDIT_003", "TC_EDIT_043", "TC_EDIT_048"],
+    "AC2_GenAI_Assistance_Availability": ["TC_EDIT_004", "TC_EDIT_007"],
+    "AC3_GenAI_Editing_Capabilities": ["TC_EDIT_008", "TC_EDIT_011", "TC_EDIT_041"],
+    "AC4_ALT_Text_Generation_and_Editing": ["TC_EDIT_013", "TC_EDIT_014", "TC_EDIT_017"],
+    "AC5_AI_Generated_Suggestions": ["TC_EDIT_018", "TC_EDIT_019", "TC_EDIT_020", "TC_EDIT_021"],
+    "AC6_Accessibility_Compliance_Focus": ["TC_EDIT_025"],
+    "AC7_Saving_and_Version_Control": ["TC_EDIT_026", "TC_EDIT_027", "TC_EDIT_040"],
+    "AC8_Confirmation_and_System_Feedback": ["TC_EDIT_028", "TC_EDIT_029"],
+    "AC10_Usability_and_Accessibility_of_GenAI_Interface": ["TC_EDIT_033", "TC_EDIT_034", "TC_EDIT_035", "TC_EDIT_036"]
+  },
+  "removedTestCases": {
+    "adminAccess": ["TC_EDIT_030", "TC_EDIT_031", "TC_EDIT_045"],
+    "overlapWithSCRUM20": ["TC_EDIT_022", "TC_EDIT_023", "TC_EDIT_024", "TC_EDIT_032", "TC_EDIT_046"],
+    "lowPriority": ["TC_EDIT_012", "TC_EDIT_037", "TC_EDIT_044", "TC_EDIT_047"],
+    "consolidatedIntoOtherTests": ["TC_EDIT_005", "TC_EDIT_006", "TC_EDIT_009", "TC_EDIT_010", "TC_EDIT_015", "TC_EDIT_016", "TC_EDIT_038", "TC_EDIT_039", "TC_EDIT_042"]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Approved Assistive Partner account with existing products"
+    ],
+    "productData": [
+      "Products in Draft status (all fields editable)",
+      "Products with existing descriptions and specifications",
+      "Products with uploaded images (for ALT text testing)",
+      "Products with complex/technical descriptions",
+      "Products with grammatical errors for correction testing"
+    ],
+    "textSamples": [
+      "Complex technical text for simplification testing",
+      "Text with grammatical errors",
+      "Text without accessibility focus"
+    ]
+  },
+  "assumptions": [
+    "GenAI service (Amazon Bedrock) is operational and accessible",
+    "AP accounts have been properly set up with approved status",
+    "Products exist in Product Management for editing",
+    "Network connectivity is stable for API calls",
+    "Test environment mirrors production GenAI configuration"
+  ],
+  "risks": [
+    "GenAI service availability may affect test execution",
+    "Generated content quality may vary between test runs",
+    "Version control functionality depends on backend implementation"
+  ]
+}

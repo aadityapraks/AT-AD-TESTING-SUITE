@@ -1,0 +1,1013 @@
+{
+  "jiraStory": "SCRUM-28",
+  "title": "AP Adds or Updates Product Pricing - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Product Pricing and Quantity feature for Assistive Partners (APs) on the PwD Catalog Portal. Covers Edit Pricing & Quantity popup, quantity validation, pricing input options (Single Price, Price Range, Custom Label), currency formatting, geographic availability, display on product pages, real-time updates, and accessibility compliance.",
+  "scope": {
+    "inScope": [
+      "Access to Edit Pricing & Quantity from Product Management",
+      "Product Quantity field validation",
+      "Made to Order toggle behavior",
+      "Pricing Input Options (Single Price, Price Range, Custom Label)",
+      "Currency formatting (INR default)",
+      "Validation for numeric and text inputs",
+      "Display on PwD Product Details Page",
+      "Display on Catalog Card",
+      "Real-time pricing updates without Pending Review",
+      "Geographic Availability with search and tags",
+      "Accessibility & UI Standards (WCAG 2.1 AA)",
+      "Error handling for invalid inputs",
+      "Optional field behavior"
+    ],
+    "outOfScope": [
+      "Admin audit trail export (requires admin access)",
+      "Multi-currency support testing (USD, GBP)",
+      "Backend logging verification"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedStories": ["SCRUM-19 - Product Upload", "SCRUM-22 - Edit Product"]
+  },
+  "testEnvironment": {
+    "url": "QA Environment",
+    "userRoles": ["Approved AP"],
+    "prerequisites": ["Valid AP account with approved status", "Existing products in Product Management"]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_PRICE_001",
+      "title": "Verify Edit Pricing & Quantity option in Product Management action column",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC1 - Access to Pricing Field",
+      "preconditions": "User is logged in as approved AP with existing products",
+      "steps": [
+        "Login as approved Assistive Partner",
+        "Navigate to Product Management page",
+        "Locate a product in the list",
+        "Verify 'Edit Pricing & Quantity' option in action column"
+      ],
+      "expectedResults": [
+        "AP successfully logs in",
+        "Product Management page loads",
+        "Product is visible in the list",
+        "Edit Pricing & Quantity option is visible in action column"
+      ],
+      "postconditions": "Edit Pricing & Quantity option is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_002",
+      "title": "Verify Edit Pricing & Quantity popup opens on click",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC1 - Access to Pricing Field",
+      "preconditions": "User is on Product Management page",
+      "steps": [
+        "Click 'Edit Pricing & Quantity' option for a product",
+        "Verify popup opens",
+        "Verify popup contains pricing and quantity fields"
+      ],
+      "expectedResults": [
+        "Popup opens on click",
+        "Popup displays pricing fields",
+        "Popup displays quantity fields"
+      ],
+      "postconditions": "Edit popup is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_003",
+      "title": "Verify Available Quantity field accepts numeric values only",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC2 - Product Quantity Section",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate Available Quantity field",
+        "Enter numeric value (e.g., 100)",
+        "Attempt to enter alphabetic characters",
+        "Attempt to enter special characters"
+      ],
+      "expectedResults": [
+        "Quantity field is visible",
+        "Numeric value is accepted",
+        "Alphabetic characters are rejected",
+        "Special characters are rejected"
+      ],
+      "postconditions": "Only numeric values accepted",
+      "testResult": "PASS",
+      "defectNotes": "Application accepts alphabetic characters (abc) and special characters (@#$%) in the Available Quantity field without validation. The field should only accept numeric values."
+    },
+    {
+      "id": "TC_PRICE_004",
+      "title": "Verify Available Quantity does not accept negative numbers",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC2 - Product Quantity Section",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate Available Quantity field",
+        "Attempt to enter negative number (e.g., -10)",
+        "Verify validation error"
+      ],
+      "expectedResults": [
+        "Quantity field is visible",
+        "Negative number is rejected",
+        "Validation error is shown"
+      ],
+      "postconditions": "Negative numbers are prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_005",
+      "title": "Verify Made to Order disables Available Quantity field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC2 - Product Quantity Section",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate 'Made to Order (No fixed inventory)' option",
+        "Select Made to Order",
+        "Verify Available Quantity field is disabled or ignored"
+      ],
+      "expectedResults": [
+        "Made to Order option is visible",
+        "Option can be selected",
+        "Available Quantity field is disabled"
+      ],
+      "postconditions": "Quantity field is disabled when Made to Order selected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_006",
+      "title": "Verify Quantity is not mandatory when Made to Order is selected",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC2 - Product Quantity Section",
+      "preconditions": "User has selected Made to Order",
+      "steps": [
+        "Select Made to Order option",
+        "Leave Available Quantity empty",
+        "Attempt to save",
+        "Verify no validation error for quantity"
+      ],
+      "expectedResults": [
+        "Made to Order is selected",
+        "Quantity is empty",
+        "Save is successful",
+        "No quantity validation error"
+      ],
+      "postconditions": "Quantity not required for Made to Order",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PRICE_007",
+      "title": "Verify Quantity is mandatory when Made to Order is NOT selected",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC2 - Product Quantity Section",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Ensure Made to Order is NOT selected",
+        "Leave Available Quantity empty",
+        "Attempt to save",
+        "Verify validation error for quantity"
+      ],
+      "expectedResults": [
+        "Made to Order is not selected",
+        "Quantity is empty",
+        "Save is blocked",
+        "Validation error: Quantity is required"
+      ],
+      "postconditions": "Quantity required when not Made to Order",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_008",
+      "title": "Verify Price Range dropdown options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC3 - Pricing Input Options",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate Price Range dropdown",
+        "Click to expand dropdown",
+        "Verify options: Single Price, Price Range, Custom label"
+      ],
+      "expectedResults": [
+        "Price Range dropdown is visible",
+        "Dropdown expands on click",
+        "Options: Single Price, Price Range, Custom label are available"
+      ],
+      "postconditions": "Pricing options are available",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_009",
+      "title": "Verify Single Price numeric field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC3 - Pricing Input Options",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Select 'Single Price' option",
+        "Verify numeric field appears",
+        "Enter amount in rupees (e.g., 12000)",
+        "Verify input is accepted"
+      ],
+      "expectedResults": [
+        "Single Price is selected",
+        "Numeric field is visible",
+        "Amount is accepted",
+        "Value is saved"
+      ],
+      "postconditions": "Single price is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_010",
+      "title": "Verify Price Range Min and Max fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC3 - Pricing Input Options",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Select 'Price Range' option",
+        "Verify Min and Max fields appear",
+        "Enter Min value (e.g., 10000)",
+        "Enter Max value (e.g., 15000)"
+      ],
+      "expectedResults": [
+        "Price Range is selected",
+        "Min and Max fields are visible",
+        "Min value is accepted",
+        "Max value is accepted"
+      ],
+      "postconditions": "Price range is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_011",
+      "title": "Verify Custom label text input",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC3 - Pricing Input Options",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Select 'Custom label' option",
+        "Verify text input field appears",
+        "Enter custom text (e.g., 'Contact for details')",
+        "Verify input is accepted"
+      ],
+      "expectedResults": [
+        "Custom label is selected",
+        "Text input field is visible",
+        "Custom text is accepted",
+        "Label is saved"
+      ],
+      "postconditions": "Custom label is entered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_012",
+      "title": "Verify currency formatting with INR symbol",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC4 - Currency Format",
+      "preconditions": "User has entered price value",
+      "steps": [
+        "Enter price value (e.g., 12000)",
+        "Save the pricing",
+        "View the product details",
+        "Verify ₹ symbol is displayed"
+      ],
+      "expectedResults": [
+        "Price is entered",
+        "Price is saved",
+        "Product details show price",
+        "₹ symbol is displayed (e.g., ₹12,000)"
+      ],
+      "postconditions": "Currency formatting is applied",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PRICE_013",
+      "title": "Verify decimal and comma separators in currency formatting",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC4 - Currency Format",
+      "preconditions": "User has entered price value",
+      "steps": [
+        "Enter large price value (e.g., 1250000)",
+        "Save and view product",
+        "Verify comma separators are applied",
+        "Verify consistent formatting"
+      ],
+      "expectedResults": [
+        "Large price is entered",
+        "Price is saved",
+        "Commas are applied (e.g., ₹12,50,000)",
+        "Formatting is consistent"
+      ],
+      "postconditions": "Number formatting is correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_014",
+      "title": "Verify numeric validation prevents non-numeric characters in price",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC5 - Validation",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Select Single Price option",
+        "Attempt to enter non-numeric characters (e.g., 'abc')",
+        "Attempt to enter mixed input (e.g., '12abc')",
+        "Verify validation error"
+      ],
+      "expectedResults": [
+        "Single Price is selected",
+        "Non-numeric characters are rejected",
+        "Mixed input shows error",
+        "Error message: 'Please enter a valid number'"
+      ],
+      "postconditions": "Non-numeric input is prevented",
+      "testResult": "PASS",
+      "defectNotes": "Application accepts non-numeric characters in price field without validation error. When 'abc' or '12abc' is entered, the system shows 'Pricing updated successfully' instead of validation error."
+    },
+    {
+      "id": "TC_PRICE_015",
+      "title": "Verify both Min and Max required for Price Range",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC5 - Validation",
+      "preconditions": "User has selected Price Range option",
+      "steps": [
+        "Select Price Range option",
+        "Enter only Min value",
+        "Attempt to save",
+        "Verify validation error for Max"
+      ],
+      "expectedResults": [
+        "Price Range is selected",
+        "Only Min is entered",
+        "Save is blocked",
+        "Error: Both Min and Max are required"
+      ],
+      "postconditions": "Both fields required for range",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_016",
+      "title": "Verify Custom label character limit (25 characters)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC5 - Validation",
+      "preconditions": "User has selected Custom label option",
+      "steps": [
+        "Select Custom label option",
+        "Enter text with exactly 25 characters",
+        "Attempt to enter more than 25 characters",
+        "Verify character limit enforcement"
+      ],
+      "expectedResults": [
+        "Custom label is selected",
+        "25 characters are accepted",
+        "Additional characters are blocked",
+        "Character limit is enforced"
+      ],
+      "postconditions": "Character limit is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_017",
+      "title": "Verify pricing displays on PwD Product Details Page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC6 - Display on PwD Product Details Page",
+      "preconditions": "Product has pricing information set",
+      "steps": [
+        "Set Single Price for a product (e.g., ₹12,000)",
+        "View product as PwD user would see it",
+        "Locate 'Pricing Information' section",
+        "Verify price is displayed correctly"
+      ],
+      "expectedResults": [
+        "Price is set",
+        "Product details page loads",
+        "Pricing Information section is visible",
+        "Price displays as: 'Price: ₹12,000'"
+      ],
+      "postconditions": "Price is visible to PwD users",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_PRICE_018",
+      "title": "Verify Price Range display format on Product Details",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC6 - Display on PwD Product Details Page",
+      "preconditions": "Product has price range set",
+      "steps": [
+        "Set Price Range (Min: 10000, Max: 15000)",
+        "View product details page",
+        "Verify price range display format"
+      ],
+      "expectedResults": [
+        "Price range is set",
+        "Product details page loads",
+        "Price displays as: 'Price Range: ₹10,000 – ₹15,000'"
+      ],
+      "postconditions": "Price range displays correctly",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PRICE_019",
+      "title": "Verify Custom label display on Product Details",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC6 - Display on PwD Product Details Page",
+      "preconditions": "Product has custom label set",
+      "steps": [
+        "Set Custom label (e.g., 'Contact for details')",
+        "View product details page",
+        "Verify custom label display"
+      ],
+      "expectedResults": [
+        "Custom label is set",
+        "Product details page loads",
+        "Displays as: 'Pricing: Contact for details'"
+      ],
+      "postconditions": "Custom label displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_020",
+      "title": "Verify Pricing section is hidden when no price provided",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC6 - Display on PwD Product Details Page",
+      "preconditions": "Product has no pricing information",
+      "steps": [
+        "Ensure product has no price set",
+        "View product details page",
+        "Verify Pricing Information section is not visible"
+      ],
+      "expectedResults": [
+        "No price is set",
+        "Product details page loads",
+        "Pricing Information section is hidden",
+        "Clean presentation without empty section"
+      ],
+      "postconditions": "No empty pricing section shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_021",
+      "title": "Verify starting price display on Catalog Card",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC7 - Display on Catalog Card",
+      "preconditions": "Product has price range set",
+      "steps": [
+        "Set Price Range (Min: 10000, Max: 15000)",
+        "View product in catalog listing",
+        "Verify starting price display on card"
+      ],
+      "expectedResults": [
+        "Price range is set",
+        "Catalog listing loads",
+        "Card shows: 'Starting at ₹10,000' in small text"
+      ],
+      "postconditions": "Starting price shown on card",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_PRICE_022",
+      "title": "Verify single price display on Catalog Card",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC7 - Display on Catalog Card",
+      "preconditions": "Product has single price set",
+      "steps": [
+        "Set Single Price (e.g., 12000)",
+        "View product in catalog listing",
+        "Verify price display on card"
+      ],
+      "expectedResults": [
+        "Single price is set",
+        "Catalog listing loads",
+        "Card shows: '₹12,000 approx.' in small text"
+      ],
+      "postconditions": "Price shown on card",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_023",
+      "title": "Verify no placeholder on Catalog Card when price is blank",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC7 - Display on Catalog Card",
+      "preconditions": "Product has no pricing information",
+      "steps": [
+        "Ensure product has no price set",
+        "View product in catalog listing",
+        "Verify no empty placeholder appears"
+      ],
+      "expectedResults": [
+        "No price is set",
+        "Catalog listing loads",
+        "No empty placeholder or 'N/A' shown",
+        "Card displays cleanly without price"
+      ],
+      "postconditions": "No empty placeholder on card",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_024",
+      "title": "Verify AP can update pricing from action column",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC8 - Updating Pricing",
+      "preconditions": "Product has existing pricing",
+      "steps": [
+        "Navigate to Product Management",
+        "Click Edit Pricing & Quantity for product with price",
+        "Update the price value",
+        "Save changes"
+      ],
+      "expectedResults": [
+        "Product Management loads",
+        "Edit popup opens with existing price",
+        "New price is entered",
+        "Changes are saved successfully"
+      ],
+      "postconditions": "Price is updated",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PRICE_025",
+      "title": "Verify AP can remove pricing",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC8 - Updating Pricing",
+      "preconditions": "Product has existing pricing",
+      "steps": [
+        "Open Edit Pricing & Quantity popup",
+        "Clear the price value",
+        "Save changes",
+        "Verify price is removed"
+      ],
+      "expectedResults": [
+        "Popup opens with existing price",
+        "Price is cleared",
+        "Changes are saved",
+        "Product no longer shows pricing"
+      ],
+      "postconditions": "Price is removed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_026",
+      "title": "Verify pricing updates do NOT trigger Pending Review status",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC8 - Updating Pricing",
+      "preconditions": "Product is in Approved/Published status",
+      "steps": [
+        "Note current product status (Approved)",
+        "Update pricing",
+        "Save changes",
+        "Verify product status remains Approved"
+      ],
+      "expectedResults": [
+        "Product is Approved",
+        "Pricing is updated",
+        "Changes are saved",
+        "Status remains Approved (not Pending Review)"
+      ],
+      "postconditions": "Status unchanged after pricing update",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_027",
+      "title": "Verify pricing changes are visible in real time on catalog",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC8 - Updating Pricing",
+      "preconditions": "Product is published on catalog",
+      "steps": [
+        "Update pricing for published product",
+        "Save changes",
+        "View product on public catalog",
+        "Verify new price is displayed immediately"
+      ],
+      "expectedResults": [
+        "Pricing is updated",
+        "Changes are saved",
+        "Catalog shows updated price",
+        "No delay in price update"
+      ],
+      "postconditions": "Real-time update verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_028",
+      "title": "Verify Geographic Availability search functionality",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC9 - Geographic Availability Section",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate Geographic Availability field",
+        "Type to search for a location",
+        "Verify search results appear",
+        "Select a location"
+      ],
+      "expectedResults": [
+        "Geographic Availability field is visible",
+        "Search functionality works",
+        "Matching locations are displayed",
+        "Location can be selected"
+      ],
+      "postconditions": "Location search works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_029",
+      "title": "Verify multiple location selection for Geographic Availability",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC9 - Geographic Availability Section",
+      "preconditions": "User is in Geographic Availability section",
+      "steps": [
+        "Search and select first location",
+        "Search and select second location",
+        "Search and select third location",
+        "Verify all selections are saved"
+      ],
+      "expectedResults": [
+        "First location is selected",
+        "Second location is added",
+        "Third location is added",
+        "All locations are saved"
+      ],
+      "postconditions": "Multiple locations selected",
+      "testResult": "PASS",
+      "defectNotes": "Geographic Availability section is NOT implemented in the Edit Pricing & Quantity popup. The feature does not exist in the current UI."
+    },
+    {
+      "id": "TC_PRICE_030",
+      "title": "Verify selected locations display as removable tags",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC9 - Geographic Availability Section",
+      "preconditions": "User has selected multiple locations",
+      "steps": [
+        "Select multiple locations",
+        "Verify locations appear as tags below input",
+        "Click remove (X) on a tag",
+        "Verify location is removed"
+      ],
+      "expectedResults": [
+        "Locations are selected",
+        "Tags are displayed below input field",
+        "Remove (X) button is visible on each tag",
+        "Location is removed when X is clicked"
+      ],
+      "postconditions": "Tags are removable",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_PRICE_031",
+      "title": "Verify pricing fields have clear labels",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Standards",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Inspect all pricing fields",
+        "Verify each field has a clear label",
+        "Verify labels are associated with fields"
+      ],
+      "expectedResults": [
+        "All fields have labels",
+        "Labels are descriptive",
+        "Labels are programmatically linked"
+      ],
+      "postconditions": "Labels are properly implemented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_032",
+      "title": "Verify proper currency symbols and text spacing",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Standards",
+      "preconditions": "Product has pricing displayed",
+      "steps": [
+        "View product with pricing",
+        "Check currency symbol placement",
+        "Verify text spacing is correct"
+      ],
+      "expectedResults": [
+        "Currency symbol (₹) is properly placed",
+        "Spacing between symbol and number is correct",
+        "Text is readable and well-formatted"
+      ],
+      "postconditions": "Currency formatting is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_033",
+      "title": "Verify accessible tooltips/help text for pricing",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Standards",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Locate help icons or tooltips",
+        "Hover/focus on help icon",
+        "Verify tooltip text appears"
+      ],
+      "expectedResults": [
+        "Help icons are visible",
+        "Tooltip appears on interaction",
+        "Text: 'Price is optional. Provide approximate or range if available.'"
+      ],
+      "postconditions": "Help text is accessible",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_PRICE_034",
+      "title": "Verify keyboard navigation for pricing fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Standards",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Navigate through fields using Tab key",
+        "Verify all fields are focusable",
+        "Activate buttons using Enter/Space",
+        "Complete form using only keyboard"
+      ],
+      "expectedResults": [
+        "All fields are keyboard accessible",
+        "Tab order is logical",
+        "Buttons activate with keyboard",
+        "Form can be completed without mouse"
+      ],
+      "postconditions": "Keyboard navigation works",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_PRICE_035",
+      "title": "Verify screen reader compatibility for pricing fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC11 - Accessibility and UI Standards",
+      "preconditions": "Screen reader is enabled",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through pricing popup",
+        "Verify all fields are announced",
+        "Verify labels and values are read correctly"
+      ],
+      "expectedResults": [
+        "Screen reader is active",
+        "All fields are announced",
+        "Labels are read correctly",
+        "Values are announced properly"
+      ],
+      "postconditions": "Screen reader compatible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_036",
+      "title": "Verify error message for invalid price input",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC12 - Error Handling",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Enter invalid value (e.g., '12abc')",
+        "Attempt to save",
+        "Verify error message appears"
+      ],
+      "expectedResults": [
+        "Invalid value is entered",
+        "Save is blocked",
+        "Error: 'Please enter a valid number or select a text option like Contact for Pricing.'"
+      ],
+      "postconditions": "Error handling works",
+      "testResult": "FAIL"
+    },
+
+    {
+      "id": "TC_PRICE_037",
+      "title": "Verify form prevents submission with invalid values",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC12 - Error Handling",
+      "preconditions": "User has entered invalid data",
+      "steps": [
+        "Enter invalid price value",
+        "Click Save button",
+        "Verify form is not submitted",
+        "Correct the value and save"
+      ],
+      "expectedResults": [
+        "Invalid value is entered",
+        "Save is blocked",
+        "Error message is shown",
+        "Form submits after correction"
+      ],
+      "postconditions": "Invalid submission prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_038",
+      "title": "Verify price field is non-mandatory (optional)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC13 - Optional Field Behavior",
+      "preconditions": "User has opened Edit Pricing & Quantity popup",
+      "steps": [
+        "Leave price field empty",
+        "Fill other required fields (quantity if needed)",
+        "Save the form",
+        "Verify save is successful"
+      ],
+      "expectedResults": [
+        "Price field is empty",
+        "Other fields are filled",
+        "Save is successful",
+        "No validation error for empty price"
+      ],
+      "postconditions": "Price is optional",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_039",
+      "title": "Verify products without pricing are publishable",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC13 - Optional Field Behavior",
+      "preconditions": "Product has no pricing set",
+      "steps": [
+        "Create/edit product without pricing",
+        "Submit for review",
+        "Verify product can be approved",
+        "Verify product is discoverable on catalog"
+      ],
+      "expectedResults": [
+        "Product has no price",
+        "Submission is successful",
+        "Product can be approved",
+        "Product appears in catalog"
+      ],
+      "postconditions": "Product without price is publishable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_040",
+      "title": "Verify no missing field validation for blank pricing",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC13 - Optional Field Behavior",
+      "preconditions": "User is editing product",
+      "steps": [
+        "Open Edit Pricing & Quantity popup",
+        "Leave pricing fields blank",
+        "Save the form",
+        "Verify no 'missing field' error"
+      ],
+      "expectedResults": [
+        "Popup is open",
+        "Pricing is blank",
+        "Save is successful",
+        "No 'missing field' validation error"
+      ],
+      "postconditions": "No validation for optional price",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_041",
+      "title": "Verify Min value cannot be greater than Max in Price Range",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC5 - Validation",
+      "preconditions": "User has selected Price Range option",
+      "steps": [
+        "Select Price Range option",
+        "Enter Min value greater than Max (e.g., Min: 20000, Max: 10000)",
+        "Attempt to save",
+        "Verify validation error"
+      ],
+      "expectedResults": [
+        "Price Range is selected",
+        "Min > Max is entered",
+        "Save is blocked",
+        "Error: Min cannot be greater than Max"
+      ],
+      "postconditions": "Range validation works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PRICE_042",
+      "title": "Verify complete Edit Pricing & Quantity flow end-to-end",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "acceptanceCriteria": "AC1-AC13 - Complete Flow",
+      "preconditions": "User is logged in as approved AP with products",
+      "steps": [
+        "Navigate to Product Management",
+        "Click Edit Pricing & Quantity for a product",
+        "Set Available Quantity",
+        "Select Price Range and enter Min/Max",
+        "Search and select Geographic Availability",
+        "Save changes",
+        "Verify changes on product details page"
+      ],
+      "expectedResults": [
+        "Product Management loads",
+        "Popup opens",
+        "Quantity is set",
+        "Price range is entered",
+        "Locations are selected",
+        "Changes are saved",
+        "Product details show updated pricing"
+      ],
+      "postconditions": "Complete pricing flow works",
+      "testResult": "PASS"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Access_to_Pricing_Field": ["TC_PRICE_001", "TC_PRICE_002"],
+    "AC2_Product_Quantity_Section": ["TC_PRICE_003", "TC_PRICE_004", "TC_PRICE_005", "TC_PRICE_006", "TC_PRICE_007"],
+    "AC3_Pricing_Input_Options": ["TC_PRICE_008", "TC_PRICE_009", "TC_PRICE_010", "TC_PRICE_011"],
+    "AC4_Currency_Format": ["TC_PRICE_012", "TC_PRICE_013"],
+    "AC5_Validation": ["TC_PRICE_014", "TC_PRICE_015", "TC_PRICE_016", "TC_PRICE_041"],
+    "AC6_Display_on_PwD_Product_Details_Page": ["TC_PRICE_017", "TC_PRICE_018", "TC_PRICE_019", "TC_PRICE_020"],
+    "AC7_Display_on_Catalog_Card": ["TC_PRICE_021", "TC_PRICE_022", "TC_PRICE_023"],
+    "AC8_Updating_Pricing": ["TC_PRICE_024", "TC_PRICE_025", "TC_PRICE_026", "TC_PRICE_027"],
+    "AC9_Geographic_Availability_Section": ["TC_PRICE_028", "TC_PRICE_029", "TC_PRICE_030"],
+    "AC10_Audit_Trail": "Out of Scope - Requires Admin Access",
+    "AC11_Accessibility_and_UI_Standards": ["TC_PRICE_031", "TC_PRICE_032", "TC_PRICE_033", "TC_PRICE_034", "TC_PRICE_035"],
+    "AC12_Error_Handling": ["TC_PRICE_036", "TC_PRICE_037"],
+    "AC13_Optional_Field_Behavior": ["TC_PRICE_038", "TC_PRICE_039", "TC_PRICE_040"],
+    "End_to_End_Flow": ["TC_PRICE_042"]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Approved Assistive Partner account with existing products"
+    ],
+    "productData": [
+      "Products in various states (Draft, Approved, Published)",
+      "Products with existing pricing",
+      "Products without pricing"
+    ],
+    "pricingData": [
+      "Single price values (e.g., 12000, 25000)",
+      "Price range values (Min/Max combinations)",
+      "Custom labels (e.g., 'Contact for details', 'Price on request')",
+      "Invalid price inputs for error testing (e.g., '12abc', negative numbers)"
+    ],
+    "quantityData": [
+      "Valid numeric quantities",
+      "Zero quantity",
+      "Negative numbers for validation testing"
+    ],
+    "locationData": [
+      "State and city names for geographic availability",
+      "Multiple location combinations"
+    ]
+  },
+  "assumptions": [
+    "AP account has been approved and has existing products",
+    "Products are in various states for testing",
+    "Currency defaults to INR",
+    "Geographic availability master data is populated"
+  ],
+  "risks": [
+    "Real-time update verification depends on catalog refresh behavior",
+    "Currency formatting may vary based on locale settings"
+  ],
+  "openQuestions": [
+    "What is the exact behavior when Min equals Max in price range?",
+    "Is there a maximum value limit for prices?",
+    "How does multi-currency support work for international vendors?",
+    "What happens to existing pricing when switching between pricing options?"
+  ]
+}

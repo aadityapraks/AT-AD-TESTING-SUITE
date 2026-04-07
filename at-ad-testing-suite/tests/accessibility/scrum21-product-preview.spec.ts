@@ -379,3 +379,4 @@ test.describe('SCRUM-21: Product Preview Accessibility', () => {
     });
   });
 });
+

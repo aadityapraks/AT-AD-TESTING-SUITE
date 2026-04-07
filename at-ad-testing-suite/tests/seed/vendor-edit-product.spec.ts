@@ -26,3 +26,4 @@ test.describe('Seed: Vendor Edit Product', () => {
     await editOption.click();
   });
 });
+

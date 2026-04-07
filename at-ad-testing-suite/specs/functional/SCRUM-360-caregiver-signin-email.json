@@ -1,0 +1,476 @@
+{
+  "jiraStory": "SCRUM-360",
+  "title": "Caregiver Sign-In Using Email - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Caregiver Sign-In flow on the AT/AD platform. Covers sign-in form display, email and password validation, successful login with redirect to Caregiver Dashboard/My PwDs, invalid credential handling, account status checks (inactive/suspended/unregistered), forgot password flow, and edge cases including case-insensitive email, account lockout, session timeout, and accessibility.",
+  "scope": {
+    "inScope": [
+      "Sign-in form display (email, password, sign-in button)",
+      "Email format validation",
+      "Password masked input and security rules",
+      "Successful login authentication and redirect to Caregiver Dashboard / My PwDs",
+      "Session maintenance after login",
+      "Invalid credentials error handling (generic error message)",
+      "Account status checks (inactive, suspended, not registered)",
+      "Forgot Password link and password reset flow",
+      "Case-insensitive email login",
+      "Account lockout after multiple failed attempts",
+      "Session timeout re-authentication",
+      "Browser refresh during login",
+      "Keyboard navigation and screen reader accessibility"
+    ],
+    "outOfScope": [
+      "Caregiver registration flow (covered in SCRUM-357)",
+      "Account type selection (covered in SCRUM-354)",
+      "PwD management features post-login",
+      "Backend authentication internals",
+      "SSO or social login methods"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_CG_SIGN_001",
+      "title": "Verify sign-in form displays email, password, and sign-in button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "1. Sign-In Form",
+      "preconditions": "User has selected Caregiver account type; Sign-in page is accessible",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Verify Email Address field is displayed with label",
+        "3. Verify Email Address field is marked as mandatory",
+        "4. Verify Password field is displayed with label",
+        "5. Verify Password field is marked as mandatory",
+        "6. Verify Password field masks input characters",
+        "7. Verify 'Sign In' button is displayed",
+        "8. Verify 'Forgot Password' link is displayed",
+        "9. Verify sign-up/register link is available for new users"
+      ],
+      "testData": {
+        "url": "https://qa-atad.swarajability.org"
+      },
+      "expectedResults": [
+        "Email Address field is visible with clear label and mandatory indicator",
+        "Password field is visible with clear label, mandatory indicator, and masked input",
+        "Sign In button is displayed and initially enabled or disabled per design",
+        "Forgot Password link is visible and clickable",
+        "Sign-up/register option is available for unregistered users"
+      ],
+      "postconditions": "Sign-in form is displayed with all required elements",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_002",
+      "title": "Verify successful login with valid email and password redirects to Caregiver Dashboard",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "2. Successful Login",
+      "preconditions": "A registered caregiver account exists with valid credentials",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Enter valid registered email address",
+        "3. Enter correct password",
+        "4. Click 'Sign In' button",
+        "5. Verify system authenticates credentials",
+        "6. Verify user is redirected to Caregiver Dashboard / My PwDs page",
+        "7. Verify the dashboard page loads correctly",
+        "8. Verify caregiver name or profile indicator is shown (logged-in state)",
+        "9. Verify session is maintained (navigate to another page and back)"
+      ],
+      "testData": {
+        "email": "registered.caregiver@example.com",
+        "password": "SecurePass@123"
+      },
+      "expectedResults": [
+        "System authenticates valid credentials without error",
+        "User is redirected to Caregiver Dashboard / My PwDs page",
+        "Dashboard loads correctly with caregiver-specific content",
+        "Logged-in state is visible (profile name, avatar, or indicator)",
+        "Session is maintained across page navigation"
+      ],
+      "postconditions": "Caregiver is logged in with active session on dashboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_003",
+      "title": "Verify invalid credentials show generic error without revealing which field is wrong",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "3. Invalid Credentials",
+      "preconditions": "Caregiver sign-in page is displayed",
+      "steps": [
+        "1. Enter valid email but incorrect password",
+        "2. Click 'Sign In' button",
+        "3. Verify login is blocked",
+        "4. Verify error message: 'Invalid email or password. Please try again.'",
+        "5. Verify error message does NOT reveal which field is incorrect",
+        "6. Clear fields",
+        "7. Enter invalid/unregistered email with any password",
+        "8. Click 'Sign In' button",
+        "9. Verify same generic error message is shown",
+        "10. Verify error message is identical for both cases (security best practice)"
+      ],
+      "testData": {
+        "validEmail": "registered.caregiver@example.com",
+        "wrongPassword": "WrongPass@999",
+        "invalidEmail": "nonexistent@example.com",
+        "anyPassword": "AnyPass@123"
+      },
+      "expectedResults": [
+        "Login is blocked for incorrect password",
+        "Error message: 'Invalid email or password. Please try again.'",
+        "Error message does NOT indicate whether email or password is wrong",
+        "Same error message shown for unregistered email",
+        "Both scenarios produce identical error (no information leakage)"
+      ],
+      "postconditions": "User remains on sign-in page; No session created",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_CG_SIGN_005",
+      "title": "Verify password field masks input and enforces security rules",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "1. Sign-In Form",
+      "preconditions": "Caregiver sign-in page is displayed",
+      "steps": [
+        "1. Click on Password field",
+        "2. Type a password: 'SecurePass@123'",
+        "3. Verify characters are masked (shown as dots or asterisks)",
+        "4. Verify password toggle (show/hide) if available",
+        "5. Leave password field empty and attempt sign in",
+        "6. Verify validation error for empty password",
+        "7. Enter password and verify it is accepted"
+      ],
+      "testData": {
+        "password": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Password characters are masked as they are typed",
+        "Show/hide toggle works if present",
+        "Empty password triggers validation error",
+        "Valid password is accepted for submission"
+      ],
+      "postconditions": "Password field masking and validation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_006",
+      "title": "Verify sign-in blocked with empty email and password fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "1. Sign-In Form",
+      "preconditions": "Caregiver sign-in page is displayed",
+      "steps": [
+        "1. Leave Email Address field empty",
+        "2. Leave Password field empty",
+        "3. Click 'Sign In' button",
+        "4. Verify sign-in is blocked",
+        "5. Verify validation errors appear for both fields",
+        "6. Fill only email, leave password empty, click Sign In",
+        "7. Verify validation error for empty password",
+        "8. Clear email, fill only password, click Sign In",
+        "9. Verify validation error for empty email"
+      ],
+      "testData": {},
+      "expectedResults": [
+        "Sign-in is blocked when both fields are empty",
+        "Validation errors appear for each empty mandatory field",
+        "Sign-in is blocked when only email is provided (no password)",
+        "Sign-in is blocked when only password is provided (no email)",
+        "Error messages are clear and specific"
+      ],
+      "postconditions": "Mandatory field validation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_007",
+      "title": "Verify inactive/suspended account login is blocked with appropriate message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "4. Account Status Checks",
+      "preconditions": "A caregiver account exists with inactive/suspended status",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Enter email of inactive/suspended caregiver account",
+        "3. Enter correct password for that account",
+        "4. Click 'Sign In' button",
+        "5. Verify login is blocked",
+        "6. Verify appropriate message is displayed indicating account status",
+        "7. Verify message does not expose sensitive account details"
+      ],
+      "testData": {
+        "inactiveEmail": "inactive.caregiver@example.com",
+        "suspendedEmail": "suspended.caregiver@example.com",
+        "password": "CorrectPass@123"
+      },
+      "expectedResults": [
+        "Login is blocked for inactive account",
+        "Appropriate message shown (e.g., 'Your account is inactive. Please contact support.')",
+        "Login is blocked for suspended account",
+        "Appropriate message shown for suspended status",
+        "Messages do not reveal sensitive information"
+      ],
+      "postconditions": "Account status check is verified; No session created for inactive/suspended accounts",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_CG_SIGN_008",
+      "title": "Verify unregistered user is prompted to register as Caregiver",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "4. Account Status Checks",
+      "preconditions": "Email is not registered in the system",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Enter an unregistered email address",
+        "3. Enter any password",
+        "4. Click 'Sign In' button",
+        "5. Verify login fails",
+        "6. Verify prompt to register as Caregiver is shown",
+        "7. Verify registration link/button is provided",
+        "8. Click the registration link",
+        "9. Verify user is redirected to caregiver registration page"
+      ],
+      "testData": {
+        "unregisteredEmail": "newuser@example.com",
+        "anyPassword": "AnyPass@123"
+      },
+      "expectedResults": [
+        "Login fails for unregistered email",
+        "Prompt to register as Caregiver is displayed",
+        "Registration link/button is functional",
+        "Clicking registration link redirects to caregiver registration page"
+      ],
+      "postconditions": "Unregistered user is guided to registration flow",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_CG_SIGN_010",
+      "title": "Verify email login is case-insensitive",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "Edge Cases",
+      "preconditions": "A caregiver account is registered with email 'caregiver@example.com'",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Enter email in uppercase: 'CAREGIVER@EXAMPLE.COM'",
+        "3. Enter correct password",
+        "4. Click 'Sign In'",
+        "5. Verify login succeeds",
+        "6. Log out",
+        "7. Enter email in mixed case: 'Caregiver@Example.Com'",
+        "8. Enter correct password",
+        "9. Click 'Sign In'",
+        "10. Verify login succeeds",
+        "11. Verify same account is accessed in all cases"
+      ],
+      "testData": {
+        "originalEmail": "caregiver@example.com",
+        "uppercaseEmail": "CAREGIVER@EXAMPLE.COM",
+        "mixedCaseEmail": "Caregiver@Example.Com",
+        "password": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Uppercase email login succeeds (treated as same account)",
+        "Mixed case email login succeeds (treated as same account)",
+        "Same caregiver dashboard is accessed regardless of email casing",
+        "Email comparison is case-insensitive"
+      ],
+      "postconditions": "Case-insensitive email login is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_013",
+      "title": "Verify browser refresh during login does not resubmit credentials",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "Edge Cases",
+      "preconditions": "Caregiver sign-in page is displayed with credentials entered",
+      "steps": [
+        "1. Navigate to caregiver sign-in page",
+        "2. Enter email and password",
+        "3. Do NOT click Sign In",
+        "4. Refresh the browser page (F5)",
+        "5. Verify credentials are not auto-submitted",
+        "6. Verify sign-in page reloads fresh",
+        "7. Verify email and password fields are cleared (or retained per browser behavior)",
+        "8. Verify no authentication attempt was made on refresh"
+      ],
+      "testData": {
+        "email": "registered.caregiver@example.com",
+        "password": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Browser refresh does not trigger automatic sign-in",
+        "Credentials are not resubmitted on page refresh",
+        "Sign-in page reloads without errors",
+        "No unintended authentication occurs"
+      ],
+      "postconditions": "Browser refresh behavior during login is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_014",
+      "title": "Verify logged-in session is maintained across page navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "2. Successful Login",
+      "preconditions": "Caregiver has successfully logged in",
+      "steps": [
+        "1. Log in as caregiver with valid credentials",
+        "2. Verify dashboard is displayed",
+        "3. Navigate to product catalog page",
+        "4. Verify user is still logged in (profile indicator visible)",
+        "5. Navigate to My PwDs page",
+        "6. Verify user is still logged in",
+        "7. Navigate back to dashboard",
+        "8. Verify session is maintained throughout navigation",
+        "9. Open a new tab and navigate to the platform",
+        "10. Verify session is shared across tabs (if applicable)"
+      ],
+      "testData": {
+        "email": "registered.caregiver@example.com",
+        "password": "SecurePass@123"
+      },
+      "expectedResults": [
+        "Logged-in state is maintained across all page navigations",
+        "Profile indicator remains visible on all pages",
+        "No re-authentication required during active session",
+        "Session may be shared across browser tabs"
+      ],
+      "postconditions": "Session persistence across navigation is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_CG_SIGN_015",
+      "title": "Verify Forgot Password with unregistered email shows appropriate message",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-360",
+      "category": "5. Forgot Password",
+      "preconditions": "Caregiver sign-in page is displayed",
+      "steps": [
+        "1. Click 'Forgot Password' link",
+        "2. Enter an unregistered email address",
+        "3. Submit the password reset request",
+        "4. Verify system response",
+        "5. Verify no password reset email is sent to unregistered address",
+        "6. Verify message does not reveal whether email is registered (security)"
+      ],
+      "testData": {
+        "unregisteredEmail": "nonexistent@example.com"
+      },
+      "expectedResults": [
+        "System does not reveal whether email is registered or not",
+        "Generic message shown (e.g., 'If this email is registered, a reset link has been sent')",
+        "No password reset email is sent to unregistered address",
+        "No information leakage about account existence"
+      ],
+      "postconditions": "Forgot password security for unregistered emails is verified",
+      "testResult": "PASS"
+    },
+  ],
+  "requirements_traceability_matrix": {
+    "AC1_signin_form": {
+      "description": "Sign-in screen displays Email, Password (masked), Sign In button with email format validation",
+      "testCases": ["TC_CG_SIGN_001", "TC_CG_SIGN_005", "TC_CG_SIGN_006"]
+    },
+    "AC2_successful_login": {
+      "description": "Valid credentials authenticate, redirect to Dashboard/My PwDs, session maintained",
+      "testCases": ["TC_CG_SIGN_002", "TC_CG_SIGN_014"]
+    },
+    "AC3_invalid_credentials": {
+      "description": "Incorrect credentials blocked with generic error not revealing which field is wrong",
+      "testCases": ["TC_CG_SIGN_003"]
+    },
+    "AC4_account_status_checks": {
+      "description": "Inactive/suspended blocked with message; unregistered prompted to register",
+      "testCases": ["TC_CG_SIGN_007", "TC_CG_SIGN_008"]
+    },
+    "AC5_forgot_password": {
+      "description": "Forgot Password link, reset via email, set new password, retry login",
+      "testCases": ["TC_CG_SIGN_015"]
+    },
+    "EC_case_insensitive_email": {
+      "description": "Email with different casing treated as same account",
+      "testCases": ["TC_CG_SIGN_010"]
+    },
+    "EC_browser_refresh": {
+      "description": "Browser refresh during login does not resubmit credentials",
+      "testCases": ["TC_CG_SIGN_013"]
+    }
+  },
+  "test_data_requirements": {
+    "registered_caregiver": {
+      "email": "registered.caregiver@example.com",
+      "password": "SecurePass@123",
+      "status": "Active"
+    },
+    "inactive_caregiver": {
+      "email": "inactive.caregiver@example.com",
+      "password": "CorrectPass@123",
+      "status": "Inactive"
+    },
+    "suspended_caregiver": {
+      "email": "suspended.caregiver@example.com",
+      "password": "CorrectPass@123",
+      "status": "Suspended"
+    },
+    "platform_url": "https://qa-atad.swarajability.org"
+  },
+  "assumptions_and_dependencies": {
+    "assumptions": [
+      "Caregiver sign-in page is accessible from account type selection (SCRUM-354)",
+      "At least one registered caregiver account exists in QA environment",
+      "Account lockout feature is configured in QA (if applicable)",
+      "Session timeout duration is known for testing",
+      "Password reset email delivery is functional in QA",
+      "Dark mode toggle is available on the sign-in page"
+    ],
+    "dependencies": [
+      "SCRUM-354: Account type selection must route to caregiver sign-in",
+      "SCRUM-357: Caregiver registration must be functional to create test accounts",
+      "Email delivery service must be operational for forgot password tests",
+      "Session management infrastructure must be operational"
+    ]
+  },
+  "open_questions_and_clarifications": [
+    {
+      "question": "Does the sign-in page show a 'Register' link for unregistered users, or is the generic error the only response?",
+      "impact": "Affects TC_CG_SIGN_008 expected behavior - AC says 'prompt to register' but AC3 says generic error"
+    }
+  ],
+  "test_execution_notes": {
+    "priority_order": [
+      "Highest tests (TC_CG_SIGN_001, 002, 003) should be executed first - core sign-in functionality",
+      "High priority tests (005, 006, 007, 008, 014) cover validation, account status, and session",
+      "Medium priority tests (010, 013, 015) cover edge cases and forgot password"
+    ],
+    "estimated_effort": {
+      "total_test_cases": 11,
+      "estimated_hours": "24-30 hours for full manual testing",
+      "estimated_automation_hours": "35-45 hours for test automation",
+      "critical_path": "6-8 hours for critical path testing only"
+    },
+    "test_environment_requirements": [
+      "QA environment with AT/AD platform accessible",
+      "Pre-registered caregiver accounts (active, inactive, suspended)",
+      "Multiple browser support (Chrome, Firefox, Edge)"
+    ],
+    "known_issues": [],
+    "regression_areas": [
+      "Account type selection routing (SCRUM-354)",
+      "Caregiver registration flow (SCRUM-357)",
+      "Session management across platform",
+      "Password reset infrastructure"
+    ]
+  },
+  "metadata": {
+    "testPlanCreated": "2026-03-29",
+    "testPlanVersion": "1.0",
+    "createdBy": "QA Test Planner Agent",
+    "lastUpdated": "2026-03-29",
+    "status": "Ready for Execution",
+    "totalTestCases": 11,
+    "coverage": "100% of acceptance criteria (1-5) and all edge cases covered"
+  }
+}

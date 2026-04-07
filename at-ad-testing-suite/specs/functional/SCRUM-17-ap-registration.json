@@ -1,0 +1,726 @@
+{
+  "jiraStory": "SCRUM-17",
+  "title": "AP Registration/Sign in from Y4J Hub - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-03-24",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Assistive Partner (AP) Registration and Sign-in flow from Y4J Hub portal. Covers registration link access, SSO login, registration form fields, OTP verification (email & mobile), form validation, submission confirmation, admin notification, duplicate handling, accessibility standards, and post-submission workflow.",
+  "scope": {
+    "inScope": [
+      "Registration link visibility and navigation",
+      "SSO Sign-in with Swarajability",
+      "Registration form mandatory and optional fields",
+      "OTP verification for email and mobile",
+      "Form validation and error handling",
+      "Submission confirmation messages",
+      "Duplicate registration handling",
+      "Accessibility and UI standards (WCAG 2.1 AA)",
+      "Keyboard navigation and screen reader support"
+    ],
+    "outOfScope": [
+      "Admin dashboard verification (requires admin access)",
+      "Admin approval/rejection workflow (requires admin access)",
+      "Email delivery testing (backend)",
+      "OTP rate limiting backend configuration"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-87 - Vendor Portal",
+    "relatedStories": ["SCRUM-18 - AP Dashboard"]
+  },
+  "testEnvironment": {
+    "url": "Y4J Hub Portal and PwD Catalog Portal",
+    "userRoles": ["New AP (unregistered)", "Existing AP (registered on Swarajability)"],
+    "prerequisites": ["Access to Y4J Hub portal", "Valid email for OTP testing", "Valid phone number for OTP testing"]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_SCRUM17_001",
+      "title": "Verify Register as Assistive Partner link is visible on Y4J Hub",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC1 - Access and Navigation for Registration",
+      "preconditions": "User is on Y4J Hub portal homepage",
+      "steps": [
+        "Navigate to Y4J Hub portal",
+        "Locate the registration section",
+        "Verify 'Register as Assistive Partner' link is visible"
+      ],
+      "expectedResults": [
+        "Y4J Hub portal loads successfully",
+        "Registration section is visible",
+        "'Register as Assistive Partner' link is clearly visible"
+      ],
+      "postconditions": "Registration link is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_002",
+      "title": "Verify Register link redirects to AP Registration page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC1 - Access and Navigation for Registration",
+      "preconditions": "User is on Y4J Hub portal",
+      "steps": [
+        "Click 'Register as Assistive Partner' link",
+        "Wait for page redirect",
+        "Verify landing on AP Registration page of PwD Catalog portal"
+      ],
+      "expectedResults": [
+        "Link is clickable",
+        "Page redirects successfully",
+        "AP Registration page of PwD Catalog portal is displayed"
+      ],
+      "postconditions": "User is on registration page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_003",
+      "title": "Verify Sign in with Swarajability link is visible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC2 - Sign in",
+      "preconditions": "User is on Y4J Hub portal",
+      "steps": [
+        "Navigate to Y4J Hub portal",
+        "Locate sign-in section",
+        "Verify 'Sign in with Swarajability' link is visible"
+      ],
+      "expectedResults": [
+        "Y4J Hub portal loads",
+        "Sign-in section is visible",
+        "'Sign in with Swarajability' link is clearly visible"
+      ],
+      "postconditions": "SSO login option is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_004",
+      "title": "Verify SSO login navigates to AP Dashboard",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC2 - Sign in",
+      "preconditions": "User has existing Swarajability account",
+      "steps": [
+        "Click 'Sign in with Swarajability' link",
+        "Complete SSO authentication",
+        "Verify navigation to AP Dashboard"
+      ],
+      "expectedResults": [
+        "SSO authentication flow initiates",
+        "Authentication completes successfully",
+        "User lands on Assistive Partner Portal dashboard"
+      ],
+      "postconditions": "User is logged in and on dashboard",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_005",
+      "title": "Verify registration form displays all mandatory fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC3 - Registration Form",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Navigate to AP Registration page",
+        "Verify Organization Name field is present",
+        "Verify Type of Organization dropdown is present",
+        "Verify Contact Person Name field is present",
+        "Verify Official Email ID field is present",
+        "Verify Phone Number field is present",
+        "Verify Registered Address section is present",
+        "Verify Short Description of Offerings field is present"
+      ],
+      "expectedResults": [
+        "Registration form is displayed",
+        "Organization Name field is visible and marked required",
+        "Type of Organization dropdown is visible with options",
+        "Contact Person Name field is visible and marked required",
+        "Official Email ID field is visible and marked required",
+        "Phone Number field is visible and marked required",
+        "Registered Address section is visible with all sub-fields",
+        "Short Description field is visible and marked required"
+      ],
+      "postconditions": "All mandatory fields are visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_006",
+      "title": "Verify Type of Organization dropdown options",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC3 - Registration Form",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Locate Type of Organization dropdown",
+        "Click to expand dropdown",
+        "Verify all organization types are listed"
+      ],
+      "expectedResults": [
+        "Dropdown is clickable",
+        "Options are displayed",
+        "Options include: Manufacturer, Distributor, NGO, Service Provider"
+      ],
+      "postconditions": "Organization types are selectable",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_007",
+      "title": "Verify Send OTP button for Email field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Enter valid email in Official Email ID field",
+        "Locate Send OTP button for email",
+        "Click Send OTP button"
+      ],
+      "expectedResults": [
+        "Email is entered",
+        "Send OTP button is visible",
+        "OTP is sent to entered email"
+      ],
+      "postconditions": "Email OTP is triggered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_008",
+      "title": "Verify Send OTP button for Phone Number field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Enter valid phone number in Phone Number field",
+        "Locate Send OTP button for phone",
+        "Click Send OTP button"
+      ],
+      "expectedResults": [
+        "Phone number is entered",
+        "Send OTP button is visible",
+        "OTP is sent to entered mobile number"
+      ],
+      "postconditions": "Mobile OTP is triggered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_009",
+      "title": "Verify OTP input field appears after OTP is sent",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User has clicked Send OTP",
+      "steps": [
+        "Enter valid email and click Send OTP",
+        "Observe UI changes",
+        "Verify OTP input field appears"
+      ],
+      "expectedResults": [
+        "OTP is sent",
+        "UI updates to show OTP input",
+        "OTP input field is visible and ready for input"
+      ],
+      "postconditions": "OTP input is available",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_010",
+      "title": "Verify successful OTP verification marks field as Verified",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User has received valid OTP",
+      "steps": [
+        "Enter correct 6-digit OTP",
+        "Click Verify button",
+        "Observe verification status"
+      ],
+      "expectedResults": [
+        "OTP is entered",
+        "Verify button is clicked",
+        "Email/Mobile is marked as 'Verified'",
+        "OTP input section is disabled or hidden"
+      ],
+      "postconditions": "Field is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM17_011",
+      "title": "Verify expired OTP shows appropriate error message",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User has received OTP and waited for expiry",
+      "steps": [
+        "Send OTP",
+        "Wait for OTP expiry time window",
+        "Enter the expired OTP",
+        "Click Verify button"
+      ],
+      "expectedResults": [
+        "OTP is sent",
+        "OTP expires after configured time",
+        "Expired OTP is entered",
+        "Appropriate error message is shown (e.g., 'OTP has expired')"
+      ],
+      "postconditions": "Expired OTP is rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_012",
+      "title": "Verify registration cannot be submitted without both verifications",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC4 - OTP Verification (Email & Mobile)",
+      "preconditions": "User has filled all form fields",
+      "steps": [
+        "Fill all mandatory fields",
+        "Verify only email (not mobile)",
+        "Attempt to submit registration",
+        "Verify only mobile (not email)",
+        "Attempt to submit registration"
+      ],
+      "expectedResults": [
+        "Form fields are filled",
+        "Submission is blocked with only email verified",
+        "Submission is blocked with only mobile verified",
+        "Both verifications are required for submission"
+      ],
+      "postconditions": "Both verifications are enforced",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_013",
+      "title": "Verify form validates all required fields before submission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC5 - Form Behavior & Validation",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Leave all fields empty",
+        "Click Submit button",
+        "Verify validation errors for each required field"
+      ],
+      "expectedResults": [
+        "Submit is attempted",
+        "Validation errors appear for all required fields",
+        "Form is not submitted"
+      ],
+      "postconditions": "Required field validation works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_014",
+      "title": "Verify error messages for missing required fields",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC5 - Form Behavior & Validation",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Leave Organization Name empty and submit",
+        "Leave Contact Person Name empty and submit",
+        "Leave Email empty and submit",
+        "Verify error messages are displayed"
+      ],
+      "expectedResults": [
+        "Error message for Organization Name",
+        "Error message for Contact Person Name",
+        "Error message for Email",
+        "All error messages are clear and specific"
+      ],
+      "postconditions": "Error messages are displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_015",
+      "title": "Verify invalid email format validation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC5 - Form Behavior & Validation",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Enter invalid email format (e.g., 'test@')",
+        "Enter another invalid format (e.g., 'test.com')",
+        "Attempt to proceed",
+        "Verify validation error"
+      ],
+      "expectedResults": [
+        "Invalid email is entered",
+        "Validation error is shown",
+        "Error message indicates invalid email format",
+        "Send OTP is blocked for invalid email"
+      ],
+      "postconditions": "Email format is validated",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_016",
+      "title": "Verify invalid phone number validation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC5 - Form Behavior & Validation",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Enter phone number with less than required digits",
+        "Enter phone number with alphabetic characters",
+        "Attempt to proceed",
+        "Verify validation error"
+      ],
+      "expectedResults": [
+        "Invalid phone number is entered",
+        "Validation error is shown",
+        "Error message indicates invalid phone format",
+        "Send OTP is blocked for invalid phone"
+      ],
+      "postconditions": "Phone format is validated",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_017",
+      "title": "Verify acknowledgment email is sent after registration",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC6 - Submission Confirmation",
+      "preconditions": "User has successfully submitted registration",
+      "steps": [
+        "Complete registration submission",
+        "Check registered email inbox",
+        "Verify acknowledgment email is received",
+        "Verify email contains submitted information summary"
+      ],
+      "expectedResults": [
+        "Registration is submitted",
+        "Acknowledgment email is received",
+        "Email summarizes submitted information",
+        "Email is from Y4J/PwD Catalog system"
+      ],
+      "postconditions": "Acknowledgment email is sent",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM17_018",
+      "title": "Verify duplicate email message provides login option",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC8 - Duplicate Registration Handling",
+      "preconditions": "User sees duplicate email error",
+      "steps": [
+        "Trigger duplicate email error",
+        "Verify login link/option is provided",
+        "Verify contact support option is mentioned"
+      ],
+      "expectedResults": [
+        "Duplicate error is shown",
+        "Login option is available",
+        "Contact Y4J support option is mentioned",
+        "User has clear next steps"
+      ],
+      "postconditions": "User can proceed to login",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_019",
+      "title": "Verify registration page follows WCAG 2.1 AA standards",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Navigate to registration page",
+        "Run accessibility audit",
+        "Check for WCAG 2.1 AA compliance",
+        "Verify no critical accessibility issues"
+      ],
+      "expectedResults": [
+        "Page loads successfully",
+        "Accessibility audit passes",
+        "WCAG 2.1 AA standards are met",
+        "No critical accessibility violations"
+      ],
+      "postconditions": "Page is accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM17_020",
+      "title": "Verify all form fields have proper labels",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Inspect each form field",
+        "Verify label is associated with field",
+        "Check label text is descriptive",
+        "Test with screen reader"
+      ],
+      "expectedResults": [
+        "All fields have associated labels",
+        "Labels are descriptive and clear",
+        "Labels are programmatically linked to fields",
+        "Screen reader announces labels correctly"
+      ],
+      "postconditions": "Labels are properly implemented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_021",
+      "title": "Verify clear error prompts for validation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User triggers validation errors",
+      "steps": [
+        "Trigger validation errors on form",
+        "Verify error messages are clear",
+        "Check error messages are associated with fields",
+        "Verify errors are announced by screen reader"
+      ],
+      "expectedResults": [
+        "Error messages are displayed",
+        "Messages clearly explain the issue",
+        "Errors are linked to respective fields",
+        "Screen reader announces errors"
+      ],
+      "postconditions": "Error prompts are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_022",
+      "title": "Verify high-contrast text throughout registration page",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Check text contrast ratios",
+        "Verify body text meets 4.5:1 ratio",
+        "Verify large text meets 3:1 ratio",
+        "Check button and link contrast"
+      ],
+      "expectedResults": [
+        "All text has sufficient contrast",
+        "Body text meets WCAG AA requirements",
+        "Large text meets requirements",
+        "Interactive elements are clearly visible"
+      ],
+      "postconditions": "Contrast requirements are met",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM17_023",
+      "title": "Verify registration page supports screen readers",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "Screen reader is enabled",
+      "steps": [
+        "Enable screen reader (NVDA/JAWS/VoiceOver)",
+        "Navigate through registration page",
+        "Verify all content is announced",
+        "Complete form using screen reader"
+      ],
+      "expectedResults": [
+        "Screen reader is active",
+        "All content is announced correctly",
+        "Form fields are accessible",
+        "Form can be completed with screen reader"
+      ],
+      "postconditions": "Screen reader compatibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SCRUM17_024",
+      "title": "Verify registration page supports keyboard navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Navigate using Tab key through all fields",
+        "Verify logical tab order",
+        "Activate buttons using Enter/Space",
+        "Complete form using only keyboard"
+      ],
+      "expectedResults": [
+        "All fields are keyboard focusable",
+        "Tab order is logical",
+        "Buttons activate with Enter/Space",
+        "Form can be completed without mouse"
+      ],
+      "postconditions": "Keyboard navigation works",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM17_025",
+      "title": "Verify focus indicators are visible on all interactive elements",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
+      "preconditions": "User is navigating with keyboard",
+      "steps": [
+        "Tab through all interactive elements",
+        "Observe focus indicators",
+        "Verify focus is clearly visible",
+        "Check focus is never lost"
+      ],
+      "expectedResults": [
+        "Focus indicators are visible on all elements",
+        "Focus is clearly distinguishable",
+        "Focus moves logically",
+        "No focus traps exist"
+      ],
+      "postconditions": "Focus indicators are implemented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_026",
+      "title": "Verify complete registration flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC1-AC9 - Complete Flow",
+      "preconditions": "User is new and not registered",
+      "steps": [
+        "Navigate to Y4J Hub portal",
+        "Click Register as Assistive Partner",
+        "Fill all mandatory fields",
+        "Verify email with OTP",
+        "Verify mobile with OTP",
+        "Fill optional fields",
+        "Submit registration",
+        "Verify confirmation message"
+      ],
+      "expectedResults": [
+        "Registration link works",
+        "Form loads correctly",
+        "All fields accept valid input",
+        "Email OTP verification succeeds",
+        "Mobile OTP verification succeeds",
+        "Optional fields are saved",
+        "Registration is submitted",
+        "Confirmation message is displayed"
+      ],
+      "postconditions": "Registration is complete",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_027",
+      "title": "Verify Short Description of Offerings field accepts text",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC3 - Registration Form",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Locate Short Description of Offerings field",
+        "Enter description text",
+        "Verify text is accepted",
+        "Check for character limit if any"
+      ],
+      "expectedResults": [
+        "Field is visible and editable",
+        "Text input is accepted",
+        "Description is saved",
+        "Character limit is enforced if applicable"
+      ],
+      "postconditions": "Description field works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM17_028",
+      "title": "Verify Website/Social Media Links field accepts valid URLs",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-17",
+      "acceptanceCriteria": "AC3 - Registration Form",
+      "preconditions": "User is on AP Registration page",
+      "steps": [
+        "Locate Website/Social Media Links field",
+        "Enter valid URL",
+        "Enter invalid URL format",
+        "Verify validation behavior"
+      ],
+      "expectedResults": [
+        "Field is visible",
+        "Valid URLs are accepted",
+        "Invalid URLs show validation error",
+        "Field is optional (no error when empty)"
+      ],
+      "postconditions": "URL field validation works",
+      "testResult": "PASS"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Access_and_Navigation_for_Registration": ["TC_SCRUM17_001", "TC_SCRUM17_002"],
+    "AC2_Sign_in": ["TC_SCRUM17_003", "TC_SCRUM17_004"],
+    "AC3_Registration_Form": ["TC_SCRUM17_005", "TC_SCRUM17_006", "TC_SCRUM17_027", "TC_SCRUM17_028"],
+    "AC4_OTP_Verification": ["TC_SCRUM17_007", "TC_SCRUM17_008", "TC_SCRUM17_009", "TC_SCRUM17_010", "TC_SCRUM17_011", "TC_SCRUM17_012"],
+    "AC5_Form_Behavior_and_Validation": ["TC_SCRUM17_013", "TC_SCRUM17_014", "TC_SCRUM17_015", "TC_SCRUM17_016"],
+    "AC6_Submission_Confirmation": ["TC_SCRUM17_017"],
+    "AC7_Admin_Notification": "Out of Scope - Requires Admin Access",
+    "AC8_Duplicate_Registration_Handling": ["TC_SCRUM17_018"],
+    "AC9_Accessibility_and_UI_Standards": ["TC_SCRUM17_019", "TC_SCRUM17_020", "TC_SCRUM17_021", "TC_SCRUM17_022", "TC_SCRUM17_023", "TC_SCRUM17_024", "TC_SCRUM17_025"],
+    "AC10_Post_Submission_Workflow": "Out of Scope - Requires Admin Access",
+    "End_to_End_Flow": ["TC_SCRUM17_026"]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "New user (not registered)",
+      "Existing user registered on Swarajability platform",
+      "User with already registered email (for duplicate testing)"
+    ],
+    "formData": [
+      "Valid organization names",
+      "Organization types: Manufacturer, Distributor, NGO, Service Provider",
+      "Valid contact person names",
+      "Valid email addresses for OTP testing",
+      "Valid phone numbers for OTP testing",
+      "State, District, Mandal combinations",
+      "Valid pincodes and city names",
+      "Short descriptions of offerings",
+      "Website and social media URLs"
+    ],
+    "fileAssets": [
+      "Valid organization logo images (PNG, JPG)",
+      "Valid certificate documents (PDF)",
+      "Invalid file types for error testing"
+    ],
+    "otpTestData": [
+      "Valid 6-digit OTPs",
+      "Invalid OTPs for error testing",
+      "Expired OTPs for expiry testing"
+    ]
+  },
+  "assumptions": [
+    "Y4J Hub portal is accessible",
+    "OTP service is operational for email and SMS",
+    "Swarajability SSO integration is configured",
+    "Test email accounts can receive OTPs",
+    "Test phone numbers can receive SMS OTPs",
+    "State/District/Mandal master data is populated"
+  ],
+  "risks": [
+    "OTP delivery may be delayed affecting test execution",
+    "SSO integration depends on Swarajability platform availability",
+    "Rate limiting may affect repeated OTP testing",
+    "Email delivery testing requires access to email inbox"
+  ],
+  "openQuestions": [
+    "What is the OTP expiry time window?",
+    "What are the rate limits for Resend OTP?",
+    "Is phone number also unique like email for duplicate detection?",
+    "Which admin users receive the notification email?",
+    "What file types and sizes are accepted for logo/certificate upload?"
+  ],
+  "notesFromComments": [
+    "Question raised: Will all admin users receive notification or specific criteria? (Unanswered)",
+    "Question raised: Is only email unique or also phone number? (Unanswered)"
+  ]
+}

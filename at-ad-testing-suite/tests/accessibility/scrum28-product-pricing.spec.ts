@@ -642,3 +642,4 @@ test.describe('SCRUM-28: Product Pricing Accessibility', () => {
     });
   });
 });
+
