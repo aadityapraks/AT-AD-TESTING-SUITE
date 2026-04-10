@@ -1,0 +1,546 @@
+{
+  "jiraStory": "SCRUM-81",
+  "title": "PwD - Explore Product Tabs (Features, Reviews Etc) - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-81: PwD - Explore Product Tabs. Validates that a PwD user can switch between information tabs (Features, Technical and Accessibility, Buying Guide, Reviews, Raise a Query) on the product details page, only one tab content is visible at a time, tab switching is instant without page reload, and each tab displays its expected content.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "catalogPath": "/catalog",
+    "productPathPattern": "/product/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "tabNames": [
+      "Features",
+      "Technical and Accessibility",
+      "Buying Guide",
+      "Reviews",
+      "Raise a Query"
+    ],
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM81_001",
+      "title": "All five tabs are visible on product details page",
+      "priority": "Highest",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Log in as PwD user.",
+        "Navigate to catalog.",
+        "Click View Details on a product.",
+        "Verify all 5 tabs are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on a product details page.",
+      "expectedResults": [
+        "All 5 tabs are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_002",
+      "title": "Features tab is present",
+      "priority": "High",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify Features tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Features tab exists."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_003",
+      "title": "Technical and Accessibility tab is present",
+      "priority": "High",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify Technical and Accessibility tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Technical and Accessibility tab exists."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_004",
+      "title": "Buying Guide tab is present",
+      "priority": "High",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify Buying Guide tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Buying Guide tab exists."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_005",
+      "title": "Reviews tab is present",
+      "priority": "High",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify Reviews tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Reviews tab exists."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_006",
+      "title": "Raise a Query tab is present",
+      "priority": "High",
+      "feature": "Tab Presence & Structure",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify Raise a Query tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Raise a Query tab exists."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_007",
+      "title": "First tab is active by default",
+      "priority": "Highest",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Verify the first tab is active by default."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "First tab is active by default."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_008",
+      "title": "Clicking a tab makes it active",
+      "priority": "Highest",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Click the second tab.",
+        "Verify it becomes active."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Clicking a tab makes it active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_009",
+      "title": "Only one tab content is visible at a time",
+      "priority": "Highest",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Click each tab.",
+        "Verify only one tab panel is visible at a time."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Only one tab content panel is visible at a time."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_010",
+      "title": "Tab switching does not reload the page",
+      "priority": "High",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Note the URL.",
+        "Click a different tab.",
+        "Verify URL has not changed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "URL does not change when switching tabs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_011",
+      "title": "Active tab is visually highlighted",
+      "priority": "Medium",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Click a tab.",
+        "Verify the active tab has distinct visual styling."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Active tab has distinct visual styling."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_012",
+      "title": "Switching all tabs sequentially works",
+      "priority": "High",
+      "feature": "Tab Switching Behavior",
+      "steps": [
+        "Navigate to product details page.",
+        "Click each of the 5 tabs in order.",
+        "Verify each becomes active and shows content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Each of the 5 tabs becomes active and shows content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_013",
+      "title": "Features tab displays content when active",
+      "priority": "Highest",
+      "feature": "Features Tab Content",
+      "steps": [
+        "Navigate to product details page.",
+        "Click Features tab.",
+        "Verify content panel is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Features tab content panel is visible when active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_014",
+      "title": "Features tab shows key product features",
+      "priority": "High",
+      "feature": "Features Tab Content",
+      "steps": [
+        "Click Features tab.",
+        "Verify feature list or feature text is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Features tab is active.",
+      "expectedResults": [
+        "Feature list or feature text is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_015",
+      "title": "Features tab has Who is it for section",
+      "priority": "Medium",
+      "feature": "Features Tab Content",
+      "steps": [
+        "Click Features tab.",
+        "Verify 'Who is it for' section or similar heading is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Features tab is active.",
+      "expectedResults": [
+        "'Who is it for' section or similar heading is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_016",
+      "title": "Features tab content is non-empty",
+      "priority": "Low",
+      "feature": "Features Tab Content",
+      "steps": [
+        "Click Features tab.",
+        "Verify the content area has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Features tab is active.",
+      "expectedResults": [
+        "Content area has non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_017",
+      "title": "Technical and Accessibility tab displays content",
+      "priority": "Highest",
+      "feature": "Technical and Accessibility Tab Content",
+      "steps": [
+        "Click Technical and Accessibility tab.",
+        "Verify content panel is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Technical and Accessibility tab content is visible when active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_018",
+      "title": "Technical specifications section is visible",
+      "priority": "High",
+      "feature": "Technical and Accessibility Tab Content",
+      "steps": [
+        "Click Technical and Accessibility tab.",
+        "Verify technical specifications content is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Technical and Accessibility tab is active.",
+      "expectedResults": [
+        "Technical specifications content is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_019",
+      "title": "Accessibility features section is visible",
+      "priority": "High",
+      "feature": "Technical and Accessibility Tab Content",
+      "steps": [
+        "Click Technical and Accessibility tab.",
+        "Verify accessibility features content is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Technical and Accessibility tab is active.",
+      "expectedResults": [
+        "Accessibility features content is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_020",
+      "title": "Technical tab content is non-empty",
+      "priority": "Low",
+      "feature": "Technical and Accessibility Tab Content",
+      "steps": [
+        "Click Technical and Accessibility tab.",
+        "Verify the content area has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Technical and Accessibility tab is active.",
+      "expectedResults": [
+        "Content area has non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_021",
+      "title": "Buying Guide tab displays content",
+      "priority": "Highest",
+      "feature": "Buying Guide Tab Content",
+      "steps": [
+        "Click Buying Guide tab.",
+        "Verify content panel is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Buying Guide tab content is visible when active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_022",
+      "title": "Before you Buy section is visible",
+      "priority": "Medium",
+      "feature": "Buying Guide Tab Content",
+      "steps": [
+        "Click Buying Guide tab.",
+        "Verify 'Before you Buy' section or similar content is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Buying Guide tab is active.",
+      "expectedResults": [
+        "'Before you Buy' section or similar content is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_023",
+      "title": "Buying Guide content is non-empty",
+      "priority": "Low",
+      "feature": "Buying Guide Tab Content",
+      "steps": [
+        "Click Buying Guide tab.",
+        "Verify the content area has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Buying Guide tab is active.",
+      "expectedResults": [
+        "Content area has non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_024",
+      "title": "Reviews tab displays content",
+      "priority": "Highest",
+      "feature": "Reviews Tab Content",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify content panel is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Reviews tab content is visible when active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_025",
+      "title": "Reviews section shows ratings or No reviews yet",
+      "priority": "High",
+      "feature": "Reviews Tab Content",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify either user reviews/ratings are shown or 'No reviews yet' message is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "User reviews/ratings or 'No reviews yet' message is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_026",
+      "title": "Write a review option is available",
+      "priority": "Medium",
+      "feature": "Reviews Tab Content",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify a 'Write a review' button or link is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "'Write a review' button or link is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_027",
+      "title": "Reviews tab content is non-empty",
+      "priority": "Low",
+      "feature": "Reviews Tab Content",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify the content area has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Content area has non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_028",
+      "title": "Raise a Query tab displays content",
+      "priority": "Highest",
+      "feature": "Raise a Query Tab Content",
+      "steps": [
+        "Click Raise a Query tab.",
+        "Verify content panel is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Raise a Query tab content is visible when active."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_029",
+      "title": "Ask the assistive partner section is visible",
+      "priority": "Medium",
+      "feature": "Raise a Query Tab Content",
+      "steps": [
+        "Click Raise a Query tab.",
+        "Verify 'Ask the assistive partner' section or query form is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Raise a Query tab is active.",
+      "expectedResults": [
+        "'Ask the assistive partner' section or query form is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_030",
+      "title": "Raise a Query content is non-empty",
+      "priority": "Lowest",
+      "feature": "Raise a Query Tab Content",
+      "steps": [
+        "Click Raise a Query tab.",
+        "Verify the content area has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Raise a Query tab is active.",
+      "expectedResults": [
+        "Content area has non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_031",
+      "title": "Tabs render correctly on mobile viewport",
+      "priority": "High",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to product details page.",
+        "Verify tabs are visible and clickable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Tabs are visible and clickable on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_032",
+      "title": "Tabs render correctly on tablet viewport",
+      "priority": "Medium",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Set viewport to tablet (768x1024).",
+        "Navigate to product details page.",
+        "Verify tabs are visible and clickable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Tabs are visible and clickable on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM81_033",
+      "title": "Tab content persists after page refresh",
+      "priority": "Lowest",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Navigate to product details page.",
+        "Click a non-default tab.",
+        "Refresh the page.",
+        "Verify the product page still loads with tabs visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicked a non-default tab.",
+      "expectedResults": [
+        "Product page still loads with tabs visible after refresh."
+      ]
+    }
+  ]
+}

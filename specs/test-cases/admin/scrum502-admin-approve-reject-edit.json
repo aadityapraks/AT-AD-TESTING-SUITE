@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-502",
+  "title": "Admin - Approve or Reject Edit Request (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-502: Admin - Approve or Reject Edit Request.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM502_001", "title": "Approve Edit Button Visible in Detail Dialog", "priority": "Highest", "preconditions": "Admin opens View Details on a Pending Edit product.", "steps": ["Observe dialog footer."], "expectedResults": ["'Approve Edit' button visible."], "testResult": "PASS", "feature": "Edit Actions" },
+    { "id": "TC_SCRUM502_002", "title": "Reject Edit Button Visible in Detail Dialog", "priority": "Highest", "preconditions": "Detail dialog open for pending edit product.", "steps": ["Observe dialog footer."], "expectedResults": ["'Reject Edit' button visible."], "testResult": "PASS", "feature": "Edit Actions" },
+    { "id": "TC_SCRUM502_003", "title": "Compare Changes Button Visible in Detail Dialog", "priority": "High", "preconditions": "Detail dialog open for pending edit product.", "steps": ["Observe dialog footer."], "expectedResults": ["'Compare Changes' button visible."], "testResult": "PASS", "feature": "Edit Actions" },
+    { "id": "TC_SCRUM502_004", "title": "Approve Edit Button is Clickable", "priority": "Highest", "preconditions": "Detail dialog open for pending edit product.", "steps": ["Verify button is enabled."], "expectedResults": ["Button is enabled."], "testResult": "PASS", "feature": "Approve Edit" },
+    { "id": "TC_SCRUM502_005", "title": "Product Removed from Pending Edits After Approve Edit", "priority": "Highest", "preconditions": "Admin clicks Approve Edit.", "steps": ["Click 'Approve Edit'.", "Observe Pending Edits."], "expectedResults": ["Product removed from list."], "testResult": "PASS", "feature": "Approve Edit" },
+    { "id": "TC_SCRUM502_006", "title": "Clicking Reject Edit Opens Rejection Modal", "priority": "Highest", "preconditions": "Detail dialog open for pending edit product.", "steps": ["Click 'Reject Edit'."], "expectedResults": ["Dialog 'Reject Product Edit' opens."], "testResult": "PASS", "feature": "Reject Edit Modal" },
+    { "id": "TC_SCRUM502_007", "title": "Reject Edit Modal Shows Product Name", "priority": "High", "preconditions": "Reject edit modal is open.", "steps": ["Observe subtitle."], "expectedResults": ["Subtitle contains product name."], "testResult": "PASS", "feature": "Reject Edit Modal" },
+    { "id": "TC_SCRUM502_008", "title": "Rejection Reason Textbox is Visible", "priority": "Highest", "preconditions": "Reject edit modal is open.", "steps": ["Observe reason field."], "expectedResults": ["Textbox 'Rejection Reason *' visible."], "testResult": "PASS", "feature": "Reject Edit Modal" },
+    { "id": "TC_SCRUM502_009", "title": "Rejection Reason is Marked as Required", "priority": "Highest", "preconditions": "Reject edit modal is open.", "steps": ["Observe label."], "expectedResults": ["Label contains asterisk (*)."], "testResult": "PASS", "feature": "Reject Edit Modal" },
+    { "id": "TC_SCRUM502_010", "title": "Confirm Rejection Disabled When Reason Empty", "priority": "Highest", "preconditions": "Reject edit modal open with empty reason.", "steps": ["Observe button state."], "expectedResults": ["Button is disabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM502_011", "title": "Confirm Rejection Enables After Entering Reason", "priority": "Highest", "preconditions": "Reject edit modal is open.", "steps": ["Type reason.", "Observe button."], "expectedResults": ["Button becomes enabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM502_012", "title": "Confirm Rejection Disables When Reason Cleared", "priority": "High", "preconditions": "Reject edit modal with reason entered.", "steps": ["Clear reason.", "Observe button."], "expectedResults": ["Button becomes disabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM502_013", "title": "Modal Shows Vendor Notification Info", "priority": "High", "preconditions": "Reject edit modal is open.", "steps": ["Observe info text."], "expectedResults": ["Text mentions vendor will be notified."], "testResult": "PASS", "feature": "Vendor Info" },
+    { "id": "TC_SCRUM502_014", "title": "Modal Shows Resubmission Info", "priority": "High", "preconditions": "Reject edit modal is open.", "steps": ["Observe info text."], "expectedResults": ["Text mentions vendor can resubmit."], "testResult": "PASS", "feature": "Vendor Info" },
+    { "id": "TC_SCRUM502_015", "title": "Cancel Button is Visible", "priority": "High", "preconditions": "Reject edit modal is open.", "steps": ["Observe footer."], "expectedResults": ["'Cancel' button visible."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM502_016", "title": "Cancel Closes Modal Without Rejecting", "priority": "High", "preconditions": "Reject edit modal is open.", "steps": ["Click Cancel."], "expectedResults": ["Modal closes."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM502_017", "title": "Close Button Closes Modal", "priority": "Medium", "preconditions": "Reject edit modal is open.", "steps": ["Click × button."], "expectedResults": ["Modal closes."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM502_018", "title": "Reason Accepts Special Characters", "priority": "Medium", "preconditions": "Reject edit modal is open.", "steps": ["Enter special characters."], "expectedResults": ["Accepted."], "testResult": "PASS", "feature": "Validation" },
+    { "id": "TC_SCRUM502_019", "title": "Reason Accepts Long Text", "priority": "Medium", "preconditions": "Reject edit modal is open.", "steps": ["Enter 200+ characters."], "expectedResults": ["Accepted."], "testResult": "PASS", "feature": "Validation" },
+    { "id": "TC_SCRUM502_020", "title": "Product Detail Dialog Shows Approved Status", "priority": "Medium", "preconditions": "Detail dialog open for pending edit product.", "steps": ["Observe status badge."], "expectedResults": ["Status shows 'Approved'."], "testResult": "PASS", "feature": "Edge Cases" }
+  ]
+}

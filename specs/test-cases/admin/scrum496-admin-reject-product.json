@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-496",
+  "title": "Admin - Reject New Product Submission (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-496: Admin - Reject New Product Submission.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM496_001", "title": "Reject Product Button is Visible", "priority": "Highest", "preconditions": "Admin has opened product detail dialog from New Submissions.", "steps": ["Observe dialog footer buttons."], "expectedResults": ["'Reject Product' button is visible."], "testResult": "PASS", "feature": "Reject Button" },
+    { "id": "TC_SCRUM496_002", "title": "Clicking Reject Opens Rejection Modal", "priority": "Highest", "preconditions": "Product detail dialog is open.", "steps": ["Click 'Reject Product'."], "expectedResults": ["Dialog with heading 'Reject Product' opens."], "testResult": "PASS", "feature": "Reject Button" },
+    { "id": "TC_SCRUM496_003", "title": "Rejection Modal Shows Product Name", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Observe modal subtitle."], "expectedResults": ["Subtitle contains product name."], "testResult": "PASS", "feature": "Reject Button" },
+    { "id": "TC_SCRUM496_004", "title": "Rejection Reason Textbox is Visible", "priority": "Highest", "preconditions": "Rejection modal is open.", "steps": ["Observe reason field."], "expectedResults": ["Textbox labeled 'Rejection Reason *' is visible."], "testResult": "PASS", "feature": "Rejection Reason" },
+    { "id": "TC_SCRUM496_005", "title": "Rejection Reason is Marked as Required", "priority": "Highest", "preconditions": "Rejection modal is open.", "steps": ["Observe label."], "expectedResults": ["Label contains asterisk (*)."], "testResult": "PASS", "feature": "Rejection Reason" },
+    { "id": "TC_SCRUM496_006", "title": "Rejection Reason Accepts Input", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Type text into reason textbox."], "expectedResults": ["Text is accepted and displayed."], "testResult": "PASS", "feature": "Rejection Reason" },
+    { "id": "TC_SCRUM496_007", "title": "Rejection Reason is Initially Empty", "priority": "Medium", "preconditions": "Rejection modal is open.", "steps": ["Observe textbox value."], "expectedResults": ["Textbox is empty."], "testResult": "PASS", "feature": "Rejection Reason" },
+    { "id": "TC_SCRUM496_008", "title": "Modal Shows Vendor Notification Info", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Observe info text."], "expectedResults": ["Text mentions vendor will be notified."], "testResult": "PASS", "feature": "Vendor Info" },
+    { "id": "TC_SCRUM496_009", "title": "Modal Shows Resubmission Info", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Observe info text."], "expectedResults": ["Text mentions vendor can resubmit."], "testResult": "PASS", "feature": "Vendor Info" },
+    { "id": "TC_SCRUM496_010", "title": "Confirm Rejection Disabled When Reason Empty", "priority": "Highest", "preconditions": "Rejection modal open with empty reason.", "steps": ["Observe button state."], "expectedResults": ["Button is disabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM496_011", "title": "Confirm Rejection Enables After Entering Reason", "priority": "Highest", "preconditions": "Rejection modal is open.", "steps": ["Type a reason.", "Observe button state."], "expectedResults": ["Button becomes enabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM496_012", "title": "Confirm Rejection Disables When Reason Cleared", "priority": "High", "preconditions": "Rejection modal with reason entered.", "steps": ["Clear reason.", "Observe button state."], "expectedResults": ["Button becomes disabled."], "testResult": "PASS", "feature": "Button State" },
+    { "id": "TC_SCRUM496_013", "title": "Confirm Rejection is Clickable With Reason", "priority": "Highest", "preconditions": "Rejection modal with reason entered.", "steps": ["Enter reason.", "Observe button."], "expectedResults": ["Button is enabled."], "testResult": "PASS", "feature": "Confirm Rejection" },
+    { "id": "TC_SCRUM496_014", "title": "Product Removed After Rejection", "priority": "High", "preconditions": "Admin confirms rejection.", "steps": ["Enter reason.", "Click Confirm Rejection."], "expectedResults": ["Product removed from New Submissions."], "testResult": "PASS", "feature": "Confirm Rejection" },
+    { "id": "TC_SCRUM496_015", "title": "Cancel Button is Visible", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Observe modal footer."], "expectedResults": ["'Cancel' button is visible."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM496_016", "title": "Cancel Closes Modal Without Rejecting", "priority": "High", "preconditions": "Rejection modal is open.", "steps": ["Click Cancel."], "expectedResults": ["Modal closes."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM496_017", "title": "Close Button Closes Modal Without Rejecting", "priority": "Medium", "preconditions": "Rejection modal is open.", "steps": ["Click close button."], "expectedResults": ["Modal closes."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM496_018", "title": "Reason Accepts Special Characters", "priority": "Medium", "preconditions": "Rejection modal is open.", "steps": ["Enter text with special characters."], "expectedResults": ["Special characters accepted."], "testResult": "PASS", "feature": "Validation" },
+    { "id": "TC_SCRUM496_019", "title": "Reason Accepts Long Text", "priority": "Medium", "preconditions": "Rejection modal is open.", "steps": ["Enter 200+ characters."], "expectedResults": ["Long text accepted."], "testResult": "PASS", "feature": "Validation" },
+    { "id": "TC_SCRUM496_020", "title": "Reopening Modal After Cancel Shows Empty Reason", "priority": "Medium", "preconditions": "Admin cancelled previous rejection.", "steps": ["Open modal.", "Enter reason.", "Cancel.", "Reopen."], "expectedResults": ["Reason field is empty on reopen."], "testResult": "PASS", "feature": "Edge Cases" }
+  ]
+}

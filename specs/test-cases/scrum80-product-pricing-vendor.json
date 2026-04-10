@@ -1,0 +1,538 @@
+{
+  "jiraStory": "SCRUM-80",
+  "title": "PwD - View Product Pricing and Vendor Information - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-80: PwD - View Product Pricing and Vendor Information. Validates product price display, placeholder text when price is unavailable, Contact Vendor button opening a popup with vendor name, logo, phone, email, address, and website. Also validates dialog behavior, keyboard operability, focus management, and responsive layout.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "pageLoadThresholdMs": 5000,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM80_001",
+      "title": "Product price is visible on the product details page",
+      "priority": "Highest",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Verify the price element is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Product Price Display",
+      "preconditions": "User is logged in and on a product details page.",
+      "expectedResults": [
+        "Price element is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_002",
+      "title": "Price is displayed below the product name",
+      "priority": "High",
+      "steps": [
+        "Navigate to a product details page.",
+        "Compare vertical position of product name and price elements."
+      ],
+      "testResult": "PASS",
+      "feature": "Product Price Display",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Price is positioned below the product name."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_003",
+      "title": "Price includes proper currency symbol (₹)",
+      "priority": "High",
+      "steps": [
+        "Navigate to a product details page.",
+        "Read the price text content."
+      ],
+      "testResult": "PASS",
+      "feature": "Product Price Display",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Price includes ₹ currency symbol."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_004",
+      "title": "Placeholder text shown when price is unavailable",
+      "priority": "Highest",
+      "steps": [
+        "Navigate to a product that has no price set.",
+        "Verify placeholder text is displayed."
+      ],
+      "testResult": "PASS",
+      "feature": "Price Unavailable State",
+      "preconditions": "User is on a product with no price set.",
+      "expectedResults": [
+        "Placeholder text is displayed instead of price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_005",
+      "title": "Contact Vendor button is visible on product details page",
+      "priority": "Highest",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify 'Contact Vendor' button is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Contact Vendor Button",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "'Contact Vendor' button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_006",
+      "title": "Clicking Contact Vendor opens the vendor popup",
+      "priority": "Highest",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click 'Contact Vendor' button.",
+        "Verify popup opens."
+      ],
+      "testResult": "PASS",
+      "feature": "Contact Vendor Button",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Clicking 'Contact Vendor' opens the vendor popup."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_007",
+      "title": "Contact Vendor button is keyboard-focusable and activatable via Enter",
+      "priority": "Medium",
+      "steps": [
+        "Tab to the Contact Vendor button.",
+        "Press Enter.",
+        "Verify popup opens."
+      ],
+      "testResult": "PASS",
+      "feature": "Contact Vendor Button",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Contact Vendor button is focusable via Tab and activatable via Enter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_008",
+      "title": "Opening popup does not cause page navigation or reload",
+      "priority": "Medium",
+      "steps": [
+        "Note the current URL.",
+        "Click Contact Vendor.",
+        "Compare URL after popup opens."
+      ],
+      "testResult": "PASS",
+      "feature": "Contact Vendor Button",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "URL does not change when popup opens."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_009",
+      "title": "Vendor popup displays vendor name",
+      "priority": "Highest",
+      "steps": [
+        "Open vendor popup.",
+        "Verify vendor name is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Vendor name is visible in the popup."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_010",
+      "title": "Vendor popup displays vendor logo when available",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Check for vendor logo image."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Vendor logo image is present when available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_011",
+      "title": "Vendor popup displays phone number(s)",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify phone number text is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Phone number text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_012",
+      "title": "Phone number is rendered as tel: link",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Verify phone is an <a href='tel:'> link."
+      ],
+      "testResult": "FAIL",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Phone is rendered as a tel: link."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_013",
+      "title": "Vendor popup displays email address",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify email text is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Email address text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_014",
+      "title": "Email is rendered as mailto: link",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Verify email is an <a href='mailto:'> link."
+      ],
+      "testResult": "FAIL",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Email is rendered as a mailto: link."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_015",
+      "title": "Vendor popup displays vendor address",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify address text is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Vendor address text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_016",
+      "title": "Vendor popup displays vendor website link",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify website link is present with valid href."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Content",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Website link is present with valid href."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_017",
+      "title": "Vendor popup has a visible title",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Verify popup title/heading is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Dialog Behavior",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Popup title/heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_018",
+      "title": "Popup renders as a dialog element",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Inspect the popup container for role attribute."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Dialog Behavior",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Popup container has dialog role."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_019",
+      "title": "Popup behaves as a modal overlay",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Verify it has aria-modal='true' or is a native <dialog>."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Dialog Behavior",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Popup has aria-modal='true' or is a native dialog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_020",
+      "title": "Dialog content uses paragraphs and links",
+      "priority": "Low",
+      "steps": [
+        "Open vendor popup.",
+        "Verify <p> and <a> elements exist inside dialog."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Dialog Behavior",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Dialog content contains paragraphs and links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_021",
+      "title": "Dialog has a close mechanism",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify close link/button is present."
+      ],
+      "testResult": "PASS",
+      "feature": "Vendor Popup Dialog Behavior",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Close link/button is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_022",
+      "title": "Focus moves inside dialog on open",
+      "priority": "Highest",
+      "steps": [
+        "Click Contact Vendor to open popup.",
+        "Check which element has focus."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "User clicks Contact Vendor.",
+      "expectedResults": [
+        "Focus moves inside the dialog on open."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_023",
+      "title": "Tab key cycles within dialog without escaping",
+      "priority": "Highest",
+      "steps": [
+        "Open vendor popup.",
+        "Press Tab 5 times.",
+        "Verify dialog is still open."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Tab key cycles within dialog without escaping."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_024",
+      "title": "Pressing Esc closes the dialog",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Press Escape key.",
+        "Verify dialog closes."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Pressing Esc closes the dialog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_025",
+      "title": "Focus returns to Contact Vendor button after dialog closes",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Close via Esc.",
+        "Check which element has focus."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "Vendor popup was open and closed.",
+      "expectedResults": [
+        "Focus returns to Contact Vendor button."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_026",
+      "title": "All links inside dialog are reachable via Tab",
+      "priority": "Medium",
+      "steps": [
+        "Open vendor popup.",
+        "Tab through all links.",
+        "Verify dialog stays open."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "All links inside dialog are reachable via Tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_027",
+      "title": "Focus indicators are visible on interactive elements",
+      "priority": "Low",
+      "steps": [
+        "Open vendor popup.",
+        "Tab to an element.",
+        "Verify outline or box-shadow is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Popup Keyboard & Focus",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Focus indicators are visible on interactive elements."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_028",
+      "title": "Background page is non-interactive while popup is open",
+      "priority": "High",
+      "steps": [
+        "Open vendor popup.",
+        "Verify dialog role is present."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Background page is non-interactive."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_029",
+      "title": "Dialog fits within mobile viewport without clipping",
+      "priority": "High",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Open vendor popup.",
+        "Verify dialog fits within viewport."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Dialog fits within mobile viewport without clipping."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_030",
+      "title": "Close control has non-zero dimensions",
+      "priority": "Low",
+      "steps": [
+        "Open vendor popup.",
+        "Measure close control bounding box."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Vendor popup is open.",
+      "expectedResults": [
+        "Close control has non-zero dimensions."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_031",
+      "title": "Close control remains visible at small viewport",
+      "priority": "Low",
+      "steps": [
+        "Set viewport to 375x400.",
+        "Open vendor popup.",
+        "Verify close control is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Browser viewport set to 375x400.",
+      "expectedResults": [
+        "Close control remains visible at small viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_032",
+      "title": "Dialog scrolls internally when content exceeds viewport",
+      "priority": "Lowest",
+      "steps": [
+        "Set viewport to 375x400.",
+        "Open vendor popup.",
+        "Verify vendor name is still readable."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Browser viewport set to 375x400.",
+      "expectedResults": [
+        "Dialog scrolls internally when content exceeds viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM80_033",
+      "title": "Vendor popup can be reopened after closing",
+      "priority": "Lowest",
+      "steps": [
+        "Open vendor popup.",
+        "Close via Esc.",
+        "Reopen vendor popup.",
+        "Verify content is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive & Layout",
+      "preconditions": "Vendor popup was closed.",
+      "expectedResults": [
+        "Vendor popup can be reopened and content is visible."
+      ]
+    }
+  ]
+}

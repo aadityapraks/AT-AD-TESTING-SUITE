@@ -1,0 +1,333 @@
+{
+  "jiraStory": "SCRUM-414",
+  "title": "Caregiver - Prompt PwD Selection During Wishlist Action (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-414: System prompts caregiver to select a PwD when adding a product to the wishlist. Validates Add to Wishlist triggers PwD selection (AC1), single PwD selection (AC2), Confirm Add disabled until PwD selected (AC3), success toast on confirmation (AC4). Edge cases: cancel selection, switch PwD mid-flow, incomplete PwD profile.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM414_001",
+      "title": "Caregiver can navigate to product detail page",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Click first View details link.",
+        "Verify URL contains /product/ or page has product content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in and on the catalog page.",
+      "expectedResults": [
+        "Caregiver navigates to a product detail page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_002",
+      "title": "Product detail page has product heading",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Verify H1 heading is visible with non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Product detail page displays a product heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_003",
+      "title": "Add to Wishlist button exists on product detail page",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Scroll to bottom.",
+        "Verify Add to Wishlist / Wishlist / heart button exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Wishlist button is present on the product detail page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_004",
+      "title": "Clicking Add to Wishlist without PwD shows PwD selection prompt",
+      "priority": "Highest",
+      "feature": "Add to Wishlist Triggers PwD Selection",
+      "steps": [
+        "Click Add to Wishlist button.",
+        "Verify modal, dropdown, or PwD selection prompt appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page, no PwD selected.",
+      "expectedResults": [
+        "PwD selection prompt appears after clicking Add to Wishlist."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_005",
+      "title": "PwD selection prompt is a modal or dropdown",
+      "priority": "Highest",
+      "feature": "Add to Wishlist Triggers PwD Selection",
+      "steps": [
+        "Click Add to Wishlist.",
+        "Verify prompt is a modal dialog, dropdown, or inline selection."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked Add to Wishlist.",
+      "expectedResults": [
+        "PwD selection is presented as a modal or dropdown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_006",
+      "title": "PwD selection lists available PwDs",
+      "priority": "Highest",
+      "feature": "Add to Wishlist Triggers PwD Selection",
+      "steps": [
+        "Click Add to Wishlist.",
+        "Verify at least one PwD option is listed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt is visible.",
+      "expectedResults": [
+        "PwD selection lists caregiver's linked PwDs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_007",
+      "title": "Caregiver can select only one PwD",
+      "priority": "Highest",
+      "feature": "Single PwD Selection",
+      "steps": [
+        "Select PwD #1.",
+        "Attempt to select PwD #2.",
+        "Verify only one PwD is selected."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt visible with multiple PwDs.",
+      "expectedResults": [
+        "Only one PwD can be selected at a time."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_008",
+      "title": "Confirm Add button disabled until PwD selected",
+      "priority": "Highest",
+      "feature": "Confirm Add Button State",
+      "steps": [
+        "Click Add to Wishlist.",
+        "Verify Confirm Add button is disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt visible, no PwD selected.",
+      "expectedResults": [
+        "Confirm button is disabled until PwD is selected."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_009",
+      "title": "Confirm Add button enabled after PwD selection",
+      "priority": "Highest",
+      "feature": "Confirm Add Button State",
+      "steps": [
+        "Select a PwD.",
+        "Verify Confirm Add button becomes enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt is visible.",
+      "expectedResults": [
+        "Confirm button enabled after PwD selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_010",
+      "title": "Clicking Confirm adds product to wishlist",
+      "priority": "Highest",
+      "feature": "Confirmation — Product Added",
+      "steps": [
+        "Select PwD and click Confirm Add.",
+        "Verify page responds (modal closes, button changes, or confirmation shown)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selected, Confirm Add enabled.",
+      "expectedResults": [
+        "Product is added to the wishlist."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_011",
+      "title": "Success toast shows 'Added to <PwD Name>'s wishlist'",
+      "priority": "Highest",
+      "feature": "Confirmation — Product Added",
+      "steps": [
+        "After confirming, verify success toast/message appears.",
+        "Verify it contains 'added to' and 'wishlist' text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver confirmed wishlist addition.",
+      "expectedResults": [
+        "Success toast displays 'Added to <PwD Name>'s wishlist'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_012",
+      "title": "Cancelling PwD selection creates no wishlist entry",
+      "priority": "High",
+      "feature": "Edge Case — Cancel Selection",
+      "steps": [
+        "Click Add to Wishlist.",
+        "Cancel or close PwD selection without selecting.",
+        "Verify no success toast appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt is visible.",
+      "expectedResults": [
+        "No wishlist entry created on cancel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_013",
+      "title": "Wishlist button state unchanged after cancel",
+      "priority": "High",
+      "feature": "Edge Case — Cancel Selection",
+      "steps": [
+        "After cancelling, verify Add to Wishlist button is in original state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver cancelled PwD selection.",
+      "expectedResults": [
+        "Wishlist button state unchanged after cancel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_014",
+      "title": "Switching PwD mid-flow respects final selection",
+      "priority": "High",
+      "feature": "Edge Case — Switch PwD Mid-Flow",
+      "steps": [
+        "Select PwD #1.",
+        "Switch to PwD #2.",
+        "Click Confirm Add.",
+        "Verify success toast references PwD #2."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD selection prompt visible with multiple PwDs.",
+      "expectedResults": [
+        "Final PwD selection is respected."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_015",
+      "title": "Incomplete PwD profile is still selectable",
+      "priority": "Medium",
+      "feature": "Edge Case — Incomplete PwD",
+      "steps": [
+        "Click Add to Wishlist.",
+        "Verify all PwDs listed including incomplete profiles.",
+        "Select a PwD.",
+        "Verify Confirm Add is enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has a PwD with incomplete profile.",
+      "expectedResults": [
+        "PwD with incomplete profile is still selectable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_016",
+      "title": "Page refresh retains wishlist state",
+      "priority": "Medium",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Add product to wishlist.",
+        "Reload page.",
+        "Verify wishlist button state reflects addition."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver added a product to wishlist.",
+      "expectedResults": [
+        "Page refresh retains wishlist state."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_017",
+      "title": "Mobile viewport renders wishlist flow correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to product detail.",
+        "Set mobile viewport.",
+        "Verify wishlist button and PwD content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Wishlist flow renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_018",
+      "title": "Multiple products have consistent wishlist behavior",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Click first View details, verify wishlist button.",
+        "Go back.",
+        "Click second View details, verify same behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Wishlist behavior consistent across products."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_019",
+      "title": "Wishlist button state changes after adding",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "After adding to wishlist, verify button state changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver added product to wishlist.",
+      "expectedResults": [
+        "Wishlist button reflects product has been added."
+      ]
+    },
+    {
+      "id": "TC_SCRUM414_020",
+      "title": "Back navigation from product detail retains catalog state",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate back to catalog.",
+        "Verify catalog page loads correctly."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": [
+        "Back navigation retains catalog state."
+      ]
+    }
+  ]
+}

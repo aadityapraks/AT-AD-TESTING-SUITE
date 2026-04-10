@@ -1,0 +1,185 @@
+{
+  "jiraStory": "SCRUM-411",
+  "title": "Caregiver - Enforce PwD Selection When PwDs Exist but None Selected (16 Test Cases)",
+  "overview": "Functional testing of SCRUM-411: System enforces PwD selection before caregiver can express interest in a product. Validates Express Interest blocked without PwD (AC1), enabled after PwD selection, caregiver details shown in interest form not PwD details (AC2). Edge cases: deselecting PwD re-blocks interest, page refresh, multiple PwD switching, mobile viewport.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM411_001",
+      "title": "Caregiver can navigate to product detail page from catalog",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": ["Login as caregiver.", "Navigate to catalog.", "Click first View details link.", "Verify URL contains /product/ or page has product content."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in and on the catalog page.",
+      "expectedResults": ["Caregiver navigates to a product detail page."]
+    },
+    {
+      "id": "TC_SCRUM411_002",
+      "title": "Product detail page has product heading",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": ["Navigate to product detail page.", "Verify H1 heading is visible with non-empty text."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Product detail page displays a product heading."]
+    },
+    {
+      "id": "TC_SCRUM411_003",
+      "title": "Express Interest / Contact Vendor button exists on product detail page",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": ["Scroll to bottom of product detail page.", "Verify Express Interest / Contact Vendor element exists."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Express Interest / Contact Vendor element is present."]
+    },
+    {
+      "id": "TC_SCRUM411_004",
+      "title": "PwD selection dropdown available on product detail page",
+      "priority": "Highest",
+      "feature": "PwD Dropdown",
+      "steps": ["Scroll to express interest / contact vendor area.", "Verify PwD selection element is present."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page with PwDs linked.",
+      "expectedResults": ["PwD selection mechanism is available."]
+    },
+    {
+      "id": "TC_SCRUM411_005",
+      "title": "Express Interest blocked when no PwD is selected",
+      "priority": "Highest",
+      "feature": "Express Interest Blocked Without PwD",
+      "steps": ["Do NOT select a PwD.", "Attempt to click Express Interest / Contact Vendor.", "Verify action is blocked."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page, no PwD selected.",
+      "expectedResults": ["Express Interest is blocked when no PwD is selected."]
+    },
+    {
+      "id": "TC_SCRUM411_006",
+      "title": "No success/confirmation after blocked attempt",
+      "priority": "Highest",
+      "feature": "Express Interest Blocked Without PwD",
+      "steps": ["Attempt Express Interest without PwD.", "Verify no success/confirmation message.", "Verify URL still contains /product/."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver attempted Express Interest without PwD.",
+      "expectedResults": ["No success message; caregiver remains on product page."]
+    },
+    {
+      "id": "TC_SCRUM411_007",
+      "title": "Validation message displayed when expressing interest without PwD",
+      "priority": "Highest",
+      "feature": "Express Interest Blocked Without PwD",
+      "steps": ["Attempt Express Interest without PwD.", "Verify body contains 'PwD', 'select', 'required', or 'mandatory'."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver attempted Express Interest without PwD.",
+      "expectedResults": ["Validation message indicates PwD selection is required."]
+    },
+    {
+      "id": "TC_SCRUM411_008",
+      "title": "Express Interest button enabled after PwD selection",
+      "priority": "Highest",
+      "feature": "Express Interest Enabled After PwD",
+      "steps": ["Select a PwD from dropdown.", "Verify Express Interest / Contact Vendor button is enabled."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page with PwDs available.",
+      "expectedResults": ["Express Interest button enabled after PwD selection."]
+    },
+    {
+      "id": "TC_SCRUM411_009",
+      "title": "Deselecting PwD after selection re-blocks Express Interest",
+      "priority": "High",
+      "feature": "Edge Case — Deselecting PwD",
+      "steps": ["Select a PwD — verify Express Interest enabled.", "Deselect PwD (clear or select None).", "Verify Express Interest is blocked again."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD on product detail page.",
+      "expectedResults": ["Deselecting PwD re-blocks Express Interest."]
+    },
+    {
+      "id": "TC_SCRUM411_010",
+      "title": "No success after deselection and blocked attempt",
+      "priority": "High",
+      "feature": "Edge Case — Deselecting PwD",
+      "steps": ["Deselect PwD.", "Attempt Express Interest.", "Verify no success message and page remains on /product/."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver deselected PwD after initial selection.",
+      "expectedResults": ["Express Interest remains blocked after PwD deselection."]
+    },
+    {
+      "id": "TC_SCRUM411_011",
+      "title": "Page refresh retains Express Interest blocked state",
+      "priority": "Medium",
+      "feature": "Edge Case — Page Refresh",
+      "steps": ["Verify Express Interest is blocked.", "Reload page.", "Verify Express Interest still blocked."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page, no PwD selected.",
+      "expectedResults": ["Page refresh does not bypass PwD enforcement."]
+    },
+    {
+      "id": "TC_SCRUM411_012",
+      "title": "Page refresh after PwD selection handles state gracefully",
+      "priority": "Medium",
+      "feature": "Edge Case — Page Refresh",
+      "steps": ["Select a PwD.", "Reload page.", "Verify page is in a consistent state."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD on product detail page.",
+      "expectedResults": ["Page refresh handles PwD selection state gracefully."]
+    },
+    {
+      "id": "TC_SCRUM411_013",
+      "title": "Switching PwD keeps Express Interest enabled",
+      "priority": "Medium",
+      "feature": "Edge Case — Multiple PwD Switching",
+      "steps": ["Select PwD #1 — verify Express Interest enabled.", "Switch to PwD #2.", "Verify Express Interest remains enabled."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has multiple PwDs linked.",
+      "expectedResults": ["Switching PwD keeps Express Interest enabled."]
+    },
+    {
+      "id": "TC_SCRUM411_014",
+      "title": "Mobile viewport renders PwD enforcement correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": ["Navigate to product detail.", "Set mobile viewport.", "Verify PwD selection and Express Interest elements visible."],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": ["PwD enforcement renders correctly on mobile."]
+    },
+    {
+      "id": "TC_SCRUM411_015",
+      "title": "Multiple products have consistent PwD enforcement",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": ["Click first View details, verify enforcement.", "Go back.", "Click second View details, verify same enforcement."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": ["PwD enforcement consistent across products."]
+    },
+    {
+      "id": "TC_SCRUM411_016",
+      "title": "Back navigation retains PwD selection state",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": ["Select PwD on product detail.", "Navigate to catalog.", "Navigate back.", "Verify page is in a consistent state."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD on product detail page.",
+      "expectedResults": ["Back navigation handles PwD selection state gracefully."]
+    }
+  ]
+}

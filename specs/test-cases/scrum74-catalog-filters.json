@@ -1,0 +1,636 @@
+{
+  "jiraStory": "SCRUM-74",
+  "title": "PwD - View Catalog Landing Page with Filters - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-74: PwD - View Catalog Landing Page with Filters. Validates that a PwD user can view the catalog landing page, apply filters by disability type, pricing, and category, and receive dynamically updated results. Covers filter panel display, dropdown options, filter interactions, pagination, and edge cases. Accessibility testing is out of scope.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogPath": "/catalog",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "filters": {
+      "disabilityTypes": [
+        "All",
+        "Amputation",
+        "Autism Spectrum",
+        "Cerebral Palsy",
+        "Chronic Illness",
+        "Cognitive",
+        "Developmental",
+        "Generic",
+        "Hearing",
+        "Intellectual",
+        "Learning Disabilities",
+        "Locomotor",
+        "Mental Health",
+        "Mobility",
+        "Multiple Disabilities",
+        "Muscular Dystrophy",
+        "Neurological",
+        "New Category",
+        "New Parent Disability",
+        "New type",
+        "Rare Conditions",
+        "Sensory Processing",
+        "Speech",
+        "Spinal Cord Injury",
+        "Visual"
+      ],
+      "subCategories": [
+        "All",
+        "Disability Sub Category",
+        "Type Sub Category"
+      ],
+      "types": [
+        "All",
+        "Device",
+        "Technology",
+        "Both"
+      ],
+      "priceRanges": [
+        "All Prices",
+        "Under â‚¹20,000",
+        "â‚¹20,000 â€“ â‚¹50,000",
+        "â‚¹50,000 â€“ â‚¹1,00,000",
+        "â‚¹1,00,000+",
+        "Custom Price"
+      ]
+    },
+    "searchTerms": {
+      "known": "wheelchair",
+      "nonExistent": "xyznonexistentdevice99999",
+      "empty": ""
+    },
+    "mobileViewport": {
+      "width": 375,
+      "height": 667
+    },
+    "desktopViewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM74_001",
+      "title": "Filter Panel Renders with All Expected Sections",
+      "priority": "Highest",
+      "feature": "Filter Panel â€” Display & Defaults",
+      "steps": [
+        "Navigate to the catalog landing page.",
+        "Observe the filter panel on the page.",
+        "Verify the following filter controls are visible: Search bar, Disability Type dropdown, Sub Category dropdown, Type dropdown, Price Range dropdown, Availability checkbox, Min Rating slider.",
+        "Verify the 'Apply Filter' and 'Reset All' CTAs are present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page at desktop viewport.",
+      "expectedResults": [
+        "Search bar, Disability Type, Sub Category, Type, Price Range dropdowns are visible.",
+        "Availability checkbox and Min Rating slider are visible.",
+        "'Apply Filter' and 'Reset All' buttons are present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_002",
+      "title": "Default State: 'All' Selected Across All Filters",
+      "priority": "High",
+      "feature": "Filter Panel â€” Display & Defaults",
+      "steps": [
+        "Navigate to the catalog landing page.",
+        "Inspect the Disability Type dropdown.",
+        "Inspect the Sub Category dropdown.",
+        "Inspect the Type dropdown.",
+        "Inspect the Price Range dropdown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with no filters applied.",
+      "expectedResults": [
+        "Disability Type defaults to 'All'.",
+        "Sub Category defaults to 'All'.",
+        "Type defaults to 'All'.",
+        "Price Range defaults to 'All Prices'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_003",
+      "title": "Disability Type Dropdown Contains Correct Options",
+      "priority": "Highest",
+      "feature": "Filter Dropdowns â€” Options Validation",
+      "steps": [
+        "Click/open the Disability Type dropdown.",
+        "Verify the available options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The Disability Type dropdown contains all expected options including All, Amputation, Visual, etc."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_004",
+      "title": "Sub Category Dropdown Contains Correct Options",
+      "priority": "Medium",
+      "feature": "Filter Dropdowns â€” Options Validation",
+      "steps": [
+        "Click/open the Sub Category dropdown.",
+        "Verify the available options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The Sub Category dropdown contains All, Disability Sub Category, and Type Sub Category."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_005",
+      "title": "Type Dropdown Contains Correct Options",
+      "priority": "High",
+      "feature": "Filter Dropdowns â€” Options Validation",
+      "steps": [
+        "Click/open the Type dropdown.",
+        "Verify the available options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The Type dropdown contains All, Device, Technology, and Both."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_006",
+      "title": "Price Range Filter Contains Correct Options",
+      "priority": "High",
+      "feature": "Filter Dropdowns â€” Options Validation",
+      "steps": [
+        "Click/open the Price Range dropdown.",
+        "Verify the available options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The Price Range dropdown contains all expected price range options."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_007",
+      "title": "Availability Checkbox Filters Results",
+      "priority": "Medium",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Navigate to the catalog landing page.",
+        "Check the Availability checkbox.",
+        "Click 'Apply Filters'.",
+        "Observe the catalog results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with filters visible.",
+      "expectedResults": [
+        "Only available devices are shown in the results after applying the filter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_008",
+      "title": "Min Rating Slider Filters Results",
+      "priority": "Medium",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Set the Min Rating slider to 3.",
+        "Click 'Apply Filters'.",
+        "Set the slider to 5.",
+        "Click 'Apply Filters'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with filters visible.",
+      "expectedResults": [
+        "Setting Min Rating to 3 filters results to devices rated 3+.",
+        "Setting Min Rating to 5 filters results to devices rated 5."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_009",
+      "title": "Device Count Updates Automatically on Filter Change",
+      "priority": "Highest",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Note the initial device count.",
+        "Select 'Visual' from Disability Type and apply.",
+        "Note the new count.",
+        "Select 'Amputation' from Disability Type and apply.",
+        "Note the new count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count updates after each filter change.",
+        "Counts differ based on filter selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_010",
+      "title": "Multiple Filters Applied Simultaneously",
+      "priority": "Highest",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Select 'Visual' from Disability Type.",
+        "Select 'Device' from Type.",
+        "Click 'Apply Filters'.",
+        "Observe the catalog results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results show only devices matching both 'Visual' disability type and 'Device' type."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_011",
+      "title": "Results Refresh Without Page Reload",
+      "priority": "Highest",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Select 'Device' from Type.",
+        "Click 'Apply Filters'.",
+        "Observe the page behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results refresh dynamically without a full page reload."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_012",
+      "title": "Selected Filters Visually Highlighted with Checkmarks",
+      "priority": "Medium",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Select 'Visual' from Disability Type.",
+        "Observe the dropdown value."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The dropdown displays 'Visual' as the selected value with a visual indicator."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_013",
+      "title": "Apply Filter CTA Applies All Selected Filters",
+      "priority": "Highest",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Select 'Speech' from Disability Type.",
+        "Select 'Device' from Type.",
+        "Click 'Apply Filter'.",
+        "Observe the catalog results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results update to show only devices matching 'Speech' and 'Device' filters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_014",
+      "title": "Reset All CTA Clears All Active Filters",
+      "priority": "Highest",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Apply filters: Disability Type = 'Visual', Type = 'Device'.",
+        "Click 'Reset All'.",
+        "Observe the filter panel."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has applied filters on the catalog page.",
+      "expectedResults": [
+        "All dropdowns reset to 'All' default values.",
+        "Full unfiltered catalog results are displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_015",
+      "title": "Global Search Bar Filters Devices/Vendors/Resources",
+      "priority": "High",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Type 'wheelchair' in the search bar.",
+        "Press Enter.",
+        "Observe the results.",
+        "Clear the search bar and press Enter.",
+        "Observe the results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Search results show devices matching 'wheelchair'.",
+        "Clearing the search restores full results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_016",
+      "title": "No Results State When Filters Yield No Matches",
+      "priority": "High",
+      "feature": "Filter Interactions",
+      "steps": [
+        "Select 'Speech' from Disability Type.",
+        "Set Min Rating slider to max.",
+        "Click 'Apply Filter'.",
+        "Observe the catalog area."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "A 'no results' message or empty state is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_017",
+      "title": "Pagination Appears When Products Exceed Per-Page Limit",
+      "priority": "High",
+      "feature": "Pagination",
+      "steps": [
+        "Navigate to the catalog landing page with no filters.",
+        "Observe the pagination component below the product list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with no filters applied.",
+      "expectedResults": [
+        "Pagination component is visible below the product list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_018",
+      "title": "Pagination Navigation Works Correctly",
+      "priority": "High",
+      "feature": "Pagination",
+      "steps": [
+        "Click 'Next'.",
+        "Observe pagination is still visible.",
+        "Click 'Previous'.",
+        "Observe pagination is still visible.",
+        "Click page 3.",
+        "Observe pagination is still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with pagination visible.",
+      "expectedResults": [
+        "Clicking 'Next' navigates to the next page.",
+        "Clicking 'Previous' navigates back.",
+        "Clicking page 3 navigates to page 3."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_019",
+      "title": "Filter Panel Collapses on Mobile Screens",
+      "priority": "High",
+      "feature": "Pagination",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to the catalog page.",
+        "Observe the filter panel state.",
+        "Verify a 'Collapse filters' toggle button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page at mobile viewport (375x667).",
+      "expectedResults": [
+        "The filter panel is collapsed or collapsible.",
+        "A 'Collapse filters' toggle button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_020",
+      "title": "Device Count Text is Visible After Filter Change",
+      "priority": "High",
+      "feature": "Pagination",
+      "steps": [
+        "Verify device count text is visible on page load.",
+        "Select 'Device' from Type and apply.",
+        "Verify device count text is still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count text is visible on page load and after applying a filter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_021",
+      "title": "Pagination Responsive on Mobile Viewport",
+      "priority": "Medium",
+      "feature": "Pagination",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to the catalog page.",
+        "Verify pagination and Next button are visible.",
+        "Verify Next button has reasonable height."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page at mobile viewport (375x667).",
+      "expectedResults": [
+        "Pagination and Next button are visible with reasonable touch target size."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_022",
+      "title": "Pagination Error Handling on Load Failure",
+      "priority": "Medium",
+      "feature": "Pagination",
+      "steps": [
+        "Block pagination API requests.",
+        "Click 'Next'.",
+        "Unblock requests and navigate to catalog.",
+        "Verify page recovers."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page with pagination visible.",
+      "expectedResults": [
+        "Page recovers gracefully after API failure."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_023",
+      "title": "Sort Dropdown Contains Correct Options and Defaults to Latest",
+      "priority": "Low",
+      "feature": "Additional Coverage",
+      "steps": [
+        "Locate the 'Sort by' dropdown.",
+        "Verify it is visible.",
+        "Verify it contains more than one option."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "The 'Sort by' dropdown is visible and contains multiple sorting options."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_024",
+      "title": "Product Cards Display Required Information",
+      "priority": "High",
+      "feature": "Additional Coverage",
+      "steps": [
+        "Observe the product cards in the catalog grid.",
+        "Verify at least one product card has a heading.",
+        "Verify at least one 'View details' link is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with products displayed.",
+      "expectedResults": [
+        "At least one product card has a heading.",
+        "At least one 'View details' link is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_025",
+      "title": "Search With Non-Existent Term Shows Zero or No Results",
+      "priority": "Low",
+      "feature": "Additional Coverage",
+      "steps": [
+        "Type 'xyznonexistentdevice99999' in the search bar.",
+        "Press Enter and click 'Apply Filters'.",
+        "Observe the catalog results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Zero results or a 'no results' message is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_026",
+      "title": "Filters Persist After Pagination Navigation",
+      "priority": "High",
+      "feature": "Additional Coverage",
+      "steps": [
+        "Select 'Device' from Type and apply.",
+        "Click 'Next' to navigate to page 2.",
+        "Verify Type dropdown still shows 'Device'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has applied Type = 'Device' filter.",
+      "expectedResults": [
+        "After navigating to page 2, the Type dropdown still shows 'Device'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_027",
+      "title": "Rapid Filter Switching Returns Correct Results",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Rapidly switch Disability Type from 'Visual' to 'Speech' to 'Amputation'.",
+        "Click 'Apply Filters'.",
+        "Verify the final selected value is 'Amputation'.",
+        "Verify device count is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Final selected value is 'Amputation'.",
+        "Device count reflects the Amputation filter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_028",
+      "title": "Filter Dropdowns are Keyboard Navigable",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Focus the Disability Type dropdown.",
+        "Use ArrowDown keys to navigate options.",
+        "Press Enter to select.",
+        "Verify the selected value changed from 'All'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with keyboard access.",
+      "expectedResults": [
+        "Dropdown is navigable via ArrowDown keys.",
+        "Pressing Enter selects the option."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_029",
+      "title": "Filters Persist After Browser Back/Forward",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Select 'Device' from Type and apply.",
+        "Navigate to page 2 via pagination.",
+        "Click browser Back button.",
+        "Verify Type dropdown still shows 'Device'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has applied Type = 'Device' filter and navigated to page 2.",
+      "expectedResults": [
+        "After clicking Back, the Type dropdown still shows 'Device'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_030",
+      "title": "Device Count Text Format Validation",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Observe the device count text on page load.",
+        "Verify it matches the expected format."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count text matches expected format."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_031",
+      "title": "Reset All Restores Device Count to Initial",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Note the initial device count.",
+        "Apply a filter (Type = 'Device').",
+        "Click 'Reset All'.",
+        "Verify device count matches the initial count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count after reset matches the initial unfiltered count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_032",
+      "title": "No Horizontal Overflow on Mobile with Filters Applied",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to catalog and apply a filter.",
+        "Check the page body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page at mobile viewport (375x667).",
+      "expectedResults": [
+        "No horizontal scrollbar appears.",
+        "document.body.scrollWidth does not exceed viewport width."
+      ]
+    },
+    {
+      "id": "TC_SCRUM74_033",
+      "title": "Price Range Filter Reduces Device Count",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Note the initial device count.",
+        "Select a specific price range (e.g., 'Under â‚¹20,000').",
+        "Click 'Apply Filters'.",
+        "Compare the filtered count to the initial count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Filtered device count is less than or equal to the initial count."
+      ]
+    }
+  ]
+}

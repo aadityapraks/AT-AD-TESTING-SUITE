@@ -1,0 +1,547 @@
+{
+  "jiraStory": "SCRUM-106",
+  "title": "PwD - Landing on Portal Homepage and Dashboard - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-106: PwD - Landing on Portal Homepage and Dashboard. Validates home page access, branding, navigation tabs, hero carousel slides and buttons, summary widgets (counters), featured devices section, success stories section, header/footer, dashboard elements after login, and responsive behavior.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "storiesUrl": "https://qa-atad.swarajability.org/stories/",
+    "helpUrl": "https://qa-atad.swarajability.org/help-center/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "navTabs": [
+      "Home",
+      "Catalog",
+      "Stories",
+      "Help & Resources"
+    ],
+    "carouselSlides": {
+      "pwd": {
+        "heading": "Discover Assistive Technology",
+        "buttons": [
+          "Explore Catalog",
+          "Success Stories"
+        ]
+      },
+      "donors": {
+        "heading": "Support Those in Need",
+        "buttons": [
+          "Donate Now",
+          "Impact Stories"
+        ]
+      },
+      "vendors": {
+        "heading": "Become a Verified Vendor",
+        "buttons": [
+          "Register Now",
+          "View Vendors"
+        ]
+      }
+    },
+    "counterLabels": [
+      "Across all categories",
+      "Trusted partners",
+      "Lives transformed",
+      "Active users"
+    ],
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM106_001",
+      "title": "Home page loads successfully",
+      "priority": "Highest",
+      "feature": "Home Page Access & Branding",
+      "steps": [
+        "Navigate to base URL.",
+        "Verify page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User navigates to base URL.",
+      "expectedResults": [
+        "Home page loads successfully."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_002",
+      "title": "Page has AT/AD portal branding (logo visible)",
+      "priority": "Highest",
+      "feature": "Home Page Access & Branding",
+      "steps": [
+        "Verify logo image in header."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "AT/AD portal logo is visible in header."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_003",
+      "title": "Sign In/Register button is visible for unauthenticated users",
+      "priority": "Highest",
+      "feature": "Home Page Access & Branding",
+      "steps": [
+        "Verify Sign In/Register button visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in.",
+      "expectedResults": [
+        "Sign In/Register button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_004",
+      "title": "Sign In/Register button is hidden after login",
+      "priority": "Highest",
+      "feature": "Home Page Access & Branding",
+      "steps": [
+        "Login.",
+        "Verify Sign In/Register not visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Sign In/Register button is hidden."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_005",
+      "title": "Home nav link is present and navigates to home page",
+      "priority": "Highest",
+      "feature": "Navigation Tabs",
+      "steps": [
+        "Verify Home link.",
+        "Click and verify URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Home nav link is present and navigates to home page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_006",
+      "title": "Catalog nav link is present and navigates to catalog page",
+      "priority": "Highest",
+      "feature": "Navigation Tabs",
+      "steps": [
+        "Verify Catalog link.",
+        "Click and verify URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Catalog nav link navigates to catalog page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_007",
+      "title": "Stories nav link is present and navigates to stories page",
+      "priority": "Highest",
+      "feature": "Navigation Tabs",
+      "steps": [
+        "Verify Stories link.",
+        "Click and verify URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Stories nav link navigates to stories page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_008",
+      "title": "Help & Resources nav link is present and navigates to help page",
+      "priority": "Highest",
+      "feature": "Navigation Tabs",
+      "steps": [
+        "Verify Help & Resources link.",
+        "Click and verify URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Help & Resources nav link navigates to help page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_009",
+      "title": "Logout link is visible after login",
+      "priority": "Highest",
+      "feature": "Navigation Tabs",
+      "steps": [
+        "Login.",
+        "Verify Logout link visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Logout link is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_010",
+      "title": "Hero carousel is present with multiple slides",
+      "priority": "Highest",
+      "feature": "Hero Carousel",
+      "steps": [
+        "Verify swiper carousel.",
+        "Verify multiple slides."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Hero carousel is present with multiple slides."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_011",
+      "title": "PwD slide has Explore Catalog and Success Stories buttons",
+      "priority": "High",
+      "feature": "Hero Carousel",
+      "steps": [
+        "Find PwD slide.",
+        "Verify both buttons."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "PwD slide has Explore Catalog and Success Stories buttons."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_012",
+      "title": "Donors slide has Donate Now and Impact Stories buttons",
+      "priority": "High",
+      "feature": "Hero Carousel",
+      "steps": [
+        "Find Donors slide.",
+        "Verify both buttons."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Donors slide has Donate Now and Impact Stories buttons."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_013",
+      "title": "Vendors slide has Register Now and View Vendors buttons",
+      "priority": "High",
+      "feature": "Hero Carousel",
+      "steps": [
+        "Find Vendors slide.",
+        "Verify both buttons."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Vendors slide has Register Now and View Vendors buttons."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_014",
+      "title": "Explore Catalog button navigates to catalog page",
+      "priority": "High",
+      "feature": "Hero Carousel",
+      "steps": [
+        "Click Explore Catalog.",
+        "Verify catalog URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Explore Catalog button navigates to catalog page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_015",
+      "title": "Total Devices counter is displayed",
+      "priority": "High",
+      "feature": "Summary Widgets",
+      "steps": [
+        "Verify counter with 'Across all categories' label."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Total Devices counter with 'Across all categories' label is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_016",
+      "title": "Verified Vendors counter is displayed",
+      "priority": "Medium",
+      "feature": "Summary Widgets",
+      "steps": [
+        "Verify counter with 'Trusted partners' label."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Verified Vendors counter with 'Trusted partners' label is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_017",
+      "title": "Success Stories counter is displayed",
+      "priority": "Medium",
+      "feature": "Summary Widgets",
+      "steps": [
+        "Verify counter with 'Lives transformed' label."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Success Stories counter with 'Lives transformed' label is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_018",
+      "title": "Community Members counter is displayed",
+      "priority": "Medium",
+      "feature": "Summary Widgets",
+      "steps": [
+        "Verify counter with 'Active users' label."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Community Members counter with 'Active users' label is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_019",
+      "title": "Featured Devices heading is visible",
+      "priority": "Highest",
+      "feature": "Featured Devices Section",
+      "steps": [
+        "Verify 'Featured Devices' heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "'Featured Devices' heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_020",
+      "title": "Featured device cards are displayed",
+      "priority": "Highest",
+      "feature": "Featured Devices Section",
+      "steps": [
+        "Verify product cards present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Featured device product cards are displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_021",
+      "title": "View All button navigates to catalog page",
+      "priority": "High",
+      "feature": "Featured Devices Section",
+      "steps": [
+        "Click View All.",
+        "Verify catalog URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "View All button navigates to catalog page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_022",
+      "title": "View Details button is present on product card",
+      "priority": "High",
+      "feature": "Featured Devices Section",
+      "steps": [
+        "Verify View Details link on card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "View Details button is present on product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_023",
+      "title": "Success Stories heading is visible on home page",
+      "priority": "Highest",
+      "feature": "Success Stories Section",
+      "steps": [
+        "Verify 'Success Stories' heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "'Success Stories' heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_024",
+      "title": "Story cards are displayed in the section",
+      "priority": "High",
+      "feature": "Success Stories Section",
+      "steps": [
+        "Verify story cards present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Story cards are displayed in the section."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_025",
+      "title": "Read More button navigates to stories page",
+      "priority": "High",
+      "feature": "Success Stories Section",
+      "steps": [
+        "Click Read More.",
+        "Verify stories URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Read More button navigates to stories page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_026",
+      "title": "Header is present with logo",
+      "priority": "Medium",
+      "feature": "Header, Footer & Dashboard",
+      "steps": [
+        "Verify header and logo."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Header is present with logo."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_027",
+      "title": "Footer is present with links",
+      "priority": "Medium",
+      "feature": "Header, Footer & Dashboard",
+      "steps": [
+        "Verify footer and links."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "Footer is present with links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_028",
+      "title": "Get Recommendations button visible after login",
+      "priority": "High",
+      "feature": "Header, Footer & Dashboard",
+      "steps": [
+        "Login.",
+        "Verify Get Recommendations button."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Get Recommendations button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_029",
+      "title": "Browse All Devices button visible after login",
+      "priority": "High",
+      "feature": "Header, Footer & Dashboard",
+      "steps": [
+        "Login.",
+        "Verify Browse All Devices button."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Browse All Devices button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_030",
+      "title": "About PwD Portal section is visible",
+      "priority": "Low",
+      "feature": "Header, Footer & Dashboard",
+      "steps": [
+        "Verify 'About PwD Portal' heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the home page.",
+      "expectedResults": [
+        "'About PwD Portal' section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_031",
+      "title": "Home page renders on mobile viewport",
+      "priority": "High",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Home page content is visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_032",
+      "title": "Home page renders on tablet viewport",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set tablet viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Home page content is visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM106_033",
+      "title": "No horizontal overflow on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Check scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,529 @@
+{
+  "jiraStory": "SCRUM-82",
+  "title": "PwD - Product Image Gallery Interaction - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-82: PwD - Product Image Gallery Interaction. Validates main image display, thumbnail interaction, carousel navigation, gallery capacity, demo video playback in popup, aspect ratio consistency, and responsive gallery behavior on the wheelchair-16-03 product.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "productPathPattern": "/product/",
+    "testProductUrl": "https://qa-atad.swarajability.org/product/wheelchair-16-03/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "imageLoadThresholdMs": 5000,
+    "aspectRatioTolerance": 0.15,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM82_001",
+      "title": "Main product image is visible at top of gallery",
+      "priority": "Highest",
+      "feature": "Main Image Display",
+      "steps": [
+        "Log in and navigate to wheelchair product.",
+        "Verify main image is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the wheelchair product page.",
+      "expectedResults": [
+        "Main product image is visible at top of gallery."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_002",
+      "title": "Main image has valid src attribute",
+      "priority": "High",
+      "feature": "Main Image Display",
+      "steps": [
+        "Navigate to product.",
+        "Verify main image src is a valid URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Main image src is a valid URL."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_003",
+      "title": "Main image has alt text",
+      "priority": "Medium",
+      "feature": "Main Image Display",
+      "steps": [
+        "Navigate to product.",
+        "Verify main image has alt attribute."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Main image has an alt attribute."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_004",
+      "title": "Main image is rendered at prominent size",
+      "priority": "Low",
+      "feature": "Main Image Display",
+      "steps": [
+        "Navigate to product.",
+        "Verify image is at least 200x100px."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Image is at least 200x100px."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_005",
+      "title": "Thumbnail images are displayed below main image",
+      "priority": "Highest",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Navigate to product.",
+        "Verify thumbnails are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Thumbnail images are visible below main image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_006",
+      "title": "At least one thumbnail is present",
+      "priority": "High",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Navigate to product.",
+        "Count thumbnails."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "At least one thumbnail is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_007",
+      "title": "First thumbnail is active by default",
+      "priority": "High",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Navigate to product.",
+        "Verify first thumb has active state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "First thumbnail has active state."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_008",
+      "title": "Clicking second thumbnail updates active state",
+      "priority": "Highest",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Click second thumbnail.",
+        "Verify it becomes active."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Second thumbnail becomes active after clicking."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_009",
+      "title": "Clicking thumbnail updates main image src",
+      "priority": "Highest",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Note main image src.",
+        "Click different thumbnail.",
+        "Verify src changed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Main image src changes after clicking a different thumbnail."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_010",
+      "title": "Clicking each thumbnail sequentially works",
+      "priority": "High",
+      "feature": "Thumbnail Display & Interaction",
+      "steps": [
+        "Click each thumbnail in order.",
+        "Verify each becomes active."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Each thumbnail becomes active when clicked sequentially."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_011",
+      "title": "Next button is visible when multiple images exist",
+      "priority": "High",
+      "feature": "Carousel Navigation",
+      "steps": [
+        "Verify Next button or multiple thumbnails present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Next button or multiple thumbnails are present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_012",
+      "title": "Clicking Next advances to next slide",
+      "priority": "Highest",
+      "feature": "Carousel Navigation",
+      "steps": [
+        "Click Next or second thumbnail.",
+        "Verify slide advances."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Slide advances after clicking Next or second thumbnail."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_013",
+      "title": "Previous button navigates back",
+      "priority": "Highest",
+      "feature": "Carousel Navigation",
+      "steps": [
+        "Advance slide.",
+        "Go back.",
+        "Verify previous slide shown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User advanced the gallery slide.",
+      "expectedResults": [
+        "Previous slide is shown after going back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_014",
+      "title": "Gallery counter updates on navigation",
+      "priority": "High",
+      "feature": "Carousel Navigation",
+      "steps": [
+        "Navigate slides.",
+        "Verify counter text changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Gallery counter text changes on navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_015",
+      "title": "Carousel wraps or stops at boundaries",
+      "priority": "Medium",
+      "feature": "Carousel Navigation",
+      "steps": [
+        "Navigate to last slide.",
+        "Click Next.",
+        "Verify wraps or stays."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the last slide.",
+      "expectedResults": [
+        "Carousel wraps to first or stays at last."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_016",
+      "title": "Gallery has multiple slides",
+      "priority": "High",
+      "feature": "Gallery Capacity & Slide Count",
+      "steps": [
+        "Navigate to product.",
+        "Verify slide count > 1."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Gallery has more than 1 slide."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_017",
+      "title": "Gallery supports up to 10 images",
+      "priority": "Low",
+      "feature": "Gallery Capacity & Slide Count",
+      "steps": [
+        "Navigate to product.",
+        "Verify slide count <= 10."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Gallery has 10 or fewer slides."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_018",
+      "title": "Slide count matches thumbnail count",
+      "priority": "High",
+      "feature": "Gallery Capacity & Slide Count",
+      "steps": [
+        "Count slides and thumbnails.",
+        "Verify they match."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Slide count matches thumbnail count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_019",
+      "title": "Each slide contains an image or video element",
+      "priority": "Medium",
+      "feature": "Gallery Capacity & Slide Count",
+      "steps": [
+        "Iterate all slides.",
+        "Verify each has img or video."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Each slide contains an image or video element."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_020",
+      "title": "Gallery counter shows current position out of total",
+      "priority": "Medium",
+      "feature": "Gallery Capacity & Slide Count",
+      "steps": [
+        "Verify counter matches N/M format."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Counter shows N/M format."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_021",
+      "title": "Gallery badge indicates video presence",
+      "priority": "High",
+      "feature": "Demo Video",
+      "steps": [
+        "Verify gallery has video badge or video element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Gallery has video badge or video element."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_022",
+      "title": "Video badge text contains Video keyword",
+      "priority": "Low",
+      "feature": "Demo Video",
+      "steps": [
+        "Read badge text.",
+        "Verify it contains 'video'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Badge text contains 'video' keyword."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_023",
+      "title": "Clicking video badge opens video player",
+      "priority": "Highest",
+      "feature": "Demo Video",
+      "steps": [
+        "Click Play/Preview.",
+        "Verify video player opens."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Video player opens after clicking play/preview."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_024",
+      "title": "Video plays without page reload",
+      "priority": "High",
+      "feature": "Demo Video",
+      "steps": [
+        "Note URL.",
+        "Click Play.",
+        "Verify URL unchanged."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "URL unchanged after clicking play."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_025",
+      "title": "Video player element is present after clicking play",
+      "priority": "Medium",
+      "feature": "Demo Video",
+      "steps": [
+        "Click Play.",
+        "Verify video/iframe element visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicked play.",
+      "expectedResults": [
+        "Video/iframe element is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_026",
+      "title": "Gallery slides use aspect ratio CSS class",
+      "priority": "Low",
+      "feature": "Image Aspect Ratio & Quality",
+      "steps": [
+        "Check first slide class.",
+        "Verify contains 'aspect'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "First slide class contains 'aspect'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_027",
+      "title": "All slides share same aspect ratio class",
+      "priority": "Medium",
+      "feature": "Image Aspect Ratio & Quality",
+      "steps": [
+        "Get aspect class from first slide.",
+        "Verify all slides have same class."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "All slides share the same aspect ratio class."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_028",
+      "title": "Main image loads within acceptable time",
+      "priority": "Medium",
+      "feature": "Image Aspect Ratio & Quality",
+      "steps": [
+        "Measure time for main image to attach.",
+        "Verify under threshold."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Main image loads within acceptable time."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_029",
+      "title": "All slide images have valid src",
+      "priority": "High",
+      "feature": "Image Aspect Ratio & Quality",
+      "steps": [
+        "Iterate all slides.",
+        "Verify each image has valid URL src."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "All slide images have valid URL src."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_030",
+      "title": "Gallery renders on mobile viewport",
+      "priority": "High",
+      "feature": "Responsive Gallery",
+      "steps": [
+        "Set viewport to 375x667.",
+        "Verify gallery visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Gallery is visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_031",
+      "title": "Gallery renders on tablet viewport",
+      "priority": "Medium",
+      "feature": "Responsive Gallery",
+      "steps": [
+        "Set viewport to 768x1024.",
+        "Verify gallery visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Gallery is visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_032",
+      "title": "No horizontal overflow on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive Gallery",
+      "steps": [
+        "Set viewport to mobile.",
+        "Check body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM82_033",
+      "title": "Thumbnails remain visible on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive Gallery",
+      "steps": [
+        "Set viewport to mobile.",
+        "Verify thumbnails still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Thumbnails remain visible on mobile."
+      ]
+    }
+  ]
+}

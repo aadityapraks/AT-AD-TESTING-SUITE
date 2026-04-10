@@ -1,0 +1,329 @@
+{
+  "jiraStory": "SCRUM-86",
+  "title": "PwD - Handle Missing, Unsafe, or Disabled Links (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-86: System handles missing, unsafe, or disabled purchase links gracefully. Validates missing links hidden, unsafe/expired placeholder message, Contact Vendor fallback, no blank/dead links. Accessibility: role=alert, non-color cues, 4.5:1 contrast.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "targetProduct": "wheelchair 28th jan",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM86_001",
+      "title": "Product detail page loads for target product",
+      "priority": "Highest",
+      "feature": "Product Access",
+      "steps": [
+        "Login.",
+        "Search target product.",
+        "Click View details.",
+        "Verify H1 visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD logged in.",
+      "expectedResults": [
+        "Product detail page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_002",
+      "title": "Contact Vendor popup opens",
+      "priority": "Highest",
+      "feature": "Product Access",
+      "steps": [
+        "Open Contact Vendor popup.",
+        "Verify dialog visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Popup opens."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_003",
+      "title": "Missing links are hidden — no empty href buttons visible",
+      "priority": "Highest",
+      "feature": "Missing Links Hidden",
+      "steps": [
+        "Open popup.",
+        "Verify no a[href=''] or a:not([href]) visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "No empty/missing links visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_004",
+      "title": "No blank or dead links on the interface",
+      "priority": "Highest",
+      "feature": "Missing Links Hidden",
+      "steps": [
+        "Open popup.",
+        "Verify all visible links have valid href starting with http."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "No blank/dead links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_005",
+      "title": "No broken link text (e.g., 'undefined', 'null')",
+      "priority": "Highest",
+      "feature": "Missing Links Hidden",
+      "steps": [
+        "Open popup.",
+        "Verify no link text contains 'undefined' or 'null'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "No broken link text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_006",
+      "title": "Unsafe/expired link shows placeholder message",
+      "priority": "Highest",
+      "feature": "Unsafe Link Placeholder",
+      "steps": [
+        "Open popup.",
+        "If unsafe link exists, verify placeholder message visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Product has unsafe/expired link.",
+      "expectedResults": [
+        "Placeholder message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_007",
+      "title": "Placeholder message text is user-friendly",
+      "priority": "High",
+      "feature": "Unsafe Link Placeholder",
+      "steps": [
+        "If placeholder visible, verify text is clear and non-technical."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Placeholder message visible.",
+      "expectedResults": [
+        "Message is user-friendly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_008",
+      "title": "Contact Vendor option remains available as fallback",
+      "priority": "Highest",
+      "feature": "Fallback",
+      "steps": [
+        "Open popup.",
+        "Verify vendor contact info (name, phone, email) still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Vendor contact info available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_009",
+      "title": "Vendor name visible in popup as fallback",
+      "priority": "Highest",
+      "feature": "Fallback",
+      "steps": [
+        "Open popup.",
+        "Verify vendor name visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Vendor name visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_010",
+      "title": "Vendor phone visible in popup as fallback",
+      "priority": "High",
+      "feature": "Fallback",
+      "steps": [
+        "Open popup.",
+        "Verify phone number visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Phone visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_011",
+      "title": "Vendor email visible in popup as fallback",
+      "priority": "High",
+      "feature": "Fallback",
+      "steps": [
+        "Open popup.",
+        "Verify email visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Email visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_012",
+      "title": "Placeholder messages use role=alert for assistive tech",
+      "priority": "High",
+      "feature": "Accessibility — Placeholder",
+      "steps": [
+        "If placeholder visible, verify it has role='alert' or aria-live."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Placeholder message visible.",
+      "expectedResults": [
+        "role=alert present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_013",
+      "title": "Error states use non-color cues (icons or text)",
+      "priority": "High",
+      "feature": "Accessibility — Non-Color Cues",
+      "steps": [
+        "If error/placeholder visible, verify it uses icon or text, not color alone."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Error state visible.",
+      "expectedResults": [
+        "Non-color cues used."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_014",
+      "title": "Placeholder messages meet 4.5:1 contrast ratio",
+      "priority": "Medium",
+      "feature": "Accessibility — Contrast",
+      "steps": [
+        "If placeholder visible, verify text color vs background meets 4.5:1."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Placeholder visible.",
+      "expectedResults": [
+        "Contrast ratio met."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_015",
+      "title": "Popup can be closed and reopened after viewing links",
+      "priority": "Medium",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Open popup.",
+        "Close via Esc.",
+        "Reopen.",
+        "Verify content intact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Popup reopens with content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_016",
+      "title": "Pressing Esc closes popup",
+      "priority": "Medium",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Open popup.",
+        "Press Esc.",
+        "Verify closed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Esc closes popup."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_017",
+      "title": "URL unchanged after popup interaction",
+      "priority": "Low",
+      "feature": "Navigation",
+      "steps": [
+        "Note URL.",
+        "Open/close popup.",
+        "Verify URL same."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "URL unchanged."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_018",
+      "title": "Mobile viewport — popup renders correctly",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Open popup.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Mobile viewport.",
+      "expectedResults": [
+        "Popup renders on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_019",
+      "title": "Page refresh retains product detail",
+      "priority": "Lowest",
+      "feature": "Navigation",
+      "steps": [
+        "Reload page.",
+        "Verify product detail intact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Product detail retained."
+      ]
+    },
+    {
+      "id": "TC_SCRUM86_020",
+      "title": "Back navigation works",
+      "priority": "Lowest",
+      "feature": "Navigation",
+      "steps": [
+        "Go back.",
+        "Verify catalog loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    }
+  ]
+}

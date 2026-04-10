@@ -1,0 +1,504 @@
+{
+  "jiraStory": "SCRUM-109",
+  "title": "PwD - Accessing Stories Section - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-109: PwD - Accessing Stories Section. Validates stories listing page navigation, story card elements, pagination, like/share interactions, story details page content, before/after badges, device featured box, back navigation, and responsive behavior.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "storiesUrl": "https://qa-atad.swarajability.org/stories/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "expectedHeading": "Success Stories",
+    "expectedSubtitle": "Real experiences from the community.",
+    "minStoryCount": 6,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM109_001",
+      "title": "Stories link is visible in top navigation",
+      "priority": "Highest",
+      "feature": "Stories Page Navigation",
+      "steps": [
+        "Verify Stories link in top nav."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the homepage.",
+      "expectedResults": [
+        "Stories link is visible in top navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_002",
+      "title": "Clicking Stories nav link opens stories page",
+      "priority": "Highest",
+      "feature": "Stories Page Navigation",
+      "steps": [
+        "Click Stories link.",
+        "Verify stories page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the homepage.",
+      "expectedResults": [
+        "Clicking Stories link opens the stories page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_003",
+      "title": "Page displays Success Stories heading",
+      "priority": "Highest",
+      "feature": "Stories Page Navigation",
+      "steps": [
+        "Verify heading text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "'Success Stories' heading is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_004",
+      "title": "Page displays subtitle Real experiences from the community.",
+      "priority": "Medium",
+      "feature": "Stories Page Navigation",
+      "steps": [
+        "Verify subtitle text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Subtitle 'Real experiences from the community.' is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_005",
+      "title": "Story card has cover image",
+      "priority": "Highest",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify first card has img."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "First story card has a cover image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_006",
+      "title": "Story card has category tag",
+      "priority": "Medium",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify category tag visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Category tag is visible on story card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_007",
+      "title": "Story card has story title",
+      "priority": "Highest",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify title text on card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Story title text is visible on card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_008",
+      "title": "Story card has author name and avatar",
+      "priority": "High",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify author name and avatar initial."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Author name and avatar initial are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_009",
+      "title": "Story card has published date",
+      "priority": "Medium",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify date on card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Published date is visible on card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_010",
+      "title": "Story card has summary text",
+      "priority": "High",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify summary text present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Summary text is present on card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_011",
+      "title": "Story card has Read Story CTA",
+      "priority": "Highest",
+      "feature": "Story Cards Display",
+      "steps": [
+        "Verify Read Story button."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "'Read Story' button is visible on card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_012",
+      "title": "At least 6 stories load by default",
+      "priority": "High",
+      "feature": "Stories Count & Pagination",
+      "steps": [
+        "Count story cards.",
+        "Verify >= 6."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "At least 6 story cards are loaded."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_013",
+      "title": "Pagination or load-more is available if more stories exist",
+      "priority": "Low",
+      "feature": "Stories Count & Pagination",
+      "steps": [
+        "Check for pagination or load-more."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Pagination or load-more is available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_014",
+      "title": "Like icon is visible on story card",
+      "priority": "High",
+      "feature": "Like & Share",
+      "steps": [
+        "Verify like icon on first card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Like icon is visible on first card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_015",
+      "title": "Share icon is visible on story card",
+      "priority": "High",
+      "feature": "Like & Share",
+      "steps": [
+        "Verify share icon on first card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Share icon is visible on first card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_016",
+      "title": "Clicking Like icon toggles state",
+      "priority": "Medium",
+      "feature": "Like & Share",
+      "steps": [
+        "Click like.",
+        "Verify state change."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Like icon state toggles on click."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_017",
+      "title": "Clicking Read Story opens story details page",
+      "priority": "Highest",
+      "feature": "Story Details Navigation",
+      "steps": [
+        "Click Read Story on first card.",
+        "Verify details page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the stories page.",
+      "expectedResults": [
+        "Clicking Read Story opens story details page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_018",
+      "title": "Story details page URL changes from listing",
+      "priority": "High",
+      "feature": "Story Details Navigation",
+      "steps": [
+        "Verify URL is different from listing."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicked Read Story.",
+      "expectedResults": [
+        "URL changes from listing page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_019",
+      "title": "Details page shows cover image",
+      "priority": "Highest",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify cover image on details page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Cover image is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_020",
+      "title": "Details page shows story title",
+      "priority": "Highest",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify title heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Story title heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_021",
+      "title": "Details page shows author name and date",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify author and date visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Author name and date are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_022",
+      "title": "Details page has Like and Share buttons",
+      "priority": "Medium",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify like and share on details."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Like and Share buttons are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_023",
+      "title": "Details page has My Journey section",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify My Journey heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "'My Journey' heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_024",
+      "title": "Details page has Before/After comparison badges",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify Before and After badges."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Before and After comparison badges are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_025",
+      "title": "Details page has The Impact section",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify The Impact heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "'The Impact' heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_026",
+      "title": "Device Featured box shows device name and image",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify device box with name and image."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Device Featured box shows device name and image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_027",
+      "title": "Back to Stories link is present",
+      "priority": "High",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify Back to Stories CTA."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "'Back to Stories' link is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_028",
+      "title": "Read More Success Stories CTA is present",
+      "priority": "Low",
+      "feature": "Story Details Content",
+      "steps": [
+        "Verify Read More CTA."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "'Read More Success Stories' CTA is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_029",
+      "title": "View Device Details navigates to product page",
+      "priority": "High",
+      "feature": "Detail Page Navigation",
+      "steps": [
+        "Click View Device Details.",
+        "Verify product page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Clicking View Device Details navigates to product page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_030",
+      "title": "View All Stories / Back to Stories navigates to stories listing",
+      "priority": "High",
+      "feature": "Detail Page Navigation",
+      "steps": [
+        "Click Back to Stories.",
+        "Verify stories listing."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a story details page.",
+      "expectedResults": [
+        "Clicking Back to Stories navigates to stories listing."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_031",
+      "title": "Stories page renders on mobile viewport",
+      "priority": "Medium",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Stories page content is visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_032",
+      "title": "Stories page renders on tablet viewport",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set tablet viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Stories page content is visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM109_033",
+      "title": "No horizontal overflow on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Check scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "jiraStory": "SCRUM-405",
+  "title": "Caregiver - Prevent Vendor Contact Without PwD Selection (29 Test Cases)",
+  "overview": "Functional testing of SCRUM-405: System prevents caregiver from contacting a vendor unless a PwD profile is selected. Validates Contact Vendor disabled state when no PwD is selected, inline guidance, mandatory PwD selection indicator, and edge cases.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM405_001",
+      "title": "Caregiver can navigate to product detail page from catalog",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": ["Login as caregiver.", "Navigate to catalog.", "Click first View details.", "Verify URL contains /product/."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in and on the catalog page.",
+      "expectedResults": ["Caregiver navigates to a product detail page."]
+    },
+    {
+      "id": "TC_SCRUM405_002",
+      "title": "Product detail page has product heading",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": ["Navigate to product detail.", "Verify H1 heading visible."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Product detail page displays a product heading."]
+    },
+    {
+      "id": "TC_SCRUM405_003",
+      "title": "Product detail page has price",
+      "priority": "High",
+      "feature": "Product Detail Access",
+      "steps": ["Navigate to product detail.", "Verify body contains ₹ price."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Price in ₹ format visible."]
+    },
+    {
+      "id": "TC_SCRUM405_004",
+      "title": "Contact Vendor button/section exists on product detail page",
+      "priority": "Highest",
+      "feature": "Contact Vendor Presence",
+      "steps": ["Navigate to product detail.", "Verify Contact Vendor element present."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Contact Vendor element present."]
+    },
+    {
+      "id": "TC_SCRUM405_005",
+      "title": "Contact Vendor section is accessible on page",
+      "priority": "High",
+      "feature": "Contact Vendor Presence",
+      "steps": ["Navigate to product detail.", "Scroll if needed.", "Verify contact/vendor/inquiry text present."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": ["Contact/vendor/inquiry text accessible."]
+    },
+    {
+      "id": "TC_SCRUM405_006",
+      "title": "'No PwD profiles found' message when no PwD exists",
+      "priority": "Highest",
+      "feature": "No PwD Profile — Disabled State",
+      "steps": ["Navigate to product detail.", "Check for 'No PwD profiles found' message."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwD profiles.",
+      "expectedResults": ["'No PwD profiles found' message visible."]
+    },
+    {
+      "id": "TC_SCRUM405_007",
+      "title": "'Add PwD Profile' CTA visible when no PwD exists",
+      "priority": "Highest",
+      "feature": "No PwD Profile — Disabled State",
+      "steps": ["Navigate to product detail.", "Check for 'Add PwD Profile' element."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwD profiles.",
+      "expectedResults": ["'Add PwD Profile' CTA visible."]
+    },
+    {
+      "id": "TC_SCRUM405_008",
+      "title": "'Add PwD Profile' CTA not primary when PwDs exist",
+      "priority": "Highest",
+      "feature": "No PwD Profile — Disabled State",
+      "steps": ["Navigate to product detail.", "Verify PwD selection is primary interaction."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwD profiles.",
+      "expectedResults": ["PwD selection is primary interaction."]
+    },
+    {
+      "id": "TC_SCRUM405_009",
+      "title": "Contact Vendor button disabled when no PwD profile exists",
+      "priority": "Highest",
+      "feature": "No PwD Profile — Disabled State",
+      "steps": ["Navigate to product detail.", "Locate Contact Vendor.", "Verify disabled."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwD profiles.",
+      "expectedResults": ["Contact Vendor button is disabled."]
+    },
+    {
+      "id": "TC_SCRUM405_010",
+      "title": "Contact Vendor button state reflects PwD availability",
+      "priority": "Highest",
+      "feature": "No PwD Profile — Disabled State",
+      "steps": ["Navigate to product detail.", "Locate Contact Vendor.", "Check state."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["Button state reflects PwD availability."]
+    },
+    {
+      "id": "TC_SCRUM405_011",
+      "title": "Clicking Contact Vendor without PwD does not submit inquiry",
+      "priority": "Highest",
+      "feature": "Contact Without PwD — Blocked",
+      "steps": ["Navigate to product detail.", "Attempt Contact Vendor without PwD.", "Verify no success message."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwD selected.",
+      "expectedResults": ["Contact Vendor does not submit inquiry."]
+    },
+    {
+      "id": "TC_SCRUM405_012",
+      "title": "No navigation away after blocked contact attempt",
+      "priority": "Highest",
+      "feature": "Contact Without PwD — Blocked",
+      "steps": ["Attempt Contact Vendor without PwD.", "Verify URL still contains /product/."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver attempted contact without PwD.",
+      "expectedResults": ["URL still contains /product/."]
+    },
+    {
+      "id": "TC_SCRUM405_013",
+      "title": "Inline guidance displayed when contact attempted without PwD",
+      "priority": "Highest",
+      "feature": "Contact Without PwD — Blocked",
+      "steps": ["Attempt Contact Vendor without PwD.", "Check for validation message about PwD."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver attempted contact without PwD.",
+      "expectedResults": ["Inline guidance about PwD displayed."]
+    },
+    {
+      "id": "TC_SCRUM405_014",
+      "title": "Inline guidance contains PwD/select keywords",
+      "priority": "Highest",
+      "feature": "Contact Without PwD — Blocked",
+      "steps": ["Attempt Contact Vendor without PwD.", "Verify body contains 'PwD' or 'select' or 'required'."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver attempted contact without PwD.",
+      "expectedResults": ["Guidance contains PwD/select/required keywords."]
+    },
+    {
+      "id": "TC_SCRUM405_015",
+      "title": "PwD selection field has mandatory indicator",
+      "priority": "High",
+      "feature": "Mandatory Indicator",
+      "steps": ["Navigate to product detail.", "Look for asterisk or 'required' near PwD field."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["PwD field has mandatory indicator."]
+    },
+    {
+      "id": "TC_SCRUM405_016",
+      "title": "PwD selection dropdown/field present on product detail",
+      "priority": "High",
+      "feature": "Mandatory Indicator",
+      "steps": ["Navigate to product detail.", "Check for PwD selection element."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["PwD selection element present."]
+    },
+    {
+      "id": "TC_SCRUM405_017",
+      "title": "PwD dropdown on product detail lists available PwDs",
+      "priority": "High",
+      "feature": "PwD Selection on Product Detail",
+      "steps": ["Navigate to product detail.", "Locate PwD selection.", "Verify at least one option."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["PwD dropdown lists available PwDs."]
+    },
+    {
+      "id": "TC_SCRUM405_018",
+      "title": "Selecting a PwD updates the selection state",
+      "priority": "High",
+      "feature": "PwD Selection on Product Detail",
+      "steps": ["Select PwD.", "Verify selection state updates."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["Selecting PwD updates selection state."]
+    },
+    {
+      "id": "TC_SCRUM405_019",
+      "title": "Contact Vendor button enabled after PwD selection",
+      "priority": "Highest",
+      "feature": "Contact Vendor Enabled After PwD",
+      "steps": ["Select PwD.", "Verify Contact Vendor enabled."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": ["Contact Vendor button enabled."]
+    },
+    {
+      "id": "TC_SCRUM405_020",
+      "title": "Contact Vendor button is clickable after PwD selection",
+      "priority": "Highest",
+      "feature": "Contact Vendor Enabled After PwD",
+      "steps": ["Select PwD.", "Click Contact Vendor.", "Verify page responds."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": ["Contact Vendor button is clickable."]
+    },
+    {
+      "id": "TC_SCRUM405_021",
+      "title": "Contact Vendor blocked when PwDs exist but none selected",
+      "priority": "High",
+      "feature": "Edge Case — PwDs Exist None Selected",
+      "steps": ["Navigate to product detail.", "Do NOT select PwD.", "Attempt Contact Vendor.", "Verify blocked."],
+      "testResult": "PASS",
+      "preconditions": "PwDs exist but none selected.",
+      "expectedResults": ["Contact Vendor is blocked."]
+    },
+    {
+      "id": "TC_SCRUM405_022",
+      "title": "Validation message when PwDs exist but none selected",
+      "priority": "Medium",
+      "feature": "Edge Case — PwDs Exist None Selected",
+      "steps": ["Attempt Contact Vendor without PwD.", "Check for validation message."],
+      "testResult": "PASS",
+      "preconditions": "PwDs exist but none selected.",
+      "expectedResults": ["Validation message displayed."]
+    },
+    {
+      "id": "TC_SCRUM405_023",
+      "title": "Page refresh retains Contact Vendor disabled state",
+      "priority": "Medium",
+      "feature": "Edge Case — Page Refresh",
+      "steps": ["Navigate to product detail.", "Verify Contact Vendor state.", "Reload.", "Verify state persists."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["Page refresh retains disabled state."]
+    },
+    {
+      "id": "TC_SCRUM405_024",
+      "title": "PwD selection state resets on page refresh",
+      "priority": "Low",
+      "feature": "Edge Case — Page Refresh",
+      "steps": ["Select PwD.", "Reload.", "Verify selection state."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": ["Page refresh resets selection state."]
+    },
+    {
+      "id": "TC_SCRUM405_025",
+      "title": "Contact Vendor section has form fields or contact info",
+      "priority": "Medium",
+      "feature": "Contact Vendor Form",
+      "steps": ["Navigate to product detail.", "Scroll to contact section.", "Verify contact/vendor/inquiry/phone/email text."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["Contact section has form fields or contact info."]
+    },
+    {
+      "id": "TC_SCRUM405_026",
+      "title": "Contact Vendor form requires PwD before showing full form",
+      "priority": "Medium",
+      "feature": "Contact Vendor Form",
+      "steps": ["Check form fields hidden/disabled without PwD.", "Select PwD.", "Check form fields visible/enabled."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwD selected.",
+      "expectedResults": ["Form requires PwD before showing full form."]
+    },
+    {
+      "id": "TC_SCRUM405_027",
+      "title": "Mobile viewport renders Contact Vendor section correctly",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": ["Navigate to product detail.", "Set mobile viewport.", "Verify contact/vendor content present."],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": ["Contact Vendor section renders correctly."]
+    },
+    {
+      "id": "TC_SCRUM405_028",
+      "title": "Back to Catalog link works from product detail page",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": ["Verify Back to Catalog link visible.", "Click it.", "Verify URL contains /catalog."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": ["Back to Catalog link navigates to /catalog."]
+    },
+    {
+      "id": "TC_SCRUM405_029",
+      "title": "Multiple products have consistent Contact Vendor behavior",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": ["Click first View details, verify contact section.", "Go back.", "Click second View details, verify contact section."],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": ["Multiple products have consistent Contact Vendor behavior."]
+    }
+  ]
+}

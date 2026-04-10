@@ -1,0 +1,583 @@
+{
+  "jiraStory": "SCRUM-78",
+  "title": "PwD - Navigate from Catalog to Product Details Page - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-78: PwD - Navigate from Catalog to Product Details Page. Validates that a PwD user can click on a product card or View Details button to open the Product Details Page, URL updates dynamically, page loads within acceptable time, browser Back returns to catalog with filters intact, and product details persist after refresh.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "catalogPath": "/catalog",
+    "productPathPattern": "/product/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "pageLoadThresholdMs": 10000,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    "filterForBackTest": {
+      "type": "Device"
+    },
+    "searchTermForBackTest": "wheelchair"
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM78_001",
+      "title": "View Details Click Navigates to Product Details Page",
+      "priority": "Highest",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in as PwD user.",
+        "Navigate to the catalog page.",
+        "Click 'View Details' on the first product card.",
+        "Verify the page navigates away from the catalog."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in as PwD and on the catalog page.",
+      "expectedResults": [
+        "Page navigates away from the catalog to a product details page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_002",
+      "title": "Product Details Page URL Contains /product/ Path",
+      "priority": "Highest",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Click 'View Details' on a product card.",
+        "Inspect the URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "URL contains '/product/' path."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_003",
+      "title": "Product Details Page Loads Within Acceptable Time",
+      "priority": "High",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Record timestamp before clicking 'View Details'.",
+        "Click 'View Details'.",
+        "Record timestamp after page loads.",
+        "Calculate load time."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "Product details page loads within acceptable time threshold."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_004",
+      "title": "Product Name Heading is Visible on Details Page",
+      "priority": "Highest",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Note the product name from the card.",
+        "Click 'View Details'.",
+        "Verify a heading is visible on the product details page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "A heading with the product name is visible on the details page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_005",
+      "title": "Breadcrumb Navigation is Present on Product Details Page",
+      "priority": "Medium",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Look for breadcrumb navigation."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Breadcrumb navigation is present on the page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_006",
+      "title": "Correct Product is Loaded Based on Card Clicked",
+      "priority": "Highest",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Note the product name on the first card.",
+        "Click 'View Details' on that card.",
+        "Compare the heading on the details page with the card name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "Product heading on details page matches the card name from catalog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_007",
+      "title": "Product Details Page Has Main Content Area",
+      "priority": "High",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Verify the main content area is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Main content area is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_008",
+      "title": "Direct URL Access to Product Details Page Works",
+      "priority": "High",
+      "feature": "Navigation to Product Details",
+      "steps": [
+        "Log in.",
+        "Navigate to catalog and click View Details to get a product URL.",
+        "Navigate directly to that URL.",
+        "Verify the product details page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Product details page loads correctly via direct URL access."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_009",
+      "title": "URL Updates Dynamically with Product Slug",
+      "priority": "High",
+      "feature": "URL & Routing",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Click 'View Details'.",
+        "Inspect the URL for a product slug."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "URL contains a product slug after /product/."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_010",
+      "title": "Product URL is Clean and Canonical",
+      "priority": "Low",
+      "feature": "URL & Routing",
+      "steps": [
+        "Navigate to a product details page.",
+        "Inspect the URL for double slashes or trailing artifacts."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "URL has no double slashes or trailing artifacts."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_011",
+      "title": "Different Products Have Different URLs",
+      "priority": "High",
+      "feature": "URL & Routing",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Click 'View Details' on the first product — note URL.",
+        "Go back to catalog.",
+        "Click 'View Details' on the second product — note URL.",
+        "Compare URLs."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "Two different products have different URLs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_012",
+      "title": "Product URL Contains Readable Slug Not Just ID",
+      "priority": "Low",
+      "feature": "URL & Routing",
+      "steps": [
+        "Navigate to a product details page.",
+        "Inspect the URL path after /product/."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "URL path after /product/ contains a readable slug."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_013",
+      "title": "Invalid Product URL Shows Error or Redirects",
+      "priority": "Medium",
+      "feature": "URL & Routing",
+      "steps": [
+        "Log in.",
+        "Navigate to a non-existent product URL (e.g., /product/nonexistent-xyz-999).",
+        "Observe the page behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in.",
+      "expectedResults": [
+        "Invalid product URL shows error page or redirects gracefully."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_014",
+      "title": "Product URL Works After Copy-Paste in New Tab",
+      "priority": "Medium",
+      "feature": "URL & Routing",
+      "steps": [
+        "Navigate to a product details page.",
+        "Copy the URL.",
+        "Open a new page context and navigate to the copied URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Copied URL loads the same product in a new tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_015",
+      "title": "Browser Back Returns to Catalog Page",
+      "priority": "Highest",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Click 'View Details' on a product.",
+        "Click browser Back button.",
+        "Verify the catalog page is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User navigated from catalog to product details.",
+      "expectedResults": [
+        "Browser Back returns to the catalog page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_016",
+      "title": "Browser Back Preserves Applied Filters",
+      "priority": "Highest",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Apply a filter (Type = 'Device').",
+        "Click 'View Details' on a product.",
+        "Click browser Back.",
+        "Verify the filter is still applied."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User applied filters on catalog before navigating to product.",
+      "expectedResults": [
+        "Filters are still applied after clicking Back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_017",
+      "title": "Browser Back Preserves Search Term",
+      "priority": "High",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Enter a search term.",
+        "Click 'View Details' on a product.",
+        "Click browser Back.",
+        "Verify the search term is still in the search bar."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User entered a search term before navigating to product.",
+      "expectedResults": [
+        "Search term is still in the search bar after clicking Back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_018",
+      "title": "Browser Back Preserves Sort Selection",
+      "priority": "High",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Change sort to 'Name: A to Z'.",
+        "Click 'View Details' on a product.",
+        "Click browser Back.",
+        "Verify the sort selection is preserved."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User changed sort before navigating to product.",
+      "expectedResults": [
+        "Sort selection is preserved after clicking Back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_019",
+      "title": "Browser Back Preserves Pagination Position",
+      "priority": "High",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Navigate to page 2.",
+        "Click 'View Details' on a product.",
+        "Click browser Back.",
+        "Verify the user is on page 2."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User was on page 2 before navigating to product.",
+      "expectedResults": [
+        "User is back on page 2 after clicking Back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_020",
+      "title": "Browser Forward Returns to Product Details After Back",
+      "priority": "Medium",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click browser Back to return to catalog.",
+        "Click browser Forward.",
+        "Verify the product details page is displayed again."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicked Back from product details to catalog.",
+      "expectedResults": [
+        "Browser Forward returns to the product details page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_021",
+      "title": "Back Navigation URL Contains /catalog",
+      "priority": "Medium",
+      "feature": "Back Navigation & State",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click browser Back.",
+        "Inspect the URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "After clicking Back, URL contains /catalog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_022",
+      "title": "Product Details Persist After Page Refresh",
+      "priority": "Highest",
+      "feature": "Page Refresh & Persistence",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Note the product heading.",
+        "Refresh the page.",
+        "Verify the product heading is still the same."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Product heading is the same after page refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_023",
+      "title": "Product URL Persists After Page Refresh",
+      "priority": "High",
+      "feature": "Page Refresh & Persistence",
+      "steps": [
+        "Navigate to a product details page.",
+        "Note the URL.",
+        "Refresh the page.",
+        "Compare the URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "URL remains the same after page refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_024",
+      "title": "Product Price Persists After Page Refresh",
+      "priority": "Medium",
+      "feature": "Page Refresh & Persistence",
+      "steps": [
+        "Navigate to a product details page.",
+        "Note the price.",
+        "Refresh the page.",
+        "Compare the price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Price remains the same after page refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_025",
+      "title": "Page Refresh Does Not Redirect to Login",
+      "priority": "High",
+      "feature": "Page Refresh & Persistence",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Refresh the page.",
+        "Verify the user is still on the product details page (not redirected to login)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on a product details page.",
+      "expectedResults": [
+        "After refresh, user stays on product details page, not redirected to login."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_026",
+      "title": "Main Content is Visible After Refresh",
+      "priority": "Medium",
+      "feature": "Page Refresh & Persistence",
+      "steps": [
+        "Navigate to a product details page.",
+        "Refresh the page.",
+        "Verify main content area is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Main content area is visible after refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_027",
+      "title": "Multiple Product Navigations Work Correctly",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Log in and navigate to catalog.",
+        "Click View Details on product 1 — verify page loads.",
+        "Go back to catalog.",
+        "Click View Details on product 2 — verify page loads.",
+        "Confirm both navigations worked."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the catalog page.",
+      "expectedResults": [
+        "Both product navigations work correctly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_028",
+      "title": "Rapid Back/Forward Does Not Break Navigation",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to a product details page.",
+        "Rapidly click Back then Forward multiple times.",
+        "Verify the page is still functional."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Page remains functional after rapid back/forward clicks."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_029",
+      "title": "Product Details Page Renders on Mobile Viewport",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Log in and navigate to a product details page.",
+        "Verify the product heading is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Product heading is visible on mobile viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_030",
+      "title": "Product Details Page Renders on Tablet Viewport",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to tablet (768x1024).",
+        "Log in and navigate to a product details page.",
+        "Verify the product heading is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Product heading is visible on tablet viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_031",
+      "title": "Page Scroll Resets to Top on Product Navigation",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to catalog and scroll down.",
+        "Click 'View Details'.",
+        "Check the scroll position on the product details page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User scrolled down on catalog page.",
+      "expectedResults": [
+        "Scroll position resets to top on product details page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_032",
+      "title": "No Horizontal Overflow on Product Details Page",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to mobile.",
+        "Navigate to a product details page.",
+        "Check body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Body scroll width does not exceed viewport width."
+      ]
+    },
+    {
+      "id": "TC_SCRUM78_033",
+      "title": "Product Details Page Has Footer",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to a product details page.",
+        "Scroll to the bottom.",
+        "Verify the footer is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Footer is visible at the bottom of the page."
+      ]
+    }
+  ]
+}

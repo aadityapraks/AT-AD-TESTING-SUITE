@@ -1,0 +1,616 @@
+{
+  "jiraStory": "SCRUM-73",
+  "title": "PwD - Navigate to Catalog Tab from Home Page - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-73: PwD - Navigate to Catalog Tab from Home Page. Validates that a PwD user or visitor can navigate from the homepage to the Assistive Device Catalog page via the Catalog tab in the global navigation bar. Covers navigation link visibility, redirection, page load performance, page title/heading, catalog header elements, Shopping Tips section, responsive layout, and edge cases. Accessibility testing is explicitly out of scope.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "catalogPath": "/catalog",
+    "pageTitle": "Assistive Device Catalog – AT/AD Portal",
+    "h1Heading": "Assistive Device Catalog",
+    "catalogLinkAriaLabel": "Open assistive device catalog",
+    "catalogLinkText": "Catalog",
+    "navLinks": [
+      "Home",
+      "My PwDs",
+      "Catalog",
+      "Stories",
+      "Help & Resources"
+    ],
+    "otherPages": [
+      {
+        "name": "Stories",
+        "path": "/stories"
+      },
+      {
+        "name": "Help & Resources",
+        "path": "/help-center"
+      }
+    ],
+    "shoppingTips": {
+      "heading": "Shopping Tips & Guidance",
+      "subsections": [
+        "Before You Buy",
+        "Need Help Choosing?"
+      ]
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    "pageLoadThresholdMs": 5000
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM73_001",
+      "title": "Catalog Tab Visible in Global Navigation Bar",
+      "priority": "Highest",
+      "preconditions": "User is on the homepage at desktop viewport.",
+      "steps": [
+        "Navigate to the homepage.",
+        "Observe the global navigation bar.",
+        "Verify the 'Catalog' link is visible."
+      ],
+      "expectedResults": [
+        "The global navigation bar is displayed at the top of the page.",
+        "A 'Catalog' link is visible in the navigation bar."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_002",
+      "title": "Clicking Catalog Redirects to Catalog Landing Page",
+      "priority": "Highest",
+      "preconditions": "User is on the homepage with the navigation bar visible.",
+      "steps": [
+        "Click the 'Catalog' link in the navigation bar.",
+        "Observe the page URL.",
+        "Observe the page heading."
+      ],
+      "expectedResults": [
+        "The URL changes to /catalog.",
+        "The page displays the 'Assistive Device Catalog' H1 heading."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_003",
+      "title": "Catalog Page Loads Within 3 Seconds",
+      "priority": "High",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Click the 'Catalog' link in the navigation bar.",
+        "Measure the time from click to page domcontentloaded event."
+      ],
+      "expectedResults": [
+        "The catalog page loads within 3 seconds (domcontentloaded fires within threshold)."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_004",
+      "title": "Page Title and H1 Heading Display Correctly",
+      "priority": "High",
+      "preconditions": "User has navigated to the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Check the browser tab title.",
+        "Check the H1 heading on the page."
+      ],
+      "expectedResults": [
+        "The browser tab title is 'Assistive Device Catalog – AT/AD Portal'.",
+        "The H1 heading displays 'Assistive Device Catalog'."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_005",
+      "title": "Expanded Filter Section is Visible",
+      "priority": "High",
+      "preconditions": "User is on the catalog page at desktop viewport.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the filter section.",
+        "Verify the 'Collapse filters' toggle button is visible with aria-expanded='true'."
+      ],
+      "expectedResults": [
+        "The filter section is visible and expanded by default.",
+        "The 'Collapse filters' toggle button has aria-expanded='true'."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_006",
+      "title": "Device Count is Displayed",
+      "priority": "High",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the device count text."
+      ],
+      "expectedResults": [
+        "A device count text (e.g., 'Showing X devices') is visible on the page."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_007",
+      "title": "Search Bar is Visible",
+      "priority": "High",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Verify the search bar is visible and enabled."
+      ],
+      "expectedResults": [
+        "The search bar is visible and enabled for user input."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_008",
+      "title": "All Filter Dropdowns and Controls are Present",
+      "priority": "Highest",
+      "preconditions": "User is on the catalog page with filters expanded.",
+      "steps": [
+        "Verify Disability Type, Sub Category, Type, Price Range dropdowns are visible.",
+        "Verify Availability checkbox and Min Rating slider are visible.",
+        "Verify 'Apply Filters' and 'Reset All' buttons are visible."
+      ],
+      "expectedResults": [
+        "Disability Type, Sub Category, Type, and Price Range dropdowns are all visible.",
+        "Availability checkbox and Min Rating slider are visible.",
+        "'Apply Filters' and 'Reset All' buttons are visible and enabled."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_009",
+      "title": "Sorting Dropdown is Present",
+      "priority": "High",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Verify the 'Sort by' dropdown is visible.",
+        "Verify it contains multiple sorting options."
+      ],
+      "expectedResults": [
+        "The 'Sort by' dropdown is visible.",
+        "The dropdown contains multiple sorting options."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_010",
+      "title": "Pagination is Present",
+      "priority": "High",
+      "preconditions": "User is on the catalog page with multiple pages of results.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Verify the pagination navigation is visible.",
+        "Verify 'Next' link is visible."
+      ],
+      "expectedResults": [
+        "Pagination navigation is visible at the bottom of the catalog listings.",
+        "A 'Next' link is visible and clickable."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Header Elements"
+    },
+    {
+      "id": "TC_SCRUM73_011",
+      "title": "Shopping Tips & Guidance Section is Visible",
+      "priority": "High",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Scroll down to the Shopping Tips section.",
+        "Verify 'Shopping Tips & Guidance' heading is visible.",
+        "Verify 'Before You Buy' and 'Need Help Choosing?' subsections are visible."
+      ],
+      "expectedResults": [
+        "'Shopping Tips & Guidance' heading is visible.",
+        "'Before You Buy' subsection is visible.",
+        "'Need Help Choosing?' subsection is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Shopping Tips"
+    },
+    {
+      "id": "TC_SCRUM73_012",
+      "title": "Page Layout Adjusts for Desktop, Tablet, and Mobile",
+      "priority": "High",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "View at desktop viewport (1280x720) — verify H1, filters, pagination visible.",
+        "Resize to tablet viewport (768x1024) — verify key elements visible.",
+        "Resize to mobile viewport (375x667) — verify H1 and pagination visible.",
+        "Verify no horizontal scrollbar at mobile viewport."
+      ],
+      "expectedResults": [
+        "At desktop: H1, filters, and pagination are visible.",
+        "At tablet: key elements remain visible and properly laid out.",
+        "At mobile: H1 and pagination are visible.",
+        "No horizontal scrollbar appears at mobile viewport."
+      ],
+      "testResult": "PASS",
+      "feature": "Responsive Layout"
+    },
+    {
+      "id": "TC_SCRUM73_013",
+      "title": "Catalog Tab is Keyboard Activatable",
+      "priority": "High",
+      "preconditions": "User is on the homepage with keyboard focus available.",
+      "steps": [
+        "Focus the 'Catalog' link.",
+        "Press Enter to activate the link.",
+        "Verify navigation to the catalog page."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link receives keyboard focus.",
+        "Pressing Enter navigates to the catalog page.",
+        "The catalog page URL and H1 heading are correct."
+      ],
+      "testResult": "PASS",
+      "feature": "Keyboard Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_014",
+      "title": "Breadcrumb Displays Navigation Path",
+      "priority": "Medium",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Look for a breadcrumb or navigation path element."
+      ],
+      "expectedResults": [
+        "A breadcrumb or navigation path element is visible showing the current location."
+      ],
+      "testResult": "PASS",
+      "feature": "Additional Coverage"
+    },
+    {
+      "id": "TC_SCRUM73_015",
+      "title": "Mobile Hamburger Menu Contains Catalog Link",
+      "priority": "High",
+      "preconditions": "User is on the homepage at mobile viewport (375x667).",
+      "steps": [
+        "Navigate to the homepage at mobile viewport.",
+        "Tap the hamburger menu to open it.",
+        "Verify the 'Catalog' link is visible inside the menu.",
+        "Tap the 'Catalog' link.",
+        "Verify navigation to the catalog page."
+      ],
+      "expectedResults": [
+        "The hamburger menu opens successfully.",
+        "The 'Catalog' link is visible inside the menu.",
+        "Tapping 'Catalog' navigates to the catalog page.",
+        "The catalog page loads with correct H1 heading."
+      ],
+      "testResult": "PASS",
+      "feature": "Mobile Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_016",
+      "title": "Catalog Tab Visible from Other Pages",
+      "priority": "High",
+      "preconditions": "User can navigate to Stories and Help & Resources pages.",
+      "steps": [
+        "Navigate to the Stories page (/stories).",
+        "Verify the 'Catalog' link is visible.",
+        "Navigate to the Help & Resources page (/help-center).",
+        "Verify the 'Catalog' link is visible."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link is visible in the navigation bar on the Stories page.",
+        "The 'Catalog' link is visible in the navigation bar on the Help & Resources page."
+      ],
+      "testResult": "PASS",
+      "feature": "Cross-Page Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_017",
+      "title": "Navigation Bar Highlights Active Catalog Tab",
+      "priority": "Medium",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Inspect the 'Catalog' link for active/current class or aria-current."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link has an active/current visual indicator or aria-current attribute."
+      ],
+      "testResult": "PASS",
+      "feature": "Cross-Page Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_018",
+      "title": "Catalog Link href is Correct",
+      "priority": "High",
+      "preconditions": "User is on any page with the navigation bar visible.",
+      "steps": [
+        "Inspect the 'Catalog' link's href attribute.",
+        "Verify it points to /catalog."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link href attribute contains '/catalog'."
+      ],
+      "testResult": "PASS",
+      "feature": "Cross-Page Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_019",
+      "title": "Product Cards are Visible on Catalog Landing Page",
+      "priority": "High",
+      "preconditions": "User is on the catalog page with products available.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Verify at least one product card with a heading is visible.",
+        "Verify at least one 'View details' link is present."
+      ],
+      "expectedResults": [
+        "At least one product card with a heading is visible.",
+        "At least one 'View details' link is present on a product card."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Content"
+    },
+    {
+      "id": "TC_SCRUM73_020",
+      "title": "Catalog Page Has Correct Document Title",
+      "priority": "Medium",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Check document.title."
+      ],
+      "expectedResults": [
+        "document.title equals 'Assistive Device Catalog – AT/AD Portal'."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Content"
+    },
+    {
+      "id": "TC_SCRUM73_021",
+      "title": "Navigation Bar Remains Visible on Catalog Page",
+      "priority": "High",
+      "preconditions": "User has navigated to the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Verify 'Home', 'Catalog', and 'Stories' links are present in the header."
+      ],
+      "expectedResults": [
+        "The navigation bar is visible on the catalog page.",
+        "'Home', 'Catalog', and 'Stories' links are present in the header."
+      ],
+      "testResult": "PASS",
+      "feature": "Catalog Content"
+    },
+    {
+      "id": "TC_SCRUM73_022",
+      "title": "Tablet Viewport Shows Catalog Navigation Correctly",
+      "priority": "High",
+      "preconditions": "User is on the homepage at tablet viewport (768x1024).",
+      "steps": [
+        "Navigate to the homepage at tablet viewport.",
+        "Open hamburger menu if present.",
+        "Click the 'Catalog' link.",
+        "Verify navigation to the catalog page and H1 heading."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link is accessible (directly or via hamburger menu).",
+        "Clicking 'Catalog' navigates to the catalog page.",
+        "The H1 heading 'Assistive Device Catalog' is visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Tablet Navigation"
+    },
+    {
+      "id": "TC_SCRUM73_023",
+      "title": "Back Button Returns to Homepage from Catalog",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Navigate to the homepage.",
+        "Click the 'Catalog' link.",
+        "Verify the catalog page loads.",
+        "Click the browser back button.",
+        "Verify the homepage loads."
+      ],
+      "expectedResults": [
+        "The catalog page loads after clicking the link.",
+        "Clicking back returns the user to the homepage.",
+        "The homepage URL and content are correct."
+      ],
+      "testResult": "PASS",
+      "feature": "Browser History"
+    },
+    {
+      "id": "TC_SCRUM73_024",
+      "title": "Catalog Page Footer is Visible",
+      "priority": "Medium",
+      "preconditions": "User is on the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Scroll to the bottom of the page.",
+        "Verify a footer element is visible."
+      ],
+      "expectedResults": [
+        "A footer element is visible at the bottom of the catalog page."
+      ],
+      "testResult": "PASS",
+      "feature": "Page Structure"
+    },
+    {
+      "id": "TC_SCRUM73_025",
+      "title": "Rapid Double-Click on Catalog Link Navigates Correctly",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Double-click the 'Catalog' link rapidly.",
+        "Wait for page to load.",
+        "Verify the catalog page is displayed correctly."
+      ],
+      "expectedResults": [
+        "The catalog page loads correctly despite the double-click.",
+        "The H1 heading and URL are correct."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_026",
+      "title": "Catalog Page URL is Canonical (No Double Slashes)",
+      "priority": "Low",
+      "preconditions": "User has navigated to the catalog page.",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Inspect the URL path after the domain.",
+        "Verify no double slashes exist in the path."
+      ],
+      "expectedResults": [
+        "The URL path does not contain double slashes (e.g., no '//catalog')."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_027",
+      "title": "Forward Button Works After Back from Catalog",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Navigate to the homepage.",
+        "Click the 'Catalog' link.",
+        "Click browser back button.",
+        "Verify homepage is displayed.",
+        "Click browser forward button.",
+        "Verify catalog page is displayed."
+      ],
+      "expectedResults": [
+        "Back button returns to the homepage.",
+        "Forward button navigates back to the catalog page.",
+        "The catalog page URL and H1 heading are correct."
+      ],
+      "testResult": "PASS",
+      "feature": "Browser History"
+    },
+    {
+      "id": "TC_SCRUM73_028",
+      "title": "Page Scroll Position Resets on Catalog Navigation",
+      "priority": "Low",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Navigate to the homepage.",
+        "Scroll down 500px.",
+        "Click the 'Catalog' link.",
+        "Check the scroll position on the catalog page."
+      ],
+      "expectedResults": [
+        "The catalog page loads with scroll position at the top (0 or near 0)."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_029",
+      "title": "Catalog Page Has No Console Errors on Load",
+      "priority": "Medium",
+      "preconditions": "Browser console is open/monitored.",
+      "steps": [
+        "Listen for page errors.",
+        "Navigate to the catalog page.",
+        "Wait for page to fully load.",
+        "Check for any console errors."
+      ],
+      "expectedResults": [
+        "No JavaScript console errors are logged during page load."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_030",
+      "title": "Multiple Rapid Navigations Home→Catalog→Home→Catalog",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Click 'Catalog' link — verify catalog page.",
+        "Navigate back to homepage.",
+        "Click 'Catalog' link again — verify catalog page."
+      ],
+      "expectedResults": [
+        "Each navigation to the catalog page loads correctly.",
+        "The catalog page displays the correct H1 heading and URL after each navigation."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_031",
+      "title": "Catalog Link Visible After Scrolling Down on Homepage",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage.",
+      "steps": [
+        "Scroll down 1000px on the homepage.",
+        "Check if the 'Catalog' link is still visible (sticky nav).",
+        "If not visible, scroll back to top and verify."
+      ],
+      "expectedResults": [
+        "The 'Catalog' link remains visible via sticky navigation, or is accessible by scrolling to top."
+      ],
+      "testResult": "PASS",
+      "feature": "Edge Cases"
+    },
+    {
+      "id": "TC_SCRUM73_032",
+      "title": "Direct URL Access to Catalog Works Without Homepage",
+      "priority": "High",
+      "preconditions": "No prior navigation; fresh browser session.",
+      "steps": [
+        "Navigate directly to the catalog URL.",
+        "Verify H1 heading, device count, and pagination are visible."
+      ],
+      "expectedResults": [
+        "The catalog page loads successfully via direct URL.",
+        "H1 heading, device count, and pagination are all visible."
+      ],
+      "testResult": "PASS",
+      "feature": "Direct Access"
+    },
+    {
+      "id": "TC_SCRUM73_033",
+      "title": "No Horizontal Overflow on Mobile After Catalog Navigation",
+      "priority": "Medium",
+      "preconditions": "User is on the homepage at mobile viewport (375x667).",
+      "steps": [
+        "Navigate to the homepage at mobile viewport.",
+        "Open hamburger menu and click 'Catalog' link.",
+        "Verify no horizontal overflow on the catalog page."
+      ],
+      "expectedResults": [
+        "The catalog page has no horizontal scrollbar at mobile viewport.",
+        "document.body.scrollWidth does not exceed viewport width."
+      ],
+      "testResult": "PASS",
+      "feature": "Mobile Navigation"
+    }
+  ]
+}

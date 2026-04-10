@@ -1,0 +1,508 @@
+{
+  "jiraStory": "SCRUM-110",
+  "title": "PwD - Access to Device Recommendations and Functionality - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-110: PwD - Access to Device Recommendations. Validates Get Recommendation navigation, personalized banner display, recommendation toggle, catalog cards, filters, sorting, pagination, view details navigation, and responsive behavior.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "expectedBadge": "Personalized for You",
+    "expectedTitle": "Your Personalized Device Recommendations",
+    "expectedToggleLabel": "Show Only Recommended Devices",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM110_001",
+      "title": "Get Recommendations link is visible on Home page",
+      "priority": "Highest",
+      "feature": "Navigation & Page Access",
+      "steps": [
+        "Navigate to Home.",
+        "Verify Get Recommendations link."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on the Home page.",
+      "expectedResults": [
+        "Get Recommendations link is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_002",
+      "title": "Clicking Get Recommendations navigates to Catalog page",
+      "priority": "Highest",
+      "feature": "Navigation & Page Access",
+      "steps": [
+        "Click Get Recommendations.",
+        "Verify catalog page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Home page.",
+      "expectedResults": [
+        "Clicking Get Recommendations navigates to Catalog page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_003",
+      "title": "Catalog page URL contains /catalog/",
+      "priority": "High",
+      "feature": "Navigation & Page Access",
+      "steps": [
+        "Verify URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "URL contains /catalog/."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_004",
+      "title": "Catalog page loads with product cards",
+      "priority": "Highest",
+      "feature": "Navigation & Page Access",
+      "steps": [
+        "Verify product cards visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Product cards are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_005",
+      "title": "Personalized for You badge is visible",
+      "priority": "Highest",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify badge text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "'Personalized for You' badge is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_006",
+      "title": "Title Your Personalized Device Recommendations is displayed",
+      "priority": "Highest",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify title."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "'Your Personalized Device Recommendations' title is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_007",
+      "title": "Subtitle text is displayed",
+      "priority": "Medium",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify subtitle."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Subtitle text is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_008",
+      "title": "Recommendation toggle is present",
+      "priority": "Highest",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify toggle input."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Recommendation toggle input is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_009",
+      "title": "Toggle label says Show Only Recommended Devices",
+      "priority": "Medium",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify toggle label text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Toggle label says 'Show Only Recommended Devices'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_010",
+      "title": "Device count hint is displayed near toggle",
+      "priority": "Medium",
+      "feature": "Recommendation Banner Display",
+      "steps": [
+        "Verify count hint text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Device count hint text is displayed near toggle."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_011",
+      "title": "Toggle is clickable",
+      "priority": "Highest",
+      "feature": "Recommendation Toggle Functionality",
+      "steps": [
+        "Click toggle.",
+        "Verify no error."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Toggle is clickable without error."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_012",
+      "title": "Toggle changes state on click",
+      "priority": "Highest",
+      "feature": "Recommendation Toggle Functionality",
+      "steps": [
+        "Check state before.",
+        "Click.",
+        "Check state after."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Toggle state changes on click."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_013",
+      "title": "Toggling on filters catalog to recommended devices",
+      "priority": "High",
+      "feature": "Recommendation Toggle Functionality",
+      "steps": [
+        "Enable toggle.",
+        "Verify catalog filters."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Toggle is enabled.",
+      "expectedResults": [
+        "Catalog filters to recommended devices."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_014",
+      "title": "Toggling off shows all devices again",
+      "priority": "High",
+      "feature": "Recommendation Toggle Functionality",
+      "steps": [
+        "Enable then disable toggle.",
+        "Verify all devices."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Toggle was enabled.",
+      "expectedResults": [
+        "Disabling toggle shows all devices again."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_015",
+      "title": "Device count updates when toggle is activated",
+      "priority": "Medium",
+      "feature": "Recommendation Toggle Functionality",
+      "steps": [
+        "Note count.",
+        "Toggle.",
+        "Verify count changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Device count updates when toggle is activated."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_016",
+      "title": "Product cards are displayed on catalog page",
+      "priority": "Highest",
+      "feature": "Catalog Product Cards",
+      "steps": [
+        "Verify cards visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Product cards are displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_017",
+      "title": "Product card has image",
+      "priority": "High",
+      "feature": "Catalog Product Cards",
+      "steps": [
+        "Verify img on first card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "First product card has an image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_018",
+      "title": "Product card has title",
+      "priority": "High",
+      "feature": "Catalog Product Cards",
+      "steps": [
+        "Verify title text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "First product card has a title."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_019",
+      "title": "Product card has price",
+      "priority": "Medium",
+      "feature": "Catalog Product Cards",
+      "steps": [
+        "Verify price text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "First product card has a price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_020",
+      "title": "Product card has View Details CTA",
+      "priority": "Highest",
+      "feature": "Catalog Product Cards",
+      "steps": [
+        "Verify View Details link."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "View Details CTA is visible on product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_021",
+      "title": "Disability Type filter is present",
+      "priority": "High",
+      "feature": "Catalog Filters",
+      "steps": [
+        "Verify filter visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Disability Type filter is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_022",
+      "title": "Type filter is present",
+      "priority": "High",
+      "feature": "Catalog Filters",
+      "steps": [
+        "Verify Type filter."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Type filter is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_023",
+      "title": "Price Range filter is present",
+      "priority": "High",
+      "feature": "Catalog Filters",
+      "steps": [
+        "Verify Price filter."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Price Range filter is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_024",
+      "title": "Apply Filters button is present",
+      "priority": "High",
+      "feature": "Catalog Filters",
+      "steps": [
+        "Verify Apply Filters button."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Apply Filters button is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_025",
+      "title": "Sort dropdown is present",
+      "priority": "Medium",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Verify sort control."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Sort dropdown is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_026",
+      "title": "Pagination is present when multiple pages exist",
+      "priority": "High",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Verify pagination."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Pagination is present when multiple pages exist."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_027",
+      "title": "Device count text is displayed",
+      "priority": "Low",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Verify devices found text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Device count text is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_028",
+      "title": "Clicking View Details opens product detail page",
+      "priority": "Highest",
+      "feature": "View Details Navigation",
+      "steps": [
+        "Click View Details.",
+        "Verify product page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the Catalog page.",
+      "expectedResults": [
+        "Clicking View Details opens product detail page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_029",
+      "title": "Product detail page shows product title",
+      "priority": "High",
+      "feature": "View Details Navigation",
+      "steps": [
+        "Verify h1 title."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product detail page.",
+      "expectedResults": [
+        "Product title (h1) is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_030",
+      "title": "Back navigation returns to catalog",
+      "priority": "High",
+      "feature": "View Details Navigation",
+      "steps": [
+        "Go back.",
+        "Verify catalog URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product detail page.",
+      "expectedResults": [
+        "Back navigation returns to catalog URL."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_031",
+      "title": "Catalog page renders on mobile viewport",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Catalog page content is visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_032",
+      "title": "Catalog page renders on tablet viewport",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set tablet viewport.",
+        "Verify content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Catalog page content is visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM110_033",
+      "title": "No horizontal overflow on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive",
+      "steps": [
+        "Set mobile viewport.",
+        "Check scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    }
+  ]
+}

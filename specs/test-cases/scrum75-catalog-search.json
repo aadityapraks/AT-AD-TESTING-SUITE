@@ -1,0 +1,577 @@
+{
+  "jiraStory": "SCRUM-75",
+  "title": "PwD - Search for Products within the Catalog - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-75: PwD - Search for Products within the Catalog. Validates that a PwD user can search for specific products, vendors, or assistive technology resources within the catalog using the search bar — including autocomplete suggestions, result count updates, no-results messaging, and pagination of search results.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogPath": "/catalog",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "searchTerms": {
+      "productName": "wheelchair",
+      "keyword": "mobility",
+      "vendorName": "vendor23",
+      "partial3Chars": "whe",
+      "partial2Chars": "wh",
+      "partial1Char": "w",
+      "enterTrigger": "hearing",
+      "nonExistent": "xyznonexistent99999",
+      "uppercase": "WHEELCHAIR",
+      "whitespacePadded": "  wheelchair  ",
+      "xssScript": "<script>alert('x')</script>",
+      "sqlInjection": "'; DROP TABLE --",
+      "whitespaceOnly": "   ",
+      "longString": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrst"
+    },
+    "filters": {
+      "disabilityType": "Amputation"
+    },
+    "mobileViewport": {
+      "width": 375,
+      "height": 667
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM75_001",
+      "title": "Product Name Search Returns Matching Results",
+      "priority": "Highest",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type a known product name (e.g., 'wheelchair').",
+        "Click 'Apply Filter'.",
+        "Observe the catalog results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results display products matching 'wheelchair'.",
+        "Device count updates to reflect search results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_002",
+      "title": "Keyword Search Returns Matching Results",
+      "priority": "Highest",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Note the full catalog count.",
+        "Type a keyword (e.g., 'mobility').",
+        "Click 'Apply Filter'.",
+        "Observe the device count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Keyword search returns results with count > 0 and <= full catalog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_003",
+      "title": "Vendor Name Search Returns Matching Results",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Note the full catalog count.",
+        "Search by vendor name.",
+        "Observe the device count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Vendor name search returns filtered results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_004",
+      "title": "Search Suggestions Appear After Typing 3+ Characters",
+      "priority": "Highest",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type 2 characters — observe.",
+        "Type a 3rd character — observe."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "No suggestions appear for 2 characters.",
+        "Suggestions dropdown appears after typing 3 characters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_005",
+      "title": "No Suggestions for Fewer Than 3 Characters",
+      "priority": "Low",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type 1 character — observe.",
+        "Type a 2nd character — observe."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "No suggestions dropdown appears for 1 or 2 characters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_006",
+      "title": "Multiple Suggestions Appear for Common Term",
+      "priority": "Medium",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type 3+ characters of a common term.",
+        "Observe the suggestions dropdown."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Suggestions dropdown shows one or more matching suggestions."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_007",
+      "title": "Pressing Enter Triggers Search and Filters Results",
+      "priority": "Highest",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type a search term.",
+        "Press Enter (not Apply button).",
+        "Observe results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Pressing Enter filters results and updates device count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_008",
+      "title": "Selecting a Suggestion Filters Results",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Type 3+ chars to trigger suggestions.",
+        "Click a suggestion.",
+        "Observe results."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the catalog landing page with suggestions visible.",
+      "expectedResults": [
+        "Selected suggestion populates search bar.",
+        "Results filter accordingly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_009",
+      "title": "Search Results Show Total Device Count",
+      "priority": "Highest",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Search for a term that returns results.",
+        "Observe the device count text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count text is visible and contains a number."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_010",
+      "title": "Search Results Display Product Cards",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Search for a known product name.",
+        "Observe the product grid."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Product cards are visible with product name headings."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_011",
+      "title": "Search Filters Results — Count Decreases from Full Catalog",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Note full catalog count.",
+        "Search for a specific term.",
+        "Compare counts."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Searched count is > 0 and < full catalog count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_012",
+      "title": "No Results Displays Appropriate Message",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Search for a non-existent term.",
+        "Observe the catalog area."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "A 'no results' or '0 devices found' message is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_013",
+      "title": "No Results Hides Pagination",
+      "priority": "Medium",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Search for a non-existent term.",
+        "Observe pagination area."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Pagination is hidden when there are no results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_014",
+      "title": "Pagination Available When Search Results Exceed Per-Page Limit",
+      "priority": "High",
+      "feature": "Search — Core Functionality",
+      "steps": [
+        "Verify pagination is visible on full catalog.",
+        "Click Next.",
+        "Observe page 2."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Catalog has more products than the per-page limit.",
+      "expectedResults": [
+        "Pagination controls are visible.",
+        "Next page loads with results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_015",
+      "title": "Clearing Search Restores Full Catalog",
+      "priority": "High",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Note full catalog count.",
+        "Search and apply.",
+        "Clear search and apply.",
+        "Compare counts."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has an active search with filtered results.",
+      "expectedResults": [
+        "Full catalog restored after clearing search.",
+        "Device count matches initial."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_016",
+      "title": "Search Combined with Filters Works Correctly",
+      "priority": "High",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Type search term.",
+        "Select a filter.",
+        "Apply.",
+        "Observe results.",
+        "Reset All.",
+        "Observe."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results match both search term and filter.",
+        "Reset All clears both search and filters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_017",
+      "title": "Reset All Clears Search Term",
+      "priority": "High",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Search for a term.",
+        "Click Reset All.",
+        "Observe search bar."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has an active search.",
+      "expectedResults": [
+        "Search bar is cleared after clicking Reset All."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_018",
+      "title": "Search Term Persists in Search Bar After Results Load",
+      "priority": "Medium",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Type a search term.",
+        "Apply.",
+        "Observe search bar value."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Search bar still contains the search term after results load."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_019",
+      "title": "Search Persists After Pagination Navigation",
+      "priority": "Medium",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Note device count.",
+        "Click Next in pagination.",
+        "Observe device count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Catalog has pagination.",
+      "expectedResults": [
+        "Device count remains consistent across pagination."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_020",
+      "title": "Search Does Not Trigger Full Page Reload",
+      "priority": "High",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Listen for page load events.",
+        "Search and apply.",
+        "Check if full reload occurred."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "No full page reload occurs; results update dynamically."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_021",
+      "title": "Search Bar Placeholder Text is Visible",
+      "priority": "Lowest",
+      "feature": "Search — Interactions & Persistence",
+      "steps": [
+        "Observe the search bar.",
+        "Check for placeholder text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Search bar has visible placeholder text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_022",
+      "title": "Suggestions Dropdown Closes on Escape Key",
+      "priority": "Medium",
+      "feature": "Search — Suggestions UX",
+      "steps": [
+        "Type 3+ chars to trigger suggestions.",
+        "Press Escape.",
+        "Observe dropdown."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the catalog landing page with suggestions visible.",
+      "expectedResults": [
+        "Suggestions dropdown closes on Escape.",
+        "Search bar retains typed text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_023",
+      "title": "Suggestions Dropdown Closes on Outside Click",
+      "priority": "Low",
+      "feature": "Search — Suggestions UX",
+      "steps": [
+        "Type 3+ chars to trigger suggestions.",
+        "Click outside.",
+        "Observe dropdown."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the catalog landing page with suggestions visible.",
+      "expectedResults": [
+        "Suggestions dropdown closes on outside click.",
+        "Search bar retains typed text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_024",
+      "title": "Partial Product Name Search Returns Results",
+      "priority": "High",
+      "feature": "Search — Suggestions UX",
+      "steps": [
+        "Type a partial product name (3 chars).",
+        "Apply search.",
+        "Observe results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Partial search returns results with count > 0."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_025",
+      "title": "Search is Case-Insensitive",
+      "priority": "High",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Search uppercase term.",
+        "Note count.",
+        "Search lowercase term.",
+        "Compare counts."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Both uppercase and lowercase searches return the same results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_026",
+      "title": "Search with Leading/Trailing Whitespace is Trimmed",
+      "priority": "Medium",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Search clean term — note count.",
+        "Search padded term — compare count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Padded and clean search terms return the same results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_027",
+      "title": "Search with Special Characters Does Not Break the Page",
+      "priority": "High",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Search XSS string.",
+        "Observe page.",
+        "Search SQL injection string.",
+        "Observe page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Page does not break with XSS or SQL injection strings.",
+        "No script execution or errors."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_028",
+      "title": "Search Results Update Device Count to Zero Then Back",
+      "priority": "Medium",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Search non-existent term.",
+        "Observe 0 count.",
+        "Search valid term.",
+        "Observe positive count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Device count transitions from 0 to a positive number."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_029",
+      "title": "Rapid Sequential Searches Return Correct Final Results",
+      "priority": "Medium",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Search term A and apply.",
+        "Immediately search term B and apply.",
+        "Observe final results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Final results reflect the last search term, not stale results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_030",
+      "title": "Empty Search Submission Shows Full Catalog",
+      "priority": "Lowest",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Clear search bar.",
+        "Click Apply.",
+        "Observe results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Full catalog displayed with total device count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_031",
+      "title": "Search with Only Whitespace is Treated as Empty",
+      "priority": "Medium",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Type only spaces.",
+        "Click Apply.",
+        "Observe results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Full catalog displayed — whitespace-only treated as empty."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_032",
+      "title": "Search Bar is Focusable on Mobile Viewport",
+      "priority": "High",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Set mobile viewport.",
+        "Click search bar.",
+        "Search and observe results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Search bar receives focus.",
+        "Results display correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM75_033",
+      "title": "Long Search Term Does Not Overflow or Break Layout",
+      "priority": "Lowest",
+      "feature": "Search — Edge Cases & Robustness",
+      "steps": [
+        "Type 200+ character string.",
+        "Observe search bar.",
+        "Apply.",
+        "Observe page layout."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Search bar handles long text gracefully.",
+        "Page layout remains intact."
+      ]
+    }
+  ]
+}

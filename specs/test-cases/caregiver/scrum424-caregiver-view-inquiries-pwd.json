@@ -1,0 +1,329 @@
+{
+  "jiraStory": "SCRUM-424",
+  "title": "Caregiver - View Product Inquiries Tagged to a PwD (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-424: Caregiver can view product inquiries tagged to a PwD from Caregiver Profile. Validates inquiries access (AC1), inquiry details (AC2), count (AC3), read-only (AC4), mandatory PwD tagging (AC5). Edge cases: empty inquiries, no PwDs.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM424_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Inquiries Access from Profile",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Profile page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_002",
+      "title": "Inquiries tab/link visible on profile page",
+      "priority": "Highest",
+      "feature": "Inquiries Access from Profile",
+      "steps": [
+        "On profile page.",
+        "Verify Inquiries tab/link visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "Inquiries tab is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_003",
+      "title": "Clicking Inquiries tab shows inquiries content",
+      "priority": "Highest",
+      "feature": "Inquiries Access from Profile",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify inquiries content loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "Inquiries section is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_004",
+      "title": "Inquiries section has heading or title",
+      "priority": "Highest",
+      "feature": "Inquiries Access from Profile",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify heading contains 'inquir'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on inquiries section.",
+      "expectedResults": [
+        "Inquiries heading visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_005",
+      "title": "Inquiry displays product name",
+      "priority": "Highest",
+      "feature": "Inquiry Details",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify items have product names."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Product names visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_006",
+      "title": "Inquiry displays inquiry date",
+      "priority": "Highest",
+      "feature": "Inquiry Details",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify items show date/timestamp."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Inquiry date visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_007",
+      "title": "Inquiry displays PwD name tag",
+      "priority": "Highest",
+      "feature": "Inquiry Details",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify items have PwD name tag."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items tagged to PwD.",
+      "expectedResults": [
+        "PwD name tag visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_008",
+      "title": "Inquiry displays vendor details",
+      "priority": "Highest",
+      "feature": "Inquiry Details",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify items show vendor name, email, phone, or website."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Vendor details visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_009",
+      "title": "Inquiry displays product image",
+      "priority": "High",
+      "feature": "Inquiry Details",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify items have product images."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Product images visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_010",
+      "title": "Inquiry count displayed at section level",
+      "priority": "High",
+      "feature": "Inquiry Count",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify count text or item count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section loaded.",
+      "expectedResults": [
+        "Inquiry count reflects total."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_011",
+      "title": "Inquiries are read-only — no edit button",
+      "priority": "High",
+      "feature": "Read-Only Inquiries",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify no Edit or Delete buttons on inquiry items."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "No edit/delete buttons present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_012",
+      "title": "Inquiries are read-only — no delete button",
+      "priority": "High",
+      "feature": "Read-Only Inquiries",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify no Delete or Remove action on inquiry items."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "No delete/remove action present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_013",
+      "title": "PwD tagging mandatory and always visible",
+      "priority": "High",
+      "feature": "PwD Tagging",
+      "steps": [
+        "Navigate to inquiries.",
+        "Verify each inquiry has a PwD tag visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "PwD tag visible on every inquiry."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_014",
+      "title": "Empty inquiries shows empty state message",
+      "priority": "Medium",
+      "feature": "Edge Case — Empty State",
+      "steps": [
+        "Navigate to inquiries.",
+        "If empty, verify empty state message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "No inquiries exist.",
+      "expectedResults": [
+        "Empty state message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_015",
+      "title": "No PwDs shows appropriate state",
+      "priority": "Medium",
+      "feature": "Edge Case — Empty State",
+      "steps": [
+        "Navigate to inquiries.",
+        "If no PwDs, verify appropriate message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwDs.",
+      "expectedResults": [
+        "Appropriate state shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_016",
+      "title": "Inquiries persist across page refresh",
+      "priority": "Medium",
+      "feature": "Session Persistence",
+      "steps": [
+        "View inquiries.",
+        "Reload page.",
+        "Verify inquiries still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Inquiries persist after reload."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_017",
+      "title": "Mobile viewport renders inquiries correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to inquiries.",
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Inquiries render correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_018",
+      "title": "Back navigation from inquiries works",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to inquiries.",
+        "Go back.",
+        "Verify previous page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on inquiries section.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_019",
+      "title": "Inquiries page has correct heading",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify heading contains 'inquir' or profile name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on inquiries section.",
+      "expectedResults": [
+        "Correct heading displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM424_020",
+      "title": "Page refresh retains inquiry content",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "View inquiries.",
+        "Reload.",
+        "Verify content retained."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries section has items.",
+      "expectedResults": [
+        "Content retained after refresh."
+      ]
+    }
+  ]
+}

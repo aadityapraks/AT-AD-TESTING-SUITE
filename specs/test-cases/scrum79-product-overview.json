@@ -1,0 +1,536 @@
+{
+  "jiraStory": "SCRUM-79",
+  "title": "PwD - View Product Overview Section (Header and Gallery) - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-79: PwD - View Product Overview Section (Header and Gallery). Validates that the product details page displays product name, tags, rating with star icon and review count, price, stock status, available geographies, description, and CTAs (Contact Vendor, Save, Share). Also validates the image gallery with main image, thumbnails, carousel navigation, counter, badge, and description.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "productPathPattern": "/product/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "pageLoadThresholdMs": 5000,
+    "imageLoadThresholdMs": 5000,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM79_001",
+      "title": "Product Name is Visible on Details Page",
+      "priority": "Highest",
+      "feature": "Product Header Information",
+      "steps": [
+        "Log in and navigate to a product details page.",
+        "Verify the product name heading is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in and on a product details page.",
+      "expectedResults": [
+        "Product name heading is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_002",
+      "title": "Product Name is Rendered as H1 Heading",
+      "priority": "High",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Inspect the product name element tag."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Product name is rendered as an H1 heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_003",
+      "title": "Product Tags are Displayed",
+      "priority": "High",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Look for product tags/badges."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Product tags/badges are displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_004",
+      "title": "Product Tags Contain Category Information",
+      "priority": "Low",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Read the tag text content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Tags contain category information text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_005",
+      "title": "Average Rating is Displayed with Star Icon",
+      "priority": "High",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify the rating value is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Average rating value is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_006",
+      "title": "Star Icon is Present Next to Rating",
+      "priority": "Low",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Check for star SVG icon near rating."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Star SVG icon is present next to the rating."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_007",
+      "title": "Review Count is Displayed",
+      "priority": "Medium",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify review count text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Review count text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_008",
+      "title": "Price is Displayed When Available",
+      "priority": "Highest",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify the price is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Price is visible when available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_009",
+      "title": "Stock Status Badge is Visible",
+      "priority": "Highest",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify stock status badge is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Stock status badge (e.g., 'In Stock') is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_010",
+      "title": "Product Description is Displayed",
+      "priority": "High",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify description text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Product description text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_011",
+      "title": "Available Geographies Section is Visible",
+      "priority": "Medium",
+      "feature": "Product Header Information",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify geography information is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Available geographies section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_012",
+      "title": "Contact Vendor Button is Visible",
+      "priority": "Highest",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify 'Contact Vendor' button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "'Contact Vendor' button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_013",
+      "title": "Save Button is Visible",
+      "priority": "High",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify Save button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Save button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_014",
+      "title": "Save Button Has Bookmark Icon",
+      "priority": "Lowest",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Inspect Save button for SVG icon."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Save button contains a bookmark SVG icon."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_015",
+      "title": "Share Button is Visible",
+      "priority": "High",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify Share button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Share button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_016",
+      "title": "Share Button Opens Share Panel",
+      "priority": "Highest",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click the Share button.",
+        "Verify the share off-canvas panel opens."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Clicking Share opens the share off-canvas panel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_017",
+      "title": "Share Panel Contains Share Heading",
+      "priority": "Low",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Click Share button.",
+        "Verify the share panel heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Share panel is open.",
+      "expectedResults": [
+        "Share panel contains a heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_018",
+      "title": "Contact Vendor Button Opens Off-Canvas",
+      "priority": "High",
+      "feature": "Call-to-Action Buttons",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click 'Contact Vendor' button.",
+        "Verify off-canvas panel opens."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Clicking 'Contact Vendor' opens an off-canvas panel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_019",
+      "title": "Gallery Section is Visible",
+      "priority": "Highest",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify the gallery section is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_020",
+      "title": "Main Product Image is Displayed",
+      "priority": "Highest",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify the main image is present with a valid src."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Main product image is present with a valid src."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_021",
+      "title": "Gallery Counter Shows Image Position",
+      "priority": "Medium",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify gallery counter is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery counter showing image position is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_022",
+      "title": "Gallery Thumbnails are Displayed",
+      "priority": "High",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify thumbnails are present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery thumbnails are present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_023",
+      "title": "First Thumbnail is Active by Default",
+      "priority": "Medium",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Check which thumbnail has the active state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "First thumbnail has the active state by default."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_024",
+      "title": "Clicking Thumbnail Changes Active State",
+      "priority": "High",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click the second thumbnail.",
+        "Verify active state changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Clicking second thumbnail changes the active state."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_025",
+      "title": "Clicking Thumbnail Updates Gallery Counter",
+      "priority": "Medium",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click the second thumbnail.",
+        "Verify gallery counter updates."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery counter updates after clicking a thumbnail."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_026",
+      "title": "Gallery Next Button Advances Slide",
+      "priority": "High",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Click the Next button.",
+        "Verify gallery counter changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery counter changes after clicking Next."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_027",
+      "title": "Gallery Previous Button Goes Back",
+      "priority": "High",
+      "feature": "Image Gallery",
+      "steps": [
+        "Click Next to advance.",
+        "Click Previous.",
+        "Verify gallery counter changes back."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicked Next to advance the gallery.",
+      "expectedResults": [
+        "Gallery counter changes back after clicking Previous."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_028",
+      "title": "Gallery Badge Shows Media Type",
+      "priority": "Low",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify gallery badge is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery badge showing media type is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_029",
+      "title": "Gallery Description is Displayed",
+      "priority": "Medium",
+      "feature": "Image Gallery",
+      "steps": [
+        "Navigate to a product details page.",
+        "Verify gallery description text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "Gallery description text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_030",
+      "title": "Product Overview Renders on Mobile Viewport",
+      "priority": "High",
+      "feature": "Responsive & Layout",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to a product details page.",
+        "Verify product name and gallery are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Product name and gallery are visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_031",
+      "title": "Product Overview Renders on Tablet Viewport",
+      "priority": "Medium",
+      "feature": "Responsive & Layout",
+      "steps": [
+        "Set viewport to tablet (768x1024).",
+        "Navigate to a product details page.",
+        "Verify product name and gallery are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Product name and gallery are visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_032",
+      "title": "Images Load Without Noticeable Delay",
+      "priority": "Medium",
+      "feature": "Responsive & Layout",
+      "steps": [
+        "Navigate to a product details page.",
+        "Measure time for first image to be attached."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product details page.",
+      "expectedResults": [
+        "First image loads within acceptable time threshold."
+      ]
+    },
+    {
+      "id": "TC_SCRUM79_033",
+      "title": "No Horizontal Overflow on Product Overview",
+      "priority": "Lowest",
+      "feature": "Responsive & Layout",
+      "steps": [
+        "Set viewport to mobile.",
+        "Navigate to a product details page.",
+        "Check body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Body scroll width does not exceed viewport width."
+      ]
+    }
+  ]
+}

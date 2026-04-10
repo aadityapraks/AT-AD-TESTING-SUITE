@@ -1,0 +1,336 @@
+{
+  "jiraStory": "SCRUM-85",
+  "title": "PwD - Accessibility for Purchase Links (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-85: Accessibility for purchase links in Contact Vendor popup. Validates semantic heading, aria-labels, keyboard operability, focus order, focus indicators, color contrast, link states, disabled links hidden, screen reader support, mobile touch targets.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "targetProduct": "wheelchair 28th jan",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM85_001",
+      "title": "Product detail page loads for target product",
+      "priority": "Highest",
+      "feature": "Product Access",
+      "steps": [
+        "Login.",
+        "Search 'wheelchair 28th jan'.",
+        "Click View details.",
+        "Verify H1 visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD logged in.",
+      "expectedResults": [
+        "Product detail page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_002",
+      "title": "Contact Vendor popup opens",
+      "priority": "Highest",
+      "feature": "Product Access",
+      "steps": [
+        "Open Contact Vendor popup.",
+        "Verify dialog visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Popup opens."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_003",
+      "title": "Buy Online heading is semantic (h2 or h3)",
+      "priority": "Highest",
+      "feature": "Semantic Heading",
+      "steps": [
+        "Open popup.",
+        "Verify Buy Online heading is h2 or h3 element."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Heading is h2 or h3."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_004",
+      "title": "Buy Online heading is screen-reader navigable",
+      "priority": "Highest",
+      "feature": "Semantic Heading",
+      "steps": [
+        "Open popup.",
+        "Verify heading has text content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Heading navigable by screen reader."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_005",
+      "title": "Purchase links have aria-label describing action and destination",
+      "priority": "Highest",
+      "feature": "Accessible Labels",
+      "steps": [
+        "Open popup.",
+        "Verify purchase links have aria-label or descriptive text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open with links.",
+      "expectedResults": [
+        "Links have accessible labels."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_006",
+      "title": "Aria-label includes 'opens in new tab' for external links",
+      "priority": "Highest",
+      "feature": "Accessible Labels",
+      "steps": [
+        "Open popup.",
+        "Verify external links mention 'new tab' in aria-label or sr-only text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open with external links.",
+      "expectedResults": [
+        "New tab indicated in label."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_007",
+      "title": "External link icons include hidden text or ARIA label",
+      "priority": "High",
+      "feature": "Accessible Labels",
+      "steps": [
+        "Open popup.",
+        "Verify external link icons have sr-only text or aria-label."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Icons have accessible text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_008",
+      "title": "Purchase links are keyboard operable with Tab",
+      "priority": "Highest",
+      "feature": "Keyboard Operability",
+      "steps": [
+        "Open popup.",
+        "Press Tab.",
+        "Verify focus reaches purchase links."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Links reachable via Tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_009",
+      "title": "Purchase links activatable via Enter key",
+      "priority": "Highest",
+      "feature": "Keyboard Operability",
+      "steps": [
+        "Tab to a purchase link.",
+        "Press Enter.",
+        "Verify action triggered."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Focus on purchase link.",
+      "expectedResults": [
+        "Enter activates link."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_010",
+      "title": "Focus order flows logically in popup",
+      "priority": "High",
+      "feature": "Focus Order",
+      "steps": [
+        "Open popup.",
+        "Tab through elements.",
+        "Verify logical order."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Focus order is logical."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_011",
+      "title": "Focus indicators clearly visible on purchase links",
+      "priority": "Highest",
+      "feature": "Focus Indicators",
+      "steps": [
+        "Tab to purchase link.",
+        "Verify visible focus outline/ring."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Focus indicator visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_012",
+      "title": "Links meet minimum color contrast ratio 4.5:1",
+      "priority": "High",
+      "feature": "Color Contrast",
+      "steps": [
+        "Open popup.",
+        "Verify link text color vs background meets 4.5:1."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Contrast ratio met."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_013",
+      "title": "Link states (default, hover, focus) are visually distinct",
+      "priority": "High",
+      "feature": "Link States",
+      "steps": [
+        "Open popup.",
+        "Observe default state.",
+        "Hover link.",
+        "Tab to link.",
+        "Verify states differ."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "States visually distinct."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_014",
+      "title": "Disabled links are programmatically hidden",
+      "priority": "High",
+      "feature": "Disabled Links",
+      "steps": [
+        "Open popup.",
+        "Verify no disabled/greyed-out links visible (hidden instead)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Disabled links hidden, not greyed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_015",
+      "title": "Screen reader announces link purpose and context",
+      "priority": "Medium",
+      "feature": "Screen Reader",
+      "steps": [
+        "Open popup.",
+        "Verify links have text content or aria-label describing purpose."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Link purpose announced."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_016",
+      "title": "Mobile touch targets >= 44x44 px",
+      "priority": "Medium",
+      "feature": "Mobile Touch",
+      "steps": [
+        "Set mobile viewport.",
+        "Open popup.",
+        "Verify link bounding box >= 44x44."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Mobile viewport.",
+      "expectedResults": [
+        "Touch targets >= 44x44."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_017",
+      "title": "No unexpected navigation after clicking link",
+      "priority": "Medium",
+      "feature": "Navigation Safety",
+      "steps": [
+        "Open popup.",
+        "Click a purchase link.",
+        "Verify original page still intact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "No unexpected navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_018",
+      "title": "Popup dialog has proper ARIA role",
+      "priority": "Low",
+      "feature": "Dialog ARIA",
+      "steps": [
+        "Open popup.",
+        "Verify dialog has role='dialog'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup open.",
+      "expectedResults": [
+        "Dialog has proper role."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_019",
+      "title": "Page refresh retains product detail",
+      "priority": "Low",
+      "feature": "Navigation",
+      "steps": [
+        "Reload page.",
+        "Verify product detail intact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Product detail retained."
+      ]
+    },
+    {
+      "id": "TC_SCRUM85_020",
+      "title": "Back navigation works from product detail",
+      "priority": "Lowest",
+      "feature": "Navigation",
+      "steps": [
+        "Go back.",
+        "Verify catalog loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "On product detail.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    }
+  ]
+}

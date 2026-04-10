@@ -1,0 +1,329 @@
+{
+  "jiraStory": "SCRUM-421",
+  "title": "Caregiver - View Wishlist Items Tagged to a PwD (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-421: Caregiver can view wishlist items tagged to a PwD from Caregiver Profile. Validates wishlist access (AC1), item details (AC2), PwD tagging (AC3-4), count (AC5), View Details navigation (AC6), session persistence (AC7). Edge cases: empty wishlist, no PwDs.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM421_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Wishlist Access from Profile",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Profile page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_002",
+      "title": "Wishlist tab/link visible on profile page",
+      "priority": "Highest",
+      "feature": "Wishlist Access from Profile",
+      "steps": [
+        "On profile page.",
+        "Verify Wishlist tab/link visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "Wishlist tab is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_003",
+      "title": "Clicking Wishlist tab shows wishlist content",
+      "priority": "Highest",
+      "feature": "Wishlist Access from Profile",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify wishlist content loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "Wishlist section is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_004",
+      "title": "Wishlist section has heading or title",
+      "priority": "Highest",
+      "feature": "Wishlist Access from Profile",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify heading contains 'wishlist'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on wishlist section.",
+      "expectedResults": [
+        "Wishlist heading visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_005",
+      "title": "Wishlist items display product name",
+      "priority": "Highest",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify items have product names."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Product names visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_006",
+      "title": "Wishlist items display price",
+      "priority": "Highest",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify items show price in ₹ format."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Price visible in ₹ format."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_007",
+      "title": "Wishlist items display PwD name tag",
+      "priority": "Highest",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify items have PwD name tag/badge."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items tagged to PwD.",
+      "expectedResults": [
+        "PwD name tag visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_008",
+      "title": "Wishlist items have View Details CTA",
+      "priority": "Highest",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify View Details link/button exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "View Details CTA present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_009",
+      "title": "View Details navigates to product detail page",
+      "priority": "Highest",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Click View Details on wishlist item.",
+        "Verify URL contains /product/."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items with View Details CTA.",
+      "expectedResults": [
+        "Navigates to product detail page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_010",
+      "title": "Wishlist count reflects total saved items",
+      "priority": "High",
+      "feature": "Wishlist Count",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify count text or item count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Wishlist count reflects total items."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_011",
+      "title": "Items tagged to one PwD only",
+      "priority": "High",
+      "feature": "PwD Tagging",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify each item has exactly one PwD tag."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items with PwD tags.",
+      "expectedResults": [
+        "Each item tagged to one PwD."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_012",
+      "title": "Single PwD auto-assigned tag",
+      "priority": "High",
+      "feature": "PwD Tagging",
+      "steps": [
+        "Navigate to wishlist.",
+        "If one PwD, verify tag is auto-assigned."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has one PwD.",
+      "expectedResults": [
+        "PwD tag auto-assigned."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_013",
+      "title": "Wishlist persists across sessions",
+      "priority": "High",
+      "feature": "Session Persistence",
+      "steps": [
+        "View wishlist.",
+        "Reload page.",
+        "Verify wishlist still shows items."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Wishlist persists after reload."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_014",
+      "title": "Empty wishlist shows empty state message",
+      "priority": "Medium",
+      "feature": "Edge Case — Empty State",
+      "steps": [
+        "Navigate to wishlist.",
+        "If empty, verify empty state message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist is empty.",
+      "expectedResults": [
+        "Empty state message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_015",
+      "title": "No PwDs shows guidance message",
+      "priority": "Medium",
+      "feature": "Edge Case — Empty State",
+      "steps": [
+        "Navigate to wishlist.",
+        "If no PwDs, verify guidance message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has no PwDs.",
+      "expectedResults": [
+        "Guidance message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_016",
+      "title": "Product image visible in wishlist items",
+      "priority": "Medium",
+      "feature": "Wishlist Item Details",
+      "steps": [
+        "Navigate to wishlist.",
+        "Verify items have product images."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Product images visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_017",
+      "title": "Mobile viewport renders wishlist correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to wishlist.",
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Wishlist renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_018",
+      "title": "Back navigation from wishlist works",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to wishlist.",
+        "Go back.",
+        "Verify previous page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on wishlist section.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_019",
+      "title": "Wishlist page has correct heading",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify heading contains 'wishlist' or profile name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on wishlist section.",
+      "expectedResults": [
+        "Correct heading displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM421_020",
+      "title": "Page refresh retains wishlist content",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "View wishlist.",
+        "Reload.",
+        "Verify content retained."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist has items.",
+      "expectedResults": [
+        "Content retained after refresh."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "jiraStory": "SCRUM-287",
+  "title": "PwDs Accessing Help & Resources - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-287: PwDs Accessing Help & Resources. Validates navigation to Help & Resources page, landing page layout (title, subtitle, search, tabs), search functionality, Help Topics categories with article cards, article detail page content, FAQ accordion behavior, Contact Us section (email, phone, regional support), and responsive layout.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "helpUrl": "https://qa-atad.swarajability.org/help-center/",
+    "articleUrl": "https://qa-atad.swarajability.org/help-article/navigating-the-home-page/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "tabs": [
+      "Help Topics",
+      "FAQ",
+      "Contact Us"
+    ],
+    "categories": [
+      {
+        "name": "Getting Started",
+        "articles": "5 Articles",
+        "description": "Essential guides to help you begin your journey with assistive devices"
+      },
+      {
+        "name": "Device Search",
+        "articles": "4 Articles",
+        "description": "Learn how to find the perfect assistive device for your needs"
+      },
+      {
+        "name": "Accessibility Support",
+        "articles": "6 Articles",
+        "description": "Platform accessibility features and assistance resources"
+      }
+    ],
+    "faqQuestions": [
+      "How can I see device reviews?",
+      "Are the prices shown final?",
+      "How do I purchase a device?",
+      "Can I save devices to view later?",
+      "How does the Device Matcher work?",
+      "How do I find devices suitable for my disability type?"
+    ],
+    "contactEmail": "support@y4j.org",
+    "contactPhone": "+91-9876543210",
+    "regionalCenters": [
+      "Mumbai",
+      "Delhi",
+      "Bangalore"
+    ],
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM287_001",
+      "title": "Help & Resources link is visible in top navigation bar",
+      "priority": "Highest",
+      "feature": "Navigation & Entry Point",
+      "steps": [
+        "Navigate to base URL.",
+        "Verify Help & Resources link is visible in nav."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the homepage.",
+      "expectedResults": [
+        "Help & Resources link is visible in top navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_002",
+      "title": "Clicking Help & Resources navigates to help-center page",
+      "priority": "Highest",
+      "feature": "Navigation & Entry Point",
+      "steps": [
+        "Click Help & Resources nav link.",
+        "Verify URL contains /help-center."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the homepage.",
+      "expectedResults": [
+        "Clicking Help & Resources navigates to /help-center."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_003",
+      "title": "Help & Resources nav link is visually highlighted as active on help page",
+      "priority": "Low",
+      "feature": "Navigation & Entry Point",
+      "steps": [
+        "Navigate to help-center page.",
+        "Check Help & Resources link for active/current class."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Help & Resources link has active/current class."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_004",
+      "title": "Help page loads within acceptable time",
+      "priority": "Medium",
+      "feature": "Navigation & Entry Point",
+      "steps": [
+        "Measure navigation time to help-center page.",
+        "Verify loads within 5 seconds."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the homepage.",
+      "expectedResults": [
+        "Help page loads within 5 seconds."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_005",
+      "title": "Page displays H1 title Help & Resources",
+      "priority": "Highest",
+      "feature": "Landing Page Overview",
+      "steps": [
+        "Navigate to help-center page.",
+        "Verify H1 text is Help & Resources."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "H1 title 'Help & Resources' is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_006",
+      "title": "Page displays descriptive subtitle below title",
+      "priority": "High",
+      "feature": "Landing Page Overview",
+      "steps": [
+        "Navigate to help-center page.",
+        "Verify subtitle text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Descriptive subtitle is visible below title."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_007",
+      "title": "Search input is visible with correct placeholder",
+      "priority": "High",
+      "feature": "Landing Page Overview",
+      "steps": [
+        "Navigate to help-center page.",
+        "Verify search input is visible with placeholder text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Search input is visible with placeholder text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_008",
+      "title": "Three tabs are present: Help Topics, FAQ, Contact Us",
+      "priority": "Highest",
+      "feature": "Landing Page Overview",
+      "steps": [
+        "Navigate to help-center page.",
+        "Verify all three tab buttons are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Help Topics, FAQ, and Contact Us tabs are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_009",
+      "title": "Only one tab is active at a time",
+      "priority": "High",
+      "feature": "Landing Page Overview",
+      "steps": [
+        "Navigate to help-center page.",
+        "Click each tab and verify only one has active state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Only one tab has active state at a time."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_010",
+      "title": "Search input accepts text input",
+      "priority": "High",
+      "feature": "Search Functionality",
+      "steps": [
+        "Navigate to help-center page.",
+        "Type text into search input.",
+        "Verify input value matches typed text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Search input accepts text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_011",
+      "title": "Typing a keyword updates visible results",
+      "priority": "High",
+      "feature": "Search Functionality",
+      "steps": [
+        "Type a keyword into search.",
+        "Verify visible article items update."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Typing a keyword updates visible results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_012",
+      "title": "Searching for non-existent term shows no results message",
+      "priority": "High",
+      "feature": "Search Functionality",
+      "steps": [
+        "Type a non-existent term into search.",
+        "Verify no results or empty state is shown."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Non-existent term shows no results message."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_013",
+      "title": "Clearing search restores original content",
+      "priority": "Medium",
+      "feature": "Search Functionality",
+      "steps": [
+        "Type a keyword into search.",
+        "Clear the search input.",
+        "Verify original content is restored."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User searched for a term.",
+      "expectedResults": [
+        "Clearing search restores original content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_014",
+      "title": "Help Topics tab displays category cards",
+      "priority": "Highest",
+      "feature": "Help Topics Section",
+      "steps": [
+        "Navigate to help-center page.",
+        "Verify Help Topics tab is active by default.",
+        "Verify category headings are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Help Topics tab displays category cards."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_015",
+      "title": "Each category card shows title, description, and article count",
+      "priority": "High",
+      "feature": "Help Topics Section",
+      "steps": [
+        "Verify each category has h3 title, description text, and article count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Help Topics tab is active.",
+      "expectedResults": [
+        "Each category shows title, description, and article count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_016",
+      "title": "Clicking View articles reveals article list within category",
+      "priority": "High",
+      "feature": "Help Topics Section",
+      "steps": [
+        "Click View articles toggle on first category.",
+        "Verify article items become visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Help Topics tab is active.",
+      "expectedResults": [
+        "Clicking View articles reveals article list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_017",
+      "title": "Article cards display title and description",
+      "priority": "High",
+      "feature": "Help Topics Section",
+      "steps": [
+        "Expand first category articles.",
+        "Verify article cards have heading and description."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Category articles are expanded.",
+      "expectedResults": [
+        "Article cards have heading and description."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_018",
+      "title": "Clicking an article card navigates to article detail page",
+      "priority": "Highest",
+      "feature": "Help Topics Section",
+      "steps": [
+        "Click first article card link.",
+        "Verify URL contains /help-article/."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Help Topics tab is active.",
+      "expectedResults": [
+        "Clicking article card navigates to /help-article/."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_019",
+      "title": "Article page displays H1 title",
+      "priority": "Highest",
+      "feature": "Article Detail Page",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify H1 is visible with article title."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "H1 title is visible with article title."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_020",
+      "title": "Article page shows read time and last updated date",
+      "priority": "Medium",
+      "feature": "Article Detail Page",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify read time and updated date are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "Read time and last updated date are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_021",
+      "title": "Article page has Back to Help Center link that navigates back",
+      "priority": "High",
+      "feature": "Article Detail Page",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify Back to Help Center link is visible.",
+        "Click it and verify navigation to help-center."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "Back to Help Center link navigates back."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_022",
+      "title": "Article page has step-by-step content with headings",
+      "priority": "Medium",
+      "feature": "Article Detail Page",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify content headings (h3) are present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "Step-by-step content with h3 headings is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_023",
+      "title": "Article page has Was this article helpful prompt with Yes/No options",
+      "priority": "Medium",
+      "feature": "Article Detail Page",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify helpful prompt text and Yes/No buttons are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "'Was this article helpful' prompt with Yes/No is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_024",
+      "title": "FAQ tab displays Frequently Asked Questions heading",
+      "priority": "Highest",
+      "feature": "FAQs Section",
+      "steps": [
+        "Click FAQ tab.",
+        "Verify Frequently Asked Questions heading is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "FAQ tab displays 'Frequently Asked Questions' heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_025",
+      "title": "FAQ items are displayed in accordion format",
+      "priority": "High",
+      "feature": "FAQs Section",
+      "steps": [
+        "Click FAQ tab.",
+        "Verify FAQ items use details/summary elements.",
+        "Verify at least 6 FAQ items are present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "FAQ tab is active.",
+      "expectedResults": [
+        "FAQ items are in accordion format with at least 6 items."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_026",
+      "title": "Clicking a FAQ expands it to show the answer",
+      "priority": "High",
+      "feature": "FAQs Section",
+      "steps": [
+        "Click FAQ tab.",
+        "Click first FAQ summary.",
+        "Verify details element is open."
+      ],
+      "testResult": "PASS",
+      "preconditions": "FAQ tab is active.",
+      "expectedResults": [
+        "Clicking a FAQ expands it to show the answer."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_027",
+      "title": "Expanding one FAQ collapses the previously expanded one",
+      "priority": "Medium",
+      "feature": "FAQs Section",
+      "steps": [
+        "Expand first FAQ.",
+        "Expand second FAQ.",
+        "Verify first FAQ is collapsed."
+      ],
+      "testResult": "FAIL",
+      "preconditions": "FAQ tab is active.",
+      "expectedResults": [
+        "Expanding one FAQ collapses the previously expanded one."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_028",
+      "title": "Contact Us tab displays Email Support with email address and Send Email action",
+      "priority": "Highest",
+      "feature": "Contact Us Section",
+      "steps": [
+        "Click Contact Us tab.",
+        "Verify Email Support heading, email address, response time, and Send Email link are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the help-center page.",
+      "expectedResults": [
+        "Contact Us tab shows Email Support with email and Send Email action."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_029",
+      "title": "Contact Us tab displays Phone Support with number and Call Now action",
+      "priority": "High",
+      "feature": "Contact Us Section",
+      "steps": [
+        "Click Contact Us tab.",
+        "Verify Phone Support heading, phone number, hours, and Call Now link are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Us tab is active.",
+      "expectedResults": [
+        "Phone Support with number and Call Now action is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_030",
+      "title": "Contact Us tab displays Regional Support Centers with locations and numbers",
+      "priority": "High",
+      "feature": "Contact Us Section",
+      "steps": [
+        "Click Contact Us tab.",
+        "Verify Regional Support Centers heading and at least 3 locations with phone numbers."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Us tab is active.",
+      "expectedResults": [
+        "Regional Support Centers with locations and numbers are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_031",
+      "title": "Help page is accessible on mobile viewport via hamburger menu",
+      "priority": "High",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Set viewport to mobile.",
+        "Open hamburger menu.",
+        "Verify Help & Resources link is visible.",
+        "Click it and verify navigation."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Help page is accessible via hamburger menu on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_032",
+      "title": "Share this article section is visible on article detail page",
+      "priority": "Low",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Navigate to article URL.",
+        "Verify Share this story heading is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on an article detail page.",
+      "expectedResults": [
+        "'Share this article' section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM287_033",
+      "title": "No horizontal overflow on mobile viewport",
+      "priority": "Lowest",
+      "feature": "Responsive & Edge Cases",
+      "steps": [
+        "Set viewport to mobile.",
+        "Navigate to help-center page.",
+        "Verify body scrollWidth does not exceed viewport."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    }
+  ]
+}

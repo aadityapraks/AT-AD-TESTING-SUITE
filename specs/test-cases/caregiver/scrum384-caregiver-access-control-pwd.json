@@ -1,0 +1,330 @@
+{
+  "jiraStory": "SCRUM-384",
+  "title": "Caregiver - Access Control & Data Integrity for PwD Management (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-384: Caregivers can only view/manage/delete PwDs linked to their account. Validates linked PwDs only (AC1), restricted actions (AC2), unauthenticated access blocked.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM384_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Profile page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_002",
+      "title": "PwD management section accessible",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "On profile page.",
+        "Verify PwD management section visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "PwD management section accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_003",
+      "title": "PwD profiles list is visible",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Navigate to PwD management.",
+        "Verify list of PwD profiles visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwDs linked.",
+      "expectedResults": [
+        "PwD profiles list visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_004",
+      "title": "Only linked PwDs shown in list",
+      "priority": "Highest",
+      "feature": "Linked PwDs Only",
+      "steps": [
+        "View PwD list.",
+        "Verify all PwDs belong to this caregiver."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwDs linked.",
+      "expectedResults": [
+        "Only linked PwDs shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_005",
+      "title": "PwD list does not show other caregivers' PwDs",
+      "priority": "Highest",
+      "feature": "Linked PwDs Only",
+      "steps": [
+        "View PwD list.",
+        "Verify no unauthorized PwDs visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "No unauthorized PwDs visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_006",
+      "title": "View action available for linked PwDs",
+      "priority": "Highest",
+      "feature": "View Restricted",
+      "steps": [
+        "Click on a linked PwD.",
+        "Verify profile details visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list visible.",
+      "expectedResults": [
+        "Profile details visible for linked PwD."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_007",
+      "title": "PwD profile view shows name and details",
+      "priority": "Highest",
+      "feature": "View Restricted",
+      "steps": [
+        "View linked PwD profile.",
+        "Verify name and disability info visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing linked PwD profile.",
+      "expectedResults": [
+        "Name and details visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_008",
+      "title": "Delete action available for authorized PwDs",
+      "priority": "Highest",
+      "feature": "Delete Restricted",
+      "steps": [
+        "View PwD list.",
+        "Verify Delete/Remove button or action exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwDs they created.",
+      "expectedResults": [
+        "Delete action available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_009",
+      "title": "Delete action not available for unauthorized PwDs",
+      "priority": "Highest",
+      "feature": "Delete Restricted",
+      "steps": [
+        "View PwD list.",
+        "Verify restricted PwDs do not have Delete action."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list has restricted profiles.",
+      "expectedResults": [
+        "No delete for unauthorized PwDs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_010",
+      "title": "Unauthenticated user cannot access PwD management",
+      "priority": "Highest",
+      "feature": "Unauthenticated Access Blocked",
+      "steps": [
+        "Open profile page without login.",
+        "Verify redirected to login or access denied."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in.",
+      "expectedResults": [
+        "Access blocked for unauthenticated user."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_011",
+      "title": "Delete confirmation required before removal",
+      "priority": "High",
+      "feature": "Delete Confirmation",
+      "steps": [
+        "Click Delete on a PwD.",
+        "Verify confirmation dialog/prompt appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete action available.",
+      "expectedResults": [
+        "Confirmation required before delete."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_012",
+      "title": "Cancel delete keeps PwD in list",
+      "priority": "High",
+      "feature": "Delete Confirmation",
+      "steps": [
+        "Click Delete.",
+        "Cancel confirmation.",
+        "Verify PwD still in list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete confirmation shown.",
+      "expectedResults": [
+        "PwD remains in list after cancel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_013",
+      "title": "PwD list updates after deletion",
+      "priority": "High",
+      "feature": "Delete Action",
+      "steps": [
+        "Delete a PwD.",
+        "Confirm deletion.",
+        "Verify PwD removed from list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete action confirmed.",
+      "expectedResults": [
+        "PwD removed from list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_014",
+      "title": "No unauthorized PwDs visible after page load",
+      "priority": "High",
+      "feature": "Linked PwDs Only",
+      "steps": [
+        "Reload PwD management page.",
+        "Verify only linked PwDs shown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "Only linked PwDs after reload."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_015",
+      "title": "Page refresh retains PwD list",
+      "priority": "Medium",
+      "feature": "Edge Case — Persistence",
+      "steps": [
+        "View PwD list.",
+        "Reload page.",
+        "Verify list retained."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list visible.",
+      "expectedResults": [
+        "PwD list persists after refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_016",
+      "title": "PwD count reflects linked PwDs only",
+      "priority": "Medium",
+      "feature": "Linked PwDs Only",
+      "steps": [
+        "View PwD list.",
+        "Verify count matches number of linked PwDs."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list visible.",
+      "expectedResults": [
+        "Count reflects linked PwDs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_017",
+      "title": "PwD usable for catalog after access control check",
+      "priority": "Medium",
+      "feature": "Usability",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify linked PwDs appear in dropdown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has linked PwDs.",
+      "expectedResults": [
+        "Linked PwDs available in catalog dropdown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_018",
+      "title": "Mobile viewport renders PwD management correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to PwD management.",
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "PwD management renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_019",
+      "title": "Back navigation from PwD management works",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "On PwD management.",
+        "Go back.",
+        "Verify previous page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM384_020",
+      "title": "PwD management page has correct heading",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify page heading contains 'profile' or 'PwD' or 'manage'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "Correct heading displayed."
+      ]
+    }
+  ]
+}

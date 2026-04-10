@@ -1,0 +1,524 @@
+{
+  "jiraStory": "SCRUM-83",
+  "title": "PwD - Product Reviews and Ratings - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-83: PwD - Product Reviews and Ratings. Validates average rating display, Reviews tab content (reviewer name, star rating, review text, date), reverse chronological order, no-reviews placeholder, review submission form with 700 char limit, and responsive behavior.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "testProductUrl": "https://qa-atad.swarajability.org/product/wheelchair-16-03/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "reviewCharLimit": 700,
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM83_001",
+      "title": "Average rating is visible near top of product page",
+      "priority": "Highest",
+      "feature": "Average Rating Display",
+      "steps": [
+        "Navigate to product page.",
+        "Verify rating value is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Average rating value is visible near top."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_002",
+      "title": "Rating value is between 0 and 5",
+      "priority": "High",
+      "feature": "Average Rating Display",
+      "steps": [
+        "Read rating text.",
+        "Verify it parses to 0-5."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Rating value parses to a number between 0 and 5."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_003",
+      "title": "Star icon is displayed next to rating",
+      "priority": "Medium",
+      "feature": "Average Rating Display",
+      "steps": [
+        "Verify star SVG icon near rating."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Star SVG icon is displayed next to rating."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_004",
+      "title": "Review count is displayed near rating",
+      "priority": "High",
+      "feature": "Average Rating Display",
+      "steps": [
+        "Verify review count text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Review count text is visible near rating."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_005",
+      "title": "Review count shows number in parentheses",
+      "priority": "Low",
+      "feature": "Average Rating Display",
+      "steps": [
+        "Read review count.",
+        "Verify format like (N reviews)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product page.",
+      "expectedResults": [
+        "Review count shows number in parentheses format."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_006",
+      "title": "Reviews tab is present in product tabs",
+      "priority": "Highest",
+      "feature": "Reviews Tab Access",
+      "steps": [
+        "Verify Reviews tab exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product details page.",
+      "expectedResults": [
+        "Reviews tab exists in product tabs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_007",
+      "title": "Clicking Reviews tab shows review content",
+      "priority": "Highest",
+      "feature": "Reviews Tab Access",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify panel visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the product details page.",
+      "expectedResults": [
+        "Clicking Reviews tab shows review content panel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_008",
+      "title": "Reviews tab panel is visible after click",
+      "priority": "High",
+      "feature": "Reviews Tab Access",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify tab panel visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is clicked.",
+      "expectedResults": [
+        "Tab panel is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_009",
+      "title": "Reviews tab content is non-empty",
+      "priority": "Medium",
+      "feature": "Reviews Tab Access",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify content text length > 0."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Content text length > 0."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_010",
+      "title": "Each review shows reviewer name or anonymous",
+      "priority": "Highest",
+      "feature": "Review List Content",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify each review has a name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Each review shows a reviewer name or anonymous."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_011",
+      "title": "Each review shows star rating",
+      "priority": "Highest",
+      "feature": "Review List Content",
+      "steps": [
+        "Verify each review has star rating."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Each review shows a star rating."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_012",
+      "title": "Each review shows review text",
+      "priority": "High",
+      "feature": "Review List Content",
+      "steps": [
+        "Verify each review has text content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Each review has text content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_013",
+      "title": "Each review shows date posted",
+      "priority": "Medium",
+      "feature": "Review List Content",
+      "steps": [
+        "Verify each review has a date."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Each review has a date."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_014",
+      "title": "Star ratings are between 1 and 5",
+      "priority": "Low",
+      "feature": "Review List Content",
+      "steps": [
+        "Parse star count from each review.",
+        "Verify 1-5 range."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Star count is between 1 and 5."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_015",
+      "title": "Reviews are listed newest first",
+      "priority": "High",
+      "feature": "Review List Content",
+      "steps": [
+        "Read dates from reviews.",
+        "Verify descending order."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Reviews are listed in descending date order (newest first)."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_016",
+      "title": "Product with no reviews shows placeholder text",
+      "priority": "High",
+      "feature": "No Reviews Placeholder",
+      "steps": [
+        "Find product with no reviews.",
+        "Verify placeholder visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product with no reviews.",
+      "expectedResults": [
+        "Placeholder text is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_017",
+      "title": "Placeholder contains No reviews yet or similar",
+      "priority": "Low",
+      "feature": "No Reviews Placeholder",
+      "steps": [
+        "Read placeholder text.",
+        "Verify it says no reviews."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on a product with no reviews.",
+      "expectedResults": [
+        "Placeholder says 'No reviews yet' or similar."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_018",
+      "title": "Write a review button or form is visible",
+      "priority": "Highest",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Click Reviews tab.",
+        "Verify write review option visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Write a review button or form is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_019",
+      "title": "Review text box is present",
+      "priority": "Highest",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Verify textarea or text input for review."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Reviews tab is active.",
+      "expectedResults": [
+        "Textarea or text input for review is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_020",
+      "title": "Text box accepts text input",
+      "priority": "High",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Type text into review box.",
+        "Verify text appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is visible.",
+      "expectedResults": [
+        "Typed text appears in the text box."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_021",
+      "title": "Star rating selector is present in form",
+      "priority": "High",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Verify star rating input in review form."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is visible.",
+      "expectedResults": [
+        "Star rating input is present in the form."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_022",
+      "title": "Submit button is present",
+      "priority": "Highest",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Verify Submit button visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is visible.",
+      "expectedResults": [
+        "Submit button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_023",
+      "title": "Text box accepts up to 700 characters",
+      "priority": "Medium",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Type 700 chars.",
+        "Verify accepted."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is visible.",
+      "expectedResults": [
+        "Text box accepts up to 700 characters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_024",
+      "title": "Submit with valid rating and text succeeds",
+      "priority": "Highest",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Select rating.",
+        "Type review.",
+        "Click Submit.",
+        "Verify success."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is filled with valid data.",
+      "expectedResults": [
+        "Submission succeeds."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_025",
+      "title": "Review count updates after submission",
+      "priority": "High",
+      "feature": "Submit Review Form",
+      "steps": [
+        "Note count before.",
+        "Submit review.",
+        "Verify count incremented."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review was submitted.",
+      "expectedResults": [
+        "Review count increments after submission."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_026",
+      "title": "Submit without rating shows error or is prevented",
+      "priority": "Medium",
+      "feature": "Form Validation",
+      "steps": [
+        "Type text but no rating.",
+        "Click Submit.",
+        "Verify error or prevention."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form has text but no rating.",
+      "expectedResults": [
+        "Error shown or submission prevented."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_027",
+      "title": "Submit with empty text is handled",
+      "priority": "Medium",
+      "feature": "Form Validation",
+      "steps": [
+        "Select rating but no text.",
+        "Click Submit.",
+        "Verify behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form has rating but no text.",
+      "expectedResults": [
+        "Behavior is handled gracefully."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_028",
+      "title": "Text box does not accept beyond character limit",
+      "priority": "Low",
+      "feature": "Form Validation",
+      "steps": [
+        "Type 701+ chars.",
+        "Verify truncated or blocked."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is visible.",
+      "expectedResults": [
+        "Text beyond 700 chars is truncated or blocked."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_029",
+      "title": "Submit button is disabled or hidden when form is invalid",
+      "priority": "Lowest",
+      "feature": "Form Validation",
+      "steps": [
+        "Leave form empty.",
+        "Check Submit button state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Review form is empty.",
+      "expectedResults": [
+        "Submit button is disabled or hidden."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_030",
+      "title": "Reviews tab renders on mobile viewport",
+      "priority": "High",
+      "feature": "Responsive",
+      "steps": [
+        "Set viewport to mobile.",
+        "Click Reviews tab.",
+        "Verify visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Reviews tab content is visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_031",
+      "title": "Reviews tab renders on tablet viewport",
+      "priority": "Medium",
+      "feature": "Responsive",
+      "steps": [
+        "Set viewport to tablet.",
+        "Click Reviews tab.",
+        "Verify visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Reviews tab content is visible on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_032",
+      "title": "Review form is usable on mobile",
+      "priority": "Lowest",
+      "feature": "Responsive",
+      "steps": [
+        "Set viewport to mobile.",
+        "Verify text box and submit visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Review form text box and submit are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM83_033",
+      "title": "No horizontal overflow on mobile",
+      "priority": "Low",
+      "feature": "Responsive",
+      "steps": [
+        "Set viewport to mobile.",
+        "Check body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "No horizontal overflow on mobile."
+      ]
+    }
+  ]
+}

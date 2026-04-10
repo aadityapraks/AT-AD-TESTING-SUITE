@@ -1,0 +1,494 @@
+{
+  "jiraStory": "SCRUM-408",
+  "title": "Caregiver - Guide Caregiver to Add PwD Before Inquiry (30 Test Cases)",
+  "overview": "Functional testing of SCRUM-408: System guides caregiver to add a PwD profile before making a vendor inquiry. Validates 'Add PwD Profile' CTA navigates to PwD registration flow, after successful PwD creation user returns to product page with newly added PwD auto-selected and Contact Vendor enabled, helper text explains PwD requirement. Edge cases: abandoned PwD creation, PwD limit reached, network failure retry.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM408_001",
+      "title": "Caregiver can navigate to product detail page from catalog",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Click first View details link.",
+        "Verify URL contains /product/ or page has product content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in and on the catalog page.",
+      "expectedResults": [
+        "Caregiver navigates to a product detail page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_002",
+      "title": "Product detail page has product heading",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Navigate to product detail page.",
+        "Verify H1 heading is visible with non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Product detail page displays a product heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_003",
+      "title": "'Add PwD Profile' CTA visible on product detail page",
+      "priority": "Highest",
+      "feature": "Add PwD CTA Presence",
+      "steps": [
+        "Navigate to product detail page.",
+        "Scroll to bottom.",
+        "Check for 'Add PwD Profile' element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "'Add PwD Profile' CTA is visible or page contains 'Add PwD' text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_004",
+      "title": "'Add PwD Profile' CTA is a clickable element",
+      "priority": "Highest",
+      "feature": "Add PwD CTA Presence",
+      "steps": [
+        "Navigate to product detail page.",
+        "Locate 'Add PwD Profile' element.",
+        "Verify it is a button or link."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "'Add PwD Profile' CTA is a clickable element."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_005",
+      "title": "Clicking 'Add PwD Profile' navigates to PwD registration flow",
+      "priority": "Highest",
+      "feature": "Add PwD Navigation to Registration",
+      "steps": [
+        "Navigate to product detail page.",
+        "Click 'Add PwD Profile' CTA.",
+        "Verify URL changes or registration form/modal appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page with 'Add PwD Profile' CTA visible.",
+      "expectedResults": [
+        "Caregiver is navigated to PwD registration flow."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_006",
+      "title": "PwD registration flow URL or modal is correct",
+      "priority": "Highest",
+      "feature": "Add PwD Navigation to Registration",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Verify URL contains registration path or modal/form is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked 'Add PwD Profile'.",
+      "expectedResults": [
+        "PwD registration flow is correctly loaded."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_007",
+      "title": "PwD registration page has form fields",
+      "priority": "Highest",
+      "feature": "PwD Registration Page",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Verify page/modal contains form fields."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD registration flow.",
+      "expectedResults": [
+        "PwD registration form has input fields."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_008",
+      "title": "PwD registration page has submit/save button",
+      "priority": "Highest",
+      "feature": "PwD Registration Page",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Verify Submit/Save/Create/Add button exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD registration flow.",
+      "expectedResults": [
+        "PwD registration form has a submit/save action."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_009",
+      "title": "After PwD creation user returns to product page",
+      "priority": "Highest",
+      "feature": "Return to Product After PwD Creation",
+      "steps": [
+        "Navigate to product detail.",
+        "Click 'Add PwD Profile'.",
+        "Complete PwD registration.",
+        "Verify URL returns to /product/ or product content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver completed PwD registration.",
+      "expectedResults": [
+        "User is returned to product page after PwD creation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_010",
+      "title": "Product page content intact after return from PwD creation",
+      "priority": "Highest",
+      "feature": "Return to Product After PwD Creation",
+      "steps": [
+        "After returning from PwD creation, verify H1 heading visible.",
+        "Verify page body contains product content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to product page after PwD creation.",
+      "expectedResults": [
+        "Product page content is intact after return."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_011",
+      "title": "Newly added PwD is auto-selected or selectable after creation",
+      "priority": "Highest",
+      "feature": "Newly Added PwD Auto-Selected",
+      "steps": [
+        "After PwD creation and return, check PwD selection element.",
+        "Verify newly added PwD is auto-selected or available."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to product page after PwD creation.",
+      "expectedResults": [
+        "Newly added PwD is auto-selected or selectable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_012",
+      "title": "PwD dropdown shows updated list after new PwD creation",
+      "priority": "Highest",
+      "feature": "Newly Added PwD Auto-Selected",
+      "steps": [
+        "After PwD creation, locate PwD dropdown/trigger.",
+        "Open dropdown.",
+        "Verify list includes newly created PwD."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to product page after PwD creation.",
+      "expectedResults": [
+        "PwD dropdown reflects newly created PwD."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_013",
+      "title": "Contact Vendor button enabled after PwD creation",
+      "priority": "Highest",
+      "feature": "Contact Vendor Enabled After PwD Creation",
+      "steps": [
+        "After PwD creation and return, verify Contact Vendor button is enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned with newly created PwD selected.",
+      "expectedResults": [
+        "Contact Vendor button is enabled after PwD creation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_014",
+      "title": "Contact Vendor button is clickable after PwD creation",
+      "priority": "Highest",
+      "feature": "Contact Vendor Enabled After PwD Creation",
+      "steps": [
+        "After PwD creation, click Contact Vendor.",
+        "Verify page responds."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Vendor is enabled after PwD creation.",
+      "expectedResults": [
+        "Contact Vendor button is functional after PwD creation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_015",
+      "title": "Helper text visible on product detail page",
+      "priority": "High",
+      "feature": "Helper Text PwD Requirement",
+      "steps": [
+        "Navigate to product detail.",
+        "Scroll to Contact Vendor / PwD area.",
+        "Verify helper text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Helper text is visible near PwD selection / Contact Vendor area."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_016",
+      "title": "Helper text contains PwD/required keywords",
+      "priority": "High",
+      "feature": "Helper Text PwD Requirement",
+      "steps": [
+        "Navigate to product detail.",
+        "Verify body contains 'PwD', 'required', 'select', 'add', or 'profile'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Helper text references PwD selection requirement."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_017",
+      "title": "Helper text explains why PwD selection is needed",
+      "priority": "High",
+      "feature": "Helper Text PwD Requirement",
+      "steps": [
+        "Navigate to product detail.",
+        "Verify body contains explanatory text about PwD for vendor contact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Helper text explains purpose of PwD selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_018",
+      "title": "Helper text visible before any PwD is selected",
+      "priority": "High",
+      "feature": "Helper Text Visibility",
+      "steps": [
+        "Navigate to product detail without selecting PwD.",
+        "Verify helper text or guidance is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page, no PwD selected.",
+      "expectedResults": [
+        "Helper text is shown before PwD selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_019",
+      "title": "Helper text disappears or changes after PwD is selected",
+      "priority": "High",
+      "feature": "Helper Text Visibility",
+      "steps": [
+        "Note helper text state before PwD selection.",
+        "Select a PwD.",
+        "Verify helper text changes or disappears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Helper text state updates after PwD selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_020",
+      "title": "Abandoning PwD creation returns to product page with no PwD selected",
+      "priority": "High",
+      "feature": "Edge Case — PwD Creation Abandoned",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Navigate back without completing registration.",
+        "Verify URL returns to /product/ or product content visible.",
+        "Verify no PwD is selected."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked 'Add PwD Profile' and is on registration flow.",
+      "expectedResults": [
+        "Caregiver returns to product page with no PwD selected."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_021",
+      "title": "Contact Vendor remains disabled after abandoned PwD creation",
+      "priority": "High",
+      "feature": "Edge Case — PwD Creation Abandoned",
+      "steps": [
+        "After abandoning PwD creation, verify Contact Vendor button state.",
+        "Verify it is disabled or blocked."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver abandoned PwD creation and returned to product page.",
+      "expectedResults": [
+        "Contact Vendor remains disabled after abandoned PwD creation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_022",
+      "title": "Clear message shown when PwD limit is reached",
+      "priority": "Medium",
+      "feature": "Edge Case — PwD Limit Reached",
+      "steps": [
+        "Navigate to product detail.",
+        "Check for message indicating PwD limit reached."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has reached maximum PwD profiles.",
+      "expectedResults": [
+        "Clear message shown when PwD limit is reached."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_023",
+      "title": "'Add PwD Profile' CTA disabled when PwD limit reached",
+      "priority": "Medium",
+      "feature": "Edge Case — PwD Limit Reached",
+      "steps": [
+        "Navigate to product detail.",
+        "Locate 'Add PwD Profile' CTA.",
+        "Verify it is disabled or not clickable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has reached maximum PwD profiles.",
+      "expectedResults": [
+        "'Add PwD Profile' CTA is disabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_024",
+      "title": "Retry option provided on network failure during PwD creation",
+      "priority": "Medium",
+      "feature": "Edge Case — Network Failure",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Observe network failure scenario.",
+        "Verify retry option or error message displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Network failure occurs during PwD creation.",
+      "expectedResults": [
+        "Retry option or error message provided on network failure."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_025",
+      "title": "Error message on network failure is user-friendly",
+      "priority": "Medium",
+      "feature": "Edge Case — Network Failure",
+      "steps": [
+        "Observe error message on network failure.",
+        "Verify it is user-friendly."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Network failure occurred during PwD creation.",
+      "expectedResults": [
+        "Error message is clear and user-friendly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_026",
+      "title": "Mobile viewport renders Add PwD flow correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to product detail.",
+        "Set mobile viewport.",
+        "Verify Add PwD / PwD content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Add PwD flow renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_027",
+      "title": "Multiple products have consistent Add PwD CTA behavior",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Click first View details, verify Add PwD / PwD content.",
+        "Go back.",
+        "Click second View details, verify same content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Add PwD CTA behavior is consistent across products."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_028",
+      "title": "Page refresh retains Add PwD CTA state",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to product detail.",
+        "Note Add PwD CTA state.",
+        "Reload page.",
+        "Verify CTA state retained."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Page refresh does not break Add PwD CTA."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_029",
+      "title": "Back navigation from PwD registration returns to product page",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Click 'Add PwD Profile'.",
+        "Use browser back.",
+        "Verify URL returns to /product/ or product content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked 'Add PwD Profile' and is on registration flow.",
+      "expectedResults": [
+        "Browser back returns to product page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM408_030",
+      "title": "Add PwD CTA styling is distinct and discoverable",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to product detail.",
+        "Scroll to PwD / Contact Vendor area.",
+        "Verify page contains 'Add PwD' or 'add' and 'profile' text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on a product detail page.",
+      "expectedResults": [
+        "Add PwD CTA is discoverable on the page."
+      ]
+    }
+  ]
+}
