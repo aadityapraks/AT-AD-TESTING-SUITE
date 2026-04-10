@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum76-sort-view-listings.json
 
 import { test, expect } from '@playwright/test';
-import { CatalogSortViewPage } from '../pages/CatalogSortViewPage';
-import planData from '../../specs/test-cases/scrum76-sort-view-listings.json';
+import { CatalogSortViewPage } from '../../pages/pwd/CatalogSortViewPage';
+import planData from '../../../specs/test-cases/pwd/scrum76-sort-view-listings.json';
 const td = planData.testData;
 
 test.describe('SCRUM-76: PwD Sort and View Product Listings', () => {

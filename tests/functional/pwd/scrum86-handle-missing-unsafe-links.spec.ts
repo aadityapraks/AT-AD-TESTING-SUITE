@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ProductPricingVendorPage } from '../pages/ProductPricingVendorPage';
-import planData from '../../specs/test-cases/scrum86-handle-missing-unsafe-links.json';
+import { ProductPricingVendorPage } from '../../pages/pwd/ProductPricingVendorPage';
+import planData from '../../../specs/test-cases/pwd/scrum86-handle-missing-unsafe-links.json';
 const td = planData.testData;
 
 test.describe('SCRUM-86: PwD - Handle Missing, Unsafe, or Disabled Links', () => {

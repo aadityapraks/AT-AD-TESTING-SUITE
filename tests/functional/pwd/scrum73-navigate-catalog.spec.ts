@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum73-navigate-catalog.json
 
 import { test, expect } from '@playwright/test';
-import { CatalogNavigationPage } from '../pages/CatalogNavigationPage';
-import planData from '../../specs/test-cases/scrum73-navigate-catalog.json';
+import { CatalogNavigationPage } from '../../pages/pwd/CatalogNavigationPage';
+import planData from '../../../specs/test-cases/pwd/scrum73-navigate-catalog.json';
 const td = planData.testData;
 
 test.describe('SCRUM-73: PwD Navigate to Catalog Tab from Home Page', () => {

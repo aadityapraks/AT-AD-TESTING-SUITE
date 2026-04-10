@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HelpResourcesPage } from '../pages/HelpResourcesPage';
+import { HelpResourcesPage } from '../../pages/pwd/HelpResourcesPage';
 
 let hp: HelpResourcesPage;
 

@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum79-product-overview.json
 
 import { test, expect } from '@playwright/test';
-import { ProductOverviewPage } from '../pages/ProductOverviewPage';
-import planData from '../../specs/test-cases/scrum79-product-overview.json';
+import { ProductOverviewPage } from '../../pages/pwd/ProductOverviewPage';
+import planData from '../../../specs/test-cases/pwd/scrum79-product-overview.json';
 const td = planData.testData;
 
 test.describe('SCRUM-79: PwD View Product Overview Section (Header and Gallery)', () => {

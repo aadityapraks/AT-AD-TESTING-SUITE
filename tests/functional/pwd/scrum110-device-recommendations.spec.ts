@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum110-device-recommendations.json
 
 import { test, expect } from '@playwright/test';
-import { RecommendationsPage } from '../pages/RecommendationsPage';
-import planData from '../../specs/test-cases/scrum110-device-recommendations.json';
+import { RecommendationsPage } from '../../pages/pwd/RecommendationsPage';
+import planData from '../../../specs/test-cases/pwd/scrum110-device-recommendations.json';
 const td = planData.testData;
 
 test.describe('SCRUM-110: PwD - Device Recommendations', () => {

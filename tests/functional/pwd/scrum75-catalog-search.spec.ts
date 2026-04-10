@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum75-catalog-search.json
 
 import { test, expect } from '@playwright/test';
-import { CatalogSearchPage } from '../pages/CatalogSearchPage';
-import planData from '../../specs/test-cases/scrum75-catalog-search.json';
+import { CatalogSearchPage } from '../../pages/pwd/CatalogSearchPage';
+import planData from '../../../specs/test-cases/pwd/scrum75-catalog-search.json';
 const td = planData.testData;
 
 test.describe('SCRUM-75: PwD Search for Products within the Catalog', () => {

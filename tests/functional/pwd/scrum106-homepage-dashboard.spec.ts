@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum106-homepage-dashboard.json
 
 import { test, expect } from '@playwright/test';
-import { HomeDashboardPage } from '../pages/HomeDashboardPage';
-import planData from '../../specs/test-cases/scrum106-homepage-dashboard.json';
+import { HomeDashboardPage } from '../../pages/pwd/HomeDashboardPage';
+import planData from '../../../specs/test-cases/pwd/scrum106-homepage-dashboard.json';
 const td = planData.testData;
 
 test.describe('SCRUM-106: PwD - Landing on Portal Homepage and Dashboard', () => {

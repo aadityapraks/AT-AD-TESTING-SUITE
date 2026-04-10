@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum78-product-details-nav.json
 
 import { test, expect } from '@playwright/test';
-import { ProductDetailsPage } from '../pages/ProductDetailsPage';
-import planData from '../../specs/test-cases/scrum78-product-details-nav.json';
+import { ProductDetailsPage } from '../../pages/pwd/ProductDetailsPage';
+import planData from '../../../specs/test-cases/pwd/scrum78-product-details-nav.json';
 const td = planData.testData;
 
 test.describe('SCRUM-78: PwD Navigate from Catalog to Product Details Page', () => {

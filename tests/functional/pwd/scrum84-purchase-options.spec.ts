@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ProductPricingVendorPage } from '../pages/ProductPricingVendorPage';
-import planData from '../../specs/test-cases/scrum84-purchase-options.json';
+import { ProductPricingVendorPage } from '../../pages/pwd/ProductPricingVendorPage';
+import planData from '../../../specs/test-cases/pwd/scrum84-purchase-options.json';
 const td = planData.testData;
 
 test.describe('SCRUM-84: PwD - View Available Purchase Options', () => {

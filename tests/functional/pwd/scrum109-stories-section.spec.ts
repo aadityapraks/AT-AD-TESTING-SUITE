@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum109-stories-section.json
 
 import { test, expect } from '@playwright/test';
-import { StoriesPage } from '../pages/StoriesPage';
-import planData from '../../specs/test-cases/scrum109-stories-section.json';
+import { StoriesPage } from '../../pages/pwd/StoriesPage';
+import planData from '../../../specs/test-cases/pwd/scrum109-stories-section.json';
 const td = planData.testData;
 
 test.describe('SCRUM-109: PwD - Accessing Stories Section', () => {

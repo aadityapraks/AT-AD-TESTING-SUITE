@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum74-catalog-filters.json
 
 import { test, expect } from '@playwright/test';
-import { CatalogFiltersPage } from '../pages/CatalogFiltersPage';
-import planData from '../../specs/test-cases/scrum74-catalog-filters.json';
+import { CatalogFiltersPage } from '../../pages/pwd/CatalogFiltersPage';
+import planData from '../../../specs/test-cases/pwd/scrum74-catalog-filters.json';
 const testData = planData.testData;
 
 test.describe('SCRUM-74: PwD View Catalog Landing Page with Filters', () => {

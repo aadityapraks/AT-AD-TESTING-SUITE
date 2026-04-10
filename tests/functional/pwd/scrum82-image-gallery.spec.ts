@@ -2,8 +2,8 @@
 // data: specs/test-cases/scrum82-image-gallery.json
 
 import { test, expect } from '@playwright/test';
-import { ImageGalleryPage } from '../pages/ImageGalleryPage';
-import planData from '../../specs/test-cases/scrum82-image-gallery.json';
+import { ImageGalleryPage } from '../../pages/pwd/ImageGalleryPage';
+import planData from '../../../specs/test-cases/pwd/scrum82-image-gallery.json';
 const td = planData.testData;
 
 test.describe('SCRUM-82: PwD - Product Image Gallery Interaction', () => {
