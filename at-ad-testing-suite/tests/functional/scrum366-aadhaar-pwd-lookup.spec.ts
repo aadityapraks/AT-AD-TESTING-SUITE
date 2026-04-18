@@ -186,8 +186,8 @@ test.describe('SCRUM-366: Caregiver - Aadhaar-Based PwD Lookup', () => {
     expect(allZeroValue.length).toBeGreaterThan(0);
   });
 
-  test('TC_AADHAAR_011: Verify Aadhaar input field masks the entered number', async () => {
-    const td = testData.TC_AADHAAR_011;
+  test('TC_AADHAAR_009: Verify Aadhaar input field masks the entered number', async () => {
+    const td = testData.TC_AADHAAR_009;
 
     // 1. Navigate to Aadhaar lookup page
     await caregiverPage.navigateToAadhaarLookup(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
@@ -272,25 +272,8 @@ test.describe('SCRUM-366: Caregiver - Aadhaar-Based PwD Lookup', () => {
     }
   });
 
-  test.skip('TC_AADHAAR_008: Verify Aadhaar service unavailable shows retry message', async () => {
-    // SKIPPED: Cannot simulate service unavailability in automated tests.
-    // Requires manual testing or network interception setup.
+  test('TC_AADHAAR_008: Verify Aadhaar already linked to another caregiver blocks access', async () => {
     const td = testData.TC_AADHAAR_008;
-    await caregiverPage.navigateToAadhaarLookup(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-    await caregiverPage.fillAadhaarLookupField(td.inputs.validAadhaar);
-    await caregiverPage.clickVerifyAadhaarButton();
-  });
-
-  test.skip('TC_AADHAAR_009: Verify excessive Aadhaar verification attempts trigger temporary lock', async () => {
-    // SKIPPED: Requires knowledge of max attempt count and lock duration.
-    // May also lock the test account for other tests.
-    const td = testData.TC_AADHAAR_009;
-    await caregiverPage.navigateToAadhaarLookup(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-    await caregiverPage.fillAadhaarLookupField(td.inputs.validAadhaar);
-  });
-
-  test('TC_AADHAAR_010: Verify Aadhaar already linked to another caregiver blocks access', async () => {
-    const td = testData.TC_AADHAAR_010;
 
     // 1. Log in as a different caregiver and navigate to Aadhaar lookup page
     await caregiverPage.navigateToAadhaarLookup(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);

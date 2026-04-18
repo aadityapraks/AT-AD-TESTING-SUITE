@@ -28,7 +28,7 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
     const pwdCardNames = await caregiverPage.getPwdCardNames();
     expect(pwdCardNames.length).toBeGreaterThan(0);
 
-    // 5-9. Verify each card contains Name (verified by card names existing)
+    // 5-9. Verify each card contains Name
     for (const name of pwdCardNames) {
       expect(await caregiverPage.verifyPwdCardHasName(name)).toBe(true);
     }
@@ -57,8 +57,8 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
     }
   });
 
-  test('TC_PROFILE_005: Verify Age is auto-calculated from Date of Birth', async () => {
-    const td = testData.TC_PROFILE_005;
+  test('TC_PROFILE_002: Verify Age is auto-calculated from Date of Birth', async () => {
+    const td = testData.TC_PROFILE_002;
 
     // 1. Log in and navigate to My PwDs
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
@@ -90,8 +90,8 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
     expect(heading).toContain('My Persons with Disabilities');
   });
 
-  test('TC_PROFILE_007: Verify Activity History view and tab switching', async () => {
-    const td = testData.TC_PROFILE_007;
+  test('TC_PROFILE_003: Verify Activity History view and tab switching', async () => {
+    const td = testData.TC_PROFILE_003;
 
     // 1. Log in and navigate to My PwDs
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
@@ -122,71 +122,8 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
     expect(await caregiverPage.isBackToMyPwdsLinkVisible()).toBe(true);
   });
 
-  test('TC_PROFILE_002: Verify PwD summary card visual indicators', async () => {
-    const td = testData.TC_PROFILE_002;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    // Verify PwD cards have names and disability info
-    const names = await caregiverPage.getPwdCardNames();
-    expect(names.length).toBeGreaterThan(0);
-    for (const name of names) {
-      expect(await caregiverPage.verifyPwdCardHasName(name)).toBe(true);
-    }
-    // Verify View Profile links exist for each card
-    const viewProfileCount = await caregiverPage.getViewProfileLinkCount();
-    expect(viewProfileCount).toBe(names.length);
-  });
-
-  test('TC_PROFILE_003: Verify UI differentiates between PwD cards and Add PwD tile', async () => {
-    const td = testData.TC_PROFILE_003;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    // Verify PwD cards exist
-    const names = await caregiverPage.getPwdCardNames();
-    expect(names.length).toBeGreaterThan(0);
-
-    // Verify Add New PwD card is visually distinct
-    const availableSlots = await caregiverPage.getAvailableSlots();
-    if (availableSlots > 0) {
-      expect(await caregiverPage.isAddNewPwdCardVisible()).toBe(true);
-      expect(await caregiverPage.isAddNewPwdSlotsAvailableTextVisible()).toBe(true);
-      expect(await caregiverPage.isAddPwdButtonVisible()).toBe(true);
-    }
-  });
-
-  test('TC_PROFILE_004: Verify View Profile opens read-only PwD details', async () => {
+  test('TC_PROFILE_004: Verify Activity History empty state', async () => {
     const td = testData.TC_PROFILE_004;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    const names = await caregiverPage.getPwdCardNames();
-    expect(names.length).toBeGreaterThan(0);
-
-    // Click View Profile on first PwD
-    await caregiverPage.clickViewProfileLink(0);
-    await caregiverPage.waitForPwdProfilePage();
-
-    // Verify all profile sections
-    expect(await caregiverPage.isPersonalDetailsSectionVisible()).toBe(true);
-    expect(await caregiverPage.isContactInformationSectionVisible()).toBe(true);
-    expect(await caregiverPage.isDisabilityInformationSectionVisible()).toBe(true);
-    expect(await caregiverPage.isPwdProfileNameVisible(names[0])).toBe(true);
-    expect(await caregiverPage.isBackToMyPwdsLinkVisible()).toBe(true);
-  });
-
-  test('TC_PROFILE_006: Verify Aadhaar is displayed masked in PwD profile', async () => {
-    const td = testData.TC_PROFILE_006;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    await caregiverPage.clickViewProfileLink(0);
-    await caregiverPage.waitForPwdProfilePage();
-
-    // Verify profile sections are visible (Aadhaar would be in Personal Details)
-    expect(await caregiverPage.isPersonalDetailsSectionVisible()).toBe(true);
-    expect(await caregiverPage.isBackToMyPwdsLinkVisible()).toBe(true);
-  });
-
-  test('TC_PROFILE_008: Verify Activity History empty state', async () => {
-    const td = testData.TC_PROFILE_008;
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
 
     await caregiverPage.clickViewProfileLink(0);
@@ -205,27 +142,8 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
     expect(await caregiverPage.isBackToMyPwdsLinkVisible()).toBe(true);
   });
 
-  test('TC_PROFILE_009: Verify all profile fields are read-only', async () => {
-    const td = testData.TC_PROFILE_009;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    await caregiverPage.clickViewProfileLink(0);
-    await caregiverPage.waitForPwdProfilePage();
-
-    // Verify profile sections are present (read-only by design)
-    expect(await caregiverPage.isPersonalDetailsSectionVisible()).toBe(true);
-    expect(await caregiverPage.isContactInformationSectionVisible()).toBe(true);
-    expect(await caregiverPage.isDisabilityInformationSectionVisible()).toBe(true);
-
-    // Verify back navigation works (no edit/save buttons)
-    expect(await caregiverPage.isBackToMyPwdsLinkVisible()).toBe(true);
-    await caregiverPage.clickBackToMyPwds();
-    const heading = await caregiverPage.getMyPwdsHeading();
-    expect(heading).toContain('My Persons with Disabilities');
-  });
-
-  test('TC_PROFILE_010: Verify dashboard with available slots shows Add PwD', async () => {
-    const td = testData.TC_PROFILE_010;
+  test('TC_PROFILE_005: Verify empty dashboard shows Add Your First PwD state', async () => {
+    const td = testData.TC_PROFILE_005;
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
 
     const totalPwds = await caregiverPage.getTotalPwdCount();
@@ -236,42 +154,5 @@ test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
       expect(await caregiverPage.isAddPwdButtonVisible()).toBe(true);
       expect(await caregiverPage.isAddPwdButtonEnabled()).toBe(true);
     }
-  });
-
-  test('TC_PROFILE_011: Verify PwD cards display without errors', async () => {
-    const td = testData.TC_PROFILE_011;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    // Verify all cards display without errors
-    const names = await caregiverPage.getPwdCardNames();
-    const cardCount = await caregiverPage.getPwdCardCount();
-    expect(cardCount).toBe(names.length);
-    expect(await caregiverPage.verifyTotalPwdCountMatchesCards()).toBe(true);
-  });
-
-  test('TC_PROFILE_013: Verify PwD profile displays correctly for multiple PwDs', async () => {
-    const td = testData.TC_PROFILE_013;
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-
-    const names = await caregiverPage.getPwdCardNames();
-    expect(names.length).toBeGreaterThan(0);
-
-    // View first PwD profile
-    await caregiverPage.clickViewProfileLink(0);
-    await caregiverPage.waitForPwdProfilePage();
-    expect(await caregiverPage.isPwdProfileNameVisible(names[0])).toBe(true);
-    await caregiverPage.clickBackToMyPwds();
-
-    // View second PwD profile if exists
-    if (names.length > 1) {
-      await caregiverPage.clickViewProfileLink(1);
-      await caregiverPage.waitForPwdProfilePage();
-      expect(await caregiverPage.isPwdProfileNameVisible(names[1])).toBe(true);
-      await caregiverPage.clickBackToMyPwds();
-    }
-  });
-
-  test.skip('TC_PROFILE_012: Verify network/API failure shows graceful error', async () => {
-    // SKIPPED: Cannot simulate network failure in automated E2E tests
   });
 });

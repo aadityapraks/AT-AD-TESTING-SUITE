@@ -90,7 +90,7 @@ export class CatalogPage extends BasePage {
 
   async verifyProductNotInCatalog(productName: string) {
     await expect(
-      this.page.getByRole('heading', { name: productName, level: 3 })
+      this.page.getByRole('heading', { name: productName, level: 3, exact: true })
     ).not.toBeVisible();
   }
 

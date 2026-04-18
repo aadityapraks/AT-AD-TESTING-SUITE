@@ -3,6 +3,7 @@
 
 import { test, expect } from '@playwright/test';
 import { RegistrationPage } from '../../pages/registration.page';
+import { DataGenerator } from '../../../utility/data-generator';
 import testData from '../../test-data/scrum17-ap-registration.json';
 
 test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {
@@ -70,30 +71,33 @@ test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {
 
   // AC4 - OTP Verification
   test('TC_REG_011: Verify Send OTP button for Email field', async () => {
+    const dynEmail = DataGenerator.randomEmail();
     await registrationPage.navigateToHomePage(testData.TC_REG_011.url);
     await registrationPage.clickRegisterAsAPLink();
     await registrationPage.verifyRegistrationPageLoaded();
-    await registrationPage.enterEmail(testData.TC_REG_011.inputs.email);
+    await registrationPage.enterEmail(dynEmail);
     
     const sendOtpVisible = await registrationPage.verifySendOtpEmailButtonVisible();
     expect(sendOtpVisible).toBe(testData.TC_REG_011.expected.sendOtpButtonVisible);
   });
 
   test('TC_REG_012: Verify Send OTP button for Phone Number field', async () => {
+    const dynPhone = DataGenerator.randomPhone();
     await registrationPage.navigateToHomePage(testData.TC_REG_012.url);
     await registrationPage.clickRegisterAsAPLink();
     await registrationPage.verifyRegistrationPageLoaded();
-    await registrationPage.enterPhone(testData.TC_REG_012.inputs.phone);
+    await registrationPage.enterPhone(dynPhone);
     
     const sendOtpVisible = await registrationPage.verifySendOtpPhoneButtonVisible();
     expect(sendOtpVisible).toBe(testData.TC_REG_012.expected.sendOtpButtonVisible);
   });
 
   test('TC_REG_013: Verify OTP input field appears after OTP is sent', async () => {
+    const dynEmail = DataGenerator.randomEmail();
     await registrationPage.navigateToHomePage(testData.TC_REG_013.url);
     await registrationPage.clickRegisterAsAPLink();
     await registrationPage.verifyRegistrationPageLoaded();
-    await registrationPage.enterEmail(testData.TC_REG_013.inputs.email);
+    await registrationPage.enterEmail(dynEmail);
     await registrationPage.clickSendOtpForEmail();
     
     await registrationPage.verifyOtpInputFieldVisible();
@@ -230,6 +234,8 @@ test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {
   });
 
   test('TC_REG_040: Verify complete registration flow end-to-end', async () => {
+    const dynEmail = DataGenerator.randomEmail();
+    const dynPhone = DataGenerator.randomPhone();
     await registrationPage.navigateToHomePage(testData.TC_REG_040.url);
     await registrationPage.clickRegisterAsAPLink();
     await registrationPage.verifyRegistrationPageLoaded();
@@ -237,8 +243,8 @@ test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {
     // Fill organization name
     await registrationPage.enterOrganizationName(testData.TC_REG_040.inputs.organizationName);
     await registrationPage.enterContactPerson(testData.TC_REG_040.inputs.contactPerson);
-    await registrationPage.enterEmail(testData.TC_REG_040.inputs.email);
-    await registrationPage.enterPhone(testData.TC_REG_040.inputs.phone);
+    await registrationPage.enterEmail(dynEmail);
+    await registrationPage.enterPhone(dynPhone);
     await registrationPage.enterAddress(testData.TC_REG_040.inputs.address);
     await registrationPage.enterShortDescription(testData.TC_REG_040.inputs.description);
     
@@ -274,5 +280,34 @@ test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {
     const invalidError = await registrationPage.isWebsiteLinkValidationErrorVisible();
     
     expect(validAccepted).toBe(testData.TC_REG_042.expected.validUrlAccepted);
+  });
+
+  test('TC_REG_010: Verify successful OTP verification marks field as Verified', async () => {
+    test.setTimeout(90000);
+    const data = testData.TC_REG_010;
+    const dynEmail = DataGenerator.randomEmail();
+
+    // Navigate to registration page
+    await registrationPage.navigateToHomePage(data.url);
+    await registrationPage.clickRegisterAsAPLink();
+    await registrationPage.verifyRegistrationPageLoaded();
+
+    // Enter valid email
+    await registrationPage.enterEmail(dynEmail);
+
+    // Click Send OTP for email
+    await registrationPage.sendOtpForEmail();
+
+    // Verify OTP input field appears
+    await registrationPage.verifyOtpInputFieldVisible();
+
+    // Enter correct OTP
+    await registrationPage.enterOtpValue(data.inputs.otp);
+
+    // Click Verify button
+    await registrationPage.clickVerifyOtpButton();
+
+    // Verify email is marked as Verified
+    expect(await registrationPage.isEmailVerified()).toBeTruthy();
   });
 });

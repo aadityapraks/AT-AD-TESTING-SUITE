@@ -1,0 +1,17 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "partnersUrl": "https://hub-ui-admin-qa.swarajability.org/admin/partners",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "tabs": {
+    "pendingApproval": "Pending",
+    "activePartners": "Active",
+    "inactivePartners": "Inactive",
+    "rejectedPartners": "Rejected"
+  },
+  "expected": {
+    "vendorCardFieldsPresent": true
+  }
+}

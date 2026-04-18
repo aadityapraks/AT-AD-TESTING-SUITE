@@ -60,8 +60,8 @@ test.describe('SCRUM-363: Caregiver - View & Manage PwDs', () => {
     expect(isSlotsAvailableTextVisible).toBe(true);
   });
 
-  test('TC_MY_PWD_010: Verify slot count updates dynamically after adding a new PwD', async () => {
-    const td = testData.TC_MY_PWD_010;
+  test('TC_MY_PWD_008: Verify slot count updates dynamically after adding a new PwD', async () => {
+    const td = testData.TC_MY_PWD_008;
 
     // 1. Log in as caregiver and navigate to My PwDs page
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
@@ -216,54 +216,8 @@ test.describe('SCRUM-363: Caregiver - View & Manage PwDs', () => {
     expect(heading).toContain('My Persons with Disabilities');
   });
 
-  test.skip('TC_MY_PWD_006: Verify My PwDs page with maximum PwD limit reached', async () => {
-    // SKIPPED: Requires a caregiver account at the PwD limit (5/5).
-    // Provide caregiverAtLimitEmail and caregiverAtLimitPassword in test data to enable.
+  test('TC_MY_PWD_006: Verify multiple PwD cards display correctly with different data', async () => {
     const td = testData.TC_MY_PWD_006;
-
-    // 1. Log in as caregiver with maximum PwDs
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverAtLimitEmail, td.inputs.caregiverAtLimitPassword);
-
-    // 2-3. Verify all PwD cards are displayed
-    const pwdCardNames = await caregiverPage.getPwdCardNames();
-    expect(pwdCardNames.length).toBe(td.expected.pwdLimit);
-
-    // 4. Verify slots used shows maximum
-    const totalPwds = await caregiverPage.getTotalPwdCount();
-    expect(totalPwds).toBe(td.expected.pwdLimit);
-
-    // 5. Verify remaining slots shows 0
-    const availableSlots = await caregiverPage.getAvailableSlots();
-    expect(availableSlots).toBe(0);
-  });
-
-  test.skip('TC_MY_PWD_007: Verify My PwDs page with no PwDs added (empty state)', async () => {
-    // SKIPPED: Requires a caregiver account with zero PwDs.
-    // Provide caregiverEmptyEmail and caregiverEmptyPassword in test data to enable.
-    const td = testData.TC_MY_PWD_007;
-
-    // 1. Log in as caregiver with zero PwDs
-    await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmptyEmail, td.inputs.caregiverEmptyPassword);
-
-    // 2-3. Verify page loads
-    const heading = await caregiverPage.getMyPwdsHeading();
-    expect(heading).toContain('My Persons with Disabilities');
-
-    // 4. Verify PwD count is 0
-    const totalPwds = await caregiverPage.getTotalPwdCount();
-    expect(totalPwds).toBe(0);
-
-    // 5. Verify remaining slots shows full limit
-    const availableSlots = await caregiverPage.getAvailableSlots();
-    expect(availableSlots).toBe(td.expected.pwdLimit);
-
-    // 6. Verify Add PwD button is visible and enabled
-    expect(await caregiverPage.isAddPwdButtonVisible()).toBe(true);
-    expect(await caregiverPage.isAddPwdButtonEnabled()).toBe(true);
-  });
-
-  test('TC_MY_PWD_008: Verify multiple PwD cards display correctly with different data', async () => {
-    const td = testData.TC_MY_PWD_008;
 
     // 1. Log in as caregiver with multiple PwDs
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
@@ -290,8 +244,8 @@ test.describe('SCRUM-363: Caregiver - View & Manage PwDs', () => {
     expect(totalPwdCountMatchesCards).toBe(true);
   });
 
-  test('TC_MY_PWD_009: Verify PwD count mismatch is resolved by page refresh/sync', async () => {
-    const td = testData.TC_MY_PWD_009;
+  test('TC_MY_PWD_007: Verify PwD count mismatch is resolved by page refresh/sync', async () => {
+    const td = testData.TC_MY_PWD_007;
 
     // 1. Log in as caregiver and navigate to My PwDs page
     await caregiverPage.loginOrNavigateToMyPwDs(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);

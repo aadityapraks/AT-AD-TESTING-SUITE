@@ -1,0 +1,59 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "partnersUrl": "https://hub-ui-admin-qa.swarajability.org/admin/partners",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "TC_SCRUM472_001": {
+    "expected": { "searchFieldVisible": true }
+  },
+  "TC_SCRUM472_002": {
+    "inputs": { "vendorName": "Asgard", "tab": "Active" },
+    "expected": { "resultsContainVendor": true }
+  },
+  "TC_SCRUM472_003": {
+    "inputs": { "location": "Bhiwandi", "tab": "Pending" },
+    "expected": { "resultsContainLocation": true }
+  },
+  "TC_SCRUM472_004": {
+    "inputs": { "contactPerson": "Thor", "tab": "Active" },
+    "expected": { "resultsContainContact": true }
+  },
+  "TC_SCRUM472_005": {
+    "inputs": { "vendorName": "Cemo", "tab": "Pending" },
+    "expected": { "searchSubmitted": true }
+  },
+  "TC_SCRUM472_006": {
+    "inputs": { "vendorName": "Cemo", "tab": "Pending" },
+    "expected": { "resultsContainVendor": true }
+  },
+  "TC_SCRUM472_007": {
+    "inputs": { "vendorName": "Asgard", "tab": "Active" },
+    "expected": { "resultsContainVendor": true }
+  },
+  "TC_SCRUM472_008": {
+    "inputs": { "vendorName": "vendor31", "tab": "Inactive" },
+    "expected": { "resultsContainVendor": true }
+  },
+  "TC_SCRUM472_009": {
+    "inputs": { "vendorName": "SHIELD", "tab": "Rejected" },
+    "expected": { "resultsContainVendor": true }
+  },
+  "TC_SCRUM472_010": {
+    "inputs": { "nonMatchingQuery": "xyznonexistent123" },
+    "expected": { "noResultsMessage": true }
+  },
+  "TC_SCRUM472_011": {
+    "inputs": { "specialChars": "@#$%^&*()" },
+    "expected": { "noErrorsOrCrashes": true }
+  },
+  "TC_SCRUM472_012": {
+    "inputs": { "longQuery": "This is an extremely long search query that exceeds normal limits and contains many words to test how the search system handles very long input text that might cause issues with processing or display and should be handled gracefully without any errors or crashes or performance degradation in the admin partner management search functionality of the AT AD platform" },
+    "expected": { "handledGracefully": true }
+  },
+  "TC_SCRUM472_013": {
+    "inputs": { "vendorName": "Asgard", "tab": "Active" },
+    "expected": { "vendorCardsRestored": true }
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "jiraStory": "SCRUM-472",
+  "title": "Admin - Search Vendors - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Search Vendors feature on the AT/AD Admin Portal. Covers search by vendor name, location, and contact person, dynamic/submit-based result updates, cross-tab search behavior, partial match with minimum 3 characters, no-results messaging, special character handling, and long query graceful handling.",
+  "scope": {
+    "inScope": [
+      "Search input field visibility and behavior",
+      "Search by vendor name",
+      "Search by location",
+      "Search by contact person",
+      "Dynamic result updates or submit-based search",
+      "Search working across all status tabs (Pending, Active, Inactive, Rejected)",
+      "Partial match support with minimum 3 characters",
+      "No matching results message",
+      "Special character handling in search queries",
+      "Very long search query handling",
+      "Search field clearing and reset behavior",
+      "Accessibility of search input"
+    ],
+    "outOfScope": [
+      "Vendor list tab functionality (covered by SCRUM-469)",
+      "Vendor card detail view",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Backend search API implementation and indexing",
+      "Advanced filtering or sorting beyond search"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for access)",
+      "SCRUM-469 - View Vendor Lists by Status (search works across tabs)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "Vendors exist across multiple status tabs with known names, locations, and contact persons",
+      "At least one vendor per status tab for cross-tab testing"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM472_001",
+      "title": "Verify search input field is visible on the vendor list page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC1 - Search functionality available",
+      "preconditions": "Admin is signed in and on the vendor list page",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Locate the search input field",
+        "Verify the search field has a placeholder or label indicating search capability"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Search input field is visible",
+        "Placeholder text indicates searchable attributes (e.g., 'Search by name, location, or contact person')"
+      ],
+      "postconditions": "Search field is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_002",
+      "title": "Verify search by vendor name returns correct results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC1 - Search supports vendor name",
+      "preconditions": "Admin is on the vendor list page and a vendor with a known name exists",
+      "steps": [
+        "Enter a known vendor name in the search field (at least 3 characters)",
+        "Observe the search results",
+        "Verify the matching vendor card is displayed",
+        "Verify the displayed vendor name matches the search query"
+      ],
+      "expectedResults": [
+        "Vendor name is entered",
+        "Results update dynamically or after submit",
+        "Matching vendor card is displayed",
+        "Vendor name on the card matches the search query"
+      ],
+      "postconditions": "Search by vendor name works",
+      "testResult": "PASS"
+    },
+
+    {
+      "id": "TC_SCRUM472_003",
+      "title": "Verify search by location returns correct results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC1 - Search supports location",
+      "preconditions": "Admin is on the vendor list page and a vendor with a known location exists",
+      "steps": [
+        "Enter a known vendor location in the search field (at least 3 characters)",
+        "Observe the search results",
+        "Verify vendor cards with matching location are displayed",
+        "Verify the displayed vendor location matches the search query"
+      ],
+      "expectedResults": [
+        "Location is entered",
+        "Results update",
+        "Vendor cards with matching location are shown",
+        "Location on the cards matches the search query"
+      ],
+      "postconditions": "Search by location works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_004",
+      "title": "Verify search by contact person returns correct results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC1 - Search supports contact person",
+      "preconditions": "Admin is on the vendor list page and a vendor with a known contact person exists",
+      "steps": [
+        "Enter a known contact person name in the search field (at least 3 characters)",
+        "Observe the search results",
+        "Verify vendor cards with matching contact person are displayed",
+        "Verify the displayed contact details match the search query"
+      ],
+      "expectedResults": [
+        "Contact person name is entered",
+        "Results update",
+        "Vendor cards with matching contact person are shown",
+        "Contact details on the cards match the search query"
+      ],
+      "postconditions": "Search by contact person works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_005",
+      "title": "Verify search works on submit (Enter key or search button)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC2 - Results update dynamically or on submit",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Enter a known vendor name in the search field",
+        "Press Enter key or click the search button (if present)",
+        "Verify results are displayed matching the query"
+      ],
+      "expectedResults": [
+        "Search query is entered",
+        "Search is submitted",
+        "Matching vendor cards are displayed"
+      ],
+      "postconditions": "Submit-based search works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_006",
+      "title": "Verify search works across the Pending Approval tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC3 - Search works across all tabs",
+      "preconditions": "Admin is on the Pending Approval tab with pending vendors",
+      "steps": [
+        "Click the Pending Approval tab",
+        "Enter a search query matching a known pending vendor",
+        "Verify the matching pending vendor is displayed",
+        "Verify only pending vendors appear in results"
+      ],
+      "expectedResults": [
+        "Pending Approval tab is selected",
+        "Search query is entered",
+        "Matching pending vendor card is shown",
+        "Results are scoped to the Pending Approval tab"
+      ],
+      "postconditions": "Search works within Pending Approval tab",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_007",
+      "title": "Verify search works across the Active Partners tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC3 - Search works across all tabs",
+      "preconditions": "Admin is on the Active Partners tab with active vendors",
+      "steps": [
+        "Click the Active Partners tab",
+        "Enter a search query matching a known active vendor",
+        "Verify the matching active vendor is displayed",
+        "Verify only active vendors appear in results"
+      ],
+      "expectedResults": [
+        "Active Partners tab is selected",
+        "Search query is entered",
+        "Matching active vendor card is shown",
+        "Results are scoped to the Active Partners tab"
+      ],
+      "postconditions": "Search works within Active Partners tab",
+      "testResult": "FAIL",
+      "failureReason": "SSO session dropped during tab switch"
+    },
+    {
+      "id": "TC_SCRUM472_008",
+      "title": "Verify search works across the Inactive Partners tab",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC3 - Search works across all tabs",
+      "preconditions": "Admin is on the Inactive Partners tab with inactive vendors",
+      "steps": [
+        "Click the Inactive Partners tab",
+        "Enter a search query matching a known inactive vendor",
+        "Verify the matching inactive vendor is displayed"
+      ],
+      "expectedResults": [
+        "Inactive Partners tab is selected",
+        "Search query is entered",
+        "Matching inactive vendor card is shown"
+      ],
+      "postconditions": "Search works within Inactive Partners tab",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_009",
+      "title": "Verify search works across the Rejected Partners tab",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC3 - Search works across all tabs",
+      "preconditions": "Admin is on the Rejected Partners tab with rejected vendors",
+      "steps": [
+        "Click the Rejected Partners tab",
+        "Enter a search query matching a known rejected vendor",
+        "Verify the matching rejected vendor is displayed"
+      ],
+      "expectedResults": [
+        "Rejected Partners tab is selected",
+        "Search query is entered",
+        "Matching rejected vendor card is shown"
+      ],
+      "postconditions": "Search works within Rejected Partners tab",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_010",
+      "title": "Verify 'No vendors found' message when no results match",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "Edge Case - No matching results → 'No vendors found' message",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Enter a search query that does not match any vendor (e.g., 'xyznonexistent123')",
+        "Observe the search results area",
+        "Verify a 'No vendors found' message is displayed",
+        "Verify no vendor cards are shown"
+      ],
+      "expectedResults": [
+        "Non-matching query is entered",
+        "Results area updates",
+        "'No vendors found' or similar message is displayed",
+        "No vendor cards are visible"
+      ],
+      "postconditions": "No-results message is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_011",
+      "title": "Verify special characters do not break search",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "Edge Case - Special characters do not break search",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Enter special characters in the search field (e.g., '@#$%^&*()')",
+        "Observe the search behavior",
+        "Verify no errors, crashes, or broken UI",
+        "Verify 'No vendors found' message or empty results are shown gracefully"
+      ],
+      "expectedResults": [
+        "Special characters are entered",
+        "Search processes the input without errors",
+        "No JavaScript errors, crashes, or broken layout",
+        "'No vendors found' message is shown (or matching results if a vendor name contains special chars)"
+      ],
+      "postconditions": "Special characters are handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_012",
+      "title": "Verify very long search query is handled gracefully",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "Edge Case - Very long search queries handled gracefully",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Enter a very long search query (e.g., 500+ characters)",
+        "Observe the search field behavior",
+        "Verify the search field handles the input (truncates or accepts)",
+        "Verify no errors, crashes, or performance degradation",
+        "Verify results show 'No vendors found' or are handled gracefully"
+      ],
+      "expectedResults": [
+        "Long query is entered",
+        "Search field handles the input without breaking layout",
+        "Input is either accepted or truncated at a reasonable limit",
+        "No errors or performance issues",
+        "Results are displayed gracefully"
+      ],
+      "postconditions": "Long queries are handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_013",
+      "title": "Verify clearing the search field restores the full vendor list",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "Search behavior - Reset",
+      "preconditions": "Admin has an active search query with filtered results",
+      "steps": [
+        "Enter a search query and observe filtered results",
+        "Clear the search field (backspace or clear button)",
+        "Observe the vendor list",
+        "Verify all vendors in the current tab are displayed again"
+      ],
+      "expectedResults": [
+        "Filtered results are shown",
+        "Search field is cleared",
+        "Vendor list updates",
+        "All vendors in the current tab are restored"
+      ],
+      "postconditions": "Full vendor list is restored after clearing search",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_014",
+      "title": "Verify search input field is accessible via keyboard",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Use Tab key to navigate to the search input field",
+        "Verify the field receives focus with a visible indicator",
+        "Type a search query using the keyboard",
+        "Press Escape to clear or dismiss (if supported)",
+        "Verify the search field has an accessible label or aria-label"
+      ],
+      "expectedResults": [
+        "Search field is reachable via Tab",
+        "Focus indicator is visible on the search field",
+        "Query can be typed",
+        "Escape key behavior is handled (clear or no-op)",
+        "Search field has an accessible label for screen readers"
+      ],
+      "postconditions": "Search field is keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM472_015",
+      "title": "Verify complete search vendors flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "acceptanceCriteria": "AC1-AC3 and Edge Cases - Complete Flow",
+      "preconditions": "Admin is signed in and vendors exist across tabs with known attributes",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Verify search field is visible",
+        "Search by a known vendor name — verify correct result",
+        "Clear search — verify full list restores",
+        "Search by a known location — verify correct result",
+        "Clear search",
+        "Search by a known contact person — verify correct result",
+        "Clear search",
+        "Switch to a different tab and repeat a search — verify it works",
+        "Enter a non-matching query — verify 'No vendors found' message",
+        "Enter special characters — verify no errors"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Search field is visible",
+        "Vendor name search returns correct vendor",
+        "Full list is restored after clearing",
+        "Location search returns correct vendors",
+        "Search is cleared",
+        "Contact person search returns correct vendor",
+        "Search is cleared",
+        "Search works on the other tab",
+        "'No vendors found' message is displayed",
+        "Special characters are handled gracefully"
+      ],
+      "postconditions": "Full search flow is verified across attributes and tabs",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_Search_By_Vendor_Name": [
+      "TC_SCRUM472_002"
+    ],
+    "AC1_Search_By_Location": [
+      "TC_SCRUM472_003"
+    ],
+    "AC1_Search_By_Contact_Person": [
+      "TC_SCRUM472_004"
+    ],
+    "AC2_Dynamic_Or_Submit_Results": [
+      "TC_SCRUM472_005"
+    ],
+    "AC3_Search_Across_All_Tabs": [
+      "TC_SCRUM472_006",
+      "TC_SCRUM472_007",
+      "TC_SCRUM472_008",
+      "TC_SCRUM472_009"
+    ],
+    "Edge_Case_No_Matching_Results": [
+      "TC_SCRUM472_010"
+    ],
+    "Edge_Case_Special_Characters": [
+      "TC_SCRUM472_011"
+    ],
+    "Edge_Case_Long_Queries": [
+      "TC_SCRUM472_012"
+    ],
+    "Search_Field_Behavior": [
+      "TC_SCRUM472_001",
+      "TC_SCRUM472_013"
+    ],
+    "Accessibility": [
+      "TC_SCRUM472_014"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM472_015"
+    ]
+  },
+  "testDataRequirements": {
+    "vendorData": [
+      "Vendors with unique, known names for name search testing",
+      "Vendors in different locations for location search testing",
+      "Vendors with known contact person names for contact search testing",
+      "Vendors across all four status tabs (Pending, Active, Inactive, Rejected)",
+      "At least one vendor per tab for cross-tab search verification"
+    ],
+    "searchQueries": [
+      "Exact vendor name match",
+      "Partial vendor name (3+ characters)",
+      "Location string (city or state)",
+      "Contact person name",
+      "Non-matching query for no-results testing",
+      "Special characters: @#$%^&*()",
+      "SQL injection-like strings",
+      "Very long string (500+ characters)",
+      "1-character and 2-character strings for minimum threshold testing"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Vendor list page with status tabs is available (SCRUM-469)",
+    "Search is a single unified input field (not separate fields per attribute)",
+    "Search matches against vendor name, location, and contact person simultaneously",
+    "Minimum 3 characters required before search triggers"
+  ],
+  "risks": [
+    "Dynamic vs submit-based search behavior is ambiguous ('dynamically or on submit') — may be one or the other",
+    "Cross-tab search behavior is unclear — does search persist when switching tabs or reset?",
+    "Search performance with large vendor datasets is not specified",
+    "Maximum search query length is not defined"
+  ],
+  "openQuestions": [
+    "Is the search dynamic (as-you-type) or submit-based (Enter/button), or both?",
+    "Does the search query persist when switching between status tabs?",
+    "Is there a clear/reset button on the search field?",
+    "Is search case-insensitive?",
+    "Is there a maximum character limit for the search input?",
+    "Does the search match against all three attributes simultaneously or is there a dropdown to select the attribute?",
+    "Note: 'Application ID' was removed from search attributes on 2026-04-14. Confirm this is intentional."
+  ],
+  "notesFromChangelog": [
+    "Description updated 2026-02-10: 'min of 3 characters' added to partial match requirement.",
+    "Description updated 2026-04-14: 'Application ID' removed from search-supported attributes. Current attributes: Vendor name, Location, Contact person."
+  ]
+}

@@ -3,8 +3,8 @@
     "url": "https://qa-atad.swarajability.org/",
     "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456"
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
     },
     "expected": {
       "isLoggedIn": true,
@@ -18,8 +18,8 @@
     "url": "https://qa-atad.swarajability.org/",
     "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456",
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
       "filterDisabilityType": "Visual",
       "filterType": "Device"
     },
@@ -38,8 +38,8 @@
   "TC_PARITY_005": {
     "url": "https://qa-atad.swarajability.org/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456"
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
     },
     "expected": {
       "isLoggedIn": true,
@@ -56,8 +56,8 @@
     "url": "https://qa-atad.swarajability.org/",
     "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456"
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
     },
     "expected": {
       "productDetailPageLoaded": true,
@@ -68,8 +68,8 @@
     "url": "https://qa-atad.swarajability.org/",
     "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456",
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14",
       "searchTermValid": "wheelchair",
       "searchTermNoResults": "xyz123nonexistent"
     },

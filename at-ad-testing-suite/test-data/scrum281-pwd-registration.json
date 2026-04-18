@@ -2,23 +2,8 @@
   "TC_PWD_REG_001": {
     "url": "https://qa-atad.swarajability.org/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456"
-    },
-    "expected": {
-      "portalTitle": "AT/AD Portal",
-      "profilePageHeading": "My Profile",
-      "isLoggedIn": true,
-      "welcomeMessageContains": "Welcome back",
-      "profileUrl": "/my-profile/",
-      "pwdRegistrationAccessible": false
-    }
-  },
-  "TC_PWD_REG_002": {
-    "url": "https://qa-atad.swarajability.org/",
-    "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus",
-      "caregiverPassword": "123456"
+      "caregiverEmail": "gikekylu@forexnews.bg",
+      "caregiverPassword": "Aaditya@14"
     },
     "expected": {
       "registrationHeading": "Caregiver Registration",
@@ -29,7 +14,7 @@
       "registrationUrl": "/caregiver-registration/"
     }
   },
-  "TC_PWD_REG_003": {
+  "TC_PWD_REG_002": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "firstName": "Rajesh",
@@ -53,7 +38,7 @@
       "consentCheckboxVisible": true
     }
   },
-  "TC_PWD_REG_004": {
+  "TC_PWD_REG_003": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "firstName": "Rajesh",
@@ -78,7 +63,7 @@
       "agreementTextContains": "By registering, you agree"
     }
   },
-  "TC_PWD_REG_005": {
+  "TC_PWD_REG_004": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "expected": {
       "registrationHeading": "Caregiver Registration",
@@ -86,7 +71,7 @@
       "requirementFillFields": "Fill all required fields"
     }
   },
-  "TC_PWD_REG_006": {
+  "TC_PWD_REG_005": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "invalidEmail1": "notanemail",
@@ -99,7 +84,7 @@
       "registrationHeading": "Caregiver Registration"
     }
   },
-  "TC_PWD_REG_007": {
+  "TC_PWD_REG_006": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "weakPassword": "123456",
@@ -119,26 +104,26 @@
       "mismatchAlert": "Passwords do not match"
     }
   },
-  "TC_PWD_REG_008": {
+  "TC_PWD_REG_007": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
-      "existingEmail": "candidate8new1@mailto.plus",
+      "existingEmail": "gikekylu@forexnews.bg",
       "uniqueEmail": "unique.test.user@mailto.plus"
     },
     "expected": {
       "registrationHeading": "Caregiver Registration"
     }
   },
-  "TC_PWD_REG_009": {
+  "TC_PWD_REG_008": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
-      "caregiverEmail": "candidate8new1@mailto.plus"
+      "caregiverEmail": "gikekylu@forexnews.bg"
     },
     "expected": {
       "registrationHeading": "Caregiver Registration"
     }
   },
-  "TC_PWD_REG_010": {
+  "TC_PWD_REG_009": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "invalidPhone": "abc123",
@@ -149,7 +134,7 @@
       "registrationHeading": "Caregiver Registration"
     }
   },
-  "TC_PWD_REG_011": {
+  "TC_PWD_REG_010": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "inputs": {
       "nameWithApostrophe": "O'Brien",
@@ -160,7 +145,7 @@
       "registrationHeading": "Caregiver Registration"
     }
   },
-  "TC_PWD_REG_012": {
+  "TC_PWD_REG_011": {
     "url": "https://qa-atad.swarajability.org/caregiver-registration/",
     "expected": {
       "registrationHeading": "Caregiver Registration",

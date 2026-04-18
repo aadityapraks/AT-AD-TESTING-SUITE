@@ -39,12 +39,6 @@ test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () =>
     expect(await caregiverPage.isConfirmLinkPwdButtonVisible()).toBe(true);
   });
 
-  test.skip('TC_AUTO_POP_006: Verify data fetch timeout shows retry option', async () => {
-    // SKIPPED: Cannot simulate SwarajAbility data fetch timeout in automated E2E tests.
-    // Requires network interception or API mocking which is not available in this setup.
-    // This test case should be verified manually or with a dedicated API mock server.
-  });
-
   test('TC_AUTO_POP_005: Verify all fields displayed match Figma design specification', async () => {
     const td = testData.TC_AUTO_POP_005;
 
@@ -111,8 +105,8 @@ test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () =>
     expect(await caregiverPage.isConfirmLinkPwdButtonVisible()).toBe(true);
   });
 
-  test('TC_AUTO_POP_008: Verify caregiver can cancel/go back without linking the PwD', async () => {
-    const td = testData.TC_AUTO_POP_008;
+  test('TC_AUTO_POP_007: Verify caregiver can cancel/go back without linking the PwD', async () => {
+    const td = testData.TC_AUTO_POP_007;
 
     // 1. Navigate to auto-populate page
     await caregiverPage.completeAadhaarLookupWithOtp(
@@ -156,8 +150,8 @@ test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () =>
     expect(await caregiverPage.isAutoPopulatedFieldVisible('Personal Information')).toBe(true);
   });
 
-  test('TC_AUTO_POP_007: Verify PwD already linked to another caregiver is blocked', async () => {
-    const td = testData.TC_AUTO_POP_007;
+  test('TC_AUTO_POP_006: Verify PwD already linked to another caregiver is blocked', async () => {
+    const td = testData.TC_AUTO_POP_006;
 
     // 1. Log in as a different caregiver and navigate to Aadhaar lookup
     await caregiverPage.completeAadhaarLookupWithOtp(
@@ -179,8 +173,8 @@ test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () =>
     expect(await caregiverPage.isBackToMyPwdsFromLookupVisible()).toBe(true);
   });
 
-  test('TC_AUTO_POP_009: Verify auto-populated details handle PwD with minimal data', async () => {
-    const td = testData.TC_AUTO_POP_009;
+  test('TC_AUTO_POP_008: Verify auto-populated details handle PwD with minimal data', async () => {
+    const td = testData.TC_AUTO_POP_008;
 
     // 1. Navigate to Aadhaar lookup with a minimal-data Aadhaar
     await caregiverPage.completeAadhaarLookupWithOtp(
@@ -198,9 +192,4 @@ test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () =>
     expect(await caregiverPage.isConfirmLinkPwdButtonVisible()).toBe(true);
   });
 
-  test.skip('TC_AUTO_POP_010: Verify duplicate confirmation attempt is blocked (prevent double-linking)', async () => {
-    // SKIPPED: This test would actually register a PwD and then attempt double-click.
-    // Risk of creating duplicate test data. Should be tested manually or with
-    // a dedicated test account that can be cleaned up.
-  });
 });

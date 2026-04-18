@@ -1,0 +1,454 @@
+{
+  "jiraStory": "SCRUM-475",
+  "title": "Admin - View Vendor Details - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin View Vendor Details modal/panel on the AT/AD Admin Portal. Covers the View Details trigger from vendor cards, modal/panel display with all vendor fields (business details, category, contact person, email, phone, website, address, GST number, application date, products listed), read-only behavior, modal close/dismiss behavior, and cross-tab verification.",
+  "scope": {
+    "inScope": [
+      "View Details button/link on vendor cards",
+      "Modal/panel opening behavior",
+      "Display of all vendor detail fields: business details, category, contact person, email, phone, website, address, GST number, application date, products listed",
+      "Read-only modal behavior",
+      "Modal close/dismiss behavior",
+      "View Details across all status tabs",
+      "End-to-end flow verification"
+    ],
+    "outOfScope": [
+      "Vendor approval/rejection actions (separate story)",
+      "Editing vendor details (modal is read-only)",
+      "Vendor list and tab functionality (covered by SCRUM-469)",
+      "Search functionality (covered by SCRUM-472)",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Document upload by vendors",
+      "Verification documents view (not automatable)",
+      "Missing/invalid document flagging (not automatable)",
+      "Vendor deleted while modal open (requires backend manipulation)",
+      "Focus trap and ARIA dialog attributes (complex accessibility checks)",
+      "No products / no website edge cases (require specific data states)"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for access)",
+      "SCRUM-469 - View Vendor Lists by Status (vendor cards with View Details)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "Vendors exist with complete details"
+    ]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_SCRUM475_001",
+      "title": "Verify View Details button/link is present on vendor cards",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Clicking View Details opens a modal/panel",
+      "preconditions": "Admin is on the vendor list page with vendor cards visible",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Locate a vendor card",
+        "Verify a View Details button or link is visible on the card"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Vendor card is visible",
+        "View Details button/link is present and clearly labeled"
+      ],
+      "postconditions": "View Details trigger is accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_002",
+      "title": "Verify clicking View Details opens a modal or panel",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Clicking View Details opens a modal/panel",
+      "preconditions": "Admin is on the vendor list page with vendor cards visible",
+      "steps": [
+        "Click the View Details button on a vendor card",
+        "Verify a modal or side panel opens",
+        "Verify the modal/panel contains vendor information"
+      ],
+      "expectedResults": [
+        "View Details is clicked",
+        "A modal or panel opens with an overlay or slide-in animation",
+        "Vendor detail content is displayed inside the modal/panel"
+      ],
+      "postconditions": "Vendor details modal/panel is open",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_003",
+      "title": "Verify Business Details are displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays business details",
+      "preconditions": "Vendor details modal is open for a vendor with complete data",
+      "steps": [
+        "Open View Details for a vendor with known business details",
+        "Locate the business details section",
+        "Verify business name or organization details are displayed"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Business details section is visible",
+        "Business name/organization information is displayed correctly"
+      ],
+      "postconditions": "Business details are shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_004",
+      "title": "Verify Category is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays category",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor",
+        "Locate the category field",
+        "Verify the vendor category is displayed (e.g., Manufacturer, Distributor, Service Provider)"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Category field is visible",
+        "Category value is displayed correctly"
+      ],
+      "postconditions": "Category is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_005",
+      "title": "Verify Contact Person is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays contact person",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor with a known contact person",
+        "Locate the contact person field",
+        "Verify the contact person name is displayed"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Contact person field is visible",
+        "Contact person name is displayed correctly"
+      ],
+      "postconditions": "Contact person is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_006",
+      "title": "Verify Email, Phone, and Website are displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays email, phone, website",
+      "preconditions": "Vendor details modal is open for a vendor with all contact info",
+      "steps": [
+        "Open View Details for a vendor",
+        "Verify email address is displayed",
+        "Verify phone number is displayed",
+        "Verify website URL is displayed"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Email address is visible and correctly formatted",
+        "Phone number is visible",
+        "Website URL is visible"
+      ],
+      "postconditions": "Contact information is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_007",
+      "title": "Verify Address is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays address",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor with a known address",
+        "Locate the address section",
+        "Verify the full address is displayed"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Address section is visible",
+        "Full address is displayed correctly"
+      ],
+      "postconditions": "Address is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_008",
+      "title": "Verify GST Number is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays GST number",
+      "preconditions": "Vendor details modal is open for a vendor with a GST number",
+      "steps": [
+        "Open View Details for a vendor with a known GST number",
+        "Locate the GST number field",
+        "Verify the GST number is displayed correctly"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "GST number field is visible",
+        "GST number value matches the vendor's registered GST"
+      ],
+      "postconditions": "GST number is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_009",
+      "title": "Verify Application Date is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays application date",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor",
+        "Locate the application date field",
+        "Verify the application date is displayed in a readable format"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Application date field is visible",
+        "Date is displayed in a readable format (e.g., DD/MM/YYYY or similar)"
+      ],
+      "postconditions": "Application date is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_010",
+      "title": "Verify Products Listed section is displayed in the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - Modal displays products listed",
+      "preconditions": "Vendor details modal is open for a vendor with products",
+      "steps": [
+        "Open View Details for a vendor with known products",
+        "Locate the products listed section",
+        "Verify product names or count are displayed",
+        "Verify the products match the vendor's actual product catalog"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Products listed section is visible",
+        "Product names or count are displayed",
+        "Products match the vendor's actual catalog"
+      ],
+      "postconditions": "Products listed section is shown",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_011",
+      "title": "Verify modal is read-only — fields are not editable",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC2 - Modal is read-only unless explicitly editable",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor",
+        "Attempt to click on or edit the business details field",
+        "Attempt to click on or edit the contact person field",
+        "Attempt to click on or edit the email field",
+        "Attempt to click on or edit the address field",
+        "Verify no fields are editable (no text cursors, no input focus)"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Business details field is not editable",
+        "Contact person field is not editable",
+        "Email field is not editable",
+        "Address field is not editable",
+        "All fields are displayed as read-only text, not input fields"
+      ],
+      "postconditions": "Modal is confirmed read-only",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_012",
+      "title": "Verify modal can be closed via close button or overlay click",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "Modal behavior - Close/dismiss",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor",
+        "Locate the close button (X) on the modal",
+        "Click the close button",
+        "Verify the modal closes",
+        "Open the modal again",
+        "Click outside the modal (on the overlay/backdrop)",
+        "Verify the modal closes"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Close button is visible",
+        "Modal closes on close button click",
+        "Modal is dismissed and vendor list is visible",
+        "Modal is reopened",
+        "Clicking outside the modal closes it",
+        "Modal is dismissed"
+      ],
+      "postconditions": "Modal close behavior works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_013",
+      "title": "Verify modal can be closed via Escape key",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "Accessibility - Keyboard dismiss",
+      "preconditions": "Vendor details modal is open",
+      "steps": [
+        "Open View Details for a vendor",
+        "Press the Escape key",
+        "Verify the modal closes"
+      ],
+      "expectedResults": [
+        "Modal is open",
+        "Escape key is pressed",
+        "Modal closes and focus returns to the vendor card or list"
+      ],
+      "postconditions": "Modal is dismissed via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_014",
+      "title": "Verify View Details works from all status tabs",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1 - View Details opens from vendor cards",
+      "preconditions": "Vendors exist in all status tabs",
+      "steps": [
+        "Click View Details on a vendor in the Pending Approval tab — verify modal opens",
+        "Close modal",
+        "Click View Details on a vendor in the Active Partners tab — verify modal opens",
+        "Close modal",
+        "Click View Details on a vendor in the Inactive Partners tab — verify modal opens",
+        "Close modal",
+        "Click View Details on a vendor in the Rejected Partners tab — verify modal opens"
+      ],
+      "expectedResults": [
+        "Modal opens for pending vendor with correct details",
+        "Modal closes",
+        "Modal opens for active vendor with correct details",
+        "Modal closes",
+        "Modal opens for inactive vendor with correct details",
+        "Modal closes",
+        "Modal opens for rejected vendor with correct details"
+      ],
+      "postconditions": "View Details works across all tabs",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM475_015",
+      "title": "Verify complete View Vendor Details flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-475",
+      "acceptanceCriteria": "AC1-AC2 - Complete Flow",
+      "preconditions": "Admin is signed in and vendors with complete data exist",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Click View Details on a vendor card",
+        "Verify modal opens with all fields: business details, category, contact person, email, phone, website, address, GST number, application date, products listed",
+        "Verify all fields are read-only",
+        "Close the modal via close button",
+        "Verify modal closes and vendor list is visible"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Modal opens",
+        "All vendor detail fields are displayed with correct data",
+        "No fields are editable",
+        "Modal closes",
+        "Vendor list is restored"
+      ],
+      "postconditions": "Full view vendor details flow is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_View_Details_Trigger": [
+      "TC_SCRUM475_001",
+      "TC_SCRUM475_002",
+      "TC_SCRUM475_014"
+    ],
+    "AC1_Business_Details": [
+      "TC_SCRUM475_003"
+    ],
+    "AC1_Category": [
+      "TC_SCRUM475_004"
+    ],
+    "AC1_Contact_Person": [
+      "TC_SCRUM475_005"
+    ],
+    "AC1_Email_Phone_Website": [
+      "TC_SCRUM475_006"
+    ],
+    "AC1_Address": [
+      "TC_SCRUM475_007"
+    ],
+    "AC1_GST_Number": [
+      "TC_SCRUM475_008"
+    ],
+    "AC1_Application_Date": [
+      "TC_SCRUM475_009"
+    ],
+    "AC1_Products_Listed": [
+      "TC_SCRUM475_010"
+    ],
+    "AC2_Read_Only_Modal": [
+      "TC_SCRUM475_011"
+    ],
+    "Modal_Close_Behavior": [
+      "TC_SCRUM475_012",
+      "TC_SCRUM475_013"
+    ],
+    "Accessibility": [
+      "TC_SCRUM475_013"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM475_015"
+    ]
+  },
+  "testDataRequirements": {
+    "vendorData": [
+      "Vendor with all fields populated (business details, category, contact person, email, phone, website, address, GST, application date, products)",
+      "Vendors in all four status tabs (Pending, Active, Inactive, Rejected)"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Vendor list with status tabs is available (SCRUM-469)",
+    "View Details opens as a modal dialog or side panel"
+  ],
+  "risks": [
+    "Modal vs panel implementation is ambiguous — could be either"
+  ],
+  "openQuestions": [
+    "Is the vendor detail view a modal dialog or a side panel?",
+    "Is the 'Products listed' section a list of product names, a count, or clickable links?",
+    "What is the expected date format for Application Date?",
+    "Note: 'Contact person & role' was changed to 'Contact person' (role removed) on 2026-04-15, and 'category' was added on 2026-04-15. Confirm these are intentional."
+  ],
+  "notesFromChangelog": [
+    "Description updated 2026-02-10: 'view possibility' added to uploaded verification documents.",
+    "Description updated 2026-04-15: 'category' field added to modal fields.",
+    "Description updated 2026-04-15: 'Contact person & role' changed to 'Contact person' (role removed)."
+  ]
+}

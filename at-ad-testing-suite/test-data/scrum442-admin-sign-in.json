@@ -1,0 +1,63 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "emailFieldVisible": true,
+    "passwordFieldVisible": true,
+    "emailFieldLabel": "Email",
+    "passwordFieldLabel": "Please enter your password",
+    "passwordFieldMasked": true,
+    "dashboardUrlPattern": "admin|dashboard"
+  },
+  "TC_SCRUM442_007": {
+    "invalidEmails": ["admin@", "admin.com", "admin"],
+    "expected": {
+      "signInButtonDisabled": true
+    }
+  },
+  "TC_SCRUM442_010": {
+    "inputs": {
+      "email": "pv@mailto.plus",
+      "wrongPassword": "wrongpassword123"
+    },
+    "expected": {
+      "errorMessageVisible": true,
+      "errorMessageGeneric": true
+    }
+  },
+  "TC_SCRUM442_011": {
+    "inputs": {
+      "nonExistentEmail": "nonexistent-admin-xyz@mailto.plus",
+      "password": "anypassword123"
+    },
+    "expected": {
+      "errorMessageVisible": true,
+      "errorMessageGeneric": true
+    }
+  },
+  "TC_SCRUM442_012": {
+    "invalidEmails": ["test@", "test.com"],
+    "expected": {
+      "inlineValidationVisible": true
+    }
+  },
+  "TC_SCRUM442_015": {
+    "inputs": {
+      "whitespaceEmail": "   "
+    },
+    "expected": {
+      "signInButtonDisabled": true
+    }
+  },
+  "TC_SCRUM442_021": {
+    "inputs": {
+      "testPassword": "SecurePass123"
+    },
+    "expected": {
+      "passwordFieldType": "password"
+    }
+  }
+}

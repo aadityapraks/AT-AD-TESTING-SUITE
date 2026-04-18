@@ -4,6 +4,7 @@
 import { test, expect } from '@playwright/test';
 import { CaregiverPage } from '../../pages/caregiver.page';
 import { AccountTypePage } from '../../pages/account-type.page';
+import { DataGenerator } from '../../../utility/data-generator';
 import testData from '../../test-data/scrum357-caregiver-registration.json';
 
 test.describe('Caregiver Registration, Verification, Consent & Feature Parity', () => {
@@ -67,6 +68,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
 
   test('TC_CG_REG_006 - Verify Email ID format validation', async () => {
     const data = testData.TC_CG_REG_006;
+    const dynValidEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page
     await caregiverPage.navigateToPortal(data.url);
@@ -96,7 +98,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isEmailValidationErrorVisible()).toBeTruthy();
 
     // 6. Enter valid email: 'priya.sharma@example.com' and verify accepted without error
-    await caregiverPage.fillEmailId(data.inputs.validEmail);
+    await caregiverPage.fillEmailId(dynValidEmail);
     await caregiverPage.pressTabKey();
     expect(await caregiverPage.isEmailValidationErrorHidden()).toBeTruthy();
 
@@ -106,6 +108,10 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
 
   test('TC_CG_REG_016 - Verify Complete Registration button enablement logic', async () => {
     const data = testData.TC_CG_REG_016;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page
     await caregiverPage.navigateToPortal(data.url);
@@ -127,10 +133,10 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
 
     // 4. Fill all mandatory fields with valid data
     await caregiverPage.fillAllRegistrationFields({
-      firstName: data.inputs.firstName,
-      lastName: data.inputs.lastName,
-      mobile: data.inputs.mobileNumber,
-      email: data.inputs.emailId,
+      firstName: dynFirstName,
+      lastName: dynLastName,
+      mobile: dynMobile,
+      email: dynEmail,
       password: data.inputs.password,
       confirmPassword: data.inputs.confirmPassword,
       aadhar: data.inputs.aadhaarNumber,
@@ -253,6 +259,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
 
   test('TC_CG_REG_005 - Verify Mobile Number field accepts only 10 digits with +91 country code', async () => {
     const data = testData.TC_CG_REG_005;
+    const dynValidNumber = DataGenerator.randomPhone();
 
     // 1. Navigate to caregiver registration page
     await caregiverPage.navigateDirectlyToRegistration(data.url + '/caregiver-registration/');
@@ -269,7 +276,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     await caregiverPage.pressTabKey();
 
     // 5. Enter valid 10-digit number
-    await caregiverPage.fillMobileNumber(data.inputs.validNumber);
+    await caregiverPage.fillMobileNumber(dynValidNumber);
     await caregiverPage.pressTabKey();
 
     // 6. Verify Send OTP button is visible
@@ -427,14 +434,18 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
 
   test('TC_CG_REG_021 - Verify partial form submission retains data on validation error', async () => {
     const data = testData.TC_CG_REG_021;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynValidEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page
     await caregiverPage.navigateDirectlyToRegistration(data.url + '/caregiver-registration/');
 
     // 2. Fill First Name, Last Name, and Mobile Number with valid data
-    await caregiverPage.fillFirstName(data.inputs.firstName);
-    await caregiverPage.fillLastName(data.inputs.lastName);
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillFirstName(dynFirstName);
+    await caregiverPage.fillLastName(dynLastName);
+    await caregiverPage.fillMobileNumber(dynMobile);
 
     // 3. Enter invalid email format
     await caregiverPage.fillEmailId(data.inputs.invalidEmail);
@@ -444,20 +455,20 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isEmailValidationErrorVisible()).toBeTruthy();
 
     // 5. Verify First Name data is retained
-    expect(await caregiverPage.verifyFieldRetainsValue('First Name *', data.inputs.firstName)).toBeTruthy();
+    expect(await caregiverPage.verifyFieldRetainsValue('First Name *', dynFirstName)).toBeTruthy();
 
     // 6. Verify Last Name data is retained
-    expect(await caregiverPage.verifyFieldRetainsValue('Last Name *', data.inputs.lastName)).toBeTruthy();
+    expect(await caregiverPage.verifyFieldRetainsValue('Last Name *', dynLastName)).toBeTruthy();
 
     // 7. Correct the email to valid format
-    await caregiverPage.fillEmailId(data.inputs.validEmail);
+    await caregiverPage.fillEmailId(dynValidEmail);
     await caregiverPage.pressTabKey();
 
     // 8. Verify email error is gone
     expect(await caregiverPage.isEmailValidationErrorHidden()).toBeTruthy();
 
     // 9. Verify previously entered data is still present
-    expect(await caregiverPage.verifyFieldRetainsValue('First Name *', data.inputs.firstName)).toBeTruthy();
+    expect(await caregiverPage.verifyFieldRetainsValue('First Name *', dynFirstName)).toBeTruthy();
   });
 
   test('TC_CG_REG_022 - Verify Back to sign in navigation works at any point during registration', async () => {
@@ -476,8 +487,8 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     await caregiverPage.navigateDirectlyToRegistration(data.url + '/caregiver-registration/');
 
     // 5. Fill some fields with valid data
-    await caregiverPage.fillFirstName('Priya');
-    await caregiverPage.fillLastName('Sharma');
+    await caregiverPage.fillFirstName(DataGenerator.randomFirstName());
+    await caregiverPage.fillLastName(DataGenerator.randomLastName());
 
     // 6. Click Back to Sign In mid-form
     await caregiverPage.clickBackToSignInLink();
@@ -561,6 +572,10 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_020 - Verify Aadhaar already linked to another account during registration', async () => {
     test.setTimeout(90000);
     const data = testData.TC_CG_REG_020;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page
     await caregiverPage.navigateDirectlyToRegistration(data.url + '/caregiver-registration/');
@@ -569,7 +584,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     const mobileField = caregiverPage.page.getByRole('textbox', { name: 'Mobile Number *' });
     await mobileField.click();
     await mobileField.fill('');
-    await mobileField.pressSequentially(data.inputs.mobileNumber, { delay: 50 });
+    await mobileField.pressSequentially(dynMobile, { delay: 50 });
     await caregiverPage.pressTabKey();
 
     // 3. Send mobile OTP (wait for button to become enabled)
@@ -597,7 +612,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isMobileFieldDisabledAfterVerification()).toBeTruthy();
 
     // 7. Enter valid email
-    await caregiverPage.fillEmailId(data.inputs.emailId);
+    await caregiverPage.fillEmailId(dynEmail);
 
     // 8. Send email OTP
     await caregiverPage.clickSendOtpEmailButton();
@@ -611,8 +626,8 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isEmailFieldDisabledAfterVerification()).toBeTruthy();
 
     // 11. Fill remaining fields with linked Aadhaar
-    await caregiverPage.fillFirstName(data.inputs.firstName);
-    await caregiverPage.fillLastName(data.inputs.lastName);
+    await caregiverPage.fillFirstName(dynFirstName);
+    await caregiverPage.fillLastName(dynLastName);
     await caregiverPage.fillPassword(data.inputs.password);
     await caregiverPage.fillConfirmPassword(data.inputs.confirmPassword);
     await caregiverPage.fillAadharNumber(data.inputs.linkedAadhaar);
@@ -635,12 +650,13 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_010 - Verify Mobile OTP verification flow (send, enter, verify)', async () => {
     test.setTimeout(90000);
     const data = testData.TC_CG_REG_010;
+    const dynMobile = DataGenerator.randomPhone();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid mobile number
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
 
     // 3. Click Send OTP for mobile
@@ -666,12 +682,13 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_011 - Verify Email OTP verification flow (send, enter, verify)', async () => {
     test.setTimeout(90000);
     const data = testData.TC_CG_REG_011;
+    const dynEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid email
-    await caregiverPage.fillEmailId(data.inputs.emailId);
+    await caregiverPage.fillEmailId(dynEmail);
     await caregiverPage.pressTabKey();
 
     // 3. Click Send OTP for email
@@ -697,12 +714,13 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_012 - Verify incorrect OTP entry shows retry error message', async () => {
     test.setTimeout(90000);
     const data = testData.TC_CG_REG_012;
+    const dynMobile = DataGenerator.randomPhone();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid mobile number and send OTP
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForMobileSendOtpEnabled();
     await caregiverPage.clickSendOtpMobileButton();
@@ -733,12 +751,13 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_013 - Verify OTP expiry and resend with cooldown', async () => {
     test.setTimeout(120000);
     const data = testData.TC_CG_REG_013;
+    const dynMobile = DataGenerator.randomPhone();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid mobile number and send OTP
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForMobileSendOtpEnabled();
     await caregiverPage.clickSendOtpMobileButton();
@@ -765,12 +784,13 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_014 - Verify excessive OTP failures trigger temporary verification lock', async () => {
     test.setTimeout(120000);
     const data = testData.TC_CG_REG_014;
+    const dynMobile = DataGenerator.randomPhone();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid mobile number and send OTP
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForMobileSendOtpEnabled();
     await caregiverPage.clickSendOtpMobileButton();
@@ -798,12 +818,16 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_002 - Verify successful caregiver registration with all valid mandatory fields', async () => {
     test.setTimeout(120000);
     const data = testData.TC_CG_REG_002;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Enter valid mobile number and complete OTP verification
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForMobileSendOtpEnabled();
     await caregiverPage.clickSendOtpMobileButton();
@@ -813,7 +837,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isMobileVerifiedIndicatorVisible()).toBeTruthy();
 
     // 3. Enter valid email and complete OTP verification
-    await caregiverPage.fillEmailId(data.inputs.emailId);
+    await caregiverPage.fillEmailId(dynEmail);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForEmailSendOtpEnabled();
     await caregiverPage.clickSendOtpEmailButton();
@@ -823,8 +847,8 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isEmailVerifiedIndicatorVisible()).toBeTruthy();
 
     // 4. Fill all remaining mandatory fields
-    await caregiverPage.fillFirstName(data.inputs.firstName);
-    await caregiverPage.fillLastName(data.inputs.lastName);
+    await caregiverPage.fillFirstName(dynFirstName);
+    await caregiverPage.fillLastName(dynLastName);
     await caregiverPage.fillPassword(data.inputs.password);
     await caregiverPage.fillConfirmPassword(data.inputs.confirmPassword);
     await caregiverPage.fillAadharNumber(data.inputs.aadhaarNumber);
@@ -851,12 +875,16 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
   test('TC_CG_REG_017 - Verify post-registration redirect to PwD registration flow', async () => {
     test.setTimeout(120000);
     const data = testData.TC_CG_REG_017;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to caregiver registration page via portal flow
     await caregiverPage.navigateToRegistrationViaPortal(data.url);
 
     // 2. Complete mobile OTP verification
-    await caregiverPage.fillMobileNumber(data.inputs.mobileNumber);
+    await caregiverPage.fillMobileNumber(dynMobile);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForMobileSendOtpEnabled();
     await caregiverPage.clickSendOtpMobileButton();
@@ -866,7 +894,7 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isMobileVerifiedIndicatorVisible()).toBeTruthy();
 
     // 3. Complete email OTP verification
-    await caregiverPage.fillEmailId(data.inputs.emailId);
+    await caregiverPage.fillEmailId(dynEmail);
     await caregiverPage.pressTabKey();
     await caregiverPage.waitForEmailSendOtpEnabled();
     await caregiverPage.clickSendOtpEmailButton();
@@ -876,8 +904,8 @@ test.describe('Caregiver Registration, Verification, Consent & Feature Parity', 
     expect(await caregiverPage.isEmailVerifiedIndicatorVisible()).toBeTruthy();
 
     // 4. Fill all remaining fields
-    await caregiverPage.fillFirstName(data.inputs.firstName);
-    await caregiverPage.fillLastName(data.inputs.lastName);
+    await caregiverPage.fillFirstName(dynFirstName);
+    await caregiverPage.fillLastName(dynLastName);
     await caregiverPage.fillPassword(data.inputs.password);
     await caregiverPage.fillConfirmPassword(data.inputs.confirmPassword);
     await caregiverPage.fillAadharNumber(data.inputs.aadhaarNumber);

@@ -24,38 +24,6 @@
   "testCases": [
     {
       "id": "TC_PWD_REG_001",
-      "title": "Verify PwD registration is accessible only after caregiver registration completion",
-      "priority": "Highest",
-      "relatedJiraIssue": "SCRUM-281",
-      "category": "Preconditions & Prerequisites",
-      "preconditions": "An unregistered user account exists; Caregiver registration page is accessible",
-      "steps": [
-        "1. Navigate to caregiver registration page",
-        "2. Attempt to access PwD registration before completing caregiver registration",
-        "3. Verify access status/visibility of PwD registration option",
-        "4. Complete caregiver registration with all mandatory fields",
-        "5. Verify PwD registration option becomes available after registration completion",
-        "6. Navigate to PwD registration section",
-        "7. Verify PwD registration form is accessible and functional"
-      ],
-      "testData": {
-        "caregiverName": "John Smith",
-        "caregiverEmail": "john.smith@example.com",
-        "caregiverPhone": "9876543210",
-        "caregiverAddress": "123 Main Street, City, State 12345"
-      },
-      "expectedResults": [
-        "PwD registration option is NOT visible/accessible before caregiver registration",
-        "After caregiver registration, confirmation page displays success message",
-        "PwD registration becomes accessible and viewable in caregiver's dashboard",
-        "PwD registration form loads without errors"
-      ],
-      "postconditions": "Caregiver account is created and active; PwD registration form is ready for input",
-      "testResult": "PASS"
-    },
-
-    {
-      "id": "TC_PWD_REG_002",
       "title": "Verify PwD registration requires explicit caregiver consent",
       "priority": "Highest",
       "relatedJiraIssue": "SCRUM-281",
@@ -87,7 +55,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_003",
+      "id": "TC_PWD_REG_002",
       "title": "Verify successful PwD profile creation with complete information",
       "priority": "Highest",
       "relatedJiraIssue": "SCRUM-281",
@@ -128,7 +96,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_004",
+      "id": "TC_PWD_REG_003",
       "title": "Verify confirmation page displays dual-platform access messaging",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-281",
@@ -164,7 +132,7 @@
     },
 
     {
-      "id": "TC_PWD_REG_005",
+      "id": "TC_PWD_REG_004",
       "title": "Verify mandatory field validation in PwD registration form",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-281",
@@ -204,7 +172,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_006",
+      "id": "TC_PWD_REG_005",
       "title": "Verify email format validation in PwD registration",
       "priority": "Low",
       "relatedJiraIssue": "SCRUM-281",
@@ -243,7 +211,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_007",
+      "id": "TC_PWD_REG_006",
       "title": "Verify password strength requirements and validation",
       "priority": "Low",
       "relatedJiraIssue": "SCRUM-281",
@@ -286,7 +254,7 @@
     },
 
     {
-      "id": "TC_PWD_REG_008",
+      "id": "TC_PWD_REG_007",
       "title": "Verify duplicate email prevention (PwD email must be unique)",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-281",
@@ -320,7 +288,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_009",
+      "id": "TC_PWD_REG_008",
       "title": "Verify caregiver cannot register with same email as PwD",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-281",
@@ -350,7 +318,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_010",
+      "id": "TC_PWD_REG_009",
       "title": "Verify phone number format validation",
       "priority": "Low",
       "relatedJiraIssue": "SCRUM-281",
@@ -386,7 +354,7 @@
     },
 
     {
-      "id": "TC_PWD_REG_011",
+      "id": "TC_PWD_REG_010",
       "title": "Verify successful registration of PwD with special characters in name",
       "priority": "Low",
       "relatedJiraIssue": "SCRUM-281",
@@ -422,7 +390,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PWD_REG_012",
+      "id": "TC_PWD_REG_011",
       "title": "Verify accessibility compliance for PwD registration form (WCAG standards)",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-281",
@@ -462,21 +430,17 @@
   ],
 
   "requirements_traceability_matrix": {
-    "AC1_caregiver_registration_required": {
-      "description": "PwD registration enabled only after caregiver registration complete",
+    "AC1_caregiver_consent_required": {
+      "description": "PwD registration requires explicit caregiver consent",
       "testCases": ["TC_PWD_REG_001"]
     },
-    "AC2_caregiver_consent_required": {
-      "description": "PwD registration requires explicit caregiver consent",
+    "AC2_pwd_profile_creation": {
+      "description": "Creates or links PwD account and enables SwarajAbility access",
       "testCases": ["TC_PWD_REG_002"]
     },
-    "AC3_pwd_profile_creation": {
-      "description": "Creates or links PwD account and enables SwarajAbility access",
-      "testCases": ["TC_PWD_REG_003"]
-    },
-    "AC6_confirmation_messaging": {
+    "AC3_confirmation_messaging": {
       "description": "Displays confirmation for both platform access",
-      "testCases": ["TC_PWD_REG_004"]
+      "testCases": ["TC_PWD_REG_003"]
     }
   },
   "test_data_requirements": {
@@ -556,13 +520,13 @@
   ],
   "test_execution_notes": {
     "priority_order": [
-      "Highest tests (TC_PWD_REG_001, 002, 003) should be executed first",
+      "Highest tests (TC_PWD_REG_001, 002) should be executed first",
       "High priority tests follow Highest tests",
       "Medium and Low priority tests can be executed in parallel",
-      "Accessibility tests (TC_PWD_REG_012) should be included in comprehensive test runs"
+      "Accessibility tests (TC_PWD_REG_011) should be included in comprehensive test runs"
     ],
     "estimated_effort": {
-      "total_test_cases": 12,
+      "total_test_cases": 11,
       "estimated_hours": "40-50 hours for full manual testing",
       "estimated_automation_hours": "65-80 hours for test automation",
       "critical_path": "6-8 hours for critical path testing only"
@@ -593,7 +557,7 @@
     "createdBy": "QA Test Planner Agent",
     "lastUpdated": "2026-03-23",
     "status": "Ready for Execution",
-    "totalTestCases": 12,
+    "totalTestCases": 11,
     "coverage": "100% of acceptance criteria covered with multiple scenarios per requirement"
   }
 }

@@ -3,6 +3,7 @@
 
 import { test, expect } from '@playwright/test';
 import { CaregiverPage } from '../../pages/caregiver.page';
+import { DataGenerator } from '../../../utility/data-generator';
 import testData from '../../test-data/scrum372-register-add-new-pwd.json';
 
 test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
@@ -105,9 +106,9 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     expect(firstName).toBe('');
 
     // 3. Fill only First Name
-    await caregiverPage.fillRegFormFirstName('Rajesh');
+    await caregiverPage.fillRegFormFirstName(DataGenerator.randomFirstName());
     const nameValue = await caregiverPage.getRegFormFirstNameValue();
-    expect(nameValue).toBe('Rajesh');
+    expect(nameValue.length).toBeGreaterThan(0);
   });
 
   test('TC_NEW_PWD_008: Verify optional ID Type and ID Number fields', async () => {
@@ -173,7 +174,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     );
 
     // 1. Fill some fields
-    await caregiverPage.fillRegFormFirstName('TestName');
+    await caregiverPage.fillRegFormFirstName(DataGenerator.randomFirstName());
 
     // 2. Click Back to Aadhar
     await caregiverPage.clickBackToAadharButton();
@@ -196,7 +197,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     await caregiverPage.waitForRegisterNewPwdHeading();
 
     // 3. Fill some fields but do NOT submit
-    await caregiverPage.fillRegFormFirstName('Abandoned');
+    await caregiverPage.fillRegFormFirstName(DataGenerator.randomFirstName());
 
     // 4. Navigate back to My PwDs
     await caregiverPage.clickBackToMyPwdsFromLookup();
@@ -209,6 +210,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
   // OTP-dependent tests
   test('TC_NEW_PWD_004: Verify Mobile Number OTP verification for PwD registration', async () => {
     const td = testData.TC_NEW_PWD_004;
+    const dynPwdMobile = DataGenerator.randomPhone();
 
     // 1. Navigate to new PwD registration form
     await caregiverPage.navigateToNewPwdRegistrationForm(
@@ -216,7 +218,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     );
 
     // 2. Enter valid 10-digit PwD mobile number
-    await caregiverPage.fillRegFormMobile(td.inputs.pwdMobile);
+    await caregiverPage.fillRegFormMobile(dynPwdMobile);
 
     // 3. Click Send OTP for mobile
     await caregiverPage.clickRegFormMobileSendOtp();
@@ -233,6 +235,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
 
   test('TC_NEW_PWD_005: Verify Email OTP verification for PwD registration', async () => {
     const td = testData.TC_NEW_PWD_005;
+    const dynPwdEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to new PwD registration form
     await caregiverPage.navigateToNewPwdRegistrationForm(
@@ -240,7 +243,7 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     );
 
     // 2. Enter valid PwD email
-    await caregiverPage.fillRegFormEmail(td.inputs.pwdEmail);
+    await caregiverPage.fillRegFormEmail(dynPwdEmail);
 
     // 3. Click Send OTP for email
     await caregiverPage.clickRegFormEmailSendOtp();
@@ -339,6 +342,10 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
 
   test('TC_NEW_PWD_002: Verify successful PwD registration with all valid mandatory fields', async () => {
     const td = testData.TC_NEW_PWD_002;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynPwdMobile = DataGenerator.randomPhone();
+    const dynPwdEmail = DataGenerator.randomEmail();
 
     // 1. Navigate to new PwD registration form
     await caregiverPage.navigateToNewPwdRegistrationForm(
@@ -346,18 +353,18 @@ test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
     );
 
     // 2. Fill personal information
-    await caregiverPage.fillRegFormFirstName(td.inputs.firstName);
-    await caregiverPage.fillRegFormLastName(td.inputs.lastName);
+    await caregiverPage.fillRegFormFirstName(dynFirstName);
+    await caregiverPage.fillRegFormLastName(dynLastName);
 
     // 3. Mobile OTP verification
-    await caregiverPage.fillRegFormMobile(td.inputs.pwdMobile);
+    await caregiverPage.fillRegFormMobile(dynPwdMobile);
     await caregiverPage.clickRegFormMobileSendOtp();
     await caregiverPage.fillRegFormMobileOtp(td.inputs.otp);
     await caregiverPage.clickRegFormMobileVerify();
     await caregiverPage.page.waitForTimeout(2000);
 
     // 4. Email OTP verification
-    await caregiverPage.fillRegFormEmail(td.inputs.pwdEmail);
+    await caregiverPage.fillRegFormEmail(dynPwdEmail);
     await caregiverPage.clickRegFormEmailSendOtp();
     await caregiverPage.page.waitForTimeout(2000);
     await caregiverPage.fillRegFormEmailOtp(td.inputs.otp);

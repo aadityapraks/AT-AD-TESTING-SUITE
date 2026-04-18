@@ -262,64 +262,6 @@
     },
     {
       "id": "TC_AADHAAR_008",
-      "title": "Verify Aadhaar service unavailable shows retry message",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-366",
-      "category": "Edge Case - Service Unavailable",
-      "preconditions": "Caregiver is on Aadhaar lookup page; Aadhaar/SwarajAbility service is unavailable or simulated down",
-      "steps": [
-        "1. Enter a valid 12-digit Aadhaar number",
-        "2. Click 'Verify Aadhaar Number' button",
-        "3. Simulate or wait for service unavailability (network error, timeout)",
-        "4. Verify a retry message is displayed to the user",
-        "5. Verify the message is clear (e.g., 'Service temporarily unavailable. Please try again.')",
-        "6. Verify a retry option is provided (button or automatic)",
-        "7. Click retry after service is restored",
-        "8. Verify lookup proceeds normally"
-      ],
-      "testData": {
-        "validAadhaar": "234567890123"
-      },
-      "expectedResults": [
-        "Service unavailability is detected and handled gracefully",
-        "Retry message is displayed clearly",
-        "Retry option is provided",
-        "After service restoration, retry succeeds normally",
-        "No unhandled errors or blank screens"
-      ],
-      "postconditions": "Service unavailability handling is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_AADHAAR_009",
-      "title": "Verify excessive Aadhaar verification attempts trigger temporary lock",
-      "priority": "Medium",
-      "relatedJiraIssue": "SCRUM-366",
-      "category": "Edge Case - Excessive Attempts",
-      "preconditions": "Caregiver is on Aadhaar lookup page",
-      "steps": [
-        "1. Enter a valid 12-digit Aadhaar number",
-        "2. Click 'Verify Aadhaar Number' repeatedly (exceed max attempts)",
-        "3. Verify temporary lock is triggered after maximum attempts",
-        "4. Verify lock message is displayed with duration",
-        "5. Verify Verify button is disabled during lock period",
-        "6. Wait for lock period to expire",
-        "7. Verify Aadhaar verification is re-enabled"
-      ],
-      "testData": {
-        "validAadhaar": "234567890123"
-      },
-      "expectedResults": [
-        "After maximum attempts, temporary lock is triggered",
-        "Lock message clearly states duration and reason",
-        "Verify button is disabled during lock period",
-        "After lock expires, verification is re-enabled"
-      ],
-      "postconditions": "Excessive attempts lock behavior is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_AADHAAR_010",
       "title": "Verify Aadhaar already linked to another caregiver blocks access with guidance",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-366",
@@ -350,7 +292,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_AADHAAR_011",
+      "id": "TC_AADHAAR_009",
       "title": "Verify Aadhaar input field masks the entered number",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-366",
@@ -406,17 +348,9 @@
       "description": "Invalid Aadhaar length/format → validation error",
       "testCases": ["TC_AADHAAR_001", "TC_AADHAAR_007"]
     },
-    "EC2_service_unavailable": {
-      "description": "Aadhaar service unavailable → retry message",
-      "testCases": ["TC_AADHAAR_008"]
-    },
-    "EC3_excessive_attempts": {
-      "description": "Excessive attempts → temporary lock",
-      "testCases": ["TC_AADHAAR_009"]
-    },
-    "EC4_already_linked": {
+    "EC2_already_linked": {
       "description": "Aadhaar already linked to another caregiver → access blocked with guidance",
-      "testCases": ["TC_AADHAAR_010"]
+      "testCases": ["TC_AADHAAR_008"]
     }
   },
   "test_data_requirements": {
@@ -465,16 +399,8 @@
   },
   "open_questions_and_clarifications": [
     {
-      "question": "What is the maximum number of Aadhaar verification attempts before temporary lock?",
-      "impact": "Affects TC_AADHAAR_009 retry count"
-    },
-    {
-      "question": "What is the temporary lock duration after excessive attempts?",
-      "impact": "Affects TC_AADHAAR_009 wait time"
-    },
-    {
       "question": "Is the Aadhaar input masked on the lookup page (similar to registration)?",
-      "impact": "Affects TC_AADHAAR_011 expected masking behavior"
+      "impact": "Affects TC_AADHAAR_009 expected masking behavior"
     },
     {
       "question": "Does the OTP for PwD verification have the same expiry/retry rules as registration OTPs?",
@@ -482,17 +408,17 @@
     },
     {
       "question": "What specific error message is shown when Aadhaar is linked to another caregiver?",
-      "impact": "Affects TC_AADHAAR_010 expected error text"
+      "impact": "Affects TC_AADHAAR_008 expected error text"
     }
   ],
   "test_execution_notes": {
     "priority_order": [
       "Highest tests (TC_AADHAAR_001-004) should be executed first - core input validation, found/not-found flows, OTP",
-      "High priority tests (005-008, 010) cover button logic, back navigation, invalid format, service unavailable, already linked",
-      "Medium priority tests (009, 011) cover excessive attempts lock and input masking"
+      "High priority tests (005-008) cover button logic, back navigation, invalid format, already linked",
+      "Medium priority test (009) covers input masking"
     ],
     "estimated_effort": {
-      "total_test_cases": 11,
+      "total_test_cases": 9,
       "estimated_hours": "14-18 hours for full manual testing",
       "estimated_automation_hours": "22-28 hours for test automation",
       "critical_path": "4-6 hours for critical path testing only"
@@ -518,7 +444,7 @@
     "createdBy": "QA Test Planner Agent",
     "lastUpdated": "2026-03-29",
     "status": "Ready for Execution",
-    "totalTestCases": 11,
-    "coverage": "100% of acceptance criteria and all edge cases covered"
+    "totalTestCases": 9,
+    "coverage": "100% of acceptance criteria covered; service unavailability and excessive attempts edge cases removed"
   }
 }

@@ -188,72 +188,6 @@
     },
     {
       "id": "TC_MY_PWD_006",
-      "title": "Verify My PwDs page with maximum PwD limit reached",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-363",
-      "category": "Limit Reached State",
-      "preconditions": "Caregiver has added the maximum number of PwDs (e.g., 5 of 5)",
-      "steps": [
-        "1. Log in as caregiver with maximum PwDs registered",
-        "2. Navigate to 'My PwDs' page",
-        "3. Verify all PwD cards are displayed",
-        "4. Verify slots used shows maximum (e.g., 5/5)",
-        "5. Verify remaining slots shows 0",
-        "6. Verify 'Add New PwD' button is NOT visible or is disabled",
-        "7. Verify 'Add Another PwD' card is NOT visible or shows 0 remaining",
-        "8. Verify an informational message about limit reached is shown (if applicable)"
-      ],
-      "testData": {
-        "currentPwDCount": 5,
-        "pwdLimit": 5,
-        "expectedRemaining": 0
-      },
-      "expectedResults": [
-        "All PwD cards are displayed correctly",
-        "Slots used shows maximum count",
-        "Remaining slots shows 0",
-        "'Add New PwD' button is hidden or disabled",
-        "'Add Another PwD' card is hidden or shows 0 remaining",
-        "Informational message may indicate limit reached"
-      ],
-      "postconditions": "Maximum limit state is verified on My PwDs page",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_MY_PWD_007",
-      "title": "Verify My PwDs page with no PwDs added (empty state)",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-363",
-      "category": "Empty State",
-      "preconditions": "Caregiver is registered and logged in; No PwDs have been added yet",
-      "steps": [
-        "1. Log in as caregiver with zero PwDs",
-        "2. Navigate to 'My PwDs' page",
-        "3. Verify the page loads without errors",
-        "4. Verify an empty state message is displayed (e.g., 'No PwDs added yet' or 'Add Your First PwD')",
-        "5. Verify PwD limit is still displayed (e.g., 0/5)",
-        "6. Verify 'Add New PwD' button is visible and enabled",
-        "7. Verify remaining slots shows full limit (e.g., 5 remaining)",
-        "8. Click 'Add New PwD' button",
-        "9. Verify navigation to PwD add flow"
-      ],
-      "testData": {
-        "currentPwDCount": 0,
-        "pwdLimit": 5,
-        "expectedRemaining": 5
-      },
-      "expectedResults": [
-        "Empty state message is displayed clearly",
-        "PwD limit information is shown (0 used, 5 remaining)",
-        "'Add New PwD' button is visible and enabled",
-        "Clicking Add New PwD navigates to PwD registration flow",
-        "No broken UI elements or error messages"
-      ],
-      "postconditions": "Empty state display is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_MY_PWD_008",
       "title": "Verify multiple PwD cards display correctly with different data",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-363",
@@ -289,7 +223,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_MY_PWD_009",
+      "id": "TC_MY_PWD_007",
       "title": "Verify PwD count mismatch is resolved by page refresh/sync",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-363",
@@ -319,7 +253,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_MY_PWD_010",
+      "id": "TC_MY_PWD_008",
       "title": "Verify slot count updates dynamically after adding a new PwD",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-363",
@@ -355,23 +289,23 @@
   "requirements_traceability_matrix": {
     "AC1_my_pwds_page_limit_slots": {
       "description": "My PwDs page displays PwD limit, slots used and remaining",
-      "testCases": ["TC_MY_PWD_001", "TC_MY_PWD_006", "TC_MY_PWD_007"]
+      "testCases": ["TC_MY_PWD_001"]
     },
     "AC2_pwd_card_content": {
       "description": "Each PwD card shows Name, Contact details, Disability type, Date added, View Profile CTA",
-      "testCases": ["TC_MY_PWD_002", "TC_MY_PWD_005", "TC_MY_PWD_008"]
+      "testCases": ["TC_MY_PWD_002", "TC_MY_PWD_005", "TC_MY_PWD_006"]
     },
     "AC3_add_new_pwd_button": {
       "description": "Add New PwD button is visible if slots remain",
-      "testCases": ["TC_MY_PWD_003", "TC_MY_PWD_006"]
+      "testCases": ["TC_MY_PWD_003"]
     },
     "AC4_add_another_pwd_card": {
       "description": "Add Another PwD card shows remaining count",
-      "testCases": ["TC_MY_PWD_004", "TC_MY_PWD_010"]
+      "testCases": ["TC_MY_PWD_004", "TC_MY_PWD_008"]
     },
     "EC1_count_mismatch_sync": {
       "description": "PwD count mismatch → refresh syncs data",
-      "testCases": ["TC_MY_PWD_009"]
+      "testCases": ["TC_MY_PWD_007"]
     }
   },
   "test_data_requirements": {
@@ -460,7 +394,7 @@
       "High priority tests (005-010) cover card interactions, limit states, empty state, multiple cards, sync, dynamic slot updates"
     ],
     "estimated_effort": {
-      "total_test_cases": 10,
+      "total_test_cases": 8,
       "estimated_hours": "12-16 hours for full manual testing",
       "estimated_automation_hours": "20-25 hours for test automation",
       "critical_path": "4-6 hours for critical path testing only"
@@ -485,7 +419,7 @@
     "createdBy": "QA Test Planner Agent",
     "lastUpdated": "2026-03-29",
     "status": "Ready for Execution",
-    "totalTestCases": 10,
-    "coverage": "100% of acceptance criteria covered; edge cases for admin removal, session expiry, partial data, and accessibility removed"
+    "totalTestCases": 8,
+    "coverage": "100% of acceptance criteria covered; edge cases for admin removal, session expiry, partial data, accessibility, max limit, and empty state removed"
   }
 }

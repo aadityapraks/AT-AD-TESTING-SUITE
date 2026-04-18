@@ -1,0 +1,598 @@
+{
+  "jiraStory": "SCRUM-442",
+  "title": "Admin Sign-In - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Sign-In flow for the AT/AD Admin Portal. Covers sign-in page access, email and password authentication, form validation, successful and failed authentication flows, session management, logout behavior, and edge cases including account lockout and inline validation.",
+  "scope": {
+    "inScope": [
+      "Admin Sign-In page access from Admin Portal URL",
+      "Email and password field validation",
+      "Sign In button enable/disable behavior",
+      "Successful authentication and redirect to Admin Dashboard",
+      "Admin name and role visibility in header after login",
+      "Failed authentication error messaging",
+      "Inline email format validation",
+      "Session maintenance and session timeout handling",
+      "Logout flow and session clearing",
+      "Multiple failed login attempts behavior",
+      "Inactive/suspended admin account handling",
+      "Keyboard navigation and accessibility"
+    ],
+    "outOfScope": [
+      "Admin account creation/provisioning (backend)",
+      "Password reset/forgot password flow (separate story)",
+      "Admin Dashboard functionality (separate story)",
+      "Backend session configuration and timeout settings",
+      "Account lock/unlock admin workflow"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [],
+    "linkedBugs": [
+      "SCRUM-2310 - Admin Name and Role Not Displayed in Header (Mismatch with Figma Design)"
+    ]
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Active Admin",
+      "Inactive/Suspended Admin"
+    ],
+    "prerequisites": [
+      "Access to Admin Portal URL",
+      "Valid admin credentials (email and password)",
+      "Inactive/suspended admin account for negative testing"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM442_001",
+      "title": "Verify Admin Sign-In page is accessible from Admin Portal URL",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC1 - Admin can access the Admin Sign-In page from the Admin Portal URL",
+      "preconditions": "Admin Portal URL is available and user is not logged in",
+      "steps": [
+        "Navigate to the Admin Portal URL",
+        "Verify the Sign-In page loads successfully",
+        "Verify the page title or heading indicates Admin Sign-In"
+      ],
+      "expectedResults": [
+        "Admin Portal URL resolves and page loads",
+        "Sign-In page is displayed with login form",
+        "Page clearly identifies as Admin Sign-In"
+      ],
+      "postconditions": "Admin Sign-In page is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_002",
+      "title": "Verify Email and Password fields are present on Sign-In page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC2 - Admin can sign in using Email and Password",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Locate the Email input field",
+        "Locate the Password input field",
+        "Verify both fields have appropriate labels and placeholders",
+        "Verify Password field masks input"
+      ],
+      "expectedResults": [
+        "Email input field is visible and editable",
+        "Password input field is visible and editable",
+        "Fields have clear labels (e.g., 'Email', 'Password')",
+        "Password field masks characters as they are typed"
+      ],
+      "postconditions": "Both credential fields are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_003",
+      "title": "Verify Sign In button is disabled when both fields are empty",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid",
+      "preconditions": "Admin is on the Sign-In page with empty fields",
+      "steps": [
+        "Ensure Email field is empty",
+        "Ensure Password field is empty",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Email field is empty",
+        "Password field is empty",
+        "Sign In button is disabled or visually indicates it cannot be clicked"
+      ],
+      "postconditions": "Sign In button remains disabled",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_004",
+      "title": "Verify Sign In button is disabled when only Email is entered",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter a valid email in the Email field",
+        "Leave Password field empty",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Email is entered",
+        "Password field is empty",
+        "Sign In button remains disabled"
+      ],
+      "postconditions": "Sign In button is not clickable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_005",
+      "title": "Verify Sign In button is disabled when only Password is entered",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Leave Email field empty",
+        "Enter a valid password in the Password field",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Email field is empty",
+        "Password is entered",
+        "Sign In button remains disabled"
+      ],
+      "postconditions": "Sign In button is not clickable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_006",
+      "title": "Verify Sign In button is enabled when both fields have valid input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter a valid email in the Email field",
+        "Enter a valid password in the Password field",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Email is entered with valid format",
+        "Password is entered",
+        "Sign In button becomes enabled and clickable"
+      ],
+      "postconditions": "Sign In button is ready for submission",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_007",
+      "title": "Verify Sign In button remains disabled with invalid email format",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid; Edge Case - Incorrect email format",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter an invalid email format (e.g., 'admin@', 'admin.com', 'admin')",
+        "Enter a valid password",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Invalid email is entered",
+        "Password is entered",
+        "Sign In button remains disabled or inline validation error is shown"
+      ],
+      "postconditions": "Sign In is blocked for invalid email",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_008",
+      "title": "Verify successful authentication redirects to Admin Dashboard",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC4 - On successful authentication, Admin is redirected to the Admin Dashboard",
+      "preconditions": "Admin has valid credentials and is on the Sign-In page",
+      "steps": [
+        "Enter valid admin email",
+        "Enter valid admin password",
+        "Click Sign In button",
+        "Wait for authentication to complete"
+      ],
+      "expectedResults": [
+        "Email is accepted",
+        "Password is accepted",
+        "Sign In is submitted",
+        "Admin is redirected to the Admin Dashboard page"
+      ],
+      "postconditions": "Admin is logged in and on the Dashboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_009",
+      "title": "Verify Admin name and role are visible in header after successful login",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC4 - Admin name and role are visible in the header",
+      "preconditions": "Admin has successfully logged in and is on the Dashboard",
+      "steps": [
+        "Log in with valid admin credentials",
+        "Observe the header section of the Admin Dashboard",
+        "Verify admin name is displayed",
+        "Verify admin role is displayed"
+      ],
+      "expectedResults": [
+        "Login is successful",
+        "Header section is visible",
+        "Admin name is displayed in the header",
+        "Admin role (e.g., Super Admin) is displayed in the header"
+      ],
+      "postconditions": "Admin identity is visible in header",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_010",
+      "title": "Verify error message on failed authentication with wrong password",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC5 - On failed authentication, clear error message is displayed; Edge Case - error message without revealing which field is wrong",
+      "preconditions": "Admin is on the Sign-In page with a valid email",
+      "steps": [
+        "Enter a valid admin email",
+        "Enter an incorrect password",
+        "Click Sign In button",
+        "Observe the error message"
+      ],
+      "expectedResults": [
+        "Email is entered",
+        "Incorrect password is entered",
+        "Sign In is submitted",
+        "Generic error message is displayed (e.g., 'Invalid email or password') without revealing which field is wrong"
+      ],
+      "postconditions": "Admin remains on Sign-In page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_011",
+      "title": "Verify error message on failed authentication with wrong email",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC5 - On failed authentication, clear error message is displayed",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter a non-existent admin email",
+        "Enter any password",
+        "Click Sign In button",
+        "Observe the error message"
+      ],
+      "expectedResults": [
+        "Non-existent email is entered",
+        "Password is entered",
+        "Sign In is submitted",
+        "Generic error message is displayed (e.g., 'Invalid email or password') without revealing that the email doesn't exist"
+      ],
+      "postconditions": "Admin remains on Sign-In page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_012",
+      "title": "Verify inline validation for incorrect email format",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Edge Case - Incorrect email format → inline validation",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter an invalid email format (e.g., 'test@')",
+        "Tab out of the Email field or click elsewhere",
+        "Observe inline validation message",
+        "Enter another invalid format (e.g., 'test.com')",
+        "Observe inline validation message"
+      ],
+      "expectedResults": [
+        "Invalid email is entered",
+        "Inline validation error appears near the Email field",
+        "Error message indicates invalid email format",
+        "Second invalid format also triggers inline validation",
+        "Validation message is clear and specific"
+      ],
+      "postconditions": "Inline validation is displayed for invalid email",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_013",
+      "title": "Verify session is maintained after successful login",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC6 - Session is maintained until logout or session timeout",
+      "preconditions": "Admin has successfully logged in",
+      "steps": [
+        "Log in with valid admin credentials",
+        "Navigate to different pages within the Admin Portal",
+        "Refresh the browser page",
+        "Verify admin remains logged in"
+      ],
+      "expectedResults": [
+        "Login is successful",
+        "Navigation between pages maintains the session",
+        "Browser refresh does not log out the admin",
+        "Admin session persists across page interactions"
+      ],
+      "postconditions": "Session is active and maintained",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_014",
+      "title": "Verify logout clears session and redirects to Sign-In page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Edge Case - Logout clears session and redirects to Sign-In page",
+      "preconditions": "Admin is logged in to the Admin Portal",
+      "steps": [
+        "Log in with valid admin credentials",
+        "Locate and click the Logout option",
+        "Verify redirect to Sign-In page",
+        "Attempt to navigate back to the Dashboard using browser back button or direct URL"
+      ],
+      "expectedResults": [
+        "Login is successful",
+        "Logout option is clicked",
+        "Admin is redirected to the Sign-In page",
+        "Navigating back does not restore the session; admin must sign in again"
+      ],
+      "postconditions": "Session is cleared and admin is on Sign-In page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_015",
+      "title": "Verify Sign In button is disabled when email field has only whitespace",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC3 - Sign In button is enabled only when both fields are valid",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter only spaces in the Email field",
+        "Enter a valid password",
+        "Observe the Sign In button state"
+      ],
+      "expectedResults": [
+        "Whitespace-only email is entered",
+        "Password is entered",
+        "Sign In button remains disabled or validation error is shown"
+      ],
+      "postconditions": "Whitespace-only input is rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_016",
+      "title": "Verify Sign-In page supports keyboard navigation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Use Tab key to navigate to the Email field",
+        "Enter email using keyboard",
+        "Tab to the Password field",
+        "Enter password using keyboard",
+        "Tab to the Sign In button",
+        "Press Enter or Space to submit"
+      ],
+      "expectedResults": [
+        "Email field receives focus via Tab",
+        "Email can be typed",
+        "Password field receives focus via Tab",
+        "Password can be typed",
+        "Sign In button receives focus via Tab",
+        "Form submits on Enter/Space when Sign In button is focused"
+      ],
+      "postconditions": "Form is fully operable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_017",
+      "title": "Verify focus indicators are visible on all interactive elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Accessibility - Focus indicators",
+      "preconditions": "Admin is on the Sign-In page using keyboard navigation",
+      "steps": [
+        "Tab through Email field, Password field, and Sign In button",
+        "Observe focus indicators on each element",
+        "Verify focus is clearly visible and distinguishable"
+      ],
+      "expectedResults": [
+        "Each interactive element shows a visible focus indicator when focused",
+        "Focus indicators are clearly distinguishable from the default state",
+        "Focus moves in a logical order"
+      ],
+      "postconditions": "Focus indicators are properly implemented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_018",
+      "title": "Verify form fields have proper labels for screen readers",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Accessibility - Screen reader support",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Inspect Email field for associated label or aria-label",
+        "Inspect Password field for associated label or aria-label",
+        "Inspect Sign In button for accessible name",
+        "Verify error messages are associated with fields via aria-describedby or similar"
+      ],
+      "expectedResults": [
+        "Email field has a programmatically associated label",
+        "Password field has a programmatically associated label",
+        "Sign In button has an accessible name",
+        "Error messages are linked to their respective fields for screen reader announcement"
+      ],
+      "postconditions": "Form is accessible to screen readers",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_019",
+      "title": "Verify complete Admin Sign-In flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC1-AC6 - Complete Flow",
+      "preconditions": "Admin has valid credentials and is not logged in",
+      "steps": [
+        "Navigate to Admin Portal URL",
+        "Verify Sign-In page loads",
+        "Enter valid admin email",
+        "Enter valid admin password",
+        "Verify Sign In button is enabled",
+        "Click Sign In button",
+        "Verify redirect to Admin Dashboard",
+        "Verify admin name and role in header",
+        "Click Logout",
+        "Verify redirect to Sign-In page"
+      ],
+      "expectedResults": [
+        "Admin Portal URL loads Sign-In page",
+        "Sign-In page displays email and password fields",
+        "Email is accepted",
+        "Password is accepted",
+        "Sign In button is enabled",
+        "Authentication is successful",
+        "Admin Dashboard is displayed",
+        "Admin name and role are visible in the header",
+        "Logout is successful",
+        "Admin is redirected to Sign-In page and session is cleared"
+      ],
+      "postconditions": "Full sign-in and logout cycle is complete",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_020",
+      "title": "Verify error message clears after correcting credentials and resubmitting",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "AC5 - Failed authentication error handling",
+      "preconditions": "Admin is on the Sign-In page and has triggered an error message",
+      "steps": [
+        "Enter invalid credentials and click Sign In",
+        "Observe error message",
+        "Correct the credentials to valid values",
+        "Click Sign In again",
+        "Verify error message is cleared and login succeeds"
+      ],
+      "expectedResults": [
+        "Error message is displayed for invalid credentials",
+        "Error message is visible",
+        "Credentials are corrected",
+        "Login succeeds on resubmission",
+        "Error message is no longer displayed"
+      ],
+      "postconditions": "Admin is logged in after correcting credentials",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM442_021",
+      "title": "Verify password field does not allow copy of masked text",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-442",
+      "acceptanceCriteria": "Security - Password field behavior",
+      "preconditions": "Admin is on the Sign-In page",
+      "steps": [
+        "Enter a password in the Password field",
+        "Attempt to select and copy the password text",
+        "Paste in another field or text editor"
+      ],
+      "expectedResults": [
+        "Password is entered and masked",
+        "Copy action does not copy the actual password text",
+        "Pasted content is empty or masked"
+      ],
+      "postconditions": "Password cannot be copied from the field",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_Admin_Sign_In_Page_Access": [
+      "TC_SCRUM442_001"
+    ],
+    "AC2_Email_and_Password_Fields": [
+      "TC_SCRUM442_002"
+    ],
+    "AC3_Sign_In_Button_Validation": [
+      "TC_SCRUM442_003",
+      "TC_SCRUM442_004",
+      "TC_SCRUM442_005",
+      "TC_SCRUM442_006",
+      "TC_SCRUM442_007",
+      "TC_SCRUM442_015"
+    ],
+    "AC4_Successful_Authentication": [
+      "TC_SCRUM442_008",
+      "TC_SCRUM442_009"
+    ],
+    "AC5_Failed_Authentication": [
+      "TC_SCRUM442_010",
+      "TC_SCRUM442_011",
+      "TC_SCRUM442_020"
+    ],
+    "AC6_Session_Management": [
+      "TC_SCRUM442_013"
+    ],
+    "Edge_Case_Inline_Email_Validation": [
+      "TC_SCRUM442_012"
+    ],
+    "Edge_Case_Logout": [
+      "TC_SCRUM442_014"
+    ],
+    "Accessibility": [
+      "TC_SCRUM442_016",
+      "TC_SCRUM442_017",
+      "TC_SCRUM442_018"
+    ],
+    "Security": [
+      "TC_SCRUM442_021"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM442_019"
+    ]
+  },
+  "testDataRequirements": {
+    "userAccounts": [
+      "Active admin account with valid email and password",
+      "Inactive/suspended admin account",
+      "Non-existent admin email for negative testing"
+    ],
+    "credentials": [
+      "Valid admin email and password pair",
+      "Valid email with incorrect password",
+      "Non-existent email with any password",
+      "Invalid email formats: 'admin@', 'admin.com', 'admin', '@domain.com'",
+      "Whitespace-only email input"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal URL is accessible in the test environment",
+    "At least one active admin account exists for testing",
+    "An inactive/suspended admin account is available for negative testing",
+    "Account lockout feature may or may not be enabled (test conditionally)",
+    "Session timeout is configured in the test environment"
+  ],
+  "risks": [
+    "Account lockout threshold and duration are unknown — may need backend configuration",
+    "Session timeout duration is unknown — may require waiting or simulation",
+    "SCRUM-2310 (Admin name/role not displayed in header) is a known open bug that may cause TC_SCRUM442_009 to fail"
+  ],
+  "openQuestions": [
+    "What is the account lockout threshold (number of failed attempts before lock)?",
+    "What is the lockout duration?",
+    "What is the session timeout duration?",
+    "Is there a 'Remember Me' or 'Stay Signed In' option?",
+    "Is there a password visibility toggle on the password field?",
+    "Is there a 'Forgot Password' link on the Sign-In page (separate story)?"
+  ],
+  "notesFromLinkedIssues": [
+    "SCRUM-2310: Admin Name and Role Not Displayed in Header — this is a known bug (To Do status) that directly impacts AC4 verification of admin name and role in header after login."
+  ]
+}

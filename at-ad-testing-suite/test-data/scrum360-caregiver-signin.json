@@ -11,39 +11,6 @@
       "newToPortalText": "New to AT/AD Portal?"
     }
   },
-  "TC_CG_SIGN_005": {
-    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
-    "inputs": {
-      "email": "gikekylu@forexnews.bg",
-      "password": "Aaditya@14"
-    },
-    "expected": {
-      "passwordFieldMasked": true
-    }
-  },
-  "TC_CG_SIGN_010": {
-    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
-    "inputs": {
-      "originalEmail": "gikekylu@forexnews.bg",
-      "uppercaseEmail": "GIKEKYLU@FOREXNEWS.BG",
-      "mixedCaseEmail": "Gikekylu@Forexnews.Bg",
-      "password": "Aaditya@14"
-    },
-    "expected": {
-      "caregiverPortalUrlPattern": "caregiver-portal"
-    }
-  },
-  "TC_CG_SIGN_015": {
-    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
-    "inputs": {
-      "unregisteredEmail": "nonexistent_user_xyz@example.com"
-    },
-    "expected": {
-      "resetPasswordHeading": "Reset Password",
-      "resetPasswordDescription": "Enter the email associated with your account, and we'll send you a link to reset your password.",
-      "confirmationMessage": "Check your Inbox for a verification email."
-    }
-  },
   "TC_CG_SIGN_002": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
@@ -55,14 +22,36 @@
       "catalogUrlPattern": "catalog"
     }
   },
-  "TC_CG_SIGN_006": {
+  "TC_CG_SIGN_003": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "email": "gikekylu@forexnews.bg",
+      "password": "Aaditya@14"
+    },
+    "expected": {
+      "passwordFieldMasked": true
+    }
+  },
+  "TC_CG_SIGN_004": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
       "email": "gikekylu@forexnews.bg"
     },
     "expected": {}
   },
-  "TC_CG_SIGN_013": {
+  "TC_CG_SIGN_005": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "originalEmail": "gikekylu@forexnews.bg",
+      "uppercaseEmail": "GIKEKYLU@FOREXNEWS.BG",
+      "mixedCaseEmail": "Gikekylu@Forexnews.Bg",
+      "password": "Aaditya@14"
+    },
+    "expected": {
+      "caregiverPortalUrlPattern": "caregiver-portal"
+    }
+  },
+  "TC_CG_SIGN_006": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
       "email": "gikekylu@forexnews.bg",
@@ -70,7 +59,7 @@
     },
     "expected": {}
   },
-  "TC_CG_SIGN_014": {
+  "TC_CG_SIGN_007": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
       "email": "gikekylu@forexnews.bg",
@@ -78,6 +67,17 @@
     },
     "expected": {
       "catalogUrlPattern": "catalog"
+    }
+  },
+  "TC_CG_SIGN_008": {
+    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
+    "inputs": {
+      "unregisteredEmail": "nonexistent_user_xyz@example.com"
+    },
+    "expected": {
+      "resetPasswordHeading": "Reset Password",
+      "resetPasswordDescription": "Enter the email associated with your account, and we'll send you a link to reset your password.",
+      "confirmationMessage": "Check your Inbox for a verification email."
     }
   }
 }

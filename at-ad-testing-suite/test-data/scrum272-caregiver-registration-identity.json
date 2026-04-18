@@ -1,0 +1,215 @@
+{
+  "TC_CG_REG_ID_001": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {},
+    "expected": {
+      "registrationHeading": "Caregiver Registration",
+      "mobileCountryCode": "+91"
+    }
+  },
+  "TC_CG_REG_ID_002": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "AutoTest",
+      "lastName": "Caregiver",
+      "mobileNumber": "7669470854",
+      "emailId": "autotest.caregiver@example.com",
+      "password": "SecurePass@123",
+      "confirmPassword": "SecurePass@123",
+      "aadhaarNumber": "123456789012",
+      "pincode": "500001",
+      "address": "123 Test Street, Hyderabad",
+      "otp": "123456"
+    },
+    "expected": {
+      "registrationSuccess": true
+    }
+  },
+  "TC_CG_REG_ID_003": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "invalidNumeric": "12345",
+      "invalidSpecial": "@#$%",
+      "invalidAlphanumeric": "Priya123",
+      "validName": "Priya"
+    },
+    "expected": {
+      "nameValidationError": "Only alphabetic characters allowed"
+    }
+  },
+  "TC_CG_REG_ID_004": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "shortNumber": "98765",
+      "alphabeticInput": "abcdefghij",
+      "validNumber": "9876543210"
+    },
+    "expected": {
+      "mobileValidationError": "Enter a valid mobile number"
+    }
+  },
+  "TC_CG_REG_ID_005": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "invalidNoAt": "notanemail",
+      "invalidNoDomain": "user@",
+      "validEmail": "priya.sharma@example.com"
+    },
+    "expected": {
+      "emailValidationError": "Enter a valid email address"
+    }
+  },
+  "TC_CG_REG_ID_006": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "9467123541",
+      "otp": "123456"
+    },
+    "expected": {
+      "mobileVerified": true
+    }
+  },
+  "TC_CG_REG_ID_007": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8523697410",
+      "incorrectOtp": "000000",
+      "correctOtp": "123456"
+    },
+    "expected": {
+      "invalidOtpError": "Invalid OTP"
+    }
+  },
+  "TC_CG_REG_ID_008": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "7896541230",
+      "expiredOtp": "123456"
+    },
+    "expected": {
+      "otpExpiredError": "OTP has expired"
+    }
+  },
+  "TC_CG_REG_ID_009": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "9632587410",
+      "correctOtp": "123456"
+    },
+    "expected": {
+      "resendOtpVisible": true
+    }
+  },
+  "TC_CG_REG_ID_010": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "mobileNumber": "8745632190",
+      "incorrectOtp": "000000"
+    },
+    "expected": {
+      "lockMessage": "Too many attempts"
+    }
+  },
+  "TC_CG_REG_ID_011": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "emailId": "priya.sharma@example.com",
+      "otp": "123456"
+    },
+    "expected": {
+      "emailVerified": true
+    }
+  },
+  "TC_CG_REG_ID_012": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "emailId": "resend.otp.test@example.com",
+      "otp": "123456"
+    },
+    "expected": {
+      "otpFieldVisibleAfterResend": true
+    }
+  },
+  "TC_CG_REG_ID_013": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "emailId": "resend.button.test@example.com"
+    },
+    "expected": {
+      "resendButtonTextVisible": true
+    }
+  },
+  "TC_CG_REG_ID_014": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "shortAadhaar": "12345678",
+      "alphabeticAadhaar": "abcdefghijkl",
+      "validAadhaar": "123456789012"
+    },
+    "expected": {
+      "aadhaarValidationError": "Enter a valid 12-digit Aadhaar number"
+    }
+  },
+  "TC_CG_REG_ID_015": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "existingMobile": "9876543210"
+    },
+    "expected": {
+      "duplicateMobileError": "Account already exists"
+    }
+  },
+  "TC_CG_REG_ID_016": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "existingEmail": "existing@example.com"
+    },
+    "expected": {
+      "duplicateEmailError": "Account already exists"
+    }
+  },
+  "TC_CG_REG_ID_017": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "Priya"
+    },
+    "expected": {
+      "submitButtonDisabled": true
+    }
+  },
+  "TC_CG_REG_ID_020": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "partialNumber": "98765",
+      "invalidChars": "abcde",
+      "validNumber": "9876543210"
+    },
+    "expected": {
+      "sendOtpEnabledAfterValid": true
+    }
+  },
+  "TC_CG_REG_ID_021": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "firstName": "Priya",
+      "lastName": "Sharma",
+      "mobileNumber": "9876543210",
+      "emailId": "priya.sharma@example.com",
+      "invalidAadhaar": "12345"
+    },
+    "expected": {
+      "dataRetained": true
+    }
+  },
+  "TC_CG_REG_ID_022": {
+    "url": "https://qa-atad.swarajability.org",
+    "inputs": {
+      "startsWith0": "0987654321",
+      "startsWith1": "1234567890",
+      "validStart": "9876543210"
+    },
+    "expected": {
+      "invalidPrefixRejected": true
+    }
+  }
+}

@@ -54,7 +54,7 @@
       "disabilityInfoSection": "Disability Information"
     }
   },
-  "TC_MY_PWD_010": {
+  "TC_MY_PWD_008": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
       "caregiverEmail": "gikekylu@forexnews.bg",
@@ -113,28 +113,6 @@
   "TC_MY_PWD_006": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
-      "caregiverAtLimitEmail": "",
-      "caregiverAtLimitPassword": ""
-    },
-    "expected": {
-      "pwdLimit": 5,
-      "expectedRemaining": 0
-    }
-  },
-  "TC_MY_PWD_007": {
-    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
-    "inputs": {
-      "caregiverEmptyEmail": "",
-      "caregiverEmptyPassword": ""
-    },
-    "expected": {
-      "pwdLimit": 5,
-      "expectedRemaining": 5
-    }
-  },
-  "TC_MY_PWD_008": {
-    "url": "https://qa-atad.swarajability.org/caregiver-portal/",
-    "inputs": {
       "caregiverEmail": "gikekylu@forexnews.bg",
       "caregiverPassword": "Aaditya@14"
     },
@@ -142,7 +120,7 @@
       "minPwdCards": 2
     }
   },
-  "TC_MY_PWD_009": {
+  "TC_MY_PWD_007": {
     "url": "https://qa-atad.swarajability.org/caregiver-portal/",
     "inputs": {
       "caregiverEmail": "gikekylu@forexnews.bg",

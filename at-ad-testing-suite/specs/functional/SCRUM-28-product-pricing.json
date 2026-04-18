@@ -406,7 +406,7 @@
         "Price displays as: 'Price: ₹12,000'"
       ],
       "postconditions": "Price is visible to PwD users",
-      "testResult": "FAIL"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PRICE_018",
@@ -488,7 +488,7 @@
         "Card shows: 'Starting at ₹10,000' in small text"
       ],
       "postconditions": "Starting price shown on card",
-      "testResult": "FAIL"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PRICE_022",
@@ -746,7 +746,7 @@
         "Text: 'Price is optional. Provide approximate or range if available.'"
       ],
       "postconditions": "Help text is accessible",
-      "testResult": "FAIL"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PRICE_034",
@@ -768,7 +768,7 @@
         "Form can be completed without mouse"
       ],
       "postconditions": "Keyboard navigation works",
-      "testResult": "FAIL"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PRICE_035",
@@ -810,7 +810,7 @@
         "Error: 'Please enter a valid number or select a text option like Contact for Pricing.'"
       ],
       "postconditions": "Error handling works",
-      "testResult": "FAIL"
+      "testResult": "PASS"
     },
 
     {

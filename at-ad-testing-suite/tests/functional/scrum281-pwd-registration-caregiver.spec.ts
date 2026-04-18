@@ -3,6 +3,7 @@
 
 import { test, expect } from '@playwright/test';
 import { CaregiverPage } from '../../pages/caregiver.page';
+import { DataGenerator } from '../../../utility/data-generator';
 import testData from '../../test-data/scrum281-pwd-registration.json';
 
 test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)', () => {
@@ -12,34 +13,8 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     caregiverPage = new CaregiverPage(page);
   });
 
-  test('TC_PWD_REG_001: Verify PwD registration is accessible only after caregiver registration completion', async () => {
+  test('TC_PWD_REG_001: Verify PwD registration requires explicit caregiver consent', async () => {
     const td = testData.TC_PWD_REG_001;
-    // 1. Navigate to AT/AD portal and login as caregiver
-    await caregiverPage.loginAsCaregiver(td.url, td.inputs.caregiverEmail, td.inputs.caregiverPassword);
-    // 2. Verify caregiver is logged in successfully
-    const isLoggedIn = await caregiverPage.isLoggedIn();
-    expect(isLoggedIn).toBe(td.expected.isLoggedIn);
-    // 3. Verify welcome message is displayed after login
-    const welcomeMessage = await caregiverPage.getWelcomeMessage();
-    expect(welcomeMessage).toContain(td.expected.welcomeMessageContains);
-    // 4. Navigate to My Profile to check for PwD registration option
-    await caregiverPage.navigateToMyProfile();
-    const profileHeading = await caregiverPage.getProfileHeading();
-    expect(profileHeading).toContain(td.expected.profilePageHeading);
-    // 5. Check available tabs on profile page
-    const tabs = await caregiverPage.getVisibleTabs();
-    expect(tabs.length).toBeGreaterThan(0);
-    // 6. Check if PwD registration option is visible
-    const isPwdTabVisible = await caregiverPage.isPwdRegistrationTabVisible();
-    await caregiverPage.navigateToSettingsTab();
-    const hasPwdRegistration = await caregiverPage.searchForPwdRegistrationInPage();
-    // 7. Verify PwD registration accessibility
-    const pwdRegistrationAccessible = isPwdTabVisible || hasPwdRegistration;
-    expect(pwdRegistrationAccessible).toBe(td.expected.pwdRegistrationAccessible);
-  });
-
-  test('TC_PWD_REG_002: Verify PwD registration requires explicit caregiver consent', async () => {
-    const td = testData.TC_PWD_REG_002;
     // 1. Navigate to AT/AD portal
     await caregiverPage.navigateToPortal(td.url);
     // 2. Open Sign In/Register popup and select Create New Account
@@ -65,8 +40,13 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(await caregiverPage.isConsentRequirementMessageVisible()).toBe(false);
   });
 
-  test('TC_PWD_REG_003: Verify successful PwD profile creation with complete information', async () => {
-    const td = testData.TC_PWD_REG_003;
+  test('TC_PWD_REG_002: Verify successful PwD profile creation with complete information', async () => {
+    const td = testData.TC_PWD_REG_002;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
+
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     expect(await caregiverPage.getRegistrationHeading()).toContain(td.expected.registrationHeading);
@@ -83,7 +63,13 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(await caregiverPage.isPincodeFieldVisible()).toBe(td.expected.allFieldsVisible);
     expect(await caregiverPage.isAddressFieldVisible()).toBe(td.expected.allFieldsVisible);
     // 4. Fill all mandatory fields
-    await caregiverPage.fillAllRegistrationFields(td.inputs);
+    await caregiverPage.fillAllRegistrationFields({
+      ...td.inputs,
+      firstName: dynFirstName,
+      lastName: dynLastName,
+      mobile: dynMobile,
+      email: dynEmail
+    });
     // 5. Verify password strength
     expect(await caregiverPage.isPasswordStrengthVisible(td.expected.passwordStrength)).toBe(true);
     // 6. Verify pincode auto-populates state and district
@@ -102,13 +88,24 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(requirements.some(r => r.includes('Fill all'))).toBe(false);
   });
 
-  test('TC_PWD_REG_004: Verify confirmation page displays dual-platform access messaging', async () => {
-    const td = testData.TC_PWD_REG_004;
+  test('TC_PWD_REG_003: Verify confirmation page displays dual-platform access messaging', async () => {
+    const td = testData.TC_PWD_REG_003;
+    const dynFirstName = DataGenerator.randomFirstName();
+    const dynLastName = DataGenerator.randomLastName();
+    const dynMobile = DataGenerator.randomPhone();
+    const dynEmail = DataGenerator.randomEmail();
+
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     expect(await caregiverPage.getRegistrationHeading()).toContain(td.expected.registrationHeading);
     // 2. Fill all mandatory fields
-    await caregiverPage.fillAllRegistrationFields(td.inputs);
+    await caregiverPage.fillAllRegistrationFields({
+      ...td.inputs,
+      firstName: dynFirstName,
+      lastName: dynLastName,
+      mobile: dynMobile,
+      email: dynEmail
+    });
     // 3. Check consent checkbox
     await caregiverPage.checkConsentCheckbox();
     // 4. Verify Privacy & Security alert
@@ -129,8 +126,8 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(await caregiverPage.getByRegisteringAgreementText()).toContain(td.expected.agreementTextContains);
   });
 
-  test('TC_PWD_REG_005: Verify mandatory field validation in PwD registration form', async () => {
-    const td = testData.TC_PWD_REG_005;
+  test('TC_PWD_REG_004: Verify mandatory field validation in PwD registration form', async () => {
+    const td = testData.TC_PWD_REG_004;
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     expect(await caregiverPage.getRegistrationHeading()).toContain(td.expected.registrationHeading);
@@ -150,16 +147,18 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(await caregiverPage.isPincodeFieldVisible()).toBe(true);
     expect(await caregiverPage.isAddressFieldVisible()).toBe(true);
     // 5. Fill only some fields and verify button remains disabled
-    await caregiverPage.fillFirstName('Rajesh');
-    await caregiverPage.fillLastName('Kumar');
+    await caregiverPage.fillFirstName(DataGenerator.randomFirstName());
+    await caregiverPage.fillLastName(DataGenerator.randomLastName());
     expect(await caregiverPage.isCompleteRegistrationButtonDisabled()).toBe(true);
     // 6. Verify "Fill all required fields" still in requirements
     const reqsAfterPartial = await caregiverPage.getRegistrationRequirements();
     expect(reqsAfterPartial.some(r => r.includes('Fill all required fields'))).toBe(true);
   });
 
-  test('TC_PWD_REG_006: Verify email format validation in PwD registration', async () => {
-    const td = testData.TC_PWD_REG_006;
+  test('TC_PWD_REG_005: Verify email format validation in PwD registration', async () => {
+    const td = testData.TC_PWD_REG_005;
+    const dynValidEmail = DataGenerator.randomEmail();
+
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Enter invalid email format and verify field accepts input
@@ -175,17 +174,17 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     const val3 = await caregiverPage.getEmailFieldValue();
     expect(val3).toBe(td.inputs.invalidEmail3);
     // 5. Enter valid email and verify accepted
-    await caregiverPage.fillEmailId(td.inputs.validEmail);
+    await caregiverPage.fillEmailId(dynValidEmail);
     const validVal = await caregiverPage.getEmailFieldValue();
-    expect(validVal).toBe(td.inputs.validEmail);
+    expect(validVal).toBe(dynValidEmail);
     // 6. Try email with plus addressing
     await caregiverPage.fillEmailId(td.inputs.plusAddressEmail);
     const plusVal = await caregiverPage.getEmailFieldValue();
     expect(plusVal).toBe(td.inputs.plusAddressEmail);
   });
 
-  test('TC_PWD_REG_007: Verify password strength requirements and validation', async () => {
-    const td = testData.TC_PWD_REG_007;
+  test('TC_PWD_REG_006: Verify password strength requirements and validation', async () => {
+    const td = testData.TC_PWD_REG_006;
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Verify password requirements hint
@@ -215,8 +214,10 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(await caregiverPage.isPasswordMismatchAlertVisible()).toBe(false);
   });
 
-  test('TC_PWD_REG_008: Verify duplicate email prevention', async () => {
-    const td = testData.TC_PWD_REG_008;
+  test('TC_PWD_REG_007: Verify duplicate email prevention', async () => {
+    const td = testData.TC_PWD_REG_007;
+    const dynUniqueEmail = DataGenerator.randomEmail();
+
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Enter an existing email address used by another account
@@ -224,15 +225,15 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     const emailVal = await caregiverPage.getEmailFieldValue();
     expect(emailVal).toBe(td.inputs.existingEmail);
     // 3. Enter a unique email address
-    await caregiverPage.fillEmailId(td.inputs.uniqueEmail);
+    await caregiverPage.fillEmailId(dynUniqueEmail);
     const uniqueVal = await caregiverPage.getEmailFieldValue();
-    expect(uniqueVal).toBe(td.inputs.uniqueEmail);
+    expect(uniqueVal).toBe(dynUniqueEmail);
     // 4. Verify the field accepts the unique email without client-side error
     expect(uniqueVal).not.toBe(td.inputs.existingEmail);
   });
 
-  test('TC_PWD_REG_009: Verify caregiver cannot register with same email as PwD', async () => {
-    const td = testData.TC_PWD_REG_009;
+  test('TC_PWD_REG_008: Verify caregiver cannot register with same email as PwD', async () => {
+    const td = testData.TC_PWD_REG_008;
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Enter caregiver's own email in the email field
@@ -243,8 +244,10 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(emailVal.length).toBeGreaterThan(0);
   });
 
-  test('TC_PWD_REG_010: Verify phone number format validation', async () => {
-    const td = testData.TC_PWD_REG_010;
+  test('TC_PWD_REG_009: Verify phone number format validation', async () => {
+    const td = testData.TC_PWD_REG_009;
+    const dynValidPhone = DataGenerator.randomPhone();
+
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Enter invalid phone format
@@ -257,15 +260,15 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     const shortVal = await caregiverPage.getMobileFieldValue();
     expect(shortVal).toBe(td.inputs.shortPhone);
     // 5. Enter valid phone format
-    await caregiverPage.fillMobileNumber(td.inputs.validPhone);
+    await caregiverPage.fillMobileNumber(dynValidPhone);
     const validVal = await caregiverPage.getMobileFieldValue();
-    expect(validVal).toBe(td.inputs.validPhone);
+    expect(validVal).toBe(dynValidPhone);
     // 6. Verify Send OTP button is visible for valid phone
     expect(await caregiverPage.isSendOtpMobileButtonVisible()).toBe(true);
   });
 
-  test('TC_PWD_REG_011: Verify successful registration of PwD with special characters in name', async () => {
-    const td = testData.TC_PWD_REG_011;
+  test('TC_PWD_REG_010: Verify successful registration of PwD with special characters in name', async () => {
+    const td = testData.TC_PWD_REG_010;
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     // 2. Enter name with apostrophe
@@ -285,15 +288,15 @@ test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)',
     expect(lastNameVal).toBe(td.inputs.nameWithHyphen);
   });
 
-  test('TC_PWD_REG_012: Verify accessibility compliance for PwD registration form', async () => {
-    const td = testData.TC_PWD_REG_012;
+  test('TC_PWD_REG_011: Verify accessibility compliance for PwD registration form', async () => {
+    const td = testData.TC_PWD_REG_011;
     // 1. Navigate to caregiver registration form
     await caregiverPage.navigateDirectlyToRegistration(td.url);
     expect(await caregiverPage.getRegistrationHeading()).toContain(td.expected.registrationHeading);
     // 2. Verify all form fields have proper labels
     expect(await caregiverPage.hasAllFieldLabels()).toBe(td.expected.allLabelsPresent);
     // 3. Test keyboard navigation — Tab through fields
-    await caregiverPage.fillFirstName('Test');
+    await caregiverPage.fillFirstName(DataGenerator.randomFirstName());
     await caregiverPage.pressTabKey();
     // After Tab from First Name, focus should move to Last Name
     const activeAfterTab = await caregiverPage.getActiveElementName();

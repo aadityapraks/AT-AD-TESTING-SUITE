@@ -1,0 +1,15 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "partnersUrl": "https://hub-ui-admin-qa.swarajability.org/admin/partners",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "TC_SCRUM478_001": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM478_002": { "inputs": { "tab": "Active" } },
+  "TC_SCRUM478_003": { "inputs": { "tab": "Inactive" } },
+  "TC_SCRUM478_004": { "inputs": { "tab": "Rejected" } },
+  "TC_SCRUM478_005": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM478_006": { "inputs": { "tab": "Active" } },
+  "TC_SCRUM478_007": { "inputs": { "tab": "Pending" } }
+}

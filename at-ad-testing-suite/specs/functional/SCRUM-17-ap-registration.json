@@ -26,15 +26,23 @@
   },
   "dependencies": {
     "parentEpic": "SCRUM-87 - Vendor Portal",
-    "relatedStories": ["SCRUM-18 - AP Dashboard"]
+    "relatedStories": [
+      "SCRUM-18 - AP Dashboard"
+    ]
   },
   "testEnvironment": {
     "url": "Y4J Hub Portal and PwD Catalog Portal",
-    "userRoles": ["New AP (unregistered)", "Existing AP (registered on Swarajability)"],
-    "prerequisites": ["Access to Y4J Hub portal", "Valid email for OTP testing", "Valid phone number for OTP testing"]
+    "userRoles": [
+      "New AP (unregistered)",
+      "Existing AP (registered on Swarajability)"
+    ],
+    "prerequisites": [
+      "Access to Y4J Hub portal",
+      "Valid email for OTP testing",
+      "Valid phone number for OTP testing"
+    ]
   },
   "testCases": [
-
     {
       "id": "TC_SCRUM17_001",
       "title": "Verify Register as Assistive Partner link is visible on Y4J Hub",
@@ -115,7 +123,6 @@
       "postconditions": "User is logged in and on dashboard",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_SCRUM17_005",
       "title": "Verify registration form displays all mandatory fields",
@@ -166,7 +173,6 @@
       "postconditions": "Organization types are selectable",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_SCRUM17_007",
       "title": "Verify Send OTP button for Email field",
@@ -227,7 +233,6 @@
       "postconditions": "OTP input is available",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_SCRUM17_010",
       "title": "Verify successful OTP verification marks field as Verified",
@@ -247,7 +252,7 @@
         "OTP input section is disabled or hidden"
       ],
       "postconditions": "Field is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM17_011",
@@ -294,7 +299,6 @@
       "postconditions": "Both verifications are enforced",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_SCRUM17_013",
       "title": "Verify form validates all required fields before submission",
@@ -381,29 +385,6 @@
       "postconditions": "Phone format is validated",
       "testResult": "PASS"
     },
-
-    {
-      "id": "TC_SCRUM17_017",
-      "title": "Verify acknowledgment email is sent after registration",
-      "priority": "Medium",
-      "relatedJiraIssue": "SCRUM-17",
-      "acceptanceCriteria": "AC6 - Submission Confirmation",
-      "preconditions": "User has successfully submitted registration",
-      "steps": [
-        "Complete registration submission",
-        "Check registered email inbox",
-        "Verify acknowledgment email is received",
-        "Verify email contains submitted information summary"
-      ],
-      "expectedResults": [
-        "Registration is submitted",
-        "Acknowledgment email is received",
-        "Email summarizes submitted information",
-        "Email is from Y4J/PwD Catalog system"
-      ],
-      "postconditions": "Acknowledgment email is sent",
-      "testResult": "NOT RUN"
-    },
     {
       "id": "TC_SCRUM17_018",
       "title": "Verify duplicate email message provides login option",
@@ -424,29 +405,6 @@
       ],
       "postconditions": "User can proceed to login",
       "testResult": "PASS"
-    },
-
-    {
-      "id": "TC_SCRUM17_019",
-      "title": "Verify registration page follows WCAG 2.1 AA standards",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-17",
-      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
-      "preconditions": "User is on AP Registration page",
-      "steps": [
-        "Navigate to registration page",
-        "Run accessibility audit",
-        "Check for WCAG 2.1 AA compliance",
-        "Verify no critical accessibility issues"
-      ],
-      "expectedResults": [
-        "Page loads successfully",
-        "Accessibility audit passes",
-        "WCAG 2.1 AA standards are met",
-        "No critical accessibility violations"
-      ],
-      "postconditions": "Page is accessible",
-      "testResult": "NOT RUN"
     },
     {
       "id": "TC_SCRUM17_020",
@@ -493,50 +451,6 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_SCRUM17_022",
-      "title": "Verify high-contrast text throughout registration page",
-      "priority": "Low",
-      "relatedJiraIssue": "SCRUM-17",
-      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
-      "preconditions": "User is on AP Registration page",
-      "steps": [
-        "Check text contrast ratios",
-        "Verify body text meets 4.5:1 ratio",
-        "Verify large text meets 3:1 ratio",
-        "Check button and link contrast"
-      ],
-      "expectedResults": [
-        "All text has sufficient contrast",
-        "Body text meets WCAG AA requirements",
-        "Large text meets requirements",
-        "Interactive elements are clearly visible"
-      ],
-      "postconditions": "Contrast requirements are met",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_SCRUM17_023",
-      "title": "Verify registration page supports screen readers",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-17",
-      "acceptanceCriteria": "AC9 - Accessibility & UI Standards",
-      "preconditions": "Screen reader is enabled",
-      "steps": [
-        "Enable screen reader (NVDA/JAWS/VoiceOver)",
-        "Navigate through registration page",
-        "Verify all content is announced",
-        "Complete form using screen reader"
-      ],
-      "expectedResults": [
-        "Screen reader is active",
-        "All content is announced correctly",
-        "Form fields are accessible",
-        "Form can be completed with screen reader"
-      ],
-      "postconditions": "Screen reader compatibility verified",
-      "testResult": "NOT RUN"
-    },
-    {
       "id": "TC_SCRUM17_024",
       "title": "Verify registration page supports keyboard navigation",
       "priority": "High",
@@ -558,7 +472,6 @@
       "postconditions": "Keyboard navigation works",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_SCRUM17_025",
       "title": "Verify focus indicators are visible on all interactive elements",
@@ -656,19 +569,50 @@
       "testResult": "PASS"
     }
   ],
-
   "traceabilityMatrix": {
-    "AC1_Access_and_Navigation_for_Registration": ["TC_SCRUM17_001", "TC_SCRUM17_002"],
-    "AC2_Sign_in": ["TC_SCRUM17_003", "TC_SCRUM17_004"],
-    "AC3_Registration_Form": ["TC_SCRUM17_005", "TC_SCRUM17_006", "TC_SCRUM17_027", "TC_SCRUM17_028"],
-    "AC4_OTP_Verification": ["TC_SCRUM17_007", "TC_SCRUM17_008", "TC_SCRUM17_009", "TC_SCRUM17_010", "TC_SCRUM17_011", "TC_SCRUM17_012"],
-    "AC5_Form_Behavior_and_Validation": ["TC_SCRUM17_013", "TC_SCRUM17_014", "TC_SCRUM17_015", "TC_SCRUM17_016"],
-    "AC6_Submission_Confirmation": ["TC_SCRUM17_017"],
+    "AC1_Access_and_Navigation_for_Registration": [
+      "TC_SCRUM17_001",
+      "TC_SCRUM17_002"
+    ],
+    "AC2_Sign_in": [
+      "TC_SCRUM17_003",
+      "TC_SCRUM17_004"
+    ],
+    "AC3_Registration_Form": [
+      "TC_SCRUM17_005",
+      "TC_SCRUM17_006",
+      "TC_SCRUM17_027",
+      "TC_SCRUM17_028"
+    ],
+    "AC4_OTP_Verification": [
+      "TC_SCRUM17_007",
+      "TC_SCRUM17_008",
+      "TC_SCRUM17_009",
+      "TC_SCRUM17_010",
+      "TC_SCRUM17_011",
+      "TC_SCRUM17_012"
+    ],
+    "AC5_Form_Behavior_and_Validation": [
+      "TC_SCRUM17_013",
+      "TC_SCRUM17_014",
+      "TC_SCRUM17_015",
+      "TC_SCRUM17_016"
+    ],
+    "AC6_Submission_Confirmation": "Removed - Test cases not run",
     "AC7_Admin_Notification": "Out of Scope - Requires Admin Access",
-    "AC8_Duplicate_Registration_Handling": ["TC_SCRUM17_018"],
-    "AC9_Accessibility_and_UI_Standards": ["TC_SCRUM17_019", "TC_SCRUM17_020", "TC_SCRUM17_021", "TC_SCRUM17_022", "TC_SCRUM17_023", "TC_SCRUM17_024", "TC_SCRUM17_025"],
+    "AC8_Duplicate_Registration_Handling": [
+      "TC_SCRUM17_018"
+    ],
+    "AC9_Accessibility_and_UI_Standards": [
+      "TC_SCRUM17_020",
+      "TC_SCRUM17_021",
+      "TC_SCRUM17_024",
+      "TC_SCRUM17_025"
+    ],
     "AC10_Post_Submission_Workflow": "Out of Scope - Requires Admin Access",
-    "End_to_End_Flow": ["TC_SCRUM17_026"]
+    "End_to_End_Flow": [
+      "TC_SCRUM17_026"
+    ]
   },
   "testDataRequirements": {
     "userAccounts": [

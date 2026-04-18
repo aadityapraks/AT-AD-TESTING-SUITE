@@ -1,0 +1,257 @@
+{
+  "jiraStory": "SCRUM-478",
+  "title": "Admin - Approve Vendor Application - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Approve Vendor Application feature on the AT/AD Admin Portal. Covers Approve button visibility (only for Pending vendors), approval workflow (status change to Active, timestamp recording), and keyboard accessibility of the Approve button.",
+  "scope": {
+    "inScope": [
+      "Approve button visibility only on Pending vendor cards/details",
+      "Approve button not visible for Active, Inactive, or Rejected vendors",
+      "Approval action — vendor status changes to Active",
+      "Approval timestamp is recorded",
+      "Accessibility of Approve button"
+    ],
+    "outOfScope": [
+      "Vendor rejection workflow (separate story)",
+      "Vendor notification delivery mechanism (backend email service)",
+      "Vendor product upload flow (separate story, only verify access is granted)",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Vendor list and tab functionality (covered by SCRUM-469)",
+      "Vendor detail modal (covered by SCRUM-475)",
+      "Vendor moves to Active Partners tab (requires vendor portal access)",
+      "Pending/Active tab count verification (requires vendor portal access)",
+      "Vendor receives approval notification (requires email/notification verification)",
+      "Concurrent approval by another admin (requires concurrent sessions)",
+      "System error rollback (requires API simulation)",
+      "Vendor product upload access verification (requires vendor portal access)",
+      "Confirmation dialog testing (destructive E2E)",
+      "Screen reader accessible label verification (requires assistive technology)",
+      "Complete end-to-end approval flow (destructive E2E)"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for access)",
+      "SCRUM-469 - View Vendor Lists by Status (tab movement after approval)",
+      "SCRUM-475 - View Vendor Details (Approve button context)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin (primary)"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "At least two vendors in Pending Approval status",
+      "Active, Inactive, and Rejected vendors exist for negative testing"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM478_001",
+      "title": "Verify Approve button is visible for Pending vendors",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC1 - Approve button visible only for Pending vendors",
+      "preconditions": "Admin is on the Pending Approval tab with pending vendors",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Click the Pending Approval tab",
+        "Locate a pending vendor card or open View Details",
+        "Verify an Approve button is visible"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Pending Approval tab is selected",
+        "Pending vendor is displayed",
+        "Approve button is visible and clearly labeled"
+      ],
+      "postconditions": "Approve button is accessible for pending vendors",
+      "testResult": "FAIL",
+      "failureReason": "SSO page didn't load"
+    },
+    {
+      "id": "TC_SCRUM478_002",
+      "title": "Verify Approve button is NOT visible for Active vendors",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC1 - Approve button visible only for Pending vendors",
+      "preconditions": "Admin is on the Active Partners tab",
+      "steps": [
+        "Click the Active Partners tab",
+        "Locate an active vendor card or open View Details",
+        "Verify no Approve button is present"
+      ],
+      "expectedResults": [
+        "Active Partners tab is selected",
+        "Active vendor is displayed",
+        "No Approve button is visible"
+      ],
+      "postconditions": "Approve button is hidden for active vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM478_003",
+      "title": "Verify Approve button is NOT visible for Inactive vendors",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC1 - Approve button visible only for Pending vendors",
+      "preconditions": "Admin is on the Inactive Partners tab",
+      "steps": [
+        "Click the Inactive Partners tab",
+        "Locate an inactive vendor card or open View Details",
+        "Verify no Approve button is present"
+      ],
+      "expectedResults": [
+        "Inactive Partners tab is selected",
+        "Inactive vendor is displayed",
+        "No Approve button is visible"
+      ],
+      "postconditions": "Approve button is hidden for inactive vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM478_004",
+      "title": "Verify Approve button is NOT visible for Rejected vendors",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC1 - Approve button visible only for Pending vendors",
+      "preconditions": "Admin is on the Rejected Partners tab",
+      "steps": [
+        "Click the Rejected Partners tab",
+        "Locate a rejected vendor card or open View Details",
+        "Verify no Approve button is present"
+      ],
+      "expectedResults": [
+        "Rejected Partners tab is selected",
+        "Rejected vendor is displayed",
+        "No Approve button is visible"
+      ],
+      "postconditions": "Approve button is hidden for rejected vendors",
+      "testResult": "PASS"
+    },
+    {                    
+      "id": "TC_SCRUM478_005",
+      "title": "Verify vendor status changes to Active on approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC2 - On approval, vendor status changes to Active",
+      "preconditions": "Admin is viewing a pending vendor",
+      "steps": [
+        "Navigate to the Pending Approval tab",
+        "Note a specific pending vendor name",
+        "Click the Approve button for that vendor",
+        "Confirm the approval (if confirmation dialog appears)",
+        "Verify the vendor status changes to Active"
+      ],
+      "expectedResults": [
+        "Pending Approval tab is displayed",
+        "Vendor name is noted",
+        "Approve button is clicked",
+        "Approval is confirmed",
+        "Vendor status is now Active"
+      ],
+      "postconditions": "Vendor is approved and status is Active",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM478_006",
+      "title": "Verify approval timestamp is recorded",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "AC3 - Approval timestamp is recorded",
+      "preconditions": "A vendor has just been approved",
+      "steps": [
+        "Approve a pending vendor",
+        "Open View Details for the now-active vendor",
+        "Locate the approval timestamp or approval date field",
+        "Verify the timestamp matches the current date/time of approval"
+      ],
+      "expectedResults": [
+        "Vendor is approved",
+        "Vendor details are opened",
+        "Approval timestamp field is visible",
+        "Timestamp matches the approximate time of approval"
+      ],
+      "postconditions": "Approval timestamp is recorded and visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM478_007",
+      "title": "Verify Approve button is accessible via keyboard",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-478",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the Pending Approval tab",
+      "steps": [
+        "Use Tab key to navigate to the Approve button on a pending vendor",
+        "Verify the button receives focus with a visible indicator",
+        "Press Enter or Space to activate the Approve button",
+        "Verify the approval action is triggered"
+      ],
+      "expectedResults": [
+        "Approve button is reachable via Tab",
+        "Focus indicator is visible on the button",
+        "Enter/Space activates the button",
+        "Approval action proceeds"
+      ],
+      "postconditions": "Approve button is keyboard accessible",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_Approve_Button_Visibility": [
+      "TC_SCRUM478_001",
+      "TC_SCRUM478_002",
+      "TC_SCRUM478_003",
+      "TC_SCRUM478_004"
+    ],
+    "AC2_Status_Change_To_Active": [
+      "TC_SCRUM478_005"
+    ],
+    "AC3_Approval_Timestamp_Recorded": [
+      "TC_SCRUM478_006"
+    ],
+    "Accessibility": [
+      "TC_SCRUM478_007"
+    ]
+  },
+
+  "testDataRequirements": {
+    "vendorAccounts": [
+      "At least 2 vendors in Pending Approval status",
+      "At least 1 vendor in Active status (for negative button visibility test)",
+      "At least 1 vendor in Inactive status (for negative button visibility test)",
+      "At least 1 vendor in Rejected status (for negative button visibility test)"
+    ],
+    "adminAccounts": [
+      "Primary admin account"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Vendor list with status tabs is available (SCRUM-469)",
+    "View Details modal is available (SCRUM-475)",
+    "Approve button is accessible from vendor card or View Details modal (or both)",
+    "Approval timestamp format and location in UI are not specified"
+  ],
+  "risks": [
+    "Approval timestamp format and location in UI are not specified",
+    "Whether a confirmation dialog exists before approval is not specified in the story"
+  ],
+  "openQuestions": [
+    "Is there a confirmation dialog before the approval action is executed?",
+    "Where is the Approve button located — on the vendor card, in the View Details modal, or both?",
+    "Where is the approval timestamp displayed — in View Details, in the vendor card, or in an audit log?",
+    "Is there an undo/revert option after approval?",
+    "Note: 'Double-click approval → idempotent action' was removed from edge cases on 2026-02-10. Confirm double-click behavior is still handled (e.g., button disabled after first click)."
+  ],
+  "notesFromChangelog": [
+    "Description updated 2026-02-10: 'Double-click approval → idempotent action' edge case was removed. Current edge cases: concurrent approval by another admin, and system error rollback."
+  ]
+}

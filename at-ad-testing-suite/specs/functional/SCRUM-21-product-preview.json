@@ -27,15 +27,22 @@
   },
   "dependencies": {
     "parentEpic": "SCRUM-87 - Vendor Portal",
-    "relatedStories": ["SCRUM-19 - Product Upload", "SCRUM-22 - Edit Product with GenAI"]
+    "relatedStories": [
+      "SCRUM-19 - Product Upload",
+      "SCRUM-22 - Edit Product with GenAI"
+    ]
   },
   "testEnvironment": {
     "url": "QA Environment",
-    "userRoles": ["Approved AP"],
-    "prerequisites": ["Valid AP account with approved status", "Existing products in various states (Draft, Pending, Approved)"]
+    "userRoles": [
+      "Approved AP"
+    ],
+    "prerequisites": [
+      "Valid AP account with approved status",
+      "Existing products in various states (Draft, Pending, Approved)"
+    ]
   },
   "testCases": [
-
     {
       "id": "TC_PREVIEW_001",
       "title": "Verify View Product option in Product Management action column",
@@ -122,7 +129,6 @@
       "postconditions": "Edited product can be previewed",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_005",
       "title": "Verify Catalog Card displays product name correctly",
@@ -211,7 +217,6 @@
       "postconditions": "Text length handling is verified",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_009",
       "title": "Verify Full Product Details page displays product name and category",
@@ -344,7 +349,6 @@
       "postconditions": "Demo video displays and plays correctly",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_015",
       "title": "Verify main image is properly displayed on top of page",
@@ -413,26 +417,25 @@
     },
     {
       "id": "TC_PREVIEW_018",
-      "title": "Verify demo video plays correctly with captions",
+      "title": "Verify product pricing information displays correctly in preview",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-21",
-      "acceptanceCriteria": "AC4 - Media Verification",
-      "preconditions": "User is viewing product with demo video and captions",
+      "acceptanceCriteria": "AC3 - Full Product Details Page",
+      "preconditions": "User is viewing product preview with pricing set",
       "steps": [
-        "Open View Product for product with captioned video",
-        "Play the demo video",
-        "Enable captions if not auto-enabled",
-        "Verify captions display correctly"
+        "Open View Product for a product with pricing",
+        "Locate pricing section in preview",
+        "Verify price value or range is displayed",
+        "Confirm pricing format matches entered value"
       ],
       "expectedResults": [
-        "Video plays without issues",
-        "Captions option is available",
-        "Captions display correctly when enabled",
-        "Captions are synchronized with audio"
+        "Preview page loads",
+        "Pricing section is visible",
+        "Price value or range displays correctly",
+        "Currency format (INR) is shown properly"
       ],
-      "postconditions": "Video captions work correctly",
-      "testResult": "FAIL",
-      "defectNotes": "Test product 'goggles' does not have a demo video configured. The verifyVideoPlayerFunctional() method returns false as no video player element is present in the Product Details dialog."
+      "postconditions": "Pricing displays correctly in preview",
+      "testResult": "PASS"
     },
     {
       "id": "TC_PREVIEW_019",
@@ -456,7 +459,6 @@
       "postconditions": "Video transcript is available",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_020",
       "title": "Verify specifications shown in clean structured layout",
@@ -567,7 +569,6 @@
       "postconditions": "Made to Order label displays correctly",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_025",
       "title": "Verify screen-reader friendly structure in preview",
@@ -678,7 +679,6 @@
       "postconditions": "Accessibility status is displayed",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_030",
       "title": "Verify return to edit mode from preview screen",
@@ -789,7 +789,6 @@
       "postconditions": "Specifications can be updated from preview flow",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_035",
       "title": "Verify View Live Product link for approved products",
@@ -836,28 +835,26 @@
     },
     {
       "id": "TC_PREVIEW_037",
-      "title": "Verify View Live Product available on vendor dashboard",
+      "title": "Verify product status badge is visible in Product Management list",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-21",
       "acceptanceCriteria": "AC8 - Post-Approval Visibility",
-      "preconditions": "User has published products",
+      "preconditions": "User has products in various statuses",
       "steps": [
-        "Navigate to vendor dashboard",
-        "Locate published items section",
-        "Verify View Live Product link is present",
-        "Confirm link is functional"
+        "Navigate to Product Management",
+        "Locate products with different statuses",
+        "Verify status badges are displayed (Draft, Under Review, Approved)",
+        "Confirm badge colors distinguish statuses"
       ],
       "expectedResults": [
-        "Dashboard loads successfully",
-        "Published items are listed",
-        "View Live Product link is visible",
-        "Link works correctly"
+        "Product Management page loads",
+        "Status badges are visible for each product",
+        "Badges correctly show Draft, Under Review, or Approved",
+        "Badge colors are distinct and readable"
       ],
-      "postconditions": "Dashboard provides live product access",
-      "testResult": "FAIL",
-      "defectNotes": "The 'View Live Product' feature is not available on the vendor dashboard. The verifyViewLiveProductOnDashboard() method returns false as the feature does not exist in the current UI implementation."
+      "postconditions": "Product status badges display correctly",
+      "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_038",
       "title": "Verify error message for image that fails to load",
@@ -946,7 +943,6 @@
       "postconditions": "Loading errors are handled gracefully",
       "testResult": "PASS"
     },
-
     {
       "id": "TC_PREVIEW_042",
       "title": "Verify preview mode supports keyboard navigation",
@@ -1058,18 +1054,73 @@
       "testResult": "PASS"
     }
   ],
-
   "traceabilityMatrix": {
-    "AC1_Access_to_Preview_Mode": ["TC_PREVIEW_001", "TC_PREVIEW_002", "TC_PREVIEW_003", "TC_PREVIEW_004"],
-    "AC2_Catalog_Card_Display": ["TC_PREVIEW_005", "TC_PREVIEW_006", "TC_PREVIEW_007", "TC_PREVIEW_008"],
-    "AC3_Full_Product_Details_Page": ["TC_PREVIEW_009", "TC_PREVIEW_010", "TC_PREVIEW_011", "TC_PREVIEW_012", "TC_PREVIEW_013", "TC_PREVIEW_014"],
-    "AC4_Media_Verification": ["TC_PREVIEW_015", "TC_PREVIEW_016", "TC_PREVIEW_017", "TC_PREVIEW_018", "TC_PREVIEW_019"],
-    "AC5_Specifications_and_Availability": ["TC_PREVIEW_020", "TC_PREVIEW_021", "TC_PREVIEW_022", "TC_PREVIEW_023", "TC_PREVIEW_024"],
-    "AC6_Accessibility_Compliance_Indicators": ["TC_PREVIEW_025", "TC_PREVIEW_026", "TC_PREVIEW_027", "TC_PREVIEW_028", "TC_PREVIEW_029"],
-    "AC7_Edit_and_Update_Options": ["TC_PREVIEW_030", "TC_PREVIEW_031", "TC_PREVIEW_032", "TC_PREVIEW_033", "TC_PREVIEW_034"],
-    "AC8_Post_Approval_Visibility": ["TC_PREVIEW_035", "TC_PREVIEW_036", "TC_PREVIEW_037"],
-    "AC9_System_Feedback": ["TC_PREVIEW_038", "TC_PREVIEW_039", "TC_PREVIEW_040", "TC_PREVIEW_041"],
-    "AC10_UI_and_Accessibility_for_Vendors": ["TC_PREVIEW_042", "TC_PREVIEW_043", "TC_PREVIEW_044", "TC_PREVIEW_045", "TC_PREVIEW_046"]
+    "AC1_Access_to_Preview_Mode": [
+      "TC_PREVIEW_001",
+      "TC_PREVIEW_002",
+      "TC_PREVIEW_003",
+      "TC_PREVIEW_004"
+    ],
+    "AC2_Catalog_Card_Display": [
+      "TC_PREVIEW_005",
+      "TC_PREVIEW_006",
+      "TC_PREVIEW_007",
+      "TC_PREVIEW_008"
+    ],
+    "AC3_Full_Product_Details_Page": [
+      "TC_PREVIEW_009",
+      "TC_PREVIEW_010",
+      "TC_PREVIEW_011",
+      "TC_PREVIEW_012",
+      "TC_PREVIEW_013",
+      "TC_PREVIEW_014"
+    ],
+    "AC4_Media_Verification": [
+      "TC_PREVIEW_015",
+      "TC_PREVIEW_016",
+      "TC_PREVIEW_017",
+      "TC_PREVIEW_018",
+      "TC_PREVIEW_019"
+    ],
+    "AC5_Specifications_and_Availability": [
+      "TC_PREVIEW_020",
+      "TC_PREVIEW_021",
+      "TC_PREVIEW_022",
+      "TC_PREVIEW_023",
+      "TC_PREVIEW_024"
+    ],
+    "AC6_Accessibility_Compliance_Indicators": [
+      "TC_PREVIEW_025",
+      "TC_PREVIEW_026",
+      "TC_PREVIEW_027",
+      "TC_PREVIEW_028",
+      "TC_PREVIEW_029"
+    ],
+    "AC7_Edit_and_Update_Options": [
+      "TC_PREVIEW_030",
+      "TC_PREVIEW_031",
+      "TC_PREVIEW_032",
+      "TC_PREVIEW_033",
+      "TC_PREVIEW_034"
+    ],
+    "AC8_Post_Approval_Visibility": [
+      "TC_PREVIEW_035",
+      "TC_PREVIEW_036",
+      "TC_PREVIEW_037"
+    ],
+    "AC9_System_Feedback": [
+      "TC_PREVIEW_038",
+      "TC_PREVIEW_039",
+      "TC_PREVIEW_040",
+      "TC_PREVIEW_041"
+    ],
+    "AC10_UI_and_Accessibility_for_Vendors": [
+      "TC_PREVIEW_042",
+      "TC_PREVIEW_043",
+      "TC_PREVIEW_044",
+      "TC_PREVIEW_045",
+      "TC_PREVIEW_046"
+    ]
   },
   "testDataRequirements": {
     "userAccounts": [

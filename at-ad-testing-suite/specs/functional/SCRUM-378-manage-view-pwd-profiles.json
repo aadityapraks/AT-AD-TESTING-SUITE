@@ -64,107 +64,6 @@
     },
     {
       "id": "TC_PROFILE_002",
-      "title": "Verify PwD summary card visual indicators for disability type, percentage, and UDID",
-      "priority": "Highest",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "2. PwD Summary Card Interactions",
-      "preconditions": "Caregiver is logged in; PwDs with disability percentage and UDID data exist",
-      "steps": [
-        "1. Navigate to Care Network Dashboard",
-        "2. Locate a PwD card with complete data",
-        "3. Verify visual indicator for Disability type is displayed (tag, icon, or badge)",
-        "4. Verify visual indicator for Disability percentage is displayed",
-        "5. Verify visual indicator for UDID is displayed (if PwD has UDID)",
-        "6. Verify indicators match the Figma design specification",
-        "7. Check a PwD card without UDID",
-        "8. Verify UDID indicator is absent or shows 'N/A' for PwD without UDID"
-      ],
-      "testData": {
-        "pwdWithUDID": "Rajesh Kumar",
-        "pwdWithoutUDID": "Priya Sharma"
-      },
-      "expectedResults": [
-        "Disability type visual indicator is clearly visible on card",
-        "Disability percentage indicator is displayed",
-        "UDID indicator is shown for PwDs with UDID",
-        "UDID indicator is absent or shows placeholder for PwDs without UDID",
-        "Indicators match Figma design"
-      ],
-      "postconditions": "Visual indicators on PwD cards are verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_003",
-      "title": "Verify UI differentiates between PwD cards and Add PwD tile",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "2. PwD Summary Card Interactions",
-      "preconditions": "Caregiver is logged in with PwDs below the limit",
-      "steps": [
-        "1. Navigate to Care Network Dashboard",
-        "2. Identify PwD summary cards",
-        "3. Identify the Add PwD tile/card",
-        "4. Verify PwD cards and Add PwD tile are visually distinct",
-        "5. Verify different styling (color, border, icon, layout) between the two",
-        "6. Verify Add PwD tile has a clear CTA (e.g., '+' icon, 'Add PwD' text)",
-        "7. Verify PwD cards show data while Add PwD tile shows action prompt"
-      ],
-      "testData": {},
-      "expectedResults": [
-        "PwD cards and Add PwD tile are clearly visually distinct",
-        "Different styling differentiates the two types",
-        "Add PwD tile has clear action prompt",
-        "No confusion between data cards and action tile"
-      ],
-      "postconditions": "UI differentiation is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_004",
-      "title": "Verify View Profile opens read-only PwD details with all fields",
-      "priority": "Highest",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "3. View Full PwD Profile",
-      "preconditions": "Caregiver is logged in; At least one PwD with complete data exists",
-      "steps": [
-        "1. Navigate to Care Network Dashboard",
-        "2. Click 'View Profile' on a PwD card",
-        "3. Verify PwD profile page loads",
-        "4. Verify Personal details are displayed: Name",
-        "5. Verify Age is displayed (auto-calculated from DOB)",
-        "6. Verify Gender is displayed",
-        "7. Verify Contact details are displayed (mobile, email)",
-        "8. Verify Disability details are displayed (type, percentage)",
-        "9. Verify Education details are displayed (qualification)",
-        "10. Verify Aadhaar is displayed in masked format (e.g., XXXX-XXXX-0123)",
-        "11. Verify UDID is displayed (if provided)",
-        "12. Verify all fields are read-only (non-editable)",
-        "13. Verify disability tags are clearly visible"
-      ],
-      "testData": {
-        "pwdName": "Rajesh Kumar",
-        "pwdDOB": "1995-06-15",
-        "expectedAge": 30,
-        "pwdGender": "Male",
-        "pwdDisabilityType": "Visual Impairment",
-        "pwdAadhaar": "XXXX-XXXX-0123"
-      },
-      "expectedResults": [
-        "Profile page loads with all PwD details",
-        "Name, Age, Gender are displayed correctly",
-        "Age is auto-calculated from DOB (e.g., 30 years)",
-        "Contact details (mobile, email) are shown",
-        "Disability and education details are shown",
-        "Aadhaar is masked for privacy",
-        "UDID is shown if available",
-        "All fields are read-only",
-        "Disability tags are clearly visible"
-      ],
-      "postconditions": "Full PwD profile view is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_005",
       "title": "Verify Age is auto-calculated from Date of Birth",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-378",
@@ -193,36 +92,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_PROFILE_006",
-      "title": "Verify Aadhaar is displayed masked in PwD profile",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "3. View Full PwD Profile",
-      "preconditions": "PwD profile is open; PwD has Aadhaar number",
-      "steps": [
-        "1. Open PwD profile via View Profile",
-        "2. Locate the Aadhaar field",
-        "3. Verify Aadhaar is displayed in masked format (e.g., XXXX-XXXX-0123)",
-        "4. Verify the full 12-digit number is NOT visible",
-        "5. Verify the field is read-only",
-        "6. Attempt to select/copy the Aadhaar value",
-        "7. Verify privacy is maintained"
-      ],
-      "testData": {
-        "aadhaarNumber": "234567890123",
-        "expectedMasked": "XXXX-XXXX-0123"
-      },
-      "expectedResults": [
-        "Aadhaar is masked (only last 4 digits visible or similar)",
-        "Full number is not exposed",
-        "Field is read-only",
-        "Privacy is maintained"
-      ],
-      "postconditions": "Aadhaar masking in profile is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_007",
+      "id": "TC_PROFILE_003",
       "title": "Verify Activity History view with device views, saved items, and timestamps",
       "priority": "Highest",
       "relatedJiraIssue": "SCRUM-378",
@@ -284,34 +154,7 @@
       "testResult": "NOT RUN"
     },
     {
-      "id": "TC_PROFILE_009",
-      "title": "Verify all profile fields are read-only (non-editable)",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "3. View Full PwD Profile",
-      "preconditions": "PwD profile is open via View Profile",
-      "steps": [
-        "1. Open PwD profile",
-        "2. Attempt to click on Name field and type",
-        "3. Verify field does not accept input",
-        "4. Attempt to modify Age field",
-        "5. Verify field is non-editable",
-        "6. Attempt to modify Gender, Contact, Disability fields",
-        "7. Verify all fields are read-only",
-        "8. Verify no 'Edit' or 'Save' buttons are present on the profile view"
-      ],
-      "testData": {},
-      "expectedResults": [
-        "All profile fields are read-only",
-        "No field accepts user input",
-        "No Edit/Save buttons are present",
-        "Fields are visually indicated as non-editable"
-      ],
-      "postconditions": "Read-only profile is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_010",
+      "id": "TC_PROFILE_005",
       "title": "Verify empty dashboard shows 'Add Your First PwD' state",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-378",
@@ -337,119 +180,24 @@
       ],
       "postconditions": "Empty dashboard state is verified",
       "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_011",
-      "title": "Verify PwD card with partial data shows placeholders",
-      "priority": "Medium",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "Edge Case - Partial Data",
-      "preconditions": "A PwD exists with missing email or phone number",
-      "steps": [
-        "1. Navigate to Care Network Dashboard",
-        "2. Locate the PwD card with partial data",
-        "3. Verify the card displays without errors",
-        "4. Verify missing fields show placeholders (e.g., 'N/A', '-')",
-        "5. Verify card layout is not broken",
-        "6. Click View Profile on the partial data card",
-        "7. Verify profile page handles missing data gracefully"
-      ],
-      "testData": {
-        "pwdName": "Partial Data PwD",
-        "missingFields": ["email", "mobile"]
-      },
-      "expectedResults": [
-        "Card displays without errors despite missing data",
-        "Placeholders shown for missing fields",
-        "Card layout remains intact",
-        "Profile page handles missing data gracefully"
-      ],
-      "postconditions": "Partial data handling is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_012",
-      "title": "Verify network/API failure shows graceful error with retry option",
-      "priority": "Medium",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "Edge Case - Network Failure",
-      "preconditions": "Caregiver is logged in; Network is unstable or API is simulated to fail",
-      "steps": [
-        "1. Navigate to Care Network Dashboard",
-        "2. Simulate network failure or API error",
-        "3. Verify a graceful error message is displayed",
-        "4. Verify a retry option is provided",
-        "5. Restore network/API",
-        "6. Click retry",
-        "7. Verify dashboard loads correctly after retry"
-      ],
-      "testData": {},
-      "expectedResults": [
-        "Graceful error message is displayed on failure",
-        "Retry option is provided",
-        "After retry with restored connection, dashboard loads correctly",
-        "No unhandled errors or blank screens"
-      ],
-      "postconditions": "Network failure handling is verified",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_PROFILE_013",
-      "title": "Verify PwD profile displays UDID when provided and hides when not",
-      "priority": "Medium",
-      "relatedJiraIssue": "SCRUM-378",
-      "category": "3. View Full PwD Profile",
-      "preconditions": "Two PwDs exist: one with UDID, one without",
-      "steps": [
-        "1. Open profile of PwD with UDID",
-        "2. Verify UDID field is displayed with the value",
-        "3. Navigate back to dashboard",
-        "4. Open profile of PwD without UDID",
-        "5. Verify UDID field is hidden or shows 'Not provided'",
-        "6. Verify profile layout is not broken in either case"
-      ],
-      "testData": {
-        "pwdWithUDID": "Rajesh Kumar",
-        "udidValue": "UP1234567890123456",
-        "pwdWithoutUDID": "Priya Sharma"
-      },
-      "expectedResults": [
-        "UDID is displayed when provided",
-        "UDID is hidden or shows placeholder when not provided",
-        "Profile layout is intact in both cases"
-      ],
-      "postconditions": "UDID conditional display is verified",
-      "testResult": "NOT RUN"
     }
   ],
   "requirements_traceability_matrix": {
     "AC1_care_network_dashboard": {
       "description": "Dashboard displays PwD list, summary cards (Name, Disability, Mobile, Email, Date), limit, slots, Add button",
-      "testCases": ["TC_PROFILE_001", "TC_PROFILE_010"]
-    },
-    "AC2_summary_card_interactions": {
-      "description": "View Profile CTA, visual indicators (disability type/percentage/UDID), UI differentiation",
-      "testCases": ["TC_PROFILE_002", "TC_PROFILE_003"]
+      "testCases": ["TC_PROFILE_001", "TC_PROFILE_005"]
     },
     "AC3_view_full_profile": {
-      "description": "Read-only details (Name, Age, Gender, Contact, Disability, Education, Aadhaar masked, UDID), auto-calculated age, disability tags",
-      "testCases": ["TC_PROFILE_004", "TC_PROFILE_005", "TC_PROFILE_006", "TC_PROFILE_009", "TC_PROFILE_013"]
+      "description": "Read-only details, auto-calculated age",
+      "testCases": ["TC_PROFILE_002"]
     },
     "AC4_activity_history": {
       "description": "Switch between Full Profile and Activity History, device views, saved items, timestamps, empty state",
-      "testCases": ["TC_PROFILE_007", "TC_PROFILE_008"]
+      "testCases": ["TC_PROFILE_003", "TC_PROFILE_004"]
     },
     "EC_empty_dashboard": {
       "description": "No PwDs added → Show empty state with 'Add Your First PwD'",
-      "testCases": ["TC_PROFILE_010"]
-    },
-    "EC_partial_data": {
-      "description": "Partial data (missing email/phone) → Show placeholders",
-      "testCases": ["TC_PROFILE_011"]
-    },
-    "EC_network_failure": {
-      "description": "Network/API failure → Graceful error with retry option",
-      "testCases": ["TC_PROFILE_012"]
+      "testCases": ["TC_PROFILE_005"]
     }
   },
   "test_data_requirements": {
@@ -513,30 +261,21 @@
   },
   "open_questions_and_clarifications": [
     {
-      "question": "What specific visual indicators are used for disability type, percentage, and UDID on cards?",
-      "impact": "Affects TC_PROFILE_002 - need Figma reference for exact design"
-    },
-    {
       "question": "How is Age displayed - as years only, or years and months?",
-      "impact": "Affects TC_PROFILE_005 expected age format"
+      "impact": "Affects TC_PROFILE_002 expected age format"
     },
     {
       "question": "What activity types are tracked in Activity History beyond device views and saved items?",
-      "impact": "Affects TC_PROFILE_007 completeness"
-    },
-    {
-      "question": "Is Activity History paginated or infinite scroll for PwDs with extensive activity?",
-      "impact": "May need additional test case for pagination"
+      "impact": "Affects TC_PROFILE_003 completeness"
     }
   ],
   "test_execution_notes": {
     "priority_order": [
-      "Highest tests (TC_PROFILE_001, 002, 004, 007) first - dashboard, card indicators, full profile, activity history",
-      "High priority tests (003, 005, 006, 008, 009, 010) - UI differentiation, age calc, Aadhaar masking, empty states, read-only",
-      "Medium priority tests (011, 012, 013) - partial data, network failure, UDID conditional display"
+      "Highest tests (TC_PROFILE_001, 003) first - dashboard, activity history",
+      "High priority tests (002, 004, 005) - age calc, activity empty state, empty dashboard"
     ],
     "estimated_effort": {
-      "total_test_cases": 13,
+      "total_test_cases": 5,
       "estimated_hours": "16-20 hours for full manual testing",
       "estimated_automation_hours": "25-32 hours for test automation",
       "critical_path": "5-7 hours for critical path testing only"
@@ -561,7 +300,7 @@
     "createdBy": "QA Test Planner Agent",
     "lastUpdated": "2026-03-29",
     "status": "Ready for Execution",
-    "totalTestCases": 13,
-    "coverage": "100% of acceptance criteria (1-5) and all edge cases covered"
+    "totalTestCases": 5,
+    "coverage": "Core acceptance criteria covered; visual indicators, read-only profile, Aadhaar masking, partial data, network failure, and UDID conditional display removed"
   }
 }

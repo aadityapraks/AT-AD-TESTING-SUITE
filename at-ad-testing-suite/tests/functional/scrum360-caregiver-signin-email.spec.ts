@@ -84,8 +84,8 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.isLoggedInOnCaregiverPortal()).toBeTruthy();
   });
 
-  test('TC_CG_SIGN_005 - Verify password field masks input and enforces security rules', async () => {
-    const data = testData.TC_CG_SIGN_005;
+  test('TC_CG_SIGN_003 - Verify password field masks input and enforces security rules', async () => {
+    const data = testData.TC_CG_SIGN_003;
 
     // 1. Navigate to caregiver sign-in page and proceed to SSO login
     await caregiverPage.navigateToCaregiverPortal(data.url);
@@ -117,8 +117,8 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.getSSOPasswordFieldValue()).toBe(data.inputs.password);
   });
 
-  test('TC_CG_SIGN_006 - Verify sign-in blocked with empty email and password fields', async () => {
-    const data = testData.TC_CG_SIGN_006;
+  test('TC_CG_SIGN_004 - Verify sign-in blocked with empty email and password fields', async () => {
+    const data = testData.TC_CG_SIGN_004;
 
     // 1. Navigate to caregiver sign-in page and proceed to SSO login
     await caregiverPage.navigateToCaregiverPortal(data.url);
@@ -140,9 +140,9 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.isSSOPasswordPageStillDisplayed()).toBeTruthy();
   });
 
-  test('TC_CG_SIGN_010 - Verify email login is case-insensitive', async () => {
+  test('TC_CG_SIGN_005 - Verify email login is case-insensitive', async () => {
     test.setTimeout(90000);
-    const data = testData.TC_CG_SIGN_010;
+    const data = testData.TC_CG_SIGN_005;
 
     // 1. Login with UPPERCASE email
     await caregiverPage.loginWithCaseVariantEmail(data.url, data.inputs.uppercaseEmail, data.inputs.password);
@@ -165,8 +165,8 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.isLoggedInOnCaregiverPortal()).toBeTruthy();
   });
 
-  test('TC_CG_SIGN_013 - Verify browser refresh during login does not resubmit credentials', async () => {
-    const data = testData.TC_CG_SIGN_013;
+  test('TC_CG_SIGN_006 - Verify browser refresh during login does not resubmit credentials', async () => {
+    const data = testData.TC_CG_SIGN_006;
 
     // 1. Navigate to SSO login and enter credentials without submitting
     await caregiverPage.enterSSOCredentialsWithoutSubmit(data.url, data.inputs.email, data.inputs.password);
@@ -181,9 +181,9 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.isSSOLoginPageDisplayedAfterRefresh()).toBeTruthy();
   });
 
-  test('TC_CG_SIGN_014 - Verify logged-in session is maintained across page navigation', async () => {
+  test('TC_CG_SIGN_007 - Verify logged-in session is maintained across page navigation', async () => {
     test.setTimeout(90000);
-    const data = testData.TC_CG_SIGN_014;
+    const data = testData.TC_CG_SIGN_007;
 
     // 1. Log in as caregiver with valid credentials
     await caregiverPage.loginAndVerifySession(data.url, data.inputs.email, data.inputs.password);
@@ -215,8 +215,8 @@ test.describe('Caregiver Sign-In Using Email', () => {
     expect(await caregiverPage.isLoggedInOnCaregiverPortal()).toBeTruthy();
   });
 
-  test('TC_CG_SIGN_015 - Verify Forgot Password with unregistered email shows appropriate message', async () => {
-    const data = testData.TC_CG_SIGN_015;
+  test('TC_CG_SIGN_008 - Verify Forgot Password with unregistered email shows appropriate message', async () => {
+    const data = testData.TC_CG_SIGN_008;
 
     // 1. Navigate to caregiver sign-in page and proceed to SSO login
     await caregiverPage.navigateToCaregiverPortal(data.url);

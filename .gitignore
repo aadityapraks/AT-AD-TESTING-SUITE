@@ -1,0 +1,4 @@
+# IDE config files with secrets
+.amazonq/
+.kiro/
+.vscode/

@@ -1,0 +1,13 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "pendingApprovalsLabel": "Total Pending",
+    "activePartnersLabel": "Active Partners",
+    "totalProductsLabel": "Total Products",
+    "avgApprovalLabel": "Avg. Approval"
+  }
+}

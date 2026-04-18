@@ -19,5 +19,14 @@
     "errorDialogTitle": "Error",
     "errorMessage": "Failed to delete product",
     "errorCloseButtonLabel": "Continue"
+  },
+  "pwdCredentials": {
+    "email": "najytulo@fxzig.com",
+    "password": "Aaditya@14"
+  },
+  "pwdBaseUrl": "https://qa-atad.swarajability.org",
+  "secondApCredentials": {
+    "email": "nahibix442@bigonla.com",
+    "password": "Aaditya@145"
   }
 }

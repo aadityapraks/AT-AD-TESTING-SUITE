@@ -1,0 +1,378 @@
+{
+  "jiraStory": "SCRUM-481",
+  "title": "Admin - Reject Vendor Application - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-16",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Reject Vendor Application feature on the AT/AD Admin Portal. Covers Reject button visibility (only for Pending vendors), mandatory rejection reason input, vendor status update to Rejected, confirmation button deactivation without reason, keyboard accessibility, and end-to-end rejection flow.",
+  "scope": {
+    "inScope": [
+      "Reject button visibility only on Pending vendor cards/details",
+      "Reject button not visible for Active, Inactive, or Rejected vendors",
+      "Mandatory rejection reason input field",
+      "Confirmation button deactivated when no reason is provided",
+      "Rejection action — vendor status changes to Rejected",
+      "Vendor moves from Pending Approval tab to Rejected Partners tab",
+      "Accessibility of Reject button and reason input",
+      "End-to-end rejection flow"
+    ],
+    "outOfScope": [
+      "Vendor approval workflow (covered by SCRUM-478)",
+      "Vendor notification delivery mechanism (backend email service)",
+      "Vendor edit/resubmission UI details (vendor portal side)",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Vendor list and tab functionality (covered by SCRUM-469)",
+      "Vendor detail modal (covered by SCRUM-475)",
+      "Vendor notification with rejection reason (requires vendor portal access)",
+      "Whitespace-only rejection reason validation",
+      "Vendor resubmission flow (requires vendor portal access)",
+      "Cancel/dismiss rejection dialog",
+      "Screen reader label verification"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for access)",
+      "SCRUM-469 - View Vendor Lists by Status (tab movement after rejection)",
+      "SCRUM-475 - View Vendor Details (Reject button context)",
+      "SCRUM-478 - Approve Vendor Application (re-approval after resubmission)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "At least two vendors in Pending Approval status",
+      "Active, Inactive, and Rejected vendors exist for negative testing"
+    ]
+  },
+  "testCases": [
+
+    {
+      "id": "TC_SCRUM481_001",
+      "title": "Verify Reject button is visible for Pending vendors",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC1 - Reject button visible only for Pending vendors",
+      "preconditions": "Admin is on the Pending Approval tab with pending vendors",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Click the Pending Approval tab",
+        "Locate a pending vendor card or open View Details",
+        "Verify a Reject button is visible"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Pending Approval tab is selected",
+        "Pending vendor is displayed",
+        "Reject button is visible and clearly labeled"
+      ],
+      "postconditions": "Reject button is accessible for pending vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_002",
+      "title": "Verify Reject button is NOT visible for Active vendors",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC1 - Reject button visible only for Pending vendors",
+      "preconditions": "Admin is on the Active Partners tab",
+      "steps": [
+        "Click the Active Partners tab",
+        "Locate an active vendor card or open View Details",
+        "Verify no Reject button is present"
+      ],
+      "expectedResults": [
+        "Active Partners tab is selected",
+        "Active vendor is displayed",
+        "No Reject button is visible"
+      ],
+      "postconditions": "Reject button is hidden for active vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_003",
+      "title": "Verify Reject button is NOT visible for Inactive vendors",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC1 - Reject button visible only for Pending vendors",
+      "preconditions": "Admin is on the Inactive Partners tab",
+      "steps": [
+        "Click the Inactive Partners tab",
+        "Locate an inactive vendor card or open View Details",
+        "Verify no Reject button is present"
+      ],
+      "expectedResults": [
+        "Inactive Partners tab is selected",
+        "Inactive vendor is displayed",
+        "No Reject button is visible"
+      ],
+      "postconditions": "Reject button is hidden for inactive vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_004",
+      "title": "Verify Reject button is NOT visible for already Rejected vendors",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC1 - Reject button visible only for Pending vendors",
+      "preconditions": "Admin is on the Rejected Partners tab",
+      "steps": [
+        "Click the Rejected Partners tab",
+        "Locate a rejected vendor card or open View Details",
+        "Verify no Reject button is present"
+      ],
+      "expectedResults": [
+        "Rejected Partners tab is selected",
+        "Rejected vendor is displayed",
+        "No Reject button is visible"
+      ],
+      "postconditions": "Reject button is hidden for rejected vendors",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_005",
+      "title": "Verify clicking Reject opens a rejection reason input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC2 - Admin must provide a rejection reason",
+      "preconditions": "Admin is viewing a pending vendor",
+      "steps": [
+        "Click the Reject button for a pending vendor",
+        "Verify a rejection reason input field or dialog appears",
+        "Verify the input field is empty by default",
+        "Verify a confirmation/submit button is present"
+      ],
+      "expectedResults": [
+        "Reject button is clicked",
+        "A rejection reason text area or dialog is displayed",
+        "Input field is empty",
+        "A confirmation button (e.g., 'Confirm Rejection') is present"
+      ],
+      "postconditions": "Rejection reason input is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_006",
+      "title": "Verify confirmation button is deactivated when no rejection reason is provided",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "Edge Case - Rejection without reason → Confirmation button deactivated",
+      "preconditions": "Admin has clicked Reject and the reason input is displayed",
+      "steps": [
+        "Click the Reject button for a pending vendor",
+        "Leave the rejection reason field empty",
+        "Observe the confirmation button state",
+        "Verify the confirmation button is disabled or not clickable"
+      ],
+      "expectedResults": [
+        "Rejection dialog/input is displayed",
+        "Reason field is empty",
+        "Confirmation button is observed",
+        "Confirmation button is disabled/grayed out and cannot be clicked"
+      ],
+      "postconditions": "Rejection is blocked without a reason",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_007",
+      "title": "Verify confirmation button becomes active after entering a rejection reason",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC2 - Admin must provide a rejection reason; Edge Case - Button activation",
+      "preconditions": "Admin has clicked Reject and the reason input is displayed with empty field",
+      "steps": [
+        "Verify the confirmation button is initially disabled",
+        "Enter a rejection reason in the text field",
+        "Observe the confirmation button state",
+        "Verify the confirmation button becomes enabled"
+      ],
+      "expectedResults": [
+        "Button is initially disabled",
+        "Rejection reason is entered",
+        "Button state changes",
+        "Confirmation button is now enabled and clickable"
+      ],
+      "postconditions": "Confirmation button is active with reason provided",
+      "testResult": "FAIL",
+      "failureReason": "SSO session dropped during tab switch"
+    },
+    {
+      "id": "TC_SCRUM481_008",
+      "title": "Verify vendor status changes to Rejected after confirmed rejection",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC4 - Vendor status updates to Rejected",
+      "preconditions": "Admin is viewing a pending vendor and rejection reason input is displayed",
+      "steps": [
+        "Enter a rejection reason",
+        "Click the confirmation button to reject",
+        "Verify the vendor status changes to Rejected"
+      ],
+      "expectedResults": [
+        "Reason is entered",
+        "Rejection is confirmed",
+        "Vendor status is now Rejected"
+      ],
+      "postconditions": "Vendor is rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_009",
+      "title": "Verify rejected vendor moves from Pending Approval to Rejected Partners tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC4 - Vendor status updates to Rejected (removed from pending)",
+      "preconditions": "A vendor has just been rejected",
+      "steps": [
+        "After rejecting a vendor, observe the Pending Approval tab",
+        "Verify the rejected vendor is no longer in the Pending Approval tab",
+        "Click the Rejected Partners tab",
+        "Verify the rejected vendor now appears in the Rejected Partners tab"
+      ],
+      "expectedResults": [
+        "Pending Approval tab is refreshed",
+        "Rejected vendor is removed from Pending Approval tab",
+        "Rejected Partners tab is selected",
+        "Rejected vendor is now listed in Rejected Partners tab"
+      ],
+      "postconditions": "Vendor has moved to Rejected Partners tab",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_010",
+      "title": "Verify Reject button and reason input are accessible via keyboard",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the Pending Approval tab",
+      "steps": [
+        "Use Tab key to navigate to the Reject button",
+        "Press Enter or Space to activate the Reject button",
+        "Verify the rejection reason input appears",
+        "Tab to the reason text field and type a reason",
+        "Tab to the confirmation button",
+        "Verify the confirmation button is reachable and activatable via keyboard"
+      ],
+      "expectedResults": [
+        "Reject button is reachable via Tab",
+        "Reject dialog opens on Enter/Space",
+        "Reason input is displayed",
+        "Reason can be typed via keyboard",
+        "Confirmation button is reachable via Tab",
+        "Confirmation button can be activated via Enter/Space"
+      ],
+      "postconditions": "Rejection flow is fully keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM481_011",
+      "title": "Verify complete Reject Vendor flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-481",
+      "acceptanceCriteria": "AC1-AC4 and Edge Cases - Complete Flow",
+      "preconditions": "Admin is signed in and a pending vendor exists",
+      "steps": [
+        "Navigate to the Pending Approval tab",
+        "Note the pending vendor name and tab counts",
+        "Verify Reject button is visible",
+        "Click Reject",
+        "Verify confirmation button is disabled without reason",
+        "Enter a rejection reason",
+        "Verify confirmation button becomes enabled",
+        "Click confirm to reject",
+        "Verify vendor is removed from Pending Approval tab",
+        "Verify Pending count decreased by 1",
+        "Click Rejected Partners tab",
+        "Verify the vendor appears in Rejected Partners tab",
+        "Verify Rejected count increased by 1"
+      ],
+      "expectedResults": [
+        "Pending Approval tab is displayed",
+        "Vendor name and counts are noted",
+        "Reject button is visible",
+        "Rejection dialog opens",
+        "Confirmation button is disabled",
+        "Reason is entered",
+        "Confirmation button is enabled",
+        "Rejection is confirmed",
+        "Vendor is removed from Pending tab",
+        "Pending count is decremented",
+        "Rejected Partners tab is selected",
+        "Vendor appears in Rejected Partners tab",
+        "Rejected count is incremented"
+      ],
+      "postconditions": "Full rejection flow is verified end-to-end",
+      "testResult": "FAIL",
+      "failureReason": "Dialog overlay from previous test blocks View Details click in E2E flow"
+    }
+  ],
+
+  "traceabilityMatrix": {
+    "AC1_Reject_Button_Visibility": [
+      "TC_SCRUM481_001",
+      "TC_SCRUM481_002",
+      "TC_SCRUM481_003",
+      "TC_SCRUM481_004"
+    ],
+    "AC2_Mandatory_Rejection_Reason": [
+      "TC_SCRUM481_005",
+      "TC_SCRUM481_007"
+    ],
+    "AC4_Vendor_Status_To_Rejected": [
+      "TC_SCRUM481_008",
+      "TC_SCRUM481_009"
+    ],
+    "Edge_Case_No_Reason_Button_Deactivated": [
+      "TC_SCRUM481_006"
+    ],
+    "Accessibility": [
+      "TC_SCRUM481_010"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM481_011"
+    ]
+  },
+  "testDataRequirements": {
+    "vendorAccounts": [
+      "At least 2 vendors in Pending Approval status",
+      "At least 1 vendor in Active status (for negative button visibility test)",
+      "At least 1 vendor in Inactive status (for negative button visibility test)",
+      "At least 1 vendor in Rejected status (for negative button visibility test)"
+    ],
+    "rejectionReasons": [
+      "Valid rejection reason text (e.g., 'Incomplete documentation')",
+      "Empty input for button deactivation testing"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Vendor list with status tabs is available (SCRUM-469)",
+    "View Details modal is available (SCRUM-475)",
+    "Reject button is accessible from vendor card or View Details modal (or both)"
+  ],
+  "risks": [
+    "Vendor resubmission flow depends on vendor portal implementation which may be a separate story",
+    "Notification delivery verification depends on email service availability",
+    "Rejection reason field character limit is not specified",
+    "Whether rejection reason is stored and visible in vendor details after rejection is not specified",
+    "Resubmission rules (how many times, cooldown period) are not defined"
+  ],
+  "openQuestions": [
+    "Is there a character limit for the rejection reason text field?",
+    "Is the rejection reason visible in the vendor details after rejection (for admin reference)?",
+    "How many times can a vendor resubmit after rejection?",
+    "Is there a cooldown period between rejection and resubmission?",
+    "Where is the Reject button located — on the vendor card, in the View Details modal, or both?",
+    "Does the rejection dialog have a Cancel button to dismiss without rejecting?",
+    "Is the rejection reason stored as an audit trail for future reference?"
+  ],
+  "notesFromChangelog": [
+    "Description has been stable since 2026-02-10. No recent changes to acceptance criteria or edge cases."
+  ]
+}

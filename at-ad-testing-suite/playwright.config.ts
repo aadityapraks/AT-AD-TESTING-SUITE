@@ -23,7 +23,7 @@ export default defineConfig({
     {
       name: 'default',
       testMatch: '**/*.spec.ts',
-      testIgnore: ['**/*.setup.ts', '**/scrum36*-caregiver-*.spec.ts'],
+      testIgnore: ['**/*.setup.ts', '**/scrum36*-caregiver-*.spec.ts', '**/seed/**'],
     },
     // Caregiver tests — login handled in test via loginOrNavigateToMyPwDs
     {

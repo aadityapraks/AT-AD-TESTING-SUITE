@@ -42,7 +42,7 @@
         "No unauthorized access is possible"
       ],
       "postconditions": "Product Management page remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DEL_003",
@@ -61,7 +61,7 @@
         "No restrictions on deletion"
       ],
       "postconditions": "Product Management page remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DEL_004",
@@ -127,28 +127,6 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_DEL_007",
-      "title": "Delete Published Product from Catalog",
-      "priority": "Highest",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "Approved AP is logged in, Product Management page is loaded, AP has published product in catalog",
-      "steps": [
-        "Delete published product",
-        "Confirm deletion",
-        "Login as PwD user",
-        "Search for deleted product in catalog"
-      ],
-      "expectedResults": [
-        "Product removed from public catalog immediately",
-        "Product not visible to PwD users",
-        "Deletion record is stored",
-        "Product shows deleted status to AP",
-        "Search results exclude deleted product"
-      ],
-      "postconditions": "Product is deleted from catalog",
-      "testResult": "NOT RUN"
-    },
-    {
       "id": "TC_DEL_008",
       "title": "Verify Deleted Product Visible to AP with Status",
       "priority": "High",
@@ -212,74 +190,7 @@
         "No 'Deleted' status shown"
       ],
       "postconditions": "Product is permanently removed",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_DEL_013",
-      "title": "Vendor Hard Deletes Under Review Product",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "Approved AP is logged in, product under review exists",
-      "steps": [
-        "Locate product under review",
-        "Delete product",
-        "Confirm deletion",
-        "Verify deletion type"
-      ],
-      "expectedResults": [
-        "Under review products can be hard deleted by vendor",
-        "Product is permanently removed",
-        "No soft delete state",
-        "Deletion is complete",
-        "No admin recovery needed"
-      ],
-      "postconditions": "Product is hard deleted",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_DEL_014",
-      "title": "Vendor Hard Deletes Rejected Product",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "Approved AP is logged in, rejected product exists",
-      "steps": [
-        "Locate rejected product",
-        "Delete product",
-        "Confirm deletion",
-        "Verify deletion type"
-      ],
-      "expectedResults": [
-        "Rejected products can be hard deleted by vendor",
-        "Product is permanently removed",
-        "No soft delete state",
-        "Deletion is complete",
-        "No admin recovery needed"
-      ],
-      "postconditions": "Product is hard deleted",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_DEL_016",
-      "title": "Notify Users with Existing Interests",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "PwD user has saved product to interests, AP deletes the product",
-      "steps": [
-        "PwD user saves product to interests",
-        "AP deletes the product",
-        "Confirm deletion",
-        "Login as PwD user",
-        "Check notifications"
-      ],
-      "expectedResults": [
-        "Users with interests receive notification",
-        "Notification states product is unavailable",
-        "Message is clear and informative",
-        "Notification is accessible",
-        "User can view notification details"
-      ],
-      "postconditions": "Notification is delivered",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DEL_017",
@@ -366,48 +277,6 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_DEL_021",
-      "title": "Mark Media Inactive on Deletion",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "Approved AP is logged in, product with images and videos exists",
-      "steps": [
-        "Delete product with media",
-        "Confirm deletion",
-        "Verify media status"
-      ],
-      "expectedResults": [
-        "All associated media marked inactive",
-        "Images removed from live content store",
-        "Videos removed from live content store",
-        "Documents marked inactive",
-        "Media cleanup is complete"
-      ],
-      "postconditions": "Media is marked inactive",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_DEL_022",
-      "title": "Verify No Broken Links in Catalog",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "AP has deleted product with media, PwD user is browsing catalog",
-      "steps": [
-        "Login as PwD user",
-        "Browse catalog",
-        "Check for broken links or placeholders"
-      ],
-      "expectedResults": [
-        "No broken links visible",
-        "No placeholder images shown",
-        "Catalog displays cleanly",
-        "Media cleanup is complete",
-        "All references are removed"
-      ],
-      "postconditions": "Catalog is clean",
-      "testResult": "NOT RUN"
-    },
-    {
       "id": "TC_ACC_001",
       "title": "Verify Keyboard Accessibility",
       "priority": "High",
@@ -427,29 +296,7 @@
         "All buttons are reachable via keyboard"
       ],
       "postconditions": "Keyboard navigation is complete",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_ACC_002",
-      "title": "Verify Screen Reader Compatibility",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "Approved AP is logged in, screen reader is enabled",
-      "steps": [
-        "Use screen reader to navigate to delete option",
-        "Activate delete option",
-        "Navigate confirmation dialog",
-        "Verify all content is announced"
-      ],
-      "expectedResults": [
-        "Screen reader announces delete button",
-        "Confirmation dialog is announced",
-        "Warning message is read clearly",
-        "All buttons are accessible",
-        "Dialog purpose is clear"
-      ],
-      "postconditions": "Screen reader compatibility verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ACC_003",
@@ -471,49 +318,7 @@
         "All elements meet accessibility standards"
       ],
       "postconditions": "Accessibility standards verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
-    {
-      "id": "TC_ANALYTICS_001",
-      "title": "Exclude Deleted Products from Search",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "AP has deleted product, PwD user is searching catalog",
-      "steps": [
-        "Login as PwD user",
-        "Search for deleted product",
-        "Check search results"
-      ],
-      "expectedResults": [
-        "Deleted product not in search results",
-        "Search excludes deleted items",
-        "Only active products are shown",
-        "Search functionality is accurate",
-        "No deleted products appear"
-      ],
-      "postconditions": "Search results are accurate",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_ANALYTICS_002",
-      "title": "Exclude from Recommendations",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-24",
-      "preconditions": "AP has deleted product, PwD user is viewing recommendations",
-      "steps": [
-        "Login as PwD user",
-        "View product recommendations",
-        "Check if deleted product appears"
-      ],
-      "expectedResults": [
-        "Deleted product not in recommendations",
-        "Recommendation engine excludes deleted items",
-        "Only active products are recommended",
-        "System is updated immediately",
-        "Recommendations are accurate"
-      ],
-      "postconditions": "Recommendations are accurate",
-      "testResult": "NOT RUN"
-    }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "partnersUrl": "https://hub-ui-admin-qa.swarajability.org/admin/partners",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "TC_SCRUM475_001": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_002": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_003": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_004": { "inputs": { "tab": "Pending", "expectedType": "Partnership" } },
+  "TC_SCRUM475_005": { "inputs": { "tab": "Pending", "expectedContact": "Elon Musk" } },
+  "TC_SCRUM475_006": { "inputs": { "tab": "Pending", "expectedEmail": "vapona2626@azeriom.com", "expectedPhone": "7875909491" } },
+  "TC_SCRUM475_007": { "inputs": { "tab": "Pending", "expectedLocation": "Bhiwandi" } },
+  "TC_SCRUM475_008": { "inputs": { "tab": "Pending", "expectedGST": "JIUPD0304E" } },
+  "TC_SCRUM475_009": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_010": { "inputs": { "tab": "Active" } },
+  "TC_SCRUM475_011": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_012": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_013": { "inputs": { "tab": "Pending" } },
+  "TC_SCRUM475_014": { "inputs": { "tabs": ["Pending", "Active", "Inactive", "Rejected"] } },
+  "TC_SCRUM475_015": { "inputs": { "tab": "Pending", "expectedContact": "Elon Musk", "expectedEmail": "vapona2626@azeriom.com", "expectedGST": "JIUPD0304E" } }
+}

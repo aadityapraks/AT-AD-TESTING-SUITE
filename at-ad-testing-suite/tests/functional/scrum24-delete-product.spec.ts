@@ -165,15 +165,23 @@ test.describe('3. Deletion Rules for Published Products', () => {
     await expect(actionButtons.first()).toBeVisible({ timeout: 10000 });
 
     let productName = '';
+    let productIndex = 0;
     const buttonCount = await actionButtons.count();
     for (let i = 0; i < buttonCount; i++) {
-      const ariaLabel = await actionButtons.nth(i).getAttribute('aria-label') ?? '';
+      const btn = actionButtons.nth(i);
+      const ariaLabel = await btn.getAttribute('aria-label') ?? '';
       const name = ariaLabel.replace('More actions for ', '');
-      // Check if this product has an "Edited" badge
-      const hasEdited = await page.getByRole('button', { name: `Toggle edit details for ${name}` })
-        .locator('..').getByText('Edited').isVisible().catch(() => false);
+      // Check for Edited badge in the same product row
+      const productRow = btn.locator('xpath=ancestor::div[1]/..');
+      const hasEdited = await productRow.getByText('Edited', { exact: true }).isVisible().catch(() => false);
       if (!hasEdited) {
         productName = name;
+        // Count how many buttons with this exact name appear before index i
+        productIndex = 0;
+        for (let j = 0; j < i; j++) {
+          const prevLabel = await actionButtons.nth(j).getAttribute('aria-label') ?? '';
+          if (prevLabel === `More actions for ${name}`) productIndex++;
+        }
         break;
       }
     }
@@ -185,12 +193,36 @@ test.describe('3. Deletion Rules for Published Products', () => {
     }
 
     // 3. Delete the product
-    await productManagementPage.clickDeleteFromActionsMenu(productName);
+    await productManagementPage.clickDeleteFromActionsMenu(productName, productIndex);
     await productManagementPage.confirmDeletion();
     await productManagementPage.verifyDeleteSuccess();
     await productManagementPage.closeSuccessDialog();
 
-    // 4. Navigate to public catalog and verify product is not visible
+    // 4. Clear vendor session before logging in as PwD
+    await page.context().clearCookies();
+    await page.goto(testData.pwdBaseUrl);
+    await page.getByRole('link', { name: 'Sign In/Register' }).click();
+    await page.getByRole('link', { name: 'Sign In with SwarajAbility' }).click();
+    await page.waitForURL(/swarajability-login-flow/, { timeout: 20000 });
+    await page.getByRole('textbox', { name: 'Email' }).waitFor({ state: 'visible', timeout: 30000 });
+    await page.getByRole('textbox', { name: 'Email' }).fill(testData.pwdCredentials.email);
+    await page.getByRole('button', { name: 'Log in' }).click();
+    await page.waitForURL(/has-password-flow/, { timeout: 20000 });
+    await page.getByRole('textbox', { name: 'Please enter your password' }).waitFor({ state: 'visible', timeout: 15000 });
+    await page.getByRole('textbox', { name: 'Please enter your password' }).fill(testData.pwdCredentials.password);
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.waitForURL(
+      url => url.href.includes('implicit-consent') || url.href.includes('qa-atad.swarajability.org'),
+      { timeout: 45000 }
+    );
+    if (page.url().includes('implicit-consent')) {
+      const continueBtn = page.getByRole('button', { name: 'Continue' });
+      await continueBtn.waitFor({ state: 'visible', timeout: 15000 });
+      await continueBtn.click();
+      await page.waitForTimeout(3000);
+    }
+
+    // 5. Navigate to catalog and verify deleted product is not visible
     await catalogPage.navigateToCatalog(testData.catalogUrl);
     await catalogPage.searchForProduct(productName);
     await catalogPage.verifyProductNotInCatalog(productName);
@@ -686,14 +718,23 @@ test.describe('10. Associated Media Handling', () => {
     await expect(actionButtons.first()).toBeVisible({ timeout: 10000 });
 
     let productName = '';
+    let productIndex = 0;
     const buttonCount = await actionButtons.count();
     for (let i = 0; i < buttonCount; i++) {
-      const ariaLabel = await actionButtons.nth(i).getAttribute('aria-label') ?? '';
+      const btn = actionButtons.nth(i);
+      const ariaLabel = await btn.getAttribute('aria-label') ?? '';
       const name = ariaLabel.replace('More actions for ', '');
-      const hasEdited = await page.getByRole('button', { name: `Toggle edit details for ${name}` })
-        .locator('..').getByText('Edited').isVisible().catch(() => false);
+      // Check for Edited badge in the same product row (sibling elements)
+      const productRow = btn.locator('xpath=ancestor::div[1]/..'); 
+      const hasEdited = await productRow.getByText('Edited', { exact: true }).isVisible().catch(() => false);
       if (!hasEdited) {
         productName = name;
+        // Count how many buttons with this exact name appear before index i
+        productIndex = 0;
+        for (let j = 0; j < i; j++) {
+          const prevLabel = await actionButtons.nth(j).getAttribute('aria-label') ?? '';
+          if (prevLabel === `More actions for ${name}`) productIndex++;
+        }
         break;
       }
     }
@@ -704,15 +745,37 @@ test.describe('10. Associated Media Handling', () => {
     }
 
     // 3. Delete the product
-    await productManagementPage.clickDeleteFromActionsMenu(productName);
+    await productManagementPage.clickDeleteFromActionsMenu(productName, productIndex);
     await productManagementPage.confirmDeletion();
     await productManagementPage.verifyDeleteSuccess();
     await productManagementPage.closeSuccessDialog();
 
-    // 4. Navigate to public catalog as PwD user (no login required)
-    await catalogPage.navigateToCatalog(testData.catalogUrl);
+    // 4. Clear vendor session before logging in as PwD
+    await page.context().clearCookies();
+    await page.goto(testData.pwdBaseUrl);
+    await page.getByRole('link', { name: 'Sign In/Register' }).click();
+    await page.getByRole('link', { name: 'Sign In with SwarajAbility' }).click();
+    await page.waitForURL(/swarajability-login-flow/, { timeout: 20000 });
+    await page.getByRole('textbox', { name: 'Email' }).waitFor({ state: 'visible', timeout: 30000 });
+    await page.getByRole('textbox', { name: 'Email' }).fill(testData.pwdCredentials.email);
+    await page.getByRole('button', { name: 'Log in' }).click();
+    await page.waitForURL(/has-password-flow/, { timeout: 20000 });
+    await page.getByRole('textbox', { name: 'Please enter your password' }).waitFor({ state: 'visible', timeout: 15000 });
+    await page.getByRole('textbox', { name: 'Please enter your password' }).fill(testData.pwdCredentials.password);
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.waitForURL(
+      url => url.href.includes('implicit-consent') || url.href.includes('qa-atad.swarajability.org'),
+      { timeout: 45000 }
+    );
+    if (page.url().includes('implicit-consent')) {
+      const continueBtn = page.getByRole('button', { name: 'Continue' });
+      await continueBtn.waitFor({ state: 'visible', timeout: 15000 });
+      await continueBtn.click();
+      await page.waitForTimeout(3000);
+    }
 
-    // 5. Search for the deleted product and verify it is not present
+    // 5. Navigate to catalog and search for the deleted product
+    await catalogPage.navigateToCatalog(testData.catalogUrl);
     await catalogPage.searchForProduct(productName);
     await catalogPage.verifyProductNotInCatalog(productName);
 

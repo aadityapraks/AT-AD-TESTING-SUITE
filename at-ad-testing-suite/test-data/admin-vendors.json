@@ -1,0 +1,154 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "partnersUrl": "https://hub-ui-admin-qa.swarajability.org/admin/partners",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "tabCounts": {
+    "pendingApproval": 8,
+    "activePartners": 4,
+    "inactivePartners": 19,
+    "rejectedPartners": 8
+  },
+  "vendors": {
+    "pending": [
+      {
+        "name": "Cemo CR7 Corp",
+        "type": "Partnership",
+        "location": "#68, Lala Chowk, Bhiwandi, Maharashtra",
+        "contact": "Elon Musk",
+        "email": "vapona2626@azeriom.com",
+        "phone": "7875909491",
+        "gst": "JIUPD0304E",
+        "productCount": "0"
+      },
+      {
+        "name": "vendor19",
+        "type": "manufacturer",
+        "location": "registered address",
+        "contact": "vendor19",
+        "email": "vendor19@mailto.plus",
+        "phone": "8359339049",
+        "gst": "N/A",
+        "productCount": "0"
+      },
+      {
+        "name": "vendor7",
+        "type": "manufacturer",
+        "location": "address",
+        "contact": "vendor7",
+        "email": "vendor7@mailto.plus",
+        "phone": "6382737388",
+        "gst": "N/A",
+        "productCount": "0"
+      },
+      {
+        "name": "vendor6",
+        "type": "manufacturer",
+        "location": "address",
+        "contact": "vendor6",
+        "email": "vendor6@mailto.plus",
+        "phone": "7362873628",
+        "gst": "N/A",
+        "productCount": "0"
+      }
+    ],
+    "active": [
+      {
+        "name": "awsedfrg",
+        "type": "Distributor",
+        "location": "dfb",
+        "contact": "asdfg",
+        "email": "vendor2305@mailto.plus",
+        "phone": "9876543456",
+        "gst": "22AAAAA0000A1Z5",
+        "productCount": "0"
+      },
+      {
+        "name": "qwesd",
+        "type": "Manufacturer",
+        "location": "et",
+        "contact": "wert",
+        "email": "vendor231@mailto.plus",
+        "phone": "9876545678",
+        "gst": "22AAAAA0000A1Z5",
+        "productCount": "0"
+      },
+      {
+        "name": "ertyui",
+        "type": "Distributor",
+        "location": "wert",
+        "contact": "wert",
+        "email": "vendor2301@mailto.plus",
+        "phone": "9876545678",
+        "gst": "22AAAAA0000A1Z5",
+        "productCount": "0"
+      },
+      {
+        "name": "Asgard",
+        "type": "manufacturer",
+        "location": "4 star pg, near Crest Avenue A and B building, Sai Aashirwad Apartment Block A, Baner Gaon",
+        "contact": "Thor",
+        "email": "nahibix442@bigonla.com",
+        "phone": "6576872348",
+        "gst": "N/A",
+        "productCount": "2"
+      }
+    ],
+    "inactive": [
+      {
+        "name": "vendor31",
+        "type": "manufacturer",
+        "location": "address",
+        "contact": "vendor31",
+        "email": "vendor31@mailto.plus",
+        "phone": "6482947292",
+        "gst": "N/A",
+        "productCount": "0"
+      }
+    ],
+    "rejected": [
+      {
+        "name": "SHIELD",
+        "type": "manufacturer",
+        "location": "Beside Surya clinic, S.P kothi road, Abadganj, Daltonganj",
+        "contact": "Nick fury",
+        "email": "yapec32040@3dkai.com",
+        "phone": "7667891111",
+        "gst": "N/A",
+        "productCount": "0"
+      },
+      {
+        "name": "Naruto dragon",
+        "type": "distributor",
+        "location": "ugJHJDFSKJDSF",
+        "contact": "Owien kr",
+        "email": "uzycvup@mailto.plus",
+        "phone": "7667812347",
+        "gst": "N/A",
+        "productCount": "0"
+      },
+      {
+        "name": "vendor8",
+        "type": "manufacturer",
+        "location": "Address",
+        "contact": "vendor8",
+        "email": "vendor8@mailto.plus",
+        "phone": "7028492948",
+        "gst": "N/A",
+        "productCount": "0"
+      },
+      {
+        "name": "vendor 4",
+        "type": "distributor",
+        "location": "address",
+        "contact": "Honnurappa",
+        "email": "vendor4@mailto.plus",
+        "phone": "8596859687",
+        "gst": "N/A",
+        "productCount": "0"
+      }
+    ]
+  }
+}

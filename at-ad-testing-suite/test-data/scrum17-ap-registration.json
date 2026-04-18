@@ -51,7 +51,12 @@
   "TC_REG_007": {
     "url": "https://hub-ui-admin-qa.swarajability.org/",
     "expected": {
-      "organizationTypes": ["Manufacturer", "Distributor", "NGO", "Service Provider"]
+      "organizationTypes": [
+        "Manufacturer",
+        "Distributor",
+        "NGO",
+        "Service Provider"
+      ]
     }
   },
   "TC_REG_008": {
@@ -74,9 +79,13 @@
   },
   "TC_REG_010": {
     "url": "https://hub-ui-admin-qa.swarajability.org/",
+    "inputs": {
+      "email": "testotpverify@example.com",
+      "otp": "123456"
+    },
     "expected": {
-      "websiteLinksFieldVisible": true,
-      "fileUploadVisible": true
+      "otpVerified": true,
+      "verifiedStatusVisible": true
     }
   },
   "TC_REG_011": {
@@ -284,7 +293,13 @@
     "url": "https://hub-ui-admin-qa.swarajability.org/",
     "expected": {
       "errorMessagesDisplayed": true,
-      "errorMessagePatterns": ["required", "enter", "valid", "please", "field"],
+      "errorMessagePatterns": [
+        "required",
+        "enter",
+        "valid",
+        "please",
+        "field"
+      ],
       "errorsAssociatedWithFields": true
     }
   },

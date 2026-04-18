@@ -1,0 +1,527 @@
+{
+  "jiraStory": "SCRUM-469",
+  "title": "Admin - View Vendor Lists by Status - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Vendor Lists by Status feature on the AT/AD Admin Portal. Covers status tab navigation (Pending Approval, Active Partners, Inactive Partners, Rejected Partners), vendor card display fields (name, type, location, contact details, product count), tab count accuracy, data consistency validation, and accessibility.",
+  "scope": {
+    "inScope": [
+      "Status tabs visibility and navigation (Pending Approval, Active Partners, Inactive Partners, Rejected Partners)",
+      "Vendor card display fields: name, type, location, contact details, product count",
+      "Tab count accuracy for each status",
+      "Tab switching behavior and content loading",
+      "Data consistency — vendors appear in correct tabs",
+      "Accessibility of tabs and vendor cards"
+    ],
+    "outOfScope": [
+      "Vendor approval/rejection actions (separate story)",
+      "Vendor detail/profile view",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Partner Management Dashboard metrics (covered by SCRUM-466)",
+      "Search or text-based filtering within tabs",
+      "Pagination implementation details",
+      "Auto-refresh or refresh prompt when vendor status changes (requires backend API manipulation)",
+      "Empty state message when no vendors exist in a tab (requires empty environment)",
+      "Vendor type verification across all types (requires specific vendor types in environment)"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for access)",
+      "SCRUM-466 - View Partner Management Dashboard (navigation context)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "Vendors exist in various statuses: Pending, Active, Inactive, Rejected"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM469_001",
+      "title": "Verify all four status tabs are visible on the vendor list page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tabs available: Pending Approval, Active Partners, Inactive Partners, Rejected Partners",
+      "preconditions": "Admin is signed in and on the vendor list page",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Verify the Pending Approval tab is visible",
+        "Verify the Active Partners tab is visible",
+        "Verify the Inactive Partners tab is visible",
+        "Verify the Rejected Partners tab is visible"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "Pending Approval tab is visible with label",
+        "Active Partners tab is visible with label",
+        "Inactive Partners tab is visible with label",
+        "Rejected Partners tab is visible with label"
+      ],
+      "postconditions": "All four tabs are displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_002",
+      "title": "Verify Pending Approval tab displays vendor cards with correct fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tabs; AC2 - Vendor card fields",
+      "preconditions": "Admin is on the vendor list page and pending vendors exist",
+      "steps": [
+        "Click the Pending Approval tab",
+        "Verify vendor cards are displayed",
+        "For each vendor card, verify vendor name is shown",
+        "Verify vendor type is shown (Manufacturer / Distributor / Service Provider)",
+        "Verify location is shown",
+        "Verify contact details are shown",
+        "Verify product count is shown"
+      ],
+      "expectedResults": [
+        "Pending Approval tab is selected",
+        "Vendor cards are listed",
+        "Each card displays the vendor name",
+        "Each card displays the vendor type",
+        "Each card displays the vendor location",
+        "Each card displays contact details",
+        "Each card displays the product count"
+      ],
+      "postconditions": "Pending vendor cards display all required fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_003",
+      "title": "Verify Active Partners tab displays vendor cards with correct fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tabs; AC2 - Vendor card fields",
+      "preconditions": "Admin is on the vendor list page and active vendors exist",
+      "steps": [
+        "Click the Active Partners tab",
+        "Verify vendor cards are displayed",
+        "For each vendor card, verify vendor name is shown",
+        "Verify vendor type is shown",
+        "Verify location is shown",
+        "Verify contact details are shown",
+        "Verify product count is shown"
+      ],
+      "expectedResults": [
+        "Active Partners tab is selected",
+        "Vendor cards are listed",
+        "Each card displays the vendor name",
+        "Each card displays the vendor type",
+        "Each card displays the vendor location",
+        "Each card displays contact details",
+        "Each card displays the product count"
+      ],
+      "postconditions": "Active vendor cards display all required fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_004",
+      "title": "Verify Inactive Partners tab displays vendor cards with correct fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tabs; AC2 - Vendor card fields",
+      "preconditions": "Admin is on the vendor list page and inactive vendors exist",
+      "steps": [
+        "Click the Inactive Partners tab",
+        "Verify vendor cards are displayed",
+        "For each vendor card, verify vendor name is shown",
+        "Verify vendor type is shown",
+        "Verify location is shown",
+        "Verify contact details are shown",
+        "Verify product count is shown"
+      ],
+      "expectedResults": [
+        "Inactive Partners tab is selected",
+        "Vendor cards are listed",
+        "Each card displays the vendor name",
+        "Each card displays the vendor type",
+        "Each card displays the vendor location",
+        "Each card displays contact details",
+        "Each card displays the product count"
+      ],
+      "postconditions": "Inactive vendor cards display all required fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_005",
+      "title": "Verify Rejected Partners tab displays vendor cards with correct fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tabs; AC2 - Vendor card fields",
+      "preconditions": "Admin is on the vendor list page and rejected vendors exist",
+      "steps": [
+        "Click the Rejected Partners tab",
+        "Verify vendor cards are displayed",
+        "For each vendor card, verify vendor name is shown",
+        "Verify vendor type is shown",
+        "Verify location is shown",
+        "Verify contact details are shown",
+        "Verify product count is shown"
+      ],
+      "expectedResults": [
+        "Rejected Partners tab is selected",
+        "Vendor cards are listed",
+        "Each card displays the vendor name",
+        "Each card displays the vendor type",
+        "Each card displays the vendor location",
+        "Each card displays contact details",
+        "Each card displays the product count"
+      ],
+      "postconditions": "Rejected vendor cards display all required fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_006",
+      "title": "Verify correct count appears on the Pending Approval tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC3 - Correct count appears on each tab",
+      "preconditions": "Admin is on the vendor list page and pending vendors exist",
+      "steps": [
+        "Observe the count displayed on the Pending Approval tab",
+        "Click the Pending Approval tab",
+        "Count the number of vendor cards displayed",
+        "Compare the tab count with the actual number of cards"
+      ],
+      "expectedResults": [
+        "Tab shows a numeric count",
+        "Pending Approval tab is selected",
+        "Vendor cards are counted",
+        "Tab count matches the number of vendor cards displayed"
+      ],
+      "postconditions": "Pending Approval tab count is accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_007",
+      "title": "Verify correct count appears on the Active Partners tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC3 - Correct count appears on each tab",
+      "preconditions": "Admin is on the vendor list page and active vendors exist",
+      "steps": [
+        "Observe the count displayed on the Active Partners tab",
+        "Click the Active Partners tab",
+        "Count the number of vendor cards displayed",
+        "Compare the tab count with the actual number of cards"
+      ],
+      "expectedResults": [
+        "Tab shows a numeric count",
+        "Active Partners tab is selected",
+        "Vendor cards are counted",
+        "Tab count matches the number of vendor cards displayed"
+      ],
+      "postconditions": "Active Partners tab count is accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_008",
+      "title": "Verify correct count appears on the Inactive Partners tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC3 - Correct count appears on each tab",
+      "preconditions": "Admin is on the vendor list page and inactive vendors exist",
+      "steps": [
+        "Observe the count displayed on the Inactive Partners tab",
+        "Click the Inactive Partners tab",
+        "Count the number of vendor cards displayed",
+        "Compare the tab count with the actual number of cards"
+      ],
+      "expectedResults": [
+        "Tab shows a numeric count",
+        "Inactive Partners tab is selected",
+        "Vendor cards are counted",
+        "Tab count matches the number of vendor cards displayed"
+      ],
+      "postconditions": "Inactive Partners tab count is accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_009",
+      "title": "Verify correct count appears on the Rejected Partners tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC3 - Correct count appears on each tab",
+      "preconditions": "Admin is on the vendor list page and rejected vendors exist",
+      "steps": [
+        "Observe the count displayed on the Rejected Partners tab",
+        "Click the Rejected Partners tab",
+        "Count the number of vendor cards displayed",
+        "Compare the tab count with the actual number of cards"
+      ],
+      "expectedResults": [
+        "Tab shows a numeric count",
+        "Rejected Partners tab is selected",
+        "Vendor cards are counted",
+        "Tab count matches the number of vendor cards displayed"
+      ],
+      "postconditions": "Rejected Partners tab count is accurate",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_010",
+      "title": "Verify tab switching loads correct vendor list",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tab navigation",
+      "preconditions": "Admin is on the vendor list page with vendors in multiple statuses",
+      "steps": [
+        "Click the Pending Approval tab and note the vendors shown",
+        "Click the Active Partners tab and note the vendors shown",
+        "Click the Inactive Partners tab and note the vendors shown",
+        "Click the Rejected Partners tab and note the vendors shown",
+        "Switch back to Pending Approval tab",
+        "Verify the same vendors from step 1 are displayed"
+      ],
+      "expectedResults": [
+        "Pending vendors are displayed",
+        "Active vendors are displayed (different from pending)",
+        "Inactive vendors are displayed",
+        "Rejected vendors are displayed",
+        "Pending Approval tab is re-selected",
+        "Same pending vendors are displayed consistently"
+      ],
+      "postconditions": "Tab switching works correctly and consistently",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_011",
+      "title": "Verify vendor does not appear in multiple tabs simultaneously",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "Edge Case - Vendor appears in incorrect tab → data consistency validation",
+      "preconditions": "Admin is on the vendor list page with vendors in various statuses",
+      "steps": [
+        "Click the Pending Approval tab and note all vendor names",
+        "Click the Active Partners tab and note all vendor names",
+        "Click the Inactive Partners tab and note all vendor names",
+        "Click the Rejected Partners tab and note all vendor names",
+        "Cross-check that no vendor name appears in more than one tab"
+      ],
+      "expectedResults": [
+        "Pending vendor names are collected",
+        "Active vendor names are collected",
+        "Inactive vendor names are collected",
+        "Rejected vendor names are collected",
+        "No vendor appears in more than one tab — each vendor is in exactly one status tab"
+      ],
+      "postconditions": "Data consistency is verified across tabs",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_012",
+      "title": "Verify vendor card contact details are displayed correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC2 - Vendor card displays contact details",
+      "preconditions": "Admin is on a tab with vendor cards",
+      "steps": [
+        "Navigate to a tab with vendors",
+        "Locate a vendor card",
+        "Verify contact details include email or phone or both",
+        "Verify contact details are not empty or placeholder text"
+      ],
+      "expectedResults": [
+        "Tab loads with vendors",
+        "Vendor card is visible",
+        "Contact details (email/phone) are displayed",
+        "Contact details contain actual data, not placeholders"
+      ],
+      "postconditions": "Contact details are properly displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_013",
+      "title": "Verify vendor card product count reflects actual products",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC2 - Vendor card displays product count",
+      "preconditions": "Admin is on a tab with vendor cards and product count is known for a vendor",
+      "steps": [
+        "Navigate to a tab with vendors",
+        "Locate a vendor card with known product count",
+        "Verify the displayed product count matches the actual number of products for that vendor"
+      ],
+      "expectedResults": [
+        "Tab loads with vendors",
+        "Vendor card is found",
+        "Product count on the card matches the actual product count from backend"
+      ],
+      "postconditions": "Product count accuracy is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_014",
+      "title": "Verify tabs support keyboard navigation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Use Tab key to focus on the tab bar",
+        "Use Arrow keys to navigate between tabs",
+        "Press Enter or Space to select a tab",
+        "Verify the selected tab content loads",
+        "Tab into the vendor cards area",
+        "Verify vendor cards are focusable"
+      ],
+      "expectedResults": [
+        "Tab bar receives focus",
+        "Arrow keys move between tabs",
+        "Enter/Space selects the focused tab",
+        "Selected tab content loads correctly",
+        "Vendor cards area is reachable via keyboard",
+        "Vendor cards receive focus with visible indicators"
+      ],
+      "postconditions": "Tabs and cards are keyboard navigable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_015",
+      "title": "Verify tabs and vendor cards have accessible labels for screen readers",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "Accessibility - Screen reader support",
+      "preconditions": "Admin is on the vendor list page",
+      "steps": [
+        "Inspect tab elements for role='tab' and aria-selected attributes",
+        "Verify each tab has an accessible name including the count",
+        "Inspect vendor cards for accessible structure",
+        "Verify card content is readable by screen readers"
+      ],
+      "expectedResults": [
+        "Tabs have proper ARIA roles (tablist, tab, tabpanel)",
+        "Each tab has an accessible name (e.g., 'Pending Approval (5)')",
+        "Vendor cards have semantic structure",
+        "Screen reader can announce vendor card details"
+      ],
+      "postconditions": "Tabs and cards are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_016",
+      "title": "Verify default tab selection on page load",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1 - Tab behavior",
+      "preconditions": "Admin navigates to the vendor list page for the first time",
+      "steps": [
+        "Navigate to the vendor list page",
+        "Observe which tab is selected by default",
+        "Verify the default tab content is loaded"
+      ],
+      "expectedResults": [
+        "Vendor list page loads",
+        "A default tab is selected (likely Pending Approval or first tab)",
+        "The default tab's vendor cards are displayed"
+      ],
+      "postconditions": "Default tab is selected and content is loaded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM469_017",
+      "title": "Verify complete vendor list by status flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "acceptanceCriteria": "AC1-AC3 and Edge Cases - Complete Flow",
+      "preconditions": "Admin is signed in and vendors exist in all four statuses",
+      "steps": [
+        "Log in to the Admin Portal",
+        "Navigate to the vendor list page",
+        "Verify all four tabs are visible with counts",
+        "Click Pending Approval tab — verify vendor cards with all fields",
+        "Click Active Partners tab — verify vendor cards with all fields",
+        "Click Inactive Partners tab — verify vendor cards with all fields",
+        "Click Rejected Partners tab — verify vendor cards with all fields",
+        "Verify no vendor appears in multiple tabs",
+        "Verify tab counts match the number of cards in each tab"
+      ],
+      "expectedResults": [
+        "Admin is logged in",
+        "Vendor list page loads",
+        "All four tabs are visible with numeric counts",
+        "Pending vendor cards show name, type, location, contact, product count",
+        "Active vendor cards show name, type, location, contact, product count",
+        "Inactive vendor cards show name, type, location, contact, product count",
+        "Rejected vendor cards show name, type, location, contact, product count",
+        "No vendor appears in more than one tab",
+        "All tab counts are accurate"
+      ],
+      "postconditions": "Full vendor list by status flow is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_Status_Tabs": [
+      "TC_SCRUM469_001",
+      "TC_SCRUM469_010",
+      "TC_SCRUM469_016"
+    ],
+    "AC2_Vendor_Card_Fields": [
+      "TC_SCRUM469_002",
+      "TC_SCRUM469_003",
+      "TC_SCRUM469_004",
+      "TC_SCRUM469_005",
+      "TC_SCRUM469_012",
+      "TC_SCRUM469_013"
+    ],
+    "AC3_Tab_Counts": [
+      "TC_SCRUM469_006",
+      "TC_SCRUM469_007",
+      "TC_SCRUM469_008",
+      "TC_SCRUM469_009"
+    ],
+    "Edge_Case_Data_Consistency": [
+      "TC_SCRUM469_011"
+    ],
+    "Accessibility": [
+      "TC_SCRUM469_014",
+      "TC_SCRUM469_015"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM469_017"
+    ]
+  },
+  "testDataRequirements": {
+    "vendorData": [
+      "Vendors in Pending Approval status (at least 2)",
+      "Vendors in Active status (at least 2)",
+      "Vendors in Inactive status (at least 1)",
+      "Vendors in Rejected status (at least 1)",
+      "Vendors with known product counts for accuracy verification"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Vendor list page is reachable from admin navigation",
+    "Vendors can be in exactly one status at a time",
+    "Tab counts include all vendors in that status (no pagination affecting the count)"
+  ],
+  "risks": [
+    "Pagination behavior for tabs with many vendors is not defined in the story",
+    "Default tab selection on page load is not specified"
+  ],
+  "openQuestions": [
+    "Which tab is selected by default when the vendor list page loads?",
+    "Is there pagination within each tab, and if so, does the tab count reflect total or current page?",
+    "Are vendor cards clickable to navigate to a vendor detail view?",
+    "Is there a search or filter within each tab?",
+    "Note: Description was updated on 2026-04-15 — tabs changed from 'All Vendors' to 'Inactive Partners / Rejected Partners', and 'Status badge' was removed from vendor card fields. Confirm these changes are intentional."
+  ],
+  "notesFromChangelog": [
+    "Description updated 2026-04-15 (first revision): Tabs changed from 'Pending Approval, Active Partners, All Vendors' to 'Pending Approval, Active Partners, Inactive Partners, Rejected Partners'.",
+    "Description updated 2026-04-15 (second revision): 'Status badge' removed from vendor card display fields.",
+    "Test cases TC_SCRUM469_006 (vendor type verification), TC_SCRUM469_013-019 (auto-refresh, tab counts after approval, empty states, zero count tabs) were removed as they require backend API manipulation or empty environment conditions that are not automatable."
+  ]
+}

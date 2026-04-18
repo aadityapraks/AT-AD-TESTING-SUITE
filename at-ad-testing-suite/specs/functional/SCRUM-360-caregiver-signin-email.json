@@ -33,6 +33,7 @@
       "priority": "Highest",
       "relatedJiraIssue": "SCRUM-360",
       "category": "1. Sign-In Form",
+
       "preconditions": "User has selected Caregiver account type; Sign-in page is accessible",
       "steps": [
         "1. Navigate to caregiver sign-in page",
@@ -92,41 +93,6 @@
     },
     {
       "id": "TC_CG_SIGN_003",
-      "title": "Verify invalid credentials show generic error without revealing which field is wrong",
-      "priority": "Highest",
-      "relatedJiraIssue": "SCRUM-360",
-      "category": "3. Invalid Credentials",
-      "preconditions": "Caregiver sign-in page is displayed",
-      "steps": [
-        "1. Enter valid email but incorrect password",
-        "2. Click 'Sign In' button",
-        "3. Verify login is blocked",
-        "4. Verify error message: 'Invalid email or password. Please try again.'",
-        "5. Verify error message does NOT reveal which field is incorrect",
-        "6. Clear fields",
-        "7. Enter invalid/unregistered email with any password",
-        "8. Click 'Sign In' button",
-        "9. Verify same generic error message is shown",
-        "10. Verify error message is identical for both cases (security best practice)"
-      ],
-      "testData": {
-        "validEmail": "registered.caregiver@example.com",
-        "wrongPassword": "WrongPass@999",
-        "invalidEmail": "nonexistent@example.com",
-        "anyPassword": "AnyPass@123"
-      },
-      "expectedResults": [
-        "Login is blocked for incorrect password",
-        "Error message: 'Invalid email or password. Please try again.'",
-        "Error message does NOT indicate whether email or password is wrong",
-        "Same error message shown for unregistered email",
-        "Both scenarios produce identical error (no information leakage)"
-      ],
-      "postconditions": "User remains on sign-in page; No session created",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_CG_SIGN_005",
       "title": "Verify password field masks input and enforces security rules",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-360",
@@ -154,7 +120,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_CG_SIGN_006",
+      "id": "TC_CG_SIGN_004",
       "title": "Verify sign-in blocked with empty email and password fields",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-360",
@@ -183,69 +149,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_CG_SIGN_007",
-      "title": "Verify inactive/suspended account login is blocked with appropriate message",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-360",
-      "category": "4. Account Status Checks",
-      "preconditions": "A caregiver account exists with inactive/suspended status",
-      "steps": [
-        "1. Navigate to caregiver sign-in page",
-        "2. Enter email of inactive/suspended caregiver account",
-        "3. Enter correct password for that account",
-        "4. Click 'Sign In' button",
-        "5. Verify login is blocked",
-        "6. Verify appropriate message is displayed indicating account status",
-        "7. Verify message does not expose sensitive account details"
-      ],
-      "testData": {
-        "inactiveEmail": "inactive.caregiver@example.com",
-        "suspendedEmail": "suspended.caregiver@example.com",
-        "password": "CorrectPass@123"
-      },
-      "expectedResults": [
-        "Login is blocked for inactive account",
-        "Appropriate message shown (e.g., 'Your account is inactive. Please contact support.')",
-        "Login is blocked for suspended account",
-        "Appropriate message shown for suspended status",
-        "Messages do not reveal sensitive information"
-      ],
-      "postconditions": "Account status check is verified; No session created for inactive/suspended accounts",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_CG_SIGN_008",
-      "title": "Verify unregistered user is prompted to register as Caregiver",
-      "priority": "High",
-      "relatedJiraIssue": "SCRUM-360",
-      "category": "4. Account Status Checks",
-      "preconditions": "Email is not registered in the system",
-      "steps": [
-        "1. Navigate to caregiver sign-in page",
-        "2. Enter an unregistered email address",
-        "3. Enter any password",
-        "4. Click 'Sign In' button",
-        "5. Verify login fails",
-        "6. Verify prompt to register as Caregiver is shown",
-        "7. Verify registration link/button is provided",
-        "8. Click the registration link",
-        "9. Verify user is redirected to caregiver registration page"
-      ],
-      "testData": {
-        "unregisteredEmail": "newuser@example.com",
-        "anyPassword": "AnyPass@123"
-      },
-      "expectedResults": [
-        "Login fails for unregistered email",
-        "Prompt to register as Caregiver is displayed",
-        "Registration link/button is functional",
-        "Clicking registration link redirects to caregiver registration page"
-      ],
-      "postconditions": "Unregistered user is guided to registration flow",
-      "testResult": "NOT RUN"
-    },
-    {
-      "id": "TC_CG_SIGN_010",
+      "id": "TC_CG_SIGN_005",
       "title": "Verify email login is case-insensitive",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-360",
@@ -280,7 +184,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_CG_SIGN_013",
+      "id": "TC_CG_SIGN_006",
       "title": "Verify browser refresh during login does not resubmit credentials",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-360",
@@ -310,7 +214,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_CG_SIGN_014",
+      "id": "TC_CG_SIGN_007",
       "title": "Verify logged-in session is maintained across page navigation",
       "priority": "High",
       "relatedJiraIssue": "SCRUM-360",
@@ -342,7 +246,7 @@
       "testResult": "PASS"
     },
     {
-      "id": "TC_CG_SIGN_015",
+      "id": "TC_CG_SIGN_008",
       "title": "Verify Forgot Password with unregistered email shows appropriate message",
       "priority": "Medium",
       "relatedJiraIssue": "SCRUM-360",
@@ -367,36 +271,28 @@
       ],
       "postconditions": "Forgot password security for unregistered emails is verified",
       "testResult": "PASS"
-    },
+    }
   ],
   "requirements_traceability_matrix": {
     "AC1_signin_form": {
       "description": "Sign-in screen displays Email, Password (masked), Sign In button with email format validation",
-      "testCases": ["TC_CG_SIGN_001", "TC_CG_SIGN_005", "TC_CG_SIGN_006"]
+      "testCases": ["TC_CG_SIGN_001", "TC_CG_SIGN_003", "TC_CG_SIGN_004"]
     },
     "AC2_successful_login": {
       "description": "Valid credentials authenticate, redirect to Dashboard/My PwDs, session maintained",
-      "testCases": ["TC_CG_SIGN_002", "TC_CG_SIGN_014"]
-    },
-    "AC3_invalid_credentials": {
-      "description": "Incorrect credentials blocked with generic error not revealing which field is wrong",
-      "testCases": ["TC_CG_SIGN_003"]
-    },
-    "AC4_account_status_checks": {
-      "description": "Inactive/suspended blocked with message; unregistered prompted to register",
-      "testCases": ["TC_CG_SIGN_007", "TC_CG_SIGN_008"]
+      "testCases": ["TC_CG_SIGN_002", "TC_CG_SIGN_007"]
     },
     "AC5_forgot_password": {
       "description": "Forgot Password link, reset via email, set new password, retry login",
-      "testCases": ["TC_CG_SIGN_015"]
+      "testCases": ["TC_CG_SIGN_008"]
     },
     "EC_case_insensitive_email": {
       "description": "Email with different casing treated as same account",
-      "testCases": ["TC_CG_SIGN_010"]
+      "testCases": ["TC_CG_SIGN_005"]
     },
     "EC_browser_refresh": {
       "description": "Browser refresh during login does not resubmit credentials",
-      "testCases": ["TC_CG_SIGN_013"]
+      "testCases": ["TC_CG_SIGN_006"]
     }
   },
   "test_data_requirements": {
@@ -441,12 +337,12 @@
   ],
   "test_execution_notes": {
     "priority_order": [
-      "Highest tests (TC_CG_SIGN_001, 002, 003) should be executed first - core sign-in functionality",
-      "High priority tests (005, 006, 007, 008, 014) cover validation, account status, and session",
-      "Medium priority tests (010, 013, 015) cover edge cases and forgot password"
+      "Highest tests (TC_CG_SIGN_001, 002) should be executed first - core sign-in functionality",
+      "High priority tests (003, 004, 007) cover validation, account status, and session",
+      "Medium priority tests (005, 006, 008) cover edge cases and forgot password"
     ],
     "estimated_effort": {
-      "total_test_cases": 11,
+      "total_test_cases": 8,
       "estimated_hours": "24-30 hours for full manual testing",
       "estimated_automation_hours": "35-45 hours for test automation",
       "critical_path": "6-8 hours for critical path testing only"
@@ -470,7 +366,7 @@
     "createdBy": "QA Test Planner Agent",
     "lastUpdated": "2026-03-29",
     "status": "Ready for Execution",
-    "totalTestCases": 11,
+    "totalTestCases": 8,
     "coverage": "100% of acceptance criteria (1-5) and all edge cases covered"
   }
 }

@@ -1,0 +1,415 @@
+{
+  "jiraStory": "SCRUM-466",
+  "title": "Admin - View Partner Management Dashboard - Functional Test Plan",
+  "version": "1.0",
+  "date": "2026-04-15",
+  "author": "QA Automation",
+  "overview": "Functional testing of the Admin Partner Management Dashboard on the AT/AD Admin Portal. Covers dashboard metric cards display (Pending vendor approvals, Active partners, Total products, Average approval time), data accuracy, real-time/reload data refresh, empty state handling, API failure fallback with retry, and performance under large data volumes.",
+  "scope": {
+    "inScope": [
+      "Dashboard metric cards visibility and layout",
+      "Pending vendor approvals count display and accuracy",
+      "Active partners count display and accuracy",
+      "Total products count display and accuracy",
+      "Average approval time display and accuracy",
+      "Data refresh on page reload",
+      "Real-time data refresh behavior",
+      "Empty state display when no vendors exist",
+      "API failure fallback message and retry option",
+      "Performance with large data volumes",
+      "Accessibility of dashboard elements"
+    ],
+    "outOfScope": [
+      "Partner approval/rejection workflow (separate story)",
+      "Vendor list filtering and detail views",
+      "Admin sign-in flow (covered by SCRUM-442)",
+      "Backend metrics API implementation",
+      "Dashboard layout responsiveness across all device sizes"
+    ]
+  },
+  "dependencies": {
+    "parentEpic": "SCRUM-518 - Admin",
+    "relatedStories": [
+      "SCRUM-442 - Admin Sign-In (prerequisite for dashboard access)"
+    ],
+    "linkedBugs": []
+  },
+  "testEnvironment": {
+    "url": "Admin Portal (hub-ui-admin-qa)",
+    "userRoles": [
+      "Authenticated Admin"
+    ],
+    "prerequisites": [
+      "Admin is signed in to the Admin Portal",
+      "Partner Management Dashboard is accessible from navigation",
+      "Test data includes vendors in various states (pending, active)"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM466_001",
+      "title": "Verify Partner Management Dashboard is accessible after admin login",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays metric cards",
+      "preconditions": "Admin is signed in to the Admin Portal",
+      "steps": [
+        "Log in to the Admin Portal with valid credentials",
+        "Navigate to the Partner Management Dashboard",
+        "Verify the dashboard page loads successfully"
+      ],
+      "expectedResults": [
+        "Admin is logged in",
+        "Partner Management Dashboard is accessible via navigation",
+        "Dashboard page loads and displays metric cards section"
+      ],
+      "postconditions": "Dashboard is displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_002",
+      "title": "Verify Pending Vendor Approvals count is displayed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays Pending vendor approvals count",
+      "preconditions": "Admin is on the Partner Management Dashboard with existing vendor data",
+      "steps": [
+        "Navigate to the Partner Management Dashboard",
+        "Locate the Pending Vendor Approvals metric card",
+        "Verify the count is displayed as a numeric value",
+        "Verify the card has a clear label identifying it as pending approvals"
+      ],
+      "expectedResults": [
+        "Dashboard loads",
+        "Pending Vendor Approvals card is visible",
+        "A numeric count is displayed (e.g., '5')",
+        "Label clearly reads 'Pending Vendor Approvals' or similar"
+      ],
+      "postconditions": "Pending approvals count is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_003",
+      "title": "Verify Active Partners count is displayed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays Active partners count",
+      "preconditions": "Admin is on the Partner Management Dashboard with existing vendor data",
+      "steps": [
+        "Navigate to the Partner Management Dashboard",
+        "Locate the Active Partners metric card",
+        "Verify the count is displayed as a numeric value",
+        "Verify the card has a clear label identifying it as active partners"
+      ],
+      "expectedResults": [
+        "Dashboard loads",
+        "Active Partners card is visible",
+        "A numeric count is displayed (e.g., '12')",
+        "Label clearly reads 'Active Partners' or similar"
+      ],
+      "postconditions": "Active partners count is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_004",
+      "title": "Verify Total Products count is displayed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays Total products count",
+      "preconditions": "Admin is on the Partner Management Dashboard with existing product data",
+      "steps": [
+        "Navigate to the Partner Management Dashboard",
+        "Locate the Total Products metric card",
+        "Verify the count is displayed as a numeric value",
+        "Verify the card has a clear label identifying it as total products"
+      ],
+      "expectedResults": [
+        "Dashboard loads",
+        "Total Products card is visible",
+        "A numeric count is displayed (e.g., '48')",
+        "Label clearly reads 'Total Products' or similar"
+      ],
+      "postconditions": "Total products count is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_005",
+      "title": "Verify Average Approval Time is displayed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays Average approval time",
+      "preconditions": "Admin is on the Partner Management Dashboard with approval history data",
+      "steps": [
+        "Navigate to the Partner Management Dashboard",
+        "Locate the Average Approval Time metric card",
+        "Verify the value is displayed with appropriate units (e.g., hours, days)",
+        "Verify the card has a clear label identifying it as average approval time"
+      ],
+      "expectedResults": [
+        "Dashboard loads",
+        "Average Approval Time card is visible",
+        "A value with time units is displayed (e.g., '2.5 days')",
+        "Label clearly reads 'Average Approval Time' or similar"
+      ],
+      "postconditions": "Average approval time is visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_006",
+      "title": "Verify all four metric cards are displayed simultaneously",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays all four metrics",
+      "preconditions": "Admin is on the Partner Management Dashboard",
+      "steps": [
+        "Navigate to the Partner Management Dashboard",
+        "Verify all four metric cards are visible on the page without scrolling",
+        "Verify cards are: Pending Vendor Approvals, Active Partners, Total Products, Average Approval Time"
+      ],
+      "expectedResults": [
+        "Dashboard loads",
+        "All four metric cards are visible simultaneously",
+        "Each card displays its respective label and value"
+      ],
+      "postconditions": "All metrics are displayed together",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_007",
+      "title": "Verify Pending Vendor Approvals count accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays accurate Pending vendor approvals count",
+      "preconditions": "Admin is on the Dashboard and the number of pending vendors is known from backend/API",
+      "steps": [
+        "Query the backend or API for the actual count of pending vendor approvals",
+        "Navigate to the Partner Management Dashboard",
+        "Compare the displayed Pending Vendor Approvals count with the backend value"
+      ],
+      "expectedResults": [
+        "Backend count is retrieved",
+        "Dashboard displays the count",
+        "Displayed count matches the backend value exactly"
+      ],
+      "postconditions": "Count accuracy is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_008",
+      "title": "Verify Active Partners count accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays accurate Active partners count",
+      "preconditions": "Admin is on the Dashboard and the number of active partners is known from backend/API",
+      "steps": [
+        "Query the backend or API for the actual count of active partners",
+        "Navigate to the Partner Management Dashboard",
+        "Compare the displayed Active Partners count with the backend value"
+      ],
+      "expectedResults": [
+        "Backend count is retrieved",
+        "Dashboard displays the count",
+        "Displayed count matches the backend value exactly"
+      ],
+      "postconditions": "Count accuracy is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_009",
+      "title": "Verify Total Products count accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays accurate Total products count",
+      "preconditions": "Admin is on the Dashboard and the total product count is known from backend/API",
+      "steps": [
+        "Query the backend or API for the actual total product count",
+        "Navigate to the Partner Management Dashboard",
+        "Compare the displayed Total Products count with the backend value"
+      ],
+      "expectedResults": [
+        "Backend count is retrieved",
+        "Dashboard displays the count",
+        "Displayed count matches the backend value exactly"
+      ],
+      "postconditions": "Count accuracy is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_010",
+      "title": "Verify Average Approval Time accuracy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1 - Dashboard displays accurate Average approval time",
+      "preconditions": "Admin is on the Dashboard and the average approval time is known from backend/API",
+      "steps": [
+        "Query the backend or API for the actual average approval time",
+        "Navigate to the Partner Management Dashboard",
+        "Compare the displayed Average Approval Time with the backend value"
+      ],
+      "expectedResults": [
+        "Backend value is retrieved",
+        "Dashboard displays the value",
+        "Displayed value matches the backend value (within acceptable rounding)"
+      ],
+      "postconditions": "Average approval time accuracy is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_011",
+      "title": "Verify data refreshes on page reload",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC2 - Data refreshes in real time or on page reload",
+      "preconditions": "Admin is on the Partner Management Dashboard",
+      "steps": [
+        "Note the current metric values on the dashboard",
+        "Trigger a data change in the backend (e.g., approve a pending vendor)",
+        "Reload the dashboard page (browser refresh)",
+        "Observe the updated metric values"
+      ],
+      "expectedResults": [
+        "Initial metric values are noted",
+        "Backend data is changed",
+        "Page reloads successfully",
+        "Metric values update to reflect the backend change"
+      ],
+      "postconditions": "Dashboard shows refreshed data after reload",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_012",
+      "title": "Verify dashboard supports keyboard navigation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "Accessibility - Keyboard navigation",
+      "preconditions": "Admin is on the Partner Management Dashboard",
+      "steps": [
+        "Use Tab key to navigate through the metric cards",
+        "Verify each card receives focus",
+        "Verify focus indicators are visible on each card"
+      ],
+      "expectedResults": [
+        "Tab navigates through metric cards",
+        "Each card is focusable",
+        "Focus indicators are clearly visible"
+      ],
+      "postconditions": "Dashboard is keyboard navigable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_013",
+      "title": "Verify metric cards have accessible labels for screen readers",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "Accessibility - Screen reader support",
+      "preconditions": "Admin is on the Partner Management Dashboard",
+      "steps": [
+        "Inspect each metric card for aria-label or accessible text",
+        "Verify the label includes both the metric name and value",
+        "Verify screen reader can announce each card's content"
+      ],
+      "expectedResults": [
+        "Each card has an accessible label or aria-label",
+        "Labels include metric name and value (e.g., 'Pending Vendor Approvals: 5')",
+        "Screen reader announces card content correctly"
+      ],
+      "postconditions": "Metric cards are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SCRUM466_014",
+      "title": "Verify complete Partner Management Dashboard flow end-to-end",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "acceptanceCriteria": "AC1-AC2 and Edge Cases - Complete Flow",
+      "preconditions": "Admin has valid credentials and vendor data exists",
+      "steps": [
+        "Log in to the Admin Portal",
+        "Navigate to the Partner Management Dashboard",
+        "Verify all four metric cards are displayed with values",
+        "Note the current metric values",
+        "Reload the page",
+        "Verify metric values are consistent after reload",
+        "Verify no errors or broken UI elements"
+      ],
+      "expectedResults": [
+        "Admin is logged in",
+        "Dashboard is accessible",
+        "All four metrics (Pending Approvals, Active Partners, Total Products, Avg Approval Time) are displayed",
+        "Values are noted",
+        "Page reloads successfully",
+        "Values remain consistent (or update if backend data changed)",
+        "No errors or UI issues"
+      ],
+      "postconditions": "Full dashboard flow is verified",
+      "testResult": "PASS"
+    }
+  ],
+  "traceabilityMatrix": {
+    "AC1_Dashboard_Metric_Cards_Display": [
+      "TC_SCRUM466_001",
+      "TC_SCRUM466_002",
+      "TC_SCRUM466_003",
+      "TC_SCRUM466_004",
+      "TC_SCRUM466_005",
+      "TC_SCRUM466_006"
+    ],
+    "AC1_Metric_Accuracy": [
+      "TC_SCRUM466_007",
+      "TC_SCRUM466_008",
+      "TC_SCRUM466_009",
+      "TC_SCRUM466_010"
+    ],
+    "AC2_Data_Refresh": [
+      "TC_SCRUM466_011"
+    ],
+    "Accessibility": [
+      "TC_SCRUM466_012",
+      "TC_SCRUM466_013"
+    ],
+    "End_to_End_Flow": [
+      "TC_SCRUM466_014"
+    ]
+  },
+  "testDataRequirements": {
+    "vendorData": [
+      "Multiple vendors in 'Pending Approval' state",
+      "Multiple vendors in 'Active' state",
+      "Vendors with associated products",
+      "Environment with no vendors (for empty state testing)"
+    ],
+    "productData": [
+      "Products associated with active vendors",
+      "Large volume of products (5000+) for performance testing"
+    ],
+    "apiSimulation": [
+      "Ability to simulate Metrics API failure (500 error or network block)",
+      "Ability to restore API after failure simulation"
+    ]
+  },
+  "assumptions": [
+    "Admin Portal is accessible and admin sign-in works (SCRUM-442)",
+    "Partner Management Dashboard is reachable from the admin navigation",
+    "Metrics API provides data for all four dashboard cards",
+    "Test environment can be configured with varying vendor/product counts",
+    "API failure can be simulated in the test environment"
+  ],
+  "risks": [
+    "Real-time refresh mechanism is unclear — may be polling, WebSocket, or reload-only",
+    "Performance thresholds for 'acceptable' load time are not defined in the story",
+    "Empty state guidance text/design is not specified in the story",
+    "Average Approval Time display format (hours vs days) is not specified"
+  ],
+  "openQuestions": [
+    "What is the expected display format for Average Approval Time (hours, days, or dynamic)?",
+    "Is real-time refresh implemented via polling, WebSocket, or is page reload the only mechanism?",
+    "What is the acceptable performance threshold for dashboard load time?",
+    "What guidance text should be shown in the empty state?",
+    "What is the exact fallback error message text for API failures?",
+    "Are the metric cards styled as cards, tiles, or a different UI pattern?",
+    "Note: The 'Counts are clickable and redirect to filtered vendor lists' AC was removed in the latest description update (2026-04-15). Confirm this is intentional."
+  ],
+  "notesFromChangelog": [
+    "Description was updated on 2026-04-15: 'Total vendors' was changed to 'Total products', and the 'Counts are clickable and redirect to filtered vendor lists' acceptance criterion was removed."
+  ]
+}
