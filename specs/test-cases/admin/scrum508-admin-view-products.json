@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-508",
+  "title": "Admin - View Approved & All Products (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-508: Admin - View Approved & All Products. Validates All Products tab showing Approved/Official AT/Under Review products, filters, status dropdown, pagination, and product cards.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM508_001", "title": "All Products Tab is Visible and Selected by Default", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Observe tabs."], "expectedResults": ["'All Products' tab visible and selected."], "testResult": "PASS", "feature": "All Products Tab" },
+    { "id": "TC_SCRUM508_002", "title": "All Products Tab Shows Total Count", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Observe tab badge."], "expectedResults": ["Tab shows numeric count."], "testResult": "PASS", "feature": "All Products Tab" },
+    { "id": "TC_SCRUM508_003", "title": "Product Cards are Displayed", "priority": "Highest", "preconditions": "Admin on All Products tab.", "steps": ["Observe product list."], "expectedResults": ["Product cards with View Details buttons visible."], "testResult": "PASS", "feature": "All Products Tab" },
+    { "id": "TC_SCRUM508_004", "title": "Product Card Shows Product Name", "priority": "High", "preconditions": "Admin on All Products tab.", "steps": ["Observe first product card."], "expectedResults": ["Product name heading visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_005", "title": "Product Card Shows Status Badge", "priority": "Highest", "preconditions": "Admin on All Products tab.", "steps": ["Observe first product card."], "expectedResults": ["Status badge (Approved/Under Review) visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_006", "title": "Product Card Shows Price", "priority": "High", "preconditions": "Admin on All Products tab.", "steps": ["Observe product card."], "expectedResults": ["Price with ₹ symbol visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_007", "title": "Product Card Shows Stock Quantity", "priority": "High", "preconditions": "Admin on All Products tab.", "steps": ["Observe product card."], "expectedResults": ["Stock quantity with units visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_008", "title": "Product Card Shows Category", "priority": "Medium", "preconditions": "Admin on All Products tab.", "steps": ["Observe product card."], "expectedResults": ["Category info visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_009", "title": "Product Card Shows Vendor Name", "priority": "Medium", "preconditions": "Admin on All Products tab.", "steps": ["Observe product card."], "expectedResults": ["Vendor name visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_010", "title": "View Details Button Visible on Product Card", "priority": "Highest", "preconditions": "Admin on All Products tab.", "steps": ["Observe product card."], "expectedResults": ["'View Details' button visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM508_011", "title": "All Statuses Filter Dropdown is Visible", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Observe filter area."], "expectedResults": ["'All Statuses' dropdown visible."], "testResult": "PASS", "feature": "Filters" },
+    { "id": "TC_SCRUM508_012", "title": "All Vendors Filter Dropdown is Visible", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Observe filter area."], "expectedResults": ["'All Vendors' dropdown visible."], "testResult": "PASS", "feature": "Filters" },
+    { "id": "TC_SCRUM508_013", "title": "All Categories Filter Dropdown is Visible", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Observe filter area."], "expectedResults": ["'All Categories' dropdown visible."], "testResult": "PASS", "feature": "Filters" },
+    { "id": "TC_SCRUM508_014", "title": "Pagination is Visible", "priority": "High", "preconditions": "All Products has multiple pages.", "steps": ["Observe pagination."], "expectedResults": ["Pagination with Next/Previous visible."], "testResult": "PASS", "feature": "Pagination" },
+    { "id": "TC_SCRUM508_015", "title": "Showing X to Y of Z Text Displayed", "priority": "Medium", "preconditions": "Admin on All Products tab.", "steps": ["Observe pagination info."], "expectedResults": ["'Showing X to Y of Z products' visible."], "testResult": "PASS", "feature": "Pagination" },
+    { "id": "TC_SCRUM508_016", "title": "Next Page Button Works", "priority": "High", "preconditions": "Multiple pages of products.", "steps": ["Click Next.", "Observe results."], "expectedResults": ["Page 2 products displayed."], "testResult": "PASS", "feature": "Pagination" },
+    { "id": "TC_SCRUM508_017", "title": "New Submissions Tab is Visible", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Observe tabs."], "expectedResults": ["'New Submissions' tab visible with count."], "testResult": "PASS", "feature": "Tabs" },
+    { "id": "TC_SCRUM508_018", "title": "Pending Edits Tab is Visible", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Observe tabs."], "expectedResults": ["'Pending Edits' tab visible with count."], "testResult": "PASS", "feature": "Tabs" },
+    { "id": "TC_SCRUM508_019", "title": "Export Data Button is Visible", "priority": "Low", "preconditions": "Admin on Product Management page.", "steps": ["Observe action buttons."], "expectedResults": ["'Export Data' button visible."], "testResult": "PASS", "feature": "Actions" },
+    { "id": "TC_SCRUM508_020", "title": "Product Management Page Heading is Correct", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Observe page heading."], "expectedResults": ["'Product Management' H1 heading visible."], "testResult": "PASS", "feature": "Page Structure" }
+  ]
+}

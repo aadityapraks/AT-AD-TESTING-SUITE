@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-511",
+  "title": "Admin - Search Products (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-511: Admin - Search Products. Validates search by name, vendor, category, or SKU across all tabs, partial keyword search (min 3 chars), and no-result state.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM511_001", "title": "Search Box is Visible on Product Management Page", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Observe search area."], "expectedResults": ["Search textbox visible with placeholder."], "testResult": "PASS", "feature": "Search Box" },
+    { "id": "TC_SCRUM511_002", "title": "Search Box Has Correct Placeholder", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Observe search placeholder."], "expectedResults": ["Placeholder contains 'Search by product name, partner, or category'."], "testResult": "PASS", "feature": "Search Box" },
+    { "id": "TC_SCRUM511_003", "title": "Search Box Accepts Input", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Type text into search box."], "expectedResults": ["Text accepted and displayed."], "testResult": "PASS", "feature": "Search Box" },
+    { "id": "TC_SCRUM511_004", "title": "Search by Product Name Returns Results", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Type 'Wheelchair' in search.", "Wait for results."], "expectedResults": ["Products matching 'Wheelchair' displayed."], "testResult": "PASS", "feature": "Search by Name" },
+    { "id": "TC_SCRUM511_005", "title": "Search by Partial Keyword Works (Min 3 Chars)", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Type 'Whe' in search.", "Wait for results."], "expectedResults": ["Products matching partial keyword displayed."], "testResult": "PASS", "feature": "Search by Name" },
+    { "id": "TC_SCRUM511_006", "title": "Search is Case Insensitive", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Type 'wheelchair' (lowercase).", "Wait for results."], "expectedResults": ["Same results as uppercase search."], "testResult": "PASS", "feature": "Search by Name" },
+    { "id": "TC_SCRUM511_007", "title": "Search by Category Returns Results", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Type a category name in search.", "Wait for results."], "expectedResults": ["Products matching category displayed."], "testResult": "PASS", "feature": "Search by Category" },
+    { "id": "TC_SCRUM511_008", "title": "No Results State Shown for Non-Matching Search", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Type 'xyznonexistent123' in search.", "Wait for results."], "expectedResults": ["No results / empty state displayed."], "testResult": "PASS", "feature": "No Results" },
+    { "id": "TC_SCRUM511_009", "title": "Search Works on All Products Tab", "priority": "High", "preconditions": "Admin on All Products tab.", "steps": ["Type search term.", "Observe results."], "expectedResults": ["Results filtered on All Products tab."], "testResult": "PASS", "feature": "Cross-Tab Search" },
+    { "id": "TC_SCRUM511_010", "title": "Search Works on New Submissions Tab", "priority": "High", "preconditions": "Admin on New Submissions tab.", "steps": ["Click New Submissions tab.", "Type search term.", "Observe results."], "expectedResults": ["Results filtered on New Submissions tab."], "testResult": "PASS", "feature": "Cross-Tab Search" },
+    { "id": "TC_SCRUM511_011", "title": "Search Works on Pending Edits Tab", "priority": "High", "preconditions": "Admin on Pending Edits tab.", "steps": ["Click Pending Edits tab.", "Type search term.", "Observe results."], "expectedResults": ["Results filtered on Pending Edits tab."], "testResult": "PASS", "feature": "Cross-Tab Search" },
+    { "id": "TC_SCRUM511_012", "title": "Clearing Search Restores Full List", "priority": "High", "preconditions": "Admin has active search.", "steps": ["Clear search box.", "Wait for results."], "expectedResults": ["Full product list restored."], "testResult": "PASS", "feature": "Clear Search" },
+    { "id": "TC_SCRUM511_013", "title": "Product Count Updates After Search", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Type search term.", "Observe pagination info."], "expectedResults": ["'Showing X to Y of Z' updates to reflect filtered count."], "testResult": "PASS", "feature": "Search Results" },
+    { "id": "TC_SCRUM511_014", "title": "Search with Special Characters Does Not Break Page", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Type '!@#$%' in search."], "expectedResults": ["Page does not crash, shows no results or empty state."], "testResult": "PASS", "feature": "Edge Cases" },
+    { "id": "TC_SCRUM511_015", "title": "Search with Very Long String Does Not Break Page", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Type 200+ character string in search."], "expectedResults": ["Page does not crash."], "testResult": "PASS", "feature": "Edge Cases" },
+    { "id": "TC_SCRUM511_016", "title": "Search Box Retains Value After Tab Switch", "priority": "Medium", "preconditions": "Admin has active search on All Products.", "steps": ["Type search term.", "Switch to New Submissions tab.", "Observe search box."], "expectedResults": ["Search box retains or clears value gracefully."], "testResult": "PASS", "feature": "Cross-Tab Search" },
+    { "id": "TC_SCRUM511_017", "title": "Vendor Filter Works Alongside Search", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Select a vendor filter.", "Type search term."], "expectedResults": ["Both filters applied together."], "testResult": "PASS", "feature": "Filters + Search" },
+    { "id": "TC_SCRUM511_018", "title": "Category Filter Works Alongside Search", "priority": "Medium", "preconditions": "Admin on Product Management page.", "steps": ["Select a category filter.", "Type search term."], "expectedResults": ["Both filters applied together."], "testResult": "PASS", "feature": "Filters + Search" },
+    { "id": "TC_SCRUM511_019", "title": "Pagination Resets After New Search", "priority": "Medium", "preconditions": "Admin on page 2 of products.", "steps": ["Type search term.", "Observe pagination."], "expectedResults": ["Pagination resets to page 1."], "testResult": "PASS", "feature": "Search Results" },
+    { "id": "TC_SCRUM511_020", "title": "Search Results Show View Details Button", "priority": "Low", "preconditions": "Admin has search results.", "steps": ["Observe search results."], "expectedResults": ["View Details button visible on result cards."], "testResult": "PASS", "feature": "Search Results" }
+  ]
+}

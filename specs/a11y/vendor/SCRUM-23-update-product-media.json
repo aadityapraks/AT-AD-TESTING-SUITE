@@ -1,0 +1,1156 @@
+{
+  "jiraStory": "SCRUM-23",
+  "title": "SCRUM-23 Accessibility Test Plan",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner Updates Product Photos and Demo Videos (SCRUM-23) covering WCAG 2.1 AA compliance for media gallery, image uploads, video management, ALT text generation, preview functionality, and approval workflow.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify keyboard navigation to Edit Product option",
+      "wcagCriterion": "2.4.7",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Vendor Product Management page",
+        "Tab through product list to Edit Product button",
+        "Verify focus indicator is visible",
+        "Press Enter to activate Edit Product"
+      ],
+      "expectedResults": [
+        "Edit Product button is keyboard accessible",
+        "Focus indicator has 3:1 contrast ratio (WCAG 2.4.7)",
+        "Enter key activates button",
+        "No keyboard traps exist",
+        "Tab order is logical"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify screen reader announces Edit Product button",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to product list",
+        "Focus on Edit Product button",
+        "Verify button name and role announced",
+        "Verify associated product name announced"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Accessible name includes product context",
+        "Button state announced if disabled",
+        "No empty or generic labels"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify media gallery view accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Open Edit Product media section",
+        "Verify gallery has proper landmark role",
+        "Tab through all images and videos",
+        "Verify each item is keyboard accessible",
+        "Check focus order follows visual layout"
+      ],
+      "expectedResults": [
+        "Gallery has role='region' with aria-label",
+        "All media items are keyboard accessible",
+        "Focus indicator visible with 3:1 contrast",
+        "Tab order follows logical sequence",
+        "Gallery structure announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify gallery visual accessibility",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Inspect gallery text contrast",
+        "Test gallery at 200% zoom",
+        "Verify borders/separators have 3:1 contrast",
+        "Check gallery doesn't rely on color alone",
+        "Verify all labels are readable"
+      ],
+      "expectedResults": [
+        "Text has 4.5:1 contrast ratio (WCAG 1.4.3)",
+        "Gallery usable at 200% zoom (WCAG 1.4.4)",
+        "Information not conveyed by color alone (WCAG 1.4.1)",
+        "Borders have 3:1 contrast",
+        "All content remains visible when zoomed"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Verify primary image indicator accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to media gallery",
+        "Locate primary image",
+        "Verify \"Primary\" indicator is visible",
+        "Check screen reader announces primary status",
+        "Verify indicator has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Primary indicator has aria-label or visible text",
+        "Screen reader announces \"Primary image\"",
+        "Indicator has 3:1 contrast ratio",
+        "Indicator not conveyed by color alone",
+        "Visual and programmatic indication present"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Verify replace primary image button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Focus on primary image",
+        "Tab to Replace button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify file picker opens"
+      ],
+      "expectedResults": [
+        "Replace button keyboard accessible",
+        "Accessible name: \"Replace primary image\"",
+        "Focus indicator has 3:1 contrast",
+        "Enter/Space activates button",
+        "Button state announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Verify reassign primary image functionality",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to non-primary image",
+        "Tab to \"Set as Primary\" button",
+        "Verify button is keyboard accessible",
+        "Activate with Enter/Space",
+        "Verify primary status updates announced"
+      ],
+      "expectedResults": [
+        "Set as Primary button keyboard accessible",
+        "Button has clear accessible name",
+        "Action result announced via aria-live",
+        "Visual update has 3:1 contrast",
+        "Focus management is logical"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Verify primary image preview update",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Update primary image",
+        "Verify preview updates automatically",
+        "Check screen reader announces update",
+        "Verify preview has proper ALT text",
+        "Test preview at 200% zoom"
+      ],
+      "expectedResults": [
+        "Preview update announced via aria-live='polite'",
+        "Preview image has meaningful ALT text",
+        "Update doesn't disrupt keyboard focus",
+        "Preview readable at 200% zoom",
+        "Loading state announced if applicable"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verify upload button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to upload section",
+        "Tab to Upload Images button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify file picker opens"
+      ],
+      "expectedResults": [
+        "Upload button keyboard accessible",
+        "Accessible name: \"Upload product images\"",
+        "Focus indicator has 3:1 contrast",
+        "Enter/Space activates button",
+        "File limit (5 images) announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Verify file format validation messages",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to upload unsupported format",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify error has sufficient contrast",
+        "Test keyboard focus on error"
+      ],
+      "expectedResults": [
+        "Error message has role='alert' or aria-live='assertive'",
+        "Message clearly states supported formats (JPG, PNG)",
+        "Text has 4.5:1 contrast ratio",
+        "Error linked to upload control",
+        "Focus moves to error or remains on control"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Verify image preview accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload valid images",
+        "Verify previews are keyboard accessible",
+        "Tab through all preview controls",
+        "Check screen reader announces image details",
+        "Verify preview actions are accessible"
+      ],
+      "expectedResults": [
+        "Each preview has accessible name",
+        "Preview controls (reorder, replace, delete) keyboard accessible",
+        "Image filename announced by screen reader",
+        "Preview has proper ARIA attributes",
+        "All controls have visible focus indicators"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Verify reorder images functionality",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Focus on image in gallery",
+        "Locate reorder controls (up/down arrows)",
+        "Verify controls are keyboard accessible",
+        "Use Enter/Space to reorder",
+        "Verify new order announced"
+      ],
+      "expectedResults": [
+        "Reorder buttons keyboard accessible",
+        "Accessible names: \"Move image up\", \"Move image down\"",
+        "Reorder result announced via aria-live",
+        "Focus remains on moved item",
+        "Visual order matches programmatic order"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Verify delete image functionality",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Focus on image preview",
+        "Tab to Delete button",
+        "Verify button is keyboard accessible",
+        "Press Enter to delete",
+        "Verify deletion announced"
+      ],
+      "expectedResults": [
+        "Delete button keyboard accessible",
+        "Accessible name: \"Delete [filename]\"",
+        "Confirmation dialog appears (if applicable)",
+        "Deletion announced via aria-live",
+        "Focus moves to logical next element"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Verify 3D mockup section accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to 3D mockup section",
+        "Verify section has proper heading",
+        "Tab through upload controls",
+        "Check image limit (3) is announced",
+        "Verify image tip is accessible"
+      ],
+      "expectedResults": [
+        "Section has descriptive heading (h2 or h3)",
+        "Upload limit announced: \"Upload up to 3 images\"",
+        "Image tip has role='tooltip' or aria-describedby",
+        "All controls keyboard accessible",
+        "Focus indicators visible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Verify 3D mockup image tip accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Focus on image tip icon",
+        "Verify tooltip appears on focus/hover",
+        "Check screen reader announces tip content",
+        "Press Escape to close tooltip",
+        "Verify tooltip has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Tip icon has accessible name: \"3D mockup guidelines\"",
+        "Tooltip appears on focus and hover",
+        "Tooltip content announced by screen reader",
+        "Escape key closes tooltip",
+        "Tooltip text has 4.5:1 contrast ratio"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Verify video upload button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to demo video section",
+        "Tab to Upload Video button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify file picker opens"
+      ],
+      "expectedResults": [
+        "Upload button keyboard accessible",
+        "Accessible name: \"Upload demo video\"",
+        "Supported format (MP4) announced",
+        "Focus indicator has 3:1 contrast",
+        "File size limit announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Verify video embed link input accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to embed link option",
+        "Tab to input field",
+        "Verify field has visible label",
+        "Type YouTube/Vimeo URL",
+        "Verify validation feedback is accessible"
+      ],
+      "expectedResults": [
+        "Input has associated label",
+        "Label has 4.5:1 contrast ratio",
+        "Placeholder text (if any) not sole label",
+        "Validation errors announced by screen reader",
+        "Error messages linked to input (aria-describedby)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Verify video preview player accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload or embed video",
+        "Navigate to video preview",
+        "Tab through player controls",
+        "Verify all controls keyboard accessible",
+        "Test play/pause with Enter/Space"
+      ],
+      "expectedResults": [
+        "Video player has role='region' with label",
+        "All controls keyboard accessible",
+        "Play/Pause button has clear accessible name",
+        "Volume, seek controls keyboard accessible",
+        "Focus indicators visible on all controls"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Verify video file validation messages",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to upload invalid file type",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Attempt to upload oversized file",
+        "Verify size limit error is accessible"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message states valid formats and size limits",
+        "Text has 4.5:1 contrast ratio",
+        "Error linked to upload control",
+        "User can retry without losing progress"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Verify ALT text input field accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload image",
+        "Navigate to ALT text field",
+        "Verify field has visible label",
+        "Verify required indicator is accessible",
+        "Type ALT text and verify character count"
+      ],
+      "expectedResults": [
+        "Input has associated label: \"ALT text\"",
+        "Required indicator announced: \"required\"",
+        "Label has 4.5:1 contrast ratio",
+        "Character count announced dynamically",
+        "Help text available and accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Verify missing ALT text prompt",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload image without ALT text",
+        "Attempt to save",
+        "Verify prompt appears",
+        "Check screen reader announces prompt",
+        "Verify prompt has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Prompt has role='alert' or aria-live='assertive'",
+        "Message clearly states ALT text required",
+        "Text has 4.5:1 contrast ratio",
+        "Focus moves to ALT text field",
+        "Prompt linked to relevant field"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Verify Generate ALT Text with GenAI button",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Generate ALT Text button",
+        "Verify button is keyboard accessible",
+        "Press Enter to activate",
+        "Verify loading state is announced",
+        "Verify generated text is announced"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Accessible name: \"Generate ALT text with GenAI\"",
+        "Loading state announced via aria-live",
+        "Generated text announced when ready",
+        "Focus management is logical"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Verify video caption upload accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to caption upload section",
+        "Tab to Upload Captions button",
+        "Verify button is keyboard accessible",
+        "Upload .SRT file",
+        "Verify success message is accessible"
+      ],
+      "expectedResults": [
+        "Upload button keyboard accessible",
+        "Accessible name: \"Upload caption file\"",
+        "Supported format (.SRT) announced",
+        "Success message has aria-live='polite'",
+        "File name announced after upload"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Verify caption warning message",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload video without captions",
+        "Verify warning message appears",
+        "Check screen reader announces warning",
+        "Verify warning has sufficient contrast",
+        "Verify warning icon is accessible"
+      ],
+      "expectedResults": [
+        "Warning has role='alert' or aria-live='polite'",
+        "Message: \"Adding captions improves accessibility\"",
+        "Text has 4.5:1 contrast ratio",
+        "Warning icon has accessible name",
+        "Warning doesn't block interaction"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Verify Preview Media button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Preview Media button",
+        "Verify button is keyboard accessible",
+        "Press Enter to open preview",
+        "Verify preview modal opens",
+        "Check focus moves to modal"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Accessible name: \"Preview media\"",
+        "Focus moves to preview modal",
+        "Modal has role='dialog' or 'region'",
+        "Modal is announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Verify preview modal accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Open preview modal",
+        "Verify focus trap within modal",
+        "Tab through all modal content",
+        "Press Escape to close",
+        "Verify focus returns to trigger button"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog' and aria-modal='true'",
+        "Focus trapped within modal",
+        "All content keyboard accessible",
+        "Escape closes modal",
+        "Focus returns to Preview button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Verify preview primary image display",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Open preview modal",
+        "Navigate to primary image",
+        "Verify image has ALT text",
+        "Check image is announced by screen reader",
+        "Test image at 200% zoom"
+      ],
+      "expectedResults": [
+        "Image has meaningful ALT text",
+        "ALT text announced by screen reader",
+        "Image readable at 200% zoom",
+        "Image has proper contrast if text overlay",
+        "Image loading state announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Verify preview gallery/carousel accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to image carousel in preview",
+        "Tab through carousel controls",
+        "Use arrow keys to navigate images",
+        "Verify current image announced",
+        "Test carousel at 200% zoom"
+      ],
+      "expectedResults": [
+        "Carousel has role='region' with label",
+        "Previous/Next buttons keyboard accessible",
+        "Arrow keys navigate images",
+        "Current position announced: \"Image 2 of 5\"",
+        "All controls visible at 200% zoom"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Verify preview video player accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to video in preview",
+        "Tab through player controls",
+        "Verify captions are visible",
+        "Test play/pause with keyboard",
+        "Verify volume controls accessible"
+      ],
+      "expectedResults": [
+        "Video player keyboard accessible",
+        "Captions visible and toggleable",
+        "All controls have accessible names",
+        "Keyboard shortcuts work (Space for play/pause)",
+        "Focus indicators visible on controls"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Verify Save Changes button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Make media updates",
+        "Navigate to Save Changes button",
+        "Verify button is keyboard accessible",
+        "Press Enter to save",
+        "Verify validation occurs"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Accessible name: \"Save changes\"",
+        "Focus indicator has 3:1 contrast",
+        "Enter/Space activates button",
+        "Loading state announced during save"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Verify mandatory field validation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to save without ALT text",
+        "Verify validation error appears",
+        "Check screen reader announces error",
+        "Verify focus moves to first error",
+        "Verify error has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Error message clearly states missing fields",
+        "Focus moves to first invalid field",
+        "Error text has 4.5:1 contrast ratio",
+        "Error linked to field via aria-describedby"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Verify confirmation message accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Successfully save changes",
+        "Verify confirmation message appears",
+        "Check screen reader announces message",
+        "Verify message has sufficient contrast",
+        "Verify message is dismissible"
+      ],
+      "expectedResults": [
+        "Message has role='alert' or aria-live='polite'",
+        "Text: \"Media updates submitted for approval\"",
+        "Text has 4.5:1 contrast ratio",
+        "Message announced by screen reader",
+        "Close button keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Verify Pending Review status indicator",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "After saving, verify status updates",
+        "Navigate to status indicator",
+        "Check screen reader announces status",
+        "Verify indicator has sufficient contrast",
+        "Verify status not conveyed by color alone"
+      ],
+      "expectedResults": [
+        "Status has accessible label: \"Pending Review\"",
+        "Screen reader announces status change",
+        "Indicator has 3:1 contrast ratio",
+        "Status includes text, not just color",
+        "Status update announced via aria-live"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Verify upload progress bar accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload large image file",
+        "Verify progress bar appears",
+        "Check screen reader announces progress",
+        "Verify progress bar has proper ARIA",
+        "Verify progress updates announced"
+      ],
+      "expectedResults": [
+        "Progress bar has role='progressbar'",
+        "aria-valuenow, aria-valuemin, aria-valuemax set",
+        "Progress percentage announced dynamically",
+        "Visual progress has 3:1 contrast",
+        "Completion announced via aria-live"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Verify upload status indicators",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Upload multiple files",
+        "Verify status for each file shown",
+        "Check screen reader announces statuses",
+        "Verify status icons have text alternatives",
+        "Verify statuses have sufficient contrast"
+      ],
+      "expectedResults": [
+        "Each file has status: \"Uploading\", \"Complete\", \"Failed\"",
+        "Status announced by screen reader",
+        "Icons have accessible names",
+        "Status text has 4.5:1 contrast ratio",
+        "Status not conveyed by color alone"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Verify interrupted upload resume",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Start file upload",
+        "Interrupt upload (simulate network issue)",
+        "Verify resume option appears",
+        "Check resume button is keyboard accessible",
+        "Verify resume status announced"
+      ],
+      "expectedResults": [
+        "Resume button keyboard accessible",
+        "Accessible name: \"Resume upload\"",
+        "Interruption announced via aria-live",
+        "Resume action announced",
+        "Progress continues from interruption point"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Verify file size error message",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to upload oversized image (>5MB)",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify error has sufficient contrast",
+        "Verify user can retry"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message: \"File too large. Maximum 5 MB\"",
+        "Text has 4.5:1 contrast ratio",
+        "Error linked to upload control",
+        "User can select different file"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Verify unsupported format error",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to upload unsupported format",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify supported formats listed",
+        "Verify user can retry"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message: \"Format not supported. Use JPG or PNG\"",
+        "Text has 4.5:1 contrast ratio",
+        "Error clearly states valid formats",
+        "User can select different file"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "Verify upload failure error handling",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Simulate upload failure",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify retry button is accessible",
+        "Verify previously added media preserved"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message explains failure reason",
+        "Retry button keyboard accessible",
+        "Text has 4.5:1 contrast ratio",
+        "Other uploaded files not lost"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "Verify image limit exceeded error",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Attempt to upload more than 5 images",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify limit clearly stated",
+        "Verify upload button disabled when limit reached"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='polite'",
+        "Message: \"Maximum 5 images allowed\"",
+        "Text has 4.5:1 contrast ratio",
+        "Upload button disabled with aria-disabled='true'",
+        "Disabled state announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_041",
+      "title": "Verify page title and landmarks",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to media update page",
+        "Verify page title is descriptive",
+        "Use screen reader to navigate by landmarks",
+        "Verify main, navigation landmarks exist",
+        "Verify skip links present"
+      ],
+      "expectedResults": [
+        "Page title: \"Edit Product Media - [Product Name]\"",
+        "Main content has role='main'",
+        "Navigation has role='navigation'",
+        "Skip to main content link available",
+        "All landmarks have accessible names"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_042",
+      "title": "Verify heading hierarchy",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate through page",
+        "Use screen reader to list headings",
+        "Verify heading levels are sequential",
+        "Verify no heading levels skipped",
+        "Verify headings describe sections"
+      ],
+      "expectedResults": [
+        "Heading hierarchy is logical (h1 → h2 → h3)",
+        "No heading levels skipped",
+        "Each section has descriptive heading",
+        "Headings have 4.5:1 contrast ratio",
+        "Screen reader can navigate by headings"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_043",
+      "title": "Verify help text and tooltips",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate to help icons",
+        "Focus on help icon",
+        "Verify tooltip appears on focus/hover",
+        "Check screen reader announces help text",
+        "Verify tooltip has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Help icons keyboard accessible",
+        "Tooltips appear on focus and hover",
+        "Help text announced by screen reader",
+        "Tooltip text has 4.5:1 contrast ratio",
+        "Escape closes tooltip"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_044",
+      "title": "Verify overall keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Navigate entire page using only keyboard",
+        "Verify all interactive elements accessible",
+        "Verify no keyboard traps",
+        "Verify focus order is logical",
+        "Verify focus always visible"
+      ],
+      "expectedResults": [
+        "All controls keyboard accessible",
+        "Tab order follows visual layout",
+        "No keyboard traps exist",
+        "Focus indicators always visible (3:1 contrast)",
+        "Shift+Tab reverses navigation"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_045",
+      "title": "Verify color contrast throughout interface",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Inspect all text elements",
+        "Verify normal text has 4.5:1 contrast",
+        "Verify large text has 3:1 contrast",
+        "Verify UI components have 3:1 contrast",
+        "Test in high contrast mode"
+      ],
+      "expectedResults": [
+        "Normal text: 4.5:1 contrast (WCAG 1.4.3)",
+        "Large text (18pt+): 3:1 contrast",
+        "UI components: 3:1 contrast (WCAG 1.4.11)",
+        "Focus indicators: 3:1 contrast",
+        "Interface usable in high contrast mode"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_046",
+      "title": "Verify responsive design at 200% zoom",
+      "wcagCriterion": "1.4.4",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-23",
+      "preconditions": "",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Navigate through entire interface",
+        "Verify all content remains visible",
+        "Verify no horizontal scrolling required",
+        "Verify all controls remain functional"
+      ],
+      "expectedResults": [
+        "All content visible at 200% zoom (WCAG 1.4.4)",
+        "No horizontal scrolling required",
+        "Text doesn't overlap or truncate",
+        "All controls remain accessible",
+        "Layout adapts appropriately"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

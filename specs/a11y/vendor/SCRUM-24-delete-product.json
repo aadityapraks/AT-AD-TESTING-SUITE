@@ -1,0 +1,882 @@
+{
+  "jiraStory": "SCRUM-24",
+  "title": "SCRUM-24 Accessibility Test Plan",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner Deletes a Product (SCRUM-24) covering WCAG 2.1 AA compliance for delete button, confirmation dialog, system feedback, error handling, and audit trail.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify Delete Product button keyboard accessibility",
+      "wcagCriterion": "2.4.7",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Login as approved AP",
+        "Navigate to Product Management page",
+        "Tab to Delete Product button for owned product",
+        "Verify focus indicator is visible",
+        "Press Enter/Space to activate"
+      ],
+      "expectedResults": [
+        "Delete button keyboard accessible",
+        "Focus indicator has 3:1 contrast ratio (WCAG 2.4.7)",
+        "Enter/Space activates button",
+        "Button only available for owned products",
+        "No keyboard traps exist"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify Delete button screen reader announcement",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to product list",
+        "Focus on Delete Product button",
+        "Verify button name and role announced",
+        "Verify associated product name announced"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Accessible name: \"Delete [Product Name]\"",
+        "Product context announced",
+        "Button state announced if disabled",
+        "Warning conveyed in accessible name"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify Delete button visual accessibility",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Inspect Delete button contrast",
+        "Verify button text has 4.5:1 contrast",
+        "Verify button at 200% zoom",
+        "Check button doesn't rely on color alone",
+        "Verify icon has text alternative"
+      ],
+      "expectedResults": [
+        "Button text has 4.5:1 contrast (WCAG 1.4.3)",
+        "Button usable at 200% zoom (WCAG 1.4.4)",
+        "Delete action not indicated by color alone",
+        "Icon has accessible name or aria-label",
+        "Visual warning indicator present"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify Delete button disabled state",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate to product not owned by AP",
+        "Verify Delete button is disabled or hidden",
+        "Check disabled state announced by screen reader",
+        "Verify disabled button has aria-disabled",
+        "Verify disabled state has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Unauthorized products have disabled/hidden Delete",
+        "Disabled state has aria-disabled='true'",
+        "Screen reader announces disabled state",
+        "Disabled button has 3:1 contrast",
+        "Tooltip explains why disabled (optional)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Verify confirmation dialog keyboard accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Click Delete Product button",
+        "Verify focus moves to dialog",
+        "Tab through dialog controls",
+        "Press Escape to close",
+        "Verify focus returns to Delete button"
+      ],
+      "expectedResults": [
+        "Dialog has role='dialog' or 'alertdialog'",
+        "Focus moves to dialog on open",
+        "Focus trapped within dialog",
+        "Escape closes dialog",
+        "Focus returns to trigger button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Verify dialog screen reader announcement",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Open confirmation dialog",
+        "Verify dialog title announced",
+        "Verify warning message announced",
+        "Verify button options announced"
+      ],
+      "expectedResults": [
+        "Dialog role announced: 'dialog' or 'alert dialog'",
+        "Dialog title announced via aria-labelledby",
+        "Warning message announced",
+        "Product name included in announcement",
+        "\"Cannot be undone\" warning announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Verify dialog warning message accessibility",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation dialog",
+        "Verify warning text is visible",
+        "Check warning has sufficient contrast",
+        "Verify product name is included",
+        "Verify \"cannot be undone\" text present"
+      ],
+      "expectedResults": [
+        "Warning text: \"This will permanently delete [Product Name]\"",
+        "Text has 4.5:1 contrast ratio (WCAG 1.4.3)",
+        "Product name clearly identified",
+        "\"Cannot be undone\" warning visible",
+        "Warning icon has accessible name"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Verify dialog button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation dialog",
+        "Tab to Delete Product button",
+        "Tab to Cancel button",
+        "Verify focus indicators visible",
+        "Test activation with Enter/Space"
+      ],
+      "expectedResults": [
+        "Both buttons keyboard accessible",
+        "Accessible names: \"Delete Product\", \"Cancel\"",
+        "Focus indicators have 3:1 contrast",
+        "Enter/Space activates buttons",
+        "Tab order: Delete → Cancel (or reverse)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verify dialog visual accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation dialog",
+        "Verify dialog has visible border/shadow",
+        "Test dialog at 200% zoom",
+        "Check backdrop has sufficient contrast",
+        "Verify dialog doesn't rely on color alone"
+      ],
+      "expectedResults": [
+        "Dialog border has 3:1 contrast",
+        "Dialog usable at 200% zoom",
+        "Backdrop darkens background (optional)",
+        "Warning not conveyed by color alone",
+        "All text readable at 200% zoom"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Verify dialog focus management",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation dialog",
+        "Verify initial focus placement",
+        "Tab through all controls",
+        "Verify focus doesn't leave dialog",
+        "Close dialog and verify focus return"
+      ],
+      "expectedResults": [
+        "Initial focus on Cancel or first element",
+        "Tab cycles through dialog controls only",
+        "Shift+Tab reverses navigation",
+        "Focus cannot leave dialog (focus trap)",
+        "Focus returns to Delete button on close"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Verify published product deletion feedback",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete published product",
+        "Verify removal from catalog announced",
+        "Check success message is accessible",
+        "Verify product removed from list",
+        "Verify status update announced"
+      ],
+      "expectedResults": [
+        "Success message has aria-live='polite'",
+        "Message: \"Product removed from catalog\"",
+        "Screen reader announces removal",
+        "Visual update has 3:1 contrast",
+        "Product no longer in list"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Verify draft product deletion feedback",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete draft product",
+        "Verify complete deletion announced",
+        "Check success message is accessible",
+        "Verify product removed from list",
+        "Verify no \"deleted status\" shown"
+      ],
+      "expectedResults": [
+        "Success message has aria-live='polite'",
+        "Message: \"Draft product deleted\"",
+        "Complete removal announced",
+        "Product not in list",
+        "No soft delete status shown"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Verify deleted status indicator accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete listed product",
+        "Verify \"Deleted\" status appears",
+        "Check status announced by screen reader",
+        "Verify status has sufficient contrast",
+        "Verify status not conveyed by color alone"
+      ],
+      "expectedResults": [
+        "Status label: \"Deleted\"",
+        "Screen reader announces status",
+        "Status has 4.5:1 contrast ratio",
+        "Status includes text, not just color",
+        "Status icon has accessible name"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Verify success message accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Successfully delete product",
+        "Verify success message appears",
+        "Check screen reader announces message",
+        "Verify message has sufficient contrast",
+        "Verify message is dismissible"
+      ],
+      "expectedResults": [
+        "Message has role='alert' or aria-live='polite'",
+        "Text: \"Product 'X' deleted successfully\"",
+        "Text has 4.5:1 contrast ratio",
+        "Screen reader announces message",
+        "Close button keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Verify success message timing",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete product",
+        "Verify message appears immediately",
+        "Check message remains visible",
+        "Verify auto-dismiss timing (if applicable)",
+        "Verify manual dismiss option"
+      ],
+      "expectedResults": [
+        "Message appears within 1 second",
+        "Message visible for at least 5 seconds",
+        "Auto-dismiss after reasonable time",
+        "Manual dismiss button available",
+        "Dismiss button keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Verify success message visual design",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Display success message",
+        "Verify message has clear visual design",
+        "Test message at 200% zoom",
+        "Check success icon is accessible",
+        "Verify message doesn't rely on color alone"
+      ],
+      "expectedResults": [
+        "Message has clear border/background",
+        "Message readable at 200% zoom",
+        "Success icon has accessible name",
+        "Success not indicated by color alone",
+        "All text has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Verify system error message accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Simulate deletion system error",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify error has sufficient contrast",
+        "Verify retry option is accessible"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message: \"Unable to delete. Try again later\"",
+        "Text has 4.5:1 contrast ratio",
+        "Screen reader announces error",
+        "Retry/support options keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Verify unauthorized deletion error",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Attempt to delete unauthorized product",
+        "Verify error message appears",
+        "Check screen reader announces error",
+        "Verify error has sufficient contrast",
+        "Verify error clearly states reason"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Message: \"No permission to delete this product\"",
+        "Text has 4.5:1 contrast ratio",
+        "Reason clearly stated",
+        "Error icon has accessible name"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Verify error message focus management",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Trigger deletion error",
+        "Verify focus moves to error or remains",
+        "Check error is keyboard accessible",
+        "Verify dismiss button is accessible",
+        "Verify focus after dismiss"
+      ],
+      "expectedResults": [
+        "Focus moves to error or stays on button",
+        "Error message keyboard accessible",
+        "Dismiss button has accessible name",
+        "Enter/Space dismisses error",
+        "Focus returns to logical element"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Verify error message visual design",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Display error message",
+        "Verify error has clear visual design",
+        "Test error at 200% zoom",
+        "Check error icon is accessible",
+        "Verify error doesn't rely on color alone"
+      ],
+      "expectedResults": [
+        "Error has distinct border/background",
+        "Error readable at 200% zoom",
+        "Error icon has accessible name",
+        "Error not indicated by color alone",
+        "All text has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Verify product removal from list",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete product",
+        "Verify product removed from list",
+        "Check removal announced by screen reader",
+        "Verify focus moves to next item",
+        "Verify list count updates"
+      ],
+      "expectedResults": [
+        "Product removed from visual list",
+        "Removal announced via aria-live",
+        "Focus moves to next/previous product",
+        "List count updates and announced",
+        "No empty placeholder remains"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Verify deleted status in list",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete listed product (soft delete)",
+        "Verify product shows \"Deleted\" status",
+        "Check status announced by screen reader",
+        "Verify product remains in list",
+        "Verify status has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Product remains in list with status",
+        "Status: \"Deleted\" announced",
+        "Status has 4.5:1 contrast ratio",
+        "Status not conveyed by color alone",
+        "Product actions disabled/hidden"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Verify empty list state",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete all products",
+        "Verify empty state message appears",
+        "Check message announced by screen reader",
+        "Verify message has sufficient contrast",
+        "Verify add product option is accessible"
+      ],
+      "expectedResults": [
+        "Empty state message visible",
+        "Message: \"No products available\"",
+        "Screen reader announces empty state",
+        "Text has 4.5:1 contrast ratio",
+        "Add product button keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Verify notification trigger accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete product with interested users",
+        "Verify notification sent indicator",
+        "Check indicator announced by screen reader",
+        "Verify indicator has sufficient contrast",
+        "Verify notification details accessible"
+      ],
+      "expectedResults": [
+        "Notification indicator visible",
+        "Indicator announced by screen reader",
+        "Text has 4.5:1 contrast ratio",
+        "Notification count shown (if applicable)",
+        "Details link keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Verify hard delete option accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate to under review product",
+        "Verify hard delete option available",
+        "Tab to hard delete button",
+        "Verify button is keyboard accessible",
+        "Verify button clearly labeled"
+      ],
+      "expectedResults": [
+        "Hard delete button keyboard accessible",
+        "Accessible name: \"Permanently delete\"",
+        "Focus indicator has 3:1 contrast",
+        "Button distinct from soft delete",
+        "Warning conveyed in label"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Verify hard delete confirmation dialog",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Click hard delete button",
+        "Verify confirmation dialog appears",
+        "Check dialog has stronger warning",
+        "Verify dialog is keyboard accessible",
+        "Verify warning announced by screen reader"
+      ],
+      "expectedResults": [
+        "Dialog has role='alertdialog'",
+        "Warning: \"Permanently delete - cannot be recovered\"",
+        "Dialog keyboard accessible",
+        "Warning announced by screen reader",
+        "Buttons clearly labeled"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Verify media removal feedback",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete product with media",
+        "Verify media removal mentioned in feedback",
+        "Check feedback announced by screen reader",
+        "Verify no broken links remain",
+        "Verify media status updated"
+      ],
+      "expectedResults": [
+        "Success message mentions media removal",
+        "Message announced by screen reader",
+        "No broken image placeholders",
+        "Media marked inactive in system",
+        "Feedback has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Verify audit log indicator accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Delete product",
+        "Verify audit log indicator present",
+        "Check indicator announced by screen reader",
+        "Verify indicator has sufficient contrast",
+        "Verify audit details link accessible"
+      ],
+      "expectedResults": [
+        "Audit indicator visible",
+        "Indicator announced: \"Deletion logged\"",
+        "Text has 4.5:1 contrast ratio",
+        "View audit link keyboard accessible",
+        "Link has clear accessible name"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Verify audit details accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate to audit details",
+        "Verify audit information is accessible",
+        "Check table structure is semantic",
+        "Verify all data has sufficient contrast",
+        "Verify audit data at 200% zoom"
+      ],
+      "expectedResults": [
+        "Audit table has proper headers",
+        "Headers have scope attribute",
+        "All text has 4.5:1 contrast",
+        "Table readable at 200% zoom",
+        "Screen reader announces table structure"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Verify page title and landmarks",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Product Management page",
+        "Verify page title is descriptive",
+        "Use screen reader to navigate by landmarks",
+        "Verify main, navigation landmarks exist",
+        "Verify skip links present"
+      ],
+      "expectedResults": [
+        "Page title: \"Product Management\"",
+        "Main content has role='main'",
+        "Navigation has role='navigation'",
+        "Skip to main content link available",
+        "All landmarks have accessible names"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Verify heading hierarchy",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate through page",
+        "Use screen reader to list headings",
+        "Verify heading levels are sequential",
+        "Verify no heading levels skipped",
+        "Verify headings describe sections"
+      ],
+      "expectedResults": [
+        "Heading hierarchy is logical (h1 → h2 → h3)",
+        "No heading levels skipped",
+        "Each section has descriptive heading",
+        "Headings have 4.5:1 contrast ratio",
+        "Screen reader can navigate by headings"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Verify overall keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Navigate entire page using only keyboard",
+        "Verify all interactive elements accessible",
+        "Verify no keyboard traps",
+        "Verify focus order is logical",
+        "Verify focus always visible"
+      ],
+      "expectedResults": [
+        "All controls keyboard accessible",
+        "Tab order follows visual layout",
+        "No keyboard traps exist",
+        "Focus indicators always visible (3:1 contrast)",
+        "Shift+Tab reverses navigation"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Verify color contrast throughout interface",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Inspect all text elements",
+        "Verify normal text has 4.5:1 contrast",
+        "Verify large text has 3:1 contrast",
+        "Verify UI components have 3:1 contrast",
+        "Test in high contrast mode"
+      ],
+      "expectedResults": [
+        "Normal text: 4.5:1 contrast (WCAG 1.4.3)",
+        "Large text (18pt+): 3:1 contrast",
+        "UI components: 3:1 contrast (WCAG 1.4.11)",
+        "Focus indicators: 3:1 contrast",
+        "Interface usable in high contrast mode"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Verify responsive design at 200% zoom",
+      "wcagCriterion": "1.4.4",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Navigate through entire interface",
+        "Verify all content remains visible",
+        "Verify no horizontal scrolling required",
+        "Verify all controls remain functional"
+      ],
+      "expectedResults": [
+        "All content visible at 200% zoom (WCAG 1.4.4)",
+        "No horizontal scrolling required",
+        "Text doesn't overlap or truncate",
+        "All controls remain accessible",
+        "Layout adapts appropriately"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Verify no information conveyed by color alone",
+      "wcagCriterion": "1.4.1",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-24",
+      "preconditions": "",
+      "steps": [
+        "Review all status indicators",
+        "Verify deleted status has text label",
+        "Check error states have icons/text",
+        "Verify success states have icons/text",
+        "Test interface in grayscale mode"
+      ],
+      "expectedResults": [
+        "All statuses have text labels",
+        "Errors have icons and text",
+        "Success has icons and text",
+        "No information by color alone (WCAG 1.4.1)",
+        "Interface usable in grayscale"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

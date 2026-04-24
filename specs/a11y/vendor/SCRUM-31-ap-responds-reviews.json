@@ -1,0 +1,906 @@
+{
+  "jiraStory": "SCRUM-31",
+  "title": "SCRUM-31: AP Responds to Reviews - Accessibility Test Plan",
+  "overview": "Accessibility test plan for Assistive Partner Responds to Reviews and Questions feature covering WCAG 2.1 AA compliance",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Reviews & Ratings section keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Login as AP user",
+        "Navigate to Reviews & Ratings section",
+        "Tab through all interactive elements",
+        "Verify focus indicators visible on each element",
+        "Verify logical tab order"
+      ],
+      "expectedResults": [
+        "All elements reachable via keyboard",
+        "Focus indicators meet 3:1 contrast ratio",
+        "Tab order follows visual layout",
+        "WCAG 2.1.1, 2.4.3, 2.4.7 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Review entries have proper semantic structure",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Reviews & Ratings section",
+        "Inspect review entry structure with screen reader",
+        "Verify Product Name is heading",
+        "Verify star rating has accessible label",
+        "Verify status badge has text alternative"
+      ],
+      "expectedResults": [
+        "Reviews displayed in semantic list",
+        "Each review has proper ARIA labels",
+        "Star rating announced correctly",
+        "Status (Approved/Pending/Flagged) announced",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Review metadata accessible to screen readers",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to review entry",
+        "Verify Product Name announced",
+        "Verify Star Rating announced with value",
+        "Verify Submission Date announced",
+        "Verify Anonymous User Tag announced",
+        "Verify Status announced"
+      ],
+      "expectedResults": [
+        "All metadata has accessible labels",
+        "Screen reader announces complete information",
+        "Date format is clear",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Respond to Review button keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Tab to Respond to Review button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify response form opens",
+        "Press Escape to close"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Focus indicator meets contrast requirements",
+        "Enter/Space activates button",
+        "Button has accessible name",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Respond button has clear accessible name",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Inspect Respond to Review button",
+        "Verify accessible name present",
+        "Verify name describes action clearly"
+      ],
+      "expectedResults": [
+        "Button has accessible name 'Respond to Review'",
+        "Name is descriptive and clear",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Response textarea has proper label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Click Respond to Review button",
+        "Inspect response textarea",
+        "Verify label associated with textarea",
+        "Verify character limit (500) announced",
+        "Verify moderation notice visible"
+      ],
+      "expectedResults": [
+        "Textarea has programmatic label",
+        "Character limit announced to screen readers",
+        "Moderation notice: 'Your response will be visible publicly after admin approval'",
+        "WCAG 3.3.2, 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Character counter accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Type text in response textarea",
+        "Verify character counter updates",
+        "Verify counter announced to screen readers",
+        "Type beyond limit",
+        "Verify error message announced"
+      ],
+      "expectedResults": [
+        "Character counter has aria-live region",
+        "Updates announced dynamically",
+        "Exceeding limit triggers accessible error",
+        "WCAG 4.1.3, 3.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Submit response button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Tab to Submit button",
+        "Verify focus indicator visible",
+        "Verify accessible name",
+        "Press Enter to submit",
+        "Verify success message announced"
+      ],
+      "expectedResults": [
+        "Submit button keyboard accessible",
+        "Has clear accessible name",
+        "Success message in aria-live region",
+        "WCAG 2.1.1, 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Form validation errors accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Submit empty response",
+        "Verify error message displayed",
+        "Verify error announced to screen readers",
+        "Verify focus moved to error or field",
+        "Verify error linked to textarea"
+      ],
+      "expectedResults": [
+        "Error message visible and announced",
+        "Error has aria-describedby link",
+        "Focus management appropriate",
+        "WCAG 3.3.1, 3.3.3, 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Queries section keyboard navigable",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Queries section",
+        "Tab through all query entries",
+        "Verify focus indicators visible",
+        "Verify logical tab order"
+      ],
+      "expectedResults": [
+        "All queries keyboard accessible",
+        "Focus indicators meet contrast requirements",
+        "Tab order logical",
+        "WCAG 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Query metadata accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to query entry",
+        "Verify Question Text announced",
+        "Verify Timestamp announced",
+        "Verify Context announced"
+      ],
+      "expectedResults": [
+        "All query metadata has accessible labels",
+        "Screen reader announces complete information",
+        "Context label clear (e.g., 'Asked about Product Availability')",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Pending status badge accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Submit response",
+        "Verify Pending Moderation status displayed",
+        "Verify status has text label",
+        "Verify status not conveyed by color alone",
+        "Verify timestamp visible"
+      ],
+      "expectedResults": [
+        "Status badge has text 'Pending Moderation'",
+        "Not relying on color alone",
+        "Icon has text alternative if present",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Status changes announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Monitor response status",
+        "Verify status change announced dynamically",
+        "Verify aria-live region present"
+      ],
+      "expectedResults": [
+        "Status changes announced to screen readers",
+        "aria-live region configured properly",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Notification panel keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to notification panel",
+        "Tab through notifications",
+        "Verify focus indicators visible",
+        "Press Enter to open notification"
+      ],
+      "expectedResults": [
+        "All notifications keyboard accessible",
+        "Focus indicators visible",
+        "Enter/Space activates notification",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Notification content accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Receive notification for new review",
+        "Verify notification text announced",
+        "Receive approval notification",
+        "Verify approval message announced",
+        "Receive rejection notification",
+        "Verify rejection reason announced"
+      ],
+      "expectedResults": [
+        "All notification types announced",
+        "Content clear and descriptive",
+        "Example: 'Your response to Smart Hearing Aid X has been approved and published'",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "New notification alerts accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Receive new notification",
+        "Verify alert announced to screen readers",
+        "Verify notification badge visible",
+        "Verify badge has accessible label"
+      ],
+      "expectedResults": [
+        "New notifications announced via aria-live",
+        "Badge has accessible name with count",
+        "Visual indicator meets contrast requirements",
+        "WCAG 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Edit button keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to submitted response",
+        "Tab to Edit button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify edit form opens"
+      ],
+      "expectedResults": [
+        "Edit button keyboard accessible",
+        "Has clear accessible name 'Edit'",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Edit form pre-populated correctly",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Click Edit button",
+        "Verify textarea contains existing response",
+        "Verify cursor position announced",
+        "Verify character count reflects existing text"
+      ],
+      "expectedResults": [
+        "Existing text loaded in textarea",
+        "Screen reader announces pre-filled content",
+        "Character counter accurate",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Re-moderation notice accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Edit approved response",
+        "Verify re-moderation notice displayed",
+        "Verify notice announced to screen readers"
+      ],
+      "expectedResults": [
+        "Notice visible: 'Edited responses re-enter admin moderation queue'",
+        "Notice announced to screen readers",
+        "WCAG 3.3.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Withdraw button keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to response",
+        "Tab to Withdraw button",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify confirmation dialog opens"
+      ],
+      "expectedResults": [
+        "Withdraw button keyboard accessible",
+        "Has clear accessible name 'Withdraw' or 'Delete'",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Confirmation dialog accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Click Withdraw button",
+        "Verify dialog has aria-modal=true",
+        "Verify focus trapped in dialog",
+        "Tab through dialog elements",
+        "Press Escape to close",
+        "Verify focus returns to trigger button"
+      ],
+      "expectedResults": [
+        "Dialog has role='dialog' or 'alertdialog'",
+        "Focus trapped within dialog",
+        "Escape closes dialog",
+        "Focus returns to Withdraw button",
+        "WCAG 2.1.2, 2.4.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Confirmation message clear",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Open withdraw confirmation",
+        "Verify message text clear",
+        "Verify Confirm and Cancel buttons labeled",
+        "Verify buttons keyboard accessible"
+      ],
+      "expectedResults": [
+        "Message: 'Are you sure you want to withdraw this response?'",
+        "Confirm and Cancel buttons clearly labeled",
+        "Both buttons keyboard accessible",
+        "WCAG 3.3.4, 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "AP response visually distinguished",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "View approved response on product page",
+        "Verify visual distinction (shaded background, indentation)",
+        "Verify distinction not by color alone",
+        "Verify label 'Response from Assistive Partner' present"
+      ],
+      "expectedResults": [
+        "Response visually distinguished from user posts",
+        "Not relying on color alone",
+        "Label provides context",
+        "WCAG 1.4.1, 1.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Response metadata accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to AP response",
+        "Verify timestamp announced",
+        "Verify organization name announced",
+        "Verify label 'Response from Assistive Partner' announced"
+      ],
+      "expectedResults": [
+        "All metadata accessible to screen readers",
+        "Organization name clear",
+        "Timestamp in accessible format",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Expand/collapse responses accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to long response",
+        "Tab to expand/collapse button",
+        "Verify button has accessible name",
+        "Verify aria-expanded state",
+        "Press Enter to toggle",
+        "Verify state change announced"
+      ],
+      "expectedResults": [
+        "Expand/collapse button keyboard accessible",
+        "aria-expanded reflects state",
+        "State changes announced",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Guidelines link accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to response form",
+        "Locate content guidelines link",
+        "Verify link keyboard accessible",
+        "Verify link has descriptive text",
+        "Press Enter to open guidelines"
+      ],
+      "expectedResults": [
+        "Link keyboard accessible",
+        "Link text descriptive (not 'click here')",
+        "Opens in new tab with warning",
+        "WCAG 2.4.4, 3.2.5 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Save failure error accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Simulate network failure",
+        "Submit response",
+        "Verify error message displayed",
+        "Verify error announced to screen readers",
+        "Verify error has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Error message: 'Unable to save your response at this time. Please try again later.'",
+        "Error announced via aria-live",
+        "Error meets contrast requirements",
+        "WCAG 3.3.1, 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Pending status timeout accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "View response in Pending status",
+        "Verify timestamp visible",
+        "Verify status remains clear over time"
+      ],
+      "expectedResults": [
+        "Pending status clearly labeled",
+        "Timestamp shows submission time",
+        "Status accessible to screen readers",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Complete workflow keyboard only",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Reviews & Ratings using keyboard only",
+        "Tab to review entry",
+        "Tab to Respond button and activate",
+        "Tab to textarea and type response",
+        "Tab to Submit button and activate",
+        "Verify success without mouse"
+      ],
+      "expectedResults": [
+        "Entire workflow completable via keyboard",
+        "No keyboard traps",
+        "Focus indicators always visible",
+        "WCAG 2.1.1, 2.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Skip links available",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Tab from page top",
+        "Verify skip link appears",
+        "Activate skip link",
+        "Verify focus moves to main content"
+      ],
+      "expectedResults": [
+        "Skip link visible on focus",
+        "Skip link functional",
+        "Bypasses repetitive navigation",
+        "WCAG 2.4.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Color contrast sufficient",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Check text contrast in Reviews section",
+        "Check button contrast",
+        "Check status badge contrast",
+        "Check notification badge contrast",
+        "Verify all meet 4.5:1 (text) or 3:1 (large text, UI components)"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast ratio",
+        "Large text meets 3:1 contrast ratio",
+        "UI components meet 3:1 contrast ratio",
+        "WCAG 1.4.3, 1.4.11 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Page usable at 200% zoom",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Navigate Reviews & Ratings section",
+        "Verify all content visible",
+        "Verify no horizontal scrolling required",
+        "Verify response form usable"
+      ],
+      "expectedResults": [
+        "All content readable at 200% zoom",
+        "No content cut off",
+        "No horizontal scrolling on desktop",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Tab through all interactive elements",
+        "Verify focus indicator on each element",
+        "Measure focus indicator contrast",
+        "Verify indicator at least 2px thick or equivalent"
+      ],
+      "expectedResults": [
+        "Focus indicators visible on all elements",
+        "Indicators meet 3:1 contrast ratio",
+        "Indicators clearly visible",
+        "WCAG 2.4.7, 2.4.11 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Touch targets adequate size",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "View on mobile viewport (375x667)",
+        "Measure Respond button size",
+        "Measure Edit/Withdraw button sizes",
+        "Measure notification tap targets",
+        "Verify all at least 44x44 CSS pixels"
+      ],
+      "expectedResults": [
+        "All touch targets at least 44x44px",
+        "Adequate spacing between targets",
+        "WCAG 2.5.5 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Mobile layout accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "View on mobile viewport",
+        "Verify response form usable",
+        "Verify no content requires horizontal scroll",
+        "Verify all features accessible"
+      ],
+      "expectedResults": [
+        "Layout adapts to mobile",
+        "All features accessible on mobile",
+        "No horizontal scrolling required",
+        "WCAG 1.4.10 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "NVDA navigation successful",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Enable NVDA screen reader",
+        "Navigate to Reviews & Ratings",
+        "Use heading navigation (H key)",
+        "Use form navigation (F key)",
+        "Use button navigation (B key)",
+        "Verify all content announced correctly"
+      ],
+      "expectedResults": [
+        "All headings announced with level",
+        "All forms and fields announced",
+        "All buttons announced with name",
+        "Navigation landmarks work",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "JAWS navigation successful",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Enable JAWS screen reader",
+        "Navigate Reviews & Ratings section",
+        "Use virtual cursor",
+        "Navigate forms mode",
+        "Verify all interactive elements accessible"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Forms mode works correctly",
+        "Dynamic updates announced",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "VoiceOver navigation successful",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "preconditions": "",
+      "steps": [
+        "Enable VoiceOver on macOS/iOS",
+        "Navigate Reviews & Ratings section",
+        "Use rotor to navigate headings",
+        "Use rotor to navigate forms",
+        "Verify all content announced"
+      ],
+      "expectedResults": [
+        "All content accessible via VoiceOver",
+        "Rotor navigation works",
+        "Touch gestures work on iOS",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './',
   timeout: 30000,
   testMatch: '**/*.spec.ts',
+  reporter: [['html', { open: 'never' }]],
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },

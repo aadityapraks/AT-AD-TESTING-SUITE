@@ -1,0 +1,856 @@
+{
+  "jiraStory": "SCRUM-28",
+  "title": "SCRUM-28 Accessibility Test Plan: Product Pricing",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner product pricing feature ensuring WCAG 2.1 AA compliance. Tests cover Edit Pricing & Inventory modal, pricing input options (Single Price, Price Range, Custom Label), form validation, currency formatting, display on product details page, catalog cards, keyboard navigation, screen reader support, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Edit Pricing button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Product Management page",
+        "Locate 'Edit Pricing & Inventory' button in action column",
+        "Tab to button using keyboard",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Press Enter to activate"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Button has accessible name 'Edit Pricing & Inventory'",
+        "Enter/Space activates button",
+        "Focus indicator visible with 3:1 contrast",
+        "Modal opens on activation"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Modal has proper ARIA attributes",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Open Edit Pricing & Inventory modal",
+        "Verify modal has role='dialog'",
+        "Check aria-modal='true'",
+        "Verify aria-labelledby points to modal title",
+        "Check focus moves to modal",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog'",
+        "aria-modal='true' present",
+        "Modal has accessible name",
+        "Focus trapped within modal",
+        "Screen reader announces modal opening"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Modal keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Tab through all form fields",
+        "Verify tab order logical",
+        "Press Escape key",
+        "Verify modal closes",
+        "Check focus returns to trigger button"
+      ],
+      "expectedResults": [
+        "All fields keyboard accessible",
+        "Tab order follows visual layout",
+        "Escape closes modal",
+        "Focus returns to Edit button",
+        "No keyboard traps"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Pricing dropdown accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Open Edit Pricing modal",
+        "Locate 'Price Range' dropdown",
+        "Tab to dropdown",
+        "Verify focus indicator visible",
+        "Press Enter/Space to open",
+        "Use Arrow keys to navigate options",
+        "Press Enter to select"
+      ],
+      "expectedResults": [
+        "Dropdown keyboard accessible",
+        "Has accessible name 'Price Range'",
+        "Arrow keys navigate options",
+        "Enter/Space opens dropdown",
+        "Selected option announced",
+        "Focus indicator visible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Dropdown options announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to dropdown",
+        "Open dropdown",
+        "Navigate through options",
+        "Verify each option announced",
+        "Check option count announced"
+      ],
+      "expectedResults": [
+        "Dropdown role announced",
+        "Options: Single Price, Price Range, Custom Label",
+        "Selected option announced",
+        "Option count announced (1 of 3)",
+        "Expanded/collapsed state announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Single price field has label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Select 'Single Price' option",
+        "Verify price input field appears",
+        "Check field has visible label",
+        "Verify label associated with input",
+        "Check currency symbol (₹) visible",
+        "Verify help text present"
+      ],
+      "expectedResults": [
+        "Field has visible label",
+        "Label programmatically associated (for/id)",
+        "Currency symbol visible",
+        "Help text: 'Enter amount in rupees'",
+        "Field has aria-describedby for help text"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Single price validation accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter invalid value (e.g., '12abc')",
+        "Trigger validation",
+        "Verify error message appears",
+        "Check aria-invalid='true'",
+        "Verify aria-describedby links error",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Error message appears inline",
+        "Error: 'Please enter a valid number'",
+        "aria-invalid='true' on input",
+        "Error linked with aria-describedby",
+        "Screen reader announces error"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Price range fields have labels",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Select 'Price Range' option",
+        "Verify Min and Max fields appear",
+        "Check both fields have labels",
+        "Verify labels associated",
+        "Check currency symbols visible",
+        "Verify help text present"
+      ],
+      "expectedResults": [
+        "Min field has label 'Minimum Price'",
+        "Max field has label 'Maximum Price'",
+        "Labels programmatically associated",
+        "Currency symbols (₹) visible",
+        "Help text explains range requirement"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Price range validation accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter only Min value",
+        "Leave Max empty",
+        "Trigger validation",
+        "Verify error on Max field",
+        "Check aria-invalid='true'",
+        "Verify error message clear"
+      ],
+      "expectedResults": [
+        "Error: 'Both minimum and maximum required'",
+        "aria-invalid='true' on empty field",
+        "Error linked to field",
+        "Screen reader announces error",
+        "Form prevents submission"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Price range logical validation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter Max < Min (e.g., Min: 15000, Max: 10000)",
+        "Trigger validation",
+        "Verify error appears",
+        "Check error explains issue",
+        "Verify aria-invalid on both fields"
+      ],
+      "expectedResults": [
+        "Error: 'Maximum must be greater than minimum'",
+        "aria-invalid='true' on both fields",
+        "Error clear and actionable",
+        "Screen reader announces error",
+        "Suggests correction"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Custom label field accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Select 'Custom Label' option",
+        "Verify text input appears",
+        "Check field has label",
+        "Verify character counter visible",
+        "Check maxlength attribute",
+        "Verify help text present"
+      ],
+      "expectedResults": [
+        "Field has label 'Custom Pricing Label'",
+        "Label associated with input",
+        "Character counter: '0/25 characters'",
+        "maxlength='25' attribute present",
+        "Help text: 'e.g., Contact for details'"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Custom label character limit accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Type in custom label field",
+        "Verify character count updates",
+        "Check aria-live announces count",
+        "Type to reach 25 characters",
+        "Verify limit enforced",
+        "Check warning when approaching limit"
+      ],
+      "expectedResults": [
+        "Character count updates dynamically",
+        "Count announced via aria-live='polite'",
+        "Warning at 20 characters",
+        "Input stops at 25 characters",
+        "Visual indicator when at limit"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Currency symbol accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter price value",
+        "Verify currency symbol (₹) displays",
+        "Check symbol has aria-label",
+        "Verify symbol not in input value",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Currency symbol visible",
+        "Symbol has aria-label='Rupees'",
+        "Symbol positioned clearly",
+        "Screen reader announces 'Rupees'",
+        "Symbol not part of input value"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Formatted price display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter price: 12000",
+        "Verify formatted as ₹12,000",
+        "Check comma separators visible",
+        "Verify screen reader reads correctly",
+        "Check format consistent"
+      ],
+      "expectedResults": [
+        "Price formatted with commas",
+        "Display: ₹12,000",
+        "Screen reader: 'Twelve thousand rupees'",
+        "Format consistent across UI",
+        "Decimal handling correct"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Save button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Fill pricing information",
+        "Tab to Save button",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Press Enter to submit",
+        "Verify success announced"
+      ],
+      "expectedResults": [
+        "Save button keyboard accessible",
+        "Button has accessible name 'Save'",
+        "Enter/Space activates button",
+        "Focus indicator visible",
+        "Success message announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Cancel button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Make changes to pricing",
+        "Tab to Cancel button",
+        "Press Enter to cancel",
+        "Verify modal closes",
+        "Check changes not saved",
+        "Verify focus returns"
+      ],
+      "expectedResults": [
+        "Cancel button accessible",
+        "Enter/Space activates cancel",
+        "Modal closes on cancel",
+        "Changes discarded",
+        "Focus returns to Edit button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Success message accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Save pricing changes",
+        "Verify success toast appears",
+        "Check toast has role='status'",
+        "Verify aria-live announces",
+        "Check message clear",
+        "Verify toast dismissible"
+      ],
+      "expectedResults": [
+        "Success toast announced",
+        "Toast has role='status' or aria-live='polite'",
+        "Message: 'Pricing updated successfully'",
+        "User doesn't need to find message",
+        "Toast auto-dismisses or has close button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Pricing section has heading",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Product Details page",
+        "Locate 'Pricing Information' section",
+        "Verify section has heading",
+        "Check heading level appropriate",
+        "Use screen reader heading navigation",
+        "Verify section accessible"
+      ],
+      "expectedResults": [
+        "Section has heading 'Pricing Information'",
+        "Heading level H2 or H3",
+        "Screen reader can navigate to section",
+        "Heading describes content",
+        "Section near top of page"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Single price display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View product with single price",
+        "Verify price displays: 'Price: ₹12,000'",
+        "Check currency symbol accessible",
+        "Verify text has 4.5:1 contrast",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Price displays clearly",
+        "Currency symbol has aria-label",
+        "Text has 4.5:1 contrast",
+        "Screen reader: 'Price: Twelve thousand rupees'",
+        "Format consistent"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Price range display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View product with price range",
+        "Verify displays: 'Price Range: ₹10,000 – ₹15,000'",
+        "Check dash/hyphen accessible",
+        "Verify screen reader announcement",
+        "Check contrast sufficient"
+      ],
+      "expectedResults": [
+        "Range displays clearly",
+        "Dash character accessible",
+        "Screen reader: 'Price range: Ten thousand to fifteen thousand rupees'",
+        "Text has 4.5:1 contrast",
+        "Format clear"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Custom label display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View product with custom label",
+        "Verify displays: 'Pricing: Contact for details'",
+        "Check text readable",
+        "Verify screen reader announcement",
+        "Check contrast sufficient"
+      ],
+      "expectedResults": [
+        "Custom label displays clearly",
+        "Text readable and clear",
+        "Screen reader announces label",
+        "Text has 4.5:1 contrast",
+        "No confusion with other content"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Hidden section when no price",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View product without pricing",
+        "Verify 'Pricing Information' section not displayed",
+        "Check no empty section shown",
+        "Use screen reader to verify section absent",
+        "Verify page structure valid"
+      ],
+      "expectedResults": [
+        "Section hidden when no price",
+        "No empty section displayed",
+        "No placeholder text shown",
+        "Page structure remains valid",
+        "Screen reader doesn't announce empty section"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Catalog card price accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View catalog listing",
+        "Locate product card with price",
+        "Verify price displays: 'Starting at ₹10,000'",
+        "Check text size readable",
+        "Verify contrast sufficient",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Price displays on card",
+        "Text: 'Starting at ₹10,000' or '₹12,000 approx.'",
+        "Text readable (minimum 12px)",
+        "Text has 4.5:1 contrast",
+        "Screen reader announces price"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Catalog card no empty placeholder",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "View catalog listing",
+        "Locate product card without price",
+        "Verify no price text shown",
+        "Check no empty space",
+        "Verify card layout clean"
+      ],
+      "expectedResults": [
+        "No price text when blank",
+        "No empty placeholder",
+        "Card layout remains clean",
+        "No visual gap",
+        "Other card content accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Invalid numeric error accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter invalid value: '12abc'",
+        "Trigger validation",
+        "Verify error appears",
+        "Check aria-invalid='true'",
+        "Verify error linked to field",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Error: 'Please enter a valid number'",
+        "aria-invalid='true' on input",
+        "Error linked with aria-describedby",
+        "Screen reader announces error",
+        "Error suggests correction"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Form submission prevented on error",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enter invalid data",
+        "Click Save button",
+        "Verify form doesn't submit",
+        "Check error summary appears",
+        "Verify focus moves to error",
+        "Check all errors listed"
+      ],
+      "expectedResults": [
+        "Form submission prevented",
+        "Error summary at top",
+        "Focus moves to error summary",
+        "All errors listed",
+        "Links jump to fields with errors"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Tab order logical",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Open Edit Pricing modal",
+        "Tab from first field",
+        "Verify tab order follows visual layout",
+        "Check all fields reachable",
+        "Verify no keyboard traps",
+        "Tab to Save and Cancel buttons"
+      ],
+      "expectedResults": [
+        "Tab order: Dropdown → Price fields → Save → Cancel",
+        "Order follows visual layout",
+        "All interactive elements reachable",
+        "No keyboard traps",
+        "Focus visible throughout"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Tab through all form elements",
+        "Verify focus indicator on each",
+        "Check focus has 3:1 contrast",
+        "Verify focus not obscured",
+        "Check indicator thickness"
+      ],
+      "expectedResults": [
+        "All focusable elements show focus",
+        "Focus indicators have 3:1 contrast",
+        "Focus visible and not obscured",
+        "Indicator thickness adequate (2px minimum)",
+        "WCAG 2.4.7 satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Measure contrast for all text",
+        "Check labels have 4.5:1",
+        "Check help text has 4.5:1",
+        "Verify error text has 4.5:1",
+        "Check currency symbols"
+      ],
+      "expectedResults": [
+        "Labels have 4.5:1 contrast",
+        "Help text has 4.5:1 contrast",
+        "Error text has 4.5:1 contrast",
+        "Currency symbols have 4.5:1 contrast",
+        "All text meets WCAG AA"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Form scales to 200% zoom",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Zoom browser to 200%",
+        "Open Edit Pricing modal",
+        "Verify all fields visible",
+        "Check no text truncation",
+        "Verify no horizontal scrolling",
+        "Check all functionality works"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "No text truncation",
+        "Fields remain usable",
+        "No horizontal scrolling",
+        "Functionality preserved"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Mobile responsive accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Set viewport to mobile (375x667)",
+        "Open Edit Pricing modal",
+        "Verify all fields accessible",
+        "Check touch targets adequate",
+        "Test all functionality"
+      ],
+      "expectedResults": [
+        "Modal accessible on mobile",
+        "Touch targets 44x44px minimum",
+        "No horizontal scrolling",
+        "All fields usable",
+        "Buttons accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Form fields announced correctly",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through form",
+        "Verify all labels announced",
+        "Check field types announced",
+        "Verify help text announced",
+        "Check required fields announced"
+      ],
+      "expectedResults": [
+        "All labels announced",
+        "Field types announced (textbox, combobox)",
+        "Help text announced",
+        "Optional status announced",
+        "Currency symbols announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Dynamic content announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-28",
+      "preconditions": "",
+      "steps": [
+        "Change pricing type dropdown",
+        "Verify field changes announced",
+        "Enter invalid value",
+        "Verify error announced",
+        "Save changes",
+        "Verify success announced"
+      ],
+      "expectedResults": [
+        "Field changes announced via aria-live",
+        "Errors announced immediately",
+        "Success message announced",
+        "Character count updates announced",
+        "All dynamic content accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

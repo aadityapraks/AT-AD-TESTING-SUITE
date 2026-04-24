@@ -4,7 +4,7 @@ const { syncTestCase } = require('./syncEngine');
 
 (async () => {
   const data = JSON.parse(
-    fs.readFileSync('./specs/test-cases/scrum86-handle-missing-unsafe-links.json', 'utf-8')
+    fs.readFileSync('./specs/test-cases/pwd/scrum73-navigate-catalog.json', 'utf-8')
   );
 
   for (const tc of data.testCases) {
