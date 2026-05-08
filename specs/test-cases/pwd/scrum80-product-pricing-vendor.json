@@ -202,7 +202,7 @@
         "Open vendor popup.",
         "Verify phone is an <a href='tel:'> link."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "feature": "Vendor Popup Content",
       "preconditions": "Vendor popup is open.",
       "expectedResults": [
@@ -232,7 +232,7 @@
         "Open vendor popup.",
         "Verify email is an <a href='mailto:'> link."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "feature": "Vendor Popup Content",
       "preconditions": "Vendor popup is open.",
       "expectedResults": [

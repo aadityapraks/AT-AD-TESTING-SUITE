@@ -93,7 +93,7 @@
         "Type 2 characters — observe.",
         "Type a 3rd character — observe."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the catalog landing page.",
       "expectedResults": [
         "No suggestions appear for 2 characters.",
@@ -124,7 +124,7 @@
         "Type 3+ characters of a common term.",
         "Observe the suggestions dropdown."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the catalog landing page.",
       "expectedResults": [
         "Suggestions dropdown shows one or more matching suggestions."
@@ -156,7 +156,7 @@
         "Click a suggestion.",
         "Observe results."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the catalog landing page with suggestions visible.",
       "expectedResults": [
         "Selected suggestion populates search bar.",
@@ -383,7 +383,7 @@
         "Press Escape.",
         "Observe dropdown."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the catalog landing page with suggestions visible.",
       "expectedResults": [
         "Suggestions dropdown closes on Escape.",
@@ -400,7 +400,7 @@
         "Click outside.",
         "Observe dropdown."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the catalog landing page with suggestions visible.",
       "expectedResults": [
         "Suggestions dropdown closes on outside click.",

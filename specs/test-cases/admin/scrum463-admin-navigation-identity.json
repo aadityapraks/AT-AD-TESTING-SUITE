@@ -1,0 +1,45 @@
+{
+  "jiraStory": "SCRUM-463",
+  "title": "Admin - Consistent Navigation & Identity Visibility (18 Test Cases)",
+  "overview": "Functional testing of SCRUM-463: Admin consistent navigation and identity visibility. Validates header displays admin name, role, logout option; left navigation includes all required modules; current section highlighted; role-based access; browser refresh retains page; logout clears session.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "dashboardUrl": "https://hub-ui-admin-qa.swarajability.org/admin/dashboard",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    },
+    "navItems": [
+      "Dashboard",
+      "Vendor Management",
+      "Product Management",
+      "Comment Moderation",
+      "User & Roles",
+      "Content Management"
+    ],
+    "roles": ["Super Admin", "Admin"]
+  },
+  "testCases": [
+    { "id": "TC_SCRUM463_001", "title": "Header Displays Admin Name", "priority": "Critical", "feature": "Header — Identity", "steps": ["Login as admin.", "Verify header shows admin name."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_002", "title": "Header Displays Admin Role", "priority": "Critical", "feature": "Header — Identity", "steps": ["Login as admin.", "Verify header shows role (e.g., Super Admin)."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_003", "title": "Header Displays Logout Option", "priority": "Critical", "feature": "Header — Identity", "steps": ["Login as admin.", "Verify logout button/link visible in header."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_004", "title": "Left Navigation is Visible", "priority": "Critical", "feature": "Left Navigation — Visibility", "steps": ["Login as admin.", "Verify left nav/sidebar is visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_005", "title": "Left Nav Contains Dashboard Link", "priority": "Critical", "feature": "Left Navigation — Items", "steps": ["Verify 'Dashboard' link in left nav."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_006", "title": "Left Nav Contains Vendor Management Link", "priority": "Critical", "feature": "Left Navigation — Items", "steps": ["Verify 'Vendor Management' link in left nav."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_007", "title": "Left Nav Contains Product Management Link", "priority": "Critical", "feature": "Left Navigation — Items", "steps": ["Verify 'Product Management' link in left nav."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_008", "title": "Left Nav Contains Comment Moderation Link", "priority": "High", "feature": "Left Navigation — Items", "steps": ["Verify 'Comment Moderation' link in left nav."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_009", "title": "Left Nav Contains User & Roles Link", "priority": "High", "feature": "Left Navigation — Items", "steps": ["Verify 'User & Roles' link in left nav."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_010", "title": "Left Nav Contains Content Management Link", "priority": "High", "feature": "Left Navigation — Items", "steps": ["Verify 'Content Management' link in left nav."], "testResult": "RUN" },
+
+    { "id": "TC_SCRUM463_011", "title": "Current Section is Highlighted in Nav", "priority": "Critical", "feature": "Left Navigation — Active State", "steps": ["Navigate to Product Management.", "Verify that nav item is highlighted/active."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_012", "title": "Clicking Nav Item Navigates to Correct Module", "priority": "Critical", "feature": "Left Navigation — Navigation", "steps": ["Click 'Product Management' in nav.", "Verify URL or page content changes."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_013", "title": "Browser Refresh Retains Current Page", "priority": "High", "feature": "Edge Case — Refresh", "steps": ["Navigate to Product Management.", "Reload page.", "Verify still on same page."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_014", "title": "Logout Clears Session and Redirects to Sign-In", "priority": "Critical", "feature": "Edge Case — Logout", "steps": ["Click logout.", "Verify redirected to sign-in page.", "Verify cannot access admin without re-login."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_015", "title": "Role-Based Access Hides Restricted Menu Items", "priority": "High", "feature": "Edge Case — Role Access", "steps": ["Login as admin.", "Verify nav items match role permissions."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_016", "title": "Navigation Responsive on Mobile Viewport", "priority": "Medium", "feature": "Responsive", "steps": ["Set mobile viewport.", "Verify nav accessible (hamburger or sidebar)."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_017", "title": "Navigation Responsive on Tablet Viewport", "priority": "Medium", "feature": "Responsive", "steps": ["Set tablet viewport.", "Verify nav accessible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM463_018", "title": "Header Persists Across All Admin Pages", "priority": "High", "feature": "Header — Persistence", "steps": ["Navigate to multiple admin pages.", "Verify header with name/role visible on each."], "testResult": "RUN" }
+  ]
+}

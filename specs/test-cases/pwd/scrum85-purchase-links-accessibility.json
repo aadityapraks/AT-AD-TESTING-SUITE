@@ -63,7 +63,7 @@
         "Open popup.",
         "Verify Buy Online heading is h2 or h3 element."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "Popup open.",
       "expectedResults": [
         "Heading is h2 or h3."

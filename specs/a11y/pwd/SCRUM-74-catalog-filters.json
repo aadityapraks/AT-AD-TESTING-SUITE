@@ -1,0 +1,510 @@
+{
+  "jiraStory": "SCRUM-74",
+  "title": "SCRUM-74: PwD - View Catalog Landing Page with Filters - Accessibility Test Plan",
+  "overview": "Accessibility test plan for PwD Catalog Filters feature covering WCAG 2.1 AA compliance: filter panel labels, keyboard-operable dropdowns/checkboxes, aria-checked/aria-label, collapsible filter section, Reset All keyboard reachable, live-region announcements, pagination landmark with aria-label, aria-current=page, keyboard navigation, focus indicators, 44x44px touch targets, ellipsis aria-hidden.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Filter dropdowns have accessible labels",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page",
+        "Inspect Disability Type dropdown",
+        "Verify accessible name 'Disability Type'",
+        "Inspect Sub Category, Type, Price Range dropdowns",
+        "Verify each has descriptive accessible name"
+      ],
+      "expectedResults": [
+        "All filter dropdowns have programmatic labels",
+        "Screen reader announces label when focused",
+        "WCAG 4.1.2, 3.3.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Filter dropdowns keyboard operable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to Disability Type dropdown",
+        "Verify focus indicator visible",
+        "Use Arrow keys to navigate options",
+        "Press Enter/Space to select",
+        "Repeat for Sub Category, Type, Price Range"
+      ],
+      "expectedResults": [
+        "All dropdowns reachable via Tab",
+        "Arrow keys navigate options",
+        "Selection via Enter/Space",
+        "WCAG 2.1.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Availability checkbox has accessible label and state",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page",
+        "Locate 'In stock only' checkbox",
+        "Verify accessible name 'In stock only'",
+        "Verify role='checkbox'",
+        "Toggle checkbox and verify aria-checked state updates"
+      ],
+      "expectedResults": [
+        "Checkbox has accessible name",
+        "State (checked/unchecked) announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Min Rating slider has accessible label",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Locate Min Rating slider",
+        "Verify accessible name 'Minimum rating filter'",
+        "Verify role='slider'",
+        "Verify current value announced"
+      ],
+      "expectedResults": [
+        "Slider has accessible name and role",
+        "Current value announced to screen readers",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Min Rating slider keyboard operable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to Min Rating slider",
+        "Use Arrow keys to change value",
+        "Verify value updates",
+        "Verify new value announced"
+      ],
+      "expectedResults": [
+        "Slider operable via Arrow keys",
+        "Value changes announced",
+        "WCAG 2.1.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Apply Filters button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to Apply Filters button",
+        "Verify focus indicator visible",
+        "Verify accessible name 'Apply Filters'",
+        "Press Enter to activate",
+        "Verify results update"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Has accessible name",
+        "Enter activates button",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Reset All button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to Reset All button",
+        "Verify focus indicator visible",
+        "Verify accessible name 'Reset All'",
+        "Press Enter to activate",
+        "Verify filters cleared"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Has accessible name",
+        "Enter activates button",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Collapse Filters button has aria-expanded state",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Locate Collapse filters button",
+        "Verify accessible name 'Collapse filters'",
+        "Verify aria-expanded attribute present",
+        "Click to collapse",
+        "Verify aria-expanded toggles",
+        "Verify state change announced"
+      ],
+      "expectedResults": [
+        "Button has accessible name",
+        "aria-expanded reflects state",
+        "State change announced to screen readers",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Device count live region announces filter results",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page",
+        "Apply a filter (e.g. Disability Type = Locomotor)",
+        "Click Apply Filters",
+        "Verify device count text updates",
+        "Verify live region (role='status') announces updated count"
+      ],
+      "expectedResults": [
+        "Device count has role='status' or aria-live",
+        "Updated count announced to screen readers",
+        "Example: '6 devices found'",
+        "WCAG 4.1.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Filter panel Tab/Shift+Tab order is logical",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab through filter panel elements",
+        "Verify order: Search → Disability Type → Sub Category → Type → Price Range → Availability → Min Rating → Apply Filters → Reset All",
+        "Shift+Tab back through elements",
+        "Verify reverse order is logical"
+      ],
+      "expectedResults": [
+        "Tab order follows visual layout",
+        "No unexpected focus jumps",
+        "WCAG 2.4.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Search bar has accessible label",
+      "wcagCriterion": "3.3.2 Labels or Instructions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Locate search bar",
+        "Verify accessible name 'Search devices'",
+        "Verify placeholder text present",
+        "Verify screen reader announces label on focus"
+      ],
+      "expectedResults": [
+        "Search bar has programmatic label",
+        "Placeholder provides guidance",
+        "WCAG 3.3.2, 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Pagination has navigation landmark with aria-label",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page",
+        "Locate pagination section",
+        "Verify role='navigation' or <nav> element",
+        "Verify aria-label='Pagination'"
+      ],
+      "expectedResults": [
+        "Pagination wrapped in navigation landmark",
+        "aria-label='Pagination' present",
+        "WCAG 1.3.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Pagination links have descriptive aria-labels",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Inspect page number links",
+        "Verify each has aria-label like 'Page 2'",
+        "Inspect Next link for aria-label",
+        "Inspect Previous link for aria-label"
+      ],
+      "expectedResults": [
+        "Page links have descriptive labels",
+        "Next/Previous have clear labels",
+        "WCAG 2.4.4 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Current page indicated with aria-current='page'",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page",
+        "Locate current page indicator in pagination",
+        "Verify aria-current='page' on active page element",
+        "Verify visual highlight with ≥4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Current page has aria-current='page'",
+        "Visually highlighted",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Pagination links keyboard focusable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to pagination area",
+        "Verify Previous, page numbers, Next are all focusable",
+        "Verify focus order: Previous → Page 1 → Page 2 → ... → Next",
+        "Press Enter on a page link",
+        "Verify page navigates"
+      ],
+      "expectedResults": [
+        "All pagination elements keyboard focusable",
+        "Focus order logical and sequential",
+        "Enter activates page link",
+        "WCAG 2.1.1, 2.4.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Pagination focus indicators visible",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab through pagination elements",
+        "Verify focus outline visible on each element",
+        "Verify focus indicator contrast ≥3:1",
+        "Verify hover and focus states distinguishable"
+      ],
+      "expectedResults": [
+        "Focus indicators visible on all pagination elements",
+        "Contrast ≥3:1",
+        "Hover and focus states distinct",
+        "WCAG 2.4.7, 2.4.11 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Pagination ellipsis not focusable and aria-hidden",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog with enough pages to show ellipsis",
+        "Tab through pagination",
+        "Verify ellipsis ('…') is NOT focusable",
+        "Inspect ellipsis element for aria-hidden='true'"
+      ],
+      "expectedResults": [
+        "Ellipsis not in tab order",
+        "aria-hidden='true' on ellipsis",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Previous button disabled on first page with aria-disabled",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Navigate to catalog page 1",
+        "Locate Previous button/link",
+        "Verify it is visually disabled",
+        "Verify aria-disabled='true' or not a link"
+      ],
+      "expectedResults": [
+        "Previous is disabled on first page",
+        "Programmatically marked as disabled",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "No keyboard traps in pagination",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab into pagination area",
+        "Tab past all pagination elements",
+        "Verify focus moves to next page section (footer or content)",
+        "Shift+Tab back into pagination",
+        "Verify no element traps focus"
+      ],
+      "expectedResults": [
+        "Focus moves freely through pagination",
+        "No keyboard traps",
+        "WCAG 2.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Pagination touch targets ≥44x44px on mobile",
+      "wcagCriterion": "2.5.5 Target Size",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Set viewport to 375x667",
+        "Navigate to catalog page",
+        "Measure pagination link/button sizes",
+        "Verify all ≥44x44 CSS pixels",
+        "Verify adequate spacing between targets"
+      ],
+      "expectedResults": [
+        "All pagination targets ≥44x44px",
+        "Adequate spacing",
+        "WCAG 2.5.5 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Filter panel color contrast meets 4.5:1",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Inspect filter label text contrast",
+        "Inspect dropdown text contrast",
+        "Inspect button text contrast",
+        "Verify all meet 4.5:1 for normal text",
+        "Verify UI components meet 3:1"
+      ],
+      "expectedResults": [
+        "All text ≥4.5:1 contrast",
+        "UI components ≥3:1 contrast",
+        "WCAG 1.4.3, 1.4.11 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Filter panel usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Navigate to catalog page",
+        "Verify filter panel visible and usable",
+        "Verify no horizontal scrolling",
+        "Verify dropdowns still operable"
+      ],
+      "expectedResults": [
+        "Filter panel usable at 200%",
+        "No content cut off",
+        "No horizontal scrolling",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Filter panel collapses on mobile and is focus-managed",
+      "wcagCriterion": "1.4.10 Reflow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Set viewport to 375x667",
+        "Navigate to catalog page",
+        "Verify filter panel is collapsible",
+        "Toggle collapse button",
+        "Verify focus managed after collapse/expand"
+      ],
+      "expectedResults": [
+        "Filter panel collapses on mobile",
+        "Focus managed properly",
+        "WCAG 1.4.10 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Pagination mobile responsive with Previous/Next visible",
+      "wcagCriterion": "1.4.10 Reflow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Set viewport to 375x667",
+        "Navigate to catalog page",
+        "Verify pagination visible",
+        "Verify Previous and Next remain visible",
+        "Verify proper spacing and no overlap"
+      ],
+      "expectedResults": [
+        "Pagination adapts to mobile",
+        "Previous/Next visible and reachable",
+        "No overlap or truncation",
+        "WCAG 1.4.10 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Complete filter workflow keyboard only",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-74",
+      "steps": [
+        "Tab to search bar and type keyword",
+        "Tab to Disability Type and select option",
+        "Tab to Apply Filters and press Enter",
+        "Verify results update",
+        "Tab to Reset All and press Enter",
+        "Verify filters cleared",
+        "Complete entire workflow without mouse"
+      ],
+      "expectedResults": [
+        "Entire filter workflow completable via keyboard",
+        "No keyboard traps",
+        "Focus indicators always visible",
+        "WCAG 2.1.1, 2.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    }
+  ]
+}

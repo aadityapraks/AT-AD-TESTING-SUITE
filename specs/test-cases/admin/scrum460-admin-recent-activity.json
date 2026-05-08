@@ -1,0 +1,39 @@
+{
+  "jiraStory": "SCRUM-460",
+  "title": "Admin - View Recent Platform Activities & Alerts (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-460: Admin views recent platform activities and alerts. Validates 'Recent Activity' section showing new vendor applications, product submissions, urgent alerts, event descriptions, timestamps, urgency indicators, reverse chronological order, placeholder for no activity, pagination/scroll for high volume, and navigation on click.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "dashboardUrl": "https://hub-ui-admin-qa.swarajability.org/admin/dashboard",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    },
+    "activityTypes": ["vendor", "product", "alert"],
+    "placeholderText": "No recent activity"
+  },
+  "testCases": [
+    { "id": "TC_SCRUM460_001", "title": "Recent Activity Section is Visible on Dashboard", "priority": "Critical", "feature": "Recent Activity — Visibility", "steps": ["Login as admin.", "Navigate to dashboard.", "Verify 'Recent Activity' section visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_002", "title": "Recent Activity Section Has Heading", "priority": "High", "feature": "Recent Activity — Visibility", "steps": ["Navigate to dashboard.", "Verify heading contains 'Recent Activity' or 'Activity'."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_003", "title": "Activity Items are Displayed", "priority": "Critical", "feature": "Recent Activity — Content", "steps": ["Navigate to dashboard.", "Verify at least one activity item is listed."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_004", "title": "Activity Item Shows Event Description", "priority": "Critical", "feature": "Recent Activity — Content", "steps": ["Navigate to dashboard.", "Verify first activity item has text description."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_005", "title": "Activity Item Shows Timestamp", "priority": "Critical", "feature": "Recent Activity — Content", "steps": ["Navigate to dashboard.", "Verify activity item contains time/date info."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_006", "title": "Urgent Alerts Show Urgency Indicator", "priority": "High", "feature": "Recent Activity — Urgency", "steps": ["Navigate to dashboard.", "Look for urgency indicator (badge, icon, color) on alerts."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_007", "title": "New Vendor Application Activity Displayed", "priority": "Critical", "feature": "Recent Activity — Event Types", "steps": ["Navigate to dashboard.", "Verify body contains vendor-related activity text."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_008", "title": "Product Submission Activity Displayed", "priority": "Critical", "feature": "Recent Activity — Event Types", "steps": ["Navigate to dashboard.", "Verify body contains product submission activity text."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_009", "title": "Urgent Alert Activity Displayed", "priority": "High", "feature": "Recent Activity — Event Types", "steps": ["Navigate to dashboard.", "Verify body contains alert/urgent activity text."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_010", "title": "Activities Listed in Reverse Chronological Order", "priority": "Critical", "feature": "Recent Activity — Ordering", "steps": ["Navigate to dashboard.", "Extract timestamps from activity items.", "Verify first item is most recent."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_011", "title": "Clicking Activity Navigates to Relevant Module", "priority": "High", "feature": "Recent Activity — Navigation", "steps": ["Navigate to dashboard.", "Click first activity item.", "Verify URL changes or detail view opens."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_012", "title": "No Recent Activity Shows Placeholder Text", "priority": "High", "feature": "Edge Case — Empty State", "steps": ["Navigate to dashboard.", "If no activities, verify placeholder text visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_013", "title": "High Volume Activities Support Scroll or Pagination", "priority": "Medium", "feature": "Edge Case — High Volume", "steps": ["Navigate to dashboard.", "If many activities, verify scroll or pagination available."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_014", "title": "Activity Section Responsive on Mobile Viewport", "priority": "Medium", "feature": "Responsive", "steps": ["Set mobile viewport.", "Navigate to dashboard.", "Verify activity section visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_015", "title": "Activity Section Responsive on Tablet Viewport", "priority": "Medium", "feature": "Responsive", "steps": ["Set tablet viewport.", "Navigate to dashboard.", "Verify activity section visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_016", "title": "Activity Items Have Consistent Structure", "priority": "Medium", "feature": "Recent Activity — Content", "steps": ["Navigate to dashboard.", "Verify multiple activity items have similar structure."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_017", "title": "Activity Section Refreshes on Page Reload", "priority": "Medium", "feature": "Edge Case — Refresh", "steps": ["Navigate to dashboard.", "Reload page.", "Verify activity section still visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_018", "title": "Activity Timestamps are Human-Readable", "priority": "Medium", "feature": "Recent Activity — Content", "steps": ["Navigate to dashboard.", "Verify timestamps contain recognizable date/time patterns."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_019", "title": "Activity Section Does Not Overflow Container", "priority": "Low", "feature": "Edge Case — Layout", "steps": ["Navigate to dashboard.", "Verify no horizontal overflow in activity section."], "testResult": "RUN" },
+    { "id": "TC_SCRUM460_020", "title": "Dashboard Page Heading is Correct", "priority": "Medium", "feature": "Page Structure", "steps": ["Navigate to dashboard.", "Verify page heading contains 'Dashboard'."], "testResult": "RUN" }
+  ]
+}

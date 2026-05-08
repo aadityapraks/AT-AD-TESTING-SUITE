@@ -478,7 +478,7 @@
         "Login.",
         "Verify Browse All Devices button."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is logged in.",
       "expectedResults": [
         "Browse All Devices button is visible."

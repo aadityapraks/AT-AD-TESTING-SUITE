@@ -193,7 +193,7 @@
         "Count story cards.",
         "Verify >= 6."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the stories page.",
       "expectedResults": [
         "At least 6 story cards are loaded."
@@ -250,7 +250,7 @@
         "Click like.",
         "Verify state change."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the stories page.",
       "expectedResults": [
         "Like icon state toggles on click."

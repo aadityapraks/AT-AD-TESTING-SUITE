@@ -1,0 +1,48 @@
+{
+  "jiraStory": "SCRUM-487",
+  "title": "Admin - Add Vendor Manually (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-487: Admin adds a vendor manually. Validates Add Vendor modal fields (name, business type, location, contact email, phone, website, category), mandatory field validation, newly added vendor appears as Active, duplicate detection, invalid email validation, unsaved changes warning on close.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "vendorManagementUrl": "https://hub-ui-admin-qa.swarajability.org/admin/vendors",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "mobile": { "width": 375, "height": 667 }
+    },
+    "validVendor": {
+      "name": "Test Vendor Auto",
+      "businessType": "Manufacturer",
+      "location": "Mumbai",
+      "address": "123 Test Street, Mumbai 400001",
+      "email": "testvendor@mailto.plus",
+      "phone": "9876543210",
+      "website": "https://testvendor.example.com",
+      "category": "Mobility"
+    },
+    "invalidEmail": "not-an-email",
+    "duplicatePhone": "9876543210"
+  },
+  "testCases": [
+    { "id": "TC_SCRUM487_001", "title": "Add Vendor Button is Visible on Vendor Management Page", "priority": "Critical", "feature": "Add Vendor — Access", "steps": ["Navigate to Vendor Management.", "Verify 'Add Vendor' button visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_002", "title": "Clicking Add Vendor Opens Modal", "priority": "Critical", "feature": "Add Vendor — Modal", "steps": ["Click 'Add Vendor'.", "Verify modal/dialog opens."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_003", "title": "Modal Contains Vendor Name Field", "priority": "Critical", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Vendor Name input present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_004", "title": "Modal Contains Business Type Field", "priority": "Critical", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Business Type field present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_005", "title": "Modal Contains Location & Address Fields", "priority": "Critical", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Location and Address fields present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_006", "title": "Modal Contains Contact Email Field", "priority": "Critical", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Email input present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_007", "title": "Modal Contains Phone Field", "priority": "Critical", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Phone input present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_008", "title": "Modal Contains Website Field", "priority": "High", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Website input present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_009", "title": "Modal Contains Category Field", "priority": "High", "feature": "Add Vendor — Fields", "steps": ["Open Add Vendor modal.", "Verify Category dropdown/field present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_010", "title": "Mandatory Fields Validated Before Submission", "priority": "Critical", "feature": "Validation", "steps": ["Open modal.", "Leave mandatory fields empty.", "Click Submit.", "Verify validation errors shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_011", "title": "Invalid Email Format Shows Validation Error", "priority": "High", "feature": "Validation", "steps": ["Enter invalid email.", "Submit.", "Verify email validation error."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_012", "title": "Valid Submission Creates Vendor Successfully", "priority": "Critical", "feature": "Submission", "steps": ["Fill all fields with valid data.", "Submit.", "Verify success message."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_013", "title": "Newly Added Vendor Appears as Active", "priority": "Critical", "feature": "Submission", "steps": ["Add vendor.", "Verify vendor appears in list with Active status."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_014", "title": "Duplicate Vendor Detected by Contact Number", "priority": "High", "feature": "Edge Case — Duplicate", "steps": ["Enter phone number of existing vendor.", "Submit.", "Verify duplicate warning shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_015", "title": "Closing Modal Shows Unsaved Changes Warning", "priority": "High", "feature": "Edge Case — Unsaved Changes", "steps": ["Fill some fields.", "Close modal without saving.", "Verify unsaved changes warning."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_016", "title": "Cancel Button Closes Modal Without Saving", "priority": "High", "feature": "Add Vendor — Modal", "steps": ["Open modal.", "Click Cancel.", "Verify modal closes and no vendor added."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_017", "title": "Modal Has Submit/Save Button", "priority": "Critical", "feature": "Add Vendor — Modal", "steps": ["Open modal.", "Verify Submit/Save button present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_018", "title": "Phone Field Accepts Only Valid Format", "priority": "Medium", "feature": "Validation", "steps": ["Enter invalid phone (letters).", "Verify validation error or input restriction."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_019", "title": "Add Vendor Modal Responsive on Mobile", "priority": "Low", "feature": "Responsive", "steps": ["Set mobile viewport.", "Open Add Vendor modal.", "Verify modal usable."], "testResult": "RUN" },
+    { "id": "TC_SCRUM487_020", "title": "Added Vendor Persists After Page Refresh", "priority": "Medium", "feature": "Edge Case — Persistence", "steps": ["Add vendor.", "Reload page.", "Verify vendor still in list."], "testResult": "RUN" }
+  ]
+}

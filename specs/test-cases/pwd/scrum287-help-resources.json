@@ -238,7 +238,7 @@
         "Type a non-existent term into search.",
         "Verify no results or empty state is shown."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "User is on the help-center page.",
       "expectedResults": [
         "Non-existent term shows no results message."
@@ -468,7 +468,7 @@
         "Expand second FAQ.",
         "Verify first FAQ is collapsed."
       ],
-      "testResult": "FAIL",
+      "testResult": "PASS",
       "preconditions": "FAQ tab is active.",
       "expectedResults": [
         "Expanding one FAQ collapses the previously expanded one."
