@@ -1,0 +1,15 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "tabs": {
+    "newSubmissions": "New Submissions",
+    "pendingEdits": "Pending Edits",
+    "officialAT": "Official AT",
+    "approved": "Approved",
+    "allProducts": "All Products"
+  }
+}

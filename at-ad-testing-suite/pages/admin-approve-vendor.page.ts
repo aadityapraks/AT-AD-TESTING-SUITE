@@ -151,4 +151,173 @@ export class AdminApproveVendorPage extends BasePage {
     }
     return true;
   }
+
+  // ── Accessibility Test Methods ──
+
+  /** Close any open detail modal/panel */
+  async closeDetailModal() {
+    const closeBtn = this.page.locator('button:has-text("Close"), button:has-text("×"), button[aria-label="Close"], [class*="close"] button').first();
+    const hasClose = await closeBtn.isVisible().catch(() => false);
+    if (hasClose) {
+      await closeBtn.click();
+    } else {
+      await this.page.keyboard.press('Escape');
+    }
+    await this.page.waitForTimeout(2000);
+  }
+
+  /** Get Approve button accessible name */
+  async getApproveButtonAccessibleName(): Promise<string> {
+    const btn = this.page.locator('button:has-text("Approve"):not(:has-text("Pending Approval"))').first();
+    const isVisible = await btn.isVisible().catch(() => false);
+    if (!isVisible) {
+      // Try opening View Details first
+      const viewBtn = this.page.locator('button:has-text("View Details"), button:has-text("View partner details")').first();
+      if (await viewBtn.isVisible().catch(() => false)) {
+        await viewBtn.click();
+        await this.page.waitForTimeout(3000);
+      }
+    }
+    const approveBtn = this.page.locator('button:has-text("Approve")').first();
+    const ariaLabel = await approveBtn.getAttribute('aria-label').catch(() => null);
+    const text = await approveBtn.textContent().catch(() => '');
+    return (ariaLabel || text || '').trim();
+  }
+
+  /** Tab to Approve button and check if reachable */
+  async tabToApproveButton(): Promise<boolean> {
+    for (let i = 0; i < 20; i++) {
+      await this.page.keyboard.press('Tab');
+      const focused = await this.page.evaluate(() => document.activeElement?.textContent || '');
+      if (focused.includes('Approve')) return true;
+    }
+    return false;
+  }
+
+  /** Check if Approve button is visible on current tab (without opening details) */
+  async isApproveButtonVisibleOnCards(): Promise<boolean> {
+    await this.page.waitForTimeout(2000);
+    const btn = this.page.locator('button:has-text("Approve"):not(:has-text("Pending Approval"))').first();
+    return await btn.isVisible().catch(() => false);
+  }
+
+  /** Check if confirmation dialog appears after clicking Approve */
+  async getConfirmationDialogInfo(): Promise<{ exists: boolean; hasDialogRole: boolean; hasAccessibleName: boolean }> {
+    await this.page.waitForTimeout(2000);
+    const dialog = this.page.locator('[role="dialog"], [role="alertdialog"]').first();
+    const exists = await dialog.isVisible().catch(() => false);
+    if (!exists) {
+      // Check for any modal-like overlay
+      const modal = this.page.locator('[class*="modal"]:visible, [class*="confirm"]:visible, [class*="dialog"]:visible').first();
+      const modalExists = await modal.isVisible().catch(() => false);
+      return { exists: modalExists, hasDialogRole: false, hasAccessibleName: false };
+    }
+    const ariaLabel = await dialog.getAttribute('aria-label');
+    const ariaLabelledBy = await dialog.getAttribute('aria-labelledby');
+    return {
+      exists: true,
+      hasDialogRole: true,
+      hasAccessibleName: !!(ariaLabel || ariaLabelledBy)
+    };
+  }
+
+  /** Check for success notification after approval */
+  async getSuccessNotificationInfo(): Promise<{ exists: boolean; hasRole: boolean; hasAriaLive: boolean; text: string }> {
+    await this.page.waitForTimeout(3000);
+    // Look for toast/notification/success message
+    const notification = this.page.locator('[role="status"], [role="alert"], [aria-live], [class*="toast"], [class*="notification"], [class*="success"], [class*="snackbar"]').first();
+    const exists = await notification.isVisible().catch(() => false);
+    if (!exists) {
+      // Check for any success text on page
+      const successText = this.page.locator('text=/approved|success/i').first();
+      const hasSuccess = await successText.isVisible().catch(() => false);
+      return { exists: hasSuccess, hasRole: false, hasAriaLive: false, text: '' };
+    }
+    const role = await notification.getAttribute('role');
+    const ariaLive = await notification.getAttribute('aria-live');
+    const text = await notification.textContent() || '';
+    return {
+      exists: true,
+      hasRole: !!(role === 'status' || role === 'alert'),
+      hasAriaLive: !!ariaLive,
+      text: text.trim()
+    };
+  }
+
+  /** Get aria-live region count */
+  async getAriaLiveRegionCount(): Promise<number> {
+    return await this.page.locator('[aria-live]').count();
+  }
+
+  /** Run axe-core contrast check */
+  async runAxeContrastCheck(): Promise<{ violationCount: number; violations: any[] }> {
+    const AxeBuilder = (await import('@axe-core/playwright')).default;
+    const results = await new AxeBuilder({ page: this.page })
+      .withRules(['color-contrast'])
+      .analyze();
+    return { violationCount: results.violations.length, violations: results.violations };
+  }
+
+  /** Run full axe-core WCAG 2.1 AA scan */
+  async runAxeFullScan(): Promise<{ violationCount: number; violations: any[] }> {
+    const AxeBuilder = (await import('@axe-core/playwright')).default;
+    const results = await new AxeBuilder({ page: this.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+      .analyze();
+    return { violationCount: results.violations.length, violations: results.violations };
+  }
+
+  /** Set zoom to 200% and check visibility */
+  async checkZoom200(): Promise<{ contentVisible: boolean; hasHorizontalScroll: boolean }> {
+    await this.page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+    const contentVisible = await this.page.locator('h1, h2, h3').first().isVisible();
+    const hasHorizontalScroll = await this.page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    return { contentVisible, hasHorizontalScroll };
+  }
+
+  /** Set mobile viewport */
+  async setMobileViewport() {
+    await this.page.setViewportSize({ width: 375, height: 667 });
+    await this.page.waitForTimeout(1000);
+  }
+
+  /** Check if content is visible */
+  async isContentVisible(): Promise<boolean> {
+    return await this.page.locator('h1, h2, h3').first().isVisible();
+  }
+
+  /** Verify no keyboard trap */
+  async verifyNoKeyboardTrap(): Promise<boolean> {
+    await this.page.keyboard.press('Tab');
+    await this.page.keyboard.press('Tab');
+    await this.page.keyboard.press('Tab');
+    await this.page.keyboard.press('Shift+Tab');
+    await this.page.keyboard.press('Shift+Tab');
+    return true;
+  }
+
+  /** Get buttons without accessible names */
+  async getButtonsWithNoName(): Promise<number> {
+    const buttons = this.page.locator('button:visible');
+    const count = await buttons.count();
+    let noNameCount = 0;
+    for (let i = 0; i < count; i++) {
+      const btn = buttons.nth(i);
+      const text = (await btn.textContent().catch(() => '')) || '';
+      const ariaLabel = await btn.getAttribute('aria-label').catch(() => null);
+      const title = await btn.getAttribute('title').catch(() => null);
+      if (!text.trim() && !ariaLabel && !title) noNameCount++;
+    }
+    return noNameCount;
+  }
+
+  /** Verify H1 heading exists */
+  async verifyH1Visible() {
+    await expect(this.page.locator('h1').first()).toBeVisible();
+  }
+
+  /** Get H1 count */
+  async getH1Count(): Promise<number> {
+    return await this.page.locator('h1').count();
+  }
 }

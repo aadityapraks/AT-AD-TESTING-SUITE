@@ -1,0 +1,706 @@
+{
+  "jiraStory": "SCRUM-31",
+  "title": "Assistive Partner Responds to Reviews and Questions - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the AP Responds to Reviews and Questions feature on the Y4J AT/AD Vendor Portal. Covers AP interaction panel access (Reviews & Ratings and Queries sections), responding to approved reviews (text-based, 500 char limit, pending moderation), responding to user questions (routed through admin moderation), admin moderation workflow (approve/reject/edit), response visibility on PwD portal (labeled, timestamped, visually distinct), notification and tracking (new reviews, approval/rejection alerts), editing and withdrawing responses (re-moderation on edit, confirmation on delete), content guidelines enforcement, privacy and security (anonymized AP responses, no direct messaging), error handling, and audit trail logging.",
+  "scope": {
+    "inScope": [
+      "AP Interaction Panel: Reviews & Ratings and Queries sections on dashboard",
+      "Review/question entry display: Product Name, Star Rating, Text, Date, Anonymous Tag, Status",
+      "Responding to approved reviews: text response up to 500 chars, Respond to Review button",
+      "Pending Moderation label and status after response submission",
+      "Responding to questions: question text, timestamp, context, AP response",
+      "Admin moderation workflow: Approve, Reject (with feedback), Edit (optional)",
+      "Response visibility on PwD portal: labeled 'Response from Assistive Partner', timestamped, visually distinct",
+      "Notifications: new reviews/questions, admin approval/rejection of responses",
+      "Editing pending or approved responses (re-enters moderation queue)",
+      "Withdrawing/deleting responses with confirmation prompt",
+      "Content guidelines: no promotional content, no personal contact, neutral language",
+      "Privacy: AP responses show organization name only, PwD details hidden",
+      "Error handling: save failure message, pending status with timestamp",
+      "Audit trail: all responses, edits, moderation actions logged"
+    ],
+    "outOfScope": [
+      "PwD review/question submission flow (PwD-side feature)",
+      "Admin moderation UI internals and GenAI flagging",
+      "Email notification delivery infrastructure",
+      "PwD Queries detail flow (covered in SCRUM-201)",
+      "Backend API internals"
+    ]
+  },
+  "parentEpic": {
+    "key": "SCRUM-87",
+    "summary": "Vendor Portal"
+  },
+  "relatedStories": [
+    {
+      "key": "SCRUM-201",
+      "summary": "Assistive Partner Responding to PwD Queries",
+      "status": "In QA"
+    }
+  ],
+  "subtasks": [
+    {
+      "key": "SCRUM-52",
+      "summary": "Design: Vendor Responds to Reviews and Questions",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-68",
+      "summary": "SD: Vendor Responds to Reviews and Questions",
+      "status": "In Progress"
+    },
+    {
+      "key": "SCRUM-263",
+      "summary": "QA: Test case creation",
+      "status": "Done"
+    },
+    {
+      "key": "SCRUM-264",
+      "summary": "QA: Manual testing",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-265",
+      "summary": "QA: Accessibility Testing",
+      "status": "To Do"
+    },
+    {
+      "key": "SCRUM-266",
+      "summary": "QA: Create Automation Scripts",
+      "status": "To Do"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "TC_ARR_001",
+      "title": "Verify AP dashboard includes Reviews & Ratings and Queries sections",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "1. Access to Interaction Panel",
+      "preconditions": "User is logged in as an approved Assistive Partner with listed products",
+      "steps": [
+        "1. Log in as an approved Assistive Partner",
+        "2. Navigate to the AP dashboard",
+        "3. Verify 'Reviews & Ratings' section is visible and accessible",
+        "4. Verify 'Queries' section is visible and accessible",
+        "5. Click on 'Reviews & Ratings' section",
+        "6. Verify the section loads without errors"
+      ],
+      "expectedResults": [
+        "Both 'Reviews & Ratings' and 'Queries' sections are visible on the dashboard",
+        "Sections are clickable and load without errors",
+        "Navigation between sections works correctly"
+      ],
+      "postconditions": "User is on the Reviews & Ratings section",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_002",
+      "title": "Verify response text is limited to 500 characters",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "2. Responding to Reviews",
+      "preconditions": "AP is responding to an approved review",
+      "steps": [
+        "1. Click 'Respond to Review' on an approved review",
+        "2. Enter exactly 500 characters of text",
+        "3. Verify the text is accepted",
+        "4. Attempt to enter 501 characters",
+        "5. Verify the input is restricted or a validation message appears",
+        "6. Verify a character counter is displayed showing remaining characters"
+      ],
+      "expectedResults": [
+        "500 characters are accepted without error",
+        "Text beyond 500 characters is prevented or flagged",
+        "Character counter shows current/remaining count",
+        "Validation message is clear if limit is exceeded"
+      ],
+      "postconditions": "Character limit is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_003",
+      "title": "Verify AP cannot respond to Pending or Flagged reviews",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "2. Responding to Reviews",
+      "preconditions": "AP has reviews in Pending Moderation and Flagged statuses",
+      "steps": [
+        "1. Navigate to Reviews & Ratings section",
+        "2. Locate a review with 'Pending Moderation' status",
+        "3. Verify 'Respond to Review' button is NOT available",
+        "4. Locate a review with 'Flagged' status",
+        "5. Verify 'Respond to Review' button is NOT available",
+        "6. Locate an 'Approved' review",
+        "7. Verify 'Respond to Review' button IS available"
+      ],
+      "expectedResults": [
+        "Respond button is hidden/disabled for Pending Moderation reviews",
+        "Respond button is hidden/disabled for Flagged reviews",
+        "Respond button is only available for Approved reviews"
+      ],
+      "postconditions": "Response capability is restricted to approved reviews only",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_004",
+      "title": "Verify AP cannot submit an empty response",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "2. Responding to Reviews",
+      "preconditions": "AP is responding to an approved review",
+      "steps": [
+        "1. Click 'Respond to Review' on an approved review",
+        "2. Leave the response text field empty",
+        "3. Attempt to submit the response",
+        "4. Verify a validation error is displayed",
+        "5. Enter whitespace-only text",
+        "6. Attempt to submit",
+        "7. Verify a validation error is displayed"
+      ],
+      "expectedResults": [
+        "Empty response cannot be submitted",
+        "Whitespace-only response cannot be submitted",
+        "Clear validation message is shown (e.g., 'Response cannot be empty')"
+      ],
+      "postconditions": "Empty responses are prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_005",
+      "title": "Verify AP can respond to user questions with context displayed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "3. Responding to Questions",
+      "preconditions": "AP has products with user-submitted questions in the Queries section",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Locate a user question",
+        "3. Verify the question displays:",
+        "   a. Question text",
+        "   b. Timestamp",
+        "   c. Context (e.g., 'Asked about Product Availability')",
+        "4. Click the respond button",
+        "5. Enter a response explaining relevant product details",
+        "6. Submit the response",
+        "7. Verify the response enters 'Pending Moderation' status"
+      ],
+      "expectedResults": [
+        "Question displays text, timestamp, and context",
+        "AP can enter and submit a response",
+        "Response is routed through admin moderation",
+        "Response status shows 'Pending Moderation'"
+      ],
+      "postconditions": "AP response to question is submitted for moderation",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_006",
+      "title": "Verify admin can Approve an AP response making it publicly visible",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "4. Admin Moderation Workflow",
+      "preconditions": "AP has submitted a response that is in Pending Moderation status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the moderation queue",
+        "3. Locate the AP's pending response",
+        "4. Review the response for accuracy, tone, and compliance",
+        "5. Click 'Approve'",
+        "6. Verify the response status changes to 'Approved/Published'",
+        "7. Log in as a PwD user",
+        "8. Navigate to the product details page",
+        "9. Verify the AP response is now visible beneath the corresponding review/question"
+      ],
+      "expectedResults": [
+        "Admin can view pending AP responses in moderation queue",
+        "Approving changes status to Published",
+        "Approved response becomes visible on the PwD-facing product page",
+        "Response is displayed with correct content"
+      ],
+      "postconditions": "AP response is publicly visible after admin approval",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_007",
+      "title": "Verify admin can Reject an AP response with feedback reason",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "4. Admin Moderation Workflow",
+      "preconditions": "AP has submitted a response in Pending Moderation status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the moderation queue",
+        "3. Locate the AP's pending response",
+        "4. Click 'Reject'",
+        "5. Enter a feedback reason for rejection",
+        "6. Submit the rejection",
+        "7. Verify the response status changes to 'Rejected'",
+        "8. Log in as the AP",
+        "9. Verify the AP receives a notification with the rejection reason"
+      ],
+      "expectedResults": [
+        "Admin can reject an AP response with a reason",
+        "Response status changes to Rejected",
+        "AP receives notification with feedback reason",
+        "Rejected response is NOT visible on the PwD portal"
+      ],
+      "postconditions": "AP is notified of rejection with reason; response is not published",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_008",
+      "title": "Verify admin can Edit an AP response before approval",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "4. Admin Moderation Workflow",
+      "preconditions": "AP has submitted a response in Pending Moderation status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the moderation queue",
+        "3. Locate the AP's pending response",
+        "4. Click 'Edit'",
+        "5. Make minor formatting or content fixes",
+        "6. Save the edits",
+        "7. Approve the edited response",
+        "8. Verify the edited version is published on the PwD portal"
+      ],
+      "expectedResults": [
+        "Admin can edit AP response content before approval",
+        "Edits are saved successfully",
+        "Edited and approved response is published with correct content",
+        "Edit action is logged in audit trail"
+      ],
+      "postconditions": "Edited response is published",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_009",
+      "title": "Verify approved response displays correctly on PwD portal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "5. Response Visibility on PwD Portal",
+      "preconditions": "An AP response has been approved by admin",
+      "steps": [
+        "1. Log in as a PwD user (or view product page as public)",
+        "2. Navigate to the product details page",
+        "3. Scroll to the review/question that has an AP response",
+        "4. Verify the response is displayed beneath the corresponding review/question",
+        "5. Verify the label reads: 'Response from Assistive Partner'",
+        "6. Verify the response includes a timestamp",
+        "7. Verify the response includes the AP organization name",
+        "8. Verify the response is visually distinguished (shaded background, indentation)"
+      ],
+      "expectedResults": [
+        "AP response appears beneath the corresponding review/question",
+        "Label 'Response from Assistive Partner' is displayed",
+        "Timestamp is shown on the response",
+        "AP organization name is displayed (not individual user name)",
+        "Response is visually distinct from user posts (shaded/indented)"
+      ],
+      "postconditions": "AP response is correctly displayed on PwD portal",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_010",
+      "title": "Verify AP receives notification for new reviews",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "6. Notification and Tracking",
+      "preconditions": "AP is logged in; a PwD submits a new review for AP's product",
+      "steps": [
+        "1. Have a PwD submit a new review for an AP's product",
+        "2. Log in as the AP",
+        "3. Verify a notification appears on the dashboard for the new review",
+        "4. Verify the notification includes the product name",
+        "5. Click the notification",
+        "6. Verify navigation to the relevant review"
+      ],
+      "expectedResults": [
+        "Notification appears for new review submission",
+        "Notification includes product name",
+        "Clicking notification navigates to the review"
+      ],
+      "postconditions": "AP is aware of the new review",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_011",
+      "title": "Verify AP receives notification for new questions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "6. Notification and Tracking",
+      "preconditions": "AP is logged in; a PwD submits a new question for AP's product",
+      "steps": [
+        "1. Have a PwD submit a new question for an AP's product",
+        "2. Log in as the AP",
+        "3. Verify a notification appears on the dashboard for the new question",
+        "4. Verify the notification includes the product name and context",
+        "5. Click the notification",
+        "6. Verify navigation to the relevant question in Queries section"
+      ],
+      "expectedResults": [
+        "Notification appears for new question submission",
+        "Notification includes product name",
+        "Clicking notification navigates to the question"
+      ],
+      "postconditions": "AP is aware of the new question",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_012",
+      "title": "Verify AP receives notification when response is approved by admin",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "6. Notification and Tracking",
+      "preconditions": "AP has submitted a response; admin approves it",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Have admin approve the response",
+        "3. Log in as the AP",
+        "4. Verify a notification appears (e.g., 'Your response to Smart Hearing Aid X has been approved and published.')",
+        "5. Verify the notification appears in the dashboard",
+        "6. Verify optional email notification is sent (if configured)"
+      ],
+      "expectedResults": [
+        "Approval notification appears on AP dashboard",
+        "Notification text includes product name and approval status",
+        "Email notification is sent if configured"
+      ],
+      "postconditions": "AP is informed of response approval",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_013",
+      "title": "Verify AP receives notification when response is rejected by admin",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "6. Notification and Tracking",
+      "preconditions": "AP has submitted a response; admin rejects it with feedback",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Have admin reject the response with a feedback reason",
+        "3. Log in as the AP",
+        "4. Verify a rejection notification appears on the dashboard",
+        "5. Verify the notification includes the feedback reason",
+        "6. Verify the AP can view the rejected response and reason"
+      ],
+      "expectedResults": [
+        "Rejection notification appears on AP dashboard",
+        "Notification includes the admin's feedback reason",
+        "AP can review the rejection details"
+      ],
+      "postconditions": "AP is informed of rejection with actionable feedback",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_014",
+      "title": "Verify AP can edit a pending response (re-enters moderation queue)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "7. Editing or Withdrawing Responses",
+      "preconditions": "AP has a response in Pending Moderation status",
+      "steps": [
+        "1. Navigate to the response in Pending Moderation status",
+        "2. Click 'Edit' on the pending response",
+        "3. Modify the response text",
+        "4. Save the edited response",
+        "5. Verify the response re-enters the admin moderation queue",
+        "6. Verify the status remains 'Pending Moderation'"
+      ],
+      "expectedResults": [
+        "Edit option is available on pending responses",
+        "AP can modify the response text",
+        "Edited response re-enters the moderation queue",
+        "Status shows Pending Moderation after edit"
+      ],
+      "postconditions": "Edited response is queued for re-moderation",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_015",
+      "title": "Verify AP can edit an approved response (re-enters moderation queue)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "7. Editing or Withdrawing Responses",
+      "preconditions": "AP has a response that was previously approved and published",
+      "steps": [
+        "1. Navigate to the approved/published response",
+        "2. Click 'Edit' on the approved response",
+        "3. Modify the response text",
+        "4. Save the edited response",
+        "5. Verify the response re-enters the admin moderation queue",
+        "6. Verify the previous published version is removed or replaced with 'Under Review'",
+        "7. Verify the edited response requires admin re-approval before republishing"
+      ],
+      "expectedResults": [
+        "Edit option is available on approved responses",
+        "Edited response re-enters moderation queue",
+        "Previously published version is handled appropriately",
+        "Re-approval is required before the edited version is published"
+      ],
+      "postconditions": "Edited response awaits re-moderation",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_016",
+      "title": "Verify AP can withdraw/delete a response with confirmation prompt",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "7. Editing or Withdrawing Responses",
+      "preconditions": "AP has a pending or approved response",
+      "steps": [
+        "1. Navigate to a response (pending or approved)",
+        "2. Click 'Withdraw' or 'Delete' option",
+        "3. Verify a confirmation prompt appears (e.g., 'Are you sure you want to withdraw this response?')",
+        "4. Click 'Cancel' on the confirmation",
+        "5. Verify the response is NOT deleted",
+        "6. Click 'Withdraw' again",
+        "7. Click 'Confirm' on the confirmation prompt",
+        "8. Verify the response is removed",
+        "9. Verify the response is no longer visible on the PwD portal (if it was published)"
+      ],
+      "expectedResults": [
+        "Withdraw/Delete option is available",
+        "Confirmation prompt appears before deletion",
+        "Canceling preserves the response",
+        "Confirming removes the response",
+        "Withdrawn response is removed from public view"
+      ],
+      "postconditions": "Response is withdrawn and no longer visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_017",
+      "title": "Verify content guidelines are enforced (no promotional content, no personal contact)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "8. Content Guidelines",
+      "preconditions": "AP is responding to a review",
+      "steps": [
+        "1. Click 'Respond to Review' on an approved review",
+        "2. Enter response with promotional content (e.g., 'Buy now at 50% off!')",
+        "3. Submit the response",
+        "4. Verify the response is flagged or rejected during moderation",
+        "5. Enter response with personal contact info (e.g., 'Call me at 9876543210')",
+        "6. Submit the response",
+        "7. Verify the response is flagged or rejected during moderation",
+        "8. Enter a neutral, factual response with a product manual link",
+        "9. Submit the response",
+        "10. Verify the response passes moderation"
+      ],
+      "expectedResults": [
+        "Promotional content is flagged/rejected during moderation",
+        "Personal contact information is flagged/rejected during moderation",
+        "Neutral, factual responses with relevant links are accepted",
+        "Content guidelines are enforced through the moderation workflow"
+      ],
+      "postconditions": "Content guidelines are enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_018",
+      "title": "Verify AP responses show organization name only (not individual user details)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "10. Privacy and Security",
+      "preconditions": "An AP response has been approved and published",
+      "steps": [
+        "1. Log in as a PwD user",
+        "2. Navigate to a product page with an AP response",
+        "3. Verify the response shows the AP organization name",
+        "4. Verify NO individual vendor user name is displayed",
+        "5. Verify NO individual vendor email or contact is displayed",
+        "6. Verify PwD user details remain hidden in the review/question"
+      ],
+      "expectedResults": [
+        "AP response displays organization name only",
+        "No individual vendor user details are exposed",
+        "PwD user details remain anonymous",
+        "Communication is entirely within the portal (no direct messaging)"
+      ],
+      "postconditions": "Privacy is maintained for both AP individuals and PwD users",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_019",
+      "title": "Verify PwD personal details are never visible to AP in reviews or questions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "10. Privacy and Security",
+      "preconditions": "AP is viewing reviews and questions on the dashboard",
+      "steps": [
+        "1. Navigate to Reviews & Ratings section",
+        "2. Verify all reviews show anonymous user tags (e.g., 'PwD User 1021')",
+        "3. Verify NO real names, emails, phone numbers, or addresses are displayed",
+        "4. Navigate to Queries section",
+        "5. Verify all questions show anonymous user tags",
+        "6. Verify NO PII is visible in any question entry",
+        "7. Inspect network requests to confirm no PII is transmitted"
+      ],
+      "expectedResults": [
+        "All reviews use anonymous user identifiers",
+        "All questions use anonymous user identifiers",
+        "No PII is visible anywhere in the AP's view",
+        "No PII leakage in network responses"
+      ],
+      "postconditions": "PwD privacy is fully maintained",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_ARR_020",
+      "title": "Verify no direct messaging capability exists between AP and PwD",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "10. Privacy and Security",
+      "preconditions": "AP is viewing reviews and questions",
+      "steps": [
+        "1. Navigate to Reviews & Ratings section",
+        "2. Verify no 'Message User' or 'Contact Reviewer' option exists",
+        "3. Navigate to Queries section",
+        "4. Verify no direct messaging option exists",
+        "5. Verify all communication is through the respond/moderation workflow only"
+      ],
+      "expectedResults": [
+        "No direct messaging feature is available",
+        "All communication goes through admin-moderated responses",
+        "No way to contact PwD users directly"
+      ],
+      "postconditions": "Communication is restricted to moderated channels",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ARR_021",
+      "title": "Verify all responses, edits, and moderation actions are logged in audit trail",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "11. Audit Trail and Reporting",
+      "preconditions": "AP has submitted, edited, and had responses approved/rejected",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Edit the response",
+        "3. Have admin approve the response",
+        "4. Verify audit trail logs contain:",
+        "   a. Product ID",
+        "   b. AP ID",
+        "   c. Timestamp for each action",
+        "   d. Action type: Submitted",
+        "   e. Action type: Edited",
+        "   f. Action type: Approved",
+        "5. Withdraw a different response",
+        "6. Verify 'Deleted' action is logged",
+        "7. Have admin reject another response",
+        "8. Verify 'Rejected' action is logged"
+      ],
+      "expectedResults": [
+        "All actions (Submitted, Edited, Approved, Rejected, Deleted) are logged",
+        "Each log entry includes Product ID, AP ID, and timestamp",
+        "Audit trail is complete and chronological",
+        "Admin can access the audit logs"
+      ],
+      "postconditions": "Complete audit trail exists for all response actions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ARR_022",
+      "title": "Verify admin reports show response metrics (avg response time, approval rate)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "11. Audit Trail and Reporting",
+      "preconditions": "Multiple AP responses have been processed through moderation",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to reporting/analytics section",
+        "3. Verify metrics are available:",
+        "   a. Average response time by vendor",
+        "   b. Percentage of responses approved vs. rejected",
+        "4. Verify metrics are accurate based on actual data",
+        "5. Verify reports can be filtered by vendor or time period"
+      ],
+      "expectedResults": [
+        "Admin can view average response time per vendor",
+        "Admin can view approval vs. rejection percentage",
+        "Metrics are accurate and up-to-date",
+        "Reports are filterable"
+      ],
+      "postconditions": "Admin reporting is functional",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ARR_023",
+      "title": "Verify error message when response fails to save",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "12. Error Handling",
+      "preconditions": "Simulate a save failure (network issue or API error)",
+      "steps": [
+        "1. Click 'Respond to Review' on an approved review",
+        "2. Enter response text",
+        "3. Simulate a network/API failure",
+        "4. Attempt to submit the response",
+        "5. Verify error message: 'Unable to save your response at this time. Please try again later.'",
+        "6. Verify the response text is preserved (not lost)",
+        "7. Restore connectivity",
+        "8. Retry submission",
+        "9. Verify successful submission after retry"
+      ],
+      "expectedResults": [
+        "Error message is displayed on save failure",
+        "Message text matches: 'Unable to save your response at this time. Please try again later.'",
+        "Response text is not lost on failure",
+        "Retry works after connectivity is restored"
+      ],
+      "postconditions": "Error handling provides clear guidance and preserves user input",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ARR_024",
+      "title": "Verify pending response shows visible timestamp when moderation is delayed",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "12. Error Handling",
+      "preconditions": "AP has submitted a response that remains in Pending Moderation for an extended period",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Wait without admin moderation",
+        "3. Navigate to the response",
+        "4. Verify the response shows 'Pending Moderation' status",
+        "5. Verify a visible timestamp shows when the response was submitted",
+        "6. Verify the AP can see how long the response has been pending"
+      ],
+      "expectedResults": [
+        "Pending status is clearly displayed",
+        "Submission timestamp is visible",
+        "AP can track how long moderation has been pending"
+      ],
+      "postconditions": "Pending status with timestamp is displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ARR_025",
+      "title": "Verify response text boxes and buttons are keyboard and screen-reader accessible",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-31",
+      "category": "9. Accessibility and UI Compliance",
+      "preconditions": "AP is on the Reviews & Ratings section",
+      "steps": [
+        "1. Navigate to Reviews & Ratings using keyboard only (Tab, Enter)",
+        "2. Verify 'Respond to Review' button is keyboard focusable and activatable",
+        "3. Verify the response text box is keyboard accessible",
+        "4. Verify 'Edit' and 'Withdraw' buttons are keyboard accessible",
+        "5. Verify status labels ('Pending Admin Review') have clear text",
+        "6. Verify visual contrast between user reviews and vendor responses",
+        "7. Verify responses can be expanded/collapsed for readability"
+      ],
+      "expectedResults": [
+        "All interactive elements are keyboard navigable",
+        "Screen reader announces button labels and status correctly",
+        "Clear labels like 'Respond', 'Edit', 'Pending Admin Review' are present",
+        "Visual contrast between reviews and responses meets WCAG standards",
+        "Expand/collapse functionality works for long responses"
+      ],
+      "postconditions": "Accessibility compliance is confirmed",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

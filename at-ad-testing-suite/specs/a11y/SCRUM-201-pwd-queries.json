@@ -1,0 +1,947 @@
+{
+  "jiraStory": "SCRUM-201",
+  "title": "AP Responding to PwD Queries - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility test plan for Assistive Partner responding to PwD user queries covering WCAG 2.1 AA compliance.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Queries section keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Queries navigation link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User logged in as AP user",
+      "steps": [
+        "1. Login as AP user",
+        "2. Tab to Queries in navigation",
+        "3. Verify focus indicator visible",
+        "4. Press Enter to activate",
+        "5. Verify redirects to Queries page"
+      ],
+      "expectedResults": [
+        "Queries link visible in navigation",
+        "Link keyboard accessible",
+        "Focus indicator meets contrast requirements",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "User navigated to Queries page via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Page has proper heading structure",
+      "wcagCriterion": "2.4.6 Headings and Labels",
+      "componentElement": "Queries page headings",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Navigate to Queries page",
+        "2. Verify H1 exists for page title",
+        "3. Verify section headings use H2",
+        "4. Test heading navigation with screen reader"
+      ],
+      "expectedResults": [
+        "Page has H1 heading",
+        "Heading structure logical",
+        "Screen reader can navigate by headings",
+        "WCAG 1.3.1, 2.4.6 compliant"
+      ],
+      "postconditions": "Heading structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Summary counts accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Summary count widgets",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page with queries present",
+      "steps": [
+        "1. Navigate to Queries page",
+        "2. Verify Total Queries count announced",
+        "3. Verify Pending Responses count announced",
+        "4. Verify Responded Queries count announced",
+        "5. Verify each has descriptive label"
+      ],
+      "expectedResults": [
+        "All count widgets accessible",
+        "Numbers have accessible labels",
+        "Screen reader announces counts with context",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "Summary counts verified accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Counts not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Summary count widgets",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page with queries present",
+      "steps": [
+        "1. View summary counts",
+        "2. Verify text labels present",
+        "3. Verify counts distinguishable without color"
+      ],
+      "expectedResults": [
+        "Count widgets not relying on color alone",
+        "Text labels present",
+        "Visual distinction clear",
+        "WCAG 1.4.1 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Query list semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Query listing",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page with queries present",
+      "steps": [
+        "1. Navigate to query listing",
+        "2. Verify queries in list structure",
+        "3. Verify each query has accessible structure",
+        "4. Verify product name, user, date, text all accessible"
+      ],
+      "expectedResults": [
+        "Queries displayed in semantic list",
+        "Each query has proper structure",
+        "All metadata accessible",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Query list structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Product images have alt text",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Product images in query items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page with queries containing product images",
+      "steps": [
+        "1. Navigate to query item",
+        "2. Inspect product image",
+        "3. Verify alt attribute present",
+        "4. Verify alt text descriptive"
+      ],
+      "expectedResults": [
+        "Product image has alt text",
+        "Alt text includes product name",
+        "Decorative images have empty alt",
+        "WCAG 1.1.1 compliant"
+      ],
+      "postconditions": "Image alt text verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Status badges accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Query status badges",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page with queries in various statuses",
+      "steps": [
+        "1. View query with Pending Response status",
+        "2. Verify status has text label",
+        "3. View query with Responded status",
+        "4. Verify status not conveyed by color alone",
+        "5. View query with Admin Response status",
+        "6. Verify all statuses accessible"
+      ],
+      "expectedResults": [
+        "Status badge has text label",
+        "Not relying on color alone",
+        "Status announced to screen readers",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Status badges verified accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Search input has proper label",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Navigate to Queries page",
+        "2. Locate search input",
+        "3. Verify label associated with input",
+        "4. Verify placeholder text present",
+        "5. Verify label announced by screen reader"
+      ],
+      "expectedResults": [
+        "Search input has programmatic label",
+        "Placeholder text descriptive",
+        "Label accessible to screen readers",
+        "WCAG 3.3.2, 4.1.2 compliant"
+      ],
+      "postconditions": "Search input label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Search keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Search input and button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Tab to search input",
+        "2. Verify focus indicator visible",
+        "3. Type search query",
+        "4. Press Enter to submit",
+        "5. Verify results update"
+      ],
+      "expectedResults": [
+        "Search input keyboard accessible",
+        "Search button keyboard accessible",
+        "Enter key submits search",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Search keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Status filter accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Status filter dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Tab to status filter dropdown",
+        "2. Verify focus indicator visible",
+        "3. Press Enter to open dropdown",
+        "4. Use arrow keys to navigate options",
+        "5. Press Enter to select",
+        "6. Verify selection announced"
+      ],
+      "expectedResults": [
+        "Filter controls keyboard accessible",
+        "Dropdown has accessible name",
+        "Options keyboard navigable",
+        "Selection announced",
+        "WCAG 2.1.1, 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "Status filter accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Response textarea has proper label",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Response textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing query with Pending Response status",
+      "steps": [
+        "1. Navigate to query with Pending Response",
+        "2. Locate response textarea",
+        "3. Verify label associated with textarea",
+        "4. Verify word count requirement announced"
+      ],
+      "expectedResults": [
+        "Textarea has programmatic label",
+        "Label describes purpose",
+        "Minimum word count requirement announced",
+        "WCAG 3.3.2, 4.1.2 compliant"
+      ],
+      "postconditions": "Textarea label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Response textarea keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Response textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing query with Pending Response status",
+      "steps": [
+        "1. Tab to response textarea",
+        "2. Verify focus indicator visible",
+        "3. Type response text",
+        "4. Verify text appears",
+        "5. Tab to next element"
+      ],
+      "expectedResults": [
+        "Textarea keyboard accessible",
+        "Can type and edit text",
+        "Tab moves to next element",
+        "WCAG 2.1.1 compliant"
+      ],
+      "postconditions": "Textarea keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Word counter accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Word counter",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User typing in response textarea",
+      "steps": [
+        "1. Type text in response textarea",
+        "2. Verify word counter updates",
+        "3. Verify counter announced to screen readers",
+        "4. Verify minimum requirement indicated"
+      ],
+      "expectedResults": [
+        "Word counter has aria-live region",
+        "Updates announced dynamically",
+        "Minimum requirement clear",
+        "WCAG 4.1.3, 3.3.1 compliant"
+      ],
+      "postconditions": "Word counter accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Disabled state accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Response textarea disabled state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing query with Responded status",
+      "steps": [
+        "1. Navigate to query with Responded status",
+        "2. Verify textarea disabled",
+        "3. Verify disabled state announced",
+        "4. Verify visual indication present"
+      ],
+      "expectedResults": [
+        "Textarea disabled when status not Pending Response",
+        "Disabled state announced",
+        "Visual indication of disabled state",
+        "WCAG 4.1.2, 1.4.1 compliant"
+      ],
+      "postconditions": "Disabled state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Submit button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Submit response button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing query with Pending Response status and response typed",
+      "steps": [
+        "1. Tab to Submit button",
+        "2. Verify focus indicator visible",
+        "3. Verify accessible name",
+        "4. Press Enter to submit"
+      ],
+      "expectedResults": [
+        "Submit button keyboard accessible",
+        "Has clear accessible name",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 4.1.2, 2.4.7 compliant"
+      ],
+      "postconditions": "Submit button keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Submit button disabled state accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Submit button disabled state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing query with insufficient text in response",
+      "steps": [
+        "1. Type insufficient text",
+        "2. Verify Submit button disabled",
+        "3. Verify disabled state announced",
+        "4. Verify reason indicated"
+      ],
+      "expectedResults": [
+        "Button disabled when word count not met",
+        "Disabled state announced",
+        "Reason for disabled state clear",
+        "WCAG 4.1.2, 3.3.1 compliant"
+      ],
+      "postconditions": "Submit button disabled state verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Submission success accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Success message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User has typed valid response meeting word count",
+      "steps": [
+        "1. Submit valid response",
+        "2. Verify success message displayed",
+        "3. Verify message announced",
+        "4. Verify status updates to Pending Admin Approval"
+      ],
+      "expectedResults": [
+        "Success message announced via aria-live",
+        "Message: 'Response marked as Pending Admin Approval'",
+        "Status update visible",
+        "WCAG 4.1.3, 3.3.4 compliant"
+      ],
+      "postconditions": "Submission success accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Validation errors accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Validation error messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User attempting to submit response below word count",
+      "steps": [
+        "1. Submit response below word count",
+        "2. Verify error message displayed",
+        "3. Verify error announced",
+        "4. Verify error linked to textarea",
+        "5. Verify error has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Error message visible and announced",
+        "Error has aria-describedby link",
+        "Error meets contrast requirements",
+        "WCAG 3.3.1, 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Validation error accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Pending approval label accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Pending Admin Approval label",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User has submitted a response",
+      "steps": [
+        "1. Submit response",
+        "2. Verify Pending Admin Approval label visible",
+        "3. Verify label announced to screen readers"
+      ],
+      "expectedResults": [
+        "Label: 'Pending Admin Approval' accessible",
+        "Label clearly visible",
+        "Screen reader announces label",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "Pending approval label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Approved response label accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approved response label",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "Query has an approved response",
+      "steps": [
+        "1. Navigate to approved response",
+        "2. Verify 'Your Response (Approved)' label visible",
+        "3. Verify response content accessible",
+        "4. Verify label announced"
+      ],
+      "expectedResults": [
+        "Label: 'Your Response (Approved)' accessible",
+        "Approved response content visible",
+        "Status clear to screen readers",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "Approved response label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Admin response label accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Admin response label",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "Query has an admin response",
+      "steps": [
+        "1. Navigate to query with admin response",
+        "2. Verify 'Admin Response (on your behalf)' label visible",
+        "3. Verify label announced",
+        "4. Verify response content accessible"
+      ],
+      "expectedResults": [
+        "Label: 'Admin Response (on your behalf)' accessible",
+        "Admin response clearly distinguished",
+        "Screen reader announces label",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "Admin response label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Rejection reason accessible",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Rejection reason display",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "Query has a rejected response with reason",
+      "steps": [
+        "1. Navigate to rejected response",
+        "2. Verify rejection reason displayed",
+        "3. Verify reason announced",
+        "4. Verify reason has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Rejection reason visible",
+        "Reason announced to screen readers",
+        "Reason meets contrast requirements",
+        "WCAG 4.1.2, 1.4.3 compliant"
+      ],
+      "postconditions": "Rejection reason accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Re-submission accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Re-submission flow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "Query has a rejected response",
+      "steps": [
+        "1. View rejected response",
+        "2. Verify status changed to Pending Response",
+        "3. Verify status change announced",
+        "4. Verify textarea enabled for re-submission"
+      ],
+      "expectedResults": [
+        "Query returns to Pending Response status",
+        "Status change announced",
+        "Response input re-enabled",
+        "WCAG 4.1.3, 4.1.2 compliant"
+      ],
+      "postconditions": "Re-submission accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "New query notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "New query notification",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page, new query received",
+      "steps": [
+        "1. Receive new query",
+        "2. Verify notification announced",
+        "3. Verify notification count updates",
+        "4. Verify count badge accessible"
+      ],
+      "expectedResults": [
+        "New query notification announced",
+        "Notification has aria-live region",
+        "Notification count updates",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "New query notification verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Approval notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Approval notification",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User receives approval notification",
+      "steps": [
+        "1. Receive approval notification",
+        "2. Verify notification announced",
+        "3. Verify notification text clear",
+        "4. Tab to notification link",
+        "5. Press Enter to open query"
+      ],
+      "expectedResults": [
+        "Approval notification announced",
+        "Notification content clear",
+        "Link to query accessible",
+        "WCAG 4.1.3, 2.4.4 compliant"
+      ],
+      "postconditions": "Approval notification accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Rejection notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Rejection notification",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User receives rejection notification",
+      "steps": [
+        "1. Receive rejection notification",
+        "2. Verify notification announced",
+        "3. Verify rejection reason included",
+        "4. Tab to notification link",
+        "5. Press Enter to open query"
+      ],
+      "expectedResults": [
+        "Rejection notification announced",
+        "Rejection reason included",
+        "Link to query accessible",
+        "WCAG 4.1.3, 2.4.4 compliant"
+      ],
+      "postconditions": "Rejection notification accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Notification badge accessible",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Notification badge",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User has unread notifications",
+      "steps": [
+        "1. View notification badge",
+        "2. Verify badge has accessible label",
+        "3. Verify count announced",
+        "4. Verify badge has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Notification badge has accessible name",
+        "Badge count announced",
+        "Badge meets contrast requirements",
+        "WCAG 4.1.2, 1.4.3 compliant"
+      ],
+      "postconditions": "Notification badge accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Pending approval indicator accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Pending approval visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing response pending approval",
+      "steps": [
+        "1. View response pending approval",
+        "2. Verify visual indicator present",
+        "3. Verify indicator not color-only",
+        "4. Verify text label present"
+      ],
+      "expectedResults": [
+        "Pending approval indicator visible",
+        "Not relying on color alone",
+        "Text label present",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Pending approval indicator verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Approved indicator accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Approved visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing approved response",
+      "steps": [
+        "1. View approved response",
+        "2. Verify visual indicator present",
+        "3. Verify indicator not color-only",
+        "4. Verify text label present"
+      ],
+      "expectedResults": [
+        "Approved indicator visible",
+        "Not relying on color alone",
+        "Text label present",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Approved indicator verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Rejected indicator accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Rejected visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing rejected response",
+      "steps": [
+        "1. View rejected response",
+        "2. Verify visual indicator present",
+        "3. Verify indicator not color-only",
+        "4. Verify text label present"
+      ],
+      "expectedResults": [
+        "Rejected indicator visible",
+        "Not relying on color alone",
+        "Text label present",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Rejected indicator verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Complete workflow keyboard only",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Full query response workflow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User logged in as AP user with pending queries",
+      "steps": [
+        "1. Navigate to Queries using keyboard",
+        "2. Tab through query list",
+        "3. Select query using keyboard",
+        "4. Type response using keyboard",
+        "5. Submit response using keyboard",
+        "6. Verify success without mouse"
+      ],
+      "expectedResults": [
+        "Entire workflow completable via keyboard",
+        "No keyboard traps",
+        "Focus indicators always visible",
+        "WCAG 2.1.1, 2.1.2 compliant"
+      ],
+      "postconditions": "Full keyboard workflow verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Skip links functional",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Skip navigation link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Tab from page top",
+        "2. Verify skip link appears",
+        "3. Activate skip link",
+        "4. Verify focus moves to query list"
+      ],
+      "expectedResults": [
+        "Skip link visible on focus",
+        "Skip link bypasses navigation",
+        "Focus moves to main content",
+        "WCAG 2.4.1 compliant"
+      ],
+      "postconditions": "Skip links verified functional",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Color contrast sufficient",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Page text and UI components",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Check text contrast throughout page",
+        "2. Check button contrast",
+        "3. Check status badge contrast",
+        "4. Check notification badge contrast",
+        "5. Verify all meet requirements"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Large text meets 3:1 contrast",
+        "UI components meet 3:1 contrast",
+        "WCAG 1.4.3, 1.4.11 compliant"
+      ],
+      "postconditions": "Color contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Page usable at 200% zoom",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Page layout at zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Navigate Queries page",
+        "3. Verify all content visible",
+        "4. Verify no horizontal scrolling",
+        "5. Verify response form usable"
+      ],
+      "expectedResults": [
+        "All content readable at 200% zoom",
+        "No content cut off",
+        "No horizontal scrolling",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "All interactive elements",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User on Queries page",
+      "steps": [
+        "1. Tab through all interactive elements",
+        "2. Verify focus indicator on each element",
+        "3. Measure focus indicator contrast",
+        "4. Verify indicator at least 2px thick"
+      ],
+      "expectedResults": [
+        "Focus indicators visible on all elements",
+        "Indicators meet 3:1 contrast ratio",
+        "Indicators clearly visible",
+        "WCAG 2.4.7, 2.4.11 compliant"
+      ],
+      "postconditions": "Focus indicators verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Touch targets adequate size",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Mobile touch targets",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing Queries page on mobile viewport (375x667)",
+      "steps": [
+        "1. View on mobile viewport (375x667)",
+        "2. Measure query item tap targets",
+        "3. Measure Submit button size",
+        "4. Measure filter controls size",
+        "5. Verify all at least 44x44 CSS pixels"
+      ],
+      "expectedResults": [
+        "All touch targets at least 44x44px",
+        "Adequate spacing between targets",
+        "WCAG 2.5.5 compliant"
+      ],
+      "postconditions": "Touch target sizes verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Mobile layout accessible",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Mobile responsive layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "User viewing Queries page on mobile viewport",
+      "steps": [
+        "1. View on mobile viewport",
+        "2. Verify query list usable",
+        "3. Verify response form usable",
+        "4. Verify no horizontal scroll required"
+      ],
+      "expectedResults": [
+        "Layout adapts to mobile",
+        "All features accessible on mobile",
+        "No horizontal scrolling",
+        "WCAG 1.4.10 compliant"
+      ],
+      "postconditions": "Mobile layout accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "NVDA navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page with NVDA screen reader",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "NVDA screen reader enabled, user on Queries page",
+      "steps": [
+        "1. Enable NVDA screen reader",
+        "2. Navigate to Queries page",
+        "3. Use heading navigation (H key)",
+        "4. Use form navigation (F key)",
+        "5. Use button navigation (B key)",
+        "6. Verify all content announced"
+      ],
+      "expectedResults": [
+        "All content accessible via NVDA",
+        "Headings, forms, buttons announced",
+        "Navigation landmarks work",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "JAWS navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page with JAWS screen reader",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "JAWS screen reader enabled, user on Queries page",
+      "steps": [
+        "1. Enable JAWS screen reader",
+        "2. Navigate Queries page",
+        "3. Use virtual cursor",
+        "4. Navigate forms mode",
+        "5. Submit response",
+        "6. Verify all interactions accessible"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Forms mode works correctly",
+        "Dynamic updates announced",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "VoiceOver navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page with VoiceOver screen reader",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "preconditions": "VoiceOver enabled on macOS/iOS, user on Queries page",
+      "steps": [
+        "1. Enable VoiceOver on macOS/iOS",
+        "2. Navigate Queries page",
+        "3. Use rotor to navigate headings",
+        "4. Use rotor to navigate forms",
+        "5. Verify all content announced"
+      ],
+      "expectedResults": [
+        "All content accessible via VoiceOver",
+        "Rotor navigation works",
+        "Touch gestures work on iOS",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "VoiceOver compatibility verified",
+      "testResult": "PASS"
+    }
+  ]
+}

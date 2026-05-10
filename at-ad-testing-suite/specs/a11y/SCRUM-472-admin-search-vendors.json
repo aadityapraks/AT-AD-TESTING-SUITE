@@ -1,0 +1,474 @@
+{
+  "jiraStory": "SCRUM-472",
+  "title": "Admin Search Vendors - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Search Vendors feature covering WCAG 2.1 AA compliance for search input, dynamic results, no-results state, partial match behavior, cross-tab search, and screen reader announcements.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Search input has proper label",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Search input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is logged in and on Vendor Management page",
+      "steps": [
+        "1. Locate search input field",
+        "2. Verify visible label present (e.g., 'Search vendors')",
+        "3. Verify label programmatically associated (for/id or aria-labelledby)",
+        "4. Verify placeholder is supplementary, not sole label",
+        "5. Verify role='searchbox' or type='search' present",
+        "6. Use screen reader to verify label announced on focus"
+      ],
+      "expectedResults": [
+        "Search input has visible label or aria-label",
+        "Label programmatically associated with input",
+        "Placeholder not the only label",
+        "Input has role='searchbox' or type='search'",
+        "Screen reader announces purpose on focus",
+        "WCAG 4.1.2, 1.3.1, 3.3.2 compliant"
+      ],
+      "postconditions": "Search input label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Search input keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.7 Focus Visible",
+      "componentElement": "Search input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Tab to search input",
+        "2. Verify focus indicator visible with 3:1 contrast",
+        "3. Type search query using keyboard",
+        "4. Verify text appears in input",
+        "5. Press Enter to submit (if submit-on-enter supported)",
+        "6. Verify Tab moves focus to next element"
+      ],
+      "expectedResults": [
+        "Search input reachable via Tab",
+        "Focus indicator visible with 3:1 contrast",
+        "Keyboard input accepted",
+        "Enter submits search if applicable",
+        "No keyboard trap in search field",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Search input keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Search results update announced dynamically",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search results live region",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin types a search query that returns results",
+      "steps": [
+        "1. Type vendor name in search input (min 3 characters)",
+        "2. Wait for results to update dynamically",
+        "3. Verify aria-live region announces result count",
+        "4. Verify announcement format: 'X vendors found' or similar",
+        "5. Verify announcement does not interrupt current reading",
+        "6. Verify focus remains in search input during update"
+      ],
+      "expectedResults": [
+        "Results update dynamically as user types",
+        "aria-live='polite' region announces result count",
+        "Announcement format clear (e.g., '5 vendors found')",
+        "Announcement does not interrupt screen reader",
+        "Focus remains in search input",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Dynamic result announcement verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "No results message accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 1.3.1 Info and Relationships",
+      "componentElement": "No results message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin types a query with no matching vendors",
+      "steps": [
+        "1. Type a query that returns no results (e.g., 'xyznonexistent')",
+        "2. Verify 'No vendors found' message displayed",
+        "3. Verify message has role='status' or aria-live",
+        "4. Verify message announced by screen reader",
+        "5. Verify message has 4.5:1 contrast",
+        "6. Verify message provides guidance (e.g., 'Try different keywords')"
+      ],
+      "expectedResults": [
+        "'No vendors found' message displayed",
+        "Message has role='status' or aria-live='polite'",
+        "Screen reader announces no-results message",
+        "Message text has 4.5:1 contrast",
+        "Message provides helpful guidance",
+        "WCAG 4.1.3, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "No results message accessibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Partial match results accessible (min 3 characters)",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Partial match search behavior",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin types partial vendor name (3+ characters)",
+      "steps": [
+        "1. Type 2 characters — verify no search triggered",
+        "2. Type 3rd character — verify search triggers",
+        "3. Verify partial matches displayed",
+        "4. Verify result count announced",
+        "5. Verify minimum character requirement communicated to user"
+      ],
+      "expectedResults": [
+        "Search triggers at 3 characters minimum",
+        "Partial matches displayed correctly",
+        "Result count announced via aria-live",
+        "Minimum character requirement indicated (placeholder or help text)",
+        "WCAG 4.1.3, 3.3.2 compliant"
+      ],
+      "postconditions": "Partial match behavior verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Search works across all tabs",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Cross-tab search functionality",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page with multiple status tabs",
+      "steps": [
+        "1. Select 'Active Partners' tab",
+        "2. Type search query",
+        "3. Verify results filter within current tab",
+        "4. Switch to 'Pending Approval' tab",
+        "5. Verify search persists or clears (document behavior)",
+        "6. Verify result count updates and is announced"
+      ],
+      "expectedResults": [
+        "Search works within each tab",
+        "Results update when switching tabs",
+        "Result count announced on tab switch",
+        "Search behavior consistent across tabs",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Cross-tab search verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Search clear button accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Search clear/reset button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin has typed a search query",
+      "steps": [
+        "1. Type a search query",
+        "2. Verify clear button appears (X icon or 'Clear')",
+        "3. Verify clear button has accessible name ('Clear search' or similar)",
+        "4. Tab to clear button — verify focus indicator visible",
+        "5. Press Enter/Space to clear",
+        "6. Verify search input cleared and results reset",
+        "7. Verify reset announced via aria-live"
+      ],
+      "expectedResults": [
+        "Clear button visible when text entered",
+        "Clear button has accessible name",
+        "Clear button keyboard accessible",
+        "Enter/Space clears search",
+        "Results reset to full list",
+        "Reset announced to screen readers",
+        "WCAG 2.1.1, 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "Search clear button accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Search results list semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Search results list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin has performed a search with results",
+      "steps": [
+        "1. Perform search that returns results",
+        "2. Verify results in semantic list structure",
+        "3. Verify each result has proper structure (name, location, contact)",
+        "4. Use screen reader to verify list announced with count",
+        "5. Verify results keyboard navigable"
+      ],
+      "expectedResults": [
+        "Results in semantic list (<ul> or role='list')",
+        "Each result has proper structure",
+        "Screen reader announces list with item count",
+        "Results keyboard navigable",
+        "WCAG 1.3.1 compliant"
+      ],
+      "postconditions": "Results list structure verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Search handles special characters gracefully",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Search input with special characters",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Type special characters in search (e.g., '<script>', '&amp;', '\"')",
+        "2. Verify no error or crash occurs",
+        "3. Verify results display normally (empty or matching)",
+        "4. Verify no XSS or injection in displayed results",
+        "5. If error shown, verify error is accessible (role='alert')"
+      ],
+      "expectedResults": [
+        "Special characters handled gracefully",
+        "No application crash or error",
+        "Results display normally",
+        "No security vulnerabilities exposed",
+        "Any error messages accessible",
+        "WCAG 3.3.1 compliant"
+      ],
+      "postconditions": "Special character handling verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Long search query handled gracefully",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Search input with very long query",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Type a very long search query (100+ characters)",
+        "2. Verify input handles text without breaking layout",
+        "3. Verify no horizontal scrolling on page",
+        "4. Verify search still functions",
+        "5. If character limit exists, verify limit communicated accessibly"
+      ],
+      "expectedResults": [
+        "Long query handled without layout break",
+        "No horizontal scrolling caused",
+        "Search still functions",
+        "Character limit communicated if exists",
+        "WCAG 3.3.1, 1.4.10 compliant"
+      ],
+      "postconditions": "Long query handling verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Search loading state accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search loading indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin types a search query triggering data fetch",
+      "steps": [
+        "1. Type search query",
+        "2. If loading indicator appears, verify it has accessible name",
+        "3. Verify loading state announced via aria-live",
+        "4. Verify loading does not trap keyboard focus",
+        "5. Verify completion announced"
+      ],
+      "expectedResults": [
+        "Loading indicator has accessible name if visible",
+        "Loading state announced to screen readers",
+        "Keyboard focus not trapped during loading",
+        "Completion announced",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Loading state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text elements related to search",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page with search results",
+      "steps": [
+        "1. Measure search input text contrast",
+        "2. Measure placeholder text contrast",
+        "3. Measure result text contrast",
+        "4. Measure no-results message contrast",
+        "5. Measure search label contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast minimum",
+        "Placeholder text has 4.5:1 contrast",
+        "Result text has 4.5:1 contrast",
+        "No-results message has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Text contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Search usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Search feature at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Verify search input visible and usable",
+        "3. Type search query — verify results display",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation in results"
+      ],
+      "expectedResults": [
+        "Search input visible at 200% zoom",
+        "Results display correctly",
+        "No horizontal scrolling",
+        "No text truncation",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Search accessible on mobile viewport",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Search on mobile viewport (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page on mobile",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Verify search input visible and usable",
+        "3. Verify touch target at least 44x44px",
+        "4. Type query and verify results display",
+        "5. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Search input visible on mobile",
+        "Touch target meets 44x44px minimum",
+        "Results display on mobile",
+        "No horizontal scrolling",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile search accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Focus indicators visible on search elements",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Search input and clear button focus indicators",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Tab to search input — verify focus indicator",
+        "2. Tab to clear button (if visible) — verify focus indicator",
+        "3. Measure focus indicator contrast (3:1 minimum)",
+        "4. Verify focus not obscured"
+      ],
+      "expectedResults": [
+        "Focus indicator visible on search input",
+        "Focus indicator visible on clear button",
+        "Focus indicators have 3:1 contrast",
+        "Focus not obscured",
+        "WCAG 2.4.7, 1.4.11 compliant"
+      ],
+      "postconditions": "Focus indicators verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search feature with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "NVDA enabled, Admin on Vendor Management page",
+      "steps": [
+        "1. Navigate to search input with NVDA",
+        "2. Verify input label announced",
+        "3. Type search query",
+        "4. Verify results announced",
+        "5. Navigate results with screen reader",
+        "6. Clear search and verify announcement"
+      ],
+      "expectedResults": [
+        "Search input label announced",
+        "Results count announced dynamically",
+        "Results navigable with screen reader",
+        "Clear action announced",
+        "All interactions accessible via NVDA",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search feature with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "JAWS enabled, Admin on Vendor Management page",
+      "steps": [
+        "1. Navigate to search input with JAWS",
+        "2. Enter forms mode",
+        "3. Type search query",
+        "4. Verify results announced",
+        "5. Exit forms mode and navigate results",
+        "6. Verify all interactions accessible"
+      ],
+      "expectedResults": [
+        "Search input accessible in forms mode",
+        "Results announced dynamically",
+        "Results navigable outside forms mode",
+        "All interactions accessible via JAWS",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "No keyboard traps in search flow",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Search input and results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-472",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Tab to search input",
+        "2. Type query",
+        "3. Tab away from search input",
+        "4. Verify focus moves to next element",
+        "5. Shift+Tab back to search",
+        "6. Verify no keyboard trap"
+      ],
+      "expectedResults": [
+        "No keyboard trap in search input",
+        "Tab moves focus away from search",
+        "Shift+Tab returns to search",
+        "Focus can reach all page elements",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No keyboard traps confirmed",
+      "testResult": "PASS"
+    }
+  ]
+}

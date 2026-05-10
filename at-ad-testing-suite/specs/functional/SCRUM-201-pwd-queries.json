@@ -1,0 +1,720 @@
+{
+  "jiraStory": "SCRUM-201",
+  "title": "Assistive Partner Responding to PwD Queries - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the AP Responding to PwD Queries feature on the Y4J AT/AD Vendor Portal. Covers Queries section access and visibility (summary counts, product-scoped queries), query listing with status indicators (Pending Response, Responded, Admin Response), responding to queries (single response per query, minimum word count, Pending Admin Approval), admin moderation workflow (approve, reject with reason, respond on behalf), approved response visibility and labeling, admin responses on behalf of vendor, privacy constraints (no chat threads, no PwD moderation, vendor moderation required), user feedback and notifications (new queries, approval/rejection alerts, notification counts).",
+  "scope": {
+    "inScope": [
+      "Queries section access from AP dashboard navigation",
+      "Summary counts: Total Queries, Pending Responses, Responded Queries",
+      "Product-scoped visibility: only AP's own product queries shown",
+      "Query visibility restricted to PwD user, AP, and Admin",
+      "Query listing: product name/image, PwD user name, date/time, query text, status",
+      "Query statuses: Pending Response, Responded, Admin Response",
+      "Filter by status, search by product/user name/keyword",
+      "Single response per query restriction",
+      "Response input enabled only for Pending Response status",
+      "Minimum word count requirement for responses",
+      "Pending Admin Approval status after submission",
+      "Admin moderation: Approve, Reject with reason, Respond on behalf",
+      "Rejection notification to AP with reason",
+      "Query returns to Pending Response on rejection for re-submission",
+      "Approved response labeled 'Your Response (Approved)' and visible to PwD",
+      "No edit/re-submit after approval",
+      "Admin Response labeled 'Admin Response (on your behalf)'",
+      "No chat/thread per query (single response only)",
+      "Notification counts for new queries, approvals, rejections"
+    ],
+    "outOfScope": [
+      "PwD query submission flow (PwD-side feature)",
+      "Admin moderation UI internals",
+      "Email notification delivery infrastructure",
+      "Backend API internals"
+    ]
+  },
+  "parentEpic": {
+    "key": "SCRUM-87",
+    "summary": "Vendor Portal"
+  },
+  "linkedIssues": [
+    { "key": "SCRUM-863", "summary": "Admin Response status filter is not working in Queries tab", "type": "Bug", "status": "In QA" }
+  ],
+  "subtasks": [
+    { "key": "SCRUM-202", "summary": "SD: Assistive Partner Responding to PwD Queries", "status": "To Do" },
+    { "key": "SCRUM-203", "summary": "Design: Assistive Partner Responding to PwD Queries", "status": "Done" },
+    { "key": "SCRUM-536", "summary": "FEi: Queries API integration", "status": "Dev Done" },
+    { "key": "SCRUM-302", "summary": "QA: test case creation", "status": "To Do" },
+    { "key": "SCRUM-303", "summary": "QA: Create Automation Scripts", "status": "To Do" },
+    { "key": "SCRUM-304", "summary": "QA: Manual Testing", "status": "To Do" },
+    { "key": "SCRUM-305", "summary": "QA: Accessibility testing", "status": "To Do" }
+  ],
+  "testCases": [
+    {
+      "id": "TC_PQ_001",
+      "title": "Verify Queries section is accessible from AP dashboard navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "1. Access & Visibility",
+      "preconditions": "User is logged in as an approved Assistive Partner with listed products",
+      "steps": [
+        "1. Log in as an approved Assistive Partner",
+        "2. Navigate to the AP dashboard",
+        "3. Verify 'Queries' section is visible in the dashboard navigation",
+        "4. Click on the 'Queries' section",
+        "5. Verify the Queries page loads without errors"
+      ],
+      "expectedResults": [
+        "Queries section is visible in dashboard navigation",
+        "Clicking navigates to the Queries page",
+        "Page loads without console errors or broken UI"
+      ],
+      "postconditions": "User is on the Queries page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_002",
+      "title": "Verify summary counts display Total Queries, Pending Responses, and Responded Queries",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "1. Access & Visibility",
+      "preconditions": "AP has products with queries in various statuses",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Verify 'Total Queries' count is displayed",
+        "3. Verify 'Pending Responses' count is displayed",
+        "4. Verify 'Responded Queries' count is displayed",
+        "5. Verify the sum of Pending + Responded equals Total (or accounts for Admin Response)",
+        "6. Verify counts are accurate against actual query data"
+      ],
+      "expectedResults": [
+        "All three summary counts are displayed prominently",
+        "Total Queries count is accurate",
+        "Pending Responses count matches queries awaiting AP response",
+        "Responded Queries count matches queries with approved responses"
+      ],
+      "postconditions": "Summary counts are correctly displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_003",
+      "title": "Verify only queries related to AP's own products are visible",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "1. Access & Visibility",
+      "preconditions": "Multiple APs exist with different products; PwDs have submitted queries for various products",
+      "steps": [
+        "1. Log in as Assistive Partner A",
+        "2. Navigate to Queries section",
+        "3. Verify only queries for AP A's products are displayed",
+        "4. Verify no queries for other APs' products are visible",
+        "5. Log out and log in as Assistive Partner B",
+        "6. Navigate to Queries section",
+        "7. Verify only queries for AP B's products are displayed"
+      ],
+      "expectedResults": [
+        "Each AP sees only queries for their own products",
+        "No cross-vendor query data is accessible",
+        "Data isolation is enforced"
+      ],
+      "postconditions": "Query visibility is scoped to AP's own products",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_004",
+      "title": "Verify query listing displays all required fields with correct statuses",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "2. Query Listing & Status",
+      "preconditions": "AP has queries in different statuses (Pending Response, Responded, Admin Response)",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Verify each query item displays:",
+        "   a. Product name and image",
+        "   b. PwD user name",
+        "   c. Date and time of query",
+        "   d. Query text",
+        "   e. Current status",
+        "3. Verify status labels are correct:",
+        "   a. 'Pending Response' for unanswered queries",
+        "   b. 'Responded' for queries with approved AP responses",
+        "   c. 'Admin Response' for queries answered by admin on behalf",
+        "4. Verify product images load correctly"
+      ],
+      "expectedResults": [
+        "All required fields are displayed for each query",
+        "Status labels are accurate and visually distinct",
+        "Product images load correctly",
+        "Date/time format is readable"
+      ],
+      "postconditions": "Query listing displays complete data",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_005",
+      "title": "Verify queries can be filtered by status",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "2. Query Listing & Status",
+      "preconditions": "AP has queries in multiple statuses",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Locate the status filter",
+        "3. Filter by 'Pending Response'",
+        "4. Verify only Pending Response queries are shown",
+        "5. Filter by 'Responded'",
+        "6. Verify only Responded queries are shown",
+        "7. Filter by 'Admin Response'",
+        "8. Verify only Admin Response queries are shown",
+        "9. Clear all filters",
+        "10. Verify all queries are displayed"
+      ],
+      "expectedResults": [
+        "Status filter is available with all status options",
+        "Filtering by each status shows only matching queries",
+        "Clearing filters restores the full list",
+        "Filter updates are instant without page reload"
+      ],
+      "postconditions": "Status filter works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_006",
+      "title": "Verify queries can be searched by product, user name, or keyword",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "2. Query Listing & Status",
+      "preconditions": "AP has multiple queries with different products and users",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Search by product name",
+        "3. Verify results show only queries for that product",
+        "4. Clear search and search by PwD user name",
+        "5. Verify results show only queries from that user",
+        "6. Clear search and search by a keyword from query text",
+        "7. Verify results show queries containing that keyword",
+        "8. Clear search",
+        "9. Verify all queries are restored"
+      ],
+      "expectedResults": [
+        "Search by product name returns matching queries",
+        "Search by user name returns matching queries",
+        "Search by keyword returns queries containing the keyword",
+        "Clearing search restores the full list"
+      ],
+      "postconditions": "Search functionality works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_007",
+      "title": "Verify AP can submit a response to a Pending Response query",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "3. Responding to a Query",
+      "preconditions": "AP has a query with 'Pending Response' status",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Locate a query with 'Pending Response' status",
+        "3. Verify a response input field is enabled",
+        "4. Enter a response meeting the minimum word count requirement",
+        "5. Submit the response",
+        "6. Verify a success confirmation is shown",
+        "7. Verify the response status changes to 'Pending Admin Approval'",
+        "8. Verify the response is NOT visible to the PwD user yet"
+      ],
+      "expectedResults": [
+        "Response input is enabled for Pending Response queries",
+        "Response can be entered and submitted",
+        "Status changes to 'Pending Admin Approval' after submission",
+        "Response is not visible to PwD until admin approval"
+      ],
+      "postconditions": "Response is submitted and awaiting admin approval",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_008",
+      "title": "Verify only one response per query is allowed",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "3. Responding to a Query",
+      "preconditions": "AP has already submitted a response for a query (in Pending Admin Approval or Approved status)",
+      "steps": [
+        "1. Navigate to a query that already has an AP response submitted",
+        "2. Verify the response input field is disabled or hidden",
+        "3. Verify no 'Respond' button is available",
+        "4. Verify a message or indicator shows the response has been submitted"
+      ],
+      "expectedResults": [
+        "Response input is disabled after a response has been submitted",
+        "AP cannot submit a second response to the same query",
+        "Clear indication that a response already exists"
+      ],
+      "postconditions": "Single response restriction is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_009",
+      "title": "Verify response input is disabled for non-Pending Response queries",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "3. Responding to a Query",
+      "preconditions": "AP has queries in 'Responded' and 'Admin Response' statuses",
+      "steps": [
+        "1. Navigate to a query with 'Responded' status",
+        "2. Verify response input is disabled or not shown",
+        "3. Navigate to a query with 'Admin Response' status",
+        "4. Verify response input is disabled or not shown",
+        "5. Navigate to a query with 'Pending Response' status",
+        "6. Verify response input IS enabled"
+      ],
+      "expectedResults": [
+        "Response input is disabled for 'Responded' queries",
+        "Response input is disabled for 'Admin Response' queries",
+        "Response input is enabled only for 'Pending Response' queries"
+      ],
+      "postconditions": "Response input availability matches query status",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_010",
+      "title": "Verify minimum word count requirement is enforced before submission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "3. Responding to a Query",
+      "preconditions": "AP is responding to a Pending Response query",
+      "steps": [
+        "1. Open response input for a Pending Response query",
+        "2. Enter text below the minimum word count",
+        "3. Attempt to submit",
+        "4. Verify a validation error is displayed indicating minimum word count not met",
+        "5. Enter text meeting the minimum word count",
+        "6. Attempt to submit",
+        "7. Verify submission is successful"
+      ],
+      "expectedResults": [
+        "Submission is blocked when word count is below minimum",
+        "Clear validation message indicates the minimum requirement",
+        "Submission succeeds when minimum word count is met"
+      ],
+      "postconditions": "Minimum word count is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_011",
+      "title": "Verify AP cannot submit an empty response",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "3. Responding to a Query",
+      "preconditions": "AP is responding to a Pending Response query",
+      "steps": [
+        "1. Open response input for a Pending Response query",
+        "2. Leave the response field empty",
+        "3. Attempt to submit",
+        "4. Verify submission is blocked with a validation error",
+        "5. Enter only whitespace",
+        "6. Attempt to submit",
+        "7. Verify submission is blocked"
+      ],
+      "expectedResults": [
+        "Empty response cannot be submitted",
+        "Whitespace-only response cannot be submitted",
+        "Clear validation message is displayed"
+      ],
+      "postconditions": "Empty responses are prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_012",
+      "title": "Verify admin can approve AP response making it visible to PwD user",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "4. Admin Moderation",
+      "preconditions": "AP has submitted a response in 'Pending Admin Approval' status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the moderation queue",
+        "3. Locate the AP's pending response",
+        "4. Click 'Approve'",
+        "5. Verify the response status changes to 'Approved'",
+        "6. Log in as the PwD user who submitted the query",
+        "7. Verify the AP response is now visible to the PwD user",
+        "8. Verify the response is labeled appropriately"
+      ],
+      "expectedResults": [
+        "Admin can approve the AP response",
+        "Response becomes visible to the PwD user after approval",
+        "Query status updates to 'Responded'",
+        "Response is labeled 'Your Response (Approved)' for the AP"
+      ],
+      "postconditions": "Response is approved and visible to PwD",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_013",
+      "title": "Verify admin can reject AP response with a clear rejection reason",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "4. Admin Moderation",
+      "preconditions": "AP has submitted a response in 'Pending Admin Approval' status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the moderation queue",
+        "3. Locate the AP's pending response",
+        "4. Click 'Reject'",
+        "5. Enter a clear rejection reason",
+        "6. Submit the rejection",
+        "7. Verify the query returns to 'Pending Response' status",
+        "8. Log in as the AP",
+        "9. Verify the AP can view the rejection reason",
+        "10. Verify a notification is sent to the AP with the rejection reason"
+      ],
+      "expectedResults": [
+        "Admin can reject with a reason",
+        "Query returns to 'Pending Response' status for re-submission",
+        "AP can view the rejection reason",
+        "Notification is sent to AP with the reason"
+      ],
+      "postconditions": "Response is rejected; AP can re-submit",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_014",
+      "title": "Verify admin can submit a response on behalf of the Assistive Partner",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "4. Admin Moderation",
+      "preconditions": "A query exists with 'Pending Response' status",
+      "steps": [
+        "1. Log in as admin",
+        "2. Navigate to the query in Pending Response status",
+        "3. Submit a response on behalf of the Assistive Partner",
+        "4. Verify the response is saved successfully",
+        "5. Log in as the AP",
+        "6. Navigate to the query",
+        "7. Verify the response is labeled 'Admin Response (on your behalf)'",
+        "8. Verify the query status is 'Responded'",
+        "9. Verify the AP cannot add a separate response",
+        "10. Log in as PwD user",
+        "11. Verify the response is visible to the PwD user"
+      ],
+      "expectedResults": [
+        "Admin can respond on behalf of the AP",
+        "Response is labeled 'Admin Response (on your behalf)' for the AP",
+        "Query status changes to 'Responded'",
+        "AP cannot submit a separate response after admin responds",
+        "Response is visible to the PwD user"
+      ],
+      "postconditions": "Admin response on behalf is published",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_015",
+      "title": "Verify AP can re-submit response after rejection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "4. Admin Moderation",
+      "preconditions": "AP's response was rejected; query is back in 'Pending Response' status",
+      "steps": [
+        "1. Log in as AP",
+        "2. Navigate to the rejected query (now in 'Pending Response' status)",
+        "3. Verify the rejection reason is visible",
+        "4. Verify the response input is enabled again",
+        "5. Enter a new response addressing the rejection feedback",
+        "6. Submit the new response",
+        "7. Verify the status changes to 'Pending Admin Approval'"
+      ],
+      "expectedResults": [
+        "Response input is re-enabled after rejection",
+        "Rejection reason is visible to help AP improve response",
+        "New response can be submitted",
+        "Status returns to 'Pending Admin Approval'"
+      ],
+      "postconditions": "Re-submitted response awaits admin approval",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_016",
+      "title": "Verify approved response is labeled 'Your Response (Approved)' and visible to PwD",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "5. Approved Responses",
+      "preconditions": "AP response has been approved by admin",
+      "steps": [
+        "1. Log in as the AP",
+        "2. Navigate to the query with approved response",
+        "3. Verify the response is labeled 'Your Response (Approved)'",
+        "4. Verify the query status shows 'Responded'",
+        "5. Log in as the PwD user",
+        "6. Navigate to the product/query",
+        "7. Verify the AP response content is visible to the PwD user"
+      ],
+      "expectedResults": [
+        "Response is labeled 'Your Response (Approved)' for the AP",
+        "Query status is 'Responded'",
+        "Response content is visible to the PwD user",
+        "Response content matches what was submitted"
+      ],
+      "postconditions": "Approved response is correctly displayed to both AP and PwD",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_017",
+      "title": "Verify AP cannot edit or submit another response after approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "5. Approved Responses",
+      "preconditions": "AP response has been approved",
+      "steps": [
+        "1. Log in as AP",
+        "2. Navigate to the query with approved response",
+        "3. Verify no 'Edit' button is available on the approved response",
+        "4. Verify no 'Respond' or 'Submit' button is available",
+        "5. Verify the response is read-only"
+      ],
+      "expectedResults": [
+        "No edit functionality is available after approval",
+        "No option to submit another response",
+        "Response is displayed as read-only"
+      ],
+      "postconditions": "Approved response is immutable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_018",
+      "title": "Verify Admin Response on behalf is labeled correctly and blocks AP response",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "6. Admin Responses on Behalf of Vendor",
+      "preconditions": "Admin has responded on behalf of the AP",
+      "steps": [
+        "1. Log in as the AP",
+        "2. Navigate to the query where admin responded on behalf",
+        "3. Verify the response is labeled 'Admin Response (on your behalf)'",
+        "4. Verify the query status is 'Responded'",
+        "5. Verify no response input is available for the AP",
+        "6. Verify the AP cannot add a separate response"
+      ],
+      "expectedResults": [
+        "Response is clearly labeled 'Admin Response (on your behalf)'",
+        "Query status shows 'Responded'",
+        "AP cannot submit a separate response",
+        "Response input is disabled/hidden"
+      ],
+      "postconditions": "Admin response blocks further AP responses",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_019",
+      "title": "Verify no chat or back-and-forth thread is allowed per query",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "7. Privacy & Constraints",
+      "preconditions": "Query has an approved response",
+      "steps": [
+        "1. Log in as PwD user",
+        "2. Navigate to the query with an approved AP response",
+        "3. Verify no 'Reply' or 'Follow-up' option is available",
+        "4. Log in as AP",
+        "5. Navigate to the same query",
+        "6. Verify no option to add additional responses or comments",
+        "7. Verify the interaction is limited to: one query + one response"
+      ],
+      "expectedResults": [
+        "No reply/follow-up option for PwD after response",
+        "No additional response option for AP after approval",
+        "Interaction is strictly one query + one response",
+        "No chat thread functionality exists"
+      ],
+      "postconditions": "Single-response constraint is enforced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_020",
+      "title": "Verify PwD queries do not require moderation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "7. Privacy & Constraints",
+      "preconditions": "PwD user submits a new query on a product",
+      "steps": [
+        "1. Have a PwD user submit a query on an AP's product",
+        "2. Log in as the AP",
+        "3. Navigate to Queries section",
+        "4. Verify the new query is immediately visible to the AP",
+        "5. Verify the query did not go through any moderation queue",
+        "6. Verify the query status is 'Pending Response'"
+      ],
+      "expectedResults": [
+        "PwD queries appear immediately without moderation",
+        "Query is visible to AP right after submission",
+        "Status is 'Pending Response' immediately"
+      ],
+      "postconditions": "PwD queries are unmoderated and immediately visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_021",
+      "title": "Verify all responses and moderation actions are logged for audit",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "7. Privacy & Constraints",
+      "preconditions": "Multiple query responses have been submitted, approved, and rejected",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Have admin approve it",
+        "3. Submit another response for a different query",
+        "4. Have admin reject it",
+        "5. Verify audit logs contain all actions with timestamps",
+        "6. Verify logs include: submission, approval, rejection actions"
+      ],
+      "expectedResults": [
+        "All response submissions are logged with timestamps",
+        "All moderation actions (approve/reject) are logged",
+        "Audit trail is complete and chronological"
+      ],
+      "postconditions": "Audit trail exists for all query interactions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PQ_022",
+      "title": "Verify AP receives notification when a new query is received",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "8. User Feedback & Notifications",
+      "preconditions": "PwD user submits a new query for AP's product",
+      "steps": [
+        "1. Have a PwD user submit a new query for an AP's product",
+        "2. Log in as the AP",
+        "3. Verify a notification appears indicating a new query",
+        "4. Verify the notification count updates",
+        "5. Click the notification",
+        "6. Verify navigation to the new query"
+      ],
+      "expectedResults": [
+        "Notification appears for new query",
+        "Notification count increments",
+        "Clicking notification navigates to the query"
+      ],
+      "postconditions": "AP is aware of the new query",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_023",
+      "title": "Verify AP receives notification when response is approved",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "8. User Feedback & Notifications",
+      "preconditions": "AP has submitted a response; admin approves it",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Have admin approve the response",
+        "3. Log in as the AP",
+        "4. Verify a notification appears indicating approval",
+        "5. Verify the notification count updates",
+        "6. Verify clear visual indicator for 'Approved' status on the query"
+      ],
+      "expectedResults": [
+        "Approval notification appears on AP dashboard",
+        "Notification count updates",
+        "Clear visual indicator shows approved status"
+      ],
+      "postconditions": "AP is informed of approval",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_024",
+      "title": "Verify AP receives notification when response is rejected with reason",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "8. User Feedback & Notifications",
+      "preconditions": "AP has submitted a response; admin rejects it with a reason",
+      "steps": [
+        "1. Submit a response as AP",
+        "2. Have admin reject the response with a reason",
+        "3. Log in as the AP",
+        "4. Verify a notification appears indicating rejection",
+        "5. Verify the notification includes or links to the rejection reason",
+        "6. Verify the notification count updates",
+        "7. Verify clear visual indicator for 'Rejected' status with reason visible"
+      ],
+      "expectedResults": [
+        "Rejection notification appears on AP dashboard",
+        "Notification includes/links to the rejection reason",
+        "Notification count updates",
+        "Clear visual indicator shows rejected status with reason"
+      ],
+      "postconditions": "AP is informed of rejection with actionable feedback",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_025",
+      "title": "Verify visual indicators for Pending Admin Approval, Approved, and Rejected statuses",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "8. User Feedback & Notifications",
+      "preconditions": "AP has queries/responses in all three moderation states",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Locate a query with response in 'Pending Admin Approval'",
+        "3. Verify a clear visual indicator (badge, color, icon) shows pending status",
+        "4. Locate a query with 'Approved' response",
+        "5. Verify a clear visual indicator shows approved status",
+        "6. Locate a query with 'Rejected' response",
+        "7. Verify a clear visual indicator shows rejected status with reason accessible"
+      ],
+      "expectedResults": [
+        "Pending Admin Approval has a distinct visual indicator",
+        "Approved responses have a distinct visual indicator",
+        "Rejected responses have a distinct visual indicator",
+        "All indicators are clearly distinguishable from each other"
+      ],
+      "postconditions": "Visual feedback is clear for all moderation states",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_026",
+      "title": "Verify queries section with zero queries shows appropriate empty state",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-201",
+      "category": "Edge Cases",
+      "preconditions": "AP has products but no PwD queries have been submitted",
+      "steps": [
+        "1. Log in as AP with no queries",
+        "2. Navigate to Queries section",
+        "3. Verify the page loads without errors",
+        "4. Verify summary counts show 0 for all metrics",
+        "5. Verify an appropriate empty state message is displayed",
+        "6. Verify no broken UI elements"
+      ],
+      "expectedResults": [
+        "Page loads successfully with zero queries",
+        "Summary counts show 0",
+        "Empty state message is displayed (e.g., 'No queries received yet')",
+        "UI is clean with no broken elements"
+      ],
+      "postconditions": "Empty state is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PQ_027",
+      "title": "Verify Admin Response status filter works correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-863",
+      "category": "2. Query Listing & Status",
+      "preconditions": "AP has queries with 'Admin Response' status (admin responded on behalf)",
+      "steps": [
+        "1. Navigate to Queries section",
+        "2. Locate the status filter",
+        "3. Select 'Admin Response' filter",
+        "4. Verify only queries with Admin Response status are shown",
+        "5. Verify the filter returns correct results",
+        "6. Verify no other status queries are included"
+      ],
+      "expectedResults": [
+        "Admin Response filter option is available",
+        "Filtering shows only Admin Response queries",
+        "Results are accurate and complete",
+        "No false positives from other statuses"
+      ],
+      "postconditions": "Admin Response filter works correctly (regression for SCRUM-863)",
+      "testResult": "PASS"
+    }
+  ]
+}

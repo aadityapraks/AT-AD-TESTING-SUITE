@@ -1,0 +1,525 @@
+{
+  "jiraStory": "SCRUM-466",
+  "title": "Admin Partner Management Dashboard - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Partner Management Dashboard covering WCAG 2.1 AA compliance for summary metric widgets (Pending Approvals, Active Partners, Total Products, Average Approval Time), real-time data refresh, empty states, error handling, and responsive design.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Dashboard page has proper heading structure",
+      "wcagCriterion": "2.4.6 Headings and Labels, 1.3.1 Info and Relationships",
+      "componentElement": "Page heading and section structure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is logged in and on Partner Management Dashboard",
+      "steps": [
+        "1. Navigate to Partner Management Dashboard",
+        "2. Verify H1 exists for page title",
+        "3. Use screen reader heading navigation (H key)",
+        "4. Verify heading hierarchy is logical (no skipped levels)",
+        "5. Verify page <title> is descriptive"
+      ],
+      "expectedResults": [
+        "Page has exactly one H1 heading",
+        "Heading hierarchy logical (H1 → H2 for sections)",
+        "Screen reader can navigate by headings",
+        "Page <title> includes 'Partner Management' or 'Dashboard'",
+        "WCAG 2.4.6, 2.4.2 compliant"
+      ],
+      "postconditions": "Page heading structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Dashboard page has proper landmarks",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Page landmark regions (main, navigation, banner)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Use screen reader landmark navigation",
+        "2. Verify <main> or role='main' landmark exists",
+        "3. Verify <nav> or role='navigation' landmark exists",
+        "4. Check for skip navigation link",
+        "5. Verify HTML lang attribute present"
+      ],
+      "expectedResults": [
+        "Page has <main> landmark",
+        "Navigation landmark present",
+        "Skip link present",
+        "HTML has lang attribute",
+        "WCAG 1.3.1, 2.4.1, 3.1.1 compliant"
+      ],
+      "postconditions": "Page landmarks verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Pending Vendor Approvals widget accessible",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Pending Vendor Approvals count widget",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard with pending approvals",
+      "steps": [
+        "1. Locate Pending Vendor Approvals widget",
+        "2. Verify widget has descriptive label ('Pending Vendor Approvals')",
+        "3. Verify numeric count is associated with label",
+        "4. Use screen reader to verify count announced with context",
+        "5. Verify widget has semantic structure (heading or aria-label)",
+        "6. Verify count has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Widget has descriptive text label",
+        "Count programmatically associated with label",
+        "Screen reader announces: 'Pending Vendor Approvals: X'",
+        "Widget has semantic structure",
+        "Count text has 4.5:1 contrast",
+        "WCAG 4.1.2, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Pending approvals widget accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Active Partners widget accessible",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Active Partners count widget",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Locate Active Partners widget",
+        "2. Verify widget has descriptive label ('Active Partners')",
+        "3. Verify numeric count associated with label",
+        "4. Use screen reader to verify count announced with context",
+        "5. Verify count has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Widget has descriptive text label",
+        "Count programmatically associated with label",
+        "Screen reader announces: 'Active Partners: X'",
+        "Count text has 4.5:1 contrast",
+        "WCAG 4.1.2, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Active partners widget accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Total Products widget accessible",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Total Products count widget",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Locate Total Products widget",
+        "2. Verify widget has descriptive label ('Total Products')",
+        "3. Verify numeric count associated with label",
+        "4. Use screen reader to verify count announced with context",
+        "5. Verify count has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Widget has descriptive text label",
+        "Count programmatically associated with label",
+        "Screen reader announces: 'Total Products: X'",
+        "Count text has 4.5:1 contrast",
+        "WCAG 4.1.2, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Total products widget accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Average Approval Time widget accessible",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Average Approval Time widget",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Locate Average Approval Time widget",
+        "2. Verify widget has descriptive label ('Average Approval Time')",
+        "3. Verify time value associated with label",
+        "4. Verify time format clear (e.g., '2.5 days')",
+        "5. Use screen reader to verify value announced with context",
+        "6. Verify value has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Widget has descriptive text label",
+        "Time value programmatically associated with label",
+        "Screen reader announces: 'Average Approval Time: X days'",
+        "Time format clear and unambiguous",
+        "Value text has 4.5:1 contrast",
+        "WCAG 4.1.2, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Average approval time widget accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Metric widgets keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.7 Focus Visible",
+      "componentElement": "All metric widgets (if interactive/clickable)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Tab through all metric widgets",
+        "2. If widgets are clickable, verify focus indicator visible",
+        "3. If widgets are clickable, verify Enter/Space activates",
+        "4. If widgets are non-interactive, verify they are NOT in tab order",
+        "5. Verify tab order is logical across widgets"
+      ],
+      "expectedResults": [
+        "Interactive widgets keyboard accessible",
+        "Non-interactive widgets not in tab order",
+        "Focus indicators visible on interactive widgets",
+        "Tab order follows visual layout",
+        "WCAG 2.1.1, 2.4.7, 2.4.3 compliant"
+      ],
+      "postconditions": "Widget keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Widgets not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "All metric widgets visual indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Review all widget visual indicators",
+        "2. Verify status/meaning conveyed by text labels",
+        "3. Verify icons supplemented with text",
+        "4. Test in grayscale mode — verify all widgets distinguishable",
+        "5. Verify trend indicators (if any) have text equivalents"
+      ],
+      "expectedResults": [
+        "Widget meaning conveyed by text, not color alone",
+        "Icons have text equivalents",
+        "Widgets distinguishable in grayscale",
+        "Trend indicators have text labels",
+        "WCAG 1.4.1 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Real-time data refresh announced",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Data refresh mechanism",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard with data updating",
+      "steps": [
+        "1. Observe data refresh (real-time or on reload)",
+        "2. Verify updated values announced via aria-live region",
+        "3. Verify refresh does not disrupt user focus",
+        "4. Verify refresh does not cause page reload without warning",
+        "5. If manual refresh button exists, verify it is keyboard accessible"
+      ],
+      "expectedResults": [
+        "Data updates have aria-live='polite' region",
+        "Updates announced without disrupting focus",
+        "No unexpected page reloads",
+        "Manual refresh button accessible if present",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Data refresh accessibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Loading state accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading indicator during data fetch",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin navigates to dashboard while data is loading",
+      "steps": [
+        "1. Navigate to dashboard (trigger data loading)",
+        "2. Verify loading indicator visible",
+        "3. Verify loading state announced via aria-live or role='status'",
+        "4. Verify loading indicator has accessible name",
+        "5. Verify loading does not trap keyboard focus",
+        "6. Verify completion announced"
+      ],
+      "expectedResults": [
+        "Loading indicator visible during data fetch",
+        "Loading state announced to screen readers",
+        "Loading indicator has aria-label or text",
+        "Keyboard focus not trapped during loading",
+        "Completion announced via aria-live",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Loading state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Empty state accessible (no vendors)",
+      "wcagCriterion": "4.1.3 Status Messages, 1.3.1 Info and Relationships",
+      "componentElement": "Empty state message when no vendors available",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on dashboard with no vendors in system",
+      "steps": [
+        "1. View dashboard with no vendors available",
+        "2. Verify empty state message displayed",
+        "3. Verify message provides guidance (e.g., 'No vendors registered yet')",
+        "4. Verify message announced by screen reader",
+        "5. Verify message has proper semantic structure",
+        "6. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Empty state message visible and clear",
+        "Message provides guidance for next steps",
+        "Message announced via aria-live or role='status'",
+        "Message has proper heading or semantic structure",
+        "Message text has 4.5:1 contrast",
+        "WCAG 4.1.3, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Empty state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "API error fallback message accessible",
+      "wcagCriterion": "3.3.1 Error Identification, 4.1.3 Status Messages",
+      "componentElement": "Error message on metrics API failure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Metrics API has failed",
+      "steps": [
+        "1. Simulate metrics API failure",
+        "2. Verify error/fallback message displayed",
+        "3. Verify message has role='alert' or aria-live='assertive'",
+        "4. Verify message announced immediately by screen reader",
+        "5. Verify retry option present and keyboard accessible",
+        "6. Verify error message has 4.5:1 contrast",
+        "7. Verify error does not trap keyboard focus"
+      ],
+      "expectedResults": [
+        "Error message displayed with clear text",
+        "Message has role='alert' or aria-live='assertive'",
+        "Screen reader announces error immediately",
+        "Retry button/link keyboard accessible",
+        "Error text has 4.5:1 contrast",
+        "Error does not trap focus",
+        "WCAG 3.3.1, 4.1.3, 2.1.1 compliant"
+      ],
+      "postconditions": "API error accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Retry button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Retry button on error state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "API error is displayed with retry option",
+      "steps": [
+        "1. Tab to Retry button",
+        "2. Verify focus indicator visible",
+        "3. Verify button has accessible name ('Retry' or 'Try Again')",
+        "4. Press Enter to activate",
+        "5. Verify data reload initiated",
+        "6. Verify loading state announced"
+      ],
+      "expectedResults": [
+        "Retry button keyboard accessible",
+        "Focus indicator visible",
+        "Button has clear accessible name",
+        "Enter/Space activates retry",
+        "Data reload initiated on activation",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Retry button accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text elements on dashboard",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Measure heading text contrast",
+        "2. Measure widget label text contrast",
+        "3. Measure widget count/value contrast",
+        "4. Measure error message contrast",
+        "5. Measure empty state message contrast"
+      ],
+      "expectedResults": [
+        "All normal text has 4.5:1 contrast minimum",
+        "Large text (18pt+) has 3:1 contrast minimum",
+        "Widget counts have 4.5:1 contrast",
+        "Error text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Text contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "UI component contrast meets WCAG AA",
+      "wcagCriterion": "1.4.11 Non-text Contrast",
+      "componentElement": "Widget borders, icons, focus indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Measure widget card border/boundary contrast",
+        "2. Measure icon contrast within widgets",
+        "3. Measure focus indicator contrast",
+        "4. Measure button border contrast (retry button)",
+        "5. Verify all meet 3:1 minimum"
+      ],
+      "expectedResults": [
+        "Widget boundaries have 3:1 contrast",
+        "Icons have 3:1 contrast",
+        "Focus indicators have 3:1 contrast",
+        "Button boundaries have 3:1 contrast",
+        "WCAG 1.4.11 compliant"
+      ],
+      "postconditions": "UI component contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Dashboard usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Dashboard layout at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Verify all widget content visible",
+        "3. Verify no horizontal scrolling required",
+        "4. Verify no text truncation or overlap",
+        "5. Verify all functionality remains available"
+      ],
+      "expectedResults": [
+        "All content visible at 200% zoom",
+        "No horizontal scrolling",
+        "No text truncation or overlap",
+        "All widgets readable and functional",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Dashboard accessible on mobile viewport",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Dashboard on mobile viewport (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard on mobile",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Verify all widgets visible",
+        "3. Verify touch targets at least 44x44px",
+        "4. Verify no horizontal scrolling",
+        "5. Verify all content readable"
+      ],
+      "expectedResults": [
+        "Dashboard adapts to mobile viewport",
+        "Touch targets meet 44x44px minimum",
+        "No horizontal scrolling",
+        "All widget content readable",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "No keyboard traps on dashboard",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Entire Partner Management Dashboard",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "Admin is on Partner Management Dashboard",
+      "steps": [
+        "1. Tab through all interactive elements",
+        "2. Verify focus cycles through all elements",
+        "3. Verify Shift+Tab works in reverse",
+        "4. Verify no element traps keyboard focus",
+        "5. Verify focus can reach browser chrome"
+      ],
+      "expectedResults": [
+        "No keyboard traps exist",
+        "Tab cycles through all elements",
+        "Shift+Tab reverses navigation",
+        "Focus can reach browser chrome",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No keyboard traps confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Entire Partner Management Dashboard with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "NVDA screen reader enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate to dashboard with NVDA",
+        "2. Use heading navigation (H key)",
+        "3. Navigate through all widgets",
+        "4. Verify all counts announced with labels",
+        "5. Trigger error state and verify announced",
+        "6. Verify all content accessible"
+      ],
+      "expectedResults": [
+        "All content accessible via NVDA",
+        "Headings announced correctly",
+        "Widget counts announced with labels",
+        "Error states announced",
+        "Dynamic updates announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Entire Partner Management Dashboard with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-466",
+      "preconditions": "JAWS screen reader enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate to dashboard with JAWS",
+        "2. Use virtual cursor navigation",
+        "3. Navigate through all widgets",
+        "4. Verify all counts announced with labels",
+        "5. Verify landmark navigation works",
+        "6. Verify all content accessible"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Virtual cursor navigates all content",
+        "Widget counts announced with labels",
+        "Landmark navigation works",
+        "All interactions accessible",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "admin": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "pwdUser": {
+    "email": "najytulo@fxzig.com",
+    "password": "Aaditya@14"
+  },
+  "inputs": {
+    "maxResponseText": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "productPageUrl": "https://qa-atad.swarajability.org/product/watch/"
+  },
+  "expected": {
+    "reviewsRatingsTabText": "Reviews & Ratings",
+    "queriesTabText": "Queries",
+    "queriesPageHeading": "PWD Queries",
+    "queriesPageDescription": "Manage and respond to queries from persons with disabilities",
+    "reviewsRatingsPageHeading": "Reviews & Ratings",
+    "reviewsRatingsUrlPattern": "reviews-ratings",
+    "queriesUrlPattern": "queries",
+    "commentModerationHeading": "Comment Moderation",
+    "commentModerationUrlPattern": "comment-moderation",
+    "maxResponseLength": 500
+  }
+}

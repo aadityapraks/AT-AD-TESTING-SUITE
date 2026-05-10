@@ -1,0 +1,36 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "inputs": {
+    "searchQuery": "product upload",
+    "broadSearchQuery": "product listing",
+    "partialQuery": "prod",
+    "noResultsQuery": "xyznonexistent123",
+    "specialCharsQuery": "<script>alert(1)</script>",
+    "specialCharsQuery2": "!@#$%^&*()",
+    "emptyQuery": "",
+    "whitespaceQuery": "   "
+  },
+  "expected": {
+    "pageHeading": "Help & Resources",
+    "pageDescription": "Find guides, tutorials, and answers to help you succeed as a partner",
+    "searchPlaceholder": "Search articles, FAQs, or guides...",
+    "searchInputAriaLabel": "Search articles, FAQs, or guides",
+    "noResultsMessage": "No results found. Please try a different keyword or contact support.",
+    "systemErrorMessage": "Help Center is temporarily unavailable. Please check back later.",
+    "tabs": ["Categories", "FAQs", "Contact"],
+    "categories": ["Best Practices", "Product Management", "GenAI Features", "Compliance & Approvals"],
+    "faqCategories": ["Account & Registration", "Product Listings", "GenAI Assistance", "Reviews & Ratings", "Technical Support"],
+    "helpResourcesUrl": "/partner/help-resources",
+    "emptyStateHeading": "Select a Category to View Articles",
+    "emptyStateDescription": "Click on any category above to explore related help articles and guides",
+    "contactEmail": "support@y4j.org",
+    "contactPhone": "+91-9876543210",
+    "contactHours": "Mon-Fri 9:00-18:00",
+    "firstFaqQuestion": "How do I create a vendor account?",
+    "firstFaqAnswer": "To create a vendor account, click on the \"Register\" button"
+  }
+}

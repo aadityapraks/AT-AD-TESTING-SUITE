@@ -1,0 +1,23 @@
+{
+  "jiraStory": "SCRUM-30",
+  "title": "Assistive Partner Views and Receives Reviews & Ratings - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Reviews & Ratings feature on the Y4J AT/AD Vendor Portal.",
+  "testCases": [
+    { "id": "TC_RR_001", "title": "Verify Reviews & Ratings section is accessible from AP dashboard", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_002", "title": "Verify dashboard widgets display Average Rating, Total Reviews, and Products Reviewed", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_003", "title": "Verify Product Reviews section has product search functionality", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_004", "title": "Verify Product Reviews section sort/filter for All Ratings and Most Reviews", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_005", "title": "Verify product list shows average rating and total review count per product", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_006", "title": "Verify clicking a product opens the Product Feedback Summary Page", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_007", "title": "Verify Product Feedback Summary Page displays all required fields", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_008", "title": "Verify ratings are automatically recalculated when a new review is submitted", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "NOT RUN" },
+    { "id": "TC_RR_009", "title": "Verify individual review cards display all required information", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_010", "title": "Verify Customer Reviews sort/filter for All Ratings and Most Recent", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_011", "title": "Verify review text is limited to 500 characters", "priority": "Medium", "relatedJiraIssue": "SCRUM-30", "testResult": "NOT RUN" },
+    { "id": "TC_RR_012", "title": "Verify in-app notification when a new review is submitted", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "NOT RUN" },
+    { "id": "TC_RR_013", "title": "Verify notification contains only non-sensitive information", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "NOT RUN" },
+    { "id": "TC_RR_014", "title": "Verify APs can only see Approved/Published reviews", "priority": "Highest", "relatedJiraIssue": "SCRUM-30", "testResult": "NOT RUN" },
+    { "id": "TC_RR_015", "title": "Verify AP can respond to approved comments", "priority": "High", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" },
+    { "id": "TC_RR_016", "title": "Verify product page on PwD portal has Reviews tab and catalog ratings", "priority": "Medium", "relatedJiraIssue": "SCRUM-30", "testResult": "PASS" }
+  ]
+}

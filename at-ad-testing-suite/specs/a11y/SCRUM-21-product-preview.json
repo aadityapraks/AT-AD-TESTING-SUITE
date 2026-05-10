@@ -1,0 +1,283 @@
+{
+  "jiraStory": "SCRUM-21",
+  "title": "AP Product Preview - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for AP Product Preview feature covering WCAG 2.1 AA compliance for preview mode, catalog card display, full product details page, media verification, specifications, accessibility compliance indicators, and edit options.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify View Product button keyboard accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Preview Mode Access - View Product Button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "User is logged in as AP and has products in Product Management page",
+      "steps": [
+        "1. Navigate to Product Management page",
+        "2. Tab to View Product button in actions column",
+        "3. Verify focus indicator visible with 3:1 contrast",
+        "4. Press Enter/Space to activate button",
+        "5. Verify preview mode opens"
+      ],
+      "expectedResults": [
+        "View Product button has role='button'",
+        "Accessible name is 'View Product' or similar",
+        "Focus indicator visible (WCAG 2.4.7)",
+        "Button activates with Enter and Space keys",
+        "Preview opens in same or new window/modal"
+      ],
+      "postconditions": "Preview mode is open and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify screen reader announces View Product button",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Preview Mode Access - View Product Button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "User is logged in as AP with screen reader enabled",
+      "steps": [
+        "1. Enable screen reader (NVDA/JAWS)",
+        "2. Navigate to Product Management page",
+        "3. Tab to View Product button",
+        "4. Verify button name and role announced",
+        "5. Verify button state announced"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Accessible name 'View Product' announced",
+        "Button state (enabled/disabled) announced",
+        "No empty or generic labels",
+        "Context provided (e.g., 'View Product for [Product Name]')"
+      ],
+      "postconditions": "Screen reader correctly announces button information",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify preview mode page title and landmarks",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Preview Mode Access - Page Structure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "User has opened preview mode for a product",
+      "steps": [
+        "1. Open preview mode",
+        "2. Verify page title is descriptive",
+        "3. Use screen reader to navigate by landmarks",
+        "4. Verify main, navigation landmarks exist",
+        "5. Check for skip links"
+      ],
+      "expectedResults": [
+        "Page title includes 'Preview' and product name",
+        "Main content has role='main' or <main>",
+        "Navigation has role='navigation' or <nav>",
+        "Skip to main content link present",
+        "All landmarks have accessible names"
+      ],
+      "postconditions": "Page structure is properly defined with landmarks",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify catalog card keyboard navigation",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Catalog Card Display",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Preview mode is open showing catalog card view",
+      "steps": [
+        "1. Open preview mode showing catalog card",
+        "2. Tab through card elements",
+        "3. Verify product name is focusable if interactive",
+        "4. Verify image is accessible",
+        "5. Test keyboard activation"
+      ],
+      "expectedResults": [
+        "All interactive elements keyboard accessible",
+        "Tab order follows visual layout",
+        "Focus indicator visible with 3:1 contrast",
+        "Non-interactive elements not in tab order",
+        "Card has semantic structure (article/section)"
+      ],
+      "postconditions": "All card elements are keyboard navigable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Verify catalog card screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Catalog Card Display",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Preview mode is open with screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Navigate to catalog card",
+        "3. Verify product name announced",
+        "4. Verify short description announced",
+        "5. Verify image alt text announced"
+      ],
+      "expectedResults": [
+        "Product name has proper heading level (h2/h3)",
+        "Short description announced clearly",
+        "Primary image has meaningful alt text",
+        "Card has aria-label or aria-labelledby",
+        "All content programmatically accessible"
+      ],
+      "postconditions": "Screen reader announces all card content correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Verify catalog card visual accessibility",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Catalog Card Display",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Preview mode is open showing catalog card",
+      "steps": [
+        "1. Inspect text color contrast",
+        "2. Verify product name has 4.5:1 contrast",
+        "3. Verify description text has 4.5:1 contrast",
+        "4. Test zoom to 200%",
+        "5. Verify no color-only information"
+      ],
+      "expectedResults": [
+        "Product name meets 4.5:1 contrast (WCAG 1.4.3)",
+        "Description text meets 4.5:1 contrast",
+        "Card readable at 200% zoom (WCAG 1.4.4)",
+        "Information not conveyed by color alone (WCAG 1.4.1)",
+        "Image borders/separators have 3:1 contrast"
+      ],
+      "postconditions": "All visual elements meet contrast requirements",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Verify primary image accessibility",
+      "wcagCriterion": "1.1.1 Non-text Content",
+      "componentElement": "Catalog Card Display - Primary Image",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Preview mode is open with product that has images",
+      "steps": [
+        "1. Inspect primary image element",
+        "2. Verify alt attribute exists",
+        "3. Verify alt text is meaningful",
+        "4. Check image loading states",
+        "5. Test with images disabled"
+      ],
+      "expectedResults": [
+        "Image has alt attribute",
+        "Alt text describes product meaningfully",
+        "Alt text not generic (e.g., 'image', 'photo')",
+        "Loading state announced to screen readers",
+        "Fallback text available if image fails"
+      ],
+      "postconditions": "Image is accessible with meaningful alt text",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Verify product details page structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Full Product Details Page - Structure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Product details page view is open",
+      "steps": [
+        "1. Switch to product details page view",
+        "2. Use screen reader to navigate headings",
+        "3. Verify heading hierarchy is logical",
+        "4. Check landmark regions",
+        "5. Verify page structure"
+      ],
+      "expectedResults": [
+        "Heading hierarchy follows logical order (h1, h2, h3)",
+        "Product name is h1",
+        "Section headings are h2 (Description, Specifications, etc.)",
+        "No heading levels skipped",
+        "Landmarks properly structured"
+      ],
+      "postconditions": "Page structure follows proper heading hierarchy",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verify product name and category accessibility",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Full Product Details Page - Name and Category",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Product details page is open",
+      "steps": [
+        "1. Navigate to product details page",
+        "2. Verify product name is h1",
+        "3. Verify category is announced",
+        "4. Check text contrast",
+        "5. Test with screen reader"
+      ],
+      "expectedResults": [
+        "Product name is h1 with 4.5:1 contrast",
+        "Category has semantic markup",
+        "Category announced by screen reader",
+        "Text readable at 200% zoom",
+        "No color-only information"
+      ],
+      "postconditions": "Product name and category are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Verify descriptions accessibility",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Full Product Details Page - Descriptions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Product details page is open with descriptions",
+      "steps": [
+        "1. Navigate to short description",
+        "2. Navigate to detailed description",
+        "3. Verify both have proper headings",
+        "4. Check text contrast",
+        "5. Test readability at 200% zoom"
+      ],
+      "expectedResults": [
+        "Short description has h2 heading",
+        "Detailed description has h2 heading",
+        "Text has 4.5:1 contrast ratio",
+        "Content readable at 200% zoom",
+        "Paragraphs properly structured"
+      ],
+      "postconditions": "Descriptions are properly structured and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Verify keyboard navigation through details page",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Full Product Details Page - Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-21",
+      "preconditions": "Product details page is open",
+      "steps": [
+        "1. Tab through all interactive elements",
+        "2. Verify tab order is logical",
+        "3. Test focus indicators",
+        "4. Verify no keyboard traps",
+        "5. Test all interactive elements"
+      ],
+      "expectedResults": [
+        "Tab order follows visual layout",
+        "Focus indicator visible on all elements",
+        "No keyboard traps exist",
+        "All interactive elements keyboard accessible",
+        "Focus management is logical"
+      ],
+      "postconditions": "All elements are keyboard navigable without traps",
+      "testResult": "PASS"
+    }
+  ]
+}
+

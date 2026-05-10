@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './',
   timeout: 120000,
   testMatch: '**/*.spec.ts',
+  testIgnore: ['**/seed/**', '**/node_modules/**'],
   outputDir: './test-results',
   use: {
     headless: false,
@@ -23,7 +24,7 @@ export default defineConfig({
     {
       name: 'default',
       testMatch: '**/*.spec.ts',
-      testIgnore: ['**/*.setup.ts', '**/scrum36*-caregiver-*.spec.ts', '**/seed/**'],
+      testIgnore: ['**/*.setup.ts', '**/scrum36*-caregiver-*.spec.ts', '**/seed/**', '**/seed-*.ts', '**/tests/accessibility/**'],
     },
     // Caregiver tests — login handled in test via loginOrNavigateToMyPwDs
     {

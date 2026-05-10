@@ -1,6 +1,5 @@
-// Seed setup file for Playwright MCP test generator
-// This file is used to set up the initial page state for test generation
+import { test } from '@playwright/test';
 
-export async function setupPage(page: any) {
+test('seed setup', async ({ page }) => {
   await page.goto('https://hub-ui-admin-qa.swarajability.org/');
-}
+});

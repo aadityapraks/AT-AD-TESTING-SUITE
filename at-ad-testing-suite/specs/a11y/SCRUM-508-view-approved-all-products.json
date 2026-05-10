@@ -1,0 +1,391 @@
+{
+  "jiraStory": "SCRUM-508",
+  "title": "Admin View Approved & All Products - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin View Approved & All Products tabs covering WCAG 2.1 AA compliance for Approved tab, All Products tab (showing multiple statuses), filters/search across tabs, product status dropdown, zero stock flag, deactivated vendor flag, and archived product state.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Approved tab keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Approved tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Navigate to Approved tab via keyboard",
+        "2. Verify tab has role='tab'",
+        "3. Verify aria-selected state",
+        "4. Verify tab content updates",
+        "5. Verify shows all approved products"
+      ],
+      "expectedResults": [
+        "Tab keyboard accessible",
+        "Tab has proper ARIA",
+        "Content updates on activation",
+        "Shows approved products",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Approved tab active",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "All Products tab keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "All Products tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Navigate to All Products tab via keyboard",
+        "2. Verify tab has role='tab'",
+        "3. Verify shows Approved, Official AT, and Under Review products",
+        "4. Verify mixed statuses displayed correctly"
+      ],
+      "expectedResults": [
+        "Tab keyboard accessible",
+        "Shows all product statuses",
+        "Mixed statuses visible",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "All Products tab active",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Search works consistently across tabs",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search input across tabs",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Approved or All Products tab",
+      "steps": [
+        "1. Type search query in Approved tab",
+        "2. Verify results filter and count announced",
+        "3. Switch to All Products tab",
+        "4. Type search query",
+        "5. Verify results filter and count announced",
+        "6. Verify search behavior consistent"
+      ],
+      "expectedResults": [
+        "Search works in Approved tab",
+        "Search works in All Products tab",
+        "Results announced via aria-live",
+        "Behavior consistent across tabs",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Cross-tab search verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Filters apply consistently across tabs",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.3 Status Messages",
+      "componentElement": "Filter controls across tabs",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Apply filter on Approved tab",
+        "2. Verify filter results announced",
+        "3. Switch to All Products tab",
+        "4. Apply filter",
+        "5. Verify filter results announced",
+        "6. Verify filters keyboard accessible"
+      ],
+      "expectedResults": [
+        "Filters work across tabs",
+        "Results announced",
+        "Filters keyboard accessible",
+        "WCAG 2.1.1, 4.1.3 compliant"
+      ],
+      "postconditions": "Cross-tab filters verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Product status dropdown accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Product status dropdown reflecting current state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is viewing products with status dropdown",
+      "steps": [
+        "1. Tab to product status dropdown",
+        "2. Verify dropdown has accessible name",
+        "3. Verify current state reflected",
+        "4. Verify dropdown keyboard accessible (Arrow keys)",
+        "5. Verify screen reader announces current value"
+      ],
+      "expectedResults": [
+        "Dropdown keyboard accessible",
+        "Has accessible name",
+        "Current state reflected",
+        "Arrow keys navigate options",
+        "Screen reader announces value",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Status dropdown verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Zero stock flag accessible",
+      "wcagCriterion": "1.4.1 Use of Color, 4.1.2 Name Role Value",
+      "componentElement": "Zero stock warning flag on product",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Product with zero stock is visible",
+      "steps": [
+        "1. Locate product with zero stock",
+        "2. Verify flag/indicator visible",
+        "3. Verify flag has text label (not just color/icon)",
+        "4. Verify flag announced by screen reader",
+        "5. Verify flag has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Zero stock flag visible",
+        "Flag has text label",
+        "Not relying on color alone",
+        "Screen reader announces flag",
+        "Flag has contrast",
+        "WCAG 1.4.1, 4.1.2, 1.4.3 compliant"
+      ],
+      "postconditions": "Zero stock flag verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Deactivated vendor flag accessible",
+      "wcagCriterion": "1.4.1 Use of Color, 4.1.2 Name Role Value",
+      "componentElement": "Deactivated vendor flag on product",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Product from deactivated vendor is visible",
+      "steps": [
+        "1. Locate product from deactivated vendor",
+        "2. Verify flag/indicator visible",
+        "3. Verify flag has text label",
+        "4. Verify flag announced by screen reader",
+        "5. Verify not relying on color alone"
+      ],
+      "expectedResults": [
+        "Deactivated vendor flag visible",
+        "Flag has text label",
+        "Not relying on color alone",
+        "Screen reader announces",
+        "WCAG 1.4.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Deactivated vendor flag verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Archived product state accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Archived product indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Product deleted by vendor (archived) is visible to admin",
+      "steps": [
+        "1. Locate archived product",
+        "2. Verify archived state indicated",
+        "3. Verify state has text label",
+        "4. Verify screen reader announces archived state",
+        "5. Verify actions appropriately disabled"
+      ],
+      "expectedResults": [
+        "Archived state indicated",
+        "Text label present",
+        "Screen reader announces",
+        "Actions disabled if applicable",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "Archived state verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Product status badges not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Status badges (Approved, Official AT, Under Review)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on All Products tab with mixed statuses",
+      "steps": [
+        "1. Review Approved status badge — verify text label",
+        "2. Review Official AT badge — verify text label",
+        "3. Review Under Review badge — verify text label",
+        "4. Test in grayscale — verify distinguishable",
+        "5. Verify all badge text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "All badges have text labels",
+        "Distinguishable in grayscale",
+        "Badge text has 4.5:1 contrast",
+        "WCAG 1.4.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Tab switch announces content update",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Tab content update announcement",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin switches between Approved and All Products tabs",
+      "steps": [
+        "1. Switch from Approved to All Products tab",
+        "2. Verify content updates",
+        "3. Verify result count announced via aria-live",
+        "4. Switch back — verify announcement"
+      ],
+      "expectedResults": [
+        "Content updates on switch",
+        "Count announced",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Tab switch announcement verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text on Approved/All Products tabs",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Approved or All Products tab",
+      "steps": [
+        "1. Measure product name contrast",
+        "2. Measure status badge contrast",
+        "3. Measure flag/indicator contrast",
+        "4. Measure filter/search text contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Page usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Approved/All Products tabs at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Set zoom to 200%",
+        "2. Verify tabs visible",
+        "3. Verify product cards readable",
+        "4. Verify no horizontal scrolling",
+        "5. Verify filters usable"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "No horizontal scrolling",
+        "Filters usable",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approved/All Products with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "NVDA enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate tabs with NVDA",
+        "2. Navigate product cards",
+        "3. Verify status badges announced",
+        "4. Verify flags announced",
+        "5. Use search/filters"
+      ],
+      "expectedResults": [
+        "Tabs navigable",
+        "Cards announced",
+        "Badges announced",
+        "Flags announced",
+        "Search/filters accessible",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approved/All Products with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "JAWS enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate with JAWS",
+        "2. Verify all content accessible",
+        "3. Verify interactions work"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Interactions work",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "No keyboard traps",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Entire Approved/All Products view",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on dashboard",
+      "steps": [
+        "1. Tab through all elements",
+        "2. Verify no traps",
+        "3. Verify Shift+Tab reverses"
+      ],
+      "expectedResults": [
+        "No keyboard traps",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No traps confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Mobile viewport accessible",
+      "wcagCriterion": "1.4.10 Reflow, 2.5.5 Target Size",
+      "componentElement": "Approved/All Products on mobile (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-508",
+      "preconditions": "Admin is on mobile viewport",
+      "steps": [
+        "1. Set viewport to mobile",
+        "2. Verify tabs accessible",
+        "3. Verify cards readable",
+        "4. Verify touch targets 44x44px",
+        "5. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Tabs accessible on mobile",
+        "Cards readable",
+        "Touch targets adequate",
+        "No horizontal scrolling",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile accessibility verified",
+      "testResult": "PASS"
+    }
+  ]
+}

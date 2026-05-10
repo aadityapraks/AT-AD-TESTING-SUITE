@@ -1,0 +1,394 @@
+{
+  "jiraStory": "SCRUM-511",
+  "title": "Admin Search Products - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Search Products feature covering WCAG 2.1 AA compliance for search input (by name, vendor, category, SKU), cross-tab search, partial keyword support (min 3 chars), no-result state, special characters handling, and loading state during search.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Search input has proper label",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.3.1 Info and Relationships",
+      "componentElement": "Product search input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Locate search input",
+        "2. Verify visible label or aria-label present",
+        "3. Verify label programmatically associated",
+        "4. Verify role='searchbox' or type='search'",
+        "5. Verify placeholder supplementary (not sole label)",
+        "6. Use screen reader to verify announced on focus"
+      ],
+      "expectedResults": [
+        "Search has accessible label",
+        "Label associated",
+        "Input has search role/type",
+        "Placeholder supplementary",
+        "Screen reader announces purpose",
+        "WCAG 4.1.2, 1.3.1, 3.3.2 compliant"
+      ],
+      "postconditions": "Search label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Search input keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.7 Focus Visible",
+      "componentElement": "Product search input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Tab to search input",
+        "2. Verify focus indicator visible with 3:1 contrast",
+        "3. Type search query",
+        "4. Verify text appears",
+        "5. Press Enter to submit (if applicable)",
+        "6. Tab away — verify no trap"
+      ],
+      "expectedResults": [
+        "Input reachable via Tab",
+        "Focus indicator visible",
+        "Keyboard input accepted",
+        "Enter submits if applicable",
+        "No keyboard trap",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Search results announced dynamically",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search results live region",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin types search query (3+ chars)",
+      "steps": [
+        "1. Type product name (3+ characters)",
+        "2. Wait for results to update",
+        "3. Verify aria-live region announces result count",
+        "4. Verify format: 'X products found'",
+        "5. Verify focus remains in search input"
+      ],
+      "expectedResults": [
+        "Results update dynamically",
+        "aria-live announces count",
+        "Format clear",
+        "Focus stays in input",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Dynamic announcement verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Search works across all tabs",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Cross-tab search",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Search on New Submissions tab — verify results",
+        "2. Switch to Approved tab — verify search works",
+        "3. Switch to All Products tab — verify search works",
+        "4. Verify result count announced on each tab"
+      ],
+      "expectedResults": [
+        "Search works on all tabs",
+        "Results announced on each",
+        "Behavior consistent",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Cross-tab search verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Partial keyword search (min 3 chars) communicated",
+      "wcagCriterion": "3.3.2 Labels or Instructions",
+      "componentElement": "Minimum character requirement",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Type 2 characters — verify no search triggered",
+        "2. Type 3rd character — verify search triggers",
+        "3. Verify minimum requirement communicated (placeholder, help text, or aria-describedby)",
+        "4. Verify partial matches displayed"
+      ],
+      "expectedResults": [
+        "Search triggers at 3 chars",
+        "Minimum requirement communicated",
+        "Partial matches shown",
+        "WCAG 3.3.2 compliant"
+      ],
+      "postconditions": "Partial search verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "No-result state accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 1.3.1 Info and Relationships",
+      "componentElement": "No results message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin types query with no matches",
+      "steps": [
+        "1. Type query with no matching products",
+        "2. Verify no-result message displayed",
+        "3. Verify message has role='status' or aria-live",
+        "4. Verify message announced by screen reader",
+        "5. Verify message has 4.5:1 contrast",
+        "6. Verify message provides guidance"
+      ],
+      "expectedResults": [
+        "No-result message displayed",
+        "Message has aria-live",
+        "Screen reader announces",
+        "Message has contrast",
+        "Guidance provided",
+        "WCAG 4.1.3, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "No-result state verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Special characters handled gracefully",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Search with special characters",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Type special characters (e.g., '<script>', '&', '\"')",
+        "2. Verify no crash or error",
+        "3. Verify results display normally",
+        "4. If error shown, verify accessible"
+      ],
+      "expectedResults": [
+        "Special chars handled gracefully",
+        "No crash",
+        "Results normal",
+        "WCAG 3.3.1 compliant"
+      ],
+      "postconditions": "Special chars verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Long search string handled gracefully",
+      "wcagCriterion": "3.3.1 Error Identification, 1.4.10 Reflow",
+      "componentElement": "Search with very long query",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Type very long query (100+ chars)",
+        "2. Verify no layout break",
+        "3. Verify no horizontal scrolling",
+        "4. Verify search still functions"
+      ],
+      "expectedResults": [
+        "Long query handled",
+        "No layout break",
+        "No horizontal scrolling",
+        "Search functions",
+        "WCAG 3.3.1, 1.4.10 compliant"
+      ],
+      "postconditions": "Long query verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Search during data loading accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search while data is loading",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Data is loading on Product Management Dashboard",
+      "steps": [
+        "1. Type search while data is loading",
+        "2. Verify loading state announced",
+        "3. Verify search queues or waits gracefully",
+        "4. Verify results appear after load completes",
+        "5. Verify no error or crash"
+      ],
+      "expectedResults": [
+        "Search during load handled",
+        "Loading state announced",
+        "Results appear after load",
+        "No error",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Search during load verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Search clear button accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Search clear/reset button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin has typed a search query",
+      "steps": [
+        "1. Type query — verify clear button appears",
+        "2. Verify clear button has accessible name",
+        "3. Tab to clear button — verify focus indicator",
+        "4. Press Enter — verify search cleared",
+        "5. Verify results reset and announced"
+      ],
+      "expectedResults": [
+        "Clear button visible",
+        "Has accessible name",
+        "Keyboard accessible",
+        "Enter clears search",
+        "Reset announced",
+        "WCAG 2.1.1, 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "Clear button verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Search input, results, messages",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is using search",
+      "steps": [
+        "1. Measure input text contrast",
+        "2. Measure placeholder contrast",
+        "3. Measure result text contrast",
+        "4. Measure no-result message contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Search usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Search at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on dashboard",
+      "steps": [
+        "1. Set zoom to 200%",
+        "2. Verify search input visible",
+        "3. Type query — verify results display",
+        "4. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Search visible at 200%",
+        "Results display",
+        "No horizontal scrolling",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "NVDA enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate to search with NVDA",
+        "2. Verify label announced",
+        "3. Type query — verify results announced",
+        "4. Clear search — verify announced"
+      ],
+      "expectedResults": [
+        "Label announced",
+        "Results announced",
+        "Clear announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "JAWS enabled, Admin on dashboard",
+      "steps": [
+        "1. Navigate to search with JAWS",
+        "2. Enter forms mode",
+        "3. Type query",
+        "4. Verify results announced"
+      ],
+      "expectedResults": [
+        "Forms mode works",
+        "Results announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "No keyboard traps",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Search input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on dashboard",
+      "steps": [
+        "1. Tab to search",
+        "2. Type query",
+        "3. Tab away — verify focus moves",
+        "4. Shift+Tab back — verify returns"
+      ],
+      "expectedResults": [
+        "No trap in search",
+        "Tab moves away",
+        "Shift+Tab returns",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No traps confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Mobile search accessible",
+      "wcagCriterion": "1.4.10 Reflow, 2.5.5 Target Size",
+      "componentElement": "Search on mobile (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-511",
+      "preconditions": "Admin is on mobile viewport",
+      "steps": [
+        "1. Set viewport to mobile",
+        "2. Verify search input visible",
+        "3. Verify touch target 44x44px",
+        "4. Type query — verify results",
+        "5. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Search visible on mobile",
+        "Touch target adequate",
+        "Results display",
+        "No horizontal scrolling",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile search verified",
+      "testResult": "PASS"
+    }
+  ]
+}

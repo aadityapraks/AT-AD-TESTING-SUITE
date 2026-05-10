@@ -1,0 +1,578 @@
+{
+  "jiraStory": "SCRUM-469",
+  "title": "Admin View Vendor Lists by Status - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Vendor Lists filtered by status (Pending Approval, Active Partners, Inactive Partners, Rejected Partners). Covers WCAG 2.1 AA compliance for status tabs, vendor cards, tab counts, empty states, auto-refresh, and responsive design.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Page has proper heading structure",
+      "wcagCriterion": "2.4.6 Headings and Labels, 1.3.1 Info and Relationships",
+      "componentElement": "Page heading and section structure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is logged in and on Vendor Lists page",
+      "steps": [
+        "1. Navigate to Vendor Lists page",
+        "2. Verify H1 exists for page title",
+        "3. Use screen reader heading navigation (H key)",
+        "4. Verify heading hierarchy logical (no skipped levels)",
+        "5. Verify page <title> is descriptive"
+      ],
+      "expectedResults": [
+        "Page has exactly one H1 heading",
+        "Heading hierarchy logical",
+        "Screen reader can navigate by headings",
+        "Page <title> includes 'Vendor' or 'Partners'",
+        "WCAG 2.4.6, 2.4.2 compliant"
+      ],
+      "postconditions": "Page heading structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Page has proper landmarks",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Page landmark regions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Use screen reader landmark navigation",
+        "2. Verify <main> landmark exists",
+        "3. Verify <nav> landmark exists",
+        "4. Check for skip navigation link",
+        "5. Verify HTML lang attribute present"
+      ],
+      "expectedResults": [
+        "Page has <main> landmark",
+        "Navigation landmark present",
+        "Skip link present",
+        "HTML has lang attribute",
+        "WCAG 1.3.1, 2.4.1, 3.1.1 compliant"
+      ],
+      "postconditions": "Page landmarks verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Status tabs have proper ARIA tablist pattern",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Status tabs (Pending Approval, Active, Inactive, Rejected)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Inspect tab container",
+        "2. Verify container has role='tablist'",
+        "3. Verify each tab has role='tab'",
+        "4. Verify active tab has aria-selected='true'",
+        "5. Verify inactive tabs have aria-selected='false'",
+        "6. Verify tab panel has role='tabpanel'",
+        "7. Verify aria-controls links tab to panel"
+      ],
+      "expectedResults": [
+        "Container has role='tablist'",
+        "Each tab has role='tab'",
+        "Active tab has aria-selected='true'",
+        "Inactive tabs have aria-selected='false'",
+        "Tab panel has role='tabpanel'",
+        "aria-controls links tab to panel",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "Tab ARIA pattern verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Status tabs keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.3 Focus Order",
+      "componentElement": "Status tabs navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Tab to status tabs area",
+        "2. Verify focus lands on active tab",
+        "3. Press Right Arrow to move to next tab",
+        "4. Verify focus moves and tab activates",
+        "5. Press Left Arrow to move back",
+        "6. Verify Home key moves to first tab",
+        "7. Verify End key moves to last tab",
+        "8. Verify focus indicator visible on each tab"
+      ],
+      "expectedResults": [
+        "Tabs keyboard accessible via Tab key",
+        "Arrow keys navigate between tabs",
+        "Home/End jump to first/last tab",
+        "Focus indicator visible with 3:1 contrast",
+        "Tab activation updates content",
+        "WCAG 2.1.1, 2.4.3, 2.4.7 compliant"
+      ],
+      "postconditions": "Tab keyboard navigation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Tab counts visible and announced",
+      "wcagCriterion": "4.1.2 Name Role Value, 1.4.3 Contrast",
+      "componentElement": "Tab count badges",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with vendors in various statuses",
+      "steps": [
+        "1. Verify each tab displays vendor count",
+        "2. Verify count is part of tab accessible name",
+        "3. Use screen reader — verify announces 'Pending Approval (5)' or similar",
+        "4. Verify count text has 4.5:1 contrast",
+        "5. Verify count updates when vendors change status"
+      ],
+      "expectedResults": [
+        "Each tab shows vendor count",
+        "Count included in accessible name",
+        "Screen reader announces tab name with count",
+        "Count text has 4.5:1 contrast",
+        "Counts update dynamically",
+        "WCAG 4.1.2, 1.4.3 compliant"
+      ],
+      "postconditions": "Tab counts accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Tab switch announces content update",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Tab content update announcement",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Activate different status tab",
+        "2. Verify content updates without page reload",
+        "3. Verify aria-live region announces result count",
+        "4. Verify focus management after tab switch",
+        "5. Verify screen reader announces new content"
+      ],
+      "expectedResults": [
+        "Content updates dynamically on tab switch",
+        "Result count announced via aria-live",
+        "Focus managed appropriately",
+        "Screen reader announces new vendor list",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Tab switch announcement verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Vendor card has semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value",
+      "componentElement": "Vendor card (name, type, location, contact, product count)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with vendors displayed",
+      "steps": [
+        "1. Locate a vendor card",
+        "2. Verify card has semantic structure (article, section, or aria-label)",
+        "3. Verify vendor name is a heading or has prominent role",
+        "4. Verify type (Manufacturer/Distributor/Service Provider) has label",
+        "5. Verify location has label",
+        "6. Verify contact details have labels",
+        "7. Verify product count has label",
+        "8. Use screen reader to navigate card content"
+      ],
+      "expectedResults": [
+        "Card has semantic structure",
+        "Vendor name announced as heading or prominent text",
+        "Type clearly labeled and announced",
+        "Location clearly labeled and announced",
+        "Contact details labeled and announced",
+        "Product count labeled and announced",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Vendor card structure verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Vendor card keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.7 Focus Visible",
+      "componentElement": "Vendor card interactive elements",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with vendors displayed",
+      "steps": [
+        "1. Tab through vendor cards",
+        "2. If cards are clickable, verify focus indicator visible",
+        "3. If cards have action buttons, verify buttons keyboard accessible",
+        "4. Verify tab order logical within and between cards",
+        "5. Verify Enter/Space activates card or buttons"
+      ],
+      "expectedResults": [
+        "All interactive elements keyboard accessible",
+        "Focus indicators visible",
+        "Tab order logical",
+        "Enter/Space activates interactive elements",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Vendor card keyboard accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Vendor type not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Vendor type indicators (Manufacturer, Distributor, Service Provider)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with various vendor types",
+      "steps": [
+        "1. Review vendor type indicators on cards",
+        "2. Verify type conveyed by text label (not just color/icon)",
+        "3. Test in grayscale mode — verify types distinguishable",
+        "4. Verify type text has 4.5:1 contrast",
+        "5. Verify screen reader announces type"
+      ],
+      "expectedResults": [
+        "Vendor type has text label",
+        "Not relying on color alone",
+        "Types distinguishable in grayscale",
+        "Type text has 4.5:1 contrast",
+        "WCAG 1.4.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Contact details accessible",
+      "wcagCriterion": "2.4.4 Link Purpose, 4.1.2 Name Role Value",
+      "componentElement": "Vendor contact details (email, phone)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with vendor cards showing contact info",
+      "steps": [
+        "1. Locate contact details on vendor card",
+        "2. If email is a link, verify mailto: protocol",
+        "3. If phone is a link, verify tel: protocol",
+        "4. Verify links have descriptive accessible names",
+        "5. Verify links keyboard accessible",
+        "6. Use screen reader to verify contact announced"
+      ],
+      "expectedResults": [
+        "Email link has mailto: protocol",
+        "Phone link has tel: protocol",
+        "Links have descriptive accessible names",
+        "Links keyboard accessible",
+        "Screen reader announces contact info clearly",
+        "WCAG 2.4.4, 4.1.2 compliant"
+      ],
+      "postconditions": "Contact details accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Empty state message accessible (no vendors in tab)",
+      "wcagCriterion": "4.1.3 Status Messages, 1.3.1 Info and Relationships",
+      "componentElement": "Empty state message when no vendors in selected tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin selects a tab with no vendors",
+      "steps": [
+        "1. Select tab with no vendors (e.g., Rejected with 0 count)",
+        "2. Verify empty state message displayed",
+        "3. Verify message provides guidance",
+        "4. Verify message announced by screen reader",
+        "5. Verify message has proper semantic structure",
+        "6. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Empty state message visible and clear",
+        "Message provides guidance or context",
+        "Message announced via aria-live or role='status'",
+        "Message has proper semantic structure",
+        "Message text has 4.5:1 contrast",
+        "WCAG 4.1.3, 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Empty state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Auto-refresh or refresh prompt accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 2.2.1 Timing Adjustable",
+      "componentElement": "Auto-refresh mechanism or refresh prompt",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Vendor status changes while admin is viewing the list",
+      "steps": [
+        "1. Observe auto-refresh behavior (or refresh prompt)",
+        "2. If auto-refresh: verify update announced via aria-live",
+        "3. If refresh prompt: verify prompt keyboard accessible",
+        "4. Verify refresh does not disrupt user focus",
+        "5. Verify no unexpected content changes without warning"
+      ],
+      "expectedResults": [
+        "Auto-refresh announced via aria-live='polite'",
+        "Refresh prompt keyboard accessible if present",
+        "User focus not disrupted by refresh",
+        "No unexpected content changes",
+        "WCAG 4.1.3, 2.2.1 compliant"
+      ],
+      "postconditions": "Refresh mechanism accessibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Vendor list semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Vendor list container",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page with vendors displayed",
+      "steps": [
+        "1. Inspect vendor list container",
+        "2. Verify list uses <ul>/<ol> or role='list'",
+        "3. Verify each vendor card is <li> or role='listitem'",
+        "4. Use screen reader to verify list announced with count",
+        "5. Verify list count announced (e.g., 'list, 5 items')"
+      ],
+      "expectedResults": [
+        "Vendor list uses semantic list structure",
+        "Each card is a list item",
+        "Screen reader announces list with item count",
+        "List navigable with screen reader shortcuts",
+        "WCAG 1.3.1 compliant"
+      ],
+      "postconditions": "List semantic structure verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text elements on Vendor Lists page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Measure tab text contrast",
+        "2. Measure vendor name contrast",
+        "3. Measure vendor type/location/contact contrast",
+        "4. Measure count badge contrast",
+        "5. Measure empty state message contrast"
+      ],
+      "expectedResults": [
+        "All normal text has 4.5:1 contrast",
+        "Large text has 3:1 contrast",
+        "Tab counts have 4.5:1 contrast",
+        "All card text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Text contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "UI component contrast meets WCAG AA",
+      "wcagCriterion": "1.4.11 Non-text Contrast",
+      "componentElement": "Card borders, tab indicators, focus indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Measure card border/boundary contrast",
+        "2. Measure active tab indicator contrast",
+        "3. Measure focus indicator contrast",
+        "4. Measure icon contrast within cards",
+        "5. Verify all meet 3:1 minimum"
+      ],
+      "expectedResults": [
+        "Card boundaries have 3:1 contrast",
+        "Active tab indicator has 3:1 contrast",
+        "Focus indicators have 3:1 contrast",
+        "Icons have 3:1 contrast",
+        "WCAG 1.4.11 compliant"
+      ],
+      "postconditions": "UI component contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Page usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Vendor Lists page at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Verify all tabs visible",
+        "3. Verify vendor cards readable",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation or overlap"
+      ],
+      "expectedResults": [
+        "All content visible at 200% zoom",
+        "No horizontal scrolling",
+        "No text truncation or overlap",
+        "Cards reflow properly",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Mobile viewport accessible",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Vendor Lists page on mobile (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page on mobile device",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Verify tabs accessible (scrollable or stacked)",
+        "3. Verify vendor cards readable",
+        "4. Verify touch targets at least 44x44px",
+        "5. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Page adapts to mobile viewport",
+        "Tabs accessible on mobile",
+        "Cards readable on mobile",
+        "Touch targets meet 44x44px minimum",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Focus indicators visible on all interactive elements",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "All interactive elements",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Tab through all interactive elements",
+        "2. Verify focus indicator on each tab",
+        "3. Verify focus indicator on each card (if interactive)",
+        "4. Verify focus indicator on any action buttons",
+        "5. Measure focus indicator contrast (3:1 minimum)"
+      ],
+      "expectedResults": [
+        "Focus indicator visible on all interactive elements",
+        "Focus indicators have 3:1 contrast",
+        "Focus not obscured by other elements",
+        "WCAG 2.4.7, 1.4.11 compliant"
+      ],
+      "postconditions": "Focus indicators verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "No keyboard traps",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Entire Vendor Lists page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Tab through all elements on page",
+        "2. Verify focus cycles through all interactive elements",
+        "3. Verify Shift+Tab works in reverse",
+        "4. Verify no element traps keyboard focus",
+        "5. Verify focus can reach browser chrome"
+      ],
+      "expectedResults": [
+        "No keyboard traps exist",
+        "Tab cycles through all elements",
+        "Shift+Tab reverses navigation",
+        "Focus can reach browser chrome",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No keyboard traps confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Entire Vendor Lists page with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "NVDA screen reader enabled, Admin on Vendor Lists page",
+      "steps": [
+        "1. Navigate to Vendor Lists with NVDA",
+        "2. Use heading navigation (H key)",
+        "3. Navigate tabs with arrow keys",
+        "4. Navigate vendor cards",
+        "5. Verify all card content announced",
+        "6. Switch tabs and verify content update announced"
+      ],
+      "expectedResults": [
+        "All content accessible via NVDA",
+        "Headings announced correctly",
+        "Tabs navigable with arrow keys",
+        "Card content fully announced",
+        "Tab switch content update announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Entire Vendor Lists page with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "JAWS screen reader enabled, Admin on Vendor Lists page",
+      "steps": [
+        "1. Navigate to Vendor Lists with JAWS",
+        "2. Use virtual cursor navigation",
+        "3. Navigate tabs",
+        "4. Navigate vendor cards",
+        "5. Verify all interactions accessible",
+        "6. Verify dynamic updates announced"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Virtual cursor navigates all content",
+        "Tabs work correctly",
+        "Card content fully announced",
+        "Dynamic updates announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Loading state accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading indicator during tab switch or data fetch",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-469",
+      "preconditions": "Admin switches tabs triggering data load",
+      "steps": [
+        "1. Switch to a different status tab",
+        "2. Verify loading indicator visible (if data takes time)",
+        "3. Verify loading state announced via aria-live",
+        "4. Verify loading does not trap keyboard focus",
+        "5. Verify completion announced"
+      ],
+      "expectedResults": [
+        "Loading indicator visible during data fetch",
+        "Loading state announced to screen readers",
+        "Keyboard focus not trapped during loading",
+        "Completion announced",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Loading state accessibility verified",
+      "testResult": "PASS"
+    }
+  ]
+}

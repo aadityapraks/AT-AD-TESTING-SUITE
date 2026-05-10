@@ -1,0 +1,556 @@
+{
+  "jiraStory": "SCRUM-33",
+  "title": "Assistive Partner Accesses Best Practices, FAQs, and Knowledge Base - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Help & Resources feature on the Y4J AT/AD Vendor Portal. Covers navigation and access via top navigation bar, search bar functionality (keyword search, suggested keywords, filtered results), category tabs (Categories, FAQs, Contact), Categories view (Best Practices, Product Management, GenAI Features, Compliance & Approvals cards with article counts, expandable article lists), FAQs view (collapsible/expandable FAQ items by category), Contact view (Email Support, Phone Support), unified search across all resources with categorized results, and error handling (no results).",
+  "scope": {
+    "inScope": [
+      "Help & Resources tab in global navigation",
+      "Landing page load and layout",
+      "Search bar: placeholder text, keyword search, Search button, suggested keywords",
+      "Category tabs: Categories, FAQs, Contact - tab switching without page reload",
+      "Categories view: Best Practices, Product Management, GenAI Features, Compliance & Approvals cards",
+      "Category cards: icon, name, article count",
+      "Expandable article list within categories: title, summary, publish date, read time",
+      "Article card click opens full article page (link validation)",
+      "FAQs view: FAQ categories (Account & Registration, Product Listings, GenAI Assistance, Review and Ratings, Technical Support)",
+      "FAQ items: collapsible/expandable behavior, default collapsed state",
+      "Contact view: Email Support with address, Phone Support with hours and number",
+      "Unified search: categorized results (FAQs, Guides, Articles) with result counts",
+      "Error handling: no results message"
+    ],
+    "outOfScope": [
+      "Full article page content and rendering (link validation only)",
+      "Admin content management UI (admin-side feature)",
+      "Admin engagement metrics and reporting",
+      "Backend API internals",
+      "Video captioning and transcript content creation",
+      "FAQs display only admin-published content (requires admin-side setup)",
+      "Notifications for new FAQs or guides (requires admin to publish new content)",
+      "System unavailable error message (requires API failure simulation)"
+    ]
+  },
+  "parentEpic": {
+    "key": "SCRUM-87",
+    "summary": "Vendor Portal"
+  },
+  "subtasks": [
+    { "key": "SCRUM-54", "summary": "Design: Vendor Accesses Best Practices, FAQs, and Knowledge Base", "status": "Done" },
+    { "key": "SCRUM-70", "summary": "SD: Vendor Accesses Best Practices, FAQs, and Knowledge Base", "status": "Done" },
+    { "key": "SCRUM-296", "summary": "FE: Categories", "status": "Dev Done" },
+    { "key": "SCRUM-297", "summary": "FE: FAQs", "status": "Dev Done" },
+    { "key": "SCRUM-298", "summary": "FE: Article Page", "status": "Dev Done" },
+    { "key": "SCRUM-433", "summary": "FEi: help and resources module integration", "status": "Dev Done" },
+    { "key": "SCRUM-269", "summary": "QA: Test case creation", "status": "Done" },
+    { "key": "SCRUM-267", "summary": "QA: Manual testing", "status": "To Do" },
+    { "key": "SCRUM-268", "summary": "QA: Create Automation Scripts", "status": "To Do" },
+    { "key": "SCRUM-270", "summary": "QA: Accessibility testing", "status": "To Do" }
+  ],
+  "testCases": [
+    {
+      "id": "TC_HR_001",
+      "title": "Verify Help & Resources tab is visible in global navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "1. Navigation & Access",
+      "preconditions": "User is logged in as an approved Assistive Partner",
+      "steps": [
+        "1. Log in as an approved Assistive Partner",
+        "2. Verify the 'Help & Resources' tab is visible in the top navigation bar",
+        "3. Click on the 'Help & Resources' tab",
+        "4. Verify the page redirects to the Help & Resources landing page",
+        "5. Verify the page loads without errors"
+      ],
+      "expectedResults": [
+        "'Help & Resources' tab is visible in the global navigation",
+        "Clicking the tab navigates to the Help & Resources landing page",
+        "Page loads without console errors or broken UI"
+      ],
+      "postconditions": "User is on the Help & Resources landing page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_002",
+      "title": "Verify search bar displays with correct placeholder text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "2. Search Bar Functionality",
+      "preconditions": "User is on the Help & Resources landing page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Verify a search bar is displayed at the top of the page",
+        "3. Verify the placeholder text reads: 'Search articles, FAQs, or guides…'",
+        "4. Verify a 'Search' button is present next to the search input"
+      ],
+      "expectedResults": [
+        "Search bar is prominently displayed at the top",
+        "Placeholder text matches: 'Search articles, FAQs, or guides…'",
+        "'Search' button is visible and clickable"
+      ],
+      "postconditions": "Search bar is ready for input",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_003",
+      "title": "Verify search returns filtered results matching the query",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "2. Search Bar Functionality",
+      "preconditions": "Help & Resources page has articles and FAQs available",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Type a keyword in the search bar (e.g., 'product upload')",
+        "3. Click the 'Search' button",
+        "4. Verify filtered results are displayed matching the query",
+        "5. Verify results are categorized as 'FAQs', 'Guides', or 'Articles'",
+        "6. Verify result count is displayed (e.g., 'Found 12 articles and 19 FAQs')",
+        "7. Verify results populate on the screen as per Figma design"
+      ],
+      "expectedResults": [
+        "Search returns results matching the keyword",
+        "Results are categorized (FAQs, Guides, Articles)",
+        "Result count is displayed accurately",
+        "Results are displayed on the page without navigation"
+      ],
+      "postconditions": "Search results are displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_004",
+      "title": "Verify suggested keywords appear below search input",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "2. Search Bar Functionality",
+      "preconditions": "User is on the Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Click on the search bar or start typing",
+        "3. Verify suggested keywords appear below the search input",
+        "4. Verify suggestions include relevant terms (e.g., 'product upload', 'GenAI features', 'accessibility compliance')",
+        "5. Click on a suggested keyword",
+        "6. Verify the search is triggered with the selected keyword"
+      ],
+      "expectedResults": [
+        "Suggested keywords appear below the search input",
+        "Suggestions are relevant to the platform content",
+        "Clicking a suggestion triggers a search with that keyword"
+      ],
+      "postconditions": "Search is executed with the suggested keyword",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_005",
+      "title": "Verify search with no matching results shows appropriate message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "2. Search Bar Functionality",
+      "preconditions": "User is on the Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Type a keyword that has no matching content (e.g., 'xyznonexistent123')",
+        "3. Click the 'Search' button",
+        "4. Verify the message: 'No results found. Please try a different keyword or contact support.' is displayed",
+        "5. Verify no broken UI or empty containers are shown"
+      ],
+      "expectedResults": [
+        "No results message is displayed clearly",
+        "Message text matches: 'No results found. Please try a different keyword or contact support.'",
+        "UI remains clean with no broken elements"
+      ],
+      "postconditions": "Empty search state is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_006",
+      "title": "Verify category tabs (Categories, FAQs, Contact) switch content without page reload",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "3. Category Tabs (Navigation Filters)",
+      "preconditions": "User is on the Help & Resources landing page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Verify three tabs are visible: 'Categories', 'FAQs', 'Contact'",
+        "3. Click on 'Categories' tab",
+        "4. Verify the Categories content area loads",
+        "5. Click on 'FAQs' tab",
+        "6. Verify the FAQs content area loads without page navigation",
+        "7. Click on 'Contact' tab",
+        "8. Verify the Contact content area loads without page navigation",
+        "9. Verify the URL does not change when switching tabs"
+      ],
+      "expectedResults": [
+        "All three tabs (Categories, FAQs, Contact) are visible",
+        "Selecting a tab updates the content area dynamically",
+        "No full page reload occurs when switching tabs",
+        "Active tab is visually highlighted"
+      ],
+      "postconditions": "Tab navigation works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_007",
+      "title": "Verify Categories view displays all four category cards with correct data",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "4. Categories View",
+      "preconditions": "User is on the Help & Resources page with Categories tab selected",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Select the 'Categories' tab",
+        "3. Verify four category cards are displayed:",
+        "   a. Best Practices",
+        "   b. Product Management",
+        "   c. GenAI Features",
+        "   d. Compliance & Approvals",
+        "4. Verify each card displays:",
+        "   a. Category icon",
+        "   b. Category name",
+        "   c. Count of articles",
+        "5. Verify article counts are accurate"
+      ],
+      "expectedResults": [
+        "All four category cards are displayed",
+        "Each card shows icon, name, and article count",
+        "Article counts are accurate and match actual content",
+        "Cards are properly styled and aligned"
+      ],
+      "postconditions": "Categories view displays correctly",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_008",
+      "title": "Verify clicking a category card opens expandable article list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "4. Categories View",
+      "preconditions": "Categories tab is selected with category cards visible",
+      "steps": [
+        "1. Click on the 'Best Practices' category card",
+        "2. Verify an expandable container opens below the cards",
+        "3. Verify the container displays a list of articles",
+        "4. Verify each article card shows:",
+        "   a. Title",
+        "   b. Summary",
+        "   c. Publish date",
+        "   d. Estimated read time",
+        "5. Click on a different category card (e.g., 'Product Management')",
+        "6. Verify the article list updates to show articles from the new category"
+      ],
+      "expectedResults": [
+        "Clicking a category opens an expandable article list below the cards",
+        "Article cards display title, summary, publish date, and read time",
+        "Switching categories updates the article list",
+        "Expansion/collapse animation is smooth"
+      ],
+      "postconditions": "Article list is displayed for the selected category",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_009",
+      "title": "Verify clicking an article card links to the full article page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "4. Categories View",
+      "preconditions": "Article list is expanded for a category",
+      "steps": [
+        "1. Expand a category to show the article list",
+        "2. Click on an article card",
+        "3. Verify the click navigates to the full article page",
+        "4. Verify the article page URL is valid",
+        "5. Verify the article page loads without errors"
+      ],
+      "expectedResults": [
+        "Clicking an article card navigates to the full article page",
+        "Article page URL is valid and accessible",
+        "Article page loads without errors"
+      ],
+      "postconditions": "User is on the full article page",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_010",
+      "title": "Verify category with zero articles shows appropriate state",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "4. Categories View",
+      "preconditions": "A category exists with no articles published",
+      "steps": [
+        "1. Navigate to Categories tab",
+        "2. Locate a category card with 0 articles (if exists)",
+        "3. Click on the category card",
+        "4. Verify an appropriate empty state message is shown",
+        "5. Verify no broken UI or empty containers"
+      ],
+      "expectedResults": [
+        "Category card shows '0' article count",
+        "Clicking shows an empty state message or no expandable list",
+        "UI handles zero-article state gracefully"
+      ],
+      "postconditions": "Empty category state is handled",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_011",
+      "title": "Verify FAQs view displays FAQ categories with collapsible items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "5. FAQs View",
+      "preconditions": "User is on Help & Resources page with FAQs tab selected",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Select the 'FAQs' tab",
+        "3. Verify FAQ categories are displayed:",
+        "   a. Account & Registration",
+        "   b. Product Listings",
+        "   c. GenAI Assistance",
+        "   d. Review and Ratings",
+        "   e. Technical Support",
+        "4. Verify FAQ items are listed under each category",
+        "5. Verify all FAQ items are in collapsed state by default"
+      ],
+      "expectedResults": [
+        "All five FAQ categories are displayed",
+        "FAQ items are listed under their respective categories",
+        "All items are collapsed by default (only question visible)"
+      ],
+      "postconditions": "FAQs view is displayed with collapsed items",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_012",
+      "title": "Verify FAQ items expand to show answer on click and collapse on re-click",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "5. FAQs View",
+      "preconditions": "FAQs tab is selected with FAQ items visible",
+      "steps": [
+        "1. Locate a collapsed FAQ item",
+        "2. Click on the FAQ item",
+        "3. Verify the item expands to show the answer text",
+        "4. Verify the expand animation is smooth",
+        "5. Click on the same FAQ item again",
+        "6. Verify the item collapses back to show only the question",
+        "7. Verify the collapse animation is smooth"
+      ],
+      "expectedResults": [
+        "Clicking a collapsed FAQ expands it to show the answer",
+        "Clicking an expanded FAQ collapses it",
+        "Expand/collapse transitions are smooth",
+        "Answer text is fully readable when expanded"
+      ],
+      "postconditions": "FAQ expand/collapse works correctly",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_013",
+      "title": "Verify multiple FAQ items can be expanded simultaneously",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "5. FAQs View",
+      "preconditions": "FAQs tab is selected with multiple FAQ items",
+      "steps": [
+        "1. Click on the first FAQ item to expand it",
+        "2. Verify it expands",
+        "3. Click on a second FAQ item",
+        "4. Verify the second item expands",
+        "5. Verify the first item remains expanded (or collapses based on UI design)",
+        "6. Verify the behavior is consistent with the Figma design"
+      ],
+      "expectedResults": [
+        "Multiple FAQ items can be expanded at the same time (or accordion behavior per design)",
+        "Behavior is consistent with the Figma design specification",
+        "No UI glitches when multiple items are expanded"
+      ],
+      "postconditions": "Multi-expand behavior matches design",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_014",
+      "title": "Verify Contact view displays Email Support and Phone Support options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "6. Contact View",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Select the 'Contact' tab",
+        "3. Verify 'Email Support' option is displayed with an email address",
+        "4. Verify the email address is a valid, clickable mailto link",
+        "5. Verify 'Phone Support' option is displayed with:",
+        "   a. Working hours",
+        "   b. Phone number",
+        "6. Verify the phone number is a valid, clickable tel link"
+      ],
+      "expectedResults": [
+        "Email Support shows a valid email address",
+        "Email is clickable (mailto link)",
+        "Phone Support shows working hours and phone number",
+        "Phone number is clickable (tel link)",
+        "Both options are clearly labeled and formatted"
+      ],
+      "postconditions": "Contact information is displayed correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_015",
+      "title": "Verify unified search returns categorized results across all resources",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "7. Search and Filter Capabilities",
+      "preconditions": "Help & Resources has articles, FAQs, and guides available",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Type a broad keyword in the search bar (e.g., 'i')",
+        "3. Click 'Search'",
+        "4. Verify results are displayed on the screen",
+        "5. Verify results are categorized as 'FAQs', 'Guides', or 'Articles'",
+        "6. Verify result count is shown (e.g., 'Search Results for \"i\" > Found 12 articles and 19 FAQs')",
+        "7. Verify results from all content types are included"
+      ],
+      "expectedResults": [
+        "Search returns results from all resource types",
+        "Results are categorized (FAQs, Guides, Articles)",
+        "Result count is displayed with the search term",
+        "Results populate on the screen as per Figma design"
+      ],
+      "postconditions": "Unified search results are displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_016",
+      "title": "Verify search with special characters does not break the UI",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "7. Search and Filter Capabilities",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Type special characters in the search bar (e.g., '<script>alert(1)</script>')",
+        "2. Click 'Search'",
+        "3. Verify no script execution or XSS vulnerability",
+        "4. Verify the search handles the input gracefully",
+        "5. Type other special characters (e.g., '!@#$%^&*()')",
+        "6. Verify no errors or broken UI"
+      ],
+      "expectedResults": [
+        "Special characters are handled safely (no XSS)",
+        "Search returns 'No results found' or handles gracefully",
+        "No console errors or broken UI elements"
+      ],
+      "postconditions": "Search handles edge cases safely",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_017",
+      "title": "Verify empty search input does not trigger search or shows validation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "7. Search and Filter Capabilities",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Leave the search bar empty",
+        "2. Click the 'Search' button",
+        "3. Verify either no search is triggered or a validation message appears",
+        "4. Enter only whitespace in the search bar",
+        "5. Click 'Search'",
+        "6. Verify the same behavior as empty input"
+      ],
+      "expectedResults": [
+        "Empty search does not trigger a search or shows validation",
+        "Whitespace-only input is handled the same as empty",
+        "No errors or unexpected behavior"
+      ],
+      "postconditions": "Empty search is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_018",
+      "title": "Verify Categories tab default selection on page load",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "3. Category Tabs (Navigation Filters)",
+      "preconditions": "User navigates to Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Verify the 'Categories' tab is selected by default on page load",
+        "3. Verify the Categories content area is displayed",
+        "4. Verify the active tab is visually highlighted"
+      ],
+      "expectedResults": [
+        "Categories tab is the default selected tab",
+        "Categories content is displayed on initial load",
+        "Active tab has visual indication (highlight, underline, etc.)"
+      ],
+      "postconditions": "Default tab state is correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_019",
+      "title": "Verify article publish date and read time are formatted correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "4. Categories View",
+      "preconditions": "Category is expanded showing article cards",
+      "steps": [
+        "1. Expand a category to show article cards",
+        "2. Verify each article card shows a publish date in a readable format (e.g., 'May 5, 2026')",
+        "3. Verify each article card shows estimated read time (e.g., '5 min read')",
+        "4. Verify dates are accurate and not in the future",
+        "5. Verify read time is reasonable for the article length"
+      ],
+      "expectedResults": [
+        "Publish date is in a readable, consistent format",
+        "Read time is displayed in a clear format (e.g., 'X min read')",
+        "Dates are accurate",
+        "Read times are reasonable"
+      ],
+      "postconditions": "Article metadata is correctly formatted",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_HR_020",
+      "title": "Verify search results persist when switching between tabs",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "7. Search and Filter Capabilities",
+      "preconditions": "User has performed a search on Help & Resources page",
+      "steps": [
+        "1. Perform a search with a keyword",
+        "2. Verify search results are displayed",
+        "3. Switch to the 'FAQs' tab",
+        "4. Switch back to the 'Categories' tab",
+        "5. Verify whether search results persist or reset",
+        "6. Verify the behavior is consistent and not confusing to the user"
+      ],
+      "expectedResults": [
+        "Tab switching behavior with active search is consistent",
+        "User is not confused by search state after tab switch",
+        "Search can be cleared to return to default view"
+      ],
+      "postconditions": "Search and tab interaction is predictable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_HR_021",
+      "title": "Verify keyboard navigation through all Help & Resources elements",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "category": "Accessibility and Usability",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Use Tab key to navigate through search bar, tabs, category cards, FAQ items",
+        "3. Verify all interactive elements receive keyboard focus",
+        "4. Use Enter key to activate tabs, expand FAQs, click category cards",
+        "5. Verify focus indicators are visible on all focused elements",
+        "6. Verify tab order is logical (top to bottom, left to right)"
+      ],
+      "expectedResults": [
+        "All interactive elements are keyboard accessible",
+        "Tab order follows logical reading order",
+        "Focus indicators are clearly visible",
+        "Enter/Space activates interactive elements"
+      ],
+      "postconditions": "Keyboard accessibility is confirmed",
+      "testResult": "PASS"
+    }
+  ]
+}

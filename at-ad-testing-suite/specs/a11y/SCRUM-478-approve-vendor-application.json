@@ -1,0 +1,431 @@
+{
+  "jiraStory": "SCRUM-478",
+  "title": "Admin Approve Vendor Application - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Approve Vendor Application feature covering WCAG 2.1 AA compliance for Approve button, confirmation dialog, success notification, status change announcement, error handling, and concurrent approval edge case.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Approve button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Approve button on Pending vendor card/details",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is viewing a Pending vendor (card or details modal)",
+      "steps": [
+        "1. Tab to Approve button",
+        "2. Verify focus indicator visible with 3:1 contrast",
+        "3. Verify button has accessible name ('Approve' or 'Approve [Vendor Name]')",
+        "4. Verify button has role='button'",
+        "5. Press Enter to activate",
+        "6. Press Space to activate (alternative test)"
+      ],
+      "expectedResults": [
+        "Approve button reachable via Tab",
+        "Focus indicator visible with 3:1 contrast",
+        "Button has descriptive accessible name",
+        "Button role announced by screen reader",
+        "Enter activates button",
+        "Space activates button",
+        "WCAG 2.1.1, 4.1.2, 2.4.7 compliant"
+      ],
+      "postconditions": "Approve action triggered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Approve button visible only for Pending vendors",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve button visibility by status",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is on Vendor Lists page",
+      "steps": [
+        "1. Navigate to Pending Approval tab",
+        "2. Verify Approve button visible on vendor cards",
+        "3. Navigate to Active Partners tab",
+        "4. Verify Approve button NOT visible on active vendor cards",
+        "5. Navigate to Rejected tab",
+        "6. Verify Approve button NOT visible on rejected vendor cards"
+      ],
+      "expectedResults": [
+        "Approve button visible only on Pending vendors",
+        "Button not present on Active/Rejected vendors",
+        "No hidden/disabled Approve button confusing screen readers",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "Button visibility by status verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Confirmation dialog accessible (if present)",
+      "wcagCriterion": "4.1.2 Name Role Value, 2.1.1 Keyboard",
+      "componentElement": "Approval confirmation dialog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin clicks Approve button",
+      "steps": [
+        "1. Click Approve button",
+        "2. If confirmation dialog appears, verify role='alertdialog' or role='dialog'",
+        "3. Verify dialog has accessible name",
+        "4. Verify focus moves to dialog",
+        "5. Verify Confirm and Cancel buttons keyboard accessible",
+        "6. Verify Escape closes dialog",
+        "7. Verify focus returns to Approve button on cancel"
+      ],
+      "expectedResults": [
+        "Confirmation dialog has proper role",
+        "Dialog has accessible name",
+        "Focus moves to dialog on open",
+        "Confirm/Cancel buttons keyboard accessible",
+        "Escape closes dialog",
+        "Focus returns to trigger on close",
+        "WCAG 4.1.2, 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Confirmation dialog accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Approval success notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Approval success message/toast",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin confirms vendor approval",
+      "steps": [
+        "1. Confirm approval action",
+        "2. Verify success message appears",
+        "3. Verify message has role='status' or aria-live='polite'",
+        "4. Verify message announced by screen reader without focus change",
+        "5. Verify message text clear (e.g., 'Vendor approved successfully')",
+        "6. Verify message has 4.5:1 contrast",
+        "7. Verify message auto-dismisses or has dismiss button"
+      ],
+      "expectedResults": [
+        "Success message displayed",
+        "Message has role='status' or aria-live='polite'",
+        "Screen reader announces message automatically",
+        "Message text clear and specific",
+        "Message has 4.5:1 contrast",
+        "Message dismissible or auto-dismisses",
+        "WCAG 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Success notification accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Vendor status change announced",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Vendor status update (Pending → Active)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin has approved a vendor",
+      "steps": [
+        "1. Approve vendor",
+        "2. Verify vendor status changes to 'Active'",
+        "3. Verify status change announced via aria-live",
+        "4. Verify vendor moves to Active Partners tab",
+        "5. Verify tab counts update",
+        "6. Verify count update announced"
+      ],
+      "expectedResults": [
+        "Vendor status changes to Active",
+        "Status change announced via aria-live",
+        "Vendor appears in Active Partners tab",
+        "Tab counts update (Pending decreases, Active increases)",
+        "Count updates announced",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Status change announcement verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Approval timestamp accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Approval timestamp display",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Vendor has been approved",
+      "steps": [
+        "1. View approved vendor details",
+        "2. Verify approval timestamp displayed",
+        "3. Verify timestamp has label ('Approved on' or similar)",
+        "4. Verify date format clear and unambiguous",
+        "5. Use screen reader to verify timestamp announced with label"
+      ],
+      "expectedResults": [
+        "Approval timestamp visible",
+        "Timestamp has descriptive label",
+        "Date format clear (e.g., 'May 8, 2026')",
+        "Screen reader announces label and date",
+        "WCAG 1.3.1 compliant"
+      ],
+      "postconditions": "Approval timestamp accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Concurrent approval conflict message accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 3.3.1 Error Identification",
+      "componentElement": "Already approved conflict message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Vendor already approved by another admin while current admin is viewing",
+      "steps": [
+        "1. Attempt to approve vendor already approved by another admin",
+        "2. Verify conflict message appears",
+        "3. Verify message has role='alert' or aria-live='assertive'",
+        "4. Verify message announced immediately by screen reader",
+        "5. Verify message text clear (e.g., 'Vendor already approved')",
+        "6. Verify status refreshes to show current state",
+        "7. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Conflict message displayed",
+        "Message has role='alert' or aria-live='assertive'",
+        "Screen reader announces message immediately",
+        "Message text clear and informative",
+        "Status refreshes to current state",
+        "Message has 4.5:1 contrast",
+        "WCAG 4.1.3, 3.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Concurrent approval conflict accessibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "System error on approval accessible",
+      "wcagCriterion": "3.3.1 Error Identification, 4.1.3 Status Messages",
+      "componentElement": "Approval system error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "System error occurs during approval",
+      "steps": [
+        "1. Trigger approval when system error occurs",
+        "2. Verify error message appears",
+        "3. Verify message has role='alert' or aria-live='assertive'",
+        "4. Verify message announced immediately",
+        "5. Verify message indicates rollback occurred",
+        "6. Verify retry option accessible (if present)",
+        "7. Verify error has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Error message displayed",
+        "Message has role='alert'",
+        "Screen reader announces error immediately",
+        "Message indicates action was rolled back",
+        "Retry option keyboard accessible if present",
+        "Error text has 4.5:1 contrast",
+        "WCAG 3.3.1, 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "System error accessibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Approve button not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Approve button visual design",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is viewing Pending vendor",
+      "steps": [
+        "1. Locate Approve button",
+        "2. Verify button has text label 'Approve' (not just green color/icon)",
+        "3. Verify button distinguishable from other buttons without color",
+        "4. Test in grayscale mode — verify button identifiable",
+        "5. Verify button text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Button has text label 'Approve'",
+        "Button identifiable without color",
+        "Button distinguishable in grayscale",
+        "Button text has 4.5:1 contrast",
+        "WCAG 1.4.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Loading state during approval accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading/processing state during approval",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin clicks Approve and action is processing",
+      "steps": [
+        "1. Click Approve button",
+        "2. Verify loading/processing indicator appears",
+        "3. Verify loading state announced via aria-live",
+        "4. Verify button disabled during processing (prevents double-click)",
+        "5. Verify disabled state announced",
+        "6. Verify completion announced"
+      ],
+      "expectedResults": [
+        "Loading indicator visible during processing",
+        "Loading state announced to screen readers",
+        "Button disabled during processing",
+        "Disabled state announced",
+        "Completion announced",
+        "WCAG 4.1.3, 4.1.2 compliant"
+      ],
+      "postconditions": "Loading state accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Focus management after approval",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Focus after successful approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin has successfully approved a vendor",
+      "steps": [
+        "1. Approve vendor successfully",
+        "2. Verify vendor card removed from Pending list (or status updated)",
+        "3. Verify focus moves to appropriate element (next vendor or list heading)",
+        "4. Verify focus not lost (not on removed element)",
+        "5. Verify user can continue navigating without confusion"
+      ],
+      "expectedResults": [
+        "Focus moves to logical next element after approval",
+        "Focus not lost on removed/changed element",
+        "User can continue keyboard navigation",
+        "WCAG 2.4.3 compliant"
+      ],
+      "postconditions": "Focus management after approval verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Approve button text, success/error messages",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is viewing Pending vendor with Approve button",
+      "steps": [
+        "1. Measure Approve button text contrast",
+        "2. Measure success message text contrast",
+        "3. Measure error message text contrast",
+        "4. Measure conflict message text contrast"
+      ],
+      "expectedResults": [
+        "Button text has 4.5:1 contrast",
+        "Success message has 4.5:1 contrast",
+        "Error message has 4.5:1 contrast",
+        "All text meets WCAG AA",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Text contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Approve workflow usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Approve button and messages at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is viewing Pending vendor",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Verify Approve button visible and clickable",
+        "3. Click Approve — verify success message visible",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation"
+      ],
+      "expectedResults": [
+        "Approve button visible at 200% zoom",
+        "Success message visible at 200%",
+        "No horizontal scrolling",
+        "No text truncation",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve workflow with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "NVDA enabled, Admin viewing Pending vendor",
+      "steps": [
+        "1. Navigate to Approve button with NVDA",
+        "2. Verify button announced with name and role",
+        "3. Activate button",
+        "4. Verify confirmation dialog announced (if present)",
+        "5. Confirm approval",
+        "6. Verify success message announced",
+        "7. Verify status change announced"
+      ],
+      "expectedResults": [
+        "Button announced correctly",
+        "Confirmation dialog announced",
+        "Success message announced automatically",
+        "Status change announced",
+        "All interactions accessible via NVDA",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve workflow with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "JAWS enabled, Admin viewing Pending vendor",
+      "steps": [
+        "1. Navigate to Approve button with JAWS",
+        "2. Verify button announced",
+        "3. Activate button",
+        "4. Verify all dialogs and messages announced",
+        "5. Verify status change announced",
+        "6. Verify focus management correct"
+      ],
+      "expectedResults": [
+        "Button announced correctly",
+        "All dialogs announced",
+        "Messages announced automatically",
+        "Status change announced",
+        "Focus managed correctly",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Mobile touch target adequate",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Approve button on mobile viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-478",
+      "preconditions": "Admin is on mobile viewport (375x667)",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Verify Approve button visible",
+        "3. Measure button touch target (minimum 44x44px)",
+        "4. Verify button not too close to other interactive elements"
+      ],
+      "expectedResults": [
+        "Approve button visible on mobile",
+        "Touch target meets 44x44px minimum",
+        "Adequate spacing from other targets",
+        "WCAG 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile touch target verified",
+      "testResult": "PASS"
+    }
+  ]
+}

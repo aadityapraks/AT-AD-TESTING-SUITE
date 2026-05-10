@@ -1,0 +1,514 @@
+{
+  "jiraStory": "SCRUM-493",
+  "title": "Admin Review & Approve New Product Submission - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Review & Approve New Product Submission covering WCAG 2.1 AA compliance for View Details button, product review panel, approval confirmation modal with impact summary, optional notes textarea, disabled state for incomplete products, error handling, and status change announcements.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "View Details button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "View Details button on New Submissions product card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is on Product Management Dashboard, New Submissions tab",
+      "steps": [
+        "1. Tab to View Details button on a product card",
+        "2. Verify focus indicator visible",
+        "3. Verify button has accessible name ('View Details' or 'View Details for [Product]')",
+        "4. Press Enter to activate",
+        "5. Verify product details panel/page opens"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Focus indicator visible",
+        "Button has descriptive accessible name",
+        "Enter/Space activates",
+        "Details panel opens",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Product details visible",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Product details panel accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value",
+      "componentElement": "Full product information panel",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin has clicked View Details",
+      "steps": [
+        "1. Verify panel has heading with product name",
+        "2. Verify all product fields have labels",
+        "3. Verify field values announced by screen reader",
+        "4. Verify panel keyboard navigable",
+        "5. Verify images have alt text"
+      ],
+      "expectedResults": [
+        "Panel has descriptive heading",
+        "All fields labeled",
+        "Screen reader announces field-value pairs",
+        "Panel keyboard navigable",
+        "Images have alt text",
+        "WCAG 1.3.1, 4.1.2, 1.1.1 compliant"
+      ],
+      "postconditions": "Product details accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Approve button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Approve button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is viewing product details with all mandatory fields present",
+      "steps": [
+        "1. Tab to Approve button",
+        "2. Verify focus indicator visible",
+        "3. Verify button has accessible name ('Approve' or 'Approve [Product]')",
+        "4. Press Enter to activate",
+        "5. Verify confirmation modal opens"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Focus indicator visible",
+        "Button has descriptive name",
+        "Enter/Space activates",
+        "Confirmation modal opens",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Confirmation modal open",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Approve button disabled when mandatory fields missing",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve button disabled state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Product is missing mandatory fields",
+      "steps": [
+        "1. View product with missing mandatory fields",
+        "2. Verify Approve button is disabled",
+        "3. Verify disabled attribute or aria-disabled='true'",
+        "4. Verify disabled state announced by screen reader",
+        "5. Verify visual indication of disabled state",
+        "6. Verify reason communicated (tooltip or text)"
+      ],
+      "expectedResults": [
+        "Button disabled when fields missing",
+        "Disabled state has proper attribute",
+        "Screen reader announces disabled",
+        "Visual styling shows disabled",
+        "Reason for disabled communicated",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "Disabled state verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Approval confirmation modal accessible",
+      "wcagCriterion": "4.1.2 Name Role Value, 2.1.1 Keyboard",
+      "componentElement": "Approval confirmation modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin clicks Approve button",
+      "steps": [
+        "1. Verify modal has role='dialog' or role='alertdialog'",
+        "2. Verify aria-modal='true'",
+        "3. Verify modal has accessible name",
+        "4. Verify focus moves to modal",
+        "5. Verify focus trapped within modal",
+        "6. Verify Escape closes modal",
+        "7. Verify focus returns to Approve button on close"
+      ],
+      "expectedResults": [
+        "Modal has proper role",
+        "aria-modal='true' present",
+        "Modal has accessible name",
+        "Focus moves to modal",
+        "Focus trapped within modal",
+        "Escape closes modal",
+        "Focus returns to trigger",
+        "WCAG 4.1.2, 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Modal accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Impact summary in modal accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Impact summary (product listed, visible to users, vendor notified)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Approval confirmation modal is open",
+      "steps": [
+        "1. Verify impact summary displayed in modal",
+        "2. Verify summary uses semantic list structure",
+        "3. Verify each impact item readable by screen reader",
+        "4. Verify summary text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Impact summary visible in modal",
+        "Summary uses semantic list",
+        "Screen reader announces each impact",
+        "Text has 4.5:1 contrast",
+        "WCAG 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Impact summary accessibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Optional approval notes textarea accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value",
+      "componentElement": "Optional approval notes textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Approval confirmation modal is open",
+      "steps": [
+        "1. Locate approval notes textarea",
+        "2. Verify label present ('Approval Notes' or 'Optional Notes')",
+        "3. Verify label programmatically associated",
+        "4. Verify optional status indicated (not required)",
+        "5. Tab to textarea — verify keyboard accessible",
+        "6. Type notes — verify input works"
+      ],
+      "expectedResults": [
+        "Textarea has visible label",
+        "Label programmatically associated",
+        "Optional status clear (no aria-required)",
+        "Textarea keyboard accessible",
+        "Text input works",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Notes textarea accessibility verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Confirm and Cancel buttons in modal keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Confirm Approval and Cancel buttons",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Approval confirmation modal is open",
+      "steps": [
+        "1. Tab to Confirm button — verify focus indicator",
+        "2. Verify Confirm has accessible name",
+        "3. Tab to Cancel button — verify focus indicator",
+        "4. Verify Cancel has accessible name",
+        "5. Press Enter on Confirm — verify approval proceeds",
+        "6. Press Enter on Cancel — verify modal closes"
+      ],
+      "expectedResults": [
+        "Both buttons keyboard accessible",
+        "Both have descriptive accessible names",
+        "Focus indicators visible",
+        "Enter activates each button",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Modal buttons accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Approval success notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Approval success message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin confirms product approval",
+      "steps": [
+        "1. Confirm approval",
+        "2. Verify success message appears",
+        "3. Verify message has role='status' or aria-live='polite'",
+        "4. Verify message announced by screen reader",
+        "5. Verify message text clear",
+        "6. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Success message displayed",
+        "Message has role='status' or aria-live",
+        "Screen reader announces message",
+        "Message text clear",
+        "Message has 4.5:1 contrast",
+        "WCAG 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Success notification verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Product status change announced",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Product status update (Under Review → Approved)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin has approved product",
+      "steps": [
+        "1. Approve product",
+        "2. Verify status changes to Approved",
+        "3. Verify product moves to Approved tab",
+        "4. Verify tab counts update",
+        "5. Verify changes announced via aria-live"
+      ],
+      "expectedResults": [
+        "Status changes to Approved",
+        "Product in Approved tab",
+        "Tab counts update",
+        "Changes announced",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Status change verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Duplicate SKU warning accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 3.3.1 Error Identification",
+      "componentElement": "Duplicate SKU warning message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Product has duplicate SKU detected",
+      "steps": [
+        "1. Attempt to approve product with duplicate SKU",
+        "2. Verify warning message appears",
+        "3. Verify warning has role='alert' or aria-live",
+        "4. Verify warning announced by screen reader",
+        "5. Verify warning text clear",
+        "6. Verify admin can still proceed or cancel"
+      ],
+      "expectedResults": [
+        "Warning displayed for duplicate SKU",
+        "Warning has role='alert'",
+        "Screen reader announces warning",
+        "Warning text clear",
+        "Admin can proceed or cancel",
+        "WCAG 4.1.3, 3.3.1 compliant"
+      ],
+      "postconditions": "Duplicate SKU warning verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Network failure error accessible",
+      "wcagCriterion": "3.3.1 Error Identification, 4.1.3 Status Messages",
+      "componentElement": "Network failure error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Network failure occurs during approval",
+      "steps": [
+        "1. Trigger approval during network failure",
+        "2. Verify error message appears",
+        "3. Verify no status change occurred",
+        "4. Verify error has role='alert'",
+        "5. Verify error announced immediately",
+        "6. Verify error has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Error message displayed",
+        "No status change (safe state)",
+        "Error has role='alert'",
+        "Screen reader announces error",
+        "Error has 4.5:1 contrast",
+        "WCAG 3.3.1, 4.1.3 compliant"
+      ],
+      "postconditions": "Network error handling verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Concurrent admin lock message accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Record locked message during concurrent review",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Another admin is reviewing the same product",
+      "steps": [
+        "1. Attempt to review product locked by another admin",
+        "2. Verify lock message appears",
+        "3. Verify message has role='alert' or aria-live",
+        "4. Verify message announced",
+        "5. Verify message explains situation"
+      ],
+      "expectedResults": [
+        "Lock message displayed",
+        "Message has role='alert'",
+        "Screen reader announces message",
+        "Message explains lock reason",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Concurrent lock message verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Focus management after approval",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Focus after successful approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin has approved a product",
+      "steps": [
+        "1. Approve product",
+        "2. Verify modal closes",
+        "3. Verify focus moves to logical element (next product or list)",
+        "4. Verify focus not lost"
+      ],
+      "expectedResults": [
+        "Modal closes after approval",
+        "Focus moves to logical element",
+        "Focus not lost",
+        "WCAG 2.4.3 compliant"
+      ],
+      "postconditions": "Focus management verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text in review and approval flow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is reviewing a product",
+      "steps": [
+        "1. Measure product details text contrast",
+        "2. Measure modal text contrast",
+        "3. Measure button text contrast",
+        "4. Measure warning/error text contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Approval flow usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Review and approval at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is reviewing a product",
+      "steps": [
+        "1. Set zoom to 200%",
+        "2. Verify product details visible",
+        "3. Verify modal visible and usable",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "Modal usable at 200%",
+        "No horizontal scrolling",
+        "No truncation",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Status not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Under Review and Approved status indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is on Product Management Dashboard",
+      "steps": [
+        "1. Verify Under Review status has text label",
+        "2. Verify Approved status has text label",
+        "3. Test in grayscale — verify distinguishable",
+        "4. Verify status text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Statuses have text labels",
+        "Distinguishable in grayscale",
+        "Status text has 4.5:1 contrast",
+        "WCAG 1.4.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Review and approval workflow with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "NVDA enabled, Admin on New Submissions tab",
+      "steps": [
+        "1. Navigate to product — verify card announced",
+        "2. Click View Details — verify details announced",
+        "3. Click Approve — verify modal announced",
+        "4. Fill notes — verify textarea accessible",
+        "5. Confirm — verify success announced"
+      ],
+      "expectedResults": [
+        "All content accessible via NVDA",
+        "Modal announced",
+        "Textarea accessible in forms mode",
+        "Success announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Review and approval workflow with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "JAWS enabled, Admin on New Submissions tab",
+      "steps": [
+        "1. Navigate to product with JAWS",
+        "2. View details",
+        "3. Approve product",
+        "4. Verify all interactions accessible",
+        "5. Verify all messages announced"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "All interactions work",
+        "Messages announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "No keyboard traps in approval flow",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Entire review and approval flow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-493",
+      "preconditions": "Admin is reviewing a product",
+      "steps": [
+        "1. Tab through product details",
+        "2. Open modal — verify Escape closes",
+        "3. Verify focus returns to trigger",
+        "4. Verify no element traps focus"
+      ],
+      "expectedResults": [
+        "No keyboard traps",
+        "Escape closes modal",
+        "Focus returns correctly",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No keyboard traps confirmed",
+      "testResult": "PASS"
+    }
+  ]
+}

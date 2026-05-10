@@ -1,0 +1,433 @@
+{
+  "jiraStory": "SCRUM-502",
+  "title": "Admin Approve or Reject Edit Request - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Approve or Reject Edit Request covering WCAG 2.1 AA compliance for Approve Edit action (immediate apply), Reject Edit with mandatory reason, confirmation prompt when not viewed, optional approval notes, audit trail logging, and resubmission flow.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Approve Edit button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Approve Edit button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is viewing a product with pending edit",
+      "steps": [
+        "1. Tab to Approve Edit button",
+        "2. Verify focus indicator visible",
+        "3. Verify button has accessible name",
+        "4. Press Enter to activate",
+        "5. Verify action proceeds (changes applied or confirmation shown)"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Focus indicator visible",
+        "Button has descriptive name",
+        "Enter/Space activates",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Approve action triggered",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Reject Edit button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Reject Edit button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is viewing a product with pending edit",
+      "steps": [
+        "1. Tab to Reject Edit button",
+        "2. Verify focus indicator visible",
+        "3. Verify button has accessible name",
+        "4. Press Enter to activate",
+        "5. Verify rejection reason dialog opens"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Focus indicator visible",
+        "Button has descriptive name",
+        "Enter/Space activates",
+        "Rejection dialog opens",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Rejection dialog open",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Confirmation prompt accessible (approval without viewing changes)",
+      "wcagCriterion": "4.1.2 Name Role Value, 2.1.1 Keyboard",
+      "componentElement": "Confirmation prompt when admin hasn't viewed changes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin clicks Approve without viewing changes first",
+      "steps": [
+        "1. Click Approve without viewing changes",
+        "2. Verify confirmation prompt appears",
+        "3. Verify prompt has role='alertdialog' or role='dialog'",
+        "4. Verify prompt has accessible name",
+        "5. Verify focus moves to prompt",
+        "6. Verify Confirm and Cancel buttons keyboard accessible",
+        "7. Verify Escape closes prompt"
+      ],
+      "expectedResults": [
+        "Confirmation prompt appears",
+        "Prompt has proper role",
+        "Prompt has accessible name",
+        "Focus moves to prompt",
+        "Buttons keyboard accessible",
+        "Escape closes prompt",
+        "WCAG 4.1.2, 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Confirmation prompt accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Rejection reason textarea accessible (mandatory)",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value, 3.3.2 Labels or Instructions",
+      "componentElement": "Rejection reason textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Rejection dialog is open",
+      "steps": [
+        "1. Locate rejection reason textarea",
+        "2. Verify visible label present",
+        "3. Verify label programmatically associated",
+        "4. Verify aria-required='true' or required attribute",
+        "5. Verify screen reader announces label and required",
+        "6. Tab to textarea — verify keyboard accessible"
+      ],
+      "expectedResults": [
+        "Textarea has visible label",
+        "Label associated",
+        "Required attribute present",
+        "Screen reader announces required",
+        "Textarea keyboard accessible",
+        "WCAG 1.3.1, 4.1.2, 3.3.2 compliant"
+      ],
+      "postconditions": "Textarea accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Reject confirm disabled when reason empty",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Confirm Rejection button disabled state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Rejection dialog open with empty reason",
+      "steps": [
+        "1. Leave reason empty",
+        "2. Verify Confirm button disabled",
+        "3. Verify disabled state properly attributed",
+        "4. Verify screen reader announces disabled",
+        "5. Type reason — verify button enables"
+      ],
+      "expectedResults": [
+        "Button disabled when empty",
+        "Disabled state attributed",
+        "Screen reader announces disabled",
+        "Button enables with reason",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "Disabled state verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Optional approval note field accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value",
+      "componentElement": "Optional approval note textarea",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is approving an edit",
+      "steps": [
+        "1. Locate optional note field (if present in approval flow)",
+        "2. Verify label present indicating optional",
+        "3. Verify no aria-required (field is optional)",
+        "4. Verify keyboard accessible",
+        "5. Verify screen reader announces optional status"
+      ],
+      "expectedResults": [
+        "Note field has label",
+        "Optional status clear",
+        "No required attribute",
+        "Keyboard accessible",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Optional note field verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Approve Edit success notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Edit approval success message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin approves edit",
+      "steps": [
+        "1. Approve edit",
+        "2. Verify success message appears",
+        "3. Verify message has role='status' or aria-live",
+        "4. Verify message announced",
+        "5. Verify changes applied immediately",
+        "6. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Success message displayed",
+        "Message has aria-live",
+        "Screen reader announces",
+        "Changes applied",
+        "Message has contrast",
+        "WCAG 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Approval success verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Reject Edit success notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Edit rejection success message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin rejects edit with reason",
+      "steps": [
+        "1. Reject edit with reason",
+        "2. Verify success message appears",
+        "3. Verify message has role='status' or aria-live",
+        "4. Verify message announced",
+        "5. Verify previous values retained",
+        "6. Verify message has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Success message displayed",
+        "Message has aria-live",
+        "Screen reader announces",
+        "Previous values retained",
+        "Message has contrast",
+        "WCAG 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Rejection success verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Audit trail entry accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Audit trail log entry",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin has approved or rejected an edit",
+      "steps": [
+        "1. View product after action",
+        "2. Verify audit trail entry visible",
+        "3. Verify entry has timestamp and action type",
+        "4. Verify entry accessible to screen readers",
+        "5. Verify entry text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Audit entry visible",
+        "Timestamp and action type present",
+        "Screen reader can access entry",
+        "Text has 4.5:1 contrast",
+        "WCAG 1.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Audit trail accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Focus management after approve/reject",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Focus after action completion",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin has completed approve or reject action",
+      "steps": [
+        "1. Complete approve or reject action",
+        "2. Verify dialog/prompt closes",
+        "3. Verify focus moves to logical element",
+        "4. Verify focus not lost"
+      ],
+      "expectedResults": [
+        "Dialog closes",
+        "Focus moves to logical element",
+        "Focus not lost",
+        "WCAG 2.4.3 compliant"
+      ],
+      "postconditions": "Focus management verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Buttons not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Approve and Reject button visual design",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is viewing product with pending edit",
+      "steps": [
+        "1. Verify Approve button has text label",
+        "2. Verify Reject button has text label",
+        "3. Verify buttons distinguishable without color",
+        "4. Test in grayscale",
+        "5. Verify button text has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Both buttons have text labels",
+        "Distinguishable without color",
+        "Identifiable in grayscale",
+        "Text has 4.5:1 contrast",
+        "WCAG 1.4.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text in approve/reject flow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is in approve/reject flow",
+      "steps": [
+        "1. Measure button text contrast",
+        "2. Measure dialog text contrast",
+        "3. Measure textarea label contrast",
+        "4. Measure success/error message contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Contrast verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Flow usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Approve/reject flow at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is viewing product with pending edit",
+      "steps": [
+        "1. Set zoom to 200%",
+        "2. Verify buttons visible",
+        "3. Verify dialog visible and usable",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "Dialog usable",
+        "No horizontal scrolling",
+        "No truncation",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve/reject flow with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "NVDA enabled, Admin viewing pending edit",
+      "steps": [
+        "1. Navigate to Approve/Reject buttons — verify announced",
+        "2. Activate Approve — verify confirmation/success announced",
+        "3. Activate Reject — verify dialog announced",
+        "4. Fill reason — verify textarea accessible",
+        "5. Confirm — verify success announced"
+      ],
+      "expectedResults": [
+        "Buttons announced",
+        "Confirmation/success announced",
+        "Dialog announced",
+        "Textarea accessible",
+        "Success announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Approve/reject flow with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "JAWS enabled, Admin viewing pending edit",
+      "steps": [
+        "1. Navigate to buttons with JAWS",
+        "2. Activate actions",
+        "3. Verify all dialogs and messages announced",
+        "4. Verify forms mode works in textarea"
+      ],
+      "expectedResults": [
+        "Buttons announced",
+        "Dialogs announced",
+        "Messages announced",
+        "Forms mode works",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "No keyboard traps",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Entire approve/reject flow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is in approve/reject flow",
+      "steps": [
+        "1. Tab through all elements",
+        "2. Verify Escape closes dialogs",
+        "3. Verify focus returns correctly",
+        "4. Verify no element traps focus"
+      ],
+      "expectedResults": [
+        "No keyboard traps",
+        "Escape closes dialogs",
+        "Focus returns correctly",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "No keyboard traps confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Mobile touch targets adequate",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Approve/Reject buttons on mobile",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-502",
+      "preconditions": "Admin is on mobile viewport (375x667)",
+      "steps": [
+        "1. Set viewport to mobile",
+        "2. Verify Approve/Reject buttons meet 44x44px",
+        "3. Verify dialog usable on mobile",
+        "4. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Buttons meet 44x44px",
+        "Dialog usable on mobile",
+        "No horizontal scrolling",
+        "WCAG 2.5.5, 1.4.10 compliant"
+      ],
+      "postconditions": "Mobile touch targets verified",
+      "testResult": "PASS"
+    }
+  ]
+}

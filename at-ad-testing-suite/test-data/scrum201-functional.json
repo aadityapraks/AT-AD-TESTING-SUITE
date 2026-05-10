@@ -1,0 +1,49 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "secondVendor": {
+    "email": "nahibix442@bigonla.com",
+    "password": "Aaditya@145"
+  },
+  "admin": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "pwdUser": {
+    "email": "najytulo@fxzig.com",
+    "password": "Aaditya@14",
+    "portalUrl": "https://qa-atad.swarajability.org/"
+  },
+  "inputs": {
+    "searchByProduct": "Wheelchair",
+    "searchByUser": "Candidate",
+    "searchByKeyword": "accessibility",
+    "belowMinWordResponse": "short reply",
+    "validResponse": "Thank you for your query about this product we appreciate your interest and will provide detailed information shortly",
+    "emptyResponse": "",
+    "whitespaceResponse": "   "
+  },
+  "expected": {
+    "queriesPageHeading": "PWD Queries",
+    "queriesDescription": "Manage and respond to queries from persons with disabilities",
+    "queriesUrlPattern": "queries",
+    "statusOptions": ["Pending Response", "Responded", "Admin Response"],
+    "totalQueriesLabel": "Total Queries",
+    "pendingResponseLabel": "Pending Response",
+    "respondedLabel": "Responded",
+    "adminResponseLabel": "Admin Response",
+    "minimumWordCount": 10,
+    "wordCountBelowMin": 2,
+    "approvedResponseLabel": "Your Response (Approved)",
+    "rejectedResponseLabel": "Your Response (Rejected)",
+    "adminOnBehalfLabel": "Admin Response (on your behalf)",
+    "rejectionReasonLabel": "Rejection Reason:",
+    "privacyNotice": "All queries are private. Your responses require admin approval before being sent to the PWD. Minimum 10 words required.",
+    "pendingAdminApprovalStatus": "Pending Admin Approval",
+    "commentModerationHeading": "Comment Moderation",
+    "commentModerationUrlPattern": "comment-moderation"
+  }
+}

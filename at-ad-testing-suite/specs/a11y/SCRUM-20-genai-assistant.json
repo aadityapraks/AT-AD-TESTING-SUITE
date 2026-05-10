@@ -1,0 +1,1108 @@
+{
+  "jiraStory": "SCRUM-20",
+  "title": "GenAI Assistant - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for GenAI Assistant feature (SCRUM-20) covering WCAG 2.1 AA compliance for Assist with GenAI buttons, input prompts, generated content display, action buttons (Regenerate/Edit/Accept), conversational interface, disclaimer text, hints, and audit logging indicators.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify Assist with GenAI button accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Assist with GenAI button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Product upload/edit form is loaded, user is logged in as vendor",
+      "steps": [
+        "1. Navigate to product upload/edit form",
+        "2. Tab to Assist with GenAI button next to Short Description",
+        "3. Verify focus indicator visible",
+        "4. Press Enter/Space to activate",
+        "5. Verify GenAI panel opens"
+      ],
+      "expectedResults": [
+        "Assist buttons keyboard accessible",
+        "Buttons have accessible names: 'Assist with GenAI for Short Description'",
+        "Focus indicator visible with 3:1 contrast",
+        "Buttons activate with Enter/Space",
+        "GenAI panel opens"
+      ],
+      "postconditions": "GenAI panel is open and accessible via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify GenAI button screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Assist with GenAI button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Product upload/edit form is loaded, screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Navigate to Assist buttons",
+        "3. Tab through each button",
+        "4. Verify button name and role announced",
+        "5. Verify field association announced"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Button name announced with field context",
+        "Button state announced",
+        "Icon has aria-label if icon-only",
+        "No empty or generic labels"
+      ],
+      "postconditions": "Screen reader correctly announces all GenAI button properties",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify GenAI button visual accessibility",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Assist with GenAI button",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Product upload/edit form is loaded",
+      "steps": [
+        "1. Inspect button colors",
+        "2. Verify text contrast",
+        "3. Verify background contrast",
+        "4. Test hover/focus states",
+        "5. Measure touch target size"
+      ],
+      "expectedResults": [
+        "Button text has 4.5:1 contrast",
+        "Button background has 3:1 contrast",
+        "Icon has 3:1 contrast if present",
+        "Hover/focus states visible",
+        "Touch target meets 44x44px"
+      ],
+      "postconditions": "All visual contrast requirements met for GenAI buttons",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify GenAI buttons for all fields",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "All GenAI buttons on product form",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "User logged in as vendor, product form loaded",
+      "steps": [
+        "1. Login as vendor",
+        "2. Navigate to product form",
+        "3. Verify buttons present for all fields",
+        "4. Tab through all GenAI buttons",
+        "5. Verify consistent styling"
+      ],
+      "expectedResults": [
+        "Buttons visible for logged-in vendors only",
+        "Buttons present for Short Description, Detailed Description, Specifications, ALT Text",
+        "All buttons keyboard accessible",
+        "Tab order logical",
+        "Buttons consistently styled"
+      ],
+      "postconditions": "All GenAI buttons verified across all applicable form fields",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Verify GenAI panel structure",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "GenAI panel",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Check panel role and ARIA attributes",
+        "3. Verify panel title present",
+        "4. Verify focus management",
+        "5. Test keyboard navigation"
+      ],
+      "expectedResults": [
+        "Panel has role='dialog' or role='complementary'",
+        "Panel has aria-label or aria-labelledby",
+        "Panel title announced",
+        "Focus moves to panel on open",
+        "Panel keyboard accessible"
+      ],
+      "postconditions": "GenAI panel structure meets ARIA requirements",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Verify panel heading structure",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "GenAI panel headings",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Use screen reader heading navigation",
+        "3. Verify panel title heading level",
+        "4. Check section headings",
+        "5. Verify heading hierarchy"
+      ],
+      "expectedResults": [
+        "Panel heading is h2 or h3",
+        "Section headings properly nested",
+        "Heading hierarchy logical",
+        "All headings announced by screen reader",
+        "No heading levels skipped"
+      ],
+      "postconditions": "Panel heading hierarchy is correct and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Verify panel close functionality",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "GenAI panel close button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Tab to close button",
+        "3. Verify focus indicator",
+        "4. Press Escape key",
+        "5. Verify focus returns correctly"
+      ],
+      "expectedResults": [
+        "Close button keyboard accessible",
+        "Button has accessible name: 'Close GenAI Assistant'",
+        "Escape key closes panel",
+        "Focus returns to trigger button",
+        "No keyboard traps"
+      ],
+      "postconditions": "Panel closed successfully and focus returned to trigger",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Verify input field labels",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "GenAI input fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Navigate to input fields",
+        "3. Verify each field has label",
+        "4. Check label association",
+        "5. Verify required indicators"
+      ],
+      "expectedResults": [
+        "All input fields have labels",
+        "Labels: 'Product Name', 'Type or Category', 'Key Features', 'Tone'",
+        "Labels properly associated with inputs",
+        "Required fields indicated",
+        "Placeholder not sole label"
+      ],
+      "postconditions": "All input fields have proper label associations",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verify input field keyboard accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "GenAI input fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Tab through input fields",
+        "2. Verify tab order logical",
+        "3. Test focus indicators",
+        "4. Type in text inputs",
+        "5. Navigate dropdown options"
+      ],
+      "expectedResults": [
+        "All inputs keyboard accessible",
+        "Tab order follows visual layout",
+        "Focus indicators visible",
+        "Text inputs accept keyboard input",
+        "Dropdowns keyboard navigable"
+      ],
+      "postconditions": "All input fields operable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Verify input field visual accessibility",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "GenAI input fields",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Inspect input field colors",
+        "2. Verify label contrast",
+        "3. Verify input text contrast",
+        "4. Check border contrast",
+        "5. Test zoom to 200%"
+      ],
+      "expectedResults": [
+        "Label text has 4.5:1 contrast",
+        "Input text has 4.5:1 contrast",
+        "Input borders have 3:1 contrast",
+        "Placeholder text has 4.5:1 contrast",
+        "Fields readable at 200% zoom"
+      ],
+      "postconditions": "All input field visual contrast requirements met",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Verify tone guidance dropdown accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Tone dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Navigate to tone dropdown",
+        "2. Verify label present",
+        "3. Tab to dropdown",
+        "4. Use arrow keys to navigate",
+        "5. Test with screen reader"
+      ],
+      "expectedResults": [
+        "Tone dropdown has label",
+        "Dropdown keyboard accessible",
+        "Options: 'Formal', 'Simple', 'Technical'",
+        "Selected value announced",
+        "Arrow keys navigate options"
+      ],
+      "postconditions": "Tone dropdown fully accessible via keyboard and screen reader",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Verify Generate button accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Generate Content button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with input fields filled",
+      "steps": [
+        "1. Fill input fields",
+        "2. Tab to Generate button",
+        "3. Verify focus indicator",
+        "4. Press Enter/Space",
+        "5. Verify loading state"
+      ],
+      "expectedResults": [
+        "Generate button keyboard accessible",
+        "Button has accessible name: 'Generate Content'",
+        "Focus indicator visible",
+        "Button activates with Enter/Space",
+        "Loading state announced"
+      ],
+      "postconditions": "Generate button activated successfully via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Verify Generate button screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Generate Content button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open, screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Navigate to Generate button",
+        "3. Verify button announced",
+        "4. Activate button",
+        "5. Verify loading announced"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Button name announced",
+        "Button state announced (enabled/disabled)",
+        "Loading state announced: 'Generating content'",
+        "Completion announced"
+      ],
+      "postconditions": "Screen reader correctly announces Generate button states",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Verify Generate button disabled state",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Generate Content button (disabled)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with empty input fields",
+      "steps": [
+        "1. Open GenAI panel without inputs",
+        "2. Navigate to Generate button",
+        "3. Verify button disabled",
+        "4. Check disabled state announced",
+        "5. Test tooltip if present"
+      ],
+      "expectedResults": [
+        "Button disabled if inputs empty",
+        "Disabled state has aria-disabled='true'",
+        "Disabled state announced",
+        "Visual indicator shows disabled",
+        "Tooltip explains why disabled"
+      ],
+      "postconditions": "Disabled state properly communicated to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Verify generated content accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Generated content display area",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated successfully",
+      "steps": [
+        "1. Generate content",
+        "2. Verify content area structure",
+        "3. Check ARIA attributes",
+        "4. Test with screen reader",
+        "5. Verify text contrast"
+      ],
+      "expectedResults": [
+        "Content area has role='region' or semantic element",
+        "Content area has accessible name",
+        "Generated text announced by screen reader",
+        "Content has 4.5:1 contrast",
+        "Content readable at 200% zoom"
+      ],
+      "postconditions": "Generated content area is accessible and properly structured",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Verify content generation announcement",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Content generation status",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with inputs filled",
+      "steps": [
+        "1. Trigger content generation",
+        "2. Verify aria-live announcement",
+        "3. Check completion message",
+        "4. Test with screen reader",
+        "5. Verify focus management"
+      ],
+      "expectedResults": [
+        "Content generation has aria-live region",
+        "Completion announced: 'Content generated successfully'",
+        "Generated text announced",
+        "Focus doesn't move unexpectedly",
+        "Visual indicator shows completion"
+      ],
+      "postconditions": "Content generation status properly announced to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Verify content type labels",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Content type labels",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Different content types have been generated",
+      "steps": [
+        "1. Generate different content types",
+        "2. Verify each has clear label",
+        "3. Check character limits indicated",
+        "4. Test with screen reader",
+        "5. Verify visual distinction"
+      ],
+      "expectedResults": [
+        "Short Description labeled: '150-200 characters'",
+        "Detailed Description labeled clearly",
+        "Specifications labeled: 'Bullet points or key-value pairs'",
+        "ALT Text labeled: 'Image description'",
+        "All sections distinguishable"
+      ],
+      "postconditions": "All content type labels are clear and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Verify action buttons keyboard accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Action buttons (Regenerate, Edit, Accept)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated, action buttons visible",
+      "steps": [
+        "1. Generate content",
+        "2. Tab through action buttons",
+        "3. Verify focus indicators",
+        "4. Test button activation",
+        "5. Verify tab order"
+      ],
+      "expectedResults": [
+        "All action buttons keyboard accessible",
+        "Buttons: Regenerate, Edit, Accept",
+        "Focus indicators visible",
+        "Buttons activate with Enter/Space",
+        "Tab order logical"
+      ],
+      "postconditions": "All action buttons operable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Verify action buttons screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Action buttons (Regenerate, Edit, Accept)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated, screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Navigate to action buttons",
+        "3. Verify button names announced",
+        "4. Activate each button",
+        "5. Verify action results announced"
+      ],
+      "expectedResults": [
+        "Button roles announced",
+        "Button names announced: 'Regenerate', 'Edit', 'Accept'",
+        "Button states announced",
+        "Action results announced",
+        "No empty or generic labels"
+      ],
+      "postconditions": "Screen reader correctly announces all action button properties",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Verify action buttons visual accessibility",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Action buttons (Regenerate, Edit, Accept)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated, action buttons visible",
+      "steps": [
+        "1. Inspect button colors",
+        "2. Verify text contrast",
+        "3. Verify background contrast",
+        "4. Test hover/focus states",
+        "5. Measure touch targets"
+      ],
+      "expectedResults": [
+        "Button text has 4.5:1 contrast",
+        "Button backgrounds have 3:1 contrast",
+        "Hover/focus states visible",
+        "Buttons distinguishable from each other",
+        "Touch targets meet 44x44px"
+      ],
+      "postconditions": "All action button visual contrast requirements met",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Verify Accept button functionality",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Accept button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated",
+      "steps": [
+        "1. Generate content",
+        "2. Activate Accept button",
+        "3. Verify text inserted",
+        "4. Check announcement",
+        "5. Verify focus management"
+      ],
+      "expectedResults": [
+        "Accept action inserts text to form field",
+        "Insertion announced: 'Content accepted and inserted'",
+        "Focus moves to form field",
+        "Inserted text keyboard accessible",
+        "Panel closes or remains open as expected"
+      ],
+      "postconditions": "Content accepted and inserted into form field successfully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Verify edit mode accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit mode textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated",
+      "steps": [
+        "1. Generate content",
+        "2. Activate Edit button",
+        "3. Verify textarea appears",
+        "4. Test keyboard editing",
+        "5. Verify focus indicator"
+      ],
+      "expectedResults": [
+        "Edit mode activates textarea",
+        "Textarea has label",
+        "Textarea keyboard accessible",
+        "Text editable with keyboard",
+        "Focus indicator visible"
+      ],
+      "postconditions": "Edit mode textarea is accessible and editable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Verify edit mode screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Edit mode textarea",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Edit mode is active, screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Activate Edit button",
+        "3. Verify textarea announced",
+        "4. Type edits",
+        "5. Test character count"
+      ],
+      "expectedResults": [
+        "Textarea role announced",
+        "Label announced",
+        "Current text announced",
+        "Edits announced as typed",
+        "Character count announced if present"
+      ],
+      "postconditions": "Screen reader correctly announces edit mode textarea properties",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Verify edit mode action buttons",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit mode Save/Cancel buttons",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Edit mode is active",
+      "steps": [
+        "1. Enter edit mode",
+        "2. Tab to Save/Cancel buttons",
+        "3. Verify focus indicators",
+        "4. Test button activation",
+        "5. Check auto-save announcement"
+      ],
+      "expectedResults": [
+        "Save and Cancel buttons keyboard accessible",
+        "Buttons have clear labels",
+        "Focus indicators visible",
+        "Buttons activate with Enter/Space",
+        "Auto-save announced if enabled"
+      ],
+      "postconditions": "Edit mode action buttons fully accessible via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Verify refinement input accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Refinement input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Initial content has been generated",
+      "steps": [
+        "1. Generate initial content",
+        "2. Navigate to refinement input",
+        "3. Verify label present",
+        "4. Type refinement instruction",
+        "5. Test submit button"
+      ],
+      "expectedResults": [
+        "Refinement input has label",
+        "Label: 'Refine content' or 'Additional instructions'",
+        "Input keyboard accessible",
+        "Text input accepts keyboard",
+        "Submit button keyboard accessible"
+      ],
+      "postconditions": "Refinement input is accessible and operable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Verify refinement examples accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Refinement example buttons",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Initial content has been generated, refinement section visible",
+      "steps": [
+        "1. Navigate to refinement section",
+        "2. Verify examples present",
+        "3. Tab to example buttons",
+        "4. Activate example",
+        "5. Verify input filled"
+      ],
+      "expectedResults": [
+        "Refinement examples provided",
+        "Examples: 'make it simpler', 'add safety information'",
+        "Examples keyboard accessible",
+        "Clicking example fills input",
+        "Action announced"
+      ],
+      "postconditions": "Refinement examples are accessible and functional via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Verify conversation history accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Conversation history",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Multiple refinements have been made",
+      "steps": [
+        "1. Make multiple refinements",
+        "2. Verify conversation history",
+        "3. Check semantic structure",
+        "4. Test with screen reader",
+        "5. Test keyboard scrolling"
+      ],
+      "expectedResults": [
+        "Conversation history has semantic structure",
+        "Each exchange has clear labels",
+        "User prompts and AI responses distinguishable",
+        "History announced by screen reader",
+        "History scrollable with keyboard"
+      ],
+      "postconditions": "Conversation history is accessible and navigable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Verify accessibility hints display",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Accessibility hints",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content has been generated, hints are displayed",
+      "steps": [
+        "1. Generate content",
+        "2. Verify hints appear",
+        "3. Check hint announcements",
+        "4. Test with screen reader",
+        "5. Test hint dismissal"
+      ],
+      "expectedResults": [
+        "Hints have role='status' or aria-live",
+        "Hints announced by screen reader",
+        "Examples: 'Avoid medicalized language', 'Include sensory features'",
+        "Hints have 4.5:1 contrast",
+        "Hints dismissible with keyboard"
+      ],
+      "postconditions": "Accessibility hints properly announced and dismissible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Verify hint icon accessibility",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Hint icons and tooltips",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Hints are displayed with icons",
+      "steps": [
+        "1. Navigate to hint icons",
+        "2. Tab to hint icon",
+        "3. Verify tooltip appears",
+        "4. Test with screen reader",
+        "5. Press Escape to dismiss"
+      ],
+      "expectedResults": [
+        "Hint icon keyboard accessible",
+        "Icon has accessible name: 'Accessibility tip'",
+        "Tooltip triggered by focus and hover",
+        "Tooltip content announced",
+        "Escape dismisses tooltip"
+      ],
+      "postconditions": "Hint icons and tooltips are accessible via keyboard and screen reader",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Verify hints visual accessibility",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Accessibility hints",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Hints are displayed",
+      "steps": [
+        "1. Inspect hint colors",
+        "2. Verify text contrast",
+        "3. Verify icon contrast",
+        "4. Test zoom to 200%",
+        "5. Check for color-only info"
+      ],
+      "expectedResults": [
+        "Hint text has 4.5:1 contrast",
+        "Hint icon has 3:1 contrast",
+        "Hints readable at 200% zoom",
+        "Hints not color-only",
+        "Visual indicator accompanies color"
+      ],
+      "postconditions": "All hint visual contrast requirements met",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Verify disclaimer accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "AI disclaimer text",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Locate disclaimer text",
+        "3. Verify text content",
+        "4. Check text contrast",
+        "5. Test with screen reader"
+      ],
+      "expectedResults": [
+        "Disclaimer visible below GenAI section",
+        "Text: 'Content is AI-generated and should be reviewed'",
+        "Disclaimer has 4.5:1 contrast",
+        "Disclaimer announced by screen reader",
+        "Disclaimer has semantic markup"
+      ],
+      "postconditions": "Disclaimer text is accessible and properly announced",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Verify disclaimer structure",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "AI disclaimer structure",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Inspect disclaimer markup",
+        "2. Check ARIA attributes",
+        "3. Verify semantic structure",
+        "4. Test zoom to 200%",
+        "5. Verify layout"
+      ],
+      "expectedResults": [
+        "Disclaimer has role='note' or <aside>",
+        "Disclaimer has aria-label if needed",
+        "Text clearly associated with GenAI feature",
+        "Disclaimer readable at 200% zoom",
+        "Disclaimer doesn't block content"
+      ],
+      "postconditions": "Disclaimer structure meets semantic and ARIA requirements",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Verify loading state accessibility",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading indicator",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with inputs filled",
+      "steps": [
+        "1. Trigger content generation",
+        "2. Verify loading indicator appears",
+        "3. Check loading announcement",
+        "4. Test focus management",
+        "5. Verify completion announcement"
+      ],
+      "expectedResults": [
+        "Loading indicator has role='status' or aria-live",
+        "Loading announced: 'Generating content, please wait'",
+        "Loading indicator visible",
+        "Loading doesn't trap focus",
+        "Completion announced"
+      ],
+      "postconditions": "Loading state properly communicated to assistive technology",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Verify loading indicator details",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading spinner",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Content generation is in progress",
+      "steps": [
+        "1. Observe loading indicator",
+        "2. Check spinner accessibility",
+        "3. Verify animation safety",
+        "4. Test progress announcements",
+        "5. Test cancel button if present"
+      ],
+      "expectedResults": [
+        "Loading spinner has accessible name",
+        "Spinner has aria-label: 'Loading'",
+        "Spinner animation doesn't cause seizures",
+        "Progress percentage announced if available",
+        "Cancel button keyboard accessible"
+      ],
+      "postconditions": "Loading indicator details are accessible and safe",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Verify error message accessibility",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Error messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Trigger generation error",
+        "2. Verify error message appears",
+        "3. Check error announcement",
+        "4. Verify error contrast",
+        "5. Check error icon"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Error announced immediately",
+        "Error message clear and specific",
+        "Error has 4.5:1 contrast",
+        "Error icon has 3:1 contrast"
+      ],
+      "postconditions": "Error messages are accessible and properly announced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Verify error keyboard handling",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Error dismiss/retry controls",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Error message is displayed",
+      "steps": [
+        "1. Trigger error",
+        "2. Verify focus management",
+        "3. Tab to dismiss button",
+        "4. Test Escape key",
+        "5. Test retry option"
+      ],
+      "expectedResults": [
+        "Error doesn't trap focus",
+        "Dismiss button keyboard accessible",
+        "Escape key dismisses error",
+        "Focus returns appropriately",
+        "Retry option keyboard accessible"
+      ],
+      "postconditions": "Error controls fully operable via keyboard",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Verify input validation errors",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Input validation error messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with empty required fields",
+      "steps": [
+        "1. Submit without required inputs",
+        "2. Verify validation errors",
+        "3. Check error announcements",
+        "4. Verify error-input association",
+        "5. Test error navigation"
+      ],
+      "expectedResults": [
+        "Input validation errors announced",
+        "Errors linked to inputs with aria-describedby",
+        "Required field errors clear",
+        "Error summary provided if multiple",
+        "Errors keyboard accessible"
+      ],
+      "postconditions": "Input validation errors properly associated and announced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Verify AI-assisted indicator accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "AI-assisted content indicator",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "AI-generated content has been accepted and inserted",
+      "steps": [
+        "1. Accept AI-generated content",
+        "2. Verify indicator appears on form",
+        "3. Check indicator text",
+        "4. Test with screen reader",
+        "5. Verify text contrast"
+      ],
+      "expectedResults": [
+        "AI-assisted indicator visible on form",
+        "Indicator text: 'Description generated with AI on [date/time]'",
+        "Indicator has 4.5:1 contrast",
+        "Indicator announced by screen reader",
+        "Indicator has semantic markup"
+      ],
+      "postconditions": "AI-assisted indicator is accessible and properly announced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "Verify audit indicator details",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Audit indicator icon and tooltip",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "AI-assisted indicator is displayed",
+      "steps": [
+        "1. Locate AI-assisted indicator",
+        "2. Check icon accessibility",
+        "3. Test tooltip if present",
+        "4. Verify layout",
+        "5. Test zoom to 200%"
+      ],
+      "expectedResults": [
+        "Indicator icon keyboard accessible if interactive",
+        "Icon has accessible name",
+        "Tooltip provides details",
+        "Indicator doesn't block content",
+        "Indicator readable at 200% zoom"
+      ],
+      "postconditions": "Audit indicator details are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "Verify complete keyboard navigation",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Complete GenAI workflow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Product form loaded, user logged in as vendor",
+      "steps": [
+        "1. Navigate entire GenAI workflow",
+        "2. Tab through all elements",
+        "3. Verify tab order logical",
+        "4. Test all interactive elements",
+        "5. Verify no keyboard traps"
+      ],
+      "expectedResults": [
+        "All interactive elements keyboard accessible",
+        "Tab order follows visual layout",
+        "Focus indicators visible on all elements",
+        "No keyboard traps exist",
+        "All actions completable with keyboard"
+      ],
+      "postconditions": "Complete GenAI workflow navigable via keyboard only",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_041",
+      "title": "Verify complete screen reader accessibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Complete GenAI workflow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "Product form loaded, screen reader enabled",
+      "steps": [
+        "1. Enable screen reader",
+        "2. Navigate entire workflow",
+        "3. Verify all elements announced",
+        "4. Check state changes",
+        "5. Test dynamic content"
+      ],
+      "expectedResults": [
+        "All elements have accessible names",
+        "All state changes announced",
+        "Dynamic content has aria-live",
+        "Form labels properly associated",
+        "No visual-only information"
+      ],
+      "postconditions": "Complete GenAI workflow accessible via screen reader",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_042",
+      "title": "Verify color and contrast compliance",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "All GenAI interface elements",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open with generated content",
+      "steps": [
+        "1. Inspect all text elements",
+        "2. Verify text contrast ratios",
+        "3. Check UI component contrast",
+        "4. Verify focus indicators",
+        "5. Test high contrast mode"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast (WCAG 1.4.3)",
+        "Large text meets 3:1 contrast",
+        "UI components meet 3:1 contrast (WCAG 1.4.11)",
+        "Focus indicators meet 3:1 contrast",
+        "No color-only information (WCAG 1.4.1)"
+      ],
+      "postconditions": "All color and contrast requirements met across GenAI interface",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_043",
+      "title": "Verify responsive design accessibility",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "GenAI panel responsive layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Test at various viewport sizes",
+        "2. Zoom to 200%",
+        "3. Verify content reflows",
+        "4. Measure touch targets",
+        "5. Test on mobile viewport"
+      ],
+      "expectedResults": [
+        "Content reflows without horizontal scroll (WCAG 1.4.10)",
+        "All content accessible at 200% zoom (WCAG 1.4.4)",
+        "Touch targets meet 44x44px minimum",
+        "Panel adapts to viewport",
+        "No content loss at zoom"
+      ],
+      "postconditions": "GenAI panel responsive and accessible at all viewport sizes",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_044",
+      "title": "Verify panel layout accessibility",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "GenAI panel layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-20",
+      "preconditions": "GenAI panel is open",
+      "steps": [
+        "1. Open GenAI panel",
+        "2. Verify panel positioning",
+        "3. Test panel on small viewport",
+        "4. Verify scrolling behavior",
+        "5. Test close button access"
+      ],
+      "expectedResults": [
+        "Panel position doesn't obscure form",
+        "Panel resizable or scrollable",
+        "Panel doesn't cause horizontal scroll",
+        "Panel accessible on small screens",
+        "Panel close button always accessible"
+      ],
+      "postconditions": "GenAI panel layout accessible across all viewport sizes",
+      "testResult": "PASS"
+    }
+  ]
+}
+

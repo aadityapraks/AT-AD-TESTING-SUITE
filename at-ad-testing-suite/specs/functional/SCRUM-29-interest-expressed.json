@@ -1,0 +1,662 @@
+{
+  "jiraStory": "SCRUM-29",
+  "title": "Assistive Partner Views Interest Expressed (Summary View) and Notifications - Functional Test Plan",
+  "overview": "Comprehensive functional testing of the Interest Expressed feature on the Y4J AT/AD Vendor Portal. Covers access and navigation to the Interest Expressed tab, summary metrics and notification indicators, interest list view with pagination and sorting, search/filter/sort functionality, View Details modal with PwD information, Reveal Contact Details with privacy controls, product interest details, data accuracy and permissions, download/export functionality, notification of new interest, notification center management, data refresh, privacy compliance, error handling, and audit tracking.",
+  "scope": {
+    "inScope": [
+      "Interest Expressed tab access and navigation from vendor dashboard",
+      "Summary metrics: Total Interest count widget",
+      "Notification indicator for new interests",
+      "Interest list view: columns (Name, Age, Disability Type, Location, Product, Shares, Date, Action)",
+      "Pagination with result count display",
+      "Default sorting (Newest First) and sort order toggle",
+      "Search by Name, Location, Product",
+      "Filter by State, Disability Type",
+      "View Details modal: personal info, date/time, masked contact, location, products",
+      "Modal close behavior (X icon, click outside)",
+      "Reveal Contact Details: unmask phone/email with audit logging",
+      "Product interest details: name, thumbnail, share count",
+      "Data accuracy: vendor can only see interests for own products",
+      "Read-only access: no edit/delete of interest records",
+      "Download List: export with filters/sorting respected",
+      "Notification Center: view, mark read, delete notifications",
+      "Error handling: empty state, data retrieval failure messages",
+      "Privacy compliance: data minimization, masked contacts by default"
+    ],
+    "outOfScope": [
+      "PwD interest expression flow (PwD-side feature)",
+      "Email notification delivery infrastructure",
+      "In-app notification system backend (marked TBD)",
+      "Real-time data refresh intervals (marked TBD)",
+      "Admin aggregate reports",
+      "Backend API internals"
+    ]
+  },
+  "linkedIssues": [
+    {
+      "key": "SCRUM-860",
+      "summary": "State filter not working in Interest Expressed tab",
+      "type": "Bug",
+      "status": "In QA"
+    },
+    {
+      "key": "SCRUM-861",
+      "summary": "Disability Type filter not working in Interest Expressed tab",
+      "type": "Bug",
+      "status": "In QA"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "TC_IE_001",
+      "title": "Verify Interest Expressed tab is visible and accessible from vendor dashboard",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "1. Access & Navigation",
+      "preconditions": "User is logged in as an approved Assistive Partner with at least one listed product",
+      "steps": [
+        "1. Log in as an approved Assistive Partner",
+        "2. Navigate to the vendor dashboard",
+        "3. Verify the 'Interest Expressed' tab is visible in the dashboard navigation",
+        "4. Click on the 'Interest Expressed' tab",
+        "5. Verify the page loads without errors",
+        "6. Verify a clear heading is displayed explaining the section purpose",
+        "7. Verify a description text is shown explaining what the section contains"
+      ],
+      "expectedResults": [
+        "Interest Expressed tab is visible in dashboard navigation",
+        "Tab is clickable and navigates to the interest summary page",
+        "Page loads without console errors or broken UI",
+        "Clear heading and descriptive text are displayed"
+      ],
+      "postconditions": "User is on the Interest Expressed page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_002",
+      "title": "Verify Interest Expressed tab is not visible for unapproved vendors",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "1. Access & Navigation",
+      "preconditions": "User is logged in as a vendor whose account is pending approval",
+      "steps": [
+        "1. Log in as a vendor with pending approval status",
+        "2. Navigate to the vendor dashboard",
+        "3. Check if the 'Interest Expressed' tab is visible in navigation"
+      ],
+      "expectedResults": [
+        "Interest Expressed tab is NOT visible for unapproved vendors",
+        "No access to interest data without approved status"
+      ],
+      "postconditions": "User remains on dashboard without access to Interest Expressed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_IE_003",
+      "title": "Verify Total Interest metric widget displays correct cumulative count",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "2. Summary Metrics & Notifications",
+      "preconditions": "Approved AP with products that have received interest from PwD users",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify the 'Total Interest' metric widget is displayed",
+        "4. Verify the count matches the total number of interest records",
+        "5. Verify the widget is prominently placed on the page"
+      ],
+      "expectedResults": [
+        "Total Interest widget is visible on the page",
+        "Count accurately reflects cumulative interest submissions",
+        "Widget is clearly labeled and easy to read"
+      ],
+      "postconditions": "Dashboard metrics are displayed correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_004",
+      "title": "Verify notification indicator appears when new interest is recorded",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "2. Summary Metrics & Notifications",
+      "preconditions": "Approved AP is logged in; a new PwD interest is recorded for their product",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Verify initial notification state (no new notifications)",
+        "3. Have a PwD user express interest in one of the AP's products",
+        "4. Verify a notification indicator appears on the dashboard",
+        "5. Verify the notification links to the Interest Expressed section",
+        "6. Click the notification indicator",
+        "7. Verify navigation to Interest Expressed section"
+      ],
+      "expectedResults": [
+        "Notification indicator appears when new interest is recorded",
+        "Indicator is visually distinct (badge/dot/count)",
+        "Clicking notification navigates to Interest Expressed section",
+        "Total Interest count increments accordingly"
+      ],
+      "postconditions": "User is on Interest Expressed page with updated data",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_IE_005",
+      "title": "Verify interest list displays all required columns with correct data",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "3. Interest List View",
+      "preconditions": "Approved AP with multiple interest records from PwD users",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify the list displays the following columns:",
+        "   a. Name & basic profile details (age, disability type)",
+        "   b. Location (city, state)",
+        "   c. Interested product(s)",
+        "   d. Number of shares",
+        "   e. Interest date",
+        "   f. Action (View Details button)",
+        "4. Verify data in each column matches actual PwD submissions",
+        "5. Verify all columns are properly aligned and readable"
+      ],
+      "expectedResults": [
+        "All six columns are displayed in the list",
+        "Data is accurate and matches PwD interest submissions",
+        "Columns are properly labeled and aligned",
+        "View Details action button is present for each row"
+      ],
+      "postconditions": "Interest list is displayed with complete data",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_006",
+      "title": "Verify pagination with result count display",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "3. Interest List View",
+      "preconditions": "Approved AP with more than 10 interest records",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify pagination controls are displayed",
+        "4. Verify result count text shows (e.g., 'Showing 1-10 of X results')",
+        "5. Click 'Next' page button",
+        "6. Verify next set of results loads",
+        "7. Verify result count updates (e.g., 'Showing 11-20 of X results')",
+        "8. Click 'Previous' page button",
+        "9. Verify navigation back to first page"
+      ],
+      "expectedResults": [
+        "Pagination controls are visible when results exceed page size",
+        "Result count text accurately shows current range and total",
+        "Next/Previous navigation works correctly",
+        "Page transitions are smooth without full page reload"
+      ],
+      "postconditions": "User can navigate through all pages of results",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_007",
+      "title": "Verify default sorting is Newest First",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "3. Interest List View",
+      "preconditions": "Approved AP with multiple interest records with different dates",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify the list is sorted by interest date in descending order (newest first)",
+        "4. Verify the first record has the most recent date",
+        "5. Verify subsequent records have progressively older dates"
+      ],
+      "expectedResults": [
+        "Default sort order is Newest First (descending by date)",
+        "Most recent interest appears at the top",
+        "Sort indicator shows descending/newest first as active"
+      ],
+      "postconditions": "List is displayed in default sort order",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_008",
+      "title": "Verify search by Name returns matching results",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with multiple interest records; known PwD name exists in records",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Locate the search input field",
+        "4. Enter a known PwD name in the search field",
+        "5. Verify the list updates to show only matching results",
+        "6. Verify results contain the searched name",
+        "7. Clear the search field",
+        "8. Verify all results are displayed again"
+      ],
+      "expectedResults": [
+        "Search field is visible and functional",
+        "Entering a name filters the list to matching records",
+        "Results update without full page reload",
+        "Clearing search restores the full list"
+      ],
+      "postconditions": "Search functionality works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_009",
+      "title": "Verify search by Location returns matching results",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with interest records from different locations",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Enter a known city or state name in the search field",
+        "4. Verify the list filters to show only records matching that location",
+        "5. Verify all displayed records have the searched location"
+      ],
+      "expectedResults": [
+        "Search by location filters results correctly",
+        "Only records matching the location are displayed",
+        "Results update instantly without page reload"
+      ],
+      "postconditions": "Location search works as expected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_010",
+      "title": "Verify search by Product returns matching results",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with multiple products that have received interest",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Enter a known product name in the search field",
+        "4. Verify the list filters to show only records for that product",
+        "5. Verify all displayed records reference the searched product"
+      ],
+      "expectedResults": [
+        "Search by product name filters results correctly",
+        "Only records with matching product are displayed",
+        "Results update instantly"
+      ],
+      "postconditions": "Product search works as expected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_011",
+      "title": "Verify filter by State narrows results correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with interest records from multiple states",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Locate the State filter dropdown",
+        "4. Select a specific state from the filter",
+        "5. Verify the list updates to show only records from that state",
+        "6. Verify result count updates accordingly",
+        "7. Remove the state filter",
+        "8. Verify all results are restored"
+      ],
+      "expectedResults": [
+        "State filter dropdown is available with state options",
+        "Selecting a state filters results to that state only",
+        "List updates without full page reload",
+        "Removing filter restores all results"
+      ],
+      "postconditions": "State filter works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_012",
+      "title": "Verify filter by Disability Type narrows results correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with interest records from PwDs with different disability types",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Locate the Disability Type filter dropdown",
+        "4. Select a specific disability type from the filter",
+        "5. Verify the list updates to show only records matching that disability type",
+        "6. Verify result count updates accordingly",
+        "7. Remove the disability type filter",
+        "8. Verify all results are restored"
+      ],
+      "expectedResults": [
+        "Disability Type filter dropdown is available",
+        "Selecting a type filters results correctly",
+        "List updates without full page reload",
+        "Removing filter restores all results"
+      ],
+      "postconditions": "Disability type filter works correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_013",
+      "title": "Verify sort order can be changed between newest and oldest first",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "4. Search, Filter, and Sort",
+      "preconditions": "Approved AP with multiple interest records with different dates",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify default sort is Newest First",
+        "4. Change sort order to Oldest First",
+        "5. Verify the list reorders with oldest records at the top",
+        "6. Change sort order back to Newest First",
+        "7. Verify the list reorders with newest records at the top"
+      ],
+      "expectedResults": [
+        "Sort order toggle/dropdown is available",
+        "Changing to Oldest First reorders the list correctly",
+        "Changing back to Newest First restores original order",
+        "Sort changes happen without full page reload"
+      ],
+      "postconditions": "Sort functionality works bidirectionally",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_014",
+      "title": "Verify View Details modal opens without navigating away from page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "5. View Details Action (Modal/Popup)",
+      "preconditions": "Approved AP on Interest Expressed page with at least one record",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Click 'View Details' action button on any interest record",
+        "4. Verify a modal/popup opens",
+        "5. Verify the page URL does not change (no navigation)",
+        "6. Verify the modal displays:",
+        "   a. Personal information summary (age, disability type)",
+        "   b. Date and time when interest was expressed",
+        "   c. Masked contact information",
+        "   d. Location and full address",
+        "   e. List of products the PwD has shown interest in"
+      ],
+      "expectedResults": [
+        "Modal opens as an overlay without page navigation",
+        "All required information fields are displayed",
+        "Contact information is masked by default",
+        "Product list shows all products the PwD expressed interest in"
+      ],
+      "postconditions": "Modal is open with PwD details displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_015",
+      "title": "Verify modal can be closed using X icon",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "5. View Details Action (Modal/Popup)",
+      "preconditions": "View Details modal is open",
+      "steps": [
+        "1. With the View Details modal open",
+        "2. Locate the Close (X) icon on the modal",
+        "3. Click the X icon",
+        "4. Verify the modal closes",
+        "5. Verify the interest list is still visible and unchanged"
+      ],
+      "expectedResults": [
+        "X icon is visible and clickable",
+        "Clicking X closes the modal",
+        "Underlying page content is preserved",
+        "No data loss or page reload occurs"
+      ],
+      "postconditions": "Modal is closed, user is back on interest list",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_016",
+      "title": "Verify contact details are masked by default in modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "6. Reveal Contact Details",
+      "preconditions": "View Details modal is open for a PwD record",
+      "steps": [
+        "1. Open View Details modal for any interest record",
+        "2. Verify phone number is masked (e.g., '****1234' or similar pattern)",
+        "3. Verify email is masked (e.g., 'a***@***.com' or similar pattern)",
+        "4. Verify a 'Reveal Details' button is visible"
+      ],
+      "expectedResults": [
+        "Phone number is masked and not readable",
+        "Email address is masked and not readable",
+        "Reveal Details button is clearly visible and labeled"
+      ],
+      "postconditions": "Contact details remain masked until explicitly revealed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_017",
+      "title": "Verify Reveal Details unmasks phone and email with audit logging",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "6. Reveal Contact Details",
+      "preconditions": "View Details modal is open with masked contact details",
+      "steps": [
+        "1. Open View Details modal for a PwD record",
+        "2. Verify contact details are masked",
+        "3. Click 'Reveal Details' button",
+        "4. Verify phone number is now fully visible",
+        "5. Verify email address is now fully visible",
+        "6. Verify the reveal action is logged for audit purposes"
+      ],
+      "expectedResults": [
+        "Clicking Reveal Details shows full phone number",
+        "Clicking Reveal Details shows full email address",
+        "Action is logged with timestamp and AP identity for compliance",
+        "Revealed details are accurate and match PwD submission"
+      ],
+      "postconditions": "Contact details are visible; action is audit-logged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_018",
+      "title": "Verify vendor can only reveal details for PwDs interested in their products",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "6. Reveal Contact Details",
+      "preconditions": "Multiple APs exist; PwD has expressed interest in products from different APs",
+      "steps": [
+        "1. Log in as Assistive Partner A",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify only PwDs who expressed interest in AP A's products are listed",
+        "4. Verify Reveal Details is available only for these records",
+        "5. Verify no records from other APs' products are visible"
+      ],
+      "expectedResults": [
+        "Only interest records for the logged-in AP's products are shown",
+        "Reveal Details is restricted to own product interests only",
+        "No cross-vendor data leakage occurs"
+      ],
+      "postconditions": "Data isolation between vendors is maintained",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_IE_019",
+      "title": "Verify product interest details display name, thumbnail, and share count",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "7. Product Interest Details",
+      "preconditions": "View Details modal is open; PwD has expressed interest in multiple products",
+      "steps": [
+        "1. Open View Details modal for a PwD who expressed interest in multiple products",
+        "2. Verify each product interest entry displays:",
+        "   a. Product name",
+        "   b. Product image thumbnail",
+        "   c. Number of times the product was shared",
+        "3. Verify only products owned by the logged-in AP are shown",
+        "4. Verify product thumbnails load correctly"
+      ],
+      "expectedResults": [
+        "Each product shows name, thumbnail image, and share count",
+        "Only products belonging to the logged-in AP are displayed",
+        "Thumbnails are properly sized and loaded",
+        "Share count is accurate"
+      ],
+      "postconditions": "Product interest details are correctly displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_020",
+      "title": "Verify vendors cannot edit or delete interest records",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "8. Data Accuracy & Permissions",
+      "preconditions": "Approved AP on Interest Expressed page",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify no edit buttons/icons are present on interest records",
+        "4. Verify no delete buttons/icons are present on interest records",
+        "5. Verify right-click context menu does not offer edit/delete options",
+        "6. Verify the View Details modal has no edit/delete functionality"
+      ],
+      "expectedResults": [
+        "No edit functionality is available for interest records",
+        "No delete functionality is available for interest records",
+        "Records are strictly read-only for vendors"
+      ],
+      "postconditions": "Data integrity is protected from vendor modification",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_021",
+      "title": "Verify vendors cannot view interests for products they do not own",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "8. Data Accuracy & Permissions",
+      "preconditions": "Multiple APs exist with different products; PwDs have expressed interest in various products",
+      "steps": [
+        "1. Log in as Assistive Partner A",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify only interests for AP A's products are displayed",
+        "4. Log out and log in as Assistive Partner B",
+        "5. Navigate to Interest Expressed tab",
+        "6. Verify only interests for AP B's products are displayed",
+        "7. Verify no overlap between AP A and AP B interest records"
+      ],
+      "expectedResults": [
+        "Each AP sees only interests for their own products",
+        "No cross-vendor data is accessible",
+        "Data isolation is enforced at the application level"
+      ],
+      "postconditions": "Vendor data isolation is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_022",
+      "title": "Verify Download List exports interest data with applied filters",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "9. Download & Export",
+      "preconditions": "Approved AP on Interest Expressed page with filters applied",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Navigate to Interest Expressed tab",
+        "3. Apply a State filter",
+        "4. Apply a sort order (Oldest First)",
+        "5. Click 'Download List' button",
+        "6. Verify a file is downloaded",
+        "7. Open the downloaded file",
+        "8. Verify the data matches the filtered and sorted view",
+        "9. Verify only permitted fields are included (no raw contact details unless revealed)"
+      ],
+      "expectedResults": [
+        "Download List button is visible and functional",
+        "Downloaded file contains only filtered results",
+        "Sort order is preserved in the export",
+        "Privacy rules are respected (masked contacts in export)",
+        "File format is usable (CSV/Excel)"
+      ],
+      "postconditions": "Export file is downloaded with correct filtered data",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_IE_023",
+      "title": "Verify Notification Center displays all recent alerts",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "11. Notification Center",
+      "preconditions": "Approved AP with multiple notifications (interest, updates, reviews)",
+      "steps": [
+        "1. Log in as approved Assistive Partner",
+        "2. Access the Notification Center from the dashboard",
+        "3. Verify notifications are listed with:",
+        "   a. Product Name",
+        "   b. Date & Time",
+        "   c. Type (Interest / Update / Review)",
+        "   d. Status (Read / Unread)",
+        "4. Verify unread notifications are visually distinct",
+        "5. Verify notifications are ordered by most recent first"
+      ],
+      "expectedResults": [
+        "Notification Center is accessible from dashboard",
+        "All required fields are displayed for each notification",
+        "Unread notifications have visual distinction (bold, badge, color)",
+        "Notifications are chronologically ordered"
+      ],
+      "postconditions": "Notification Center displays correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_024",
+      "title": "Verify notifications can be marked as read and deleted",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "11. Notification Center",
+      "preconditions": "Approved AP with unread notifications in Notification Center",
+      "steps": [
+        "1. Access Notification Center",
+        "2. Verify unread notifications are displayed",
+        "3. Mark a notification as read",
+        "4. Verify the notification status changes to 'Read'",
+        "5. Verify visual indicator updates (no longer bold/highlighted)",
+        "6. Delete a notification",
+        "7. Verify the notification is removed from the list",
+        "8. Verify the notification count updates"
+      ],
+      "expectedResults": [
+        "Mark as read changes notification status visually",
+        "Delete removes notification from the list",
+        "Notification count updates after actions",
+        "Actions are immediate without page reload"
+      ],
+      "postconditions": "Notification management actions work correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_IE_025",
+      "title": "Verify empty state when no interests have been expressed",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "category": "14. Error Handling",
+      "preconditions": "Approved AP with products but no PwD interest records",
+      "steps": [
+        "1. Log in as an approved AP with no interest records",
+        "2. Navigate to Interest Expressed tab",
+        "3. Verify the page loads without errors",
+        "4. Verify the empty state message is displayed: 'No interests recorded yet for your products.'",
+        "5. Verify no broken UI elements or empty tables are shown"
+      ],
+      "expectedResults": [
+        "Page loads successfully without errors",
+        "Empty state message is clearly displayed",
+        "Message text matches: 'No interests recorded yet for your products.'",
+        "UI is clean with no broken elements"
+      ],
+      "postconditions": "Empty state is handled gracefully",
+      "testResult": "PASS"
+    }
+  ]
+}

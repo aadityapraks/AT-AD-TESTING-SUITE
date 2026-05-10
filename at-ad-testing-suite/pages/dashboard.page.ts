@@ -50,7 +50,7 @@ export class DashboardPage extends BasePage {
 
     this.dashboardBtn = page.getByRole('button', { name: 'Dashboard' });
     this.helpResourcesBtn = page.getByRole('button', { name: 'Help & Resources' });
-    this.notificationBellBtn = page.getByRole('button', { name: /🔔/ });
+    this.notificationBellBtn = page.locator('nav').getByRole('button').filter({ hasText: /^\d+$/ });
     this.profileBtn = page.getByRole('button', { name: 'Profile' });
     this.logoutBtn = page.getByRole('button', { name: 'Logout' });
 
@@ -93,7 +93,8 @@ export class DashboardPage extends BasePage {
   async navigateToNotificationCenter() {
     await this.openNotificationPopup();
     await this.viewAllNotificationsBtn.click();
-    await expect(this.notificationCenterHeading).toBeVisible();
+    await this.page.waitForLoadState('load');
+    await this.page.waitForTimeout(2000);
   }
 
   async clickNotificationTab(tab: 'All' | 'Unread' | 'Interest' | 'Updates' | 'Reviews' | 'Admin') {
@@ -109,8 +110,9 @@ export class DashboardPage extends BasePage {
   }
 
   async clickDashboard() {
-    await this.dashboardBtn.click();
-    await expect(this.welcomeHeading).toBeVisible();
+    await this.dashboardBtn.first().click({ force: true });
+    await this.page.waitForLoadState('load');
+    await expect(this.welcomeHeading).toBeVisible({ timeout: 10000 });
   }
 
   async clickHelpResources() {

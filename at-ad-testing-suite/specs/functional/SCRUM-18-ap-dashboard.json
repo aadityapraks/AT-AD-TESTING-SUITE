@@ -24,7 +24,7 @@
         "Page title contains 'Dashboard'"
       ],
       "postconditions": "User is on dashboard page",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_002",
@@ -48,7 +48,7 @@
         "User is logged out successfully"
       ],
       "postconditions": "User is logged out",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_003",
@@ -69,7 +69,7 @@
         "Contact information provided"
       ],
       "postconditions": "User sees restricted dashboard",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_004",
@@ -93,7 +93,7 @@
         "Widget is clickable and navigates to Product Management"
       ],
       "postconditions": "Dashboard remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_005",
@@ -116,7 +116,7 @@
         "Zero state handled appropriately"
       ],
       "postconditions": "Dashboard remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_006",
@@ -139,7 +139,7 @@
         "Accurate count maintained"
       ],
       "postconditions": "Dashboard remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_007",
@@ -162,7 +162,7 @@
         "Rating updates when new reviews added"
       ],
       "postconditions": "Dashboard remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_008",
@@ -185,7 +185,7 @@
         "Tab remains active during navigation"
       ],
       "postconditions": "Product Management tab is active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_009",
@@ -208,7 +208,7 @@
         "File upload functionality works"
       ],
       "postconditions": "Product Upload tab is active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_010",
@@ -231,7 +231,7 @@
         "Contact details reveal after interaction"
       ],
       "postconditions": "Interest Expressed tab is active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_011",
@@ -254,7 +254,7 @@
         "Status updates to 'Pending Admin Approval'"
       ],
       "postconditions": "Queries tab is active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_012",
@@ -277,7 +277,7 @@
         "Response to reviews submission works"
       ],
       "postconditions": "Reviews & Ratings tab is active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_013",
@@ -300,7 +300,7 @@
         "Popup closes when clicking outside"
       ],
       "postconditions": "Notification popup is visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_014",
@@ -323,7 +323,7 @@
         "Popup state persists appropriately"
       ],
       "postconditions": "Notifications are marked as read",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_015",
@@ -346,7 +346,7 @@
         "Notification counts update after actions"
       ],
       "postconditions": "User is in notification centre",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_016",
@@ -369,7 +369,7 @@
         "No page refresh required for updates"
       ],
       "postconditions": "Dashboard remains loaded",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_017",
@@ -392,7 +392,7 @@
         "No horizontal scrolling required"
       ],
       "postconditions": "Dashboard is accessible on mobile viewport",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_018",
@@ -415,7 +415,7 @@
         "Touch interactions work properly"
       ],
       "postconditions": "Dashboard is accessible on tablet viewport",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_019",
@@ -438,7 +438,7 @@
         "Functionality restored when network returns"
       ],
       "postconditions": "Dashboard recovers after network restoration",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_020",
@@ -461,7 +461,7 @@
         "Onboarding flow is intuitive"
       ],
       "postconditions": "Empty state is displayed correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SCRUM18_021",
@@ -484,7 +484,7 @@
         "Re-login restores dashboard state"
       ],
       "postconditions": "Session is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

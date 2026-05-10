@@ -3,5 +3,8 @@
   "credentials": {
     "email": "vendor23@mailto.plus",
     "password": "12345678"
+  },
+  "productUpload": {
+    "shortDescription": "This is a short description for accessibility testing purposes"
   }
 }

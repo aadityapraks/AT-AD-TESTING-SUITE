@@ -1,0 +1,996 @@
+{
+  "jiraStory": "SCRUM-155",
+  "title": "Vendor Profile Page - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner Profile page ensuring WCAG 2.1 AA compliance. Tests cover navigation, page structure, organization card, account status, documents section, profile editing, form validation, and read-only field display.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Top navigation keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Top Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Navigate to Vendor Profile page",
+        "2. Tab through navigation links (Dashboard, Help & Resources, Profile, Logout)",
+        "3. Verify focus indicator on each link",
+        "4. Check Profile link has aria-current='page'",
+        "5. Press Enter to activate links"
+      ],
+      "expectedResults": [
+        "All nav links keyboard accessible",
+        "Tab order logical",
+        "Active link has aria-current='page'",
+        "Focus indicators visible",
+        "Enter activates links"
+      ],
+      "postconditions": "Navigation links are fully keyboard operable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Navigation has proper structure",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Top Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Inspect top navigation",
+        "2. Verify <nav> element or role='navigation'",
+        "3. Check aria-label or aria-labelledby present",
+        "4. Use screen reader to verify navigation announced",
+        "5. Test landmark navigation"
+      ],
+      "expectedResults": [
+        "Nav uses semantic HTML or ARIA",
+        "Nav has role='navigation' or <nav>",
+        "Nav has accessible name",
+        "Screen reader announces navigation",
+        "Landmark navigation works"
+      ],
+      "postconditions": "Navigation structure is semantically correct",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Page has proper heading structure",
+      "wcagCriterion": "2.4.6 Headings and Labels",
+      "componentElement": "Page Heading",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Navigate to Vendor Profile page",
+        "2. Verify H1 exists for 'Vendor Profile'",
+        "3. Check subtitle semantic structure",
+        "4. Use screen reader heading navigation",
+        "5. Verify no heading levels skipped"
+      ],
+      "expectedResults": [
+        "Page has H1 for title",
+        "Subtitle uses appropriate heading or paragraph",
+        "Heading hierarchy logical",
+        "Screen reader can navigate by headings",
+        "No skipped heading levels"
+      ],
+      "postconditions": "Heading structure is logical and complete",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Edit Profile button accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit Profile Button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in read-only mode",
+      "steps": [
+        "1. Tab to Edit Profile button",
+        "2. Verify focus indicator visible",
+        "3. Check button has accessible name",
+        "4. Press Enter/Space to activate",
+        "5. Verify edit mode activates"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Enter/Space activates button",
+        "Focus indicator visible",
+        "Button has accessible name",
+        "Button positioned logically"
+      ],
+      "postconditions": "Edit Profile button is fully keyboard operable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Edit mode activation announced",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Edit Profile Button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in read-only mode",
+      "steps": [
+        "1. Click Edit Profile button",
+        "2. Verify mode change announced",
+        "3. Check aria-live region announces edit mode",
+        "4. Verify focus moves to first field",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Mode change announced via aria-live",
+        "Edit mode status clear",
+        "Screen reader announces transition",
+        "Focus moves to first editable field",
+        "User aware of mode change"
+      ],
+      "postconditions": "Edit mode transition is announced to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Organization logo has alt text",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Organization Card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Locate organization logo/image",
+        "2. Verify alt attribute present",
+        "3. Check alt text descriptive",
+        "4. Verify placeholder has alt if no image",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Image has alt text",
+        "Alt text describes organization",
+        "Placeholder image has appropriate alt",
+        "Screen reader announces image",
+        "Image not essential for understanding"
+      ],
+      "postconditions": "Organization logo is accessible to screen readers",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Read-only fields indicated",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Organization Card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Review organization name and type fields",
+        "2. Verify fields visually disabled",
+        "3. Check fields not in tab order",
+        "4. Verify aria-readonly or disabled attribute",
+        "5. Use screen reader to verify read-only announced"
+      ],
+      "expectedResults": [
+        "Read-only fields clearly indicated",
+        "Fields not in tab order",
+        "Visual styling shows disabled state",
+        "Screen reader announces read-only",
+        "aria-readonly='true' or disabled attribute"
+      ],
+      "postconditions": "Read-only fields are properly communicated to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Status badge accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Account Status Section",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Locate Account Status badge",
+        "2. Verify status has text label (Active/Inactive)",
+        "3. Check not relying on color alone",
+        "4. Measure badge contrast (4.5:1)",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Status badge has text label",
+        "Status not conveyed by color alone",
+        "Badge has 4.5:1 contrast",
+        "Screen reader announces status",
+        "Icon supplemented with text"
+      ],
+      "postconditions": "Account status is accessible without relying on color alone",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verification icon accessible",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Account Status Section",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Locate Verification indicator",
+        "2. Verify text label present (Verified/Pending)",
+        "3. Check icon has aria-hidden='true'",
+        "4. Verify not relying on icon alone",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Verification status has text",
+        "Icon has aria-hidden='true'",
+        "Status conveyed by text, not icon alone",
+        "Screen reader announces verification",
+        "Not relying on icon color"
+      ],
+      "postconditions": "Verification status is accessible without relying on icon alone",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Member Since date accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Account Status Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Locate Member Since date",
+        "2. Verify label present",
+        "3. Check date format clear",
+        "4. Verify label associated",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Date has proper label",
+        "Date format clear",
+        "Screen reader announces date",
+        "Label associated with date",
+        "Date semantically marked"
+      ],
+      "postconditions": "Member Since date is properly labeled and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Documents displayed in semantic list",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Documents Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with documents uploaded",
+      "steps": [
+        "1. Locate documents section",
+        "2. Verify list structure (<ul> or role='list')",
+        "3. Check each document is <li>",
+        "4. Use screen reader to verify list announced",
+        "5. Check document count announced"
+      ],
+      "expectedResults": [
+        "Documents in semantic list",
+        "List uses <ul> or role='list'",
+        "Each document is list item",
+        "Screen reader announces list",
+        "Document count announced"
+      ],
+      "postconditions": "Documents section uses proper semantic list structure",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Document preview button accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Documents Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with documents uploaded",
+      "steps": [
+        "1. Tab to preview (eye icon) button",
+        "2. Verify focus indicator visible",
+        "3. Check button has accessible name",
+        "4. Press Enter to activate",
+        "5. Verify document opens in new tab",
+        "6. Check aria-label includes 'opens in new tab'"
+      ],
+      "expectedResults": [
+        "Preview button keyboard accessible",
+        "Button has accessible name",
+        "Enter/Space activates button",
+        "Focus indicator visible",
+        "New tab opening announced"
+      ],
+      "postconditions": "Document preview button is fully keyboard operable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Document type icons accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Documents Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with documents uploaded",
+      "steps": [
+        "1. Locate document type icons",
+        "2. Verify icons have aria-hidden='true'",
+        "3. Check document type in text",
+        "4. Verify not relying on icon alone",
+        "5. Use screen reader to verify type announced"
+      ],
+      "expectedResults": [
+        "Document icons have aria-hidden='true'",
+        "Document type conveyed by text",
+        "Not relying on icon alone",
+        "Screen reader announces document type",
+        "Icons decorative"
+      ],
+      "postconditions": "Document type icons are properly hidden from assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Documents empty state accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Documents Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with no documents uploaded",
+      "steps": [
+        "1. View profile with no documents",
+        "2. Verify empty state message appears",
+        "3. Check message reads 'No documents uploaded yet'",
+        "4. Verify message has proper semantics",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Empty state message visible",
+        "Message has proper semantics",
+        "Screen reader announces message",
+        "Message clear and helpful",
+        "No broken list structure"
+      ],
+      "postconditions": "Empty state is properly communicated to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Organization details fields have labels",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Organization Details Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Review Organization Details section",
+        "2. Verify all fields have visible labels",
+        "3. Check labels associated (for/id)",
+        "4. Verify required fields have asterisk",
+        "5. Check aria-required='true' on required fields"
+      ],
+      "expectedResults": [
+        "All fields have visible labels",
+        "Labels programmatically associated",
+        "Required fields marked with asterisk",
+        "aria-required on required fields",
+        "Labels remain visible"
+      ],
+      "postconditions": "Organization details fields are properly labeled",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Required field indicator accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Organization Details Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Locate required fields",
+        "2. Verify asterisk visible",
+        "3. Check legend explains asterisk",
+        "4. Verify aria-required='true'",
+        "5. Use screen reader to verify required announced"
+      ],
+      "expectedResults": [
+        "Required indicator has text equivalent",
+        "Not relying on color alone",
+        "Screen reader announces required",
+        "Legend explains asterisk meaning",
+        "Visual and programmatic indication"
+      ],
+      "postconditions": "Required field indicators are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Read-only fields visually distinct",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Organization Details Section",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in read-only mode",
+      "steps": [
+        "1. View profile in read-only mode",
+        "2. Verify read-only fields visually distinct",
+        "3. Check fields not in tab order",
+        "4. Verify disabled styling has contrast",
+        "5. Use screen reader to verify read-only"
+      ],
+      "expectedResults": [
+        "Read-only styling clear",
+        "Fields not in tab order",
+        "Visual distinction from editable",
+        "Screen reader announces read-only",
+        "Disabled state has sufficient contrast"
+      ],
+      "postconditions": "Read-only fields are visually distinct with sufficient contrast",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Contact fields have labels and autocomplete",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Contact Information Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Review Contact Information section",
+        "2. Verify all fields have labels",
+        "3. Check labels associated",
+        "4. Verify email has autocomplete='email'",
+        "5. Check phone has autocomplete='tel'",
+        "6. Verify website has autocomplete='url'"
+      ],
+      "expectedResults": [
+        "All fields have labels",
+        "Labels associated correctly",
+        "Email has autocomplete='email'",
+        "Phone has autocomplete='tel'",
+        "Website has autocomplete='url'"
+      ],
+      "postconditions": "Contact fields have proper labels and autocomplete attributes",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Website link accessible",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "componentElement": "Contact Information Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with website URL set",
+      "steps": [
+        "1. Locate website link",
+        "2. Verify link text descriptive",
+        "3. Check target='_blank'",
+        "4. Verify aria-label includes new tab warning",
+        "5. Check rel='noopener noreferrer'",
+        "6. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Website link has descriptive text",
+        "Link opens in new tab",
+        "aria-label includes 'opens in new tab'",
+        "target='_blank' present",
+        "rel='noopener noreferrer' present"
+      ],
+      "postconditions": "Website link is accessible with proper new tab indication",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Social media links accessible",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "componentElement": "Contact Information Section",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page with social media links set",
+      "steps": [
+        "1. Tab to social media links",
+        "2. Verify focus indicator on each",
+        "3. Check links have accessible names",
+        "4. Verify icons have aria-hidden='true'",
+        "5. Check new tab announced",
+        "6. Press Enter to activate"
+      ],
+      "expectedResults": [
+        "Social links keyboard accessible",
+        "Links have accessible names",
+        "Icons have aria-hidden='true'",
+        "New tab opening announced",
+        "Links distinguishable"
+      ],
+      "postconditions": "Social media links are fully accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Edit mode inputs keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit Mode Form Inputs",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Activate edit mode",
+        "2. Tab through all input fields",
+        "3. Verify focus indicator on each",
+        "4. Check tab order logical",
+        "5. Verify labels visible on focus"
+      ],
+      "expectedResults": [
+        "All inputs keyboard accessible",
+        "Tab order logical",
+        "Focus indicators visible",
+        "Labels remain visible on focus",
+        "Placeholder supplementary"
+      ],
+      "postconditions": "All edit mode inputs are keyboard accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Save and Cancel buttons accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit Mode Form Inputs",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Enter edit mode",
+        "2. Tab to Save button",
+        "3. Tab to Cancel button",
+        "4. Verify focus indicators visible",
+        "5. Press Enter to activate buttons",
+        "6. Check button labels clear"
+      ],
+      "expectedResults": [
+        "Save button accessible",
+        "Cancel button accessible",
+        "Tab order includes both buttons",
+        "Enter/Space activates buttons",
+        "Focus indicators visible"
+      ],
+      "postconditions": "Save and Cancel buttons are fully keyboard operable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Required field error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Form Validation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Enter edit mode",
+        "2. Clear required field",
+        "3. Trigger validation",
+        "4. Verify error message appears",
+        "5. Check aria-invalid='true'",
+        "6. Verify aria-describedby links error",
+        "7. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Error message appears inline",
+        "Error linked with aria-describedby",
+        "aria-invalid='true' on input",
+        "Error specific and clear",
+        "Screen reader announces error"
+      ],
+      "postconditions": "Required field errors are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Email validation error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Form Validation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Enter invalid email format",
+        "2. Trigger validation",
+        "3. Verify error appears",
+        "4. Check error specific",
+        "5. Verify ARIA attributes",
+        "6. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Email error accessible",
+        "Error linked to input",
+        "aria-invalid='true' present",
+        "Error suggests correction",
+        "Screen reader announces error"
+      ],
+      "postconditions": "Email validation errors are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Phone validation error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Form Validation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Enter invalid phone number",
+        "2. Trigger validation",
+        "3. Verify error appears",
+        "4. Check error specific",
+        "5. Verify ARIA attributes",
+        "6. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Phone error accessible",
+        "Error linked to input",
+        "aria-invalid='true' set",
+        "Error suggests format",
+        "Screen reader announces error"
+      ],
+      "postconditions": "Phone validation errors are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "URL validation error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Form Validation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Enter invalid URL (no http)",
+        "2. Trigger validation",
+        "3. Verify error appears",
+        "4. Check error suggests format",
+        "5. Verify ARIA attributes",
+        "6. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "URL error accessible",
+        "Error linked to input",
+        "aria-invalid='true' present",
+        "Error suggests http(s)://",
+        "Screen reader announces error"
+      ],
+      "postconditions": "URL validation errors are accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Error summary accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Form Validation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode with multiple invalid fields",
+      "steps": [
+        "1. Submit form with multiple errors",
+        "2. Verify error summary appears",
+        "3. Check focus moves to summary",
+        "4. Verify summary lists all errors",
+        "5. Check links jump to fields",
+        "6. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Error summary at top of form",
+        "Focus moves to error summary",
+        "Summary lists all errors",
+        "Links jump to specific fields",
+        "aria-live announces errors"
+      ],
+      "postconditions": "Error summary is accessible and navigable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Success toast accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Success and Status Messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode with valid changes",
+      "steps": [
+        "1. Save profile changes",
+        "2. Verify success toast appears",
+        "3. Check toast announced via aria-live",
+        "4. Verify role='status' or aria-live='polite'",
+        "5. Check message clear",
+        "6. Verify toast dismissible"
+      ],
+      "expectedResults": [
+        "Success toast announced",
+        "Toast has role='status' or aria-live",
+        "Message clear and specific",
+        "User doesn't need to find message",
+        "Toast dismissible or auto-dismisses"
+      ],
+      "postconditions": "Success toast is announced to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Return to read-only mode announced",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Success and Status Messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode",
+      "steps": [
+        "1. Save or cancel edit",
+        "2. Verify return to read-only announced",
+        "3. Check aria-live announces change",
+        "4. Verify focus managed",
+        "5. Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Mode change announced",
+        "Fields return to read-only",
+        "Transition announced via aria-live",
+        "Focus managed appropriately",
+        "User aware of mode change"
+      ],
+      "postconditions": "Return to read-only mode is announced to assistive technology",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Visual Accessibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Measure contrast for all text",
+        "2. Check body text has 4.5:1",
+        "3. Check large text has 3:1",
+        "4. Verify status badges have contrast",
+        "5. Check disabled text contrast"
+      ],
+      "expectedResults": [
+        "Normal text has 4.5:1 contrast",
+        "Large text has 3:1 contrast",
+        "Status badges have sufficient contrast",
+        "All text meets WCAG AA",
+        "Disabled text has contrast if conveying info"
+      ],
+      "postconditions": "All text meets WCAG AA contrast requirements",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "UI component contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Visual Accessibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Measure input border contrast",
+        "2. Check button borders",
+        "3. Verify status badge borders",
+        "4. Check focus indicators",
+        "5. Verify all meet 3:1 minimum"
+      ],
+      "expectedResults": [
+        "Input borders have 3:1 contrast",
+        "Button boundaries have 3:1 contrast",
+        "Status badges have 3:1 contrast",
+        "Focus indicators have 3:1 contrast",
+        "All UI components meet WCAG 1.4.11"
+      ],
+      "postconditions": "All UI components meet WCAG AA contrast requirements",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Visual Accessibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Tab through all interactive elements",
+        "2. Verify focus indicator on each",
+        "3. Check focus has 3:1 contrast",
+        "4. Verify focus not obscured",
+        "5. Check indicator thickness"
+      ],
+      "expectedResults": [
+        "All focusable elements show focus",
+        "Focus indicators have 3:1 contrast",
+        "Focus visible and not obscured",
+        "Indicator thickness adequate",
+        "WCAG 2.4.7 satisfied"
+      ],
+      "postconditions": "Focus indicators are visible on all interactive elements",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Information not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Visual Accessibility",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Review status badges",
+        "2. Check required field indicators",
+        "3. Verify error states have text",
+        "4. Check links have underline",
+        "5. Test in grayscale mode"
+      ],
+      "expectedResults": [
+        "Status not conveyed by color alone",
+        "Required fields have asterisk",
+        "Error states have icons/text",
+        "Links distinguishable without color",
+        "WCAG 1.4.1 satisfied"
+      ],
+      "postconditions": "No information is conveyed by color alone",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Page scales to 200% without loss",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Visual Accessibility",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Zoom browser to 200%",
+        "2. Verify all text visible",
+        "3. Check no horizontal scrolling",
+        "4. Verify all functionality available",
+        "5. Check no text truncation"
+      ],
+      "expectedResults": [
+        "All text scales to 200%",
+        "No horizontal scrolling",
+        "No text truncation",
+        "All features remain usable",
+        "Layout adapts responsively"
+      ],
+      "postconditions": "Page reflows properly at 200% zoom",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Tab order logical",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Keyboard Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Tab from page start",
+        "2. Verify tab order follows visual layout",
+        "3. Check all interactive elements reachable",
+        "4. Verify no keyboard traps",
+        "5. Check skip link if present"
+      ],
+      "expectedResults": [
+        "Tab order follows visual layout",
+        "All interactive elements reachable",
+        "No keyboard traps",
+        "Skip link available",
+        "Focus visible throughout"
+      ],
+      "postconditions": "Tab order is logical and complete",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Cancel action accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Keyboard Navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page in edit mode with changes made",
+      "steps": [
+        "1. Enter edit mode",
+        "2. Make changes",
+        "3. Click Cancel button",
+        "4. Verify changes reverted",
+        "5. Check revert announced",
+        "6. Verify focus managed"
+      ],
+      "expectedResults": [
+        "Cancel reverts changes",
+        "Revert announced via aria-live",
+        "Focus managed appropriately",
+        "User aware of cancellation",
+        "No data loss warning if needed"
+      ],
+      "postconditions": "Cancel action is accessible and properly announced",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Profile accessible on mobile",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Mobile and Responsive",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and viewing the Vendor Profile page on a mobile viewport (375x667)",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Navigate to Vendor Profile",
+        "3. Verify all content accessible",
+        "4. Check touch targets adequate",
+        "5. Verify no horizontal scrolling",
+        "6. Test all functionality"
+      ],
+      "expectedResults": [
+        "Page accessible on mobile",
+        "Touch targets 44x44px minimum",
+        "No horizontal scrolling",
+        "All features available",
+        "Text readable without zoom"
+      ],
+      "postconditions": "Profile page is fully accessible on mobile viewports",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Page has proper landmarks",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Screen Reader",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Use screen reader landmark navigation",
+        "2. Verify banner/header landmark",
+        "3. Verify navigation landmark",
+        "4. Verify main landmark",
+        "5. Verify all regions accessible"
+      ],
+      "expectedResults": [
+        "Page has proper landmarks",
+        "Main content in <main>",
+        "Navigation in <nav>",
+        "Screen reader can navigate by landmarks",
+        "All regions labeled"
+      ],
+      "postconditions": "Page landmarks are properly defined for screen reader navigation",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "Screen reader announces all content",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Screen Reader",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-155",
+      "preconditions": "User is logged in and on the Vendor Profile page",
+      "steps": [
+        "1. Use screen reader to navigate entire page",
+        "2. Verify all sections announced",
+        "3. Check field labels announced",
+        "4. Verify status changes announced",
+        "5. Check errors and success announced"
+      ],
+      "expectedResults": [
+        "All sections announced",
+        "Field labels announced",
+        "Status changes announced",
+        "Errors announced",
+        "Success messages announced"
+      ],
+      "postconditions": "All content is properly announced by screen readers",
+      "testResult": "PASS"
+    }
+  ]
+}

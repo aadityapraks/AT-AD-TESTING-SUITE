@@ -1,0 +1,999 @@
+{
+  "jiraStory": "SCRUM-33",
+  "title": "Help & Resources - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility test plan for AP Help & Resources section including best practices, FAQs, and knowledge base covering WCAG 2.1 AA compliance.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Help & Resources tab keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Help & Resources navigation tab",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is logged in as AP user",
+      "steps": [
+        "1. Login as AP user",
+        "2. Tab to Help & Resources in navigation",
+        "3. Verify focus indicator visible",
+        "4. Press Enter to activate",
+        "5. Verify redirects to Help & Resources page"
+      ],
+      "expectedResults": [
+        "Help & Resources tab visible in navigation",
+        "Tab keyboard accessible",
+        "Focus indicator meets contrast requirements",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "User is on Help & Resources page",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Page has proper heading structure",
+      "wcagCriterion": "2.4.6 Headings and Labels",
+      "componentElement": "Help & Resources page headings",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Verify H1 exists for page title",
+        "3. Verify section headings use H2",
+        "4. Verify subsection headings use H3",
+        "5. Test heading navigation with screen reader"
+      ],
+      "expectedResults": [
+        "Page has H1 heading",
+        "Heading structure logical (H1, H2, H3)",
+        "Screen reader can navigate by headings",
+        "WCAG 1.3.1, 2.4.6 compliant"
+      ],
+      "postconditions": "Heading structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Search bar has proper label",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Locate search input field",
+        "3. Verify label associated with input",
+        "4. Verify placeholder text present",
+        "5. Verify label announced by screen reader"
+      ],
+      "expectedResults": [
+        "Search input has programmatic label",
+        "Placeholder text: 'Search articles, FAQs, or guides…'",
+        "Label accessible to screen readers",
+        "WCAG 3.3.2, 4.1.2 compliant"
+      ],
+      "postconditions": "Search bar label verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Search bar keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Search input and button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Tab to search input",
+        "2. Verify focus indicator visible",
+        "3. Type search query",
+        "4. Tab to Search button",
+        "5. Press Enter to submit",
+        "6. Verify results displayed"
+      ],
+      "expectedResults": [
+        "Search input keyboard accessible",
+        "Search button keyboard accessible",
+        "Enter key submits search",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Search results displayed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Suggested keywords accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Search suggestions list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page with search input focused",
+      "steps": [
+        "1. Focus on search input",
+        "2. Type partial query",
+        "3. Verify suggestions appear below",
+        "4. Press Down arrow to navigate suggestions",
+        "5. Verify focus moves to suggestions",
+        "6. Press Enter to select suggestion"
+      ],
+      "expectedResults": [
+        "Suggestions appear in accessible list",
+        "Suggestions keyboard navigable",
+        "Arrow keys navigate suggestions",
+        "Enter selects suggestion",
+        "WCAG 4.1.2, 2.1.1 compliant"
+      ],
+      "postconditions": "Suggestion selected and applied",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Category tabs keyboard navigable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Category tabs (Categories, FAQs, Contact)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Navigate to Help & Resources page",
+        "2. Tab to Categories tab",
+        "3. Verify focus indicator visible",
+        "4. Tab to FAQs tab",
+        "5. Tab to Contact tab",
+        "6. Verify logical tab order"
+      ],
+      "expectedResults": [
+        "All tabs keyboard accessible",
+        "Tab order logical (Categories, FAQs, Contact)",
+        "Focus indicator visible on each tab",
+        "WCAG 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Tab navigation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Tabs have proper ARIA roles",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Tab structure and ARIA attributes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Inspect tab structure",
+        "2. Verify tablist role present",
+        "3. Verify each tab has role='tab'",
+        "4. Verify aria-selected on active tab",
+        "5. Verify tabpanel role on content area"
+      ],
+      "expectedResults": [
+        "Tabs have role='tablist'",
+        "Each tab has role='tab'",
+        "aria-selected reflects active tab",
+        "Content has role='tabpanel'",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "ARIA roles verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Arrow key navigation works",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Tab arrow key navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page with focus on Categories tab",
+      "steps": [
+        "1. Focus on Categories tab",
+        "2. Press Right arrow",
+        "3. Verify focus moves to FAQs tab",
+        "4. Verify content updates",
+        "5. Press Left arrow",
+        "6. Verify focus returns to Categories tab"
+      ],
+      "expectedResults": [
+        "Arrow keys navigate between tabs",
+        "Left/Right arrows move focus",
+        "Tab selection updates content",
+        "Content change announced to screen readers",
+        "WCAG 2.1.1, 4.1.3 compliant"
+      ],
+      "postconditions": "Arrow key navigation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Category cards keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Category cards",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Categories tab active",
+      "steps": [
+        "1. Navigate to Categories tab",
+        "2. Tab through category cards",
+        "3. Verify focus indicator on each card",
+        "4. Press Enter on Best Practices card",
+        "5. Verify articles list expands"
+      ],
+      "expectedResults": [
+        "Category cards keyboard accessible",
+        "All cards reachable via Tab",
+        "Focus indicator visible",
+        "Enter activates card",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Category card expanded",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Category card content accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Category card content (icons, names, counts)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Categories tab active",
+      "steps": [
+        "1. Navigate to category card",
+        "2. Verify icon has alt text or aria-label",
+        "3. Verify category name announced",
+        "4. Verify article count announced",
+        "5. Verify complete card information accessible"
+      ],
+      "expectedResults": [
+        "Icons have text alternatives",
+        "Category name announced",
+        "Article count announced",
+        "Screen reader provides complete information",
+        "WCAG 1.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Card content accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Article list semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Article list within categories",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "Category expanded showing articles",
+      "steps": [
+        "1. Expand category to show articles",
+        "2. Verify articles in list structure",
+        "3. Verify article title is heading or link",
+        "4. Verify summary text accessible",
+        "5. Verify publish date and read time accessible"
+      ],
+      "expectedResults": [
+        "Articles displayed in semantic list",
+        "Each article has proper structure",
+        "Title, summary, date, read time all accessible",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Article list structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Article expansion accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Category expand/collapse control",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Categories tab active",
+      "steps": [
+        "1. Tab to category card",
+        "2. Verify aria-expanded='false' initially",
+        "3. Press Enter to expand",
+        "4. Verify aria-expanded='true'",
+        "5. Verify expansion announced to screen readers",
+        "6. Press Enter to collapse"
+      ],
+      "expectedResults": [
+        "Expand/collapse button keyboard accessible",
+        "aria-expanded reflects state",
+        "State change announced",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "Expansion accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "FAQ items keyboard navigable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "FAQ items list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, FAQs tab active",
+      "steps": [
+        "1. Navigate to FAQs tab",
+        "2. Tab through FAQ categories",
+        "3. Verify focus indicator on each item",
+        "4. Verify logical tab order"
+      ],
+      "expectedResults": [
+        "All FAQ items keyboard accessible",
+        "Tab order follows visual layout",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "FAQ keyboard navigation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "FAQ accordion structure proper",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "FAQ accordion pattern",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, FAQs tab active",
+      "steps": [
+        "1. Inspect FAQ item structure",
+        "2. Verify button role on question",
+        "3. Verify aria-expanded attribute",
+        "4. Verify aria-controls links to answer",
+        "5. Verify answer has aria-labelledby"
+      ],
+      "expectedResults": [
+        "FAQ items use accordion pattern",
+        "Each item has button with aria-expanded",
+        "Content has aria-labelledby",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "FAQ accordion structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "FAQ expand/collapse accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "FAQ expand/collapse interaction",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, FAQs tab active",
+      "steps": [
+        "1. Tab to FAQ item",
+        "2. Verify aria-expanded='false'",
+        "3. Press Enter to expand",
+        "4. Verify aria-expanded='true'",
+        "5. Verify answer content visible",
+        "6. Verify expansion announced"
+      ],
+      "expectedResults": [
+        "Enter/Space expands FAQ item",
+        "aria-expanded updates correctly",
+        "Expansion announced to screen readers",
+        "WCAG 2.1.1, 4.1.3 compliant"
+      ],
+      "postconditions": "FAQ expand/collapse verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "FAQ categories accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "FAQ category labels",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, FAQs tab active",
+      "steps": [
+        "1. Navigate to FAQs tab",
+        "2. Verify Account & Registration category",
+        "3. Verify Product Listings category",
+        "4. Verify GenAI Assistance category",
+        "5. Verify Review and Ratings category",
+        "6. Verify Technical Support category"
+      ],
+      "expectedResults": [
+        "All FAQ categories accessible",
+        "Categories properly labeled",
+        "Screen reader announces category names",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "FAQ categories accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Contact options keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Contact tab options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Contact tab active",
+      "steps": [
+        "1. Navigate to Contact tab",
+        "2. Tab through contact options",
+        "3. Verify Email Support link accessible",
+        "4. Verify Phone Support link accessible",
+        "5. Verify focus indicators visible"
+      ],
+      "expectedResults": [
+        "All contact options keyboard accessible",
+        "Email and phone links functional",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "postconditions": "Contact options keyboard access verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Email support link accessible",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "componentElement": "Email support mailto link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Contact tab active",
+      "steps": [
+        "1. Navigate to Email Support",
+        "2. Verify email address is link",
+        "3. Verify link has accessible name",
+        "4. Verify mailto: protocol used",
+        "5. Press Enter to activate link"
+      ],
+      "expectedResults": [
+        "Email address has mailto link",
+        "Link has descriptive text",
+        "Screen reader announces link purpose",
+        "WCAG 2.4.4, 4.1.2 compliant"
+      ],
+      "postconditions": "Email link accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Phone support accessible",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "componentElement": "Phone support tel link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page, Contact tab active",
+      "steps": [
+        "1. Navigate to Phone Support",
+        "2. Verify phone number is link",
+        "3. Verify tel: protocol used",
+        "4. Verify working hours displayed",
+        "5. Verify all information announced"
+      ],
+      "expectedResults": [
+        "Phone number has tel link",
+        "Working hours clearly displayed",
+        "All information accessible to screen readers",
+        "WCAG 2.4.4, 4.1.2 compliant"
+      ],
+      "postconditions": "Phone support accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Search results semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Search results list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User has performed a search on Help & Resources page",
+      "steps": [
+        "1. Perform search query",
+        "2. Verify results in list structure",
+        "3. Verify result count announced",
+        "4. Verify each result has title and category"
+      ],
+      "expectedResults": [
+        "Results displayed in semantic list",
+        "Each result has proper structure",
+        "Result count announced",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Search results structure verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Result categories accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Search result category groupings",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User has performed a search with results displayed",
+      "steps": [
+        "1. Perform search",
+        "2. Verify results grouped by category",
+        "3. Verify category headings present",
+        "4. Verify categories announced"
+      ],
+      "expectedResults": [
+        "Results categorized as FAQs, Guides, Articles",
+        "Categories clearly labeled",
+        "Screen reader announces categories",
+        "WCAG 1.3.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Result categories accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Search filters accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Search filter controls",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User has performed a search with results displayed",
+      "steps": [
+        "1. View search results",
+        "2. Tab to filter controls",
+        "3. Verify filters keyboard accessible",
+        "4. Apply filter",
+        "5. Verify results update announced"
+      ],
+      "expectedResults": [
+        "Filter controls keyboard accessible",
+        "Sort options keyboard accessible",
+        "Changes announced to screen readers",
+        "WCAG 2.1.1, 4.1.3 compliant"
+      ],
+      "postconditions": "Search filters accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "New content notifications accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "New content notification",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page and new content is available",
+      "steps": [
+        "1. Receive new guide notification",
+        "2. Verify notification announced",
+        "3. Verify notification text clear",
+        "4. Tab to notification link",
+        "5. Press Enter to open new guide"
+      ],
+      "expectedResults": [
+        "New content notifications announced",
+        "Notification has aria-live region",
+        "Link to new resource accessible",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Notification accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Notification links functional",
+      "wcagCriterion": "2.4.4 Link Purpose",
+      "componentElement": "Notification action links",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "Notification is displayed on Help & Resources page",
+      "steps": [
+        "1. Navigate to notification",
+        "2. Tab to notification link",
+        "3. Verify link accessible name",
+        "4. Press Enter to activate",
+        "5. Verify correct resource opens"
+      ],
+      "expectedResults": [
+        "Notification link keyboard accessible",
+        "Link has descriptive text",
+        "Opens correct resource",
+        "WCAG 2.4.4, 2.1.1 compliant"
+      ],
+      "postconditions": "Notification link functionality verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Feedback buttons accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Helpful and Needs Improvement feedback buttons",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing an article or FAQ on Help & Resources page",
+      "steps": [
+        "1. Navigate to article or FAQ",
+        "2. Tab to Helpful button",
+        "3. Verify accessible name (not just emoji)",
+        "4. Tab to Needs Improvement button",
+        "5. Verify accessible name",
+        "6. Press Enter to submit feedback"
+      ],
+      "expectedResults": [
+        "Helpful and Needs Improvement buttons keyboard accessible",
+        "Buttons have accessible names",
+        "Not relying on emoji alone",
+        "WCAG 2.1.1, 4.1.2, 1.4.1 compliant"
+      ],
+      "postconditions": "Feedback buttons accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Feedback submission accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Feedback submission confirmation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing an article or FAQ with feedback buttons",
+      "steps": [
+        "1. Click Helpful button",
+        "2. Verify submission announced",
+        "3. Verify success message displayed",
+        "4. Verify button state reflects submission"
+      ],
+      "expectedResults": [
+        "Feedback submission announced",
+        "Success message in aria-live region",
+        "Button state updates appropriately",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Feedback submission accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "No results error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "No results error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Search for non-existent term",
+        "2. Verify no results message displayed",
+        "3. Verify message announced",
+        "4. Verify contact support link present",
+        "5. Verify link keyboard accessible"
+      ],
+      "expectedResults": [
+        "No results message: 'No results found. Please try a different keyword or contact support.'",
+        "Message announced to screen readers",
+        "Contact support link accessible",
+        "WCAG 3.3.1, 4.1.3 compliant"
+      ],
+      "postconditions": "No results error accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "System error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "System error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "Help Center system is experiencing an error",
+      "steps": [
+        "1. Simulate system failure",
+        "2. Verify error message displayed",
+        "3. Verify error announced",
+        "4. Verify error has sufficient contrast"
+      ],
+      "expectedResults": [
+        "Error message: 'Help Center is temporarily unavailable. Please check back later.'",
+        "Error announced via aria-live",
+        "Error meets contrast requirements",
+        "WCAG 3.3.1, 4.1.3, 1.4.3 compliant"
+      ],
+      "postconditions": "System error accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Images have alt text",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Article images",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing articles on Help & Resources page",
+      "steps": [
+        "1. Navigate through articles",
+        "2. Inspect all images",
+        "3. Verify alt attributes present",
+        "4. Verify alt text descriptive",
+        "5. Verify decorative images have alt=''"
+      ],
+      "expectedResults": [
+        "All images have alt text",
+        "Alt text descriptive and meaningful",
+        "Decorative images have empty alt",
+        "WCAG 1.1.1 compliant"
+      ],
+      "postconditions": "Image alt text verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Diagrams accessible",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Article diagrams",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing an article with diagrams",
+      "steps": [
+        "1. Navigate to article with diagram",
+        "2. Verify diagram has alt text",
+        "3. Verify detailed description available",
+        "4. Verify description accessible to screen readers"
+      ],
+      "expectedResults": [
+        "Diagrams have detailed alt text or longdesc",
+        "Complex images have text alternative",
+        "Screen reader can access full description",
+        "WCAG 1.1.1 compliant"
+      ],
+      "postconditions": "Diagram accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Videos accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Article videos and controls",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing an article with video content",
+      "steps": [
+        "1. Navigate to article with video",
+        "2. Verify captions available",
+        "3. Verify transcript link present",
+        "4. Tab to video controls",
+        "5. Verify controls keyboard accessible"
+      ],
+      "expectedResults": [
+        "Videos have captions",
+        "Transcripts available",
+        "Video controls keyboard accessible",
+        "WCAG 1.2.2, 2.1.1 compliant"
+      ],
+      "postconditions": "Video accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Complete workflow keyboard only",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Full page keyboard navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is logged in as AP user",
+      "steps": [
+        "1. Navigate to Help & Resources using keyboard",
+        "2. Tab through all interactive elements",
+        "3. Verify no keyboard traps",
+        "4. Complete search using keyboard",
+        "5. Navigate tabs using keyboard",
+        "6. Expand/collapse items using keyboard"
+      ],
+      "expectedResults": [
+        "Entire page keyboard navigable",
+        "No keyboard traps",
+        "Focus indicators always visible",
+        "WCAG 2.1.1, 2.1.2 compliant"
+      ],
+      "postconditions": "Complete keyboard workflow verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Skip links functional",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Skip navigation link",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Tab from page top",
+        "2. Verify skip link appears",
+        "3. Activate skip link",
+        "4. Verify focus moves to main content"
+      ],
+      "expectedResults": [
+        "Skip link visible on focus",
+        "Skip link bypasses navigation",
+        "Focus moves to main content",
+        "WCAG 2.4.1 compliant"
+      ],
+      "postconditions": "Skip link functionality verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Color contrast sufficient",
+      "wcagCriterion": "1.4.3 Contrast",
+      "componentElement": "Page text and UI components",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Check text contrast throughout page",
+        "2. Check button contrast",
+        "3. Check tab contrast",
+        "4. Check link contrast",
+        "5. Verify all meet requirements"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Large text meets 3:1 contrast",
+        "UI components meet 3:1 contrast",
+        "WCAG 1.4.3, 1.4.11 compliant"
+      ],
+      "postconditions": "Color contrast verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Page usable at 200% zoom",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Page layout at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Navigate Help & Resources page",
+        "3. Verify all content visible",
+        "4. Verify no horizontal scrolling",
+        "5. Verify all features usable"
+      ],
+      "expectedResults": [
+        "All content readable at 200% zoom",
+        "No content cut off",
+        "No horizontal scrolling",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Not relying on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Visual indicators and status elements",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is on Help & Resources page",
+      "steps": [
+        "1. Review all visual indicators",
+        "2. Verify icons have text labels",
+        "3. Verify status uses text",
+        "4. Verify links distinguishable without color"
+      ],
+      "expectedResults": [
+        "Information not conveyed by color alone",
+        "Icons have text labels",
+        "Status uses text and color",
+        "WCAG 1.4.1 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Touch targets adequate size",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Mobile touch targets",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing Help & Resources on mobile viewport (375x667)",
+      "steps": [
+        "1. View on mobile viewport (375x667)",
+        "2. Measure tab button sizes",
+        "3. Measure category card sizes",
+        "4. Measure FAQ item sizes",
+        "5. Verify all at least 44x44 CSS pixels"
+      ],
+      "expectedResults": [
+        "All touch targets at least 44x44px",
+        "Adequate spacing between targets",
+        "WCAG 2.5.5 compliant"
+      ],
+      "postconditions": "Touch target sizes verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Mobile layout accessible",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Mobile responsive layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "User is viewing Help & Resources on mobile viewport",
+      "steps": [
+        "1. View on mobile viewport",
+        "2. Verify search bar usable",
+        "3. Verify tabs accessible",
+        "4. Verify content readable",
+        "5. Verify no horizontal scroll required"
+      ],
+      "expectedResults": [
+        "Layout adapts to mobile",
+        "All features accessible on mobile",
+        "No horizontal scrolling",
+        "WCAG 1.4.10 compliant"
+      ],
+      "postconditions": "Mobile layout accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "NVDA navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page NVDA screen reader compatibility",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "NVDA screen reader is enabled",
+      "steps": [
+        "1. Enable NVDA screen reader",
+        "2. Navigate to Help & Resources",
+        "3. Use heading navigation (H key)",
+        "4. Use button navigation (B key)",
+        "5. Use landmark navigation",
+        "6. Verify all content announced"
+      ],
+      "expectedResults": [
+        "All content accessible via NVDA",
+        "Headings, forms, buttons announced",
+        "Navigation landmarks work",
+        "WCAG 4.1.2, 1.3.1 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "JAWS navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page JAWS screen reader compatibility",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "JAWS screen reader is enabled",
+      "steps": [
+        "1. Enable JAWS screen reader",
+        "2. Navigate Help & Resources page",
+        "3. Use virtual cursor",
+        "4. Navigate tabs",
+        "5. Expand/collapse items",
+        "6. Verify all interactions accessible"
+      ],
+      "expectedResults": [
+        "All content accessible via JAWS",
+        "Tab navigation works correctly",
+        "Dynamic updates announced",
+        "WCAG 4.1.2, 4.1.3 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_041",
+      "title": "VoiceOver navigation successful",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Full page VoiceOver screen reader compatibility",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-33",
+      "preconditions": "VoiceOver is enabled on macOS/iOS",
+      "steps": [
+        "1. Enable VoiceOver on macOS/iOS",
+        "2. Navigate Help & Resources page",
+        "3. Use rotor to navigate headings",
+        "4. Use rotor to navigate links",
+        "5. Verify all content announced"
+      ],
+      "expectedResults": [
+        "All content accessible via VoiceOver",
+        "Rotor navigation works",
+        "Touch gestures work on iOS",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "VoiceOver compatibility verified",
+      "testResult": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "jiraStory": "SCRUM-487",
+  "title": "Admin Add Vendor Manually - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for Admin Add Vendor Manually feature covering WCAG 2.1 AA compliance for Add Vendor modal form with multiple input fields, mandatory field validation, duplicate detection warning, unsaved changes warning, and form submission.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Add Vendor button keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Add Vendor button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Admin is on Vendor Management page",
+      "steps": [
+        "1. Tab to Add Vendor button",
+        "2. Verify focus indicator visible with 3:1 contrast",
+        "3. Verify button has accessible name ('Add Vendor')",
+        "4. Press Enter to activate",
+        "5. Verify Add Vendor modal opens"
+      ],
+      "expectedResults": [
+        "Button reachable via Tab",
+        "Focus indicator visible",
+        "Button has accessible name",
+        "Enter/Space activates button",
+        "Modal opens on activation",
+        "WCAG 2.1.1, 4.1.2, 2.4.7 compliant"
+      ],
+      "postconditions": "Add Vendor modal is open",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Add Vendor modal has role='dialog' and aria-modal",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Add Vendor modal dialog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Verify modal has role='dialog'",
+        "2. Verify aria-modal='true'",
+        "3. Verify modal has accessible name (aria-labelledby or aria-label)",
+        "4. Verify focus moves to modal on open",
+        "5. Use screen reader to verify dialog announced"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog'",
+        "aria-modal='true' present",
+        "Modal has accessible name",
+        "Focus moves to modal",
+        "Screen reader announces dialog",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "Modal ARIA attributes verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Modal focus trap works correctly",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Modal focus management",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Tab through all elements in modal",
+        "2. Verify focus cycles within modal only",
+        "3. Verify background content not reachable via Tab",
+        "4. Verify Escape closes modal",
+        "5. Verify focus returns to Add Vendor button on close"
+      ],
+      "expectedResults": [
+        "Focus trapped within modal",
+        "Background not reachable",
+        "Escape closes modal",
+        "Focus returns to trigger",
+        "WCAG 2.1.2 compliant"
+      ],
+      "postconditions": "Focus trap verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "All form fields have proper labels",
+      "wcagCriterion": "1.3.1 Info and Relationships, 4.1.2 Name Role Value",
+      "componentElement": "All form fields (name, type, location, email, phone, website, category, GST, contact person, role, compliance)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Verify Vendor Name field has visible label",
+        "2. Verify Business Type dropdown has label",
+        "3. Verify Location & Address field has label",
+        "4. Verify Contact Email field has label",
+        "5. Verify Phone field has label",
+        "6. Verify Website field has label",
+        "7. Verify Category dropdown has label",
+        "8. Verify GST Number field has label",
+        "9. Verify Contact Person field has label",
+        "10. Verify Role field has label",
+        "11. Verify Compliance flags have labels",
+        "12. Verify all labels programmatically associated (for/id or aria-labelledby)"
+      ],
+      "expectedResults": [
+        "All fields have visible labels",
+        "All labels programmatically associated",
+        "Screen reader announces each label on focus",
+        "Placeholder not sole label",
+        "WCAG 1.3.1, 4.1.2, 3.3.2 compliant"
+      ],
+      "postconditions": "All form field labels verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Mandatory fields indicated accessibly",
+      "wcagCriterion": "3.3.2 Labels or Instructions",
+      "componentElement": "Required field indicators",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Verify mandatory fields have visual indicator (asterisk or 'required')",
+        "2. Verify aria-required='true' or required attribute on mandatory fields",
+        "3. Verify screen reader announces 'required' on focus",
+        "4. Verify not relying on color alone for required indication",
+        "5. Verify legend or instruction explains asterisk meaning"
+      ],
+      "expectedResults": [
+        "Mandatory fields have visual indicator",
+        "aria-required='true' or required present",
+        "Screen reader announces required",
+        "Not relying on color alone",
+        "WCAG 3.3.2, 1.4.1 compliant"
+      ],
+      "postconditions": "Required field indicators verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Form keyboard navigation logical",
+      "wcagCriterion": "2.1.1 Keyboard, 2.4.3 Focus Order",
+      "componentElement": "Form tab order",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Tab through all form fields",
+        "2. Verify tab order follows visual layout (top to bottom, left to right)",
+        "3. Verify all fields reachable via Tab",
+        "4. Verify dropdowns keyboard accessible (Arrow keys)",
+        "5. Verify checkboxes keyboard accessible (Space to toggle)",
+        "6. Verify Submit and Cancel buttons reachable"
+      ],
+      "expectedResults": [
+        "Tab order follows visual layout",
+        "All fields reachable via Tab",
+        "Dropdowns navigable with Arrow keys",
+        "Checkboxes toggle with Space",
+        "Submit/Cancel buttons reachable",
+        "WCAG 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Form keyboard navigation verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Focus indicators visible on all form elements",
+      "wcagCriterion": "2.4.7 Focus Visible, 1.4.11 Non-text Contrast",
+      "componentElement": "Focus indicators on all inputs, dropdowns, buttons",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Tab through each form element",
+        "2. Verify focus indicator visible on each",
+        "3. Measure focus indicator contrast (3:1 minimum)",
+        "4. Verify focus not obscured by other elements"
+      ],
+      "expectedResults": [
+        "Focus indicator visible on all elements",
+        "Focus indicators have 3:1 contrast",
+        "Focus not obscured",
+        "WCAG 2.4.7, 1.4.11 compliant"
+      ],
+      "postconditions": "Focus indicators verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Email field has autocomplete attribute",
+      "wcagCriterion": "1.3.5 Identify Input Purpose",
+      "componentElement": "Contact Email input",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Inspect Contact Email field",
+        "2. Verify autocomplete='email' present",
+        "3. Inspect Phone field — verify autocomplete='tel'",
+        "4. Inspect Website field — verify autocomplete='url'"
+      ],
+      "expectedResults": [
+        "Email has autocomplete='email'",
+        "Phone has autocomplete='tel'",
+        "Website has autocomplete='url'",
+        "WCAG 1.3.5 compliant"
+      ],
+      "postconditions": "Autocomplete attributes verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Validation errors accessible on submission",
+      "wcagCriterion": "3.3.1 Error Identification, 3.3.3 Error Suggestion",
+      "componentElement": "Form validation error messages",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open with empty mandatory fields",
+      "steps": [
+        "1. Submit form with empty mandatory fields",
+        "2. Verify error messages appear for each invalid field",
+        "3. Verify errors have role='alert' or aria-live",
+        "4. Verify errors linked to fields via aria-describedby",
+        "5. Verify aria-invalid='true' on invalid fields",
+        "6. Verify error text specific and suggests correction",
+        "7. Verify error text has 4.5:1 contrast",
+        "8. Verify focus moves to first error or error summary"
+      ],
+      "expectedResults": [
+        "Error messages appear for invalid fields",
+        "Errors announced by screen reader",
+        "Errors linked to fields via aria-describedby",
+        "aria-invalid='true' on invalid fields",
+        "Error text specific and helpful",
+        "Error text has 4.5:1 contrast",
+        "Focus managed to first error",
+        "WCAG 3.3.1, 3.3.3, 1.4.3 compliant"
+      ],
+      "postconditions": "Validation error accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Invalid email format error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Email validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Enter invalid email format (e.g., 'vendor@')",
+        "2. Trigger validation (blur or submit)",
+        "3. Verify inline error appears",
+        "4. Verify error linked to email field",
+        "5. Verify error suggests valid format"
+      ],
+      "expectedResults": [
+        "Inline error for invalid email",
+        "Error linked via aria-describedby",
+        "Error suggests correction",
+        "Screen reader announces error",
+        "WCAG 3.3.1, 3.3.3 compliant"
+      ],
+      "postconditions": "Email validation error verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Invalid GST format error accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "GST validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Enter invalid GST number",
+        "2. Trigger validation",
+        "3. Verify inline error appears",
+        "4. Verify error linked to GST field",
+        "5. Verify error suggests valid format"
+      ],
+      "expectedResults": [
+        "Inline error for invalid GST",
+        "Error linked via aria-describedby",
+        "Error suggests correction",
+        "Screen reader announces error",
+        "WCAG 3.3.1, 3.3.3 compliant"
+      ],
+      "postconditions": "GST validation error verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Duplicate vendor warning accessible",
+      "wcagCriterion": "4.1.3 Status Messages, 3.3.1 Error Identification",
+      "componentElement": "Duplicate vendor detection warning",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Admin enters contact/GST that matches existing vendor",
+      "steps": [
+        "1. Enter phone number or GST matching existing vendor",
+        "2. Verify duplicate warning appears",
+        "3. Verify warning has role='alert' or aria-live",
+        "4. Verify warning announced by screen reader",
+        "5. Verify warning text clear (e.g., 'Vendor with this GST already exists')",
+        "6. Verify warning has 4.5:1 contrast"
+      ],
+      "expectedResults": [
+        "Duplicate warning displayed",
+        "Warning has role='alert' or aria-live",
+        "Screen reader announces warning",
+        "Warning text clear and specific",
+        "Warning has 4.5:1 contrast",
+        "WCAG 4.1.3, 3.3.1, 1.4.3 compliant"
+      ],
+      "postconditions": "Duplicate warning accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Unsaved changes warning on modal close",
+      "wcagCriterion": "4.1.2 Name Role Value, 2.1.1 Keyboard",
+      "componentElement": "Unsaved changes confirmation dialog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Admin has entered data and attempts to close modal",
+      "steps": [
+        "1. Fill in some form fields",
+        "2. Press Escape or click Close button",
+        "3. Verify unsaved changes warning appears",
+        "4. Verify warning has role='alertdialog'",
+        "5. Verify warning has accessible name",
+        "6. Verify Discard and Cancel buttons keyboard accessible",
+        "7. Verify focus moves to warning dialog",
+        "8. Verify Escape closes warning (returns to form)"
+      ],
+      "expectedResults": [
+        "Unsaved changes warning appears",
+        "Warning has role='alertdialog'",
+        "Warning has accessible name",
+        "Discard/Cancel buttons keyboard accessible",
+        "Focus moves to warning",
+        "Escape returns to form",
+        "WCAG 4.1.2, 2.1.1, 2.4.3 compliant"
+      ],
+      "postconditions": "Unsaved changes warning accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Successful submission notification accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Vendor added success message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Admin submits valid vendor form",
+      "steps": [
+        "1. Fill all mandatory fields with valid data",
+        "2. Submit form",
+        "3. Verify success message appears",
+        "4. Verify message has role='status' or aria-live='polite'",
+        "5. Verify message announced by screen reader",
+        "6. Verify modal closes after success",
+        "7. Verify new vendor appears in Active list"
+      ],
+      "expectedResults": [
+        "Success message displayed",
+        "Message has role='status' or aria-live",
+        "Screen reader announces success",
+        "Modal closes after success",
+        "New vendor in Active list",
+        "WCAG 4.1.3 compliant"
+      ],
+      "postconditions": "Successful submission verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Compliance checkboxes accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Compliance flag checkboxes (ISO, registration certificate)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Tab to compliance checkboxes",
+        "2. Verify each checkbox has accessible label",
+        "3. Verify Space toggles checkbox",
+        "4. Verify checked/unchecked state announced",
+        "5. Verify focus indicator visible on each"
+      ],
+      "expectedResults": [
+        "Checkboxes keyboard accessible",
+        "Each has descriptive label",
+        "Space toggles state",
+        "State change announced",
+        "Focus indicator visible",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Compliance checkboxes accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Business Type dropdown accessible",
+      "wcagCriterion": "2.1.1 Keyboard, 4.1.2 Name Role Value",
+      "componentElement": "Business Type dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Tab to Business Type dropdown",
+        "2. Verify label associated",
+        "3. Press Enter/Space to open",
+        "4. Use Arrow keys to navigate options",
+        "5. Press Enter to select",
+        "6. Verify selected value announced"
+      ],
+      "expectedResults": [
+        "Dropdown keyboard accessible",
+        "Label associated",
+        "Arrow keys navigate options",
+        "Enter selects option",
+        "Selected value announced",
+        "WCAG 2.1.1, 4.1.2 compliant"
+      ],
+      "postconditions": "Business Type dropdown accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All text in Add Vendor modal",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Measure heading text contrast",
+        "2. Measure label text contrast",
+        "3. Measure input text contrast",
+        "4. Measure placeholder text contrast",
+        "5. Measure error message contrast",
+        "6. Measure button text contrast"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast minimum",
+        "Placeholder text has 4.5:1 contrast",
+        "Error text has 4.5:1 contrast",
+        "WCAG 1.4.3 compliant"
+      ],
+      "postconditions": "Text contrast verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Modal usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text, 1.4.10 Reflow",
+      "componentElement": "Add Vendor modal at 200% zoom",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open",
+      "steps": [
+        "1. Set browser zoom to 200%",
+        "2. Verify all form fields visible",
+        "3. Verify modal scrollable if content overflows",
+        "4. Verify no horizontal scrolling",
+        "5. Verify no text truncation",
+        "6. Verify form still functional"
+      ],
+      "expectedResults": [
+        "All fields visible at 200%",
+        "Modal scrollable if needed",
+        "No horizontal scrolling",
+        "No text truncation",
+        "Form functional at 200%",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "postconditions": "200% zoom usability verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "NVDA screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Add Vendor modal with NVDA",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "NVDA enabled, Admin on Vendor Management page",
+      "steps": [
+        "1. Open Add Vendor modal — verify dialog announced",
+        "2. Navigate form fields — verify all labels announced",
+        "3. Fill fields — verify input works in forms mode",
+        "4. Submit with errors — verify errors announced",
+        "5. Submit successfully — verify success announced",
+        "6. Close modal — verify focus return announced"
+      ],
+      "expectedResults": [
+        "Dialog announced on open",
+        "All labels announced",
+        "Forms mode works correctly",
+        "Errors announced",
+        "Success announced",
+        "Focus return announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "NVDA compatibility verified",
+      "testResult": "FAIL"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "JAWS screen reader compatibility",
+      "wcagCriterion": "4.1.2 Name Role Value",
+      "componentElement": "Add Vendor modal with JAWS",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "JAWS enabled, Admin on Vendor Management page",
+      "steps": [
+        "1. Open Add Vendor modal — verify dialog announced",
+        "2. Enter forms mode",
+        "3. Fill all fields",
+        "4. Navigate dropdowns and checkboxes",
+        "5. Submit form",
+        "6. Verify all interactions accessible"
+      ],
+      "expectedResults": [
+        "Dialog announced",
+        "Forms mode works",
+        "All fields fillable",
+        "Dropdowns/checkboxes accessible",
+        "Submission works",
+        "WCAG 4.1.2 compliant"
+      ],
+      "postconditions": "JAWS compatibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Mobile viewport accessible",
+      "wcagCriterion": "1.4.10 Reflow, 2.5.5 Target Size",
+      "componentElement": "Add Vendor modal on mobile (375x667)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Admin is on mobile viewport",
+      "steps": [
+        "1. Set viewport to mobile (375x667)",
+        "2. Open Add Vendor modal",
+        "3. Verify modal adapts to viewport",
+        "4. Verify all fields usable",
+        "5. Verify touch targets at least 44x44px",
+        "6. Verify no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "Modal adapts to mobile",
+        "All fields usable",
+        "Touch targets meet 44x44px",
+        "No horizontal scrolling",
+        "WCAG 1.4.10, 2.5.5 compliant"
+      ],
+      "postconditions": "Mobile accessibility verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Information not conveyed by color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Required indicators, errors, warnings",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-487",
+      "preconditions": "Add Vendor modal is open with various states",
+      "steps": [
+        "1. Verify required fields have text indicator (asterisk), not just color",
+        "2. Verify errors have text + icon, not just red border",
+        "3. Verify duplicate warning has text, not just color",
+        "4. Test in grayscale mode"
+      ],
+      "expectedResults": [
+        "Required fields have text indicator",
+        "Errors have text labels",
+        "Warnings have text labels",
+        "All distinguishable in grayscale",
+        "WCAG 1.4.1 compliant"
+      ],
+      "postconditions": "Color independence verified",
+      "testResult": "PASS"
+    }
+  ]
+}

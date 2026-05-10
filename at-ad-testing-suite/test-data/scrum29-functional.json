@@ -1,0 +1,40 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "vendor23@mailto.plus",
+    "password": "12345678"
+  },
+  "secondVendor": {
+    "email": "nahibix442@bigonla.com",
+    "password": "Aaditya@145"
+  },
+  "pwdUser": {
+    "email": "najytulo@fxzig.com",
+    "password": "Aaditya@14",
+    "url": "https://qa-atad.swarajability.org/"
+  },
+  "admin": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "interestExpressedUrl": "/partner/interest-expressed",
+  "expected": {
+    "interestExpressedTabText": "Interest Expressed",
+    "pageUrlPattern": "interest-expressed",
+    "emptyStateMessage": "No interests recorded yet for your products",
+    "dataErrorMessage": "Unable to load interest data at this time. Please try again later"
+  },
+  "searchTerms": {
+    "name": "John",
+    "location": "Mumbai",
+    "product": "Smart Cane"
+  },
+  "filters": {
+    "state": "Maharashtra",
+    "disabilityType": "Visual Impairment"
+  },
+  "sortOptions": {
+    "newestFirst": "Newest First",
+    "oldestFirst": "Oldest First"
+  }
+}
