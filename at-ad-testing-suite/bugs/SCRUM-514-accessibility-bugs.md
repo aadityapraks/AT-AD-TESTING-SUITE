@@ -33,6 +33,9 @@ All fields should have `<label for="fieldId">` or `aria-label`.
 **WCAG Reference:** 1.3.1 Info and Relationships (Level A), 4.1.2 Name, Role, Value (Level A)
 **Impact:** Screen reader users cannot identify the purpose of 7 form fields.
 
+**Screenshot:**
+![Fields without labels](screenshots/SCRUM-514-bug1-fields-no-labels.png)
+
 **Suggested Fix:**
 Add `<label for="fieldId">` elements or `aria-label` attributes to all unlabeled inputs.
 
@@ -81,6 +84,9 @@ No label, no aria-label. Screen reader announces: "combobox".
 **Axe Rule:** select-name
 **Impact:** Screen reader users cannot identify what these dropdowns are for.
 
+**Screenshot:**
+![Select dropdowns without names](screenshots/SCRUM-514-bug2-select-no-name.png)
+
 **Suggested Fix:**
 Add `<label for="...">` or `aria-label` to each select element.
 
@@ -103,6 +109,9 @@ Add `<label for="...">` or `aria-label` to each select element.
 The Add Product form has mandatory fields but none have `required` or `aria-required="true"`. Screen readers cannot announce which fields are mandatory.
 
 **WCAG Reference:** 3.3.2 Labels or Instructions (Level A)
+
+**Screenshot:**
+![Form without required attributes](screenshots/SCRUM-514-bug3-no-required-attrs.png)
 
 **Suggested Fix:**
 Add `aria-required="true"` to all mandatory fields.
@@ -130,3 +139,4 @@ The "Select disability type first" placeholder label has insufficient color cont
 
 **Suggested Fix:**
 Darken the placeholder text color to achieve 4.5:1 contrast.
+
