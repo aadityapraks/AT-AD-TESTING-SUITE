@@ -1,4 +1,29 @@
-# IDE config files with secrets
+# Amazon Q (local-only configs)
 .amazonq/
-.kiro/
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+tests/auth/.auth/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Editor / OS
 .vscode/
+.DS_Store
+Thumbs.db
+
+# Local IDE settings with secrets
+.kiro/settings/mcp.json
+.amazonq/
