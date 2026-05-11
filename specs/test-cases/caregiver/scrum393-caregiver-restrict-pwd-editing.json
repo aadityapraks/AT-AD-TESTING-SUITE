@@ -1,0 +1,328 @@
+{
+  "jiraStory": "SCRUM-393",
+  "title": "Caregiver - Restrict Editing for PwD Profiles Pulled from SwarajAbility (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-393: PwD profiles sourced from SwarajAbility are read-only for caregivers with 'Pre verified' label, no Edit action, tooltip explaining status. Caregiver can still view and use profile for inquiries/recommendations.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM393_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Profile page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_002",
+      "title": "PwD management section accessible",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "On profile page.",
+        "Verify PwD management section or list visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "PwD management section accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_003",
+      "title": "PwD profiles list is visible",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Navigate to PwD management.",
+        "Verify list of PwD profiles visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwDs linked.",
+      "expectedResults": [
+        "PwD profiles list visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_004",
+      "title": "SwarajAbility PwD labeled 'Pre verified'",
+      "priority": "Highest",
+      "feature": "Pre Verified Label",
+      "steps": [
+        "View PwD list.",
+        "Verify SwarajAbility-sourced PwD has 'Pre verified' label/badge."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list has SwarajAbility-sourced profile.",
+      "expectedResults": [
+        "'Pre verified' label visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_005",
+      "title": "Pre verified label distinguishes SwarajAbility PwDs",
+      "priority": "Highest",
+      "feature": "Pre Verified Label",
+      "steps": [
+        "View PwD list.",
+        "Verify label is visually distinct (badge, icon, or text)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD list visible.",
+      "expectedResults": [
+        "Label is visually distinct."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_006",
+      "title": "No Edit Profile action for SwarajAbility PwD",
+      "priority": "Highest",
+      "feature": "Edit Restricted",
+      "steps": [
+        "Click on SwarajAbility-sourced PwD.",
+        "Verify Edit Profile button is absent or disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing SwarajAbility PwD profile.",
+      "expectedResults": [
+        "Edit Profile action not available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_007",
+      "title": "Edit button hidden or disabled for restricted PwD",
+      "priority": "Highest",
+      "feature": "Edit Restricted",
+      "steps": [
+        "On restricted PwD profile.",
+        "Verify no Edit button visible or it is disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Edit button hidden or disabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_008",
+      "title": "Profile fields displayed in read-only mode",
+      "priority": "Highest",
+      "feature": "Read-Only Fields",
+      "steps": [
+        "On restricted PwD profile.",
+        "Verify fields are displayed but not editable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Fields displayed in read-only mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_009",
+      "title": "Input fields disabled or absent for restricted PwD",
+      "priority": "Highest",
+      "feature": "Read-Only Fields",
+      "steps": [
+        "On restricted PwD profile.",
+        "Verify input fields are disabled/readonly or not present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Input fields disabled or absent."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_010",
+      "title": "Caregiver can still view profile details",
+      "priority": "Highest",
+      "feature": "View Still Allowed",
+      "steps": [
+        "On restricted PwD profile.",
+        "Verify name, disability, and other details visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Profile details visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_011",
+      "title": "Caregiver can use restricted PwD for recommendations",
+      "priority": "High",
+      "feature": "View Still Allowed",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify restricted PwD appears in PwD dropdown for recommendations."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Restricted PwD available in dropdown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_012",
+      "title": "Tooltip or helper text explains non-editable status",
+      "priority": "High",
+      "feature": "Tooltip / Helper Text",
+      "steps": [
+        "On restricted PwD profile.",
+        "Verify tooltip or helper text about non-editable status."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Tooltip/helper text explains status."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_013",
+      "title": "Helper text contains managed/verified keywords",
+      "priority": "High",
+      "feature": "Tooltip / Helper Text",
+      "steps": [
+        "Verify page body contains 'verified', 'managed', 'SwarajAbility', or 'cannot edit'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Keywords present in helper text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_014",
+      "title": "Mixed list shows correct actions per PwD — editable PwD has Edit",
+      "priority": "High",
+      "feature": "Mixed List",
+      "steps": [
+        "View PwD list.",
+        "Verify editable PwD has Edit action available."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has both editable and restricted PwDs.",
+      "expectedResults": [
+        "Editable PwD has Edit action."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_015",
+      "title": "Mixed list shows correct actions per PwD — restricted PwD has no Edit",
+      "priority": "High",
+      "feature": "Mixed List",
+      "steps": [
+        "View PwD list.",
+        "Verify restricted PwD does NOT have Edit action."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has both editable and restricted PwDs.",
+      "expectedResults": [
+        "Restricted PwD has no Edit action."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_016",
+      "title": "Page refresh retains read-only state",
+      "priority": "Medium",
+      "feature": "Edge Case — Persistence",
+      "steps": [
+        "On restricted PwD profile.",
+        "Reload page.",
+        "Verify still read-only."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "Read-only state persists after refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_017",
+      "title": "No save/submit button for restricted PwD",
+      "priority": "Medium",
+      "feature": "Edit Restricted",
+      "steps": [
+        "On restricted PwD profile.",
+        "Scroll through page.",
+        "Verify no Save/Submit button."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Viewing restricted PwD profile.",
+      "expectedResults": [
+        "No save/submit button present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_018",
+      "title": "Mobile viewport renders restricted profile correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to restricted PwD profile.",
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Restricted profile renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_019",
+      "title": "Back navigation from PwD profile works",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "On PwD profile.",
+        "Go back.",
+        "Verify previous page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD profile.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM393_020",
+      "title": "Profile page has correct heading",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify page heading contains 'profile' or PwD name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD profile.",
+      "expectedResults": [
+        "Correct heading displayed."
+      ]
+    }
+  ]
+}

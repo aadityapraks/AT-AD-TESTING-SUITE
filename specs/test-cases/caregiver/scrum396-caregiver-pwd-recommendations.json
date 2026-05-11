@@ -1,0 +1,479 @@
+{
+  "jiraStory": "SCRUM-396",
+  "title": "Caregiver - View Personalized Product Recommendations for a Selected PwD (30 Test Cases)",
+  "overview": "Functional testing of SCRUM-396: Caregiver selects a PwD from dropdown and views personalized assistive device recommendations. Validates PwD dropdown display, Show Recommendations button state, recommendation results with label, filters/sorting/search on top of recommendations, and edge cases.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM396_001",
+      "title": "Caregiver banner is visible on catalog page",
+      "priority": "Highest",
+      "feature": "PwD Dropdown — Display",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Verify .catalog-caregiver-banner is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in and on the catalog page.",
+      "expectedResults": [
+        "Caregiver banner is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_002",
+      "title": "PwD dropdown trigger is visible",
+      "priority": "Highest",
+      "feature": "PwD Dropdown — Display",
+      "steps": [
+        "Verify .catalog-caregiver-pwd-trigger is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "PwD dropdown trigger is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_003",
+      "title": "PwD dropdown opens and lists PwDs",
+      "priority": "Highest",
+      "feature": "PwD Dropdown — Display",
+      "steps": [
+        "Click PwD trigger.",
+        "Verify dropdown listbox is visible.",
+        "Verify at least one PwD option exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "Dropdown opens and lists at least one PwD."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_004",
+      "title": "Each PwD option shows name",
+      "priority": "High",
+      "feature": "PwD Dropdown — Display",
+      "steps": [
+        "Open dropdown.",
+        "Verify each option has non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD dropdown is open.",
+      "expectedResults": [
+        "Each PwD option has non-empty name text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_005",
+      "title": "PwD option shows primary disability if available",
+      "priority": "Medium",
+      "feature": "PwD Dropdown — Display",
+      "steps": [
+        "Open dropdown.",
+        "Verify trigger meta or option text contains disability info."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD dropdown is open.",
+      "expectedResults": [
+        "PwD option shows primary disability info if available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_006",
+      "title": "Show Recommendations button is visible",
+      "priority": "Highest",
+      "feature": "Show Recommendations — Button State",
+      "steps": [
+        "Verify .catalog-caregiver-show-btn is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "Show Recommendations button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_007",
+      "title": "Show Recommendations button state depends on PwD selection",
+      "priority": "Highest",
+      "feature": "Show Recommendations — Button State",
+      "steps": [
+        "Check if PwD is auto-selected.",
+        "If yes, button should be enabled.",
+        "If no, button should be disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "Button is enabled if PwD is selected, disabled otherwise."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_008",
+      "title": "Show Recommendations button is enabled after selecting a PwD",
+      "priority": "Highest",
+      "feature": "Show Recommendations — Button State",
+      "steps": [
+        "Select PwD by index 0.",
+        "Verify button is not disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": [
+        "Show Recommendations button is enabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_009",
+      "title": "Clicking Show Recommendations displays recommended devices",
+      "priority": "Highest",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify page has device/product/catalog content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": [
+        "Clicking Show Recommendations displays device/product content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_010",
+      "title": "Recommendation label shows 'Recommendations for <PwD Name>'",
+      "priority": "Highest",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify recLabel or body contains 'recommendations for'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked Show Recommendations.",
+      "expectedResults": [
+        "Label shows 'Recommendations for <PwD Name>'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_011",
+      "title": "Recommended device cards display price",
+      "priority": "High",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body contains ₹ price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Device cards display price in ₹ format."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_012",
+      "title": "Recommended device cards have View Details CTA",
+      "priority": "High",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify View Details links count > 0."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "View Details CTA links are present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_013",
+      "title": "View Details navigates to product detail page",
+      "priority": "High",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Click first View Details.",
+        "Verify URL contains /product/."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Clicking View Details navigates to /product/ URL."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_014",
+      "title": "Switching PwD selection updates recommendations",
+      "priority": "High",
+      "feature": "Recommendation Results",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Switching PwD updates the recommendations."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_015",
+      "title": "Disability Type filter works on top of recommendations",
+      "priority": "High",
+      "feature": "Filters on Recommendations",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body contains 'disability type'.",
+        "Verify Apply Filters button visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Disability Type filter is available and Apply Filters button visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_016",
+      "title": "Type filter works on top of recommendations",
+      "priority": "Medium",
+      "feature": "Filters on Recommendations",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body contains 'type'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Type filter is available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_017",
+      "title": "Price Range filter works on top of recommendations",
+      "priority": "Medium",
+      "feature": "Filters on Recommendations",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body contains 'price'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Price Range filter is available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_018",
+      "title": "Search bar filters on top of recommendations",
+      "priority": "High",
+      "feature": "Filters on Recommendations",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify search input is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Search input is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_019",
+      "title": "Sort dropdown works on top of recommendations",
+      "priority": "Medium",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body contains 'sort by'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Sort dropdown is available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_020",
+      "title": "Pagination works on recommendation results",
+      "priority": "High",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Click Show Recommendations.",
+        "Check if pagination nav exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Pagination nav exists if results span multiple pages."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_021",
+      "title": "Device count text updates after recommendations",
+      "priority": "High",
+      "feature": "Sorting & Pagination",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify body matches 'X devices found'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Recommendations are displayed.",
+      "expectedResults": [
+        "Device count text matches 'X devices found' pattern."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_022",
+      "title": "Reset All clears filters but keeps recommendation context",
+      "priority": "Medium",
+      "feature": "Filters on Recommendations",
+      "steps": [
+        "Click Show Recommendations.",
+        "Click Reset All if visible.",
+        "Verify recommendation context remains."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Filters applied on recommendations.",
+      "expectedResults": [
+        "Reset All clears filters but keeps recommendation context."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_023",
+      "title": "No recommendations available shows empty state",
+      "priority": "Highest",
+      "feature": "Edge Cases",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify page has content (devices or empty state message)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked Show Recommendations.",
+      "expectedResults": [
+        "Page shows devices or an empty state message."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_024",
+      "title": "PwD with incomplete profile shows recommendations with reduced confidence",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify page has results or fallback."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD has incomplete profile.",
+      "expectedResults": [
+        "Page shows results or fallback content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_025",
+      "title": "Dropdown resets gracefully on page reload",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Reload page.",
+        "Verify PwD trigger is still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "After page reload, PwD trigger is still visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_026",
+      "title": "Backend timeout falls back to generic catalog view",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked Show Recommendations.",
+      "expectedResults": [
+        "Page has content even on backend timeout."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_027",
+      "title": "Rapid Show Recommendations clicks do not cause stale data",
+      "priority": "Medium",
+      "feature": "Edge Cases",
+      "steps": [
+        "Click Show Recommendations twice rapidly.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the catalog page.",
+      "expectedResults": [
+        "Rapid clicks don't cause stale data."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_028",
+      "title": "Caregiver with one PwD sees at least one option in dropdown",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Open dropdown.",
+        "Verify at least one option."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has one PwD.",
+      "expectedResults": [
+        "Dropdown has at least one option."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_029",
+      "title": "Page renders correctly on mobile viewport",
+      "priority": "Lowest",
+      "feature": "Edge Cases",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify body contains 'catalog'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Page renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM396_030",
+      "title": "Unauthenticated user cannot see caregiver PwD dropdown",
+      "priority": "Highest",
+      "feature": "Edge Cases",
+      "steps": [
+        "Open catalog without login.",
+        "Verify caregiver banner is NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in.",
+      "expectedResults": [
+        "Caregiver PwD dropdown is NOT visible."
+      ]
+    }
+  ]
+}

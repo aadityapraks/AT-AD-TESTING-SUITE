@@ -1,0 +1,36 @@
+{
+  "jiraStory": "SCRUM-484",
+  "title": "Admin - Change Vendor Status (Active ↔ Inactive) (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-484: Admin activates or deactivates vendors. Validates status dropdown, deactivation hides products, blocks new products, blocks replies, notifies users, reactivation restores access, status change logged, warning for active inquiries, error handling on failure.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "vendorManagementUrl": "https://hub-ui-admin-qa.swarajability.org/admin/vendors",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM484_001", "title": "Vendor Management Page is Accessible", "priority": "Critical", "feature": "Vendor Management — Access", "steps": ["Login as admin.", "Navigate to Vendor Management.", "Verify page loads."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_002", "title": "Vendor List Displays Vendors with Status", "priority": "Critical", "feature": "Vendor Management — Access", "steps": ["Navigate to Vendor Management.", "Verify vendor cards/rows show status (Active/Inactive)."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_003", "title": "Status Dropdown Available for Active Vendors", "priority": "Critical", "feature": "Status Dropdown", "steps": ["Find an Active vendor.", "Verify status dropdown/toggle is available."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_004", "title": "Status Dropdown Shows Active and Inactive Options", "priority": "Critical", "feature": "Status Dropdown", "steps": ["Open status dropdown for a vendor.", "Verify both Active and Inactive options present."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_005", "title": "Changing Status to Inactive Triggers Confirmation", "priority": "Critical", "feature": "Deactivation Flow", "steps": ["Select Inactive from dropdown.", "Verify confirmation dialog/prompt appears."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_006", "title": "Confirming Deactivation Updates Vendor Status", "priority": "Critical", "feature": "Deactivation Flow", "steps": ["Confirm deactivation.", "Verify vendor status changes to Inactive."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_007", "title": "Deactivated Vendor Products Hidden from Catalog", "priority": "Critical", "feature": "Deactivation Effects", "steps": ["Deactivate vendor.", "Verify vendor products no longer visible in catalog."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_008", "title": "Deactivated Vendor Cannot Add New Products", "priority": "Critical", "feature": "Deactivation Effects", "steps": ["Deactivate vendor.", "Verify vendor blocked from adding products."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_009", "title": "Deactivated Vendor Cannot Reply to Queries/Comments", "priority": "High", "feature": "Deactivation Effects", "steps": ["Deactivate vendor.", "Verify vendor blocked from replying to queries."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_010", "title": "Users Notified About Vendor Deactivation", "priority": "High", "feature": "Deactivation Effects", "steps": ["Deactivate vendor.", "Verify notification sent to PwDs/Caregivers/Donors."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_011", "title": "Reactivating Vendor Restores Active Status", "priority": "Critical", "feature": "Reactivation Flow", "steps": ["Find Inactive vendor.", "Change status to Active.", "Verify status updates."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_012", "title": "Reactivated Vendor Products Visible Again", "priority": "High", "feature": "Reactivation Flow", "steps": ["Reactivate vendor.", "Verify products restored in catalog."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_013", "title": "Status Change is Logged", "priority": "High", "feature": "Audit Log", "steps": ["Change vendor status.", "Verify activity/audit log records the change."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_014", "title": "Warning Shown for Vendor with Active Inquiries", "priority": "High", "feature": "Edge Case — Active Inquiries", "steps": ["Attempt to deactivate vendor with active inquiries.", "Verify warning message displayed."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_015", "title": "Cancel Deactivation Keeps Vendor Active", "priority": "High", "feature": "Edge Case — Cancel", "steps": ["Open deactivation confirmation.", "Click Cancel.", "Verify vendor remains Active."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_016", "title": "Status Change Failure Reverts UI with Error", "priority": "High", "feature": "Edge Case — Error Handling", "steps": ["Simulate status change failure.", "Verify UI reverts and error message shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_017", "title": "Status Persists After Page Refresh", "priority": "Medium", "feature": "Edge Case — Persistence", "steps": ["Change vendor status.", "Reload page.", "Verify status persists."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_018", "title": "Vendor Status Filter Works Correctly", "priority": "Medium", "feature": "Vendor Management — Filters", "steps": ["Filter by Active vendors.", "Verify only Active vendors shown.", "Filter by Inactive.", "Verify only Inactive shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_019", "title": "Vendor Management Responsive on Mobile", "priority": "Low", "feature": "Responsive", "steps": ["Set mobile viewport.", "Navigate to Vendor Management.", "Verify page usable."], "testResult": "RUN" },
+    { "id": "TC_SCRUM484_020", "title": "Multiple Vendors Can Be Managed Sequentially", "priority": "Medium", "feature": "Edge Case — Sequential", "steps": ["Change status of first vendor.", "Change status of second vendor.", "Verify both updates applied."], "testResult": "RUN" }
+  ]
+}

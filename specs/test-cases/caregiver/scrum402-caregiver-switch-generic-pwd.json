@@ -1,0 +1,593 @@
+{
+  "jiraStory": "SCRUM-402",
+  "title": "Caregiver - Switch Between Generic Search and PwD-Specific Recommendations (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-402: Caregiver switches between generic product search and PwD-specific recommendations. Validates PwD selection after generic browsing triggers transition, confirmation shows personalized results, clearing PwD returns to generic, UI indicates current mode, and edge cases (filter conflicts, mid-session PwD change, cached results).",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM402_001",
+      "title": "Caregiver starts in generic catalog mode",
+      "priority": "Highest",
+      "feature": "Select PwD After Generic Browsing",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Verify URL contains /catalog.",
+        "Verify device count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Catalog page loads in generic mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_002",
+      "title": "PwD dropdown is available for selection during generic browsing",
+      "priority": "Highest",
+      "feature": "Select PwD After Generic Browsing",
+      "steps": [
+        "Verify PwD trigger visible.",
+        "Click trigger.",
+        "Verify at least one PwD option."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "PwD dropdown is available with options."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_003",
+      "title": "Selecting a PwD from dropdown updates trigger text",
+      "priority": "Highest",
+      "feature": "Select PwD After Generic Browsing",
+      "steps": [
+        "Open dropdown.",
+        "Note first option text.",
+        "Click first option.",
+        "Verify trigger name updates."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Selecting PwD updates trigger text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_004",
+      "title": "Show Recommendations button becomes enabled after PwD selection",
+      "priority": "Highest",
+      "feature": "Select PwD After Generic Browsing",
+      "steps": [
+        "Select PwD index 0.",
+        "Verify button is enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": [
+        "Show Recommendations button is enabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_005",
+      "title": "Clicking Show Recommendations transitions to personalized view",
+      "priority": "Highest",
+      "feature": "Confirmation Shows Personalized Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected a PwD.",
+      "expectedResults": [
+        "Clicking Show transitions to personalized view."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_006",
+      "title": "Personalized view shows device cards",
+      "priority": "Highest",
+      "feature": "Confirmation Shows Personalized Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify product cards or empty state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver clicked Show Recommendations.",
+      "expectedResults": [
+        "Device cards or empty state visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_007",
+      "title": "Personalized view shows price on device cards",
+      "priority": "High",
+      "feature": "Confirmation Shows Personalized Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify body contains ₹ price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Personalized view is displayed.",
+      "expectedResults": [
+        "Device cards show ₹ price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_008",
+      "title": "Personalized view shows View Details links",
+      "priority": "High",
+      "feature": "Confirmation Shows Personalized Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify View details links > 0."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Personalized view is displayed.",
+      "expectedResults": [
+        "View Details links present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_009",
+      "title": "Device count updates after showing recommendations",
+      "priority": "High",
+      "feature": "Confirmation Shows Personalized Results",
+      "steps": [
+        "Note initial count.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify device count text present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Personalized view is displayed.",
+      "expectedResults": [
+        "Device count text is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_010",
+      "title": "Caregiver can return to generic mode after viewing recommendations",
+      "priority": "Highest",
+      "feature": "Clear PwD Returns to Generic",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Click Reset All.",
+        "Verify device count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in recommendation mode.",
+      "expectedResults": [
+        "Reset All returns to generic mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_011",
+      "title": "Generic mode after reset shows full device count",
+      "priority": "Highest",
+      "feature": "Clear PwD Returns to Generic",
+      "steps": [
+        "Note initial count.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Click Reset All.",
+        "Verify count matches initial."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to generic mode.",
+      "expectedResults": [
+        "Full device count matches initial."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_012",
+      "title": "Recommendation banner disappears after returning to generic mode",
+      "priority": "Highest",
+      "feature": "Clear PwD Returns to Generic",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Click Reset All.",
+        "Verify rec banner NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to generic mode.",
+      "expectedResults": [
+        "Recommendation banner NOT visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_013",
+      "title": "No personalization labels after returning to generic mode",
+      "priority": "Highest",
+      "feature": "Clear PwD Returns to Generic",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Click Reset All.",
+        "Verify rec badge NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to generic mode.",
+      "expectedResults": [
+        "No personalization labels visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_014",
+      "title": "Product cards still visible after returning to generic mode",
+      "priority": "High",
+      "feature": "Clear PwD Returns to Generic",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Click Reset All.",
+        "Verify product cards visible.",
+        "Verify View details links."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to generic mode.",
+      "expectedResults": [
+        "Product cards and View details visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_015",
+      "title": "Generic mode does not show recommendation label",
+      "priority": "Highest",
+      "feature": "UI Mode Indicator",
+      "steps": [
+        "Verify rec banner NOT visible.",
+        "Verify rec badge NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in generic mode.",
+      "expectedResults": [
+        "No recommendation label visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_016",
+      "title": "Caregiver banner is visible in both modes",
+      "priority": "High",
+      "feature": "UI Mode Indicator",
+      "steps": [
+        "Verify banner visible in generic.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify banner still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Banner visible in both modes."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_017",
+      "title": "PwD trigger name reflects selected PwD in recommendation mode",
+      "priority": "Highest",
+      "feature": "UI Mode Indicator",
+      "steps": [
+        "Select PwD.",
+        "Read trigger name.",
+        "Click Show Recommendations.",
+        "Verify trigger name still shows PwD."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected PwD and clicked Show.",
+      "expectedResults": [
+        "Trigger name reflects selected PwD."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_018",
+      "title": "Mode indicator changes when switching between generic and recommendations",
+      "priority": "High",
+      "feature": "UI Mode Indicator",
+      "steps": [
+        "Verify rec banner NOT visible.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content.",
+        "Click Reset All.",
+        "Verify rec banner NOT visible again."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Mode indicator changes between generic and recommendations."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_019",
+      "title": "Filters applied before PwD selection handled on mode switch",
+      "priority": "Medium",
+      "feature": "Edge Case — Filters Before PwD",
+      "steps": [
+        "Select Type=Device.",
+        "Apply Filters.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver applied filters before PwD selection.",
+      "expectedResults": [
+        "Mode switch handles pre-existing filters."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_020",
+      "title": "Search term applied before PwD selection handled on mode switch",
+      "priority": "Medium",
+      "feature": "Edge Case — Filters Before PwD",
+      "steps": [
+        "Search 'wheelchair'.",
+        "Apply Filters.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver searched before PwD selection.",
+      "expectedResults": [
+        "Mode switch handles pre-existing search."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_021",
+      "title": "Price range filter before PwD selection handled on mode switch",
+      "priority": "Medium",
+      "feature": "Edge Case — Filters Before PwD",
+      "steps": [
+        "Select price range.",
+        "Apply Filters.",
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver applied price filter before PwD.",
+      "expectedResults": [
+        "Mode switch handles price filter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_022",
+      "title": "Changing PwD mid-session updates trigger name",
+      "priority": "High",
+      "feature": "Edge Case — PwD Changed Mid-Session",
+      "steps": [
+        "Select PwD 0.",
+        "Click Show Recommendations.",
+        "Read trigger name.",
+        "Open dropdown.",
+        "Select PwD 1 if available.",
+        "Verify trigger name changed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in recommendation mode.",
+      "expectedResults": [
+        "Changing PwD updates trigger name."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_023",
+      "title": "Changing PwD and clicking Show Recommendations refreshes results",
+      "priority": "High",
+      "feature": "Edge Case — PwD Changed Mid-Session",
+      "steps": [
+        "Select PwD 0.",
+        "Click Show Recommendations.",
+        "Select different PwD.",
+        "Click Show Recommendations again.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver changed PwD mid-session.",
+      "expectedResults": [
+        "Clicking Show refreshes results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_024",
+      "title": "Show Recommendations button remains enabled after PwD switch",
+      "priority": "Medium",
+      "feature": "Edge Case — PwD Changed Mid-Session",
+      "steps": [
+        "Select PwD 0.",
+        "Verify button enabled.",
+        "Select PwD 1 if available.",
+        "Verify button still enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver switched PwD.",
+      "expectedResults": [
+        "Button remains enabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_025",
+      "title": "Page reload after recommendations returns to clean state",
+      "priority": "Low",
+      "feature": "Edge Case — Cached Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Reload page.",
+        "Verify PwD trigger visible.",
+        "Verify catalog has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver viewed recommendations.",
+      "expectedResults": [
+        "Page reload returns to clean state."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_026",
+      "title": "Navigating away and back resets recommendation context",
+      "priority": "Low",
+      "feature": "Edge Case — Cached Results",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Navigate to homepage.",
+        "Navigate back to catalog.",
+        "Verify device count visible.",
+        "Verify rec banner NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver viewed recommendations.",
+      "expectedResults": [
+        "Navigating away and back resets context."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_027",
+      "title": "Mobile viewport renders mode switch correctly",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify body contains 'catalog'.",
+        "Verify PwD trigger visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Mode switch renders correctly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_028",
+      "title": "Rapid mode switching does not cause stale data",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Click Show Recommendations.",
+        "Immediately click Reset All.",
+        "Wait for settle.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Rapid mode switching doesn't cause stale data."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_029",
+      "title": "Full round-trip generic → recommendations → generic → recommendations",
+      "priority": "High",
+      "feature": "Additional Mode Switch Scenarios",
+      "steps": [
+        "Note initial count.",
+        "Select PwD, Show Recommendations.",
+        "Reset All, verify count restored.",
+        "Select PwD, Show Recommendations again.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Full round-trip mode switching works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_030",
+      "title": "Search bar remains functional in recommendation mode",
+      "priority": "High",
+      "feature": "Additional Mode Switch Scenarios",
+      "steps": [
+        "Select PwD, Show Recommendations.",
+        "Verify search bar visible and enabled.",
+        "Search 'wheelchair'.",
+        "Apply Filters.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in recommendation mode.",
+      "expectedResults": [
+        "Search bar functional in recommendation mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_031",
+      "title": "Sorting works after switching to recommendation mode",
+      "priority": "Medium",
+      "feature": "Additional Mode Switch Scenarios",
+      "steps": [
+        "Select PwD, Show Recommendations.",
+        "Verify sort dropdown visible.",
+        "Select 'Name: A to Z'.",
+        "Verify product heading exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in recommendation mode.",
+      "expectedResults": [
+        "Sorting works in recommendation mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_032",
+      "title": "Pagination persists after mode switch back to generic",
+      "priority": "Low",
+      "feature": "Additional Mode Switch Scenarios",
+      "steps": [
+        "Select PwD, Show Recommendations.",
+        "Reset All.",
+        "Verify pagination visible.",
+        "Click Next.",
+        "Verify pagination still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver returned to generic mode.",
+      "expectedResults": [
+        "Pagination persists after mode switch."
+      ]
+    },
+    {
+      "id": "TC_SCRUM402_033",
+      "title": "Filter applied in recommendation mode cleared by Reset All",
+      "priority": "Lowest",
+      "feature": "Additional Mode Switch Scenarios",
+      "steps": [
+        "Select PwD, Show Recommendations.",
+        "Apply Type=Device filter.",
+        "Click Reset All.",
+        "Verify count > 0.",
+        "Verify no personalized badge."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver applied filter in recommendation mode.",
+      "expectedResults": [
+        "Reset All clears filters and personalization."
+      ]
+    }
+  ]
+}

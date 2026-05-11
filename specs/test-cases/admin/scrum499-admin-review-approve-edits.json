@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-499",
+  "title": "Admin - Review & Approve Product Edit Requests (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-499: Admin - Review & Approve Product Edit Requests.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM499_001", "title": "Pending Edits Tab is Visible", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Observe tabs."], "expectedResults": ["'Pending Edits' tab is visible."], "testResult": "PASS", "feature": "Pending Edits Tab" },
+    { "id": "TC_SCRUM499_002", "title": "Pending Edits Tab Shows Count", "priority": "High", "preconditions": "Admin on Product Management page.", "steps": ["Observe tab badge."], "expectedResults": ["Tab shows numeric count."], "testResult": "PASS", "feature": "Pending Edits Tab" },
+    { "id": "TC_SCRUM499_003", "title": "Pending Edits Tab Lists Products with Edits", "priority": "Highest", "preconditions": "Admin clicks Pending Edits tab.", "steps": ["Click tab.", "Observe product cards."], "expectedResults": ["Product cards are listed."], "testResult": "PASS", "feature": "Pending Edits Tab" },
+    { "id": "TC_SCRUM499_004", "title": "Product Card Shows Pending Edit Request Label", "priority": "High", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe first product card."], "expectedResults": ["'Pending Edit Request' text visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM499_005", "title": "Product Card Shows Submission Date", "priority": "High", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe first product card."], "expectedResults": ["'Submitted on' date visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM499_006", "title": "Product Card Shows Compare Changes Link", "priority": "High", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe first product card."], "expectedResults": ["'Compare changes' button visible."], "testResult": "PASS", "feature": "Product Card" },
+    { "id": "TC_SCRUM499_007", "title": "Compare Changes Button is Visible", "priority": "Highest", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe product card buttons."], "expectedResults": ["'Compare Changes' button visible."], "testResult": "PASS", "feature": "Compare Dialog" },
+    { "id": "TC_SCRUM499_008", "title": "Clicking Compare Changes Opens Dialog", "priority": "Highest", "preconditions": "Admin on Pending Edits tab.", "steps": ["Click 'Compare Changes'."], "expectedResults": ["Dialog with heading 'Compare Product Changes' opens."], "testResult": "PASS", "feature": "Compare Dialog" },
+    { "id": "TC_SCRUM499_009", "title": "Compare Dialog Shows Current vs Proposed", "priority": "Highest", "preconditions": "Compare dialog is open.", "steps": ["Observe dialog content."], "expectedResults": ["'Current' and 'Proposed' sections visible."], "testResult": "PASS", "feature": "Compare Dialog" },
+    { "id": "TC_SCRUM499_010", "title": "Compare Dialog Shows Changed Field Values", "priority": "High", "preconditions": "Compare dialog is open.", "steps": ["Observe diff content."], "expectedResults": ["At least one field with values displayed."], "testResult": "PASS", "feature": "Compare Dialog" },
+    { "id": "TC_SCRUM499_011", "title": "Compare Dialog Shows Review Subtitle", "priority": "Medium", "preconditions": "Compare dialog is open.", "steps": ["Observe subtitle."], "expectedResults": ["'Review changes requested by vendor' text visible."], "testResult": "PASS", "feature": "Compare Dialog" },
+    { "id": "TC_SCRUM499_012", "title": "Approve Changes Button is Visible", "priority": "Highest", "preconditions": "Compare dialog is open.", "steps": ["Observe dialog footer."], "expectedResults": ["'Approve Changes' button visible."], "testResult": "PASS", "feature": "Approve Edit" },
+    { "id": "TC_SCRUM499_013", "title": "Approve Changes Button is Clickable", "priority": "Highest", "preconditions": "Compare dialog is open.", "steps": ["Verify button is enabled."], "expectedResults": ["Button is enabled."], "testResult": "PASS", "feature": "Approve Edit" },
+    { "id": "TC_SCRUM499_014", "title": "Product Removed from Pending Edits After Approval", "priority": "High", "preconditions": "Admin clicks Approve Changes.", "steps": ["Click 'Approve Changes'.", "Observe Pending Edits tab."], "expectedResults": ["Product removed from list."], "testResult": "PASS", "feature": "Approve Edit" },
+    { "id": "TC_SCRUM499_015", "title": "Close Button is Visible in Compare Dialog", "priority": "High", "preconditions": "Compare dialog is open.", "steps": ["Observe dialog footer."], "expectedResults": ["'Close' button visible."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM499_016", "title": "Close Button Closes Compare Dialog", "priority": "High", "preconditions": "Compare dialog is open.", "steps": ["Click 'Close'."], "expectedResults": ["Dialog closes without approving."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM499_017", "title": "Close (×) Button Closes Compare Dialog", "priority": "Medium", "preconditions": "Compare dialog is open.", "steps": ["Click × button."], "expectedResults": ["Dialog closes."], "testResult": "PASS", "feature": "Cancel/Close" },
+    { "id": "TC_SCRUM499_018", "title": "View Details Button is Visible on Pending Edit Card", "priority": "Medium", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe product card."], "expectedResults": ["'View Details' button visible."], "testResult": "PASS", "feature": "Edge Cases" },
+    { "id": "TC_SCRUM499_019", "title": "Pagination is Visible on Pending Edits", "priority": "Medium", "preconditions": "Pending Edits has multiple pages.", "steps": ["Observe pagination."], "expectedResults": ["Pagination controls visible."], "testResult": "PASS", "feature": "Edge Cases" },
+    { "id": "TC_SCRUM499_020", "title": "Product Card Shows Approved Status Badge", "priority": "Medium", "preconditions": "Admin on Pending Edits tab.", "steps": ["Observe product card status."], "expectedResults": ["Status badge shows 'Approved'."], "testResult": "PASS", "feature": "Edge Cases" }
+  ]
+}

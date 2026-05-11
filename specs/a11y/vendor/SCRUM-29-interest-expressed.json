@@ -1,0 +1,1126 @@
+{
+  "jiraStory": "SCRUM-29",
+  "title": "SCRUM-29 Accessibility Test Plan: Interest Expressed",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner Interest Expressed feature ensuring WCAG 2.1 AA compliance. Tests cover navigation, summary metrics, interest list table, search/filter/sort controls, View Details modal, Reveal Contact button, notification center, download functionality, keyboard navigation, screen reader support, and error states.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Interest Expressed tab accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Navigate to vendor dashboard",
+        "Locate 'Interest Expressed' tab",
+        "Tab to navigation link",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify page loads"
+      ],
+      "expectedResults": [
+        "Tab keyboard accessible",
+        "Tab has accessible name 'Interest Expressed'",
+        "Enter/Space activates tab",
+        "Focus indicator visible",
+        "aria-current='page' when active"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Page has proper heading",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Interest Expressed page",
+        "Verify H1 heading present",
+        "Check heading text clear",
+        "Verify description explains purpose",
+        "Use screen reader heading navigation"
+      ],
+      "expectedResults": [
+        "Page has H1 heading",
+        "Heading: 'Interest Expressed'",
+        "Description text visible",
+        "Screen reader can navigate to heading",
+        "Heading level appropriate"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Total Interest widget accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate Total Interest widget",
+        "Verify widget has label",
+        "Check count value visible",
+        "Use screen reader to verify announcement",
+        "Verify widget semantically marked"
+      ],
+      "expectedResults": [
+        "Widget has accessible name",
+        "Count value announced",
+        "Screen reader: 'Total Interest: 89'",
+        "Widget has role='region' or appropriate ARIA",
+        "Visual and programmatic label"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Widget update announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Trigger new interest (if possible)",
+        "Verify count increments",
+        "Check aria-live announces update",
+        "Verify screen reader announces",
+        "Check focus not moved"
+      ],
+      "expectedResults": [
+        "Count updates announced via aria-live",
+        "aria-live='polite' or 'assertive'",
+        "Screen reader announces new count",
+        "Visual update clear",
+        "No focus disruption"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Interest list has table structure",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate interest list",
+        "Verify table element present",
+        "Check table has caption",
+        "Use screen reader to verify table announced",
+        "Verify table semantically correct"
+      ],
+      "expectedResults": [
+        "Table has <table> element or role='table'",
+        "Table has caption or aria-label",
+        "Caption: 'Interest Expressed List'",
+        "Screen reader announces table",
+        "Table structure semantic"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Table headers accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Inspect table headers",
+        "Verify all columns have headers",
+        "Check headers use <th> or role",
+        "Verify scope='col' present",
+        "Use screen reader to verify headers"
+      ],
+      "expectedResults": [
+        "All headers have <th> or role='columnheader'",
+        "Headers: Name, Location, Product, Shares, Date, Action",
+        "Headers have scope='col'",
+        "Screen reader announces headers",
+        "Headers associated with data cells"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Table rows and cells accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Navigate through table rows",
+        "Verify row structure semantic",
+        "Check cells associated with headers",
+        "Use screen reader to read rows",
+        "Verify row navigation works"
+      ],
+      "expectedResults": [
+        "Each row has role='row' or <tr>",
+        "Cells have role='cell' or <td>",
+        "Data cells associated with headers",
+        "Screen reader reads row data correctly",
+        "Row count announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Pagination count accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate result count text",
+        "Verify count displays clearly",
+        "Check aria-live present",
+        "Apply filter",
+        "Verify count updates and announced"
+      ],
+      "expectedResults": [
+        "Result count visible: 'Showing 1-10 of X'",
+        "Count has aria-live='polite'",
+        "Screen reader announces count",
+        "Count updates when filtering",
+        "Text has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Pagination buttons accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate pagination controls",
+        "Tab to pagination buttons",
+        "Verify focus indicators visible",
+        "Check button labels clear",
+        "Verify current page indicated",
+        "Check disabled state accessible"
+      ],
+      "expectedResults": [
+        "Pagination buttons keyboard accessible",
+        "Buttons have accessible names",
+        "Current page has aria-current='page'",
+        "Disabled buttons have aria-disabled='true'",
+        "Focus indicators visible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Search field has label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate search input",
+        "Verify visible label present",
+        "Check label associated with input",
+        "Verify placeholder text present",
+        "Check autocomplete attribute"
+      ],
+      "expectedResults": [
+        "Search field has visible label",
+        "Label: 'Search interests'",
+        "Label associated with input (for/id)",
+        "Placeholder supplementary, not sole label",
+        "Field has autocomplete attribute"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Search results announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Enter search query",
+        "Trigger search",
+        "Verify results update",
+        "Check aria-live announces results",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Search results announced via aria-live",
+        "Announcement: 'X results found'",
+        "Screen reader announces results",
+        "Loading state announced",
+        "No results state announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "State filter accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate State filter dropdown",
+        "Tab to filter",
+        "Verify focus indicator visible",
+        "Open dropdown with Enter/Space",
+        "Navigate options with Arrow keys",
+        "Select option with Enter"
+      ],
+      "expectedResults": [
+        "State filter keyboard accessible",
+        "Filter has accessible name",
+        "Options keyboard navigable",
+        "Selected option announced",
+        "Filter updates list"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Disability type filter accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate Disability Type filter",
+        "Tab to filter",
+        "Open filter",
+        "Navigate options",
+        "Select multiple if supported",
+        "Verify selections announced"
+      ],
+      "expectedResults": [
+        "Disability type filter accessible",
+        "Filter has accessible name",
+        "Options keyboard navigable",
+        "Selected option announced",
+        "Multiple selections supported"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Applied filters accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Apply multiple filters",
+        "Verify applied filters displayed",
+        "Tab to remove buttons",
+        "Press Enter to remove filter",
+        "Verify removal announced",
+        "Check clear all button accessible"
+      ],
+      "expectedResults": [
+        "Applied filters visible",
+        "Each filter has remove button",
+        "Remove buttons keyboard accessible",
+        "Removal announced via aria-live",
+        "Clear all filters button accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Sort dropdown accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate sort dropdown",
+        "Tab to dropdown",
+        "Open with Enter/Space",
+        "Navigate options with Arrow keys",
+        "Select option",
+        "Verify list updates"
+      ],
+      "expectedResults": [
+        "Sort dropdown keyboard accessible",
+        "Options: Newest First, Oldest First",
+        "Selected option announced",
+        "aria-expanded toggles",
+        "Sort updates list"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Sort change announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Change sort order",
+        "Verify list updates",
+        "Check aria-live announces change",
+        "Use screen reader to verify",
+        "Verify visual indicator present"
+      ],
+      "expectedResults": [
+        "Sort change announced via aria-live",
+        "Announcement: 'Sorted by Newest First'",
+        "Screen reader announces change",
+        "Visual indicator of sort order",
+        "List updates without page reload"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "View Details button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate View Details button in row",
+        "Tab to button",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Press Enter to activate",
+        "Verify modal opens"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Button has accessible name 'View Details'",
+        "Enter/Space activates button",
+        "Focus indicator visible",
+        "Button in each table row"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Modal has proper ARIA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open View Details modal",
+        "Verify role='dialog'",
+        "Check aria-modal='true'",
+        "Verify aria-labelledby present",
+        "Check focus moves to modal",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog'",
+        "aria-modal='true' present",
+        "Modal has accessible name",
+        "Focus moves to modal",
+        "Screen reader announces modal"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Modal focus trap works",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Tab through all elements",
+        "Verify tab stays in modal",
+        "Tab to last element",
+        "Tab again, verify focus cycles",
+        "Try Shift+Tab"
+      ],
+      "expectedResults": [
+        "Focus trapped within modal",
+        "Tab cycles through modal elements",
+        "Shift+Tab works in reverse",
+        "Cannot tab to background content",
+        "No keyboard traps"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Modal close accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Press Escape key",
+        "Verify modal closes",
+        "Check focus returns",
+        "Reopen modal",
+        "Tab to Close button",
+        "Press Enter",
+        "Verify closes"
+      ],
+      "expectedResults": [
+        "Escape closes modal",
+        "Close (X) button keyboard accessible",
+        "Clicking outside closes modal",
+        "Focus returns to View Details button",
+        "Modal closure announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Modal content has labels",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Verify all sections have labels",
+        "Check personal info labeled",
+        "Verify date/time labeled",
+        "Check contact info labeled",
+        "Verify location labeled"
+      ],
+      "expectedResults": [
+        "All labels visible",
+        "Personal info: Age, Disability Type",
+        "Date/time displayed",
+        "Masked contact visible",
+        "Location and address visible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Reveal Details button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Locate Reveal Details button",
+        "Tab to button",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Press Enter to reveal"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible",
+        "Button has accessible name 'Reveal Details'",
+        "Enter/Space activates button",
+        "Focus indicator visible",
+        "Button positioned clearly"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Contact reveal announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Click Reveal Details",
+        "Verify contact info displays",
+        "Check aria-live announces reveal",
+        "Use screen reader to verify",
+        "Verify phone and email visible"
+      ],
+      "expectedResults": [
+        "Contact reveal announced via aria-live",
+        "Announcement: 'Contact details revealed'",
+        "Phone and email now visible",
+        "Screen reader announces revealed data",
+        "Visual change clear"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Masked contact accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "View modal before reveal",
+        "Verify contact info masked",
+        "Check masking format clear",
+        "Use screen reader to verify masked state",
+        "Verify visual indication present"
+      ],
+      "expectedResults": [
+        "Masked format clear",
+        "Example: '***-***-1234'",
+        "Screen reader: 'Phone number masked'",
+        "Visual indication of masking",
+        "Not relying on asterisks alone"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Product list semantic",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open modal",
+        "Locate product interest list",
+        "Verify list structure semantic",
+        "Check each product is list item",
+        "Use screen reader to verify list"
+      ],
+      "expectedResults": [
+        "Products in semantic list",
+        "List uses <ul> or role='list'",
+        "Each product is <li> or role='listitem'",
+        "Screen reader announces list",
+        "Product count announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Product images have alt text",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "View product list in modal",
+        "Inspect product images",
+        "Verify alt text present",
+        "Check alt text descriptive",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Product images have alt text",
+        "Alt text: Product name",
+        "Thumbnails not essential for understanding",
+        "Screen reader announces product name",
+        "Images decorative if name present"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Share count accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "View product in modal",
+        "Locate share count",
+        "Verify count has label",
+        "Check count visible",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Share count visible",
+        "Label: 'Shared X times'",
+        "Count associated with product",
+        "Screen reader announces count",
+        "Count has sufficient contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Notification button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate notification bell icon",
+        "Tab to notification button",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Verify unread count announced",
+        "Press Enter to open"
+      ],
+      "expectedResults": [
+        "Notification button keyboard accessible",
+        "Button has accessible name",
+        "Unread count badge announced",
+        "Badge: 'X unread notifications'",
+        "Focus indicator visible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Notification panel ARIA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open notification panel",
+        "Verify panel has proper role",
+        "Check aria-label present",
+        "Verify focus management",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Panel has role='region' or 'dialog'",
+        "Panel has accessible name",
+        "Focus moves to panel",
+        "Panel keyboard navigable",
+        "Screen reader announces panel"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Notification list accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open notification panel",
+        "Verify list structure",
+        "Navigate through notifications",
+        "Check read/unread announced",
+        "Verify timestamps accessible"
+      ],
+      "expectedResults": [
+        "Notifications in semantic list",
+        "Each notification is list item",
+        "Notification content accessible",
+        "Read/Unread status announced",
+        "Timestamp accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Notification actions accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Open notification",
+        "Tab to Mark as Read button",
+        "Press Enter",
+        "Verify action announced",
+        "Tab to Delete button",
+        "Verify accessible"
+      ],
+      "expectedResults": [
+        "Mark as read button accessible",
+        "Delete button accessible",
+        "Buttons have clear labels",
+        "Actions announced via aria-live",
+        "Focus managed after action"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Unread indicator accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "View unread notification",
+        "Verify unread indicator present",
+        "Check not relying on color alone",
+        "Use screen reader to verify unread",
+        "Verify visual distinction"
+      ],
+      "expectedResults": [
+        "Unread indicator not color alone",
+        "Icon or text indicates unread",
+        "Screen reader announces unread",
+        "Visual distinction clear",
+        "WCAG 1.4.1 satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Download button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Locate Download List button",
+        "Tab to button",
+        "Verify focus indicator visible",
+        "Check button has accessible name",
+        "Press Enter to download",
+        "Verify download starts"
+      ],
+      "expectedResults": [
+        "Download button keyboard accessible",
+        "Button has accessible name 'Download List'",
+        "Enter/Space activates download",
+        "Focus indicator visible",
+        "Download starts on activation"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Download status announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Click Download button",
+        "Verify download starts",
+        "Check aria-live announces progress",
+        "Use screen reader to verify",
+        "Verify completion announced"
+      ],
+      "expectedResults": [
+        "Download progress announced",
+        "aria-live announces status",
+        "Screen reader: 'Download started'",
+        "Completion announced",
+        "Error announced if fails"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Empty state accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "View page with no interests",
+        "Verify empty state message displays",
+        "Check message has proper role",
+        "Use screen reader to verify",
+        "Verify message helpful"
+      ],
+      "expectedResults": [
+        "Empty state message visible",
+        "Message: 'No interests recorded yet'",
+        "Message has proper semantics",
+        "Screen reader announces message",
+        "Message clear and helpful"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Error message accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Trigger data load error",
+        "Verify error message displays",
+        "Check error has role='alert'",
+        "Use screen reader to verify",
+        "Verify retry option accessible"
+      ],
+      "expectedResults": [
+        "Error message visible",
+        "Message: 'Unable to load interest data'",
+        "Error has role='alert'",
+        "Screen reader announces error",
+        "Retry option provided"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Tab order logical",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Tab from page start",
+        "Verify tab order follows layout",
+        "Check all controls reachable",
+        "Verify no keyboard traps",
+        "Tab through entire page"
+      ],
+      "expectedResults": [
+        "Tab order: Search → Filters → Sort → Table → Pagination",
+        "Order follows visual layout",
+        "All interactive elements reachable",
+        "No keyboard traps",
+        "Focus visible throughout"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Tab through all elements",
+        "Verify focus indicator on each",
+        "Check focus has 3:1 contrast",
+        "Verify focus not obscured",
+        "Check indicator thickness"
+      ],
+      "expectedResults": [
+        "All focusable elements show focus",
+        "Focus indicators have 3:1 contrast",
+        "Focus visible and not obscured",
+        "Indicator thickness adequate",
+        "WCAG 2.4.7 satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Measure contrast for all text",
+        "Check table text has 4.5:1",
+        "Check button text has 4.5:1",
+        "Verify error text has 4.5:1",
+        "Check all text meets standard"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "Table headers have 4.5:1",
+        "Button text has 4.5:1",
+        "Error text has 4.5:1",
+        "All text meets WCAG AA"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "UI component contrast",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Measure table border contrast",
+        "Check button borders",
+        "Verify filter control borders",
+        "Check focus indicators",
+        "Verify all meet 3:1"
+      ],
+      "expectedResults": [
+        "Table borders have 3:1 contrast",
+        "Button borders have 3:1",
+        "Filter controls have 3:1",
+        "Focus indicators have 3:1",
+        "All UI components meet WCAG 1.4.11"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_041",
+      "title": "Page scales to 200% zoom",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Zoom browser to 200%",
+        "Verify all content visible",
+        "Check table usable",
+        "Verify no horizontal scrolling",
+        "Check all functionality works"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "No text truncation",
+        "Table remains usable",
+        "No horizontal scrolling",
+        "Functionality preserved"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_042",
+      "title": "Mobile responsive accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Set viewport to mobile (375x667)",
+        "Navigate to Interest Expressed",
+        "Verify all content accessible",
+        "Check touch targets adequate",
+        "Test all functionality"
+      ],
+      "expectedResults": [
+        "Page accessible on mobile",
+        "Touch targets 44x44px minimum",
+        "Table scrolls horizontally if needed",
+        "All controls usable",
+        "No loss of functionality"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_043",
+      "title": "Screen reader announces all content",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through entire page",
+        "Verify all sections announced",
+        "Check table navigation works",
+        "Verify all content accessible"
+      ],
+      "expectedResults": [
+        "All sections announced",
+        "Table structure announced",
+        "Row and column headers announced",
+        "Cell data announced correctly",
+        "Navigation landmarks work"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_044",
+      "title": "Dynamic content announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-29",
+      "preconditions": "",
+      "steps": [
+        "Apply filter",
+        "Verify change announced",
+        "Change sort order",
+        "Verify announced",
+        "Open modal",
+        "Verify announced",
+        "Check all updates accessible"
+      ],
+      "expectedResults": [
+        "Filter changes announced",
+        "Sort changes announced",
+        "Search results announced",
+        "Modal opening announced",
+        "All dynamic updates accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

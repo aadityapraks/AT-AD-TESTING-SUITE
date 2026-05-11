@@ -1,0 +1,379 @@
+{
+  "jiraStory": "SCRUM-73",
+  "title": "SCRUM-73: PwD - Navigate to Catalog Tab from Home Page - Accessibility Test Plan",
+  "overview": "Accessibility test plan for PwD Navigate to Catalog Tab feature covering WCAG 2.1 AA compliance: ARIA labels on Catalog link, keyboard focusability, focus management after navigation, screen reader compatibility, color contrast, responsive layout.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Catalog link has descriptive ARIA label",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to home page",
+        "Inspect Catalog link in navigation",
+        "Verify aria-label or accessible name is present",
+        "Verify accessible name is descriptive (e.g. 'Open assistive device catalog')"
+      ],
+      "expectedResults": [
+        "Catalog link has accessible name 'Open assistive device catalog'",
+        "Screen reader announces the descriptive label",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Catalog link is keyboard-focusable via Tab",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to home page",
+        "Press Tab repeatedly to reach Catalog link",
+        "Verify Catalog link receives focus",
+        "Verify focus indicator is visible"
+      ],
+      "expectedResults": [
+        "Catalog link reachable via Tab key",
+        "Focus indicator visible with ≥3:1 contrast",
+        "WCAG 2.1.1, 2.4.7 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Catalog link activates via Enter key",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Tab to Catalog link",
+        "Press Enter",
+        "Verify navigation to catalog page",
+        "Verify URL contains /catalog"
+      ],
+      "expectedResults": [
+        "Enter key triggers navigation",
+        "User lands on catalog page",
+        "WCAG 2.1.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Catalog link activates via Space key",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Tab to Catalog link",
+        "Press Space",
+        "Verify navigation to catalog page"
+      ],
+      "expectedResults": [
+        "Space key triggers navigation",
+        "WCAG 2.1.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Focus moves to page heading after catalog navigation",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page via Catalog link",
+        "Check if focus moves to h1 heading or main content area",
+        "Verify heading text is 'Assistive Device Catalog' or similar"
+      ],
+      "expectedResults": [
+        "Focus moves to main content or h1 heading after navigation",
+        "WCAG 2.4.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Catalog page has proper h1 heading",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page",
+        "Verify h1 heading exists",
+        "Verify heading text contains 'Catalog' or 'Assistive Device'"
+      ],
+      "expectedResults": [
+        "Page has exactly one h1 heading",
+        "Heading is descriptive",
+        "WCAG 1.3.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Skip to content link is available",
+      "wcagCriterion": "2.4.1 Bypass Blocks",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Load home page",
+        "Press Tab as first action",
+        "Verify 'Skip to content' link appears",
+        "Activate skip link",
+        "Verify focus moves to main content"
+      ],
+      "expectedResults": [
+        "Skip link visible on first Tab",
+        "Skip link bypasses navigation",
+        "WCAG 2.4.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Navigation menu has proper landmark role",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Inspect navigation bar",
+        "Verify nav element or role='navigation' is present",
+        "Verify aria-label on navigation landmark"
+      ],
+      "expectedResults": [
+        "Navigation has role='navigation' or <nav> element",
+        "Navigation has accessible label",
+        "WCAG 1.3.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Catalog link color contrast meets 4.5:1",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Inspect Catalog link text color and background",
+        "Calculate contrast ratio",
+        "Verify active and inactive states both meet 4.5:1"
+      ],
+      "expectedResults": [
+        "Text contrast ratio ≥4.5:1",
+        "Active/inactive states both meet requirement",
+        "WCAG 1.4.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Focus indicator contrast meets 3:1",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Tab to Catalog link",
+        "Verify focus indicator is visible",
+        "Measure focus indicator contrast against background",
+        "Verify ≥3:1 ratio"
+      ],
+      "expectedResults": [
+        "Focus indicator clearly visible",
+        "Contrast ratio ≥3:1",
+        "WCAG 2.4.7, 2.4.11 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Catalog page loads within 3 seconds",
+      "wcagCriterion": "2.2.1 Timing Adjustable",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Click Catalog link",
+        "Measure time until page content is visible",
+        "Verify load time ≤3 seconds under normal conditions"
+      ],
+      "expectedResults": [
+        "Catalog page loads within 3 seconds",
+        "No timeout barriers for assistive technology users"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Screen reader announces catalog page title",
+      "wcagCriterion": "2.4.2 Page Titled",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page",
+        "Verify document title contains 'Catalog'",
+        "Verify screen reader announces page title on load"
+      ],
+      "expectedResults": [
+        "Document title is descriptive",
+        "Screen reader announces title",
+        "WCAG 2.4.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Device count text is accessible",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page",
+        "Verify 'X devices found' text is visible",
+        "Verify text is readable by screen readers"
+      ],
+      "expectedResults": [
+        "Device count text visible and announced",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Catalog page usable at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page",
+        "Set browser zoom to 200%",
+        "Verify all content visible",
+        "Verify no horizontal scrolling required",
+        "Verify navigation and filters still usable"
+      ],
+      "expectedResults": [
+        "All content readable at 200%",
+        "No horizontal scrolling",
+        "WCAG 1.4.4, 1.4.10 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Responsive layout on mobile viewport",
+      "wcagCriterion": "1.4.10 Reflow",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Set viewport to 375x667",
+        "Navigate to catalog page",
+        "Verify navigation is accessible (hamburger menu if applicable)",
+        "Verify no horizontal scrolling",
+        "Verify all content reachable"
+      ],
+      "expectedResults": [
+        "Layout adapts to mobile",
+        "No horizontal scrolling",
+        "All features accessible",
+        "WCAG 1.4.10 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Tab order is logical across navigation items",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to home page",
+        "Tab through all navigation items",
+        "Verify order follows visual layout (Home → My PwDs → Catalog → Stories → Help)"
+      ],
+      "expectedResults": [
+        "Tab order matches visual layout",
+        "No unexpected focus jumps",
+        "WCAG 2.4.3 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "No keyboard traps in navigation",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "priority": "Critical",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Tab through navigation items",
+        "Verify focus moves past navigation to main content",
+        "Shift+Tab back through navigation",
+        "Verify no element traps keyboard focus"
+      ],
+      "expectedResults": [
+        "Focus moves freely through and past navigation",
+        "No keyboard traps",
+        "WCAG 2.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Shopping Tips section accessible",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Navigate to catalog page",
+        "Scroll to Shopping Tips section",
+        "Verify 'Before You Buy' heading present",
+        "Verify 'Need Help Choosing?' heading present",
+        "Verify content readable by screen readers"
+      ],
+      "expectedResults": [
+        "Shopping Tips section has proper headings",
+        "Content accessible to screen readers",
+        "WCAG 1.3.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Footer links keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Tab to footer area",
+        "Verify footer links (Privacy Policy, Terms, Accessibility Statement) are focusable",
+        "Verify Enter activates links"
+      ],
+      "expectedResults": [
+        "All footer links keyboard accessible",
+        "Focus indicators visible",
+        "WCAG 2.1.1 compliant"
+      ],
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Dark mode toggle accessible",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-73",
+      "steps": [
+        "Locate dark mode toggle in header",
+        "Verify toggle has accessible name ('Toggle dark mode')",
+        "Verify toggle is keyboard operable",
+        "Verify state change announced"
+      ],
+      "expectedResults": [
+        "Toggle has accessible name",
+        "Keyboard operable",
+        "State announced to screen readers",
+        "WCAG 4.1.2 compliant"
+      ],
+      "testResult": "NOT RUN"
+    }
+  ]
+}

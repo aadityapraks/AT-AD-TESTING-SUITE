@@ -1,0 +1,333 @@
+{
+  "jiraStory": "SCRUM-417",
+  "title": "Caregiver - Caregiver Profile Edit (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-417: Caregiver can view and edit their profile. Validates profile summary display (AC1), tabs (AC1), Edit Profile editable/read-only fields (AC2), Save Changes with validation (AC3), Cancel discards changes (AC4), data validation rules (AC5).",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM417_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Profile Page Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify URL contains /profile or page has profile content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Caregiver navigates to the profile page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_002",
+      "title": "Profile summary displays Full Name and Email",
+      "priority": "Highest",
+      "feature": "Profile Page Access",
+      "steps": [
+        "Verify page body contains a name.",
+        "Verify page body contains an email address."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Full Name and Email are displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_003",
+      "title": "Profile summary displays Location and Caregiver Type",
+      "priority": "Highest",
+      "feature": "Profile Page Access",
+      "steps": [
+        "Verify page body contains location text.",
+        "Verify page body contains caregiver type or relationship info."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Location and Caregiver Type displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_004",
+      "title": "Profile tabs are visible",
+      "priority": "Highest",
+      "feature": "Profile Page Access",
+      "steps": [
+        "Verify tabs for Profile, Wishlist, Inquiries, Settings are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Profile tabs are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_005",
+      "title": "Edit Profile and Export Data CTAs visible",
+      "priority": "Highest",
+      "feature": "Profile Page Access",
+      "steps": [
+        "Verify Edit Profile button/link visible.",
+        "Verify Export Data button/link visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Both CTAs are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_006",
+      "title": "Clicking Edit Profile makes fields editable",
+      "priority": "Highest",
+      "feature": "Edit Profile",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify form fields become visible/editable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Profile fields become editable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_007",
+      "title": "Editable fields include Name, Phone, Location, Role, Relationship, Experience",
+      "priority": "Highest",
+      "feature": "Edit Profile",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify fields for name, phone, location, role, relationship, experience."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "All editable fields are present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_008",
+      "title": "Email and Aadhaar fields remain read-only",
+      "priority": "Highest",
+      "feature": "Edit Profile",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify email field is disabled/read-only.",
+        "Verify Aadhaar field is disabled/read-only."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Email and Aadhaar are not editable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_009",
+      "title": "Save Changes button is visible in edit mode",
+      "priority": "Highest",
+      "feature": "Save Changes",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify Save Changes button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Save Changes button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_010",
+      "title": "Clicking Save Changes shows success confirmation",
+      "priority": "Highest",
+      "feature": "Save Changes",
+      "steps": [
+        "Click Edit Profile.",
+        "Click Save Changes.",
+        "Verify success message/toast appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver edited profile fields.",
+      "expectedResults": [
+        "Success confirmation shown after saving."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_011",
+      "title": "Profile view refreshes with updated values after save",
+      "priority": "Highest",
+      "feature": "Save Changes",
+      "steps": [
+        "After saving, verify profile shows updated values.",
+        "Verify page is no longer in edit mode."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver saved changes.",
+      "expectedResults": [
+        "Profile view reflects saved changes."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_012",
+      "title": "Cancel button is visible in edit mode",
+      "priority": "High",
+      "feature": "Cancel Edit",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify Cancel button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Cancel button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_013",
+      "title": "Clicking Cancel discards unsaved changes",
+      "priority": "High",
+      "feature": "Cancel Edit",
+      "steps": [
+        "Click Edit Profile.",
+        "Make a change.",
+        "Click Cancel.",
+        "Verify profile reverts to last saved state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode with unsaved changes.",
+      "expectedResults": [
+        "Unsaved changes discarded on cancel."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_014",
+      "title": "Phone number must be valid numeric",
+      "priority": "High",
+      "feature": "Data Validation",
+      "steps": [
+        "Click Edit Profile.",
+        "Locate phone field.",
+        "Verify it accepts only numeric input or has validation."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Phone field validates for numeric input."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_015",
+      "title": "Caregiving experience must be numeric",
+      "priority": "High",
+      "feature": "Data Validation",
+      "steps": [
+        "Click Edit Profile.",
+        "Locate experience field.",
+        "Verify it accepts only numeric input."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Experience field validates for numeric input."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_016",
+      "title": "Mandatory fields cannot be empty on save",
+      "priority": "Medium",
+      "feature": "Data Validation",
+      "steps": [
+        "Click Edit Profile.",
+        "Clear a mandatory field.",
+        "Click Save Changes.",
+        "Verify validation error appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in edit mode.",
+      "expectedResults": [
+        "Validation error shown for empty mandatory fields."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_017",
+      "title": "Page refresh after save retains updated values",
+      "priority": "Medium",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "After saving, reload page.",
+        "Verify profile still shows updated values."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver saved profile changes.",
+      "expectedResults": [
+        "Page refresh retains saved values."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_018",
+      "title": "Mobile viewport renders profile correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate to profile page.",
+        "Set mobile viewport.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Profile page renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_019",
+      "title": "Profile page has correct heading",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify page has heading containing 'profile' or caregiver name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Profile page has appropriate heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM417_020",
+      "title": "Back navigation from profile works",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Navigate back from profile.",
+        "Verify previous page loads correctly."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on the profile page.",
+      "expectedResults": [
+        "Back navigation works correctly."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,537 @@
+{
+  "jiraStory": "SCRUM-84",
+  "title": "PwD - View Available Purchase Options (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-84: PwD can view available purchase options (Amazon, Flipkart, vendor website) via Contact Vendor popup. Validates Buy Online section, marketplace links, new tab behavior, empty state, responsive layout.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    },
+    "targetProduct": "wheelchair 28th jan"
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM84_001",
+      "title": "Product detail page loads with product heading",
+      "priority": "Highest",
+      "feature": "Product Detail Access",
+      "steps": [
+        "Login as PwD.",
+        "Navigate to catalog.",
+        "Click first View details.",
+        "Verify H1 heading visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD is logged in.",
+      "expectedResults": [
+        "Product detail page loads with heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_002",
+      "title": "Contact Vendor button visible on product detail page",
+      "priority": "Highest",
+      "feature": "Contact Vendor Button",
+      "steps": [
+        "Navigate to product detail.",
+        "Verify Contact Vendor button visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD is on product detail page.",
+      "expectedResults": [
+        "Contact Vendor button visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_003",
+      "title": "Clicking Contact Vendor opens popup",
+      "priority": "Highest",
+      "feature": "Contact Vendor Button",
+      "steps": [
+        "Click Contact Vendor.",
+        "Verify popup/dialog opens."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD is on product detail page.",
+      "expectedResults": [
+        "Popup opens."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_004",
+      "title": "Popup contains Buy Online section",
+      "priority": "Highest",
+      "feature": "Buy Online Section",
+      "steps": [
+        "Open Contact Vendor popup.",
+        "Verify popup body contains 'buy online' or 'purchase' text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Vendor popup is open.",
+      "expectedResults": [
+        "Buy Online section visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_005",
+      "title": "Buy Online section shows marketplace links",
+      "priority": "Highest",
+      "feature": "Buy Online Section",
+      "steps": [
+        "Open popup.",
+        "Verify links for Amazon, Flipkart, or vendor website present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Vendor popup is open.",
+      "expectedResults": [
+        "Marketplace links visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_006",
+      "title": "Amazon link is present in Buy Online section",
+      "priority": "Highest",
+      "feature": "Marketplace Links",
+      "steps": [
+        "Open popup.",
+        "Verify link containing 'amazon' exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Product has Amazon purchase link.",
+      "expectedResults": [
+        "Amazon link present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_007",
+      "title": "Additional purchase link (Flipkart or other) present in Buy Online section",
+      "priority": "Highest",
+      "feature": "Marketplace Links",
+      "steps": [
+        "Open popup.",
+        "Verify any e-commerce or vendor purchase link exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Product has Flipkart purchase link.",
+      "expectedResults": [
+        "At least one purchase link present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_008",
+      "title": "Vendor website link is present in Buy Online section",
+      "priority": "High",
+      "feature": "Marketplace Links",
+      "steps": [
+        "Open popup.",
+        "Verify vendor website link exists."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Product has vendor website link.",
+      "expectedResults": [
+        "Vendor website link present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_009",
+      "title": "Each purchase option is a button or link element",
+      "priority": "Highest",
+      "feature": "Link Style",
+      "steps": [
+        "Open popup.",
+        "Verify purchase options are <a> or <button> elements."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Buy Online section has links.",
+      "expectedResults": [
+        "Options are button or link elements."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_010",
+      "title": "Purchase links have consistent styling",
+      "priority": "High",
+      "feature": "Link Style",
+      "steps": [
+        "Open popup.",
+        "Verify all purchase links have similar visual style."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Multiple purchase links visible.",
+      "expectedResults": [
+        "Consistent styling across links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_011",
+      "title": "Purchase links have valid href attributes",
+      "priority": "Highest",
+      "feature": "Link Validity",
+      "steps": [
+        "Open popup.",
+        "Verify each purchase link has a non-empty href starting with http."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Buy Online section has links.",
+      "expectedResults": [
+        "All links have valid href."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_012",
+      "title": "Only valid active links are displayed",
+      "priority": "High",
+      "feature": "Link Validity",
+      "steps": [
+        "Open popup.",
+        "Verify no broken or empty links visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Buy Online section visible.",
+      "expectedResults": [
+        "Only valid links displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_013",
+      "title": "Clicking Amazon link opens in new tab",
+      "priority": "Highest",
+      "feature": "New Tab Behavior",
+      "steps": [
+        "Open popup.",
+        "Verify Amazon link has target='_blank'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Amazon link present.",
+      "expectedResults": [
+        "Amazon link opens in new tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_014",
+      "title": "Clicking Flipkart link opens in new tab",
+      "priority": "Highest",
+      "feature": "New Tab Behavior",
+      "steps": [
+        "Open popup.",
+        "Verify Flipkart link has target='_blank'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Flipkart link present.",
+      "expectedResults": [
+        "Flipkart link opens in new tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_015",
+      "title": "Clicking vendor website link opens in new tab",
+      "priority": "High",
+      "feature": "New Tab Behavior",
+      "steps": [
+        "Open popup.",
+        "Verify vendor website link has target='_blank'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Vendor website link present.",
+      "expectedResults": [
+        "Vendor link opens in new tab."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_016",
+      "title": "Purchase links have rel='noopener' for security",
+      "priority": "Medium",
+      "feature": "New Tab Behavior",
+      "steps": [
+        "Open popup.",
+        "Verify external links have rel='noopener' or 'noreferrer'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Purchase links present.",
+      "expectedResults": [
+        "Links have rel='noopener'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_017",
+      "title": "No online purchase options message when no links available",
+      "priority": "Highest",
+      "feature": "Empty State",
+      "steps": [
+        "Navigate to product with no purchase links.",
+        "Open popup.",
+        "Verify message 'No online purchase options currently available'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Product has no purchase links.",
+      "expectedResults": [
+        "Empty state message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_018",
+      "title": "Empty state message is user-friendly",
+      "priority": "High",
+      "feature": "Empty State",
+      "steps": [
+        "Verify empty state message is clear and non-technical."
+      ],
+      "testResult": "PASS",
+      "preconditions": "No purchase links available.",
+      "expectedResults": [
+        "Message is user-friendly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_019",
+      "title": "Popup still shows vendor contact info alongside Buy Online",
+      "priority": "High",
+      "feature": "Popup Content",
+      "steps": [
+        "Open popup.",
+        "Verify vendor name, phone, email visible alongside Buy Online."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Contact Vendor popup open.",
+      "expectedResults": [
+        "Vendor info and Buy Online both visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_020",
+      "title": "Popup has close mechanism",
+      "priority": "High",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Open popup.",
+        "Verify close button/link present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup is open.",
+      "expectedResults": [
+        "Close mechanism present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_021",
+      "title": "Pressing Esc closes the popup",
+      "priority": "High",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Open popup.",
+        "Press Escape.",
+        "Verify popup closes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup is open.",
+      "expectedResults": [
+        "Esc closes popup."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_022",
+      "title": "Popup can be reopened after closing",
+      "priority": "Medium",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Open popup.",
+        "Close it.",
+        "Reopen.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup was closed.",
+      "expectedResults": [
+        "Popup reopens with content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_023",
+      "title": "URL does not change when popup opens",
+      "priority": "Medium",
+      "feature": "Popup Behavior",
+      "steps": [
+        "Note URL.",
+        "Open popup.",
+        "Verify URL unchanged."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD is on product detail.",
+      "expectedResults": [
+        "URL unchanged."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_024",
+      "title": "Purchase links are keyboard accessible",
+      "priority": "High",
+      "feature": "Keyboard Accessibility",
+      "steps": [
+        "Open popup.",
+        "Tab to purchase links.",
+        "Verify focus reaches them."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup is open.",
+      "expectedResults": [
+        "Purchase links keyboard accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_025",
+      "title": "Purchase links have visible focus indicator",
+      "priority": "Medium",
+      "feature": "Keyboard Accessibility",
+      "steps": [
+        "Tab to a purchase link.",
+        "Verify focus outline visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup is open.",
+      "expectedResults": [
+        "Focus indicator visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_026",
+      "title": "Purchase links have accessible labels",
+      "priority": "Medium",
+      "feature": "Keyboard Accessibility",
+      "steps": [
+        "Verify purchase links have aria-label or descriptive text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Popup is open.",
+      "expectedResults": [
+        "Accessible labels present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_027",
+      "title": "Mobile viewport — popup fits without clipping",
+      "priority": "High",
+      "feature": "Responsive Layout",
+      "steps": [
+        "Set mobile viewport.",
+        "Open popup.",
+        "Verify popup fits."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Mobile viewport (375×667).",
+      "expectedResults": [
+        "Popup fits mobile viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_028",
+      "title": "Mobile viewport — Buy Online links visible",
+      "priority": "High",
+      "feature": "Responsive Layout",
+      "steps": [
+        "Set mobile viewport.",
+        "Open popup.",
+        "Verify Buy Online links visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Mobile viewport.",
+      "expectedResults": [
+        "Buy Online links visible on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_029",
+      "title": "Tablet viewport — popup renders correctly",
+      "priority": "Medium",
+      "feature": "Responsive Layout",
+      "steps": [
+        "Set tablet viewport.",
+        "Open popup.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Tablet viewport (768×1024).",
+      "expectedResults": [
+        "Popup renders on tablet."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_030",
+      "title": "Multiple products have consistent Buy Online behavior",
+      "priority": "Low",
+      "feature": "Consistency",
+      "steps": [
+        "Check popup on first product.",
+        "Go back.",
+        "Check popup on second product."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD is on catalog.",
+      "expectedResults": [
+        "Consistent behavior across products."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_031",
+      "title": "Purchase links text is descriptive (e.g., Buy on Amazon)",
+      "priority": "Low",
+      "feature": "Link Style",
+      "steps": [
+        "Open popup.",
+        "Verify link text is descriptive, not just URL."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Purchase links present.",
+      "expectedResults": [
+        "Descriptive link text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_032",
+      "title": "Back navigation from product detail works after popup interaction",
+      "priority": "Low",
+      "feature": "Navigation",
+      "steps": [
+        "Open and close popup.",
+        "Navigate back.",
+        "Verify catalog loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD interacted with popup.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM84_033",
+      "title": "Page refresh retains product detail after popup interaction",
+      "priority": "Lowest",
+      "feature": "Navigation",
+      "steps": [
+        "Open and close popup.",
+        "Reload page.",
+        "Verify product detail intact."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD interacted with popup.",
+      "expectedResults": [
+        "Product detail intact after refresh."
+      ]
+    }
+  ]
+}

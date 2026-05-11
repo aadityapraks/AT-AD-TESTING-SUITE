@@ -1,0 +1,320 @@
+{
+  "jiraStory": "SCRUM-430",
+  "title": "Caregiver - Accessibility & Error Handling (19 Test Cases)",
+  "overview": "Functional testing of SCRUM-430: WCAG 2.1 compliance (keyboard navigation, screen-reader labels, focus states, dark mode) and error handling (clear messages, graceful failures) for caregiver experience.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM430_001",
+      "title": "Catalog page is keyboard navigable — Tab moves focus",
+      "priority": "Highest",
+      "feature": "Keyboard Navigation",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Press Tab repeatedly.",
+        "Verify focus moves through interactive elements."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Tab key moves focus through interactive elements."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_002",
+      "title": "Catalog filters operable via keyboard",
+      "priority": "Highest",
+      "feature": "Keyboard Navigation",
+      "steps": [
+        "Tab to filter dropdowns.",
+        "Use arrow keys to select option.",
+        "Tab to Apply Filters.",
+        "Press Enter."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Filters operable via keyboard."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_003",
+      "title": "Search bar has accessible label",
+      "priority": "Highest",
+      "feature": "Screen-Reader Labels",
+      "steps": [
+        "Verify search bar has aria-label or associated label element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Search bar has accessible label."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_004",
+      "title": "Filter dropdowns have accessible labels",
+      "priority": "Highest",
+      "feature": "Screen-Reader Labels",
+      "steps": [
+        "Verify each filter dropdown has aria-label or label element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Filter dropdowns have accessible labels."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_005",
+      "title": "Focus indicator visible on buttons",
+      "priority": "Highest",
+      "feature": "Focus States",
+      "steps": [
+        "Tab to Apply Filters button.",
+        "Verify visible focus indicator (outline/ring)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Focus indicator visible on buttons."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_006",
+      "title": "Focus indicator visible on links",
+      "priority": "Highest",
+      "feature": "Focus States",
+      "steps": [
+        "Tab to View details link.",
+        "Verify visible focus indicator."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Focus indicator visible on links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_007",
+      "title": "Dark mode toggle exists and is functional",
+      "priority": "Highest",
+      "feature": "Dark Mode",
+      "steps": [
+        "Locate dark mode toggle.",
+        "Click it.",
+        "Verify page switches to dark mode."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on any page.",
+      "expectedResults": [
+        "Dark mode toggle works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_008",
+      "title": "Dark mode applies to catalog page",
+      "priority": "Highest",
+      "feature": "Dark Mode",
+      "steps": [
+        "Enable dark mode.",
+        "Navigate to catalog.",
+        "Verify dark-mode class on HTML element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Dark mode is enabled.",
+      "expectedResults": [
+        "Dark mode applied to catalog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_009",
+      "title": "Product detail page is keyboard navigable",
+      "priority": "High",
+      "feature": "Keyboard Navigation",
+      "steps": [
+        "Navigate to product detail.",
+        "Press Tab.",
+        "Verify focus moves through elements."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": [
+        "Product detail page keyboard navigable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_010",
+      "title": "Product detail page has screen-reader labels",
+      "priority": "High",
+      "feature": "Screen-Reader Labels",
+      "steps": [
+        "Navigate to product detail.",
+        "Verify H1 heading exists.",
+        "Verify images have alt text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": [
+        "Screen-reader labels present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_011",
+      "title": "Caregiver-specific elements have ARIA roles",
+      "priority": "High",
+      "feature": "Screen-Reader Labels",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify caregiver banner has appropriate role or label.",
+        "Verify PwD dropdown has aria attributes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Caregiver elements have ARIA roles."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_012",
+      "title": "Zero search results shows clear message",
+      "priority": "High",
+      "feature": "Error Messages",
+      "steps": [
+        "Search 'xyznonexistent99999'.",
+        "Apply.",
+        "Verify clear empty state message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Clear empty state message shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_013",
+      "title": "Form validation shows actionable errors",
+      "priority": "Medium",
+      "feature": "Error Messages",
+      "steps": [
+        "Navigate to profile edit.",
+        "Clear a required field.",
+        "Submit.",
+        "Verify inline error message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is in profile edit mode.",
+      "expectedResults": [
+        "Actionable inline error shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_014",
+      "title": "404 page handles gracefully",
+      "priority": "Medium",
+      "feature": "Graceful Error Handling",
+      "steps": [
+        "Navigate to invalid URL.",
+        "Verify 404 or error page loads.",
+        "Verify page has navigation back to home."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "404 page shown with navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_015",
+      "title": "Empty state messages are user-friendly",
+      "priority": "Medium",
+      "feature": "Graceful Error Handling",
+      "steps": [
+        "Navigate to wishlist or inquiries.",
+        "If empty, verify user-friendly empty state message."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on an empty section.",
+      "expectedResults": [
+        "User-friendly empty state message."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_016",
+      "title": "Skip navigation link present",
+      "priority": "Low",
+      "feature": "Keyboard Navigation",
+      "steps": [
+        "Press Tab on page load.",
+        "Verify 'Skip to content' or similar link appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on any page.",
+      "expectedResults": [
+        "Skip navigation link present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_017",
+      "title": "Images have alt text",
+      "priority": "Low",
+      "feature": "Screen-Reader Labels",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify product images have alt attributes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Images have alt text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_018",
+      "title": "Color contrast sufficient on catalog page",
+      "priority": "Lowest",
+      "feature": "Visual Accessibility",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify text is readable against background."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Color contrast is sufficient."
+      ]
+    },
+    {
+      "id": "TC_SCRUM430_019",
+      "title": "Language attribute set on HTML element",
+      "priority": "Lowest",
+      "feature": "Visual Accessibility",
+      "steps": [
+        "Verify HTML element has lang attribute set."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on any page.",
+      "expectedResults": [
+        "HTML lang attribute is set."
+      ]
+    }
+  ]
+}

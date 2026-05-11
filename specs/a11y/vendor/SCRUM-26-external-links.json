@@ -1,0 +1,819 @@
+{
+  "jiraStory": "SCRUM-26",
+  "title": "Accessibility Test Plan: External Purchase Links (WCAG 2.1 AA)",
+  "overview": "Comprehensive accessibility test plan for adding and displaying external purchase links (Amazon, Flipkart, Official Website) ensuring WCAG 2.1 AA compliance. Tests cover form inputs, validation, link display on product details page, and external link warnings.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Add Link button keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Product Upload/Edit form",
+        "Tab to 'Add Link' button",
+        "Verify focus indicator visible",
+        "Press Enter/Space to open dropdown",
+        "Verify dropdown opens"
+      ],
+      "expectedResults": [
+        "Button keyboard accessible with Tab",
+        "Enter/Space opens dropdown",
+        "Button has accessible name",
+        "Focus indicator visible",
+        "aria-haspopup present"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Link type dropdown keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Open Add Link dropdown",
+        "Use arrow keys to navigate options",
+        "Verify all options reachable (Amazon, Flipkart, Website, Other)",
+        "Press Enter to select option",
+        "Press Escape to close without selection"
+      ],
+      "expectedResults": [
+        "Dropdown opens with keyboard",
+        "Arrow keys navigate options",
+        "Enter selects option",
+        "Escape closes dropdown",
+        "Focus returns to button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Link dropdown has proper ARIA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Inspect Add Link dropdown",
+        "Verify aria-haspopup on button",
+        "Check aria-expanded state toggles",
+        "Verify dropdown has proper role",
+        "Check menu items have role='menuitem'",
+        "Verify screen reader announces options"
+      ],
+      "expectedResults": [
+        "Dropdown has role='menu' or 'listbox'",
+        "aria-expanded toggles correctly",
+        "Menu items have role='menuitem'",
+        "Selected option announced",
+        "Accessible name present"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Amazon link input has label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Select 'Amazon Purchase Link' from dropdown",
+        "Verify input field appears",
+        "Check visible label present",
+        "Verify label associated with input (for/id)",
+        "Check autocomplete='url' attribute"
+      ],
+      "expectedResults": [
+        "Input has visible label",
+        "Label programmatically associated",
+        "Placeholder supplementary, not sole label",
+        "Input has autocomplete='url'",
+        "Field purpose clear"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Flipkart link input has label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Select 'Flipkart Purchase Link'",
+        "Verify input field appears",
+        "Check label visible and associated",
+        "Verify optional status indicated",
+        "Check autocomplete attribute"
+      ],
+      "expectedResults": [
+        "Input has visible label",
+        "Label associated with input",
+        "Placeholder not sole label",
+        "autocomplete='url' present",
+        "Optional status indicated"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Website link input has label",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Select 'Official Website Link'",
+        "Verify input field appears",
+        "Check label present and associated",
+        "Verify autocomplete='url'",
+        "Check optional status indicated"
+      ],
+      "expectedResults": [
+        "Input has visible label",
+        "Label associated correctly",
+        "Placeholder supplementary",
+        "autocomplete='url' present",
+        "Field purpose clear"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Other link inputs have labels",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Select 'Other Link'",
+        "Verify two input fields appear",
+        "Check 'Link Name' input has label",
+        "Check 'URL' input has label",
+        "Verify both labels associated",
+        "Check tab order logical"
+      ],
+      "expectedResults": [
+        "Both inputs have labels",
+        "Name input has autocomplete='off'",
+        "URL input has autocomplete='url'",
+        "Labels clearly distinguish fields",
+        "Tab order logical (Name then URL)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Optional status indicated",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Review all link input fields",
+        "Verify no required asterisks",
+        "Check aria-required not set to true",
+        "Verify screen reader announces optional",
+        "Check help text if present"
+      ],
+      "expectedResults": [
+        "Optional status indicated visually",
+        "aria-required='false' or absent",
+        "Screen reader announces optional",
+        "Not marked with asterisk",
+        "Help text explains optional nature"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Invalid URL error accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Enter invalid URL (no http/https)",
+        "Trigger validation (blur or submit)",
+        "Verify error message appears",
+        "Check aria-invalid='true' on input",
+        "Verify aria-describedby links error",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Error message appears inline",
+        "Error linked with aria-describedby",
+        "aria-invalid='true' on input",
+        "Error specific and clear",
+        "Screen reader announces error"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Amazon domain validation error accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Enter URL without 'amazon.' domain",
+        "Trigger validation",
+        "Verify error message appears",
+        "Check error specific (must contain amazon.)",
+        "Verify aria-invalid and aria-describedby",
+        "Check screen reader announces error"
+      ],
+      "expectedResults": [
+        "Error message specific",
+        "Error linked to input",
+        "aria-invalid='true' present",
+        "Suggests correction",
+        "Screen reader announces error"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Flipkart domain validation error accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Enter URL without 'flipkart' domain",
+        "Trigger validation",
+        "Verify error appears",
+        "Check error specific",
+        "Verify ARIA attributes",
+        "Check announcement"
+      ],
+      "expectedResults": [
+        "Error message accessible",
+        "Error linked to input",
+        "aria-invalid='true' set",
+        "Error suggests fix",
+        "Announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Error recovery announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Trigger validation error",
+        "Correct the input",
+        "Verify error message disappears",
+        "Check aria-invalid removed",
+        "Verify success announced via aria-live"
+      ],
+      "expectedResults": [
+        "Error clears when corrected",
+        "aria-invalid removed",
+        "aria-describedby updated",
+        "Success state announced",
+        "Visual error indicator removed"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Contact AP section has heading",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Product Details page",
+        "Locate 'Contact Assistive Partner' section",
+        "Verify section has heading",
+        "Check heading level appropriate",
+        "Use screen reader heading navigation"
+      ],
+      "expectedResults": [
+        "Section has descriptive heading",
+        "Heading level appropriate (H2 or H3)",
+        "Screen reader can navigate to section",
+        "Heading describes content",
+        "Semantic heading structure"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Amazon link has descriptive text",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Locate 'Buy on Amazon' link",
+        "Verify link text descriptive",
+        "Check link purpose clear",
+        "Verify not generic text",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Link has descriptive text",
+        "Link purpose clear from text alone",
+        "Not just 'Click here' or URL",
+        "Context clear without surrounding text",
+        "WCAG 2.4.4 Link Purpose satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Website link has descriptive text",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Locate 'Visit Vendor Website' link",
+        "Verify link text descriptive",
+        "Check purpose clear",
+        "Verify not just URL",
+        "Check screen reader announcement"
+      ],
+      "expectedResults": [
+        "Link text descriptive",
+        "Purpose clear from text",
+        "Not generic link text",
+        "Context clear",
+        "Screen reader announces clearly"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "New tab opening announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Inspect external links",
+        "Verify aria-label includes 'opens in new tab'",
+        "Check target='_blank' attribute",
+        "Verify rel='noopener noreferrer'",
+        "Use screen reader to verify announcement"
+      ],
+      "expectedResults": [
+        "Link has aria-label or title",
+        "Announces 'opens in new tab'",
+        "target='_blank' present",
+        "rel='noopener noreferrer' present",
+        "Screen reader announces new window"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "External link icon accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Locate external link icons",
+        "Verify icons visible",
+        "Check aria-hidden='true' on icons",
+        "Verify text conveys external nature",
+        "Use screen reader to verify icon ignored"
+      ],
+      "expectedResults": [
+        "External icon visible",
+        "Icon has aria-hidden='true'",
+        "Icon meaning conveyed by text",
+        "Not relying on icon alone",
+        "Screen reader ignores decorative icon"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "External links keyboard accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Tab to Contact AP section",
+        "Tab through all external links",
+        "Verify focus indicator on each",
+        "Press Enter to activate link",
+        "Verify new tab opens"
+      ],
+      "expectedResults": [
+        "All links keyboard accessible",
+        "Tab reaches all links",
+        "Enter activates links",
+        "Focus indicators visible",
+        "Tab order logical"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Exit confirmation accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Click external link",
+        "Verify confirmation appears",
+        "Check message clear",
+        "Verify keyboard accessible",
+        "Check focus management"
+      ],
+      "expectedResults": [
+        "Modal/tooltip appears on click",
+        "Warning message clear",
+        "Keyboard accessible",
+        "Focus moves to modal",
+        "Can proceed or cancel"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Confirmation modal has ARIA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Trigger exit confirmation",
+        "Verify role='dialog' or 'alertdialog'",
+        "Check aria-modal='true'",
+        "Verify aria-labelledby for title",
+        "Check aria-describedby for message"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog' or 'alertdialog'",
+        "aria-modal='true' present",
+        "Modal has accessible name",
+        "Description provided",
+        "Focus trapped in modal"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Confirmation buttons accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation modal",
+        "Tab to Continue button",
+        "Tab to Cancel button",
+        "Press Enter to activate",
+        "Press Escape to close",
+        "Verify focus returns to link"
+      ],
+      "expectedResults": [
+        "Continue button accessible",
+        "Cancel button accessible",
+        "Tab cycles between buttons",
+        "Enter activates buttons",
+        "Escape closes modal"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Broken link placeholder accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Navigate to product with broken link",
+        "Verify placeholder message appears",
+        "Check message reads 'Link currently unavailable'",
+        "Verify no broken hyperlink shown",
+        "Use screen reader to verify message"
+      ],
+      "expectedResults": [
+        "Placeholder message visible",
+        "Message clear and helpful",
+        "Not showing broken link",
+        "Message has proper semantics",
+        "Screen reader announces message"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Unavailable link state indicated",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Locate unavailable link",
+        "Verify visual indication",
+        "Check text indicates unavailable",
+        "Verify not relying on color alone",
+        "Check screen reader announces state"
+      ],
+      "expectedResults": [
+        "Unavailable links visually distinguished",
+        "Not just grayed out",
+        "Text indicates unavailability",
+        "Screen reader announces status",
+        "Not in tab order if non-functional"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Link contrast meets WCAG AA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Measure link text contrast",
+        "Verify 4.5:1 minimum for normal text",
+        "Check visited link contrast",
+        "Verify focus indicator 3:1 contrast",
+        "Check links distinguishable"
+      ],
+      "expectedResults": [
+        "Link text has 4.5:1 contrast",
+        "Visited links distinguishable",
+        "Focus indicator has 3:1 contrast",
+        "All text meets WCAG AA",
+        "Links distinguishable from body text"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Links not identified by color alone",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Review link styling",
+        "Verify underline or other indicator",
+        "Check hover state has non-color change",
+        "Verify focus state distinguishable",
+        "Test in grayscale mode"
+      ],
+      "expectedResults": [
+        "Links not identified by color alone",
+        "Underline or other indicator present",
+        "Hover state not color-only",
+        "Focus state not color-only",
+        "WCAG 1.4.1 Use of Color satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Links usable at 200% zoom",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Zoom browser to 200%",
+        "Verify all links visible",
+        "Check no text truncation",
+        "Verify links remain clickable",
+        "Check no horizontal scrolling"
+      ],
+      "expectedResults": [
+        "All links visible at 200%",
+        "No text truncation",
+        "Links remain clickable",
+        "No horizontal scrolling",
+        "Functionality preserved"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Multiple links manageable",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Add Amazon link",
+        "Add Flipkart link",
+        "Add Website link",
+        "Add Other link",
+        "Verify all accessible",
+        "Check remove buttons accessible"
+      ],
+      "expectedResults": [
+        "Can add multiple links",
+        "Each link independently accessible",
+        "Remove buttons accessible",
+        "Tab order logical",
+        "Screen reader announces count"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Remove link button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Add a link",
+        "Tab to remove button",
+        "Verify button has accessible name",
+        "Press Enter to remove",
+        "Verify removal announced",
+        "Check focus management"
+      ],
+      "expectedResults": [
+        "Remove button has accessible name",
+        "Button keyboard accessible",
+        "Confirmation if needed",
+        "Removal announced via aria-live",
+        "Focus managed after removal"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Form submission accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Fill link fields",
+        "Tab to Save button",
+        "Press Enter to submit",
+        "Verify validation runs",
+        "Check success/error announced",
+        "Verify focus management"
+      ],
+      "expectedResults": [
+        "Save button accessible",
+        "Validation runs on submit",
+        "Errors announced",
+        "Success announced",
+        "Focus managed appropriately"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Admin can review links accessibly",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Login as admin",
+        "Navigate to product review",
+        "Locate external links section",
+        "Verify links displayed",
+        "Check edit/remove controls accessible",
+        "Verify keyboard navigation works"
+      ],
+      "expectedResults": [
+        "Links displayed in review interface",
+        "Links keyboard accessible",
+        "Edit/Remove controls accessible",
+        "Changes announced",
+        "All actions keyboard operable"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Links accessible on mobile",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Set viewport to mobile (375x667)",
+        "Navigate to Product Details",
+        "Verify links accessible",
+        "Check touch targets adequate",
+        "Verify no horizontal scrolling",
+        "Test all link interactions"
+      ],
+      "expectedResults": [
+        "Links accessible on mobile",
+        "Touch targets 44x44px minimum",
+        "No horizontal scrolling",
+        "All functionality available",
+        "Text readable without zoom"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Links properly announced by screen reader",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-26",
+      "preconditions": "",
+      "steps": [
+        "Use screen reader to navigate to Contact AP section",
+        "Verify section announced",
+        "Navigate through links",
+        "Verify each link purpose announced",
+        "Check external and new tab announced",
+        "Verify link count if applicable"
+      ],
+      "expectedResults": [
+        "Section announced as region or group",
+        "All links announced with purpose",
+        "External nature announced",
+        "New tab opening announced",
+        "Link count announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

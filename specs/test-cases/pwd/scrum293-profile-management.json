@@ -1,0 +1,483 @@
+{
+  "jiraStory": "SCRUM-293",
+  "title": "PwD Profile Management - Functional Test Plan (30 Test Cases)",
+  "overview": "Functional testing of SCRUM-293: PwD Profile Management. Validates profile navigation & access, profile header (name, email, tags, export), personal information read/edit, wishlist tab with device cards, inquiries tab with AP contact details, settings tab with export/delete, and header persistence across all tabs.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "profileUrl": "https://qa-atad.swarajability.org/my-profile/",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "tabs": [
+      "Profile",
+      "Wishlist",
+      "Inquiries",
+      "Settings"
+    ],
+    "profileFields": [
+      "Full Name",
+      "Email Address",
+      "Disability Type",
+      "Location",
+      "Occupation",
+      "Assistive Devices Used"
+    ]
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM293_001",
+      "title": "Unauthenticated user is redirected away from profile page",
+      "priority": "Highest",
+      "feature": "Navigation & Access",
+      "steps": [
+        "Open profile URL without login.",
+        "Verify redirect to login or home page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in.",
+      "expectedResults": [
+        "User is redirected away from profile page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_002",
+      "title": "Authenticated PWD can access profile via direct URL",
+      "priority": "Highest",
+      "feature": "Navigation & Access",
+      "steps": [
+        "Login as PWD.",
+        "Navigate to profile URL.",
+        "Verify profile page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is logged in as PWD.",
+      "expectedResults": [
+        "Profile page loads via direct URL."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_003",
+      "title": "Profile tab is selected by default on page load",
+      "priority": "Highest",
+      "feature": "Navigation & Access",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify Profile tab has active state."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Profile tab is selected by default."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_004",
+      "title": "Tab switching does not cause page reload errors",
+      "priority": "Medium",
+      "feature": "Navigation & Access",
+      "steps": [
+        "Click each tab sequentially.",
+        "Verify no console errors or page crashes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "No console errors or page crashes when switching tabs."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_005",
+      "title": "Header displays user full name",
+      "priority": "Highest",
+      "feature": "Profile Header",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify .atad-up-name is visible with non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "User full name is visible in header."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_006",
+      "title": "Header displays user email",
+      "priority": "Highest",
+      "feature": "Profile Header",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify .atad-up-email is visible with email text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "User email is visible in header."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_007",
+      "title": "Header displays contextual tags (location, occupation, disability)",
+      "priority": "High",
+      "feature": "Profile Header",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify .atad-up-tag elements are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Contextual tags (location, occupation, disability) are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_008",
+      "title": "Export Data button is visible in header",
+      "priority": "High",
+      "feature": "Profile Header",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify Export Data button/link is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Export Data button is visible in header."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_009",
+      "title": "Personal Information section is visible with fields",
+      "priority": "Highest",
+      "feature": "Profile Tab — Personal Information",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify Personal Information section is visible.",
+        "Verify profile fields are displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Personal Information section with fields is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_010",
+      "title": "Fields are read-only by default",
+      "priority": "High",
+      "feature": "Profile Tab — Personal Information",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify input fields are disabled or read-only."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Input fields are disabled or read-only."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_011",
+      "title": "Edit Profile button is visible",
+      "priority": "Highest",
+      "feature": "Profile Tab — Personal Information",
+      "steps": [
+        "Navigate to profile page.",
+        "Verify Edit Profile button is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Edit Profile button is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_012",
+      "title": "Clicking Edit Profile enables editable fields with Save/Cancel",
+      "priority": "Highest",
+      "feature": "Profile Tab — Personal Information",
+      "steps": [
+        "Click Edit Profile.",
+        "Verify fields become editable.",
+        "Verify Save and Cancel buttons appear."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User clicks Edit Profile.",
+      "expectedResults": [
+        "Fields become editable with Save and Cancel buttons."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_013",
+      "title": "Clicking Cancel reverts to read-only mode",
+      "priority": "High",
+      "feature": "Profile Tab — Personal Information",
+      "steps": [
+        "Click Edit Profile.",
+        "Click Cancel.",
+        "Verify fields return to read-only."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is in edit mode.",
+      "expectedResults": [
+        "Clicking Cancel reverts to read-only mode."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_014",
+      "title": "Wishlist tab is clickable and displays content",
+      "priority": "Highest",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify wishlist panel content is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Wishlist tab is clickable and displays content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_015",
+      "title": "Wishlist shows device count indicator",
+      "priority": "Medium",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify device count text is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "Device count indicator is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_016",
+      "title": "Each wishlist card shows device image, name, and price",
+      "priority": "High",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify first card has image, name, and price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "First card shows device image, name, and price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_017",
+      "title": "Each wishlist card has View Details CTA",
+      "priority": "High",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify View Details link/button on card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "View Details CTA is present on card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_018",
+      "title": "View Details navigates to product/catalog page",
+      "priority": "High",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click View Details on first wishlist card.",
+        "Verify navigation to product page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "View Details navigates to product page."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_019",
+      "title": "Wishlist bookmark toggle is present on cards",
+      "priority": "Low",
+      "feature": "Wishlist Tab",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify bookmark icon/toggle is visible on cards."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "Bookmark toggle is visible on cards."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_020",
+      "title": "Inquiries tab is clickable and displays content",
+      "priority": "Highest",
+      "feature": "Inquiries Tab",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify inquiries panel content is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Inquiries tab is clickable and displays content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_021",
+      "title": "Inquiry items show device name and image",
+      "priority": "High",
+      "feature": "Inquiries Tab",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify inquiry items have device name and image."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries tab is active.",
+      "expectedResults": [
+        "Inquiry items show device name and image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_022",
+      "title": "Inquiry items show device price",
+      "priority": "Medium",
+      "feature": "Inquiries Tab",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify inquiry items display price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries tab is active.",
+      "expectedResults": [
+        "Inquiry items display price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_023",
+      "title": "Inquiry items show AP contact details",
+      "priority": "High",
+      "feature": "Inquiries Tab",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify AP contact details (name, phone, email) are shown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries tab is active.",
+      "expectedResults": [
+        "AP contact details (name, phone, email) are shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_024",
+      "title": "Settings tab is clickable and displays content",
+      "priority": "Highest",
+      "feature": "Settings Tab",
+      "steps": [
+        "Click Settings tab.",
+        "Verify settings panel content is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the profile page.",
+      "expectedResults": [
+        "Settings tab is clickable and displays content."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_025",
+      "title": "Export Data / Download your data section is visible",
+      "priority": "High",
+      "feature": "Settings Tab",
+      "steps": [
+        "Click Settings tab.",
+        "Verify Export/Download data section is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Settings tab is active.",
+      "expectedResults": [
+        "Export/Download data section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_026",
+      "title": "Delete Account section is visible",
+      "priority": "High",
+      "feature": "Settings Tab",
+      "steps": [
+        "Click Settings tab.",
+        "Verify Delete Account section is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Settings tab is active.",
+      "expectedResults": [
+        "Delete Account section is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_027",
+      "title": "Export Data button is functional",
+      "priority": "Medium",
+      "feature": "Settings Tab",
+      "steps": [
+        "Click Settings tab.",
+        "Verify Export All Data button is clickable."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Settings tab is active.",
+      "expectedResults": [
+        "Export All Data button is clickable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_028",
+      "title": "Header name and email remain visible on Wishlist tab",
+      "priority": "Low",
+      "feature": "Header Persistence Across Tabs",
+      "steps": [
+        "Click Wishlist tab.",
+        "Verify header name and email are still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Wishlist tab is active.",
+      "expectedResults": [
+        "Header name and email remain visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_029",
+      "title": "Header name and email remain visible on Inquiries tab",
+      "priority": "Low",
+      "feature": "Header Persistence Across Tabs",
+      "steps": [
+        "Click Inquiries tab.",
+        "Verify header name and email are still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Inquiries tab is active.",
+      "expectedResults": [
+        "Header name and email remain visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM293_030",
+      "title": "Header name and email remain visible on Settings tab",
+      "priority": "Lowest",
+      "feature": "Header Persistence Across Tabs",
+      "steps": [
+        "Click Settings tab.",
+        "Verify header name and email are still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Settings tab is active.",
+      "expectedResults": [
+        "Header name and email remain visible."
+      ]
+    }
+  ]
+}

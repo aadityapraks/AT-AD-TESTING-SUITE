@@ -1,0 +1,1041 @@
+{
+  "jiraStory": "SCRUM-30",
+  "title": "SCRUM-30 Accessibility Test Plan: Reviews and Ratings",
+  "overview": "Comprehensive accessibility test plan for Assistive Partner Reviews and Ratings feature ensuring WCAG 2.1 AA compliance. Tests cover navigation, summary widgets, product list, rating distribution chart, individual review cards, star ratings, search/filter/sort controls, notifications, empty states, error handling, keyboard navigation, and screen reader support.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Reviews & Ratings tab accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Navigate to AP dashboard",
+        "Locate 'Reviews & Ratings' tab",
+        "Tab to navigation link",
+        "Verify focus indicator visible",
+        "Press Enter to activate",
+        "Verify page loads"
+      ],
+      "expectedResults": [
+        "Tab keyboard accessible",
+        "Tab has accessible name 'Reviews & Ratings'",
+        "Enter/Space activates tab",
+        "Focus indicator visible",
+        "aria-current='page' when active"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Page has proper heading",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Reviews & Ratings page",
+        "Verify H1 heading present",
+        "Check heading text clear",
+        "Verify description explains purpose",
+        "Use screen reader heading navigation"
+      ],
+      "expectedResults": [
+        "Page has H1 heading",
+        "Heading: 'Reviews & Ratings'",
+        "Description text visible",
+        "Screen reader can navigate to heading",
+        "Heading level appropriate"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Average Rating widget accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate Average Rating widget",
+        "Verify widget has label",
+        "Check rating value visible",
+        "Use screen reader to verify announcement",
+        "Verify widget semantically marked"
+      ],
+      "expectedResults": [
+        "Widget has accessible name",
+        "Rating value announced",
+        "Screen reader: 'Average Rating: 4.3 out of 5'",
+        "Widget has role='region'",
+        "Visual and programmatic label"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Total Reviews widget accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate Total Reviews widget",
+        "Verify widget has label",
+        "Check count visible",
+        "Use screen reader to verify",
+        "Verify updates announced"
+      ],
+      "expectedResults": [
+        "Widget has accessible name",
+        "Count value announced",
+        "Screen reader: 'Total Reviews: 68'",
+        "Widget has role='region'",
+        "Count updates announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Products Reviewed widget accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate Products Reviewed widget",
+        "Verify widget has label",
+        "Check count visible",
+        "Use screen reader to verify",
+        "Verify widget accessible"
+      ],
+      "expectedResults": [
+        "Widget has accessible name",
+        "Count announced",
+        "Screen reader: 'Products Reviewed: 6'",
+        "Widget accessible",
+        "Visual label clear"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Product list semantic",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate product list",
+        "Verify list structure semantic",
+        "Check each product is list item",
+        "Use screen reader to verify list",
+        "Verify count announced"
+      ],
+      "expectedResults": [
+        "List has semantic structure",
+        "List uses <ul> or role='list'",
+        "Each product is <li> or role='listitem'",
+        "Screen reader announces list",
+        "Product count announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Product link accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate product in list",
+        "Tab to product link",
+        "Verify focus indicator visible",
+        "Check accessible name",
+        "Press Enter to open",
+        "Verify summary page loads"
+      ],
+      "expectedResults": [
+        "Product name is link or button",
+        "Link/button keyboard accessible",
+        "Has accessible name",
+        "Enter/Space activates",
+        "Opens feedback summary page"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Product rating display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View product with rating",
+        "Verify stars visible",
+        "Check text rating present",
+        "Use screen reader to verify",
+        "Verify not relying on visual alone"
+      ],
+      "expectedResults": [
+        "Rating displayed with stars",
+        "Screen reader: '4.3 out of 5 stars'",
+        "Star icons have aria-hidden='true'",
+        "Rating value in text",
+        "Not relying on stars alone"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Review count accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View product in list",
+        "Locate review count",
+        "Verify count visible",
+        "Check text clear",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "Review count visible",
+        "Text: '68 reviews'",
+        "Count associated with product",
+        "Screen reader announces count",
+        "Count has sufficient contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Product search field accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate product search field",
+        "Verify visible label present",
+        "Check label associated",
+        "Tab to field",
+        "Verify focus indicator visible"
+      ],
+      "expectedResults": [
+        "Search field has visible label",
+        "Label: 'Search products'",
+        "Label associated with input",
+        "Placeholder supplementary",
+        "Field keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Rating filter accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate rating filter dropdown",
+        "Tab to dropdown",
+        "Open with Enter/Space",
+        "Navigate options with Arrow keys",
+        "Select option",
+        "Verify list updates"
+      ],
+      "expectedResults": [
+        "Filter dropdown accessible",
+        "Options: All Ratings, Highest Rated",
+        "Keyboard navigable",
+        "Selected option announced",
+        "aria-expanded toggles"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Summary page heading accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Open product feedback summary",
+        "Verify H1 heading present",
+        "Check product name in heading",
+        "Verify category displayed",
+        "Use screen reader to verify all info"
+      ],
+      "expectedResults": [
+        "Page has H1 with product name",
+        "Category displayed",
+        "Average rating visible",
+        "Total reviews count visible",
+        "All info screen reader accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Average rating display accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View average rating on summary",
+        "Verify stars visible",
+        "Check text rating present",
+        "Use screen reader to verify",
+        "Measure contrast"
+      ],
+      "expectedResults": [
+        "Rating displayed clearly",
+        "Screen reader: '4.3 out of 5 stars'",
+        "Star icons have aria-hidden='true'",
+        "Text rating present",
+        "Rating has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Rating distribution chart accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate rating distribution chart",
+        "Verify chart has accessible name",
+        "Check alt text or aria-label",
+        "Verify data available as text",
+        "Use screen reader to access data"
+      ],
+      "expectedResults": [
+        "Chart has accessible name",
+        "Chart has role='img' or appropriate ARIA",
+        "Alt text or aria-label describes data",
+        "Data also in text/table format",
+        "Screen reader can access data"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Chart bars accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Inspect chart bars",
+        "Verify each bar labeled",
+        "Check counts visible",
+        "Use screen reader to verify",
+        "Verify not color-dependent"
+      ],
+      "expectedResults": [
+        "Each bar labeled",
+        "Labels: '5 stars', '4 stars', etc.",
+        "Count for each rating visible",
+        "Screen reader announces data",
+        "Not relying on color alone"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Recent review date accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate most recent review date",
+        "Verify label present",
+        "Check date format clear",
+        "Use screen reader to verify",
+        "Verify semantic markup"
+      ],
+      "expectedResults": [
+        "Date has visible label",
+        "Label: 'Most Recent Review'",
+        "Date format clear",
+        "Screen reader announces date",
+        "Date semantically marked"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Reviews section has heading",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate Customer Reviews section",
+        "Verify H2 heading present",
+        "Check subtitle visible",
+        "Use screen reader heading navigation",
+        "Verify heading hierarchy"
+      ],
+      "expectedResults": [
+        "Section has H2 heading",
+        "Heading: 'Customer Reviews'",
+        "Subtitle visible",
+        "Screen reader navigates to section",
+        "Heading level appropriate"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Reviews list semantic",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate reviews list",
+        "Verify list structure semantic",
+        "Check each review is list item",
+        "Use screen reader to verify",
+        "Verify count announced"
+      ],
+      "expectedResults": [
+        "Reviews in semantic list",
+        "List uses <ul> or role='list'",
+        "Each review is <li> or role='listitem'",
+        "Screen reader announces list",
+        "Review count announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Review star rating accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View individual review",
+        "Verify stars visible",
+        "Check text rating present",
+        "Use screen reader to verify",
+        "Verify accessible to all users"
+      ],
+      "expectedResults": [
+        "Star rating visible",
+        "Screen reader: '4 out of 5 stars'",
+        "Stars have aria-hidden='true'",
+        "Text rating present",
+        "Not relying on stars alone"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Anonymous user ID accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View review card",
+        "Locate user identifier",
+        "Verify identifier visible",
+        "Check contrast sufficient",
+        "Use screen reader to verify"
+      ],
+      "expectedResults": [
+        "User identifier visible",
+        "Text: 'PwD User 1084' or 'Verified User'",
+        "Identifier has sufficient contrast",
+        "Screen reader announces identifier",
+        "Privacy maintained"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Review text accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View review text",
+        "Verify text readable",
+        "Check contrast sufficient",
+        "Use screen reader to read",
+        "Test long review expansion"
+      ],
+      "expectedResults": [
+        "Review text readable",
+        "Text has 4.5:1 contrast",
+        "Text wraps properly",
+        "Screen reader reads text",
+        "Long reviews expandable"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Review date accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate review date",
+        "Verify date visible",
+        "Check format clear",
+        "Use screen reader to verify",
+        "Measure contrast"
+      ],
+      "expectedResults": [
+        "Date has label",
+        "Date format clear",
+        "Screen reader announces date",
+        "Date has sufficient contrast",
+        "Date semantically marked"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Review filter accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate review filter dropdown",
+        "Tab to dropdown",
+        "Open with Enter/Space",
+        "Navigate options",
+        "Select option",
+        "Verify reviews update"
+      ],
+      "expectedResults": [
+        "Dropdown keyboard accessible",
+        "Options: All Ratings, Most Recent",
+        "Arrow keys navigate",
+        "Selected option announced",
+        "Filter updates reviews"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Filter change announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Change review filter",
+        "Verify reviews update",
+        "Check aria-live announces",
+        "Use screen reader to verify",
+        "Verify visual feedback"
+      ],
+      "expectedResults": [
+        "Filter change announced via aria-live",
+        "Announcement: 'Filtered by Most Recent'",
+        "Screen reader announces change",
+        "Visual indicator present",
+        "Reviews update without page reload"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Expand review button accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Locate long review",
+        "Tab to 'Read more' button",
+        "Verify focus indicator visible",
+        "Press Enter to expand",
+        "Verify text expands",
+        "Check button changes"
+      ],
+      "expectedResults": [
+        "Expand button keyboard accessible",
+        "Button has accessible name 'Read more'",
+        "Enter/Space expands text",
+        "Expanded state announced",
+        "Button changes to 'Read less'"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Text expansion announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Expand review text",
+        "Verify aria-expanded changes",
+        "Check aria-live announces",
+        "Use screen reader to verify",
+        "Test collapse functionality"
+      ],
+      "expectedResults": [
+        "Expansion announced via aria-live",
+        "aria-expanded='true' when expanded",
+        "Screen reader announces expansion",
+        "Focus remains on button",
+        "Collapse works same way"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Catalog card rating accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View product catalog card",
+        "Locate rating display",
+        "Verify stars visible",
+        "Check text rating present",
+        "Use screen reader to verify",
+        "Measure contrast"
+      ],
+      "expectedResults": [
+        "Rating visible on card",
+        "Screen reader: '4.3 out of 5 stars'",
+        "Stars have aria-hidden='true'",
+        "Text rating present",
+        "Rating has 4.5:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Rating link scrolls to reviews",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Navigate to product details",
+        "Tab to rating link",
+        "Press Enter",
+        "Verify scrolls to reviews",
+        "Check focus management",
+        "Verify scroll announced"
+      ],
+      "expectedResults": [
+        "Rating is link or button",
+        "Link keyboard accessible",
+        "Clicking scrolls to reviews",
+        "Focus moves to reviews section",
+        "Scroll announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "No ratings message accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View product with no ratings",
+        "Verify message displays",
+        "Check message clear",
+        "Use screen reader to verify",
+        "Verify no empty stars shown"
+      ],
+      "expectedResults": [
+        "Message visible",
+        "Text: 'No ratings available'",
+        "Message has proper semantics",
+        "Screen reader announces message",
+        "No empty star display"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "No reviews message accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View product with no reviews",
+        "Verify empty state displays",
+        "Check message clear",
+        "Use screen reader to verify",
+        "Verify message helpful"
+      ],
+      "expectedResults": [
+        "Empty state message visible",
+        "Text: 'No reviews received yet'",
+        "Message has proper semantics",
+        "Screen reader announces message",
+        "Message helpful"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Error message accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Trigger review load error",
+        "Verify error message displays",
+        "Check error has role='alert'",
+        "Use screen reader to verify",
+        "Verify retry option accessible"
+      ],
+      "expectedResults": [
+        "Error message visible",
+        "Text: 'Unable to load reviews'",
+        "Error has role='alert'",
+        "Screen reader announces error",
+        "Retry option provided"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "New review notification accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Trigger new review notification",
+        "Verify notification appears",
+        "Check role='status' or aria-live",
+        "Use screen reader to verify",
+        "Verify dismissible"
+      ],
+      "expectedResults": [
+        "Notification appears",
+        "Text: 'New review received for [Product]'",
+        "Notification has role='status' or aria-live",
+        "Screen reader announces notification",
+        "Notification dismissible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Notification link accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "View notification",
+        "Tab to notification link",
+        "Verify focus indicator visible",
+        "Press Enter",
+        "Verify navigates to review",
+        "Check focus management"
+      ],
+      "expectedResults": [
+        "Notification is link",
+        "Link keyboard accessible",
+        "Link has accessible name",
+        "Clicking navigates to review",
+        "Focus managed appropriately"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Tab order logical",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Tab from page start",
+        "Verify tab order follows layout",
+        "Check all controls reachable",
+        "Verify no keyboard traps",
+        "Tab through entire page"
+      ],
+      "expectedResults": [
+        "Tab order: Widgets → Search → Filters → Product List",
+        "Order follows visual layout",
+        "All interactive elements reachable",
+        "No keyboard traps",
+        "Focus visible throughout"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Focus indicators visible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Tab through all elements",
+        "Verify focus indicator on each",
+        "Check focus has 3:1 contrast",
+        "Verify focus not obscured",
+        "Check indicator thickness"
+      ],
+      "expectedResults": [
+        "All focusable elements show focus",
+        "Focus indicators have 3:1 contrast",
+        "Focus visible and not obscured",
+        "Indicator thickness adequate",
+        "WCAG 2.4.7 satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Text contrast meets WCAG AA",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Measure contrast for all text",
+        "Check star ratings contrast",
+        "Check button text",
+        "Verify review text",
+        "Check all meets standard"
+      ],
+      "expectedResults": [
+        "All text has 4.5:1 contrast",
+        "Star ratings have 3:1 contrast",
+        "Button text has 4.5:1",
+        "Review text has 4.5:1",
+        "All text meets WCAG AA"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Not relying on color alone",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Review star ratings",
+        "Check text rating present",
+        "Inspect chart",
+        "Verify patterns/labels used",
+        "Test in grayscale"
+      ],
+      "expectedResults": [
+        "Rating not conveyed by color alone",
+        "Stars supplemented with text",
+        "Chart uses patterns/labels",
+        "Status not color-dependent",
+        "WCAG 1.4.1 satisfied"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Page scales to 200% zoom",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Zoom browser to 200%",
+        "Verify all content visible",
+        "Check reviews readable",
+        "Verify no horizontal scrolling",
+        "Check all functionality works"
+      ],
+      "expectedResults": [
+        "All content visible at 200%",
+        "No text truncation",
+        "Reviews remain readable",
+        "No horizontal scrolling",
+        "Functionality preserved"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_039",
+      "title": "Mobile responsive accessible",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Set viewport to mobile (375x667)",
+        "Navigate to Reviews & Ratings",
+        "Verify all content accessible",
+        "Check touch targets adequate",
+        "Test all functionality"
+      ],
+      "expectedResults": [
+        "Page accessible on mobile",
+        "Touch targets 44x44px minimum",
+        "Reviews readable",
+        "All controls usable",
+        "No loss of functionality"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_040",
+      "title": "Screen reader announces all content",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through entire page",
+        "Verify all sections announced",
+        "Check star ratings announced",
+        "Verify all content accessible"
+      ],
+      "expectedResults": [
+        "All sections announced",
+        "Star ratings announced as text",
+        "Review content read correctly",
+        "Navigation landmarks work",
+        "All content accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_041",
+      "title": "Dynamic content announced",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-30",
+      "preconditions": "",
+      "steps": [
+        "Apply filter",
+        "Verify change announced",
+        "Expand review",
+        "Verify announced",
+        "Trigger notification",
+        "Verify announced"
+      ],
+      "expectedResults": [
+        "Filter changes announced",
+        "Review expansion announced",
+        "New notifications announced",
+        "Chart data announced",
+        "All dynamic updates accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

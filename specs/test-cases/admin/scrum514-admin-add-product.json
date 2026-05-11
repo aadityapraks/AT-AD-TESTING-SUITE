@@ -1,0 +1,37 @@
+{
+  "jiraStory": "SCRUM-514",
+  "title": "Admin - Add a New Product (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-514: Admin - Add a New Product. Validates the Add Product form with sections for Basic Information, Product Description, Primary Image, and Support Information.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM514_001", "title": "Add Product Button is Visible", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Observe action buttons."], "expectedResults": ["'Add Product' button visible."], "testResult": "PASS", "feature": "Add Product Button" },
+    { "id": "TC_SCRUM514_002", "title": "Clicking Add Product Opens Form Dialog", "priority": "Highest", "preconditions": "Admin on Product Management page.", "steps": ["Click 'Add Product'."], "expectedResults": ["Dialog 'Add New Product' opens."], "testResult": "PASS", "feature": "Add Product Button" },
+    { "id": "TC_SCRUM514_003", "title": "Product Name Field is Visible and Required", "priority": "Highest", "preconditions": "Add Product dialog is open.", "steps": ["Observe Basic Information section."], "expectedResults": ["'Product Name *' textbox visible."], "testResult": "PASS", "feature": "Basic Information" },
+    { "id": "TC_SCRUM514_004", "title": "Partner Email Field is Visible and Required", "priority": "Highest", "preconditions": "Add Product dialog is open.", "steps": ["Observe Basic Information section."], "expectedResults": ["'Partner Email *' textbox visible."], "testResult": "PASS", "feature": "Basic Information" },
+    { "id": "TC_SCRUM514_005", "title": "Product Type Dropdown is Visible with Options", "priority": "Highest", "preconditions": "Add Product dialog is open.", "steps": ["Observe Product Type dropdown."], "expectedResults": ["Dropdown with Device/Technology options visible."], "testResult": "PASS", "feature": "Basic Information" },
+    { "id": "TC_SCRUM514_006", "title": "Usage Environment Dropdown is Visible", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Observe Usage Environment dropdown."], "expectedResults": ["Dropdown with Indoor/Outdoor/Both options visible."], "testResult": "PASS", "feature": "Basic Information" },
+    { "id": "TC_SCRUM514_007", "title": "Disability Type Multi-Select is Visible", "priority": "Highest", "preconditions": "Add Product dialog is open.", "steps": ["Observe Disability Type field."], "expectedResults": ["'Disability Type(s) *' selector visible."], "testResult": "PASS", "feature": "Basic Information" },
+    { "id": "TC_SCRUM514_008", "title": "Short Description Field is Visible with Character Counter", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Observe Short Description field."], "expectedResults": ["Textbox with '0/200' counter visible."], "testResult": "PASS", "feature": "Product Description" },
+    { "id": "TC_SCRUM514_009", "title": "Short Description Accepts Input", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Type text into Short Description."], "expectedResults": ["Text accepted, counter updates."], "testResult": "PASS", "feature": "Product Description" },
+    { "id": "TC_SCRUM514_010", "title": "Detailed Description Field is Visible and Required", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Observe Detailed Description field."], "expectedResults": ["'Detailed Description *' textbox visible."], "testResult": "PASS", "feature": "Product Description" },
+    { "id": "TC_SCRUM514_011", "title": "GenAI Assist Button Visible for Short Description", "priority": "Medium", "preconditions": "Add Product dialog is open.", "steps": ["Observe Short Description section."], "expectedResults": ["'GenAI Assist' button visible."], "testResult": "PASS", "feature": "Product Description" },
+    { "id": "TC_SCRUM514_012", "title": "GenAI Assist Button Visible for Detailed Description", "priority": "Medium", "preconditions": "Add Product dialog is open.", "steps": ["Observe Detailed Description section."], "expectedResults": ["'GenAI Assist' button visible."], "testResult": "PASS", "feature": "Product Description" },
+    { "id": "TC_SCRUM514_013", "title": "Primary Image Upload Section is Visible", "priority": "Highest", "preconditions": "Add Product dialog is open.", "steps": ["Observe Primary Image section."], "expectedResults": ["'Primary Image *' upload area visible."], "testResult": "PASS", "feature": "Product Images" },
+    { "id": "TC_SCRUM514_014", "title": "Image Upload Shows Format Info", "priority": "Medium", "preconditions": "Add Product dialog is open.", "steps": ["Observe upload area text."], "expectedResults": ["'JPG or PNG, max 5MB' text visible."], "testResult": "PASS", "feature": "Product Images" },
+    { "id": "TC_SCRUM514_015", "title": "Support Helpline Field is Visible and Required", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Observe Support Information section."], "expectedResults": ["'Support Helpline Number *' textbox visible."], "testResult": "PASS", "feature": "Support Information" },
+    { "id": "TC_SCRUM514_016", "title": "Support Helpline Shows Validation Hint", "priority": "Medium", "preconditions": "Add Product dialog is open.", "steps": ["Observe helpline field hint."], "expectedResults": ["'Enter a valid 10-digit Indian mobile number' hint visible."], "testResult": "PASS", "feature": "Support Information" },
+    { "id": "TC_SCRUM514_017", "title": "Add Product Button is Disabled When Form Empty", "priority": "Highest", "preconditions": "Add Product dialog is open with empty fields.", "steps": ["Observe Add Product button state."], "expectedResults": ["Button is disabled."], "testResult": "PASS", "feature": "Form Submission" },
+    { "id": "TC_SCRUM514_018", "title": "Cancel Button is Visible", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Observe dialog footer."], "expectedResults": ["'Cancel' button visible."], "testResult": "PASS", "feature": "Form Submission" },
+    { "id": "TC_SCRUM514_019", "title": "Cancel Closes Dialog Without Saving", "priority": "High", "preconditions": "Add Product dialog is open.", "steps": ["Click Cancel."], "expectedResults": ["Dialog closes."], "testResult": "PASS", "feature": "Form Submission" },
+    { "id": "TC_SCRUM514_020", "title": "Close (×) Button Closes Dialog", "priority": "Medium", "preconditions": "Add Product dialog is open.", "steps": ["Click × button."], "expectedResults": ["Dialog closes."], "testResult": "PASS", "feature": "Form Submission" }
+  ]
+}

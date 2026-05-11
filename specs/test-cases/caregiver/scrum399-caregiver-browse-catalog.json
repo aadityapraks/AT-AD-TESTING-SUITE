@@ -1,0 +1,426 @@
+{
+  "jiraStory": "SCRUM-399",
+  "title": "Caregiver - Browse and Search Product Catalog Without Selecting a PwD (26 Test Cases)",
+  "overview": "Functional testing of SCRUM-399: Caregiver browses and searches the catalog without selecting a PwD. Validates catalog access, search/filter/sort functionality, full catalog display with device count, recommendation section inactive, no personalization labels, and edge cases.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM399_001",
+      "title": "Caregiver can access catalog page without selecting a PwD",
+      "priority": "Highest",
+      "feature": "Catalog Access Without PwD",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Verify H1 heading 'Assistive Device Catalog'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Catalog page loads with H1 heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_002",
+      "title": "Caregiver banner is visible on catalog without PwD selection",
+      "priority": "Highest",
+      "feature": "Catalog Access Without PwD",
+      "steps": [
+        "Verify .catalog-caregiver-banner is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Caregiver banner is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_003",
+      "title": "PwD dropdown shows no PwD selected by default",
+      "priority": "Highest",
+      "feature": "Catalog Access Without PwD",
+      "steps": [
+        "Verify PwD trigger is visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "PwD trigger visible with no PwD selected."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_004",
+      "title": "Search bar is visible and enabled",
+      "priority": "High",
+      "feature": "Search Bar Functionality",
+      "steps": [
+        "Verify search bar is visible and enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Search bar is visible and enabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_005",
+      "title": "Search returns matching results",
+      "priority": "High",
+      "feature": "Search Bar Functionality",
+      "steps": [
+        "Type 'wheelchair'.",
+        "Press Enter.",
+        "Click Apply Filters.",
+        "Verify device count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Search returns matching results with device count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_006",
+      "title": "Search clear restores full catalog",
+      "priority": "High",
+      "feature": "Search Bar Functionality",
+      "steps": [
+        "Clear search.",
+        "Press Enter.",
+        "Click Apply Filters.",
+        "Verify device count matches initial."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver searched for a term.",
+      "expectedResults": [
+        "Clearing search restores full catalog count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_007",
+      "title": "All filter dropdowns are visible",
+      "priority": "High",
+      "feature": "Filter Functionality",
+      "steps": [
+        "Verify Disability Type, Sub Category, Type, Price Range dropdowns.",
+        "Verify Apply Filters and Reset All buttons."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "All filter dropdowns and buttons are visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_008",
+      "title": "Type filter works",
+      "priority": "High",
+      "feature": "Filter Functionality",
+      "steps": [
+        "Select 'Device'.",
+        "Click Apply Filters.",
+        "Verify device count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Type filter updates results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_009",
+      "title": "Price Range filter works",
+      "priority": "Medium",
+      "feature": "Filter Functionality",
+      "steps": [
+        "Note initial count.",
+        "Select price range.",
+        "Apply.",
+        "Verify count <= initial."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Price Range filter reduces count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_010",
+      "title": "Multiple filters applied simultaneously",
+      "priority": "High",
+      "feature": "Filter Functionality",
+      "steps": [
+        "Select 'Visual' + 'Device'.",
+        "Apply.",
+        "Verify device count visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Multiple filters applied show combined results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_011",
+      "title": "Sort dropdown is visible with options",
+      "priority": "High",
+      "feature": "Sorting Functionality",
+      "steps": [
+        "Verify Sort by dropdown visible.",
+        "Verify multiple options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Sort dropdown visible with multiple options."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_012",
+      "title": "Sorting changes product order",
+      "priority": "Medium",
+      "feature": "Sorting Functionality",
+      "steps": [
+        "Note first product.",
+        "Select 'Name: A to Z'.",
+        "Verify order changed or same."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Sorting changes product order."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_013",
+      "title": "Full catalog results are displayed",
+      "priority": "Highest",
+      "feature": "Full Catalog Display",
+      "steps": [
+        "Verify product cards visible.",
+        "Verify View details links present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Product cards and View details links visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_014",
+      "title": "Product cards have headings",
+      "priority": "High",
+      "feature": "Full Catalog Display",
+      "steps": [
+        "Verify at least one H3 heading in product list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Product cards have H3 headings."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_015",
+      "title": "'X devices found' count is displayed",
+      "priority": "Highest",
+      "feature": "Full Catalog Display",
+      "steps": [
+        "Verify device count text visible.",
+        "Verify count > 0."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Device count text visible with count > 0."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_016",
+      "title": "Show Recommendations button is not active without PwD",
+      "priority": "Highest",
+      "feature": "Recommendation Section Inactive",
+      "steps": [
+        "Check button state.",
+        "If no PwD selected, button disabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog without PwD selected.",
+      "expectedResults": [
+        "Show Recommendations button is disabled."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_017",
+      "title": "Recommendation banner is not visible without clicking Show",
+      "priority": "Highest",
+      "feature": "Recommendation Section Inactive",
+      "steps": [
+        "Verify .catalog-recommendation-banner is NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog without clicking Show.",
+      "expectedResults": [
+        "Recommendation banner is NOT visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_018",
+      "title": "No personalized badge is visible",
+      "priority": "Highest",
+      "feature": "No Personalization Labels",
+      "steps": [
+        "Verify .catalog-recommendation-badge is NOT visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog without PwD.",
+      "expectedResults": [
+        "No personalized badge visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_019",
+      "title": "Selecting PwD after browsing enables Show Recommendations",
+      "priority": "High",
+      "feature": "Edge Cases",
+      "steps": [
+        "Select PwD index 0.",
+        "Verify button enabled."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is browsing catalog.",
+      "expectedResults": [
+        "Selecting PwD enables Show Recommendations."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_020",
+      "title": "Selecting PwD and clicking Show transitions to recommendation view",
+      "priority": "High",
+      "feature": "Edge Cases",
+      "steps": [
+        "Select PwD.",
+        "Click Show Recommendations.",
+        "Verify page has content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver selected PwD after browsing.",
+      "expectedResults": [
+        "Clicking Show transitions to recommendation view."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_021",
+      "title": "Zero results after filtering shows empty state",
+      "priority": "Medium",
+      "feature": "Edge Cases",
+      "steps": [
+        "Search 'xyznonexistentdevice99999'.",
+        "Apply.",
+        "Verify 0 devices or no results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Zero results shows empty state."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_022",
+      "title": "Reset All available after zero results",
+      "priority": "Medium",
+      "feature": "Edge Cases",
+      "steps": [
+        "Get zero results.",
+        "Verify Reset All visible.",
+        "Click Reset All.",
+        "Verify count restored."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver got zero results.",
+      "expectedResults": [
+        "Reset All restores full catalog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_023",
+      "title": "Pagination works without PwD selection",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Verify pagination visible.",
+        "Click Next.",
+        "Verify still on catalog."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Pagination works without PwD selection."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_024",
+      "title": "Mobile viewport renders correctly",
+      "priority": "Lowest",
+      "feature": "Edge Cases",
+      "steps": [
+        "Set mobile viewport.",
+        "Verify body contains 'catalog'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Page renders correctly."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_025",
+      "title": "Reset All restores full catalog",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Note initial count.",
+        "Apply filter.",
+        "Click Reset All.",
+        "Verify count matches initial."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver applied filters.",
+      "expectedResults": [
+        "Reset All restores full catalog count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM399_026",
+      "title": "Product cards display price and View Details",
+      "priority": "Low",
+      "feature": "Edge Cases",
+      "steps": [
+        "Verify body contains ₹.",
+        "Verify View details links > 0."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Product cards display price and View Details."
+      ]
+    }
+  ]
+}

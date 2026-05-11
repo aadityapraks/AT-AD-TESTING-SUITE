@@ -1,0 +1,606 @@
+{
+  "jiraStory": "SCRUM-77",
+  "title": "PwD - View Product Card (Preview Summary) - Functional Test Plan (34 Test Cases)",
+  "overview": "Functional testing of SCRUM-77: PwD - View Product Card (Preview Summary). Validates that a PwD user can quickly understand what each product offers from its card on the catalog landing page — including thumbnail image, product name, tags, rating, short description, key features, availability badge, hover/focus highlight, View Details navigation, and sign-in/create-account flow for unauthenticated users.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "catalogPath": "/catalog",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "cardsPerPage": 9,
+    "tagPatterns": [
+      "Physical",
+      "Cognitive",
+      "Mobility",
+      "Auditory",
+      "Visual",
+      "Speech",
+      "Amputation",
+      "Hearing",
+      "Locomotor",
+      "Device",
+      "Technology"
+    ],
+    "availabilityBadges": [
+      "In Stock",
+      "Out of Stock"
+    ],
+    "userTypes": [
+      "PwD",
+      "Caregiver",
+      "Employer",
+      "Donor",
+      "Vendor"
+    ],
+    "qaRegistrationDomain": "ui-qa.swarajability.org",
+    "productionRegistrationDomain": "portal.swarajability.org",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM77_001",
+      "title": "Product Card Includes Thumbnail Image",
+      "priority": "Highest",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify an image (CSS background-image) is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Product card contains a visible image (CSS background-image)."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_002",
+      "title": "Product Card Includes Product Name as Heading",
+      "priority": "Highest",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify an h3 heading with the product name is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Product card contains an h3 heading with the product name."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_003",
+      "title": "Product Card Includes Tags (Disability Type / Category)",
+      "priority": "High",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify at least one tag/badge is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "At least one tag/badge is displayed on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_004",
+      "title": "Product Card Includes Star Rating Element",
+      "priority": "High",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify a star rating element is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "A star rating element is present on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_005",
+      "title": "Product Card Includes Review Count",
+      "priority": "Medium",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify a review count in parentheses is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "A review count in parentheses is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_006",
+      "title": "Product Card Includes Short Description",
+      "priority": "High",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify a short description text is present beyond the heading."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "A short description text is present beyond the heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_007",
+      "title": "Product Card Includes Key Features Section",
+      "priority": "Medium",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify 'Key Features' text is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "'Key Features' text is present on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_008",
+      "title": "Product Card Includes Availability Badge",
+      "priority": "Medium",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify an availability badge is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "An availability badge (e.g., 'In Stock') is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_009",
+      "title": "Product Card Includes Price",
+      "priority": "High",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify a price in ₹ format is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "A price in ₹ format is displayed on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_010",
+      "title": "Product Card 'View Details' Link is Present",
+      "priority": "Highest",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Observe the first product card.",
+        "Verify a 'View Details' link is visible.",
+        "Verify the link href contains '/product/'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "'View Details' link is visible.",
+        "Link href contains '/product/'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_011",
+      "title": "All Product Cards on Page Have Required Elements",
+      "priority": "Highest",
+      "feature": "Product Card Elements",
+      "steps": [
+        "Navigate to the catalog page.",
+        "For each product card on the page, verify: heading, price, View Details link."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Every product card has a heading, price, and View Details link."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_012",
+      "title": "View Details Opens Sign-In Modal for Unauthenticated User",
+      "priority": "Highest",
+      "feature": "View Details & Authentication",
+      "steps": [
+        "Navigate to the catalog page (not logged in).",
+        "Click 'View Details' on the first product card.",
+        "Observe the page behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in and on the catalog page.",
+      "expectedResults": [
+        "Clicking 'View Details' opens a sign-in modal or dialog."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_013",
+      "title": "Sign-In Modal Contains Sign In Button",
+      "priority": "High",
+      "feature": "View Details & Authentication",
+      "steps": [
+        "Click 'View Details' to trigger sign-in modal.",
+        "Observe the modal content.",
+        "Verify a 'Sign In' button is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Sign-in modal is open.",
+      "expectedResults": [
+        "A 'Sign In' button is present in the modal."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_014",
+      "title": "Sign-In Modal Contains Create Account Option",
+      "priority": "High",
+      "feature": "View Details & Authentication",
+      "steps": [
+        "Click 'View Details' to trigger sign-in modal.",
+        "Observe the modal content.",
+        "Verify a 'Create Account' or 'Register' option is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Sign-in modal is open.",
+      "expectedResults": [
+        "A 'Create Account' or 'Register' option is present."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_015",
+      "title": "Sign-In Modal is Dismissible",
+      "priority": "High",
+      "feature": "View Details & Authentication",
+      "steps": [
+        "Click 'View Details' to trigger sign-in modal.",
+        "Close the modal via close button or Escape key.",
+        "Verify the catalog page is still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Sign-in modal is open.",
+      "expectedResults": [
+        "Modal closes via close button or Escape key.",
+        "Catalog page is still visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_016",
+      "title": "Create Account Link Points to QA Environment Not Production",
+      "priority": "Highest",
+      "feature": "View Details & Authentication",
+      "relatedBug": "SCRUM-859",
+      "steps": [
+        "Navigate to the catalog page (not logged in).",
+        "Click 'View Details' on the first product card.",
+        "Locate the 'Create' or 'Register' link.",
+        "Inspect the href attribute.",
+        "Verify it does NOT contain 'portal.swarajability.org' (production).",
+        "Verify it contains 'ui-qa.swarajability.org' (QA)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in and on the catalog page.",
+      "expectedResults": [
+        "Create Account link does NOT contain 'portal.swarajability.org'.",
+        "Link contains 'ui-qa.swarajability.org'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_017",
+      "title": "Multiple View Details Clicks Show Consistent Modal",
+      "priority": "Low",
+      "feature": "View Details & Authentication",
+      "steps": [
+        "Click 'View Details' on the first card — observe modal.",
+        "Close the modal.",
+        "Click 'View Details' on the second card — observe modal."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is not logged in and on the catalog page.",
+      "expectedResults": [
+        "Sign-in modal appears consistently for multiple View Details clicks."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_018",
+      "title": "Product Cards Display in Grid Layout (2 Columns on Desktop)",
+      "priority": "High",
+      "feature": "Card Layout & Grid",
+      "steps": [
+        "Navigate to the catalog page at desktop viewport.",
+        "Observe the product grid.",
+        "Verify first two cards are side by side."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page at desktop viewport (1280x720).",
+      "expectedResults": [
+        "First two cards are side by side in a 2-column grid."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_019",
+      "title": "Product Cards Stack in Single Column on Mobile",
+      "priority": "High",
+      "feature": "Card Layout & Grid",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to the catalog page.",
+        "Verify product cards stack vertically."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Product cards stack vertically in a single column."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_020",
+      "title": "Product Cards Have Consistent Height in Same Row",
+      "priority": "Low",
+      "feature": "Card Layout & Grid",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Compare bounding box heights of first two cards."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "First two cards have similar height (within 20px)."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_021",
+      "title": "Correct Number of Cards Per Page",
+      "priority": "Medium",
+      "feature": "Card Layout & Grid",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Count the product cards on the page."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Number of product cards on the page matches expected per-page limit."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_022",
+      "title": "Card Hover Changes Visual State",
+      "priority": "Medium",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Hover over the first product card.",
+        "Check for visual change (box-shadow, transform, or background change)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Hovering changes visual state (box-shadow, transform, or background)."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_023",
+      "title": "Hover Does Not Trigger Unexpected Navigation",
+      "priority": "Medium",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Hover over the first product card.",
+        "Verify the URL does not change."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "URL does not change on hover."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_024",
+      "title": "View Details Link href Points to Product Detail Page",
+      "priority": "High",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Inspect the href of the first 'View Details' link.",
+        "Verify it contains '/product/'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "View Details link href contains '/product/'."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_025",
+      "title": "Product Cards Render After Sort Change",
+      "priority": "High",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Note the card count.",
+        "Change sort to 'Name: A to Z'.",
+        "Verify card count remains the same."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Card count remains the same after sort change."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_026",
+      "title": "Product Cards Render After Filter Change",
+      "priority": "High",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Apply a filter (Type = 'Device').",
+        "Verify product cards are still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Product cards are still visible after applying a filter."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_027",
+      "title": "Product Cards Visible on Page 2 via Pagination",
+      "priority": "High",
+      "feature": "Card Interactions",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Click 'Next' in pagination.",
+        "Verify product cards are visible on page 2."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page with pagination.",
+      "expectedResults": [
+        "Product cards are visible on page 2."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_028",
+      "title": "No Horizontal Overflow on Mobile with Product Cards",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to the catalog page.",
+        "Check body scroll width."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Body scroll width does not exceed viewport width."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_029",
+      "title": "Product Card Content Does Not Overlap",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Verify the first card's bounding box does not overlap with the second card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "First card's bounding box does not overlap with the second card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_030",
+      "title": "Product Card Image Area Has Non-Zero Dimensions",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Get the bounding box of the first product card.",
+        "Verify it has non-zero width and height."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Product card has non-zero width and height."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_031",
+      "title": "Product Cards Render on Tablet Viewport",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to tablet (768x1024).",
+        "Navigate to the catalog page.",
+        "Verify product cards are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to tablet (768x1024).",
+      "expectedResults": [
+        "Product cards are visible on tablet viewport."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_032",
+      "title": "Rapid Scroll Through Product Cards Does Not Break Layout",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Rapidly scroll to the bottom and back to top.",
+        "Verify product cards are still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "Product cards are still visible after rapid scrolling."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_033",
+      "title": "Product Card Tags Are Not Empty Strings",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Extract text from the first product card.",
+        "Verify at least one known tag pattern is present with non-empty text."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "At least one known tag pattern is present with non-empty text."
+      ]
+    },
+    {
+      "id": "TC_SCRUM77_034",
+      "title": "View Details Links Are Unique Per Product Card",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Navigate to the catalog page.",
+        "Extract href from the first two 'View Details' links.",
+        "Compare the hrefs."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog page.",
+      "expectedResults": [
+        "First two View Details links have different hrefs."
+      ]
+    }
+  ]
+}

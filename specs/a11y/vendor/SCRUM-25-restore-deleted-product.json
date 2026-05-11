@@ -1,0 +1,957 @@
+{
+  "jiraStory": "SCRUM-25",
+  "title": "SCRUM-25 Accessibility Test Plan",
+  "overview": "Comprehensive accessibility test plan for Admin Restore Deleted Products feature (SCRUM-25) covering WCAG 2.1 AA compliance for deleted products list, search/filter, product details view, restore button, confirmation dialog, notifications, audit trail, permissions, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Verify Deleted Products section navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Login as admin",
+        "Navigate to Admin Dashboard",
+        "Tab to Deleted Products/Archived Items link",
+        "Verify focus indicator visible",
+        "Press Enter to access section"
+      ],
+      "expectedResults": [
+        "Navigation link keyboard accessible",
+        "Link has clear accessible name",
+        "Focus indicator visible with 3:1 contrast",
+        "Link activates with Enter key",
+        "Page loads successfully"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Verify page title and landmarks",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Deleted Products section",
+        "Verify page title is descriptive",
+        "Use screen reader to navigate landmarks",
+        "Check main, navigation landmarks",
+        "Verify skip links"
+      ],
+      "expectedResults": [
+        "Page title includes 'Deleted Products' or 'Archived Items'",
+        "Main content has role='main'",
+        "Navigation has role='navigation'",
+        "Skip to main content link present",
+        "All landmarks have accessible names"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Verify heading structure",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to Deleted Products page",
+        "Use screen reader heading navigation",
+        "Verify h1 for page title",
+        "Verify h2 for sections",
+        "Check heading hierarchy"
+      ],
+      "expectedResults": [
+        "Page heading is h1",
+        "Section headings are h2",
+        "No heading levels skipped",
+        "Heading hierarchy is logical",
+        "Screen reader announces headings correctly"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Verify table structure accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to deleted products table",
+        "Verify table has caption or aria-label",
+        "Check header cells use <th>",
+        "Verify scope attributes",
+        "Test with screen reader"
+      ],
+      "expectedResults": [
+        "Table has <table> element",
+        "Table has <caption> or aria-label",
+        "Header row uses <th> elements",
+        "Headers have scope='col'",
+        "Table structure announced by screen reader"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Verify table headers accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to table",
+        "Move through header cells",
+        "Verify each header announced",
+        "Test table navigation"
+      ],
+      "expectedResults": [
+        "All column headers announced",
+        "Headers: Product Name, Vendor Name, Vendor ID, Deletion Date, Deletion Reason, Deleted By",
+        "Data cells associated with headers",
+        "Screen reader announces row/column position",
+        "Table navigation works with arrow keys"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Verify table keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Tab through table rows",
+        "Verify tab order is logical",
+        "Test focus indicators",
+        "Navigate to action buttons",
+        "Verify no keyboard traps"
+      ],
+      "expectedResults": [
+        "Tab order follows logical sequence",
+        "Focus indicator visible on interactive cells",
+        "Action buttons keyboard accessible",
+        "No keyboard traps in table",
+        "Arrow keys navigate cells (optional)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Verify table visual accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Inspect table text contrast",
+        "Verify headers have 4.5:1 contrast",
+        "Verify data cells have 4.5:1 contrast",
+        "Test zoom to 200%",
+        "Check row states"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Table borders have 3:1 contrast",
+        "Table readable at 200% zoom",
+        "Row hover/focus states visible",
+        "No color-only information"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Verify search input accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to search input",
+        "Verify label exists and is associated",
+        "Check input contrast",
+        "Test keyboard focus",
+        "Verify placeholder usage"
+      ],
+      "expectedResults": [
+        "Search input has <label> or aria-label",
+        "Label text: 'Search deleted products'",
+        "Input has 4.5:1 contrast",
+        "Placeholder not sole label",
+        "Input keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Verify filter dropdowns accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to filter controls",
+        "Verify each dropdown has label",
+        "Tab to dropdowns",
+        "Use arrow keys to select",
+        "Test with screen reader"
+      ],
+      "expectedResults": [
+        "Filter dropdowns have labels",
+        "Labels: 'Filter by vendor', 'Filter by date', 'Filter by category'",
+        "Dropdowns keyboard accessible",
+        "Arrow keys navigate options",
+        "Selected value announced"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Verify sort controls accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to sort controls",
+        "Tab to sort buttons/links",
+        "Activate sort options",
+        "Verify sort state announced",
+        "Check visual indicators"
+      ],
+      "expectedResults": [
+        "Sort controls keyboard accessible",
+        "Sort options have clear labels",
+        "Current sort state announced",
+        "Sort direction indicated (ascending/descending)",
+        "Visual indicator has 3:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Verify dynamic results announcement",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Apply search or filter",
+        "Verify results update announced",
+        "Check aria-live region",
+        "Test loading state",
+        "Verify focus remains stable"
+      ],
+      "expectedResults": [
+        "Results update has aria-live region",
+        "Update announced: 'X results found'",
+        "Loading state announced",
+        "Focus management after filter",
+        "No unexpected focus changes"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Verify product detail link accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to deleted products table",
+        "Tab to product name link",
+        "Verify focus indicator",
+        "Press Enter to open details",
+        "Verify detail view loads"
+      ],
+      "expectedResults": [
+        "Product link keyboard accessible",
+        "Link has accessible name with product name",
+        "Focus indicator visible",
+        "Link activates with Enter",
+        "Detail view opens"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Verify product detail page structure",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Open product detail view",
+        "Use screen reader heading navigation",
+        "Verify h1 for product name",
+        "Verify h2 for sections",
+        "Check heading hierarchy"
+      ],
+      "expectedResults": [
+        "Product name is h1",
+        "Section headings are h2",
+        "Heading hierarchy is logical",
+        "All headings announced by screen reader",
+        "No heading levels skipped"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Verify deleted status label accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to product detail view",
+        "Locate deleted status label",
+        "Verify label text and contrast",
+        "Test with screen reader",
+        "Check semantic markup"
+      ],
+      "expectedResults": [
+        "Deleted status label visible",
+        "Label text: 'Deleted – Not Visible to PwD Users'",
+        "Label has 4.5:1 contrast",
+        "Label announced by screen reader",
+        "Label has semantic markup (e.g., <strong>, role='status')"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Verify product content accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Review product descriptions",
+        "Check specifications display",
+        "Verify media accessibility",
+        "Test zoom to 200%",
+        "Check contrast ratios"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Images have alt text",
+        "Media in archived state clearly indicated",
+        "Content readable at 200% zoom",
+        "No color-only information"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Verify Restore button keyboard accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to product detail page",
+        "Tab to Restore Product button",
+        "Verify focus indicator visible",
+        "Press Enter/Space to activate",
+        "Verify confirmation dialog opens"
+      ],
+      "expectedResults": [
+        "Button has role='button'",
+        "Accessible name: 'Restore Product'",
+        "Focus indicator visible with 3:1 contrast",
+        "Button activates with Enter/Space",
+        "Button state announced if disabled"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Verify Restore button screen reader accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to Restore button",
+        "Verify button name announced",
+        "Verify button role announced",
+        "Test button activation"
+      ],
+      "expectedResults": [
+        "Button role announced",
+        "Button name 'Restore Product' announced",
+        "Context provided (e.g., 'Restore [Product Name]')",
+        "Button state announced",
+        "No empty or generic labels"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Verify Restore button visual accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Inspect button colors",
+        "Verify text contrast",
+        "Verify background contrast",
+        "Test hover/focus states",
+        "Measure touch target size"
+      ],
+      "expectedResults": [
+        "Button text has 4.5:1 contrast",
+        "Button background has 3:1 contrast",
+        "Hover/focus states visible",
+        "Button readable at 200% zoom",
+        "Touch target meets 44x44px minimum"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Verify confirmation dialog structure",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Trigger Restore Product",
+        "Verify dialog opens",
+        "Check dialog role and ARIA attributes",
+        "Verify focus moves to dialog",
+        "Test focus trap"
+      ],
+      "expectedResults": [
+        "Dialog has role='dialog' or role='alertdialog'",
+        "Dialog has aria-modal='true'",
+        "Dialog has aria-labelledby pointing to title",
+        "Focus moves to dialog on open",
+        "Focus trapped within dialog"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Verify dialog keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Open confirmation dialog",
+        "Tab through dialog elements",
+        "Verify focus stays in dialog",
+        "Press Escape to close",
+        "Verify focus returns correctly"
+      ],
+      "expectedResults": [
+        "Tab cycles through dialog elements only",
+        "Confirm and Cancel buttons keyboard accessible",
+        "Escape key closes dialog",
+        "Focus returns to Restore button on close",
+        "No keyboard traps"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Verify dialog screen reader accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Open confirmation dialog",
+        "Verify dialog title announced",
+        "Verify message announced",
+        "Verify button labels announced"
+      ],
+      "expectedResults": [
+        "Dialog title announced",
+        "Confirmation message announced",
+        "Message: 'Are you sure you want to restore this product?'",
+        "Additional context announced",
+        "Button labels clear: 'Confirm' and 'Cancel'"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Verify dialog visual accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Inspect dialog text contrast",
+        "Verify title has 4.5:1 contrast",
+        "Verify message has 4.5:1 contrast",
+        "Test zoom to 200%",
+        "Check focus indicators"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Dialog overlay has sufficient opacity",
+        "Dialog readable at 200% zoom",
+        "Focus indicators visible",
+        "Close button (X) has 3:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Verify success message accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Confirm product restoration",
+        "Verify success message appears",
+        "Check message announced to screen reader",
+        "Verify message contrast",
+        "Test message dismissal"
+      ],
+      "expectedResults": [
+        "Success message has role='alert' or aria-live='polite'",
+        "Message announced immediately",
+        "Message text: 'Product X has been successfully restored'",
+        "Message has 4.5:1 contrast",
+        "Message dismissible with keyboard"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Verify success message keyboard handling",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Trigger success message",
+        "Verify focus management",
+        "Tab to dismiss button if present",
+        "Test Escape key",
+        "Verify message dismissal"
+      ],
+      "expectedResults": [
+        "Focus doesn't move unexpectedly",
+        "Dismiss button keyboard accessible",
+        "Escape key dismisses message",
+        "Message doesn't block content",
+        "Message auto-dismisses or has close button"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Verify notification indicator accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to vendor dashboard (as vendor)",
+        "Tab to notification indicator",
+        "Verify focus indicator",
+        "Verify unread count announced",
+        "Activate notification"
+      ],
+      "expectedResults": [
+        "Notification indicator keyboard accessible",
+        "Indicator has accessible name",
+        "Unread count announced",
+        "Focus indicator visible",
+        "Notification opens on activation"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_026",
+      "title": "Verify notification content accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Open vendor notification",
+        "Enable screen reader",
+        "Verify notification announced",
+        "Check message content",
+        "Test action links"
+      ],
+      "expectedResults": [
+        "Notification title announced",
+        "Message content announced",
+        "Message: 'Your product [Name] has been restored'",
+        "Timestamp announced",
+        "Action links keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_027",
+      "title": "Verify audit log table accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate to audit log",
+        "Verify table structure",
+        "Check table caption",
+        "Verify header cells",
+        "Test keyboard navigation"
+      ],
+      "expectedResults": [
+        "Audit log table has proper structure",
+        "Table has caption or aria-label",
+        "Headers: Product ID, Product Name, Admin ID, Admin Name, Timestamp, Action",
+        "All headers have scope='col'",
+        "Table keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_028",
+      "title": "Verify audit log screen reader accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate through audit log",
+        "Verify entries announced",
+        "Check action labels",
+        "Verify timestamps"
+      ],
+      "expectedResults": [
+        "All audit entries announced",
+        "Deletion and restoration actions clearly labeled",
+        "Timestamps in accessible format",
+        "Admin names announced",
+        "Table data cells associated with headers"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_029",
+      "title": "Verify audit log visual accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Inspect audit log colors",
+        "Verify text contrast",
+        "Test zoom to 200%",
+        "Check row states",
+        "Verify action indicators"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast",
+        "Table readable at 200% zoom",
+        "Row states visible (hover/focus)",
+        "Action types distinguishable",
+        "No color-only information"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_030",
+      "title": "Verify permission error accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Login as non-admin user",
+        "Attempt to access Deleted Products",
+        "Verify error message appears",
+        "Check message announced",
+        "Verify message contrast"
+      ],
+      "expectedResults": [
+        "Error message has role='alert'",
+        "Message announced immediately",
+        "Message text: 'You do not have the necessary privileges'",
+        "Message has 4.5:1 contrast",
+        "Message provides clear guidance"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_031",
+      "title": "Verify disabled Restore button accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Login as user without permissions",
+        "Navigate to product details",
+        "Verify Restore button state",
+        "Check disabled state announced",
+        "Test tooltip if present"
+      ],
+      "expectedResults": [
+        "Restore button disabled or hidden",
+        "Disabled state announced",
+        "Disabled button has aria-disabled='true'",
+        "Visual indicator shows disabled state",
+        "Tooltip explains why disabled"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_032",
+      "title": "Verify restoration failure error accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Trigger restoration failure scenario",
+        "Verify error message appears",
+        "Check error announced to screen reader",
+        "Verify error contrast",
+        "Check error icon"
+      ],
+      "expectedResults": [
+        "Error has role='alert' or aria-live='assertive'",
+        "Error announced immediately",
+        "Message: 'Product restoration failed. Some media files are no longer available'",
+        "Error has 4.5:1 contrast",
+        "Error icon has 3:1 contrast"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_033",
+      "title": "Verify error keyboard handling",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Trigger error message",
+        "Verify focus management",
+        "Tab to dismiss button",
+        "Test Escape key",
+        "Verify focus return"
+      ],
+      "expectedResults": [
+        "Error doesn't trap focus",
+        "Dismiss button keyboard accessible",
+        "Escape key dismisses error",
+        "Focus returns appropriately",
+        "Error provides actionable guidance"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_034",
+      "title": "Verify partial restoration warning accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Trigger partial restoration",
+        "Verify warning message",
+        "Check message announced",
+        "Verify missing media indicated",
+        "Test follow-up actions"
+      ],
+      "expectedResults": [
+        "Partial restoration flagged clearly",
+        "Warning message announced",
+        "Missing media indicated",
+        "Vendor follow-up action clear",
+        "All messages keyboard accessible"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_035",
+      "title": "Verify complete keyboard navigation",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Navigate entire restore workflow",
+        "Tab through all elements",
+        "Verify tab order is logical",
+        "Test all interactive elements",
+        "Verify no keyboard traps"
+      ],
+      "expectedResults": [
+        "All interactive elements keyboard accessible",
+        "Tab order follows visual layout",
+        "Focus indicators visible on all elements",
+        "No keyboard traps exist",
+        "All actions completable with keyboard"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_036",
+      "title": "Verify complete screen reader accessibility",
+      "wcagCriterion": "",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Enable screen reader",
+        "Navigate entire workflow",
+        "Verify all elements announced",
+        "Check state changes",
+        "Test dynamic content"
+      ],
+      "expectedResults": [
+        "All elements have accessible names",
+        "All state changes announced",
+        "Dynamic content has aria-live",
+        "Form labels properly associated",
+        "No visual-only information"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_037",
+      "title": "Verify color and contrast compliance",
+      "wcagCriterion": "1.4.3",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Inspect all text elements",
+        "Verify text contrast ratios",
+        "Check UI component contrast",
+        "Verify focus indicators",
+        "Test with high contrast mode"
+      ],
+      "expectedResults": [
+        "All text meets 4.5:1 contrast (WCAG 1.4.3)",
+        "Large text meets 3:1 contrast",
+        "UI components meet 3:1 contrast (WCAG 1.4.11)",
+        "Focus indicators meet 3:1 contrast",
+        "No color-only information (WCAG 1.4.1)"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_038",
+      "title": "Verify responsive design accessibility",
+      "wcagCriterion": "1.4.10",
+      "componentElement": "",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-25",
+      "preconditions": "",
+      "steps": [
+        "Test at various viewport sizes",
+        "Zoom to 200%",
+        "Verify content reflows",
+        "Measure touch targets",
+        "Test on mobile viewport"
+      ],
+      "expectedResults": [
+        "Content reflows without horizontal scroll (WCAG 1.4.10)",
+        "All content accessible at 200% zoom (WCAG 1.4.4)",
+        "Touch targets meet 44x44px minimum",
+        "Layout adapts to viewport",
+        "No content loss at zoom"
+      ],
+      "postconditions": "",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

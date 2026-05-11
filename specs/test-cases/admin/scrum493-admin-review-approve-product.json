@@ -1,0 +1,38 @@
+{
+  "jiraStory": "SCRUM-493",
+  "title": "Admin - Review & Approve New Product Submission (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-493: Admin - Review & Approve New Product Submission.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "productsUrl": "https://hub-ui-admin-qa.swarajability.org/admin/products",
+    "dashboardUrl": "https://hub-ui-admin-qa.swarajability.org/admin/dashboard",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "tablet": { "width": 768, "height": 1024 },
+      "mobile": { "width": 375, "height": 667 }
+    }
+  },
+  "testCases": [
+    { "id": "TC_SCRUM493_001", "title": "New Submissions Tab is Visible", "priority": "Highest", "preconditions": "Admin is logged in on Product Management page.", "steps": ["Navigate to Product Management.", "Verify 'New Submissions' tab is visible."], "expectedResults": ["'New Submissions' tab is visible."], "testResult": "PASS", "feature": "New Submissions Tab" },
+    { "id": "TC_SCRUM493_002", "title": "New Submissions Tab Shows Product Count", "priority": "High", "preconditions": "Admin is on Product Management page.", "steps": ["Observe the 'New Submissions' tab."], "expectedResults": ["Tab shows a numeric count."], "testResult": "PASS", "feature": "New Submissions Tab" },
+    { "id": "TC_SCRUM493_003", "title": "Products Show Under Review Status", "priority": "Highest", "preconditions": "Admin clicks 'New Submissions' tab.", "steps": ["Click 'New Submissions' tab.", "Observe first product card."], "expectedResults": ["Product card displays 'Under Review' status."], "testResult": "PASS", "feature": "New Submissions Tab" },
+    { "id": "TC_SCRUM493_004", "title": "View Details Opens Product Detail Dialog", "priority": "Highest", "preconditions": "Admin is on New Submissions tab.", "steps": ["Click 'View Details' on first product."], "expectedResults": ["Dialog with heading 'Product Details' opens."], "testResult": "PASS", "feature": "Product Detail Dialog" },
+    { "id": "TC_SCRUM493_005", "title": "Dialog Shows Product Name", "priority": "High", "preconditions": "Product detail dialog is open.", "steps": ["Observe dialog content."], "expectedResults": ["Product name is displayed as H3 heading."], "testResult": "PASS", "feature": "Product Detail Dialog" },
+    { "id": "TC_SCRUM493_006", "title": "Dialog Shows Status Badge", "priority": "High", "preconditions": "Product detail dialog is open.", "steps": ["Observe status badge."], "expectedResults": ["Status shows 'Under Review'."], "testResult": "PASS", "feature": "Product Detail Dialog" },
+    { "id": "TC_SCRUM493_007", "title": "Dialog Shows Price and Stock", "priority": "High", "preconditions": "Product detail dialog is open.", "steps": ["Observe price and stock sections."], "expectedResults": ["Price with ₹ and stock quantity displayed."], "testResult": "PASS", "feature": "Product Detail Dialog" },
+    { "id": "TC_SCRUM493_008", "title": "Approve Product Button is Visible", "priority": "Highest", "preconditions": "Product detail dialog is open.", "steps": ["Observe dialog footer."], "expectedResults": ["'Approve Product' button is visible."], "testResult": "PASS", "feature": "Approve Flow" },
+    { "id": "TC_SCRUM493_009", "title": "Clicking Approve Opens Confirmation Modal", "priority": "Highest", "preconditions": "Product detail dialog is open.", "steps": ["Click 'Approve Product'."], "expectedResults": ["Dialog with heading 'Approve Product' opens."], "testResult": "PASS", "feature": "Approve Flow" },
+    { "id": "TC_SCRUM493_010", "title": "Confirmation Modal Shows Product Name", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Observe modal subtitle."], "expectedResults": ["Subtitle contains product name."], "testResult": "PASS", "feature": "Approve Flow" },
+    { "id": "TC_SCRUM493_011", "title": "Confirmation Modal Shows Impact Summary", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Observe impact summary list."], "expectedResults": ["List contains vendor access/credentials items."], "testResult": "PASS", "feature": "Approve Flow" },
+    { "id": "TC_SCRUM493_012", "title": "Approval Notes Textbox is Visible", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Observe notes section."], "expectedResults": ["Textbox labeled 'Approval Notes (Optional)' is visible."], "testResult": "PASS", "feature": "Approval Notes" },
+    { "id": "TC_SCRUM493_013", "title": "Approval Notes Accepts Input", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Type text into notes textbox."], "expectedResults": ["Text is accepted and displayed."], "testResult": "PASS", "feature": "Approval Notes" },
+    { "id": "TC_SCRUM493_014", "title": "Confirm Approval Button is Visible", "priority": "Highest", "preconditions": "Approval confirmation modal is open.", "steps": ["Observe modal footer."], "expectedResults": ["'Confirm Approval' button is visible."], "testResult": "PASS", "feature": "Confirm & Cancel" },
+    { "id": "TC_SCRUM493_015", "title": "Cancel Button is Visible", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Observe modal footer."], "expectedResults": ["'Cancel' button is visible."], "testResult": "PASS", "feature": "Confirm & Cancel" },
+    { "id": "TC_SCRUM493_016", "title": "Cancel Returns from Confirmation Modal", "priority": "High", "preconditions": "Approval confirmation modal is open.", "steps": ["Click 'Cancel'."], "expectedResults": ["Modal closes without approving."], "testResult": "PASS", "feature": "Confirm & Cancel" },
+    { "id": "TC_SCRUM493_017", "title": "Product Disappears After Approval", "priority": "Highest", "preconditions": "Approval confirmation modal is open.", "steps": ["Click 'Confirm Approval'.", "Observe New Submissions."], "expectedResults": ["Product removed from New Submissions."], "testResult": "PASS", "feature": "Confirm & Cancel" },
+    { "id": "TC_SCRUM493_018", "title": "Pagination is Visible on New Submissions", "priority": "Medium", "preconditions": "New Submissions has multiple pages.", "steps": ["Observe pagination controls."], "expectedResults": ["Pagination with Next/Previous is visible."], "testResult": "PASS", "feature": "Pagination & Edge Cases" },
+    { "id": "TC_SCRUM493_019", "title": "All Products Tab Shows Total Count", "priority": "Medium", "preconditions": "Admin is on Product Management page.", "steps": ["Observe 'All Products' tab."], "expectedResults": ["Tab shows a numeric count."], "testResult": "PASS", "feature": "Pagination & Edge Cases" },
+    { "id": "TC_SCRUM493_020", "title": "Close Button on Detail Dialog Works", "priority": "Medium", "preconditions": "Product detail dialog is open.", "steps": ["Click close button."], "expectedResults": ["Dialog closes."], "testResult": "PASS", "feature": "Pagination & Edge Cases" }
+  ]
+}

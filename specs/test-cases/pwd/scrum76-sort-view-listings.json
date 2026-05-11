@@ -1,0 +1,575 @@
+{
+  "jiraStory": "SCRUM-76",
+  "title": "PwD - Sort and View Product Listings - Functional Test Plan (33 Test Cases)",
+  "overview": "Functional testing of SCRUM-76: PwD - Sort and View Product Listings. Validates that a PwD user can sort product listings using the Sort By dropdown, view product cards with all required information, and verify sort interactions, persistence, and edge cases.",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogPath": "/catalog",
+    "credentials": {
+      "email": "candidate8new1@mailto.plus",
+      "password": "123456"
+    },
+    "sortOptions": [
+      "Latest",
+      "Most Popular",
+      "Highest Rated",
+      "Price: Low to High",
+      "Price: High to Low",
+      "Name: A to Z"
+    ],
+    "defaultSort": "Latest",
+    "filters": {
+      "type": "Device",
+      "disabilityType": "Amputation"
+    },
+    "mobileViewport": {
+      "width": 375,
+      "height": 667
+    },
+    "desktopViewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM76_001",
+      "title": "Sort Dropdown Contains All Required Options",
+      "priority": "Highest",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Locate the 'Sort by' dropdown on the catalog page.",
+        "Click/open the dropdown.",
+        "Verify the available options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Dropdown lists all 6 sort options: Latest, Most Popular, Highest Rated, Price: Low to High, Price: High to Low, Name: A to Z."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_002",
+      "title": "Sort by Most Popular Reorders Results",
+      "priority": "High",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Note the first product displayed.",
+        "Select 'Most Popular' from the Sort by dropdown.",
+        "Observe the product order."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with default sort.",
+      "expectedResults": [
+        "Products are reordered by popularity.",
+        "Device count remains the same."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_003",
+      "title": "Sort by Highest Rated Reorders Results",
+      "priority": "High",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Select 'Highest Rated' from the Sort by dropdown.",
+        "Observe the first few product cards.",
+        "Verify device count remains the same as before sort."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Products are reordered by rating.",
+        "Device count does not change."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_004",
+      "title": "Sort by Price: Low to High Reorders Results",
+      "priority": "High",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Select 'Price: Low to High' from the Sort by dropdown.",
+        "Observe the first few product cards.",
+        "Verify device count remains the same as before sort."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Products are reordered by price ascending.",
+        "Device count does not change."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_005",
+      "title": "Sort by Price: High to Low Reorders Results",
+      "priority": "High",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Select 'Price: High to Low' from the Sort by dropdown.",
+        "Observe the first few product cards.",
+        "Verify device count remains the same as before sort."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Products are reordered by price descending.",
+        "Device count does not change."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_006",
+      "title": "Sort by Alphabetical (A–Z) Reorders Results",
+      "priority": "High",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Select 'Name: A to Z' from the Sort by dropdown.",
+        "Observe the first few product cards.",
+        "Verify the first product's name comes alphabetically before the second."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Products are ordered alphabetically A-Z.",
+        "First product name comes before the second alphabetically."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_007",
+      "title": "Sorting Refreshes Results Instantly (No Page Reload)",
+      "priority": "Highest",
+      "feature": "Sort Dropdown — Options & Functionality",
+      "steps": [
+        "Note the current product order.",
+        "Select a different sort option (e.g., 'Most Popular').",
+        "Observe the page behavior."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Results reorder instantly without a full page reload."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_008",
+      "title": "Grid View Displays Product Cards in 2 Columns",
+      "priority": "High",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the product grid layout.",
+        "Verify products are displayed in a 2-column grid on desktop viewport."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page at desktop viewport (1280x720).",
+      "expectedResults": [
+        "Products are arranged in 2 columns per row."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_009",
+      "title": "Product Card Includes Product Image",
+      "priority": "Medium",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify an image element is present within the card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Product card contains a visible image or background image."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_010",
+      "title": "Product Card Includes Product Name",
+      "priority": "High",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a heading (h3) with the product name is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Product card contains a heading (h3) with the product name."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_011",
+      "title": "Product Card Includes Tags (Disability/Category)",
+      "priority": "Medium",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify tags/badges are displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "At least one tag/badge is visible on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_012",
+      "title": "Product Card Includes Rating (Stars + Review Count)",
+      "priority": "Medium",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a star rating element is present.",
+        "Verify a review count is displayed."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Star rating is visible.",
+        "Review count is displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_013",
+      "title": "Product Card Includes Short Description (Truncated)",
+      "priority": "Medium",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a short description text is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "A short description text is present on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_014",
+      "title": "Product Card Includes Key Features",
+      "priority": "Low",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a 'Key Features' section or text is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "A 'Key Features' section or text is present on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_015",
+      "title": "Product Card Includes Availability Badge",
+      "priority": "Low",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify an availability badge is present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "An availability badge (e.g., 'In Stock') is visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_016",
+      "title": "Product Card Price is Displayed",
+      "priority": "High",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a price is displayed (e.g., '₹899.99' or '₹12000')."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Price text is visible on the product card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_017",
+      "title": "Product Card 'View Details' Link is Present and Clickable",
+      "priority": "High",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Observe the first product card.",
+        "Verify a 'View details' link is present.",
+        "Click the 'View details' link.",
+        "Observe the navigation."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "'View details' link is visible.",
+        "Clicking opens product detail page or sign-in modal."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_018",
+      "title": "Pagination Available When Products Exceed Per-Page Limit",
+      "priority": "High",
+      "feature": "Product Card — Display & Content",
+      "steps": [
+        "Navigate to the catalog landing page with no filters.",
+        "Observe the pagination component below the product list.",
+        "Verify pagination controls are visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Catalog has more products than the per-page limit.",
+      "expectedResults": [
+        "Pagination controls are visible below the product list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_019",
+      "title": "Default Sort Order on Page Load",
+      "priority": "Medium",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Navigate to the catalog landing page.",
+        "Observe the Sort by dropdown default value."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User navigates to the catalog landing page.",
+      "expectedResults": [
+        "Sort dropdown shows 'Latest' as the default."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_020",
+      "title": "Sort Dropdown Resets on Reset All",
+      "priority": "Medium",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Select 'Price: High to Low' from the Sort by dropdown.",
+        "Click 'Reset All'.",
+        "Observe the Sort by dropdown value."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User has changed the sort order.",
+      "expectedResults": [
+        "Sort dropdown reverts to 'Latest' after Reset All."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_021",
+      "title": "Sort Persists After Pagination Navigation",
+      "priority": "High",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Select 'Price: Low to High' from the Sort by dropdown.",
+        "Click 'Next' or page 2 in pagination.",
+        "Observe the Sort by dropdown value.",
+        "Observe the product order on page 2."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with sort applied.",
+      "expectedResults": [
+        "Sort dropdown retains selection after pagination.",
+        "Products on page 2 continue the sort order."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_022",
+      "title": "Sort Combined with Filters Works Correctly",
+      "priority": "High",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Select 'Device' from the Type filter dropdown.",
+        "Click 'Apply Filters'.",
+        "Select 'Highest Rated' from the Sort by dropdown.",
+        "Observe the results."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Only filtered products are shown, sorted by selected option.",
+        "Device count remains same after sort."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_023",
+      "title": "Grid View Responsive on Mobile Viewport",
+      "priority": "High",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Open the catalog landing page on a mobile viewport.",
+        "Observe the product grid layout.",
+        "Verify products are displayed in a single column or adjusted layout."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Product cards stack in a single column.",
+        "No horizontal overflow."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_024",
+      "title": "Sort Order is Correct for Alphabetical (A–Z)",
+      "priority": "Highest",
+      "feature": "Sort Interactions & Persistence",
+      "steps": [
+        "Select 'Name: A to Z' from the Sort by dropdown.",
+        "Extract the name from the first product card.",
+        "Extract the name from the second product card.",
+        "Compare the two names alphabetically."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "First product name comes before or equals the second alphabetically."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_025",
+      "title": "Sort Dropdown is Keyboard Navigable",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Tab to the Sort by dropdown to focus it.",
+        "Press Enter to open the dropdown.",
+        "Use ArrowDown keys to navigate options.",
+        "Press Enter to select an option.",
+        "Verify the sort changes."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Sort dropdown is fully operable via keyboard.",
+        "Selected sort option changes from default."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_026",
+      "title": "Rapid Sort Switching Returns Correct Final Results",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Rapidly switch sort from 'Most Popular' to 'Price: High to Low' to 'Name: A to Z' without waiting.",
+        "Wait for results to settle.",
+        "Verify the final sort selection and product order."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Sort dropdown shows 'Name: A to Z'.",
+        "Products are in alphabetical order."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_027",
+      "title": "Sort Persists After Browser Back/Forward Navigation",
+      "priority": "Medium",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Select 'Most Popular' from the Sort by dropdown.",
+        "Navigate to page 2 via pagination.",
+        "Click browser Back button.",
+        "Verify the sort dropdown value."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Sort dropdown retains selection after browser back navigation."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_028",
+      "title": "Product Cards Maintain Consistent Height in Grid",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Observe the first two product cards in the grid.",
+        "Compare their bounding box heights."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page with at least 2 product cards.",
+      "expectedResults": [
+        "Cards in the same row have similar height (within 20px)."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_029",
+      "title": "Sort Dropdown Visible on Mobile Viewport",
+      "priority": "High",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Set viewport to mobile (375x667).",
+        "Navigate to the catalog page.",
+        "Verify the Sort by dropdown is visible.",
+        "Verify all sort options are available."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile (375x667).",
+      "expectedResults": [
+        "Sort dropdown is visible on mobile.",
+        "All 6 sort options are available."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_030",
+      "title": "No Horizontal Overflow on Any Sort Option",
+      "priority": "Lowest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Cycle through all 6 sort options.",
+        "After each sort, check the page body scroll width.",
+        "Verify no horizontal overflow occurs."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "No horizontal overflow for any sort option."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_031",
+      "title": "Price Sort Validates Actual Price Ordering (Low to High)",
+      "priority": "Highest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Select 'Price: Low to High' from the Sort by dropdown.",
+        "Extract prices from the first 3 product cards.",
+        "Compare each consecutive pair."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Each product's price is >= the previous product's price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_032",
+      "title": "Price Sort Validates Actual Price Ordering (High to Low)",
+      "priority": "Highest",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Select 'Price: High to Low' from the Sort by dropdown.",
+        "Extract prices from the first 3 product cards.",
+        "Compare each consecutive pair."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Each product's price is <= the previous product's price."
+      ]
+    },
+    {
+      "id": "TC_SCRUM76_033",
+      "title": "Multiple Sort Changes Do Not Duplicate Product Cards",
+      "priority": "Low",
+      "feature": "Edge Cases & Robustness",
+      "steps": [
+        "Note the initial product card count on the page.",
+        "Switch sort to 'Most Popular', then 'Price: Low to High', then 'Name: A to Z'.",
+        "Compare the final product card count to the initial count."
+      ],
+      "testResult": "PASS",
+      "preconditions": "User is on the catalog landing page.",
+      "expectedResults": [
+        "Product card count remains the same after multiple sort changes."
+      ]
+    }
+  ]
+}

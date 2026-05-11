@@ -1,0 +1,36 @@
+{
+  "jiraStory": "SCRUM-490",
+  "title": "Admin - View Categorized Product Listings (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-490: Admin views categorized product listings. Validates tabs (New Submissions, Pending Edits, All Products), correct product counts, product card details (name, vendor, disability tags, price, SKU, stock, status badge), context-aware actions, empty state, count refresh on reload.",
+  "testData": {
+    "baseUrl": "https://hub-ui-admin-qa.swarajability.org/",
+    "credentials": { "email": "pv@mailto.plus", "password": "23456789" },
+    "viewports": {
+      "desktop": { "width": 1280, "height": 720 },
+      "mobile": { "width": 375, "height": 667 }
+    },
+    "tabs": ["New Submissions", "Pending Edits", "All Products"]
+  },
+  "testCases": [
+    { "id": "TC_SCRUM490_001", "title": "Product Management Page Loads Successfully", "priority": "Critical", "feature": "Page Access", "steps": ["Login as admin.", "Navigate to Product Management.", "Verify page loads."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_002", "title": "New Submissions Tab is Visible", "priority": "Critical", "feature": "Tabs — Visibility", "steps": ["Navigate to Product Management.", "Verify 'New Submissions' tab visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_003", "title": "Pending Edits Tab is Visible", "priority": "Critical", "feature": "Tabs — Visibility", "steps": ["Navigate to Product Management.", "Verify 'Pending Edits' tab visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_004", "title": "All Products Tab is Visible", "priority": "Critical", "feature": "Tabs — Visibility", "steps": ["Navigate to Product Management.", "Verify 'All Products' tab visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_005", "title": "Each Tab Shows Product Count", "priority": "Critical", "feature": "Tabs — Counts", "steps": ["Observe all tabs.", "Verify each tab displays a numeric count."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_006", "title": "Clicking New Submissions Tab Shows Relevant Products", "priority": "Critical", "feature": "Tabs — Navigation", "steps": ["Click 'New Submissions' tab.", "Verify products or empty state shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_007", "title": "Clicking Pending Edits Tab Shows Relevant Products", "priority": "Critical", "feature": "Tabs — Navigation", "steps": ["Click 'Pending Edits' tab.", "Verify products or empty state shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_008", "title": "Clicking All Products Tab Shows All Products", "priority": "Critical", "feature": "Tabs — Navigation", "steps": ["Click 'All Products' tab.", "Verify products listed."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_009", "title": "Product Card Displays Product Name", "priority": "Critical", "feature": "Product Card — Content", "steps": ["View product card.", "Verify product name/heading visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_010", "title": "Product Card Displays Vendor Name", "priority": "High", "feature": "Product Card — Content", "steps": ["View product card.", "Verify vendor name visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_011", "title": "Product Card Displays Disability Type Tags", "priority": "High", "feature": "Product Card — Content", "steps": ["View product card.", "Verify disability type tags/badges visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_012", "title": "Product Card Displays Price", "priority": "High", "feature": "Product Card — Content", "steps": ["View product card.", "Verify price with ₹ symbol visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_013", "title": "Product Card Displays SKU", "priority": "Medium", "feature": "Product Card — Content", "steps": ["View product card.", "Verify SKU visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_014", "title": "Product Card Displays Stock Quantity", "priority": "High", "feature": "Product Card — Content", "steps": ["View product card.", "Verify stock quantity visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_015", "title": "Product Card Displays Status Badge", "priority": "Critical", "feature": "Product Card — Content", "steps": ["View product card.", "Verify status badge (Approved/Under Review/Rejected) visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_016", "title": "New Submissions Tab Shows Approve/Reject Actions", "priority": "Critical", "feature": "Context-Aware Actions", "steps": ["Click New Submissions tab.", "Verify Approve/Reject or View Details actions visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_017", "title": "All Products Tab Shows View/Edit Actions", "priority": "High", "feature": "Context-Aware Actions", "steps": ["Click All Products tab.", "Verify View Details action visible."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_018", "title": "Empty State Message When No Products in Tab", "priority": "High", "feature": "Edge Case — Empty State", "steps": ["Navigate to a tab with no products.", "Verify empty state message shown."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_019", "title": "Product Count Refreshes on Page Reload", "priority": "Medium", "feature": "Edge Case — Count Refresh", "steps": ["Note tab counts.", "Reload page.", "Verify counts still displayed."], "testResult": "RUN" },
+    { "id": "TC_SCRUM490_020", "title": "Product Listings Responsive on Mobile", "priority": "Low", "feature": "Responsive", "steps": ["Set mobile viewport.", "Navigate to Product Management.", "Verify page usable."], "testResult": "RUN" }
+  ]
+}

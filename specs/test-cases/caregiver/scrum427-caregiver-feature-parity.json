@@ -1,0 +1,327 @@
+{
+  "jiraStory": "SCRUM-427",
+  "title": "Caregiver - Feature Parity with PwD Experience (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-427: Common platform features (Catalog, Product Details, Success Stories, Help & Resources, FAQs) are functionally consistent for Caregivers vs PwD experience. Validates functional parity (AC1), UI consistency (AC2), business rules alignment (AC3).",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM427_001",
+      "title": "Catalog page loads with device count for caregiver",
+      "priority": "Highest",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to catalog.",
+        "Verify device count text visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Catalog page loads with device count."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_002",
+      "title": "Catalog filters visible for caregiver",
+      "priority": "Highest",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Verify Disability Type, Type, Price Range dropdowns visible.",
+        "Verify Apply Filters and Reset All buttons visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "All filter controls visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_003",
+      "title": "Catalog sort dropdown visible for caregiver",
+      "priority": "Highest",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Verify Sort by dropdown visible with multiple options."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Sort dropdown visible with options."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_004",
+      "title": "Product cards display correctly for caregiver",
+      "priority": "Highest",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Verify product cards visible.",
+        "Verify View details links present.",
+        "Verify product headings present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Product cards with headings and View details links."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_005",
+      "title": "Product detail page loads for caregiver",
+      "priority": "Highest",
+      "feature": "Product Detail Parity",
+      "steps": [
+        "Click first View details.",
+        "Verify URL contains /product/.",
+        "Verify H1 heading visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Product detail page loads with heading."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_006",
+      "title": "Product detail page shows price for caregiver",
+      "priority": "Highest",
+      "feature": "Product Detail Parity",
+      "steps": [
+        "Navigate to product detail.",
+        "Verify body contains ₹ price."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on product detail page.",
+      "expectedResults": [
+        "Price in ₹ format visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_007",
+      "title": "Success Stories page accessible for caregiver",
+      "priority": "Highest",
+      "feature": "Success Stories Parity",
+      "steps": [
+        "Navigate to Success Stories page.",
+        "Verify page loads with story content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Success Stories page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_008",
+      "title": "Success Stories display story cards for caregiver",
+      "priority": "Highest",
+      "feature": "Success Stories Parity",
+      "steps": [
+        "Verify story cards or content visible.",
+        "Verify at least one story present."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on Success Stories page.",
+      "expectedResults": [
+        "Story cards visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_009",
+      "title": "Help & Resources page accessible for caregiver",
+      "priority": "High",
+      "feature": "Help & Resources Parity",
+      "steps": [
+        "Navigate to Help & Resources page.",
+        "Verify page loads with content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Help & Resources page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_010",
+      "title": "Help & Resources has resource content for caregiver",
+      "priority": "High",
+      "feature": "Help & Resources Parity",
+      "steps": [
+        "Verify page body contains help/resource/guide content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on Help & Resources page.",
+      "expectedResults": [
+        "Resource content visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_011",
+      "title": "FAQ section accessible for caregiver",
+      "priority": "High",
+      "feature": "FAQ Parity",
+      "steps": [
+        "Navigate to FAQ section.",
+        "Verify FAQ content or accordion visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "FAQ section accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_012",
+      "title": "Caregiver banner visible as caregiver-specific element",
+      "priority": "High",
+      "feature": "UI Consistency",
+      "steps": [
+        "Navigate to catalog.",
+        "Verify caregiver banner visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Caregiver banner visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_013",
+      "title": "Navigation consistent with PwD experience",
+      "priority": "High",
+      "feature": "UI Consistency",
+      "steps": [
+        "Verify header navigation links present (Catalog, Stories, Help, Profile)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Navigation links consistent."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_014",
+      "title": "Pagination works on catalog for caregiver",
+      "priority": "Medium",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Verify pagination visible.",
+        "Click Next.",
+        "Verify page 2 loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Catalog has multiple pages.",
+      "expectedResults": [
+        "Pagination works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_015",
+      "title": "Sorting works on catalog for caregiver",
+      "priority": "Medium",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Select 'Name: A to Z'.",
+        "Verify product order updates."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Sorting changes product order."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_016",
+      "title": "Search works on catalog for caregiver",
+      "priority": "Medium",
+      "feature": "Catalog Parity",
+      "steps": [
+        "Search 'wheelchair'.",
+        "Apply.",
+        "Verify results update."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on catalog page.",
+      "expectedResults": [
+        "Search returns matching results."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_017",
+      "title": "Home/dashboard accessible for caregiver",
+      "priority": "Low",
+      "feature": "General Parity",
+      "steps": [
+        "Navigate to home page.",
+        "Verify page loads with content."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Home page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_018",
+      "title": "Mobile viewport renders pages correctly for caregiver",
+      "priority": "Low",
+      "feature": "UI Consistency",
+      "steps": [
+        "Navigate to catalog.",
+        "Set mobile viewport.",
+        "Verify content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Pages render correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_019",
+      "title": "Footer links accessible for caregiver",
+      "priority": "Lowest",
+      "feature": "UI Consistency",
+      "steps": [
+        "Scroll to footer.",
+        "Verify footer links present (Privacy, Terms, Accessibility)."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on any page.",
+      "expectedResults": [
+        "Footer links accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM427_020",
+      "title": "Header navigation consistent for caregiver",
+      "priority": "Lowest",
+      "feature": "UI Consistency",
+      "steps": [
+        "Verify header has logo, navigation links, and user menu."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Header navigation consistent."
+      ]
+    }
+  ]
+}

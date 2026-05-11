@@ -1,0 +1,327 @@
+{
+  "jiraStory": "SCRUM-381",
+  "title": "Caregiver - Delete a PwD from Care Network (20 Test Cases)",
+  "overview": "Functional testing of SCRUM-381: Caregiver can delete a PwD from care network. Validates delete icon (AC1), confirmation modal (AC2), delete action (AC3), cancel (AC4), product interests retained (AC5).",
+  "testData": {
+    "baseUrl": "https://qa-atad.swarajability.org/",
+    "catalogUrl": "https://qa-atad.swarajability.org/catalog/",
+    "credentials": {
+      "email": "cg1@yopmail.com",
+      "password": "cg1@141G"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobile": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  },
+  "testCases": [
+    {
+      "id": "TC_SCRUM381_001",
+      "title": "Caregiver can navigate to profile page",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Login as caregiver.",
+        "Navigate to profile page.",
+        "Verify profile content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is logged in.",
+      "expectedResults": [
+        "Profile page loads."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_002",
+      "title": "PwD management section accessible",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "On profile page.",
+        "Verify PwD management section visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on profile page.",
+      "expectedResults": [
+        "PwD management section accessible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_003",
+      "title": "PwD profiles list is visible with PwD cards",
+      "priority": "Highest",
+      "feature": "Profile Access",
+      "steps": [
+        "Navigate to PwD management.",
+        "Verify PwD cards visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has PwDs linked.",
+      "expectedResults": [
+        "PwD cards visible."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_004",
+      "title": "Delete icon available on PwD card",
+      "priority": "Highest",
+      "feature": "Delete Icon",
+      "steps": [
+        "View PwD cards.",
+        "Verify delete/trash icon exists on card."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD cards visible.",
+      "expectedResults": [
+        "Delete icon present on PwD card."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_005",
+      "title": "Delete icon is clickable",
+      "priority": "Highest",
+      "feature": "Delete Icon",
+      "steps": [
+        "Locate delete icon.",
+        "Verify it is a clickable element."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete icon visible.",
+      "expectedResults": [
+        "Delete icon is clickable."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_006",
+      "title": "Clicking delete opens confirmation modal",
+      "priority": "Highest",
+      "feature": "Confirmation Modal",
+      "steps": [
+        "Click delete icon.",
+        "Verify confirmation modal/dialog appears."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete icon clicked.",
+      "expectedResults": [
+        "Confirmation modal appears."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_007",
+      "title": "Confirmation modal shows PwD name",
+      "priority": "Highest",
+      "feature": "Confirmation Modal",
+      "steps": [
+        "Click delete.",
+        "Verify modal contains PwD name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Confirmation modal visible.",
+      "expectedResults": [
+        "PwD name shown in modal."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_008",
+      "title": "Confirmation modal shows irreversible warning",
+      "priority": "Highest",
+      "feature": "Confirmation Modal",
+      "steps": [
+        "Click delete.",
+        "Verify modal contains warning about irreversible action."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Confirmation modal visible.",
+      "expectedResults": [
+        "Irreversible warning shown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_009",
+      "title": "Cancel closes modal without changes",
+      "priority": "Highest",
+      "feature": "Cancel Action",
+      "steps": [
+        "Click delete.",
+        "Click Cancel in modal.",
+        "Verify modal closes.",
+        "Verify PwD still in list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Confirmation modal visible.",
+      "expectedResults": [
+        "Modal closes, PwD remains."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_010",
+      "title": "PwD remains in list after cancel",
+      "priority": "Highest",
+      "feature": "Cancel Action",
+      "steps": [
+        "After cancelling delete, verify PwD card still visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Cancel clicked on confirmation modal.",
+      "expectedResults": [
+        "PwD still in list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_011",
+      "title": "Confirming delete removes PwD from list",
+      "priority": "High",
+      "feature": "Delete Action",
+      "steps": [
+        "Click delete.",
+        "Confirm deletion.",
+        "Verify PwD removed from list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Confirmation modal visible.",
+      "expectedResults": [
+        "PwD removed from list."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_012",
+      "title": "Success message shown after deletion",
+      "priority": "High",
+      "feature": "Delete Action",
+      "steps": [
+        "After confirming delete, verify success message/toast."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Delete confirmed.",
+      "expectedResults": [
+        "Success message displayed."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_013",
+      "title": "PwD count updates after deletion",
+      "priority": "High",
+      "feature": "Delete Action",
+      "steps": [
+        "After deletion, verify PwD count decremented."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD deleted.",
+      "expectedResults": [
+        "PwD count updated."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_014",
+      "title": "Product interests retained with PwD name tag after deletion",
+      "priority": "High",
+      "feature": "Interests Retained",
+      "steps": [
+        "After deletion, navigate to inquiries/interests.",
+        "Verify tagged items still reference PwD name."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD had product interests before deletion.",
+      "expectedResults": [
+        "Product interests retained with PwD tag."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_015",
+      "title": "Page refresh retains updated list after deletion",
+      "priority": "Medium",
+      "feature": "Edge Case — Persistence",
+      "steps": [
+        "After deletion, reload page.",
+        "Verify deleted PwD not in list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD deleted.",
+      "expectedResults": [
+        "Deleted PwD not in list after refresh."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_016",
+      "title": "PwD dropdown on catalog updates after deletion",
+      "priority": "Medium",
+      "feature": "Edge Case — Catalog",
+      "steps": [
+        "After deletion, navigate to catalog.",
+        "Verify deleted PwD not in dropdown."
+      ],
+      "testResult": "PASS",
+      "preconditions": "PwD deleted.",
+      "expectedResults": [
+        "Deleted PwD not in catalog dropdown."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_017",
+      "title": "Deleting one PwD keeps others in list",
+      "priority": "Medium",
+      "feature": "Edge Case — Multiple PwDs",
+      "steps": [
+        "Delete one PwD.",
+        "Verify other PwDs still in list."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver has multiple PwDs.",
+      "expectedResults": [
+        "Other PwDs remain."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_018",
+      "title": "Mobile viewport renders delete flow correctly",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Set mobile viewport.",
+        "Navigate to PwD management.",
+        "Verify delete icon and content visible."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Browser viewport set to mobile.",
+      "expectedResults": [
+        "Delete flow renders correctly on mobile."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_019",
+      "title": "Back navigation from PwD management works",
+      "priority": "Low",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "On PwD management.",
+        "Go back.",
+        "Verify previous page loads."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "Back navigation works."
+      ]
+    },
+    {
+      "id": "TC_SCRUM381_020",
+      "title": "PwD management page has correct heading",
+      "priority": "Lowest",
+      "feature": "Edge Case — Additional",
+      "steps": [
+        "Verify page heading contains 'profile' or 'PwD' or 'manage'."
+      ],
+      "testResult": "PASS",
+      "preconditions": "Caregiver is on PwD management.",
+      "expectedResults": [
+        "Correct heading displayed."
+      ]
+    }
+  ]
+}
