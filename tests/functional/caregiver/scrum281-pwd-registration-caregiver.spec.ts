@@ -2,9 +2,9 @@
 // seed: tests/seed.spec.ts
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
+import { CaregiverPage } from '../../../pages/caregiver.page';
 import { DataGenerator } from '../../../utility/data-generator';
-import testData from '../../test-data/scrum281-pwd-registration.json';
+import testData from '../../../test-data/scrum281-pwd-registration.json';
 
 test.describe('SCRUM-281: PwD Registration by Caregiver (SwarajAbility Access)', () => {
   let caregiverPage: CaregiverPage;

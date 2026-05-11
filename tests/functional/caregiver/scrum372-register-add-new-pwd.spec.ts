@@ -2,9 +2,9 @@
 // test-data: test-data/scrum372-register-add-new-pwd.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
+import { CaregiverPage } from '../../../pages/caregiver.page';
 import { DataGenerator } from '../../../utility/data-generator';
-import testData from '../../test-data/scrum372-register-add-new-pwd.json';
+import testData from '../../../test-data/scrum372-register-add-new-pwd.json';
 
 test.describe('SCRUM-372: Caregiver - Register and Add a New PwD', () => {
   let caregiverPage: CaregiverPage;

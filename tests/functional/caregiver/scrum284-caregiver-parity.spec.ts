@@ -2,9 +2,9 @@
 // seed: tests/seed.spec.ts
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import { CatalogPage } from '../../pages/catalog.page';
-import testData from '../../test-data/scrum284-caregiver-parity.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import { CatalogPage } from '../../../pages/catalog.page';
+import testData from '../../../test-data/scrum284-caregiver-parity.json';
 
 test.describe('SCRUM-284: Caregiver Feature Parity & End-to-End Flow Validation', () => {
   let caregiverPage: CaregiverPage;

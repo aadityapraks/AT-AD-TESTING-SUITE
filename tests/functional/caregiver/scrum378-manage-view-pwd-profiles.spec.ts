@@ -2,8 +2,8 @@
 // test-data: test-data/scrum378-manage-view-pwd-profiles.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum378-manage-view-pwd-profiles.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum378-manage-view-pwd-profiles.json';
 
 test.describe('SCRUM-378: Caregiver - Manage & View PwD Profiles', () => {
   let caregiverPage: CaregiverPage;

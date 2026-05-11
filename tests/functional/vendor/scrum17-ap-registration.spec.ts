@@ -3,7 +3,7 @@
 
 import { test, expect } from '@playwright/test';
 import { RegistrationPage } from '../../../pages/registration.page';
-import { DataGenerator } from '../../../../utility/data-generator';
+import { DataGenerator } from '../../../utility/data-generator';
 import testData from '../../../test-data/scrum17-ap-registration.json';
 
 test.describe('SCRUM-17: AP Registration/Sign in from Y4J Hub', () => {

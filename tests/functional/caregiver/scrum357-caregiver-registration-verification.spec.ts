@@ -2,10 +2,10 @@
 // test-data: test-data/scrum357-caregiver-registration.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import { AccountTypePage } from '../../pages/account-type.page';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import { AccountTypePage } from '../../../pages/account-type.page';
 import { DataGenerator } from '../../../utility/data-generator';
-import testData from '../../test-data/scrum357-caregiver-registration.json';
+import testData from '../../../test-data/scrum357-caregiver-registration.json';
 
 test.describe('Caregiver Registration, Verification, Consent & Feature Parity', () => {
   let caregiverPage: CaregiverPage;

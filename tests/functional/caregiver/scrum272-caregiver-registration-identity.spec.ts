@@ -2,9 +2,9 @@
 // test-data: test-data/scrum272-caregiver-registration-identity.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
+import { CaregiverPage } from '../../../pages/caregiver.page';
 import { DataGenerator } from '../../../utility/data-generator';
-import testData from '../../test-data/scrum272-caregiver-registration-identity.json';
+import testData from '../../../test-data/scrum272-caregiver-registration-identity.json';
 
 test.describe('SCRUM-272: Caregiver Registration & Identity Verification', () => {
   let caregiverPage: CaregiverPage;

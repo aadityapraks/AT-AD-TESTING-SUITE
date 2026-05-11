@@ -2,8 +2,8 @@
 // test-data: test-data/scrum375-pwd-limit-enforcement.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum375-pwd-limit-enforcement.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum375-pwd-limit-enforcement.json';
 
 test.describe('SCRUM-375: Caregiver - PwD Limit Enforcement', () => {
   let caregiverPage: CaregiverPage;

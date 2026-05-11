@@ -2,8 +2,8 @@
 // seed: tests/seed/admin-signin-seed.spec.ts
 
 import { test, expect } from '@playwright/test';
-import testData from '../../test-data/scrum442-admin-sign-in.json';
-import { AdminSignInPage } from '../../pages/admin-signin.page';
+import testData from '../../../test-data/scrum442-admin-sign-in.json';
+import { AdminSignInPage } from '../../../pages/admin-signin.page';
 
 let adminSignInPage: AdminSignInPage;
 

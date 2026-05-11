@@ -2,8 +2,8 @@
 // test-data: test-data/scrum369-auto-populate-pwd.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum369-auto-populate-pwd.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum369-auto-populate-pwd.json';
 
 test.describe('SCRUM-369: Caregiver - Auto-Populate Existing PwD Details', () => {
   let caregiverPage: CaregiverPage;

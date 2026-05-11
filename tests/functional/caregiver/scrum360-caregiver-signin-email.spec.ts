@@ -2,8 +2,8 @@
 // test-data: test-data/scrum360-caregiver-signin.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum360-caregiver-signin.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum360-caregiver-signin.json';
 
 test.describe('Caregiver Sign-In Using Email', () => {
   let caregiverPage: CaregiverPage;

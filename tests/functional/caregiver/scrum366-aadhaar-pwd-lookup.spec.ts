@@ -2,8 +2,8 @@
 // test-data: test-data/scrum366-aadhaar-pwd-lookup.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum366-aadhaar-pwd-lookup.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum366-aadhaar-pwd-lookup.json';
 
 test.describe('SCRUM-366: Caregiver - Aadhaar-Based PwD Lookup', () => {
   let caregiverPage: CaregiverPage;

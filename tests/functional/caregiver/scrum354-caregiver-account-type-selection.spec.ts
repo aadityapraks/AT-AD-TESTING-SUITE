@@ -2,8 +2,8 @@
 // test-data: test-data/scrum354-account-type-selection.json
 
 import { test, expect } from '@playwright/test';
-import { AccountTypePage } from '../../pages/account-type.page';
-import testData from '../../test-data/scrum354-account-type-selection.json';
+import { AccountTypePage } from '../../../pages/account-type.page';
+import testData from '../../../test-data/scrum354-account-type-selection.json';
 
 test.describe('Caregiver Account Type Selection', () => {
   let accountTypePage: AccountTypePage;

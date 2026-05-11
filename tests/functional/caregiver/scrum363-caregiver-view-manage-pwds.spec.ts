@@ -2,8 +2,8 @@
 // test-data: test-data/scrum363-caregiver-view-manage-pwds.json
 
 import { test, expect } from '@playwright/test';
-import { CaregiverPage } from '../../pages/caregiver.page';
-import testData from '../../test-data/scrum363-caregiver-view-manage-pwds.json';
+import { CaregiverPage } from '../../../pages/caregiver.page';
+import testData from '../../../test-data/scrum363-caregiver-view-manage-pwds.json';
 
 test.describe('SCRUM-363: Caregiver - View & Manage PwDs', () => {
   let caregiverPage: CaregiverPage;
