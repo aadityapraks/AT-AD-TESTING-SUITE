@@ -4,12 +4,10 @@ const { syncTestCase } = require('./syncEngine');
 
 (async () => {
   const data = JSON.parse(
-    fs.readFileSync('./specs/functional/SCRUM-481-admin-reject-vendor.json', 'utf-8')
+    fs.readFileSync('./specs/a11y/SCRUM-514-admin-add-new-product.json', 'utf-8')
   );
 
   for (const tc of data.testCases) {
-
-      await syncTestCase(tc, data.jiraStory);    
-    
+    await syncTestCase(tc, data.jiraStory);
   }
 })();

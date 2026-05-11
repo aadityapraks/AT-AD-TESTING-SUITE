@@ -1,5 +1,8 @@
 import { defineConfig } from '@playwright/test';
 
+const VIEWPORT_WIDTH = parseInt(process.env.VIEWPORT_WIDTH || '1280');
+const VIEWPORT_HEIGHT = parseInt(process.env.VIEWPORT_HEIGHT || '720');
+
 export default defineConfig({
   testDir: './',
   timeout: 120000,
@@ -8,7 +11,7 @@ export default defineConfig({
   outputDir: './test-results',
   use: {
     headless: false,
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: VIEWPORT_WIDTH, height: VIEWPORT_HEIGHT },
     screenshot: 'on',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
