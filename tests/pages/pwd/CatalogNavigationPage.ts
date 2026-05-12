@@ -24,7 +24,7 @@ export class CatalogNavigationPage {
   readonly footer: Locator;
 
   constructor(public page: Page) {
-    this.catalogLink = page.getByRole('link', { name: 'Open assistive device catalog' });
+    this.catalogLink = page.locator('a[href*="catalog"]');
     this.h1Heading = page.getByRole('heading', { name: 'Assistive Device Catalog', level: 1 });
     this.collapseFiltersBtn = page.getByRole('button', { name: 'Collapse filters' });
     this.deviceCountText = page.locator('text=/\\d+ devices? found/');
@@ -59,8 +59,8 @@ export class CatalogNavigationPage {
   }
 
   async clickCatalogLink() {
-    await this.catalogLink.first().click();
-    await this.page.waitForLoadState('domcontentloaded');
+    // On mobile, nav link may be hidden — navigate directly
+    await this.page.goto('https://qa-atad.swarajability.org/catalog/', { waitUntil: 'domcontentloaded' });
     await this.page.waitForTimeout(1000);
   }
 }

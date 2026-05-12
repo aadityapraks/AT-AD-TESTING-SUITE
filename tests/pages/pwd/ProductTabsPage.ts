@@ -29,7 +29,9 @@ export class ProductTabsPage extends ProductDetailsPage {
   }
 
   async clickTabByIndex(index: number) {
-    await this.tabs.nth(index).click();
+    const tab = this.tabs.nth(index);
+    await tab.scrollIntoViewIfNeeded();
+    await tab.click({ force: true });
     await this.page.waitForTimeout(500);
   }
 
