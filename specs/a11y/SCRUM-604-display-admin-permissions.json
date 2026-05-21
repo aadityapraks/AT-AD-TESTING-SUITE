@@ -1,0 +1,361 @@
+{
+  "jiraStory": "SCRUM-604",
+  "title": "Admin - Display Admin Permissions - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Display Admin Permissions feature on the Y4J platform. This feature displays permissions as tags under each admin card, reflecting the latest permission settings. The edge case of UI overflow when too many permissions are assigned must also be handled accessibly. Covers WCAG 2.1 AA compliance for semantic structure, screen reader compatibility, visual requirements (contrast, color independence), and responsive/overflow behavior.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Permission tags have a descriptive group label",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permission tags group under admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, Internal Administrators page is loaded with at least one admin card that has permissions assigned",
+      "steps": [
+        "Navigate to an admin card's permission tags section using screen reader",
+        "Verify the tags group has a descriptive label (e.g., 'Permissions' or 'Assigned Permissions')",
+        "Verify the label is programmatically associated (via aria-label, aria-labelledby, or heading)",
+        "Verify screen reader announces the group context before reading individual tags"
+      ],
+      "expectedResults": [
+        "Permission tags section has an accessible group label",
+        "Screen reader announces the label (e.g., 'Assigned Permissions') before listing tags",
+        "Label is programmatically associated with the tags container",
+        "Users understand the tags represent permissions for that specific admin"
+      ],
+      "postconditions": "Screen reader users understand the context of the permission tags",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Permission tags use semantic list structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permission tags list markup",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with multiple permission tags is displayed",
+      "steps": [
+        "Inspect the permission tags container using developer tools or screen reader",
+        "Verify tags are wrapped in a semantic list (ul/ol with li) or have role='list' with role='listitem'",
+        "Navigate through the tags with screen reader",
+        "Verify screen reader announces the number of items in the list"
+      ],
+      "expectedResults": [
+        "Permission tags use semantic list markup or ARIA list roles",
+        "Screen reader announces 'list with X items' when entering the tags section",
+        "Each tag is a list item",
+        "Users can understand how many permissions are assigned"
+      ],
+      "postconditions": "Tags are semantically structured for assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Each permission tag has readable accessible text",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Individual permission tags",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Navigate to each permission tag using screen reader",
+        "Verify each tag announces its permission name (e.g., 'User Management', 'Analytics')",
+        "Verify no tag is empty or announces only a generic role without text",
+        "Verify tags are not announced as interactive elements unless they are clickable"
+      ],
+      "expectedResults": [
+        "Each tag announces its full permission name",
+        "Screen reader reads: 'User Management', 'Vendor Management', 'Product Approval', etc.",
+        "Tags are announced as static text (not buttons/links) unless they have interactive behavior",
+        "No empty or unlabeled tags exist"
+      ],
+      "postconditions": "All permission tags are readable by screen readers",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Permission tag text has sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Permission tag text and background",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Use a contrast checker tool (e.g., axe DevTools, Colour Contrast Analyser)",
+        "Measure the contrast of tag text against the tag background color",
+        "Measure the contrast of the tag background against the admin card background",
+        "Check all different permission tags (they may have different colors)"
+      ],
+      "expectedResults": [
+        "Tag text has at least 4.5:1 contrast ratio against tag background",
+        "Tag as a UI component has at least 3:1 contrast against the card background",
+        "All permission tags meet contrast requirements regardless of their color scheme",
+        "Text is readable for users with low vision"
+      ],
+      "postconditions": "All permission tags are visually accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Permission tags do not rely on color alone to convey meaning",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Permission tag visual differentiation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Observe the permission tags visually",
+        "Check if different permissions use different colors",
+        "View the page in grayscale mode",
+        "Verify each permission is still identifiable by its text label alone"
+      ],
+      "expectedResults": [
+        "Each permission tag has a text label that identifies it (not relying on color coding alone)",
+        "In grayscale mode, all permissions are still identifiable by their text",
+        "If color coding is used, it is supplementary to the text label",
+        "No information is lost when color is removed"
+      ],
+      "postconditions": "Permission information is accessible regardless of color perception",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Permission tags reflect latest settings (dynamic update is accessible)",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Dynamically updated permission tags",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card is displayed, permissions have just been updated",
+      "steps": [
+        "Edit an admin's permissions (add or remove a permission)",
+        "Save the changes",
+        "Navigate back to the admin card",
+        "Verify the permission tags are updated to reflect the latest settings",
+        "Verify screen reader can read the updated tags",
+        "If update happens dynamically (without page reload), verify aria-live announces the change"
+      ],
+      "expectedResults": [
+        "Permission tags immediately reflect the latest saved permissions",
+        "Screen reader can read the updated tag values",
+        "If dynamic update: change is announced via aria-live='polite' or the user is informed",
+        "No stale/cached permission data is displayed"
+      ],
+      "postconditions": "Permission tags always show current data accessibly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "UI overflow with many permissions is handled accessibly",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Permission tags overflow behavior",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, an admin has all 8 permissions assigned (maximum tags)",
+      "steps": [
+        "View an admin card with all permissions assigned",
+        "Observe how the tags handle overflow (wrapping, truncation, or 'show more')",
+        "If tags wrap: verify all are visible and readable",
+        "If truncated with 'show more': verify the trigger is keyboard accessible and has accessible name",
+        "If scrollable: verify scroll area is keyboard accessible"
+      ],
+      "expectedResults": [
+        "All permissions are accessible (either visible or reachable via accessible mechanism)",
+        "If wrapping: tags wrap to multiple lines without clipping text",
+        "If 'show more' pattern: button has accessible name (e.g., 'Show 3 more permissions'), is keyboard accessible",
+        "If scrollable: scroll area is keyboard navigable",
+        "No permission information is permanently hidden from assistive technology users"
+      ],
+      "postconditions": "All permissions are accessible even when many are assigned",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Overflow 'show more' button (if present) is keyboard and screen reader accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Show more permissions button/link",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card has overflow with a 'show more' mechanism",
+      "steps": [
+        "Tab to the 'show more' button/link (if overflow pattern is used)",
+        "Verify it receives visible focus",
+        "Verify screen reader announces its name and role (e.g., '+3 more, button')",
+        "Press Enter or Space to expand/show hidden permissions",
+        "Verify all hidden permissions become visible and readable",
+        "Verify screen reader can access the newly revealed permissions"
+      ],
+      "expectedResults": [
+        "'Show more' control is reachable via Tab",
+        "Visible focus indicator appears",
+        "Screen reader announces descriptive name (e.g., 'Show 3 more permissions, button')",
+        "Enter/Space reveals hidden permissions",
+        "Revealed permissions are accessible to screen reader",
+        "If expanded state: aria-expanded='true' is set"
+      ],
+      "postconditions": "Overflow mechanism is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Permission tags are readable at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Permission tags at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify all permission tags are still visible",
+        "Verify tag text is not clipped or truncated",
+        "Verify tags wrap appropriately without horizontal scrolling",
+        "Verify overflow mechanism (if any) still works"
+      ],
+      "expectedResults": [
+        "All tag text is fully readable at 200% zoom",
+        "Tags wrap to multiple lines if needed (no horizontal overflow)",
+        "No text is clipped or hidden",
+        "Overflow mechanism (if present) remains functional",
+        "No horizontal scrollbar appears for tag content"
+      ],
+      "postconditions": "Permission tags are fully readable at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Permission tags reflow at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Permission tags at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify permission tags reflow without horizontal scrolling",
+        "Verify all tag text is readable",
+        "Verify tags do not overlap each other or other card content"
+      ],
+      "expectedResults": [
+        "Tags reflow to fit narrow viewport (stack vertically or wrap)",
+        "No horizontal scrollbar for tag content",
+        "All tag text remains readable",
+        "No overlap between tags or with other card elements"
+      ],
+      "postconditions": "Permission tags work on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Permission tags are within the admin card's semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permission tags position in card structure",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin cards with permission tags are displayed",
+      "steps": [
+        "Navigate through an admin card using screen reader",
+        "Verify permission tags are read as part of the admin card content",
+        "Verify tags appear after the admin's basic info (name, email, role, status)",
+        "Verify the reading order is logical: admin info → permissions"
+      ],
+      "expectedResults": [
+        "Permission tags are semantically within the admin card container",
+        "Screen reader reads tags as part of the card's content flow",
+        "Reading order is logical (admin details first, then permissions)",
+        "Tags are not orphaned or disconnected from their admin card"
+      ],
+      "postconditions": "Tags are properly associated with their admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Permission tags content order is meaningful without CSS",
+      "wcagCriterion": "1.3.2 Meaningful Sequence",
+      "componentElement": "Permission tags reading order",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Disable CSS in the browser",
+        "Verify permission tags are still presented in a meaningful order",
+        "Verify the group label appears before the individual tags",
+        "Verify tags are readable in sequence"
+      ],
+      "expectedResults": [
+        "Without CSS, tags appear in a logical reading order",
+        "Group label (e.g., 'Permissions:') appears before the tag list",
+        "Individual tags are listed sequentially",
+        "No information is lost or reordered confusingly"
+      ],
+      "postconditions": "Content sequence is meaningful regardless of styling",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Empty permissions state is communicated accessibly",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Admin card with no permissions (if applicable)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, an admin card exists where permissions section might be empty (e.g., Super Admin role with implicit full access)",
+      "steps": [
+        "Navigate to an admin card that may not display permission tags",
+        "If no tags are shown, verify the absence is communicated (e.g., 'All permissions' for Super Admin, or 'No specific permissions assigned')",
+        "Verify screen reader does not encounter an empty unlabeled container"
+      ],
+      "expectedResults": [
+        "If no tags are displayed, the reason is communicated (text or aria-label)",
+        "No empty, unlabeled container exists that confuses screen reader users",
+        "Super Admin cards may show 'All Permissions' or equivalent indication",
+        "Screen reader users understand the permissions state for every admin"
+      ],
+      "postconditions": "Absence of tags is communicated clearly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Permission tags are not announced as interactive when they are static",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Permission tag role/interactivity",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with permission tags is displayed",
+      "steps": [
+        "Navigate to permission tags using screen reader",
+        "Verify tags are NOT announced as buttons, links, or other interactive roles (unless they are clickable)",
+        "Verify tags do not receive keyboard focus via Tab (unless interactive)",
+        "Verify no misleading ARIA roles are applied"
+      ],
+      "expectedResults": [
+        "Static permission tags are announced as text content (not buttons or links)",
+        "Tags do not appear in the Tab order if they are not interactive",
+        "No misleading role='button' or role='link' on static tags",
+        "Screen reader users are not confused about whether tags are actionable"
+      ],
+      "postconditions": "Tags correctly represent their non-interactive nature",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Permission tags have adequate spacing for readability",
+      "wcagCriterion": "1.4.12 Text Spacing",
+      "componentElement": "Permission tag spacing and layout",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin, admin card with multiple permission tags is displayed",
+      "steps": [
+        "Apply WCAG text spacing overrides (line-height 1.5x, paragraph spacing 2x, letter spacing 0.12em, word spacing 0.16em)",
+        "Verify permission tag text remains readable",
+        "Verify tags do not overlap or clip after spacing changes",
+        "Verify the layout adapts to increased spacing"
+      ],
+      "expectedResults": [
+        "Tag text remains readable with increased spacing",
+        "No text is clipped or hidden",
+        "Tags do not overlap each other",
+        "Layout adapts gracefully to spacing overrides"
+      ],
+      "postconditions": "Tags are readable with custom text spacing",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

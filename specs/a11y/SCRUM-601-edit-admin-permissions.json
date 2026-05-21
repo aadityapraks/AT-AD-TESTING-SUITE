@@ -1,0 +1,545 @@
+{
+  "jiraStory": "SCRUM-601",
+  "title": "Admin - Edit Admin Permissions - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Edit Admin Permissions feature on the Y4J platform. This feature allows Super Admins to click 'Edit Permissions' on an admin card to open a permissions editor with pre-selected existing permissions, add/remove permissions via checkboxes, and save changes that reflect immediately on the admin card. Edge cases include preventing save when all permissions are removed and resetting to old permissions on update failure. Covers WCAG 2.1 AA compliance for button accessibility, permissions editor (modal/panel), checkbox interactions, validation, error handling, and dynamic content updates.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Edit Permissions button has accessible name with admin context",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Edit Permissions button on admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, Internal Administrators page is loaded with at least one admin card",
+      "steps": [
+        "Navigate to an admin card's 'Edit Permissions' button using screen reader",
+        "Verify the button has an accessible name that includes context (e.g., 'Edit Permissions for John Doe')",
+        "Verify the button role is announced",
+        "If multiple admin cards exist, verify each button is distinguishable"
+      ],
+      "expectedResults": [
+        "Button has accessible name that identifies which admin's permissions will be edited",
+        "Screen reader announces 'Edit Permissions for [Admin Name], button' or similar",
+        "If multiple Edit Permissions buttons exist, each is uniquely identifiable (via aria-label or aria-describedby)",
+        "Button role is correctly announced"
+      ],
+      "postconditions": "Screen reader users can identify which admin's permissions they are editing",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Edit Permissions button is keyboard accessible",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Edit Permissions button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Tab to the 'Edit Permissions' button on an admin card",
+        "Verify the button receives visible focus",
+        "Press Enter to activate the button",
+        "Verify the permissions editor opens",
+        "Close the editor, return to button, press Space",
+        "Verify the permissions editor opens again"
+      ],
+      "expectedResults": [
+        "Button is reachable via Tab key",
+        "Visible focus indicator appears with at least 3:1 contrast",
+        "Enter key opens the permissions editor",
+        "Space key also opens the permissions editor",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "Edit Permissions button is fully keyboard accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Permissions editor has proper dialog/panel role and accessible name",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Permissions editor (modal/panel)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, 'Edit Permissions' button has been activated",
+      "steps": [
+        "Click/activate 'Edit Permissions' button",
+        "Verify the editor has role='dialog' (if modal) or appropriate landmark role (if inline panel)",
+        "Verify the editor has an accessible name (aria-label or aria-labelledby)",
+        "Verify screen reader announces the editor context on open",
+        "If modal: verify aria-modal='true' is set"
+      ],
+      "expectedResults": [
+        "Editor has role='dialog' or is a clearly identified region",
+        "Accessible name includes context (e.g., 'Edit Permissions for John Doe')",
+        "Screen reader announces the editor name and role on open",
+        "If modal: aria-modal='true' is present and background is inert"
+      ],
+      "postconditions": "Permissions editor is properly identified by assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Focus moves to permissions editor on open",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Permissions editor focus management on open",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, about to open permissions editor",
+      "steps": [
+        "Activate the 'Edit Permissions' button",
+        "Observe where keyboard focus moves when the editor opens",
+        "Verify focus is placed on the first focusable element in the editor (close button, heading, or first checkbox)",
+        "Verify focus does not remain on the trigger button"
+      ],
+      "expectedResults": [
+        "Focus moves into the permissions editor immediately upon opening",
+        "Focus is placed on the first focusable element",
+        "Focus is not left on the background page",
+        "Screen reader announces the editor context"
+      ],
+      "postconditions": "Focus is properly managed when editor opens",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Existing permissions are pre-selected and announced",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Pre-selected permission checkboxes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open for an admin with existing permissions",
+      "steps": [
+        "Open the permissions editor for an admin who has some permissions assigned",
+        "Navigate through the permission checkboxes using screen reader",
+        "Verify pre-selected permissions are announced as 'checked'",
+        "Verify unassigned permissions are announced as 'not checked'",
+        "Verify the visual state matches the announced state"
+      ],
+      "expectedResults": [
+        "Previously assigned permissions have checkboxes in 'checked' state",
+        "Screen reader announces 'checked' for pre-selected permissions",
+        "Screen reader announces 'not checked' for unassigned permissions",
+        "Visual checkmarks match the programmatic state",
+        "All permissions are correctly pre-populated"
+      ],
+      "postconditions": "Existing permissions are accurately reflected in the editor",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Permission checkboxes are operable via keyboard",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Permission checkboxes in editor",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Tab to the first permission checkbox in the editor",
+        "Press Space to toggle the checkbox (check if unchecked, uncheck if checked)",
+        "Verify the state changes",
+        "Tab to the next checkbox and toggle it",
+        "Repeat for all permission checkboxes"
+      ],
+      "expectedResults": [
+        "Each checkbox is reachable via Tab key",
+        "Space key toggles the checked/unchecked state",
+        "State change is visually indicated immediately",
+        "Screen reader announces the new state ('checked' or 'not checked')",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "All permission checkboxes are keyboard operable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Permission checkboxes have accessible labels",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permission checkbox labels",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Navigate to each permission checkbox using screen reader",
+        "Verify each has a programmatically associated label",
+        "Verify labels match the permission names (User Management, Vendor Management, etc.)",
+        "Verify clicking/tapping the label text toggles the checkbox"
+      ],
+      "expectedResults": [
+        "Each checkbox has a programmatically associated label (via <label for>, aria-label, or aria-labelledby)",
+        "Screen reader announces the permission name with each checkbox",
+        "Labels are descriptive and unique",
+        "Label click toggles the associated checkbox"
+      ],
+      "postconditions": "All checkboxes are properly labeled",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Permissions editor traps focus (if modal)",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Permissions editor focus trap",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open as a modal",
+      "steps": [
+        "With the editor open, press Tab repeatedly",
+        "Verify focus cycles through all interactive elements within the editor",
+        "When focus reaches the last element (Save button), press Tab",
+        "Verify focus wraps to the first element in the editor",
+        "Press Shift+Tab from the first element",
+        "Verify focus wraps to the last element"
+      ],
+      "expectedResults": [
+        "Focus cycles through: close button → checkboxes → Save button (and back)",
+        "Focus wraps from last to first on Tab",
+        "Focus wraps from first to last on Shift+Tab",
+        "Focus never escapes to background page while editor is open"
+      ],
+      "postconditions": "Focus is properly trapped within the modal editor",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Escape key closes the permissions editor without saving",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Permissions editor close via Escape",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open with changes made",
+      "steps": [
+        "Open the permissions editor",
+        "Make changes to some checkboxes (add/remove permissions)",
+        "Press Escape key",
+        "Verify the editor closes",
+        "Verify focus returns to the 'Edit Permissions' button",
+        "Verify changes are NOT saved (permissions remain as before)"
+      ],
+      "expectedResults": [
+        "Escape key closes the editor",
+        "Focus returns to the 'Edit Permissions' trigger button",
+        "No changes are saved (permissions revert to original state)",
+        "Admin card still shows the original permissions"
+      ],
+      "postconditions": "Editor can be dismissed without saving via keyboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Focus returns to Edit Permissions button when editor closes",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Focus restoration on editor close",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Close the editor using the close button (X)",
+        "Verify focus returns to the 'Edit Permissions' button",
+        "Open editor again, close with Escape",
+        "Verify focus returns to the 'Edit Permissions' button",
+        "Open editor, save changes",
+        "Verify focus returns to an appropriate element"
+      ],
+      "expectedResults": [
+        "After close button: focus returns to 'Edit Permissions' button",
+        "After Escape: focus returns to 'Edit Permissions' button",
+        "After successful save: focus returns to trigger button or updated admin card",
+        "Focus is never lost to the top of the page"
+      ],
+      "postconditions": "Focus is properly restored after editor closes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Save button has accessible name and keyboard activation",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Save button in permissions editor",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open with at least one permission selected",
+      "steps": [
+        "Tab to the Save button in the permissions editor",
+        "Verify the button has a visible focus indicator",
+        "Verify screen reader announces 'Save, button' or 'Save Permissions, button'",
+        "Press Enter to save",
+        "Verify permissions are saved",
+        "Reopen editor, press Space on Save button",
+        "Verify permissions are saved"
+      ],
+      "expectedResults": [
+        "Save button is reachable via Tab",
+        "Visible focus indicator appears",
+        "Screen reader announces button name and role",
+        "Enter key saves permissions",
+        "Space key also saves permissions",
+        "Permissions update immediately after save"
+      ],
+      "postconditions": "Save button is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Save is disabled/prevented when all permissions are removed",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Save button disabled state / validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Uncheck all permission checkboxes",
+        "Observe the Save button state",
+        "If Save is disabled: verify aria-disabled='true' and screen reader announces 'disabled'",
+        "If Save shows error on click: verify error message is accessible",
+        "Verify an error/instruction message explains why save is not allowed"
+      ],
+      "expectedResults": [
+        "Save button is disabled (aria-disabled='true') OR clicking shows an accessible error",
+        "Screen reader announces the disabled state or error message",
+        "Error/instruction clearly states 'At least one permission must be selected'",
+        "Error is programmatically associated with the permissions group or announced via aria-live",
+        "User understands why they cannot save"
+      ],
+      "postconditions": "Users are clearly informed that at least one permission is required",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Permission update failure resets to old permissions with accessible notification",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permission update failure notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open, backend is configured to fail on save",
+      "steps": [
+        "Make changes to permissions (add/remove some)",
+        "Click Save (with backend failure simulated)",
+        "Verify an error notification is displayed",
+        "Verify the error uses role='alert' or aria-live='assertive'",
+        "Verify screen reader immediately announces the error",
+        "Verify checkboxes reset to the original (old) permissions state"
+      ],
+      "expectedResults": [
+        "Error notification is visually displayed (e.g., 'Failed to update permissions. Reverting to previous settings.')",
+        "Screen reader immediately announces the error",
+        "Checkboxes revert to the original pre-edit state",
+        "Error does not rely solely on color",
+        "Error text has sufficient contrast (4.5:1)",
+        "User can retry the action"
+      ],
+      "postconditions": "Failure is communicated and state is consistent (reverted)",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Successful permission save is announced accessibly",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permission save success notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open with valid changes",
+      "steps": [
+        "Make changes to permissions",
+        "Click Save",
+        "Verify a success message is displayed or announced",
+        "Verify screen reader announces the success",
+        "Verify the editor closes (or indicates save complete)",
+        "Verify the admin card reflects updated permissions"
+      ],
+      "expectedResults": [
+        "Success is communicated via toast/notification with role='status' or aria-live='polite'",
+        "Screen reader announces success (e.g., 'Permissions updated successfully')",
+        "Editor closes after successful save",
+        "Focus returns to appropriate element",
+        "Admin card shows updated permissions"
+      ],
+      "postconditions": "Successful save is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Updated permissions reflect accessibly on admin card",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Updated permissions on admin card",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions have been successfully updated",
+      "steps": [
+        "After saving updated permissions, navigate to the admin card",
+        "Verify the updated permissions are displayed visually",
+        "Navigate to the permissions display using screen reader",
+        "Verify screen reader announces the updated permissions with a label",
+        "Verify the change is reflected immediately without page refresh"
+      ],
+      "expectedResults": [
+        "Updated permissions are visually displayed on the admin card",
+        "Permissions have a descriptive label (e.g., 'Assigned Permissions')",
+        "Screen reader announces the updated permission values",
+        "Change is reflected immediately (dynamic update)",
+        "Permissions text has sufficient contrast (4.5:1)"
+      ],
+      "postconditions": "Updated permissions are accessible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Checkbox focus indicators are visible in permissions editor",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Permission checkboxes focus state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Tab through all permission checkboxes in the editor",
+        "Observe the focus indicator on each checkbox",
+        "Verify focus indicator is distinguishable from checked state"
+      ],
+      "expectedResults": [
+        "Each checkbox shows a clearly visible focus indicator when focused",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Focus indicator is not solely a color change",
+        "Focus indicator is distinguishable from the checked state visual"
+      ],
+      "postconditions": "Focus state is clearly visible on all checkboxes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Permissions editor text and controls have sufficient contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Permissions editor text and UI elements",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Use a contrast checker tool",
+        "Measure contrast of editor heading/title text",
+        "Measure contrast of permission label text against background",
+        "Measure contrast of checkbox indicators (checked and unchecked)",
+        "Measure contrast of Save button text",
+        "Measure contrast of any error message text"
+      ],
+      "expectedResults": [
+        "All text has at least 4.5:1 contrast ratio against background",
+        "Checkbox indicators have at least 3:1 contrast against background",
+        "Save button text has at least 4.5:1 contrast against button background",
+        "Error message text has at least 4.5:1 contrast"
+      ],
+      "postconditions": "All editor content is readable for users with low vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Checked/unchecked state does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Checkbox visual states in editor",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open with mixed checked/unchecked states",
+      "steps": [
+        "Observe the visual difference between checked and unchecked checkboxes",
+        "View the editor in grayscale mode",
+        "Verify checked and unchecked states are still distinguishable"
+      ],
+      "expectedResults": [
+        "Checked state uses more than color alone (e.g., checkmark icon, filled background)",
+        "In grayscale mode, checked and unchecked are clearly distinguishable",
+        "Visual indicator is unambiguous"
+      ],
+      "postconditions": "Checkbox states are perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Permissions editor is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Permissions editor at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the editor is fully visible (or scrollable within viewport)",
+        "Verify all checkboxes and labels are visible",
+        "Toggle checkboxes and verify functionality",
+        "Verify Save button is accessible",
+        "Verify error messages are visible if triggered"
+      ],
+      "expectedResults": [
+        "Editor content is fully accessible at 200% zoom",
+        "If editor exceeds viewport, it is scrollable",
+        "No text is clipped or hidden",
+        "Checkboxes and Save button remain usable",
+        "Labels do not overlap"
+      ],
+      "postconditions": "Permissions editor is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Permissions editor reflows at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Permissions editor at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify editor content reflows without horizontal scrolling",
+        "Verify all checkboxes and labels are accessible",
+        "Verify Save button is visible and usable"
+      ],
+      "expectedResults": [
+        "Editor content reflows to fit narrow viewport",
+        "No horizontal scrollbar for editor content",
+        "All checkboxes and labels are readable",
+        "Save button is accessible"
+      ],
+      "postconditions": "Editor works on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "No keyboard trap in permissions editor",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Permissions editor keyboard navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor is open",
+      "steps": [
+        "Tab through all elements in the editor",
+        "If modal: verify focus wraps correctly (not a trap, but intentional containment)",
+        "If inline panel: verify Tab moves past the editor to next page element",
+        "Verify Escape provides an exit mechanism",
+        "Verify close button provides an exit mechanism"
+      ],
+      "expectedResults": [
+        "If modal: focus is contained but Escape provides exit (not a trap)",
+        "If inline: Tab moves freely in and out of the editor",
+        "Escape always provides a way to close/exit the editor",
+        "Close button always provides a way to exit",
+        "User is never permanently trapped"
+      ],
+      "postconditions": "Keyboard users can always exit the permissions editor",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Checkbox touch targets meet minimum size",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Permission checkbox touch targets in editor",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin, permissions editor viewed on touch device",
+      "steps": [
+        "Measure the clickable/tappable area of each permission checkbox (including label)",
+        "Verify adequate spacing between checkboxes",
+        "Verify no accidental activation of adjacent checkboxes"
+      ],
+      "expectedResults": [
+        "Each checkbox + label has at least 44x44 CSS pixels touch target",
+        "Adequate vertical spacing between checkbox rows",
+        "No accidental activation of adjacent checkboxes"
+      ],
+      "postconditions": "Checkboxes are usable for users with motor impairments",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

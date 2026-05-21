@@ -1,0 +1,636 @@
+{
+  "jiraStory": "SCRUM-592",
+  "title": "Admin - Add Internal Admin - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Add Internal Admin feature on the Y4J platform. This feature includes an 'Add Internal Admin' button that opens a modal dialog with form fields (Name, Email, Role), a permissions section, and an 'Add Admin' submit button. Covers WCAG 2.1 AA compliance for modal dialog accessibility, form accessibility, keyboard navigation, screen reader compatibility, validation error handling, and dynamic content updates.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Add Internal Admin button has accessible name and keyboard activation",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Add Internal Admin button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin and navigated to the Internal Administrators page",
+      "steps": [
+        "Tab to the 'Add Internal Admin' button",
+        "Verify the button has a visible focus indicator",
+        "Verify screen reader announces the button name and role",
+        "Press Enter to activate the button",
+        "Verify the modal opens",
+        "Close the modal, return focus to button, press Space to activate",
+        "Verify the modal opens again"
+      ],
+      "expectedResults": [
+        "Button is reachable via Tab key",
+        "Visible focus indicator appears with at least 3:1 contrast",
+        "Screen reader announces 'Add Internal Admin, button'",
+        "Enter key opens the modal",
+        "Space key also opens the modal",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "Add Internal Admin button is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Modal has proper dialog role and accessible name",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Add Internal Admin modal dialog",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, 'Add Internal Admin' button is available",
+      "steps": [
+        "Click or activate the 'Add Internal Admin' button",
+        "Verify the modal has role='dialog' or uses the <dialog> element",
+        "Verify the modal has aria-modal='true'",
+        "Verify the modal has an accessible name (aria-label or aria-labelledby pointing to the modal heading)",
+        "Verify screen reader announces the dialog name and role on open"
+      ],
+      "expectedResults": [
+        "Modal has role='dialog' or is a <dialog> element",
+        "aria-modal='true' is set on the dialog",
+        "Modal has accessible name (e.g., 'Add Internal Admin' via aria-labelledby)",
+        "Screen reader announces 'Add Internal Admin dialog' or similar when opened",
+        "Background content is marked as inert or aria-hidden='true'"
+      ],
+      "postconditions": "Modal is properly identified as a dialog by assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Focus moves to modal on open",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Modal focus management on open",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, about to open the modal",
+      "steps": [
+        "Activate the 'Add Internal Admin' button",
+        "Observe where keyboard focus moves when the modal opens",
+        "Verify focus is placed on the first focusable element in the modal (close button or first input)",
+        "Verify focus does not remain on the trigger button behind the modal"
+      ],
+      "expectedResults": [
+        "Focus moves into the modal immediately upon opening",
+        "Focus is placed on the first focusable element (e.g., close button, heading, or Name input)",
+        "Focus is not left on the background page",
+        "Screen reader announces the modal context"
+      ],
+      "postconditions": "Focus is properly managed when modal opens",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Modal traps focus within the dialog",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Modal focus trap",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "With the modal open, press Tab repeatedly",
+        "Verify focus cycles through all interactive elements within the modal",
+        "When focus reaches the last element, press Tab again",
+        "Verify focus wraps back to the first element in the modal",
+        "Press Shift+Tab from the first element",
+        "Verify focus wraps to the last element in the modal",
+        "Verify focus never escapes to background page elements"
+      ],
+      "expectedResults": [
+        "Tab cycles through: close button → Name input → Email input → Role dropdown → Permissions section → Add Admin button (and back)",
+        "Focus wraps from last to first element on Tab",
+        "Focus wraps from first to last element on Shift+Tab",
+        "Focus never reaches background page elements while modal is open"
+      ],
+      "postconditions": "Focus is properly trapped within the modal",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Escape key closes the modal",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Modal close via Escape",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "With the modal open, press the Escape key",
+        "Verify the modal closes",
+        "Verify focus returns to the 'Add Internal Admin' button that triggered the modal",
+        "Verify no data is submitted"
+      ],
+      "expectedResults": [
+        "Escape key closes the modal",
+        "Focus returns to the 'Add Internal Admin' trigger button",
+        "No form data is submitted or saved",
+        "Screen reader announces the modal has closed (or context returns to page)"
+      ],
+      "postconditions": "Modal can be dismissed via keyboard without side effects",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Focus returns to trigger button when modal is closed",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Modal focus restoration on close",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Close the modal using the close button (X)",
+        "Verify focus returns to the 'Add Internal Admin' button",
+        "Open the modal again, close with Escape",
+        "Verify focus returns to the 'Add Internal Admin' button",
+        "Open the modal, submit the form successfully",
+        "Verify focus returns to an appropriate element on the page"
+      ],
+      "expectedResults": [
+        "After close button: focus returns to 'Add Internal Admin' button",
+        "After Escape: focus returns to 'Add Internal Admin' button",
+        "After successful submission: focus returns to trigger button or newly added admin card",
+        "Focus is never lost to the top of the page"
+      ],
+      "postconditions": "Focus is properly restored after modal closes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Name input field has accessible label",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Name input field in modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Navigate to the Name input field using Tab",
+        "Verify the input has a visible label 'Name' or similar",
+        "Verify the label is programmatically associated (via <label for>, aria-label, or aria-labelledby)",
+        "Verify screen reader announces the field name and type"
+      ],
+      "expectedResults": [
+        "Name input has a visible label",
+        "Label is programmatically associated with the input",
+        "Screen reader announces 'Name, edit text' or similar",
+        "Clicking the label focuses the input (if using <label for>)"
+      ],
+      "postconditions": "Name field is properly labeled for assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Email input field has accessible label and autocomplete",
+      "wcagCriterion": "1.3.5 Identify Input Purpose",
+      "componentElement": "Email input field in modal",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Navigate to the Email input field using Tab",
+        "Verify the input has a visible label 'Email' or similar",
+        "Verify the label is programmatically associated",
+        "Check for autocomplete='email' attribute",
+        "Check for type='email' attribute",
+        "Verify screen reader announces the field name and type"
+      ],
+      "expectedResults": [
+        "Email input has a visible label",
+        "Label is programmatically associated with the input",
+        "Input has autocomplete='email' for autofill support",
+        "Input has type='email' for appropriate keyboard on mobile",
+        "Screen reader announces 'Email, edit text' or similar"
+      ],
+      "postconditions": "Email field is properly labeled and supports autofill",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Role selection has accessible label and keyboard support",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role selection (dropdown/radio) in modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Tab to the Role selection control",
+        "Verify it has an accessible label (e.g., 'Role')",
+        "If dropdown: press Enter/Space to open, arrow keys to navigate options",
+        "If radio buttons: use arrow keys to move between options",
+        "Select an option using keyboard",
+        "Verify screen reader announces the selected role"
+      ],
+      "expectedResults": [
+        "Role control has accessible name 'Role'",
+        "Control is operable via keyboard (Enter/Space/Arrow keys)",
+        "Options include role names (Super Admin, Limited-Access Admin)",
+        "Screen reader announces the control type, name, and current value",
+        "Selected option is communicated to assistive technology"
+      ],
+      "postconditions": "Role selection is fully accessible via keyboard and screen reader",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Required fields are indicated accessibly",
+      "wcagCriterion": "3.3.2 Labels or Instructions",
+      "componentElement": "Required field indicators (Name, Email, Role)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Observe the form fields in the modal",
+        "Check if required fields are visually indicated (asterisk, 'required' text)",
+        "Verify required fields have aria-required='true' or required attribute",
+        "Verify screen reader announces fields as required",
+        "Check that the required indicator is not conveyed by color alone"
+      ],
+      "expectedResults": [
+        "Required fields are visually marked (e.g., asterisk with legend or 'required' text)",
+        "Fields have aria-required='true' or HTML required attribute",
+        "Screen reader announces 'required' when focusing on mandatory fields",
+        "Required indication does not rely solely on color"
+      ],
+      "postconditions": "Users understand which fields are mandatory",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Permissions section is accessible and keyboard operable",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Permissions section in modal",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open and Role has been selected (permissions section visible)",
+      "steps": [
+        "Select a Role to make the permissions section available",
+        "Tab to the permissions section",
+        "Verify the section has a group label (e.g., fieldset/legend or role='group' with aria-label)",
+        "Navigate through individual permission controls (checkboxes/toggles)",
+        "Verify each permission has an accessible label",
+        "Toggle permissions using keyboard (Space for checkboxes)"
+      ],
+      "expectedResults": [
+        "Permissions section has a group label (e.g., 'Permissions' or 'Assigned Permissions')",
+        "Each permission control has an accessible name describing the permission",
+        "Checkboxes/toggles are operable via Space key",
+        "Screen reader announces checked/unchecked state",
+        "All permissions are reachable via Tab or arrow keys"
+      ],
+      "postconditions": "Permissions section is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Permissions section appearance is announced when it becomes available",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permissions section dynamic appearance",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, Role has not been selected yet",
+      "steps": [
+        "Focus on the Role selection control",
+        "Select a role (e.g., 'Super Admin')",
+        "Observe if the permissions section appears dynamically",
+        "Verify screen reader is informed of the new content availability",
+        "Check if aria-live or focus management communicates the change"
+      ],
+      "expectedResults": [
+        "When permissions section appears, screen reader is notified (via aria-live='polite' or focus shift)",
+        "User is not disoriented by the new content appearing",
+        "New section does not steal focus unexpectedly",
+        "If focus moves to permissions, it is intentional and helpful"
+      ],
+      "postconditions": "Dynamic permissions section appearance is communicated accessibly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Add Admin submit button has accessible name and keyboard activation",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Add Admin submit button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open with form filled",
+      "steps": [
+        "Tab to the 'Add Admin' button",
+        "Verify the button has a visible focus indicator",
+        "Verify screen reader announces 'Add Admin, button'",
+        "Press Enter to submit the form",
+        "Verify the form submits",
+        "Reopen modal, fill form, press Space on the button",
+        "Verify the form submits"
+      ],
+      "expectedResults": [
+        "Button is reachable via Tab within the modal",
+        "Visible focus indicator appears",
+        "Screen reader announces 'Add Admin, button'",
+        "Enter key submits the form",
+        "Space key also submits the form",
+        "Button is not activated by other keys"
+      ],
+      "postconditions": "Submit button is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Empty name field validation error is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Name field validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, Name field is empty",
+      "steps": [
+        "Leave the Name field empty",
+        "Fill in Email and Role",
+        "Click/activate 'Add Admin' button",
+        "Verify an error message appears for the Name field",
+        "Verify the error is programmatically associated with the Name input (aria-describedby or aria-errormessage)",
+        "Verify screen reader announces the error",
+        "Verify focus moves to the first field with an error"
+      ],
+      "expectedResults": [
+        "Error message is displayed visually near the Name field",
+        "Error message is programmatically linked to the input (aria-describedby)",
+        "Input has aria-invalid='true'",
+        "Screen reader announces the error when field is focused",
+        "Focus moves to the Name field (first error)",
+        "Error message text clearly describes the issue (e.g., 'Name is required')"
+      ],
+      "postconditions": "Validation error for empty name is accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Invalid email format validation error is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Email field validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open",
+      "steps": [
+        "Enter a valid name",
+        "Enter an invalid email format (e.g., 'notanemail')",
+        "Select a role",
+        "Click/activate 'Add Admin' button",
+        "Verify an error message appears for the Email field",
+        "Verify the error is programmatically associated with the Email input",
+        "Verify screen reader announces the error"
+      ],
+      "expectedResults": [
+        "Error message is displayed visually near the Email field",
+        "Error message clearly describes the issue (e.g., 'Please enter a valid email address')",
+        "Error is linked via aria-describedby or aria-errormessage",
+        "Input has aria-invalid='true'",
+        "Screen reader announces the error when Email field is focused"
+      ],
+      "postconditions": "Invalid email validation error is accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Duplicate email error is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Duplicate email error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, an admin with the same email already exists",
+      "steps": [
+        "Enter a name",
+        "Enter an email that already exists in the system",
+        "Select a role and permissions",
+        "Click/activate 'Add Admin' button",
+        "Verify a duplicate email error is displayed",
+        "Verify the error is announced by screen reader",
+        "Verify the error is associated with the Email field"
+      ],
+      "expectedResults": [
+        "Duplicate email error message is displayed clearly",
+        "Error is announced by screen reader (via aria-live='assertive' or role='alert', or focus management)",
+        "Error is associated with the Email input field",
+        "Input has aria-invalid='true'",
+        "Error message clearly states the email is already in use"
+      ],
+      "postconditions": "Duplicate email error is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "API failure error notification is accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "API failure error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, API is configured to fail",
+      "steps": [
+        "Fill in all required fields with valid data",
+        "Click/activate 'Add Admin' button (with API failure simulated)",
+        "Verify an error notification is displayed",
+        "Verify the error uses role='alert' or aria-live='assertive'",
+        "Verify screen reader immediately announces the error",
+        "Verify the error does not rely solely on color"
+      ],
+      "expectedResults": [
+        "Error notification is visually displayed with clear message",
+        "Screen reader immediately announces the error (role='alert' or aria-live='assertive')",
+        "Error includes text prefix or icon (not just red color)",
+        "Error text has sufficient contrast (4.5:1)",
+        "User can retry the action after the error"
+      ],
+      "postconditions": "API failure is communicated immediately to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Successful admin creation is announced accessibly",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Success notification after admin creation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open with valid data",
+      "steps": [
+        "Fill in all required fields with valid data",
+        "Click/activate 'Add Admin' button",
+        "Verify a success message is displayed or the modal closes",
+        "Verify screen reader announces the success",
+        "Verify the new admin appears in the list"
+      ],
+      "expectedResults": [
+        "Success is communicated (via toast/notification with role='status' or aria-live='polite')",
+        "Screen reader announces success (e.g., 'Admin added successfully')",
+        "Modal closes after successful creation",
+        "Focus returns to appropriate element on the page",
+        "New admin is visible in the list"
+      ],
+      "postconditions": "Successful creation is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Modal close button has accessible name",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Modal close button (X)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Tab to the close button (X) in the modal",
+        "Verify it has an accessible name (e.g., 'Close', 'Close dialog', not just 'X')",
+        "Verify screen reader announces the button name and role",
+        "Press Enter to close the modal",
+        "Verify the modal closes"
+      ],
+      "expectedResults": [
+        "Close button has accessible name (aria-label='Close' or similar, not just 'X')",
+        "Screen reader announces 'Close, button' or 'Close dialog, button'",
+        "Button is operable via Enter and Space",
+        "Modal closes when button is activated"
+      ],
+      "postconditions": "Close button is properly labeled and functional",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Form fields have sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "All form field text and labels in modal",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "Use a contrast checker tool",
+        "Measure contrast of field labels against modal background",
+        "Measure contrast of input text against input background",
+        "Measure contrast of placeholder text against input background",
+        "Measure contrast of error message text",
+        "Measure contrast of the 'Add Admin' button text"
+      ],
+      "expectedResults": [
+        "All label text has at least 4.5:1 contrast ratio",
+        "Input text has at least 4.5:1 contrast ratio",
+        "Placeholder text has at least 4.5:1 contrast ratio (or visible label exists)",
+        "Error message text has at least 4.5:1 contrast ratio",
+        "Button text has at least 4.5:1 contrast ratio against button background"
+      ],
+      "postconditions": "All text in the modal is readable for users with low vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Modal form is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Add Internal Admin modal at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the modal is fully visible (or scrollable within viewport)",
+        "Verify all form fields are visible and usable",
+        "Verify labels are not clipped or overlapping inputs",
+        "Verify the 'Add Admin' button is accessible",
+        "Submit the form and verify error messages are visible"
+      ],
+      "expectedResults": [
+        "Modal content is fully accessible at 200% zoom",
+        "If modal exceeds viewport, it is scrollable",
+        "No text is clipped or hidden",
+        "Form fields and buttons remain usable",
+        "Error messages are visible without horizontal scrolling"
+      ],
+      "postconditions": "Modal form is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Modal reflows correctly at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Modal layout at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify modal content reflows to single column",
+        "Verify all form fields are accessible without horizontal scrolling",
+        "Verify buttons are fully visible and tappable",
+        "Submit the form and verify error messages display correctly"
+      ],
+      "expectedResults": [
+        "Modal content reflows to fit narrow viewport",
+        "No horizontal scrollbar for form content",
+        "All fields, labels, and buttons are accessible",
+        "Error messages are visible and readable"
+      ],
+      "postconditions": "Modal works correctly on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_023",
+      "title": "Error messages do not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Validation error indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, form has validation errors",
+      "steps": [
+        "Submit the form with empty/invalid fields to trigger errors",
+        "Observe how errors are indicated visually",
+        "View the page in grayscale mode",
+        "Verify errors are still identifiable without color"
+      ],
+      "expectedResults": [
+        "Error messages include text description (not just red border)",
+        "Error icon or prefix text accompanies color indication",
+        "In grayscale mode, errors are still clearly identifiable",
+        "Error state uses multiple visual cues (text + icon + border)"
+      ],
+      "postconditions": "Errors are perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_024",
+      "title": "Error suggestions provide guidance for correction",
+      "wcagCriterion": "3.3.3 Error Suggestion",
+      "componentElement": "Validation error messages",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, modal is open, form has validation errors",
+      "steps": [
+        "Submit with empty Name field - check error message",
+        "Submit with invalid email format - check error message",
+        "Submit with duplicate email - check error message",
+        "Verify each error message suggests how to fix the issue"
+      ],
+      "expectedResults": [
+        "Empty name error suggests: 'Please enter the administrator name' or similar",
+        "Invalid email error suggests: 'Please enter a valid email address (e.g., user@example.com)'",
+        "Duplicate email error suggests: 'This email is already associated with an admin account'",
+        "Error messages are constructive and guide the user to correct the issue"
+      ],
+      "postconditions": "Users receive helpful guidance to fix form errors",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_025",
+      "title": "Modal background overlay prevents interaction with page behind",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Modal overlay/backdrop",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin, Add Internal Admin modal is open",
+      "steps": [
+        "With the modal open, try clicking on elements behind the modal overlay",
+        "Verify background elements are not clickable",
+        "Try using screen reader to navigate to background content",
+        "Verify background content is not accessible while modal is open"
+      ],
+      "expectedResults": [
+        "Background elements are not clickable while modal is open",
+        "Background content has aria-hidden='true' or is inert",
+        "Screen reader cannot navigate to background content",
+        "Only modal content is interactive while modal is open"
+      ],
+      "postconditions": "Modal properly isolates interaction from background",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

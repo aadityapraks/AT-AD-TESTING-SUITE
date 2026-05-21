@@ -1,0 +1,484 @@
+{
+  "jiraStory": "SCRUM-598",
+  "title": "Admin - Assign Permissions to Limited Access Admin - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Assign Permissions to Limited Access Admin feature on the Y4J platform. This feature provides a permissions checklist (User Management, Vendor Management, Product Approval, Content Management, Content Moderation, Comment Management, Analytics, System Settings) with selectable checkboxes. At least one permission must be selected. Selected permissions are saved with the admin record and displayed on the admin card. Covers WCAG 2.1 AA compliance for checkbox group accessibility, keyboard navigation, screen reader compatibility, validation, and dynamic content.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Permissions checkbox group has accessible group label",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permissions checkbox group (fieldset/legend or role='group')",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, Add/Edit Internal Admin form is open with Limited-Access Admin role selected, permissions section is visible",
+      "steps": [
+        "Navigate to the permissions section using screen reader",
+        "Verify the group of checkboxes has a group label (via <fieldset>/<legend> or role='group' with aria-label/aria-labelledby)",
+        "Verify screen reader announces the group name (e.g., 'Permissions' or 'Assign Permissions')",
+        "Verify the group label clearly describes the purpose"
+      ],
+      "expectedResults": [
+        "Permissions checkboxes are wrapped in a <fieldset> with <legend>, or a container with role='group' and aria-label",
+        "Screen reader announces the group label when entering the group (e.g., 'Permissions, group')",
+        "Group label clearly communicates the purpose of the checkboxes"
+      ],
+      "postconditions": "Screen reader users understand the context of the checkbox group",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Each permission checkbox has an accessible label",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Individual permission checkboxes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Navigate to each permission checkbox using Tab or screen reader",
+        "Verify 'User Management' checkbox has accessible label",
+        "Verify 'Vendor Management' checkbox has accessible label",
+        "Verify 'Product Approval' checkbox has accessible label",
+        "Verify 'Content Management' checkbox has accessible label",
+        "Verify 'Content Moderation' checkbox has accessible label",
+        "Verify 'Comment Management' checkbox has accessible label",
+        "Verify 'Analytics' checkbox has accessible label",
+        "Verify 'System Settings' checkbox has accessible label"
+      ],
+      "expectedResults": [
+        "Each checkbox has a programmatically associated label (via <label for>, aria-label, or aria-labelledby)",
+        "Screen reader announces each checkbox with its name and role (e.g., 'User Management, checkbox, not checked')",
+        "Clicking/tapping the label text toggles the checkbox",
+        "All 8 permissions have unique, descriptive labels"
+      ],
+      "postconditions": "All permission checkboxes are properly labeled",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Checkboxes are operable via keyboard",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Permission checkboxes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Tab to the first permission checkbox",
+        "Press Space to check the checkbox",
+        "Verify the checkbox becomes checked",
+        "Press Space again to uncheck",
+        "Verify the checkbox becomes unchecked",
+        "Tab to the next checkbox",
+        "Repeat for all 8 checkboxes"
+      ],
+      "expectedResults": [
+        "Each checkbox is reachable via Tab key",
+        "Space key toggles the checked/unchecked state",
+        "Checked state is visually indicated",
+        "Screen reader announces state change ('checked' / 'not checked')",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "All checkboxes are fully operable via keyboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Checkbox checked/unchecked state is announced by screen reader",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Permission checkbox state",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Navigate to an unchecked permission checkbox with screen reader",
+        "Verify screen reader announces 'not checked' state",
+        "Press Space to check the checkbox",
+        "Verify screen reader announces 'checked' state",
+        "Press Space to uncheck",
+        "Verify screen reader announces 'not checked' state again"
+      ],
+      "expectedResults": [
+        "Screen reader announces 'checkbox, not checked' for unchecked state",
+        "Screen reader announces 'checkbox, checked' after checking",
+        "State change is announced immediately upon toggle",
+        "Both native checkboxes and custom ARIA checkboxes communicate state correctly"
+      ],
+      "postconditions": "Checkbox state is always communicated to assistive technology",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Checkboxes have visible focus indicators",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Permission checkboxes focus state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Tab to the first permission checkbox",
+        "Observe the focus indicator",
+        "Tab through all 8 checkboxes",
+        "Verify each shows a visible focus indicator"
+      ],
+      "expectedResults": [
+        "Each checkbox shows a clearly visible focus indicator when focused",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Focus indicator is not solely a color change",
+        "Focus indicator is distinguishable from the checked state indicator"
+      ],
+      "postconditions": "Focus state is clearly visible on all checkboxes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "No permission selected validation error is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "No permission selected error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible, no checkboxes are checked",
+      "steps": [
+        "Ensure no permission checkboxes are checked",
+        "Attempt to save/submit the admin form",
+        "Verify an error message is displayed indicating at least one permission is required",
+        "Verify the error is announced by screen reader",
+        "Verify the error is programmatically associated with the permissions group",
+        "Verify focus moves to the permissions section or error message"
+      ],
+      "expectedResults": [
+        "Error message is displayed (e.g., 'At least one permission must be selected')",
+        "Error is announced by screen reader (via role='alert', aria-live='assertive', or focus management)",
+        "Error is associated with the permissions group (aria-describedby on the group or aria-errormessage)",
+        "The permissions group or first checkbox has aria-invalid='true'",
+        "Focus moves to the error or the permissions section"
+      ],
+      "postconditions": "Users are clearly informed that at least one permission is required",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Error suggestion provides guidance for no permission selected",
+      "wcagCriterion": "3.3.3 Error Suggestion",
+      "componentElement": "No permission selected error suggestion",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, no permissions selected, form submitted",
+      "steps": [
+        "Submit the form with no permissions selected",
+        "Read the error message text",
+        "Verify the message suggests how to fix the issue"
+      ],
+      "expectedResults": [
+        "Error message clearly states the requirement (e.g., 'Please select at least one permission to assign to this admin')",
+        "Message is constructive and guides the user to correct the issue",
+        "Message does not use technical jargon"
+      ],
+      "postconditions": "Users receive helpful guidance to fix the validation error",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Permission list failure shows accessible error notification",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permission list load failure notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, API for permissions list is configured to fail",
+      "steps": [
+        "Navigate to the permissions section when the API fails to load permissions",
+        "Verify an error message is displayed",
+        "Verify the error uses role='alert' or aria-live='assertive'",
+        "Verify screen reader immediately announces the error",
+        "Verify the error does not rely solely on color"
+      ],
+      "expectedResults": [
+        "Error notification is visually displayed (e.g., 'Failed to load permissions. Please try again.')",
+        "Screen reader immediately announces the error",
+        "Error includes text (not just a colored indicator)",
+        "Error text has sufficient contrast (4.5:1)",
+        "A retry mechanism is available and accessible"
+      ],
+      "postconditions": "Permission load failure is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Tab order through permissions is logical",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Permissions checkbox tab sequence",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible with all 8 checkboxes",
+      "steps": [
+        "Tab to the first permission checkbox",
+        "Continue tabbing through all checkboxes",
+        "Document the tab order",
+        "Verify the order matches the visual layout (top-to-bottom or left-to-right)"
+      ],
+      "expectedResults": [
+        "Tab order follows: User Management → Vendor Management → Product Approval → Content Management → Content Moderation → Comment Management → Analytics → System Settings",
+        "Order matches the visual presentation",
+        "No checkboxes are skipped",
+        "No unexpected focus jumps"
+      ],
+      "postconditions": "Keyboard navigation through permissions is predictable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "No keyboard trap in permissions section",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Permissions checkbox group",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Tab into the permissions checkbox group",
+        "Tab through all checkboxes",
+        "Continue tabbing past the last checkbox",
+        "Verify focus moves to the next element outside the group (e.g., Save/Add Admin button)",
+        "Shift+Tab back into the permissions group",
+        "Verify focus returns to the last checkbox"
+      ],
+      "expectedResults": [
+        "Focus enters and exits the permissions group freely",
+        "Tab moves past the last checkbox to the next interactive element",
+        "Shift+Tab returns to the permissions group from the next element",
+        "No keyboard trap exists within the checkbox group"
+      ],
+      "postconditions": "Keyboard users can freely navigate in and out of permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Checkbox labels have sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Permission checkbox label text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Use a contrast checker tool",
+        "Measure contrast of each permission label text against its background",
+        "Check contrast of checked checkbox indicator against background",
+        "Check contrast of unchecked checkbox border against background"
+      ],
+      "expectedResults": [
+        "All label text has at least 4.5:1 contrast ratio against background",
+        "Checked checkbox indicator (checkmark) has at least 3:1 contrast against checkbox background",
+        "Unchecked checkbox border has at least 3:1 contrast against surrounding background",
+        "All text is readable for users with low vision"
+      ],
+      "postconditions": "All permission labels and checkboxes are visually accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Checked state does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Checkbox checked/unchecked visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, some permissions are checked and some unchecked",
+      "steps": [
+        "Check some permission checkboxes and leave others unchecked",
+        "Observe the visual difference between checked and unchecked states",
+        "View the page in grayscale mode",
+        "Verify checked and unchecked states are still distinguishable"
+      ],
+      "expectedResults": [
+        "Checked state uses more than color alone (e.g., checkmark icon, filled background, border change)",
+        "In grayscale mode, checked and unchecked states are clearly distinguishable",
+        "Visual indicator is clear and unambiguous"
+      ],
+      "postconditions": "Checkbox states are perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Permissions section is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Permissions checkboxes at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify all 8 permission checkboxes and labels are visible",
+        "Verify labels are not clipped or overlapping",
+        "Check/uncheck checkboxes and verify functionality",
+        "Verify error messages (if triggered) are visible"
+      ],
+      "expectedResults": [
+        "All 8 checkboxes and labels are fully visible at 200% zoom",
+        "No text is clipped or hidden",
+        "Checkboxes remain clickable/tappable",
+        "Labels do not overlap checkboxes or each other",
+        "Layout adapts appropriately (may stack vertically)"
+      ],
+      "postconditions": "Permissions section is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Permissions section reflows at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Permissions layout at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify all permission checkboxes are accessible without horizontal scrolling",
+        "Verify labels are fully readable",
+        "Check/uncheck checkboxes and verify functionality"
+      ],
+      "expectedResults": [
+        "Permissions reflow to single column if needed",
+        "No horizontal scrollbar required",
+        "All labels are fully readable without truncation",
+        "Checkboxes remain functional at narrow width"
+      ],
+      "postconditions": "Permissions work on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Checkbox touch targets meet minimum size",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Permission checkbox touch targets",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section viewed on touch device",
+      "steps": [
+        "Measure the clickable/tappable area of each permission checkbox (including label)",
+        "Verify adequate spacing between checkboxes",
+        "Verify checkboxes are not too close together for accidental activation"
+      ],
+      "expectedResults": [
+        "Each checkbox + label combination has at least 44x44 CSS pixels touch target",
+        "Adequate vertical spacing exists between checkbox rows",
+        "No accidental activation of adjacent checkboxes"
+      ],
+      "postconditions": "Checkboxes are usable for users with motor impairments",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Saved permissions are displayed accessibly on admin card",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permissions display on admin card",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, an admin has been created with specific permissions assigned",
+      "steps": [
+        "Navigate to the admin list and find the admin card with assigned permissions",
+        "Verify permissions are displayed on the card",
+        "Navigate to the permissions display using screen reader",
+        "Verify screen reader announces the permissions with a label (e.g., 'Assigned permissions: User Management, Analytics')",
+        "Verify the permissions list uses semantic markup"
+      ],
+      "expectedResults": [
+        "Permissions are visually displayed on the admin card",
+        "Permissions have a descriptive label (e.g., 'Assigned Permissions')",
+        "Screen reader announces the label and permission values",
+        "If displayed as a list, semantic list markup is used",
+        "Permissions text has sufficient contrast (4.5:1)"
+      ],
+      "postconditions": "Saved permissions are accessible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Selecting all permissions provides informational feedback",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "All permissions selected feedback",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Check all 8 permission checkboxes",
+        "Observe if any informational message appears (e.g., 'All permissions selected - equivalent to Super Admin')",
+        "If a message appears, verify it is announced by screen reader",
+        "Verify the message uses aria-live='polite' or role='status'"
+      ],
+      "expectedResults": [
+        "If informational message is shown, it is accessible to screen readers",
+        "Message uses aria-live='polite' (informational, not critical)",
+        "Message does not prevent form submission",
+        "Message text has sufficient contrast"
+      ],
+      "postconditions": "Users are informed about the implication of selecting all permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Permission save confirmation is announced accessibly",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permission save success notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions have been selected and form is submitted",
+      "steps": [
+        "Select one or more permissions",
+        "Submit/save the admin form",
+        "Verify a success message is displayed or announced",
+        "Verify screen reader announces the success",
+        "Verify the admin card shows the saved permissions"
+      ],
+      "expectedResults": [
+        "Success is communicated (via toast/notification with role='status' or aria-live='polite')",
+        "Screen reader announces success (e.g., 'Permissions saved successfully')",
+        "Admin card displays the assigned permissions",
+        "Focus returns to an appropriate element"
+      ],
+      "postconditions": "Successful permission save is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Error state on validation does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Permissions validation error visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, no permissions selected, form submitted to trigger error",
+      "steps": [
+        "Submit the form with no permissions selected",
+        "Observe how the error state is indicated on the permissions section",
+        "View in grayscale mode",
+        "Verify the error is still identifiable without color"
+      ],
+      "expectedResults": [
+        "Error includes text message (not just red border around checkboxes)",
+        "Error has an icon or text prefix in addition to color",
+        "In grayscale mode, error state is still clearly identifiable",
+        "Error uses multiple visual cues (text + border + icon)"
+      ],
+      "postconditions": "Validation errors are perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Permissions section is within appropriate landmark and has heading",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Permissions section structure",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin, permissions section is visible",
+      "steps": [
+        "Use screen reader heading navigation to find the permissions section",
+        "Verify the section has a heading or is within a labeled region",
+        "Verify the section is within the main landmark or dialog",
+        "Verify the heading level follows the page hierarchy"
+      ],
+      "expectedResults": [
+        "Permissions section has a heading (e.g., H3 'Permissions') or is a labeled region",
+        "Section is within the main landmark or modal dialog",
+        "Heading level is appropriate in the hierarchy (not skipping levels)",
+        "Screen reader users can navigate directly to the permissions section"
+      ],
+      "postconditions": "Permissions section is structurally discoverable",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

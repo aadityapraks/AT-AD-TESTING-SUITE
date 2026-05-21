@@ -1,0 +1,286 @@
+{
+  "jiraStory": "SCRUM-607",
+  "title": "Admin - Track Admin Assignment Details - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Track Admin Assignment Details feature on the Y4J platform. This feature displays 'Assigned date' and 'Assigned by' information on each admin card for accountability tracking. The data is immutable and stored in audit logs. Edge cases include missing assignment records and legacy admin accounts without assignment metadata. Covers WCAG 2.1 AA compliance for semantic structure, screen reader compatibility, visual requirements, and handling of missing data states.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Assigned date field has programmatic label-value association",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Assigned date label and value on admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, Internal Administrators page is loaded with at least one admin card that has assignment details",
+      "steps": [
+        "Navigate to an admin card using screen reader",
+        "Locate the 'Assigned date' information",
+        "Verify the label 'Assigned date' (or similar) is programmatically associated with its value",
+        "Verify screen reader announces both the label and the date value together"
+      ],
+      "expectedResults": [
+        "Screen reader announces the label-value pair (e.g., 'Assigned date: January 15, 2026')",
+        "Label and value are programmatically associated (via dt/dd, aria-label, or label element)",
+        "The date value is not announced without its label context",
+        "Information is not conveyed solely through visual positioning"
+      ],
+      "postconditions": "Screen reader users understand the assigned date for each admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Assigned by field has programmatic label-value association",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Assigned by label and value on admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Navigate to an admin card using screen reader",
+        "Locate the 'Assigned by' information",
+        "Verify the label 'Assigned by' (or similar) is programmatically associated with its value",
+        "Verify screen reader announces both the label and the assigner's name together"
+      ],
+      "expectedResults": [
+        "Screen reader announces the label-value pair (e.g., 'Assigned by: Jane Smith')",
+        "Label and value are programmatically associated",
+        "The assigner name is not announced without its label context",
+        "Information is not conveyed solely through visual positioning"
+      ],
+      "postconditions": "Screen reader users understand who assigned each admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Assignment details use semantic markup (definition list or structured data)",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Assignment details markup structure",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Inspect the assignment details section using developer tools",
+        "Verify label-value pairs use semantic markup (e.g., <dl>/<dt>/<dd>, <table>, or aria attributes)",
+        "Verify the structure conveys the relationship between labels and values programmatically",
+        "Navigate with screen reader to confirm relationships are announced"
+      ],
+      "expectedResults": [
+        "Assignment details use semantic markup (definition list, table, or ARIA-labeled structure)",
+        "Label-value relationships are programmatically determinable",
+        "Screen reader correctly pairs labels with their values",
+        "Structure is not relying solely on visual layout for meaning"
+      ],
+      "postconditions": "Assignment data structure is semantically correct",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Date format is accessible and unambiguous",
+      "wcagCriterion": "3.1.1 Language of Page",
+      "componentElement": "Assigned date value format",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assigned date is displayed",
+      "steps": [
+        "Read the assigned date value on the admin card",
+        "Verify the date format is unambiguous (e.g., 'January 15, 2026' or '15 Jan 2026', not '01/02/26')",
+        "Verify screen reader reads the date in a natural, understandable way",
+        "If a <time> element is used, verify the datetime attribute has a machine-readable format"
+      ],
+      "expectedResults": [
+        "Date is displayed in an unambiguous format (month name or clear day/month/year order)",
+        "Screen reader reads the date naturally (not as individual numbers)",
+        "If <time> element is used, datetime attribute provides ISO format for machines",
+        "Date is understandable regardless of locale assumptions"
+      ],
+      "postconditions": "Date is clearly understandable by all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Assignment details text has sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Assigned date and Assigned by text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Use a contrast checker tool",
+        "Measure contrast of 'Assigned date' label text against card background",
+        "Measure contrast of the date value text against card background",
+        "Measure contrast of 'Assigned by' label text against card background",
+        "Measure contrast of the assigner name text against card background"
+      ],
+      "expectedResults": [
+        "All label text has at least 4.5:1 contrast ratio against background",
+        "All value text has at least 4.5:1 contrast ratio against background",
+        "If labels use a lighter/secondary color, they still meet 4.5:1 minimum",
+        "Text is readable for users with low vision"
+      ],
+      "postconditions": "All assignment detail text is visually accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Assignment details are in logical reading order within admin card",
+      "wcagCriterion": "1.3.2 Meaningful Sequence",
+      "componentElement": "Assignment details position in card reading order",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card is displayed",
+      "steps": [
+        "Navigate through the admin card content using screen reader",
+        "Document the reading order of all card elements",
+        "Verify assignment details appear in a logical position (after admin identity info)",
+        "Disable CSS and verify the DOM order matches the visual order"
+      ],
+      "expectedResults": [
+        "Reading order follows: Admin name → Email → Role → Status → Assigned date → Assigned by → Permissions",
+        "Assignment details are logically grouped together",
+        "DOM order matches visual presentation order",
+        "No confusing jumps in reading sequence"
+      ],
+      "postconditions": "Assignment details are in a meaningful position within the card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Missing assignment record is communicated accessibly",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Missing assignment data placeholder",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, an admin card exists with missing assignment record",
+      "steps": [
+        "Navigate to an admin card that has a missing assignment record",
+        "Verify a placeholder or message is displayed (e.g., 'Not available', 'N/A', or 'Unknown')",
+        "Verify screen reader announces the placeholder with its label context",
+        "Verify the placeholder is not an empty space or hidden element"
+      ],
+      "expectedResults": [
+        "Missing data shows a meaningful placeholder (e.g., 'Assigned date: Not available')",
+        "Screen reader announces the label and placeholder together",
+        "Placeholder text has sufficient contrast (4.5:1)",
+        "No empty or confusing gaps exist in the card content",
+        "Users understand that the data is unavailable (not just missing from the UI)"
+      ],
+      "postconditions": "Missing assignment data is clearly communicated",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Legacy admin accounts without metadata display accessible fallback",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Legacy admin card without assignment metadata",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, a legacy admin account exists without assignment metadata",
+      "steps": [
+        "Navigate to a legacy admin card that lacks assignment metadata",
+        "Verify the card handles the absence gracefully (shows placeholder or omits section with explanation)",
+        "Verify screen reader does not encounter broken or empty elements",
+        "Verify the card structure remains consistent with other admin cards"
+      ],
+      "expectedResults": [
+        "Legacy admin card shows appropriate fallback (e.g., 'Assigned date: Legacy account' or 'Assignment details unavailable')",
+        "Screen reader encounters no empty unlabeled elements",
+        "Card structure is consistent (same fields present, with fallback values)",
+        "Users understand this is a legacy account without tracking data"
+      ],
+      "postconditions": "Legacy accounts are handled gracefully without accessibility issues",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Assignment details are readable at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Assignment details at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify 'Assigned date' label and value are fully visible",
+        "Verify 'Assigned by' label and value are fully visible",
+        "Verify text does not overlap or get clipped",
+        "Verify the card layout adapts appropriately"
+      ],
+      "expectedResults": [
+        "All assignment detail text is fully readable at 200% zoom",
+        "No text is clipped, hidden, or overlapping",
+        "Labels and values remain visually associated",
+        "Card layout adapts (may stack vertically) without losing information"
+      ],
+      "postconditions": "Assignment details are fully readable at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Assignment details reflow at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Assignment details at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify assignment details are visible without horizontal scrolling",
+        "Verify labels and values remain associated visually",
+        "Verify no text is truncated or hidden"
+      ],
+      "expectedResults": [
+        "Assignment details reflow to fit narrow viewport",
+        "No horizontal scrollbar required",
+        "Labels and values remain clearly associated",
+        "All text is fully readable"
+      ],
+      "postconditions": "Assignment details work on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Assignment details text spacing can be overridden",
+      "wcagCriterion": "1.4.12 Text Spacing",
+      "componentElement": "Assignment details with custom text spacing",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Apply WCAG text spacing overrides (line-height 1.5x, paragraph spacing 2x, letter spacing 0.12em, word spacing 0.16em)",
+        "Verify assignment detail text remains readable",
+        "Verify no text is clipped or hidden by fixed-height containers",
+        "Verify labels and values do not overlap"
+      ],
+      "expectedResults": [
+        "Text remains readable with increased spacing",
+        "No text is clipped by fixed-height containers",
+        "Labels and values do not overlap",
+        "Layout adapts gracefully"
+      ],
+      "postconditions": "Assignment details support custom text spacing",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Assignment details do not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Assignment details visual presentation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin, admin card with assignment details is displayed",
+      "steps": [
+        "Observe the assignment details section",
+        "Check if any information is conveyed through color alone (e.g., colored text for different assigners)",
+        "View in grayscale mode",
+        "Verify all information is still understandable without color"
+      ],
+      "expectedResults": [
+        "No information is conveyed through color alone",
+        "In grayscale mode, all assignment details are still fully understandable",
+        "Labels and values are identifiable by text content, not color coding",
+        "If icons are used, they have text alternatives"
+      ],
+      "postconditions": "Assignment information is accessible regardless of color perception",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

@@ -1,0 +1,467 @@
+{
+  "jiraStory": "SCRUM-583",
+  "title": "Admin - View Internal Administrators - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - View Internal Administrators page on the Y4J platform. This page displays a list of internal administrators with their details (name, email, role, status, assigned date, assigned by, permissions). Covers WCAG 2.1 AA compliance for keyboard navigation, screen reader compatibility, visual requirements, form/interactive element accessibility, and dynamic content handling.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Page has proper heading hierarchy for administrators list",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Page headings and structure",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin and navigated to the Internal Administrators page",
+      "steps": [
+        "Open the Internal Administrators page",
+        "Inspect the page heading structure using a screen reader or accessibility tool",
+        "Verify the page has an H1 heading identifying the page purpose",
+        "Verify subheadings follow a logical hierarchy (H1 > H2 > H3)"
+      ],
+      "expectedResults": [
+        "Page has exactly one H1 heading (e.g., 'Internal Administrators')",
+        "Heading hierarchy is sequential without skipping levels",
+        "Screen reader announces headings correctly with their level"
+      ],
+      "postconditions": "Page structure is semantically correct",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Admin list uses proper semantic list structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Admin cards list container",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, administrators list is loaded with at least one admin",
+      "steps": [
+        "Navigate to the Internal Administrators page",
+        "Inspect the admin cards container using developer tools",
+        "Verify the list of admin cards uses semantic list markup (ul/ol with li) or appropriate ARIA roles (role='list' with role='listitem')",
+        "Verify screen reader announces the number of items in the list"
+      ],
+      "expectedResults": [
+        "Admin cards are wrapped in a semantic list structure",
+        "Screen reader announces 'list with X items' when entering the list",
+        "Each admin card is a list item"
+      ],
+      "postconditions": "List structure is properly conveyed to assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Admin card information is programmatically associated",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Individual admin card",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, at least one admin card is displayed",
+      "steps": [
+        "Navigate to an admin card using screen reader",
+        "Verify admin name is announced as the card heading or label",
+        "Verify email, role label, status, assigned date, assigned by, and permissions are all announced with their labels",
+        "Check that label-value pairs are programmatically associated (e.g., 'Role: Super Admin')"
+      ],
+      "expectedResults": [
+        "Screen reader announces admin name as the primary identifier",
+        "All data fields (email, role, status, assigned date, assigned by, permissions) are announced with descriptive labels",
+        "Information is not conveyed solely through visual positioning"
+      ],
+      "postconditions": "All admin card information is accessible to screen reader users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Role dropdown has accessible name and keyboard support",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Admin role dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is displayed with role dropdown visible",
+      "steps": [
+        "Tab to the admin role dropdown using keyboard",
+        "Verify the dropdown has an accessible name (aria-label or associated label)",
+        "Press Enter or Space to open the dropdown",
+        "Use arrow keys to navigate between options (Super Admin / Limited-Access Admin)",
+        "Press Enter to select an option",
+        "Press Escape to close without selecting"
+      ],
+      "expectedResults": [
+        "Dropdown receives visible focus indicator",
+        "Screen reader announces the dropdown name, role ('combobox' or 'listbox'), and current value",
+        "Dropdown opens with Enter/Space",
+        "Arrow keys navigate options, screen reader announces each option",
+        "Enter selects the focused option",
+        "Escape closes dropdown without changing selection",
+        "aria-expanded state changes are announced"
+      ],
+      "postconditions": "Role dropdown is fully operable via keyboard and announced by screen reader",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Edit Permissions button has accessible name and keyboard activation",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Edit Permissions button",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin card with Edit Permissions button is visible",
+      "steps": [
+        "Tab to the 'Edit Permissions' button using keyboard",
+        "Verify the button has a visible focus indicator",
+        "Verify screen reader announces the button name and role",
+        "Press Enter to activate the button",
+        "Press Space to activate the button"
+      ],
+      "expectedResults": [
+        "Button receives visible focus indicator meeting 3:1 contrast ratio",
+        "Screen reader announces 'Edit Permissions, button' (or similar with context of which admin)",
+        "Button activates with both Enter and Space keys",
+        "If button is contextual to a specific admin, the accessible name includes the admin's name (e.g., 'Edit Permissions for John Doe')"
+      ],
+      "postconditions": "Edit Permissions button is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Tab order follows logical sequence through admin list",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Full page tab order",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Place focus at the top of the page",
+        "Press Tab repeatedly to move through all interactive elements",
+        "Document the tab order sequence",
+        "Verify the order follows a logical reading sequence (top-to-bottom, left-to-right for LTR)"
+      ],
+      "expectedResults": [
+        "Tab order follows: navigation → page heading area → first admin card interactive elements (dropdown, edit button) → second admin card → etc.",
+        "No unexpected focus jumps",
+        "All interactive elements are reachable via Tab",
+        "Focus does not get trapped in any element"
+      ],
+      "postconditions": "Keyboard user can navigate the entire page in logical order",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Focus indicator is visible on all interactive elements",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "All interactive elements (dropdown, buttons)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Tab through all interactive elements on the page",
+        "Observe the focus indicator on the role dropdown",
+        "Observe the focus indicator on the Edit Permissions button",
+        "Observe focus indicator on any other interactive elements (links, navigation)"
+      ],
+      "expectedResults": [
+        "Every interactive element shows a clearly visible focus indicator when focused",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Focus indicator is not solely a color change"
+      ],
+      "postconditions": "All focus indicators are clearly visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Text color contrast meets minimum ratio for admin card content",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Admin card text content",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Use a contrast checker tool (e.g., axe DevTools, Colour Contrast Analyser)",
+        "Check contrast ratio of admin name text against its background",
+        "Check contrast ratio of email text against its background",
+        "Check contrast ratio of role label text against its background",
+        "Check contrast ratio of status text against its background",
+        "Check contrast ratio of assigned date and assigned by text",
+        "Check contrast ratio of permissions text"
+      ],
+      "expectedResults": [
+        "Normal text (below 18pt or 14pt bold) has at least 4.5:1 contrast ratio",
+        "Large text (18pt+ or 14pt+ bold) has at least 3:1 contrast ratio",
+        "All text on admin cards passes minimum contrast requirements"
+      ],
+      "postconditions": "All text is readable for users with low vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Status indicator does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Admin status indicator (Active)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin cards display status",
+      "steps": [
+        "View the admin card status indicator",
+        "Check if status is conveyed through text label in addition to any color coding",
+        "View the page in grayscale mode",
+        "Verify status is still distinguishable without color"
+      ],
+      "expectedResults": [
+        "Status 'Active' is displayed as text, not solely through a colored dot or icon",
+        "In grayscale mode, status information is still clearly conveyed",
+        "Screen reader announces the status text"
+      ],
+      "postconditions": "Status information is accessible regardless of color perception",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Page is readable and functional at 200% zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Full page layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded at default zoom",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify all admin card content is still visible without horizontal scrolling",
+        "Verify text does not overlap or get clipped",
+        "Verify interactive elements (dropdown, buttons) are still usable",
+        "Verify the admin list layout adapts responsively"
+      ],
+      "expectedResults": [
+        "All text content remains readable at 200% zoom",
+        "No content is cut off or hidden",
+        "No horizontal scrollbar appears for text content",
+        "Buttons and dropdowns remain clickable and usable",
+        "Layout reflows appropriately"
+      ],
+      "postconditions": "Page is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Page content reflows at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Full page layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Resize browser viewport to 320px width (or zoom to 400%)",
+        "Verify all content is presented in a single column without horizontal scrolling",
+        "Verify all admin card information is still accessible",
+        "Verify interactive elements are still operable"
+      ],
+      "expectedResults": [
+        "Content reflows to single column layout",
+        "No horizontal scrollbar for content (except data tables, images, etc.)",
+        "All information remains accessible",
+        "No loss of functionality"
+      ],
+      "postconditions": "Page reflows correctly for mobile/zoomed users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Admin list loading state is announced to screen readers",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Loading state / aria-live region",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, about to navigate to Internal Administrators page",
+      "steps": [
+        "Enable screen reader",
+        "Navigate to the Internal Administrators page",
+        "Listen for loading state announcement while data loads",
+        "Listen for completion announcement when admin list is displayed"
+      ],
+      "expectedResults": [
+        "Screen reader announces a loading state (e.g., 'Loading administrators...')",
+        "When data loads successfully, screen reader announces completion (e.g., 'X administrators loaded')",
+        "Loading indicator uses aria-live='polite' or role='status'",
+        "User is not required to move focus to discover the loading state"
+      ],
+      "postconditions": "Loading state changes are communicated to assistive technology users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Empty state message is accessible when no admins exist",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Empty state message",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, no internal administrators exist in the system",
+      "steps": [
+        "Navigate to the Internal Administrators page with no admins configured",
+        "Verify an empty state message is displayed",
+        "Check that the message is announced by screen reader",
+        "Verify the message uses role='status' or aria-live region"
+      ],
+      "expectedResults": [
+        "Empty state message is visually displayed (e.g., 'No administrators found')",
+        "Screen reader announces the empty state message without requiring focus change",
+        "Message is within an aria-live region or has role='status'",
+        "Message text has sufficient color contrast (4.5:1)"
+      ],
+      "postconditions": "Empty state is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Error notification is accessible when API fails",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, API is configured to fail (or network is disconnected)",
+      "steps": [
+        "Navigate to the Internal Administrators page when API is unavailable",
+        "Verify an error notification is displayed",
+        "Check that the error is announced by screen reader immediately",
+        "Verify the error notification uses role='alert' or aria-live='assertive'"
+      ],
+      "expectedResults": [
+        "Error notification is visually displayed with clear error message",
+        "Screen reader immediately announces the error (role='alert' or aria-live='assertive')",
+        "Error message does not rely solely on color (includes icon or text prefix like 'Error:')",
+        "Error text has sufficient color contrast (4.5:1)"
+      ],
+      "postconditions": "Error state is immediately communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Page has a main landmark region",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Page landmarks",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, Internal Administrators page is loaded",
+      "steps": [
+        "Use screen reader landmark navigation (e.g., 'D' key in NVDA)",
+        "Verify the page has a main landmark containing the admin list content",
+        "Verify navigation areas use nav landmark",
+        "Check that landmarks have accessible labels if multiple of same type exist"
+      ],
+      "expectedResults": [
+        "Page has a <main> or role='main' landmark",
+        "Admin list content is within the main landmark",
+        "Navigation uses <nav> or role='navigation'",
+        "Screen reader users can jump directly to main content"
+      ],
+      "postconditions": "Page landmarks enable efficient screen reader navigation",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Role label badge has sufficient contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Role label badge (Super Admin / Limited-Access Admin)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin cards with role badges are displayed",
+      "steps": [
+        "Identify the role label badges on admin cards",
+        "Use a contrast checker to measure text-to-background contrast of the badge",
+        "Check contrast of badge text against the badge background",
+        "Check contrast of badge background against the card background"
+      ],
+      "expectedResults": [
+        "Badge text has at least 4.5:1 contrast ratio against badge background",
+        "Badge as a UI component has at least 3:1 contrast against adjacent colors",
+        "Both 'Super Admin' and 'Limited-Access Admin' badges meet contrast requirements"
+      ],
+      "postconditions": "Role badges are readable for users with low vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "No keyboard trap exists on the page",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "All interactive elements",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Start at the beginning of the page",
+        "Tab through every interactive element on the page",
+        "Verify focus eventually leaves the page content area (reaches browser chrome)",
+        "Open the role dropdown and verify you can close it and continue tabbing",
+        "Shift+Tab back through all elements to verify reverse navigation works"
+      ],
+      "expectedResults": [
+        "Focus moves through all elements without getting stuck",
+        "Dropdown can be exited with Escape or Tab",
+        "Shift+Tab moves focus backwards through all elements",
+        "No component traps keyboard focus"
+      ],
+      "postconditions": "Keyboard users can freely navigate the entire page",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Admin card content is accessible without CSS",
+      "wcagCriterion": "1.3.2 Meaningful Sequence",
+      "componentElement": "Admin card content order",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Disable CSS in the browser",
+        "Verify the admin card content is still presented in a meaningful order",
+        "Verify all information (name, email, role, status, dates, permissions) is still readable",
+        "Verify the reading order matches the visual presentation order"
+      ],
+      "expectedResults": [
+        "Content reads in a logical order: name → email → role → status → assigned date → assigned by → permissions",
+        "No information is lost when CSS is disabled",
+        "Labels and values remain associated"
+      ],
+      "postconditions": "Content sequence is meaningful regardless of styling",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Interactive elements have sufficient touch target size",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Edit Permissions button, Role dropdown",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded on a touch device or responsive view",
+      "steps": [
+        "Measure the clickable area of the 'Edit Permissions' button",
+        "Measure the clickable area of the role dropdown",
+        "Verify both meet minimum target size requirements"
+      ],
+      "expectedResults": [
+        "Edit Permissions button has at least 44x44 CSS pixels touch target",
+        "Role dropdown has at least 44x44 CSS pixels touch target",
+        "Adequate spacing exists between adjacent interactive elements"
+      ],
+      "postconditions": "Touch targets are large enough for users with motor impairments",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Page title is descriptive and unique",
+      "wcagCriterion": "2.4.2 Page Titled",
+      "componentElement": "HTML page title",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin",
+      "steps": [
+        "Navigate to the Internal Administrators page",
+        "Check the browser tab title",
+        "Verify the title describes the page purpose"
+      ],
+      "expectedResults": [
+        "Page title includes 'Internal Administrators' or similar descriptive text",
+        "Title is unique and distinguishable from other pages",
+        "Screen reader announces the page title on navigation"
+      ],
+      "postconditions": "Page is identifiable by its title",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

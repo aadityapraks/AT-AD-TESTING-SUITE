@@ -1,0 +1,519 @@
+{
+  "jiraStory": "SCRUM-586",
+  "title": "Admin - Search Admin Users - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Search Admin Users feature on the Y4J platform. This feature provides a search bar that allows Super Admins to search administrators by name or email with dynamic filtering, partial match support (3+ characters), case-insensitive matching, and clear functionality. Covers WCAG 2.1 AA compliance for keyboard navigation, screen reader compatibility, visual requirements, and dynamic content updates.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Search input has an accessible label",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Search bar input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin and navigated to the Internal Administrators page with search functionality",
+      "steps": [
+        "Navigate to the admin search page",
+        "Inspect the search input field using a screen reader",
+        "Verify the input has a programmatically associated label (via <label>, aria-label, or aria-labelledby)",
+        "Verify the label clearly describes the purpose (e.g., 'Search administrators by name or email')"
+      ],
+      "expectedResults": [
+        "Search input has a visible label or accessible name",
+        "Screen reader announces the input purpose (e.g., 'Search administrators by name or email, edit text')",
+        "Label is programmatically associated with the input element"
+      ],
+      "postconditions": "Screen reader users understand the purpose of the search field",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Search input is keyboard accessible and receives focus",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Search bar input field",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, admin search page is loaded",
+      "steps": [
+        "Press Tab to navigate to the search input field",
+        "Verify the search input receives keyboard focus",
+        "Type a search query using the keyboard",
+        "Verify text appears in the input field",
+        "Press Backspace/Delete to modify the query"
+      ],
+      "expectedResults": [
+        "Search input is reachable via Tab key",
+        "Visible focus indicator appears on the input when focused",
+        "Text can be typed and edited using keyboard only",
+        "No mouse interaction is required to use the search"
+      ],
+      "postconditions": "Search input is fully operable via keyboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Search input has visible focus indicator",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Search bar input field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, admin search page is loaded",
+      "steps": [
+        "Tab to the search input field",
+        "Observe the focus indicator style",
+        "Measure the contrast of the focus indicator against adjacent colors",
+        "Verify the focus indicator is not solely a color change"
+      ],
+      "expectedResults": [
+        "Search input displays a clearly visible focus indicator (e.g., outline, border change)",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Focus indicator is distinguishable from the unfocused state"
+      ],
+      "postconditions": "Focus state is clearly visible to sighted keyboard users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Dynamic search results are announced to screen readers via aria-live",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search results live region",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is focused, admin list is loaded",
+      "steps": [
+        "Enable screen reader",
+        "Type at least 3 characters in the search input",
+        "Wait for dynamic filtering to occur",
+        "Listen for screen reader announcement of results count",
+        "Type additional characters to narrow results",
+        "Listen for updated announcement"
+      ],
+      "expectedResults": [
+        "Screen reader announces the number of results found (e.g., '3 administrators found')",
+        "Announcement uses aria-live='polite' so it doesn't interrupt typing",
+        "Updated result count is announced as user continues typing",
+        "User does not need to move focus to discover the result count"
+      ],
+      "postconditions": "Screen reader users are informed of dynamic result changes without losing focus",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "No results message is accessible when search yields no matches",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "No results message ('No admins found')",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is focused",
+      "steps": [
+        "Type a search query that returns no results (e.g., 'zzzznonexistent')",
+        "Verify 'No admins found' message is displayed visually",
+        "Verify screen reader announces the no-results message",
+        "Check that the message uses role='status' or is within an aria-live region"
+      ],
+      "expectedResults": [
+        "'No admins found' message is visually displayed",
+        "Screen reader announces the message without requiring focus change",
+        "Message is within an aria-live='polite' region or has role='status'",
+        "Message text has sufficient color contrast (4.5:1 minimum)"
+      ],
+      "postconditions": "All users are informed when search yields no results",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Search input placeholder text has sufficient contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Search input placeholder text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is empty (showing placeholder)",
+      "steps": [
+        "Observe the placeholder text in the search input (e.g., 'Search by name or email...')",
+        "Use a contrast checker tool to measure placeholder text color against input background",
+        "Record the contrast ratio"
+      ],
+      "expectedResults": [
+        "Placeholder text has at least 4.5:1 contrast ratio against the input background",
+        "If placeholder does not meet contrast, a visible label is provided as an alternative",
+        "Placeholder text is readable for users with low vision"
+      ],
+      "postconditions": "Placeholder text is visually accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Clear search button/action has accessible name and keyboard support",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Clear search button/action",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input has text entered",
+      "steps": [
+        "Type text in the search input",
+        "Verify a clear button (X) or clear action appears",
+        "Tab to the clear button using keyboard",
+        "Verify screen reader announces the button name and role",
+        "Press Enter or Space to activate the clear button",
+        "Verify the search input is cleared and full list is restored"
+      ],
+      "expectedResults": [
+        "Clear button has an accessible name (e.g., 'Clear search', not just 'X')",
+        "Screen reader announces 'Clear search, button' or similar",
+        "Clear button is reachable via keyboard (Tab)",
+        "Enter and Space both activate the clear button",
+        "After clearing, focus remains on or returns to the search input",
+        "Full admin list is restored after clearing"
+      ],
+      "postconditions": "Clear functionality is fully accessible via keyboard and screen reader",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Search input has appropriate autocomplete attribute",
+      "wcagCriterion": "1.3.5 Identify Input Purpose",
+      "componentElement": "Search bar input field",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Inspect the search input element in developer tools",
+        "Check for the presence of type='search' or role='searchbox'",
+        "Verify the input has appropriate semantics for a search field"
+      ],
+      "expectedResults": [
+        "Input has type='search' or role='searchbox' to identify its purpose",
+        "Screen reader identifies the field as a search input",
+        "Browser may offer appropriate input assistance based on type"
+      ],
+      "postconditions": "Search input purpose is programmatically identifiable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Search results maintain logical tab order after filtering",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Filtered admin list",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search has been performed with results displayed",
+      "steps": [
+        "Type a search query that returns multiple results",
+        "Tab from the search input to the filtered results",
+        "Verify tab order follows logical sequence through filtered admin cards",
+        "Verify no hidden/filtered cards receive focus"
+      ],
+      "expectedResults": [
+        "Tab order moves from search input to first visible result's interactive elements",
+        "Hidden/filtered admin cards do not receive keyboard focus",
+        "Focus order follows visual presentation order",
+        "No unexpected focus jumps to off-screen elements"
+      ],
+      "postconditions": "Keyboard navigation through filtered results is logical",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Search does not create a keyboard trap",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Search input and results area",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Tab to the search input",
+        "Type a search query",
+        "Press Tab to move focus away from the search input",
+        "Verify focus moves to the next logical element",
+        "Press Shift+Tab to return to the search input",
+        "Verify focus returns to the search input"
+      ],
+      "expectedResults": [
+        "Focus can move freely in and out of the search input",
+        "No keyboard trap exists in the search component",
+        "Tab and Shift+Tab work as expected",
+        "User can navigate away from search at any time"
+      ],
+      "postconditions": "Keyboard users are never trapped in the search component",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Search text and results have sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Search input text, filtered results text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search has been performed with results",
+      "steps": [
+        "Type text in the search input",
+        "Use a contrast checker to measure typed text color against input background",
+        "Check contrast of search result text (admin names, emails) against card background",
+        "Check contrast of any highlighted/matched text in results"
+      ],
+      "expectedResults": [
+        "Typed search text has at least 4.5:1 contrast ratio",
+        "Result text has at least 4.5:1 contrast ratio",
+        "Any highlighted match text maintains at least 4.5:1 contrast",
+        "All text remains readable for users with low vision"
+      ],
+      "postconditions": "All search-related text meets contrast requirements",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Search highlighting does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Search match highlighting in results",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search results display with matched text highlighted",
+      "steps": [
+        "Type a search query that matches partial text in admin names/emails",
+        "Observe how matched text is highlighted in results",
+        "View the page in grayscale mode",
+        "Verify matched text is still distinguishable without color"
+      ],
+      "expectedResults": [
+        "If matched text is highlighted, it uses more than just color (e.g., bold, underline, background)",
+        "In grayscale mode, highlighted text is still distinguishable from non-highlighted text",
+        "Screen reader can identify matched portions if highlighting is meaningful"
+      ],
+      "postconditions": "Search highlighting is accessible regardless of color perception",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Search is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Search input and results at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the search input is fully visible and usable",
+        "Type a search query",
+        "Verify results are displayed without horizontal scrolling",
+        "Verify the clear button (if present) is still visible and clickable",
+        "Verify 'No admins found' message is visible if no results"
+      ],
+      "expectedResults": [
+        "Search input is fully visible at 200% zoom",
+        "Text in search input is not clipped or hidden",
+        "Results display without requiring horizontal scroll",
+        "All interactive elements remain usable",
+        "No content overlap occurs"
+      ],
+      "postconditions": "Search feature is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Search reflows correctly at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Search component layout",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify search input is fully visible without horizontal scrolling",
+        "Type a search query and verify results reflow to single column",
+        "Verify all content remains accessible"
+      ],
+      "expectedResults": [
+        "Search input spans available width appropriately",
+        "No horizontal scrollbar appears",
+        "Results reflow to single column layout",
+        "All functionality is preserved"
+      ],
+      "postconditions": "Search works correctly on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Search input has appropriate role for assistive technology",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Search bar input field",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Navigate to the search input using screen reader",
+        "Verify the input role is announced (e.g., 'search', 'edit', 'textbox')",
+        "Verify the current value is announced when focused",
+        "Type text and verify the value updates are reflected"
+      ],
+      "expectedResults": [
+        "Screen reader announces the input role (preferably 'search' or 'searchbox')",
+        "Current value is announced when input receives focus",
+        "Input state (empty, has text) is communicated",
+        "Role, name, and value are all programmatically determinable"
+      ],
+      "postconditions": "Search input is properly identified by assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Dynamic filtering does not steal focus from search input",
+      "wcagCriterion": "3.2.2 On Input",
+      "componentElement": "Search input during dynamic filtering",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is focused",
+      "steps": [
+        "Place focus in the search input",
+        "Type characters one at a time",
+        "Verify focus remains in the search input as results filter dynamically",
+        "Continue typing to narrow results further",
+        "Verify focus never moves away from the input during typing"
+      ],
+      "expectedResults": [
+        "Focus remains in the search input throughout the typing process",
+        "No unexpected focus shift occurs when results update",
+        "User can continue typing without interruption",
+        "Context of change (filtered results) does not cause focus loss"
+      ],
+      "postconditions": "Users can type continuously without focus disruption",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Search with special characters does not break accessibility",
+      "wcagCriterion": "4.1.1 Parsing",
+      "componentElement": "Search input with special characters",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is focused",
+      "steps": [
+        "Type special characters in the search input (e.g., '@', '\"', '<', '>', '&')",
+        "Verify the page does not break or produce errors",
+        "Verify screen reader still functions correctly",
+        "Verify the 'No admins found' message appears if no matches",
+        "Verify no JavaScript errors or broken HTML is produced"
+      ],
+      "expectedResults": [
+        "Special characters are accepted in the input without errors",
+        "Page remains functional and accessible",
+        "Screen reader continues to work correctly",
+        "No broken HTML or ARIA attributes result from special character input",
+        "Appropriate no-results message is shown if applicable"
+      ],
+      "postconditions": "Search handles special characters gracefully without breaking accessibility",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Search input has visible label or instructions (not placeholder only)",
+      "wcagCriterion": "3.3.2 Labels or Instructions",
+      "componentElement": "Search bar label/instructions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Observe the search input area",
+        "Check if there is a visible label above or beside the input (not just placeholder)",
+        "If only placeholder is used, verify an aria-label or visually-hidden label exists",
+        "Verify the label/instruction communicates the minimum 3-character requirement"
+      ],
+      "expectedResults": [
+        "Search input has a persistent visible label or an accessible hidden label",
+        "Label communicates the search purpose clearly",
+        "If minimum character requirement (3 chars) exists, it is communicated to users",
+        "Placeholder alone is not the only means of labeling"
+      ],
+      "postconditions": "Users understand how to use the search field",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Search icon (if present) has appropriate accessible treatment",
+      "wcagCriterion": "1.1.1 Non-text Content",
+      "componentElement": "Search icon/magnifying glass",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input with icon is displayed",
+      "steps": [
+        "Identify any search icon (magnifying glass) associated with the search input",
+        "If the icon is decorative (label already provides context), verify it has aria-hidden='true' or empty alt",
+        "If the icon is a clickable search button, verify it has an accessible name",
+        "Verify screen reader does not announce redundant information"
+      ],
+      "expectedResults": [
+        "Decorative search icon is hidden from screen readers (aria-hidden='true')",
+        "If icon is a button, it has accessible name (e.g., 'Search')",
+        "No redundant announcements (e.g., 'search search edit text')",
+        "Icon does not interfere with the input's accessible name"
+      ],
+      "postconditions": "Search icon is appropriately handled for assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Clearing search restores full list with accessible announcement",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Search clear action and list restoration",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search has filtered results (not showing full list)",
+      "steps": [
+        "With filtered results showing, clear the search input (via clear button, select all + delete, or backspace)",
+        "Verify the full admin list is restored",
+        "Verify screen reader announces the list restoration (e.g., 'Showing all X administrators')",
+        "Verify focus remains in or near the search input"
+      ],
+      "expectedResults": [
+        "Full admin list is restored when search is cleared",
+        "Screen reader announces the restored state via aria-live region",
+        "Focus remains on the search input or clear button (no unexpected focus shift)",
+        "Transition from filtered to full list is smooth without page reload"
+      ],
+      "postconditions": "Clearing search is accessible and communicates state change",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_021",
+      "title": "Search component is within a landmark region",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Search landmark/region",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search page is loaded",
+      "steps": [
+        "Use screen reader landmark navigation",
+        "Verify the search component is within a search landmark (role='search') or within the main content area",
+        "Verify screen reader users can quickly navigate to the search"
+      ],
+      "expectedResults": [
+        "Search is within a role='search' landmark or clearly within the main landmark",
+        "Screen reader users can navigate to search via landmark shortcuts",
+        "Search landmark has an accessible label if multiple search regions exist"
+      ],
+      "postconditions": "Search is discoverable via landmark navigation",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_022",
+      "title": "Minimum character requirement feedback is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Minimum 3-character validation feedback",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin, search input is focused",
+      "steps": [
+        "Type 1-2 characters in the search input",
+        "Observe if any feedback is provided about minimum character requirement",
+        "If feedback is shown, verify it is announced by screen reader",
+        "Verify the feedback does not block or confuse the user"
+      ],
+      "expectedResults": [
+        "If minimum character feedback is displayed, it is accessible to screen readers",
+        "Feedback uses aria-live or is programmatically associated with the input (aria-describedby)",
+        "Message is clear (e.g., 'Enter at least 3 characters to search')",
+        "Feedback does not prevent the user from continuing to type"
+      ],
+      "postconditions": "Users understand the minimum character requirement",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

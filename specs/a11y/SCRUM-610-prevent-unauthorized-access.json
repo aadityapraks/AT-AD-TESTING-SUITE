@@ -1,0 +1,338 @@
+{
+  "jiraStory": "SCRUM-610",
+  "title": "Admin - Prevent Unauthorized Access - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Prevent Unauthorized Access feature on the Y4J platform. This feature restricts admin management actions (add admins, edit roles, edit permissions) to Super Admins only. Limited-access admins cannot access the User & Roles module, and unauthorized access returns an error message. Edge cases include manual URL entry, token expiration, and permission mismatch due to caching. Covers WCAG 2.1 AA compliance for error message accessibility, navigation restrictions, screen reader announcements, and accessible denial states.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Unauthorized access error message is announced by screen reader",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Unauthorized access error message/page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, attempts to access User & Roles module",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Attempt to navigate to the User & Roles module (via navigation or direct URL)",
+        "Verify an error/denial message is displayed",
+        "Verify screen reader announces the error message immediately",
+        "Verify the message uses role='alert' or aria-live='assertive' for immediate announcement"
+      ],
+      "expectedResults": [
+        "Error message is displayed clearly (e.g., 'You do not have permission to access this page')",
+        "Screen reader immediately announces the error (role='alert' or aria-live='assertive')",
+        "Message is announced without requiring the user to navigate to it",
+        "User understands they are denied access and why"
+      ],
+      "postconditions": "Unauthorized users are clearly informed of access denial",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Error message text has sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Unauthorized access error message text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, unauthorized access error is displayed",
+      "steps": [
+        "Trigger the unauthorized access error message",
+        "Use a contrast checker to measure error message text against its background",
+        "Check contrast of any heading text in the error page/message",
+        "Check contrast of any supplementary text or instructions"
+      ],
+      "expectedResults": [
+        "Error message text has at least 4.5:1 contrast ratio against background",
+        "Heading text (if large) has at least 3:1 contrast ratio",
+        "All supplementary text meets 4.5:1 minimum",
+        "Text is readable for users with low vision"
+      ],
+      "postconditions": "Error message is visually accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Error message does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Unauthorized access error visual indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, unauthorized access error is displayed",
+      "steps": [
+        "Observe the error message/page visually",
+        "Check if the error state is conveyed through more than just color (e.g., icon, text prefix, border style)",
+        "View in grayscale mode",
+        "Verify the error is still identifiable without color"
+      ],
+      "expectedResults": [
+        "Error uses text message (not just a red indicator)",
+        "Error includes an icon or text prefix (e.g., 'Access Denied:' or lock icon with alt text)",
+        "In grayscale mode, error state is still clearly identifiable",
+        "Multiple visual cues convey the error state"
+      ],
+      "postconditions": "Error is perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Error page/message has proper heading structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Error page heading hierarchy",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, unauthorized access error page is displayed",
+      "steps": [
+        "Navigate to the error page/message",
+        "Inspect the heading structure",
+        "Verify there is an H1 heading describing the error (e.g., 'Access Denied')",
+        "Verify any subheadings follow logical hierarchy"
+      ],
+      "expectedResults": [
+        "Error page has an H1 heading (e.g., 'Access Denied' or 'Unauthorized')",
+        "Heading hierarchy is sequential without skipping levels",
+        "Screen reader users can quickly identify the page purpose via heading navigation",
+        "Heading clearly communicates the denial state"
+      ],
+      "postconditions": "Error page has proper semantic structure",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Error page has descriptive page title",
+      "wcagCriterion": "2.4.2 Page Titled",
+      "componentElement": "Error page HTML title",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, unauthorized access error page is displayed",
+      "steps": [
+        "Check the browser tab title when the error page is displayed",
+        "Verify the title describes the error state",
+        "Verify screen reader announces the page title on navigation"
+      ],
+      "expectedResults": [
+        "Page title includes error context (e.g., 'Access Denied - User & Roles')",
+        "Title is descriptive and unique",
+        "Screen reader announces the title, helping users understand they've been denied access"
+      ],
+      "postconditions": "Error page is identifiable by its title",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "User & Roles navigation item is hidden or disabled for Limited-Access Admin",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "User & Roles navigation menu item",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Navigate through the main navigation using keyboard and screen reader",
+        "Check if 'User & Roles' menu item is hidden, disabled, or absent",
+        "If hidden: verify it is not in the DOM or has aria-hidden='true'",
+        "If disabled: verify it has aria-disabled='true' and screen reader announces 'disabled'"
+      ],
+      "expectedResults": [
+        "User & Roles menu item is either completely hidden (not in Tab order, not announced by screen reader) OR visibly disabled with aria-disabled='true'",
+        "If hidden: not reachable via Tab, not announced by screen reader",
+        "If disabled: announced as 'disabled' by screen reader, not activatable",
+        "Limited-Access Admin is not confused by inaccessible navigation items"
+      ],
+      "postconditions": "Restricted navigation is properly communicated to assistive technology",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Direct URL access denial is keyboard navigable",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Error page after direct URL access",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin",
+      "steps": [
+        "Manually enter the User & Roles module URL in the browser address bar",
+        "Verify the error/denial page loads",
+        "Tab through all interactive elements on the error page (e.g., 'Go Back', 'Home' links)",
+        "Verify all elements are keyboard accessible",
+        "Verify there is a way to navigate away from the error page via keyboard"
+      ],
+      "expectedResults": [
+        "Error page loads when URL is manually entered",
+        "All interactive elements (links, buttons) on the error page are reachable via Tab",
+        "Navigation links (e.g., 'Go to Dashboard', 'Go Back') are keyboard activatable",
+        "User is not trapped on the error page",
+        "Focus indicator is visible on all interactive elements"
+      ],
+      "postconditions": "Error page is fully keyboard navigable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Token expiration error is announced accessibly",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Token expiration error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin, session token has expired",
+      "steps": [
+        "Allow the session token to expire while on the User & Roles page",
+        "Attempt an admin management action (add admin, edit role, edit permissions)",
+        "Verify an error message about session expiration is displayed",
+        "Verify screen reader announces the error",
+        "Verify the error provides guidance (e.g., 'Please log in again')"
+      ],
+      "expectedResults": [
+        "Token expiration error is displayed clearly",
+        "Screen reader announces the error immediately (role='alert' or aria-live='assertive')",
+        "Error message explains the issue (e.g., 'Your session has expired. Please log in again.')",
+        "A link or button to log in again is provided and keyboard accessible",
+        "Error does not rely solely on color"
+      ],
+      "postconditions": "Token expiration is communicated accessibly with recovery path",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Permission mismatch error (caching) is announced accessibly",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permission mismatch error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User's permissions have been changed (downgraded) while they are still logged in with cached permissions",
+      "steps": [
+        "Simulate a permission mismatch (user's role was downgraded but cached session still shows old permissions)",
+        "Attempt an admin management action that the user no longer has permission for",
+        "Verify an error message is displayed",
+        "Verify screen reader announces the error",
+        "Verify the error provides guidance for resolution"
+      ],
+      "expectedResults": [
+        "Error message is displayed (e.g., 'Your permissions have changed. Please refresh the page.')",
+        "Screen reader announces the error immediately",
+        "Error provides actionable guidance (refresh, log out/in)",
+        "Error does not rely solely on color",
+        "Recovery action (refresh button/link) is keyboard accessible"
+      ],
+      "postconditions": "Permission mismatch is communicated with recovery guidance",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Error page is readable at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Error page at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "Unauthorized access error page is displayed",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the error message is fully visible",
+        "Verify any navigation links/buttons are visible and usable",
+        "Verify no text is clipped or hidden"
+      ],
+      "expectedResults": [
+        "Error message text is fully readable at 200% zoom",
+        "Navigation links/buttons remain visible and usable",
+        "No text is clipped or hidden",
+        "No horizontal scrollbar for text content"
+      ],
+      "postconditions": "Error page is functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Error page reflows at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Error page at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "Unauthorized access error page is displayed",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify error message content reflows without horizontal scrolling",
+        "Verify navigation links/buttons are accessible",
+        "Verify all text is readable"
+      ],
+      "expectedResults": [
+        "Error page content reflows to fit narrow viewport",
+        "No horizontal scrollbar required",
+        "All interactive elements remain accessible",
+        "Text is fully readable"
+      ],
+      "postconditions": "Error page works on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Error page has main landmark region",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Error page landmarks",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "Unauthorized access error page is displayed",
+      "steps": [
+        "Use screen reader landmark navigation on the error page",
+        "Verify the page has a main landmark containing the error content",
+        "Verify navigation areas use nav landmark"
+      ],
+      "expectedResults": [
+        "Error page has a <main> or role='main' landmark",
+        "Error message content is within the main landmark",
+        "Screen reader users can jump to main content quickly",
+        "Navigation uses appropriate landmark"
+      ],
+      "postconditions": "Error page has proper landmark structure",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Recovery navigation links have accessible names",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Recovery links/buttons on error page (Go Back, Dashboard, Login)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "Unauthorized access error page is displayed with recovery navigation",
+      "steps": [
+        "Identify all recovery links/buttons on the error page (e.g., 'Go to Dashboard', 'Go Back', 'Log In Again')",
+        "Tab to each link/button",
+        "Verify each has an accessible name describing its destination/action",
+        "Verify screen reader announces the name and role",
+        "Activate each using Enter (links) or Enter/Space (buttons)"
+      ],
+      "expectedResults": [
+        "Each recovery link/button has a descriptive accessible name",
+        "Screen reader announces name and role (e.g., 'Go to Dashboard, link')",
+        "Links are activatable via Enter",
+        "Buttons are activatable via Enter and Space",
+        "Focus indicator is visible on each element"
+      ],
+      "postconditions": "Recovery navigation is fully accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Restricted actions are not exposed to Limited-Access Admin in the DOM",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Hidden admin management controls",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Limited-Access Admin, navigating pages they do have access to",
+      "steps": [
+        "Log in as Limited-Access Admin",
+        "Navigate to pages the user does have access to",
+        "Verify that 'Add Admin', 'Edit Roles', and 'Edit Permissions' controls are not present in the DOM or are properly hidden",
+        "Use screen reader to scan for any admin management controls",
+        "Verify no hidden but focusable admin controls exist"
+      ],
+      "expectedResults": [
+        "Admin management controls are not rendered in the DOM for Limited-Access Admin",
+        "OR if rendered, they have aria-hidden='true' and tabindex='-1' (not focusable)",
+        "Screen reader does not announce any admin management controls",
+        "No hidden controls are reachable via Tab",
+        "Limited-Access Admin cannot accidentally discover restricted controls"
+      ],
+      "postconditions": "Restricted controls are properly hidden from assistive technology",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

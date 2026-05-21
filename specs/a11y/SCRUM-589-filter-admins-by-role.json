@@ -1,0 +1,485 @@
+{
+  "jiraStory": "SCRUM-589",
+  "title": "Admin - Filter Admins by Role - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Filter Admins by Role feature on the Y4J platform. This feature provides a role filter dropdown (All Roles, Super Admin, Limited-Access Admin) that dynamically updates the admin list, highlights the selected filter, and works in combination with search. Covers WCAG 2.1 AA compliance for keyboard navigation, screen reader compatibility, visual requirements, and dynamic content updates.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Role filter dropdown has an accessible label",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role filter dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin and navigated to the Internal Administrators page with role filter",
+      "steps": [
+        "Navigate to the role filter dropdown",
+        "Inspect the dropdown using a screen reader",
+        "Verify the dropdown has a programmatically associated label (via <label>, aria-label, or aria-labelledby)",
+        "Verify the label clearly describes the purpose (e.g., 'Filter by role')"
+      ],
+      "expectedResults": [
+        "Dropdown has an accessible name (e.g., 'Filter by role')",
+        "Screen reader announces the dropdown name, role ('combobox' or 'listbox'), and current value",
+        "Label is programmatically associated with the dropdown element"
+      ],
+      "postconditions": "Screen reader users understand the purpose of the role filter",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Role filter dropdown is operable via keyboard",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Role filter dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin page with role filter is loaded",
+      "steps": [
+        "Press Tab to navigate to the role filter dropdown",
+        "Press Enter or Space to open the dropdown",
+        "Use Arrow Down to navigate to 'Super Admin' option",
+        "Use Arrow Up to navigate to 'All Roles' option",
+        "Press Enter to select the focused option",
+        "Press Escape to close the dropdown without selecting"
+      ],
+      "expectedResults": [
+        "Dropdown is reachable via Tab key",
+        "Enter/Space opens the dropdown options list",
+        "Arrow keys navigate between options (All Roles, Super Admin, Limited-Access Admin)",
+        "Enter selects the currently focused option",
+        "Escape closes the dropdown without changing selection",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "Role filter is fully operable via keyboard",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Role filter dropdown has visible focus indicator",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Role filter dropdown",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Tab to the role filter dropdown",
+        "Observe the focus indicator on the dropdown trigger",
+        "Open the dropdown and observe focus indicator on individual options",
+        "Navigate between options using arrow keys and observe focus movement"
+      ],
+      "expectedResults": [
+        "Dropdown trigger shows a clearly visible focus indicator when focused",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Individual options show focus/highlight indicator when navigated via keyboard",
+        "Focus indicator is not solely a color change"
+      ],
+      "postconditions": "Focus state is clearly visible on dropdown and its options",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Dropdown options announce role and state to screen readers",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role filter dropdown options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, role filter dropdown is open",
+      "steps": [
+        "Open the role filter dropdown using keyboard",
+        "Navigate to each option using arrow keys",
+        "Listen to screen reader announcements for each option",
+        "Select an option and verify the selected state is announced",
+        "Re-open the dropdown and verify the currently selected option is indicated"
+      ],
+      "expectedResults": [
+        "Each option is announced with its text (e.g., 'All Roles', 'Super Admin', 'Limited-Access Admin')",
+        "Options have role='option' or equivalent",
+        "Currently selected option is announced as 'selected' or 'checked'",
+        "aria-selected='true' or equivalent marks the active filter",
+        "Screen reader announces position in list (e.g., '1 of 3')"
+      ],
+      "postconditions": "Screen reader users can identify all options and the current selection",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Selected filter highlight does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Selected filter visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, a role filter is selected (e.g., 'Super Admin')",
+      "steps": [
+        "Select a role filter option",
+        "Observe how the selected filter is visually highlighted",
+        "View the page in grayscale mode",
+        "Verify the selected state is still distinguishable without color"
+      ],
+      "expectedResults": [
+        "Selected filter uses more than just color to indicate selection (e.g., bold text, border, checkmark icon, background pattern)",
+        "In grayscale mode, selected filter is still distinguishable from unselected options",
+        "Selected state is also communicated programmatically (aria-selected, aria-current)"
+      ],
+      "postconditions": "Selected filter state is perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Selected filter highlight has sufficient contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Selected filter highlight styling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, a role filter is selected",
+      "steps": [
+        "Select a role filter option",
+        "Use a contrast checker to measure the selected option text against its background",
+        "Measure the contrast of the highlight/border against adjacent colors",
+        "Check contrast of unselected option text as well"
+      ],
+      "expectedResults": [
+        "Selected option text has at least 4.5:1 contrast ratio against its background",
+        "Highlight indicator (border, background) has at least 3:1 contrast against adjacent colors",
+        "Unselected option text also meets 4.5:1 contrast minimum"
+      ],
+      "postconditions": "All filter states are readable for users with low vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Filtered results are announced to screen readers via aria-live",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Filtered results live region",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Enable screen reader",
+        "Select 'Super Admin' from the role filter dropdown",
+        "Listen for screen reader announcement of filtered results",
+        "Select 'Limited-Access Admin' from the role filter",
+        "Listen for updated announcement",
+        "Select 'All Roles' to restore full list",
+        "Listen for restoration announcement"
+      ],
+      "expectedResults": [
+        "Screen reader announces the number of results after filtering (e.g., '2 Super Admin administrators found')",
+        "Announcement uses aria-live='polite' so it doesn't interrupt the user",
+        "Updated count is announced when filter changes",
+        "Restoring 'All Roles' announces the full count"
+      ],
+      "postconditions": "Screen reader users are informed of filter result changes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "No admins in selected role shows accessible empty state",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Empty state message for filtered results",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, a role with no assigned admins exists",
+      "steps": [
+        "Select a role filter that has no administrators assigned",
+        "Verify an empty state message is displayed",
+        "Verify screen reader announces the empty state",
+        "Check that the message uses role='status' or aria-live region"
+      ],
+      "expectedResults": [
+        "Empty state message is visually displayed (e.g., 'No administrators found for this role')",
+        "Screen reader announces the empty state without requiring focus change",
+        "Message is within an aria-live='polite' region or has role='status'",
+        "Message text has sufficient color contrast (4.5:1 minimum)"
+      ],
+      "postconditions": "All users are informed when no admins match the selected role",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Filter selection does not cause unexpected context change",
+      "wcagCriterion": "3.2.2 On Input",
+      "componentElement": "Role filter dropdown selection behavior",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, role filter dropdown is available",
+      "steps": [
+        "Focus on the role filter dropdown",
+        "Select a different role option",
+        "Verify focus remains on or near the dropdown after selection",
+        "Verify no unexpected page navigation or modal opens",
+        "Verify the admin list updates in place without full page reload"
+      ],
+      "expectedResults": [
+        "Focus remains on the dropdown or moves predictably after selection",
+        "No unexpected navigation occurs",
+        "No new window or modal opens unexpectedly",
+        "Admin list updates dynamically in place",
+        "User maintains their context on the page"
+      ],
+      "postconditions": "Filter selection updates content without disorienting the user",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Filter and search combination maintains accessibility",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Combined filter and search results",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, both search and role filter are available",
+      "steps": [
+        "Type a search query in the search input",
+        "Then select a role filter from the dropdown",
+        "Verify the combined results are announced to screen reader",
+        "Change the role filter while search is active",
+        "Verify updated combined results are announced",
+        "Clear the search while filter is active",
+        "Verify results update correctly"
+      ],
+      "expectedResults": [
+        "Combined filter+search results count is announced via aria-live",
+        "Changing filter while search is active updates results and announces new count",
+        "Clearing search while filter is active shows all admins for that role",
+        "No accessibility errors occur when combining filter and search",
+        "Focus is not unexpectedly moved during combined operations"
+      ],
+      "postconditions": "Filter and search work together accessibly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Switching filter while search is applied does not trap keyboard",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Filter dropdown with active search",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, search has text entered, filter is available",
+      "steps": [
+        "Type a search query in the search input",
+        "Tab to the role filter dropdown",
+        "Open the dropdown and select a different role",
+        "Tab away from the dropdown to the next element",
+        "Shift+Tab back to the dropdown",
+        "Verify focus moves freely between search and filter"
+      ],
+      "expectedResults": [
+        "Focus moves freely between search input and filter dropdown",
+        "No keyboard trap occurs when switching between filter and search",
+        "Tab and Shift+Tab work correctly in all states",
+        "Dropdown can be opened and closed without trapping focus"
+      ],
+      "postconditions": "Keyboard users can freely navigate between filter and search",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Tab order is logical between search and filter components",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Search input and role filter tab sequence",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, page with search and filter is loaded",
+      "steps": [
+        "Start at the top of the page",
+        "Tab through interactive elements",
+        "Document the order: navigation → search → filter → admin list items",
+        "Verify the order follows visual layout (left-to-right, top-to-bottom)"
+      ],
+      "expectedResults": [
+        "Tab order follows logical visual sequence",
+        "Search input and filter dropdown are in a predictable order",
+        "No unexpected focus jumps between search and filter",
+        "After filter, focus moves to the admin list or next logical element"
+      ],
+      "postconditions": "Keyboard navigation follows a predictable, logical order",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "Dropdown expanded/collapsed state is communicated",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role filter dropdown aria-expanded state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, role filter dropdown is available",
+      "steps": [
+        "Focus on the role filter dropdown (closed state)",
+        "Verify screen reader announces 'collapsed' or 'closed' state",
+        "Open the dropdown",
+        "Verify screen reader announces 'expanded' or 'open' state",
+        "Close the dropdown with Escape",
+        "Verify screen reader announces return to 'collapsed' state"
+      ],
+      "expectedResults": [
+        "aria-expanded='false' is set when dropdown is closed",
+        "aria-expanded='true' is set when dropdown is open",
+        "Screen reader announces the expanded/collapsed state change",
+        "State transitions are immediate and accurate"
+      ],
+      "postconditions": "Dropdown open/close state is always communicated to assistive technology",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Role filter is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Role filter dropdown at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the role filter dropdown is fully visible",
+        "Open the dropdown and verify all options are visible without horizontal scrolling",
+        "Select an option and verify the list updates correctly",
+        "Verify the selected highlight is visible at 200%"
+      ],
+      "expectedResults": [
+        "Dropdown trigger is fully visible at 200% zoom",
+        "Dropdown options list does not overflow or get clipped",
+        "All option text is readable without horizontal scrolling",
+        "Selection and highlighting work correctly at 200%",
+        "No content overlap occurs"
+      ],
+      "postconditions": "Role filter is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Role filter reflows correctly at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Role filter layout at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify the role filter dropdown is accessible without horizontal scrolling",
+        "Open the dropdown and verify options are fully visible",
+        "Verify filter works correctly at narrow width"
+      ],
+      "expectedResults": [
+        "Role filter adapts to narrow viewport",
+        "No horizontal scrollbar is required to access the filter",
+        "Dropdown options are fully readable",
+        "Filter functionality is preserved at narrow width"
+      ],
+      "postconditions": "Role filter works on narrow viewports/mobile",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Filtered admin list maintains proper semantic structure",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Filtered admin list structure",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, role filter has been applied showing subset of admins",
+      "steps": [
+        "Select 'Super Admin' from the role filter",
+        "Inspect the filtered admin list structure",
+        "Verify the list still uses semantic markup (ul/ol or role='list')",
+        "Verify hidden/filtered items are removed from the DOM or have aria-hidden='true'",
+        "Navigate the filtered list with screen reader"
+      ],
+      "expectedResults": [
+        "Filtered list maintains semantic list structure",
+        "Screen reader announces correct item count for filtered results",
+        "Hidden admin cards are not announced by screen reader",
+        "List structure is valid (no empty list if items exist)"
+      ],
+      "postconditions": "Filtered list is semantically correct for assistive technologies",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Role filter reset on page refresh maintains accessibility",
+      "wcagCriterion": "3.2.5 Change on Request",
+      "componentElement": "Role filter state after page refresh",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, a role filter is currently selected",
+      "steps": [
+        "Select a specific role filter (e.g., 'Limited-Access Admin')",
+        "Refresh the page (F5 or Ctrl+R)",
+        "Verify the filter resets to 'All Roles'",
+        "Verify the dropdown shows 'All Roles' as selected",
+        "Verify screen reader announces the default state correctly"
+      ],
+      "expectedResults": [
+        "After refresh, filter resets to 'All Roles' (default)",
+        "Dropdown visually shows 'All Roles' as selected",
+        "Screen reader announces 'All Roles' as the current value",
+        "Full admin list is displayed",
+        "No stale filter state confuses assistive technology users"
+      ],
+      "postconditions": "Filter state is predictable after page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Role filter dropdown touch target meets minimum size",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Role filter dropdown trigger",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, page is viewed on touch device or responsive view",
+      "steps": [
+        "Measure the clickable/tappable area of the role filter dropdown trigger",
+        "Measure the clickable area of each dropdown option when open",
+        "Verify adequate spacing between options"
+      ],
+      "expectedResults": [
+        "Dropdown trigger has at least 44x44 CSS pixels touch target",
+        "Each dropdown option has at least 44x44 CSS pixels touch target",
+        "Adequate spacing exists between options to prevent accidental selection"
+      ],
+      "postconditions": "Filter is usable for users with motor impairments on touch devices",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Role filter dropdown options text has sufficient contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Dropdown option text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, role filter dropdown is open",
+      "steps": [
+        "Open the role filter dropdown",
+        "Use a contrast checker to measure text contrast of each option against its background",
+        "Check contrast of the hover/focus state for options",
+        "Check contrast of disabled options (if any)"
+      ],
+      "expectedResults": [
+        "All option text has at least 4.5:1 contrast ratio against background",
+        "Hover/focus state text maintains at least 4.5:1 contrast",
+        "Option text is readable for users with low vision"
+      ],
+      "postconditions": "All dropdown option text is readable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Filter component is within appropriate landmark region",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Role filter landmark context",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Use screen reader landmark navigation",
+        "Verify the role filter is within the main content landmark",
+        "Verify the filter is logically grouped with the admin list it controls",
+        "Check if filter has a group label (e.g., within a fieldset or role='group')"
+      ],
+      "expectedResults": [
+        "Role filter is within the main landmark region",
+        "Filter is logically associated with the content it controls",
+        "If grouped with other filters, the group has an accessible label",
+        "Screen reader users can locate the filter via landmark navigation"
+      ],
+      "postconditions": "Filter is discoverable and contextually placed for assistive technology users",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

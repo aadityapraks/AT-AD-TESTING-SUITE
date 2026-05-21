@@ -1,0 +1,490 @@
+{
+  "jiraStory": "SCRUM-595",
+  "title": "Admin - Assign Admin Role - Accessibility Test Plan (WCAG 2.1 AA)",
+  "overview": "Accessibility testing of the Admin User Role Management - Assign Admin Role feature on the Y4J platform. This feature allows Super Admins to assign or change roles (Super Admin, Limited-Access Admin) via an editable role dropdown on admin cards. Changing a role automatically updates permissions, with instant save or confirmation. Covers WCAG 2.1 AA compliance for dropdown accessibility, keyboard navigation, screen reader announcements for role changes, error handling, and dynamic permission updates.",
+  "testCases": [
+    {
+      "id": "TC_A11Y_001",
+      "title": "Role dropdown has accessible label identifying the admin",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Admin role dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, Internal Administrators page is loaded with at least one admin card",
+      "steps": [
+        "Navigate to an admin card's role dropdown using screen reader",
+        "Verify the dropdown has an accessible name that includes context (e.g., 'Role for John Doe' or 'Admin role')",
+        "Verify the dropdown announces its current value (e.g., 'Super Admin')",
+        "Verify the dropdown role is announced (combobox, listbox, or select)"
+      ],
+      "expectedResults": [
+        "Dropdown has an accessible name that identifies its purpose",
+        "If multiple role dropdowns exist on the page, each is distinguishable (includes admin name context)",
+        "Screen reader announces: name, role, and current value (e.g., 'Role for John Doe, combobox, Super Admin')",
+        "Label is programmatically associated via aria-label, aria-labelledby, or <label>"
+      ],
+      "postconditions": "Screen reader users can identify which admin's role they are changing",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_002",
+      "title": "Role dropdown is fully operable via keyboard",
+      "wcagCriterion": "2.1.1 Keyboard",
+      "componentElement": "Admin role dropdown",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Tab to the role dropdown on an admin card",
+        "Press Enter or Space to open the dropdown",
+        "Use Arrow Down to navigate to 'Limited-Access Admin'",
+        "Use Arrow Up to navigate to 'Super Admin'",
+        "Press Enter to select the focused option",
+        "Reopen dropdown, press Escape to close without changing"
+      ],
+      "expectedResults": [
+        "Dropdown is reachable via Tab key",
+        "Enter/Space opens the dropdown options",
+        "Arrow keys navigate between 'Super Admin' and 'Limited-Access Admin'",
+        "Enter selects the currently focused option",
+        "Escape closes dropdown without changing the role",
+        "No mouse interaction is required"
+      ],
+      "postconditions": "Role dropdown is fully operable via keyboard only",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_003",
+      "title": "Role dropdown has visible focus indicator",
+      "wcagCriterion": "2.4.7 Focus Visible",
+      "componentElement": "Admin role dropdown and options",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Tab to the role dropdown",
+        "Observe the focus indicator on the dropdown trigger",
+        "Open the dropdown and observe focus on individual options",
+        "Navigate between options using arrow keys"
+      ],
+      "expectedResults": [
+        "Dropdown trigger shows a clearly visible focus indicator",
+        "Focus indicator has at least 3:1 contrast ratio against adjacent colors",
+        "Individual options show focus/highlight when navigated via keyboard",
+        "Focus indicator is not solely a color change"
+      ],
+      "postconditions": "Focus state is clearly visible on dropdown and options",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_004",
+      "title": "Dropdown expanded/collapsed state is communicated to screen readers",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role dropdown aria-expanded state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, role dropdown is available",
+      "steps": [
+        "Focus on the role dropdown (closed state)",
+        "Verify screen reader announces 'collapsed' or equivalent",
+        "Open the dropdown",
+        "Verify screen reader announces 'expanded' or equivalent",
+        "Close the dropdown with Escape",
+        "Verify screen reader announces return to 'collapsed' state"
+      ],
+      "expectedResults": [
+        "aria-expanded='false' when dropdown is closed",
+        "aria-expanded='true' when dropdown is open",
+        "Screen reader announces state changes",
+        "State transitions are immediate and accurate"
+      ],
+      "postconditions": "Dropdown open/close state is always communicated",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_005",
+      "title": "Role change is announced to screen readers",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Role change confirmation/announcement",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin card with role dropdown is available",
+      "steps": [
+        "Enable screen reader",
+        "Open the role dropdown on an admin card",
+        "Change the role from 'Super Admin' to 'Limited-Access Admin' (or vice versa)",
+        "Listen for screen reader announcement confirming the role change",
+        "Verify the new role value is reflected in the dropdown"
+      ],
+      "expectedResults": [
+        "Screen reader announces the role change confirmation (e.g., 'Role changed to Limited-Access Admin')",
+        "Announcement uses aria-live='polite' or role='status'",
+        "Dropdown displays the new role value",
+        "User does not need to move focus to confirm the change occurred"
+      ],
+      "postconditions": "Role change is communicated to assistive technology users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_006",
+      "title": "Permissions update is announced after role change",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Permissions section after role change",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin card with visible permissions is available",
+      "steps": [
+        "Change an admin's role from 'Super Admin' to 'Limited-Access Admin'",
+        "Observe the permissions section update",
+        "Verify screen reader is informed that permissions have changed",
+        "Navigate to the permissions section and verify updated values"
+      ],
+      "expectedResults": [
+        "Permissions update is announced via aria-live region (e.g., 'Permissions updated for Limited-Access Admin role')",
+        "Updated permissions are reflected in the UI",
+        "Screen reader can read the new permission values",
+        "Change does not cause unexpected focus shift"
+      ],
+      "postconditions": "Permission changes are communicated accessibly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_007",
+      "title": "Confirmation dialog (if present) is accessible",
+      "wcagCriterion": "4.1.2 Name, Role, Value",
+      "componentElement": "Role change confirmation dialog",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, role change triggers a confirmation dialog",
+      "steps": [
+        "Change an admin's role to trigger confirmation",
+        "Verify the confirmation dialog has role='dialog' or role='alertdialog'",
+        "Verify the dialog has an accessible name",
+        "Verify focus moves to the dialog",
+        "Verify the dialog has confirm and cancel buttons with accessible names",
+        "Press Escape to cancel",
+        "Verify focus returns to the role dropdown"
+      ],
+      "expectedResults": [
+        "Confirmation dialog has role='dialog' or 'alertdialog'",
+        "Dialog has accessible name (e.g., 'Confirm role change')",
+        "Focus moves into the dialog on open",
+        "Confirm and Cancel buttons have clear accessible names",
+        "Escape cancels the action and closes the dialog",
+        "Focus returns to the role dropdown after close",
+        "Dialog traps focus while open"
+      ],
+      "postconditions": "Confirmation dialog is fully accessible (if applicable)",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_008",
+      "title": "Role change does not cause unexpected context change",
+      "wcagCriterion": "3.2.2 On Input",
+      "componentElement": "Role dropdown selection behavior",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, role dropdown is available",
+      "steps": [
+        "Focus on the role dropdown",
+        "Change the role selection",
+        "Verify focus remains on or near the dropdown after the change",
+        "Verify no unexpected page navigation occurs",
+        "Verify no unexpected modal opens (unless it's a confirmation dialog)"
+      ],
+      "expectedResults": [
+        "Focus remains on the dropdown or moves predictably",
+        "No unexpected navigation occurs",
+        "If a confirmation dialog opens, it is expected and accessible",
+        "Page content updates in place without full reload",
+        "User maintains their context on the page"
+      ],
+      "postconditions": "Role change does not disorient the user",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_009",
+      "title": "Last Super Admin downgrade prevention error is accessible",
+      "wcagCriterion": "3.3.1 Error Identification",
+      "componentElement": "Last Super Admin downgrade error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, only one Super Admin exists in the system",
+      "steps": [
+        "Attempt to change the last remaining Super Admin's role to 'Limited-Access Admin'",
+        "Verify an error message is displayed preventing the action",
+        "Verify the error is announced by screen reader immediately",
+        "Verify the error uses role='alert' or aria-live='assertive'",
+        "Verify the role dropdown reverts to 'Super Admin'"
+      ],
+      "expectedResults": [
+        "Error message is displayed clearly (e.g., 'Cannot downgrade the last Super Admin')",
+        "Screen reader immediately announces the error (role='alert' or aria-live='assertive')",
+        "Error does not rely solely on color (includes text and/or icon)",
+        "Error text has sufficient contrast (4.5:1)",
+        "Role dropdown reverts to original value",
+        "Focus remains on or returns to the dropdown"
+      ],
+      "postconditions": "User is clearly informed why the role change was prevented",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_010",
+      "title": "Backend error during role change is accessible",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Backend error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, backend is configured to fail on role change",
+      "steps": [
+        "Attempt to change an admin's role (with backend failure simulated)",
+        "Verify an error notification is displayed",
+        "Verify the error uses role='alert' or aria-live='assertive'",
+        "Verify screen reader immediately announces the error",
+        "Verify the dropdown reverts to the previous role value"
+      ],
+      "expectedResults": [
+        "Error notification is visually displayed with clear message",
+        "Screen reader immediately announces the error",
+        "Error includes text (not just color indicator)",
+        "Error text has sufficient contrast (4.5:1)",
+        "Dropdown reverts to previous value (no inconsistent state)",
+        "User can retry the action"
+      ],
+      "postconditions": "Backend errors are communicated immediately and state is consistent",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_011",
+      "title": "Role dropdown options have sufficient color contrast",
+      "wcagCriterion": "1.4.3 Contrast (Minimum)",
+      "componentElement": "Role dropdown option text",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, role dropdown is open",
+      "steps": [
+        "Open the role dropdown",
+        "Use a contrast checker to measure text contrast of 'Super Admin' option",
+        "Measure text contrast of 'Limited-Access Admin' option",
+        "Check contrast of hover/focus state for options",
+        "Check contrast of the currently selected option indicator"
+      ],
+      "expectedResults": [
+        "All option text has at least 4.5:1 contrast ratio against background",
+        "Hover/focus state maintains at least 4.5:1 text contrast",
+        "Selected option indicator has at least 3:1 contrast against adjacent colors",
+        "All text is readable for users with low vision"
+      ],
+      "postconditions": "Dropdown options are readable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_012",
+      "title": "Selected role indicator does not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Currently selected role visual indicator",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, role dropdown is open showing current selection",
+      "steps": [
+        "Open the role dropdown",
+        "Observe how the currently selected role is indicated",
+        "View in grayscale mode",
+        "Verify the selected option is still distinguishable"
+      ],
+      "expectedResults": [
+        "Selected role uses more than color alone (e.g., checkmark, bold, background pattern)",
+        "In grayscale mode, selected option is still identifiable",
+        "aria-selected='true' or equivalent marks the current selection programmatically"
+      ],
+      "postconditions": "Selected role is perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_013",
+      "title": "No keyboard trap in role dropdown",
+      "wcagCriterion": "2.1.2 No Keyboard Trap",
+      "componentElement": "Role dropdown interaction",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin list is loaded",
+      "steps": [
+        "Tab to the role dropdown",
+        "Open the dropdown",
+        "Press Escape to close",
+        "Tab away from the dropdown",
+        "Verify focus moves to the next element",
+        "Shift+Tab back to the dropdown",
+        "Verify focus returns correctly"
+      ],
+      "expectedResults": [
+        "Focus can enter and leave the dropdown freely",
+        "Escape closes the dropdown and focus remains on trigger",
+        "Tab moves focus to next element after dropdown",
+        "Shift+Tab returns focus to dropdown from next element",
+        "No keyboard trap exists at any point"
+      ],
+      "postconditions": "Keyboard users can freely navigate away from the dropdown",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_014",
+      "title": "Role change loading state is communicated",
+      "wcagCriterion": "4.1.3 Status Messages",
+      "componentElement": "Role change loading/saving indicator",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, about to change a role",
+      "steps": [
+        "Change an admin's role",
+        "Observe if a loading/saving indicator appears during the save",
+        "Verify screen reader announces the saving state",
+        "Verify screen reader announces when save is complete"
+      ],
+      "expectedResults": [
+        "If a loading state is shown, it is announced via aria-live='polite' or role='status'",
+        "Screen reader announces 'Saving...' or similar during the operation",
+        "Screen reader announces completion (e.g., 'Role saved' or 'Role updated')",
+        "Dropdown is disabled or indicates busy state during save (aria-busy='true')"
+      ],
+      "postconditions": "Loading/saving state is communicated to all users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_015",
+      "title": "Role dropdown is functional at 200% browser zoom",
+      "wcagCriterion": "1.4.4 Resize Text",
+      "componentElement": "Role dropdown at 200% zoom",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Set browser zoom to 200%",
+        "Verify the role dropdown is fully visible on admin cards",
+        "Open the dropdown and verify all options are visible",
+        "Select an option and verify the change works correctly",
+        "Verify error messages (if triggered) are visible"
+      ],
+      "expectedResults": [
+        "Dropdown trigger is fully visible at 200% zoom",
+        "Dropdown options are not clipped or hidden",
+        "All option text is readable",
+        "Selection works correctly at 200%",
+        "Error messages are visible without horizontal scrolling"
+      ],
+      "postconditions": "Role dropdown is fully functional at 200% zoom",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_016",
+      "title": "Role dropdown reflows at 320px viewport width",
+      "wcagCriterion": "1.4.10 Reflow",
+      "componentElement": "Role dropdown at narrow viewport",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Resize browser viewport to 320px width",
+        "Verify the role dropdown is accessible without horizontal scrolling",
+        "Open the dropdown and verify options are fully visible",
+        "Select an option and verify functionality"
+      ],
+      "expectedResults": [
+        "Dropdown adapts to narrow viewport",
+        "No horizontal scrollbar required to access the dropdown",
+        "Options are fully readable at narrow width",
+        "Functionality is preserved"
+      ],
+      "postconditions": "Role dropdown works on narrow viewports",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_017",
+      "title": "Tab order is logical across multiple admin cards with role dropdowns",
+      "wcagCriterion": "2.4.3 Focus Order",
+      "componentElement": "Multiple role dropdowns across admin cards",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, multiple admin cards are displayed",
+      "steps": [
+        "Tab through the page starting from the first admin card",
+        "Verify focus moves through each admin card's interactive elements in order",
+        "Verify role dropdowns are reached in the same order as the visual layout",
+        "Verify no dropdown is skipped or reached out of order"
+      ],
+      "expectedResults": [
+        "Tab order follows visual layout (first card's dropdown → first card's other controls → second card's dropdown → etc.)",
+        "No unexpected focus jumps between cards",
+        "All role dropdowns are reachable via Tab",
+        "Order is predictable and logical"
+      ],
+      "postconditions": "Keyboard navigation through multiple dropdowns is logical",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_018",
+      "title": "Error messages do not rely on color alone",
+      "wcagCriterion": "1.4.1 Use of Color",
+      "componentElement": "Role change error indicators",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, a role change error has been triggered",
+      "steps": [
+        "Trigger a role change error (e.g., downgrade last Super Admin or backend failure)",
+        "Observe how the error is indicated visually",
+        "View in grayscale mode",
+        "Verify the error is still identifiable without color"
+      ],
+      "expectedResults": [
+        "Error includes text message (not just red border or icon color)",
+        "Error has an icon or text prefix in addition to color",
+        "In grayscale mode, error is still clearly identifiable",
+        "Error state uses multiple visual cues"
+      ],
+      "postconditions": "Errors are perceivable regardless of color vision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_019",
+      "title": "Role dropdown touch target meets minimum size",
+      "wcagCriterion": "2.5.5 Target Size",
+      "componentElement": "Role dropdown trigger",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, page viewed on touch device or responsive view",
+      "steps": [
+        "Measure the clickable/tappable area of the role dropdown trigger",
+        "Measure the clickable area of each dropdown option when open",
+        "Verify adequate spacing between the dropdown and adjacent interactive elements"
+      ],
+      "expectedResults": [
+        "Dropdown trigger has at least 44x44 CSS pixels touch target",
+        "Each dropdown option has at least 44x44 CSS pixels touch target",
+        "Adequate spacing exists between dropdown and adjacent controls (e.g., Edit Permissions button)"
+      ],
+      "postconditions": "Dropdown is usable for users with motor impairments",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_A11Y_020",
+      "title": "Role dropdown is within appropriate landmark region",
+      "wcagCriterion": "1.3.1 Info and Relationships",
+      "componentElement": "Role dropdown landmark context",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin, admin page is loaded",
+      "steps": [
+        "Use screen reader landmark navigation",
+        "Verify the role dropdown is within the main content landmark",
+        "Verify the dropdown is contextually associated with its admin card"
+      ],
+      "expectedResults": [
+        "Role dropdown is within the main landmark region",
+        "Dropdown is logically grouped within its admin card context",
+        "Screen reader users can locate the dropdown via landmark navigation"
+      ],
+      "postconditions": "Dropdown is discoverable within page structure",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
