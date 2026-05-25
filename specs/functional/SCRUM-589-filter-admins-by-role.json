@@ -22,7 +22,7 @@
         "The dropdown is positioned in the toolbar area near the search bar"
       ],
       "postconditions": "Dropdown is open showing all role options",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_002",
@@ -43,7 +43,7 @@
         "The dropdown shows 'All Roles' as the selected value"
       ],
       "postconditions": "Full unfiltered admin list is displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_003",
@@ -66,7 +66,7 @@
         "The list updates dynamically without page reload"
       ],
       "postconditions": "Only Super Admin cards are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_004",
@@ -88,7 +88,7 @@
         "The list updates dynamically without page reload"
       ],
       "postconditions": "Only Limited-Access Admin cards are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_005",
@@ -111,7 +111,7 @@
         "The selected state is clearly distinguishable from unselected options"
       ],
       "postconditions": "Selected filter is visually indicated",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_006",
@@ -133,7 +133,7 @@
         "The count updates to reflect the combined filter results"
       ],
       "postconditions": "Combined filter + search results are correct",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_007",
@@ -155,7 +155,7 @@
         "The count reflects the combined results"
       ],
       "postconditions": "Search + filter combination works in either order",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_008",
@@ -177,7 +177,7 @@
         "User can change the filter to see results again"
       ],
       "postconditions": "Empty state is handled gracefully for no-match filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_009",
@@ -203,7 +203,7 @@
         "No page reload occurs during filter switches"
       ],
       "postconditions": "Filter switching with active search works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_010",
@@ -225,7 +225,7 @@
         "No stale filter state persists after refresh"
       ],
       "postconditions": "Filter state is reset to default after page refresh",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_011",
@@ -251,7 +251,7 @@
         "Returning to 'All Roles' restores the original total count"
       ],
       "postconditions": "Admin counts are accurate for each filter state",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_012",
@@ -272,7 +272,7 @@
         "No manual action is needed to close the dropdown"
       ],
       "postconditions": "Dropdown is closed with selection applied",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_013",
@@ -292,7 +292,7 @@
         "User is not left on a page that may not exist for the filtered set"
       ],
       "postconditions": "Pagination is reset to page 1 after filter change",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_FILTER_014",
@@ -314,7 +314,7 @@
         "The admin list matches the displayed filter state"
       ],
       "postconditions": "Filter state is consistent with displayed results",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

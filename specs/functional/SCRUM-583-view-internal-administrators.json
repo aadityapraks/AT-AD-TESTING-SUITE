@@ -20,7 +20,7 @@
         "A 'Showing X admins' count is visible indicating the total number of admins"
       ],
       "postconditions": "Admin list is fully loaded and visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_002",
@@ -39,7 +39,7 @@
         "The name is not empty or placeholder text"
       ],
       "postconditions": "Admin name is confirmed visible on the card",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_003",
@@ -58,7 +58,7 @@
         "The email is clearly visible and not truncated"
       ],
       "postconditions": "Admin email is confirmed visible on the card",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_004",
@@ -77,7 +77,7 @@
         "The role label is accurate for the admin's actual role"
       ],
       "postconditions": "Super Admin role label is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_005",
@@ -96,7 +96,7 @@
         "The role label is accurate for the admin's actual role"
       ],
       "postconditions": "Limited-Access Admin role label is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_006",
@@ -115,7 +115,7 @@
         "The status text is readable and not obscured"
       ],
       "postconditions": "Active status is confirmed visible on admin cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_007",
@@ -134,7 +134,7 @@
         "The date is not empty or showing placeholder"
       ],
       "postconditions": "Assigned date is confirmed visible on admin cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_008",
@@ -153,7 +153,7 @@
         "For system-created admins, it shows 'System'"
       ],
       "postconditions": "Assigned by information is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_009",
@@ -173,7 +173,7 @@
         "For Limited-Access Admins, only assigned permissions are shown"
       ],
       "postconditions": "Permissions are confirmed visible on admin cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_010",
@@ -192,7 +192,7 @@
         "The dropdown indicates it can filter admins by role"
       ],
       "postconditions": "Role dropdown is confirmed visible and accessible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_011",
@@ -212,7 +212,7 @@
         "The button is clickable"
       ],
       "postconditions": "Edit Permissions button is confirmed on all admin cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_012",
@@ -232,7 +232,7 @@
         "If paginated, shows 'Showing X to Y of Z admins'"
       ],
       "postconditions": "Admin count is accurate",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_013",
@@ -257,7 +257,7 @@
         "The 'Showing X to Y of Z admins' text updates correctly"
       ],
       "postconditions": "Pagination navigates correctly through admin list",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_014",
@@ -275,7 +275,7 @@
         "The section header shows 'Internal Administrators' with description 'Manage Super Admins and Limited-Access Admins'"
       ],
       "postconditions": "Page headings are correct and informative",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_015",
@@ -294,7 +294,7 @@
         "The search field is editable"
       ],
       "postconditions": "Search input is confirmed visible and ready for use",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_016",
@@ -313,7 +313,7 @@
         "The button has an icon and text label"
       ],
       "postconditions": "Add Internal Admin button is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_017",
@@ -333,7 +333,7 @@
         "All cards show the same set of information fields"
       ],
       "postconditions": "Multiple admin cards are displayed correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_018",
@@ -351,7 +351,7 @@
         "All 7 permission tags are visible"
       ],
       "postconditions": "Super Admin has full permissions displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_019",
@@ -370,7 +370,7 @@
         "Only the permissions that were explicitly assigned are shown"
       ],
       "postconditions": "Limited-Access Admin shows correct subset of permissions",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_020",
@@ -391,7 +391,7 @@
         "All admin cards are displayed correctly after refresh"
       ],
       "postconditions": "Page refresh works correctly without data loss",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_021",
@@ -411,7 +411,7 @@
         "The Internal Administrators page content loads"
       ],
       "postconditions": "Navigation to User & Roles works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_UR_022",
@@ -430,7 +430,7 @@
         "Cards are visually consistent in size and spacing"
       ],
       "postconditions": "Card layout is consistent regardless of admin role",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

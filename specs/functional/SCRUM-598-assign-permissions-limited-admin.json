@@ -21,7 +21,7 @@
         "No permissions are pre-selected by default (or a default set is pre-selected)"
       ],
       "postconditions": "All 8 permission checkboxes are visible and selectable",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_002",
@@ -39,7 +39,7 @@
         "The checkbox is toggleable (can be unchecked by clicking again)"
       ],
       "postconditions": "Single permission is selected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_003",
@@ -60,7 +60,7 @@
         "Selecting one does not deselect others"
       ],
       "postconditions": "Multiple permissions are selected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_004",
@@ -80,7 +80,7 @@
         "The 'Add Admin' button may be disabled until a permission is selected"
       ],
       "postconditions": "Form submission is blocked without at least one permission",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_005",
@@ -142,7 +142,7 @@
         "Only 2 permissions remain selected"
       ],
       "postconditions": "Permission is successfully deselected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_008",
@@ -204,7 +204,7 @@
         "The permissions section is contextual to the selected role"
       ],
       "postconditions": "Permissions section visibility is role-dependent",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_011",
@@ -225,7 +225,7 @@
         "User has full control over which permissions to assign"
       ],
       "postconditions": "Checkboxes operate independently",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PERM_012",
@@ -285,7 +285,7 @@
         "No ambiguous or unclear permission names exist"
       ],
       "postconditions": "Permission labels are clear and match system modules",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

@@ -22,7 +22,7 @@
         "The dropdown is not disabled or read-only"
       ],
       "postconditions": "Role dropdown is confirmed editable",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_002",
@@ -42,7 +42,7 @@
         "No other role options are present"
       ],
       "postconditions": "Both role options are visible in the dropdown",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_003",
@@ -109,7 +109,7 @@
         "No user action is needed to assign permissions after role upgrade"
       ],
       "postconditions": "Permissions are automatically updated to match the new role",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_006",
@@ -130,7 +130,7 @@
         "The change is reflected immediately on the card"
       ],
       "postconditions": "Permissions are adjusted after role downgrade",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_007",
@@ -219,7 +219,7 @@
         "No error messages appear on the refreshed page"
       ],
       "postconditions": "Data is consistent after refresh during update",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_011",
@@ -240,7 +240,7 @@
         "The admin count remains the same"
       ],
       "postconditions": "Role change is isolated to the targeted admin only",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ROLE_012",

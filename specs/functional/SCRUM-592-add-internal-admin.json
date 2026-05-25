@@ -23,7 +23,7 @@
         "The background is dimmed/overlaid while modal is open"
       ],
       "postconditions": "Add Internal Admin modal is open and ready for input",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_002",
@@ -43,7 +43,7 @@
         "All fields have visible labels"
       ],
       "postconditions": "All required form fields are visible in the modal",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_003",
@@ -63,7 +63,7 @@
         "For 'Super Admin', all permissions may be pre-selected and locked"
       ],
       "postconditions": "Permissions section is visible and interactive",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_004",
@@ -172,7 +172,7 @@
         "The Name field is highlighted as invalid"
       ],
       "postconditions": "Empty name is rejected with validation error",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_009",
@@ -215,7 +215,7 @@
         "The entered data is discarded (not saved as draft)"
       ],
       "postconditions": "No admin is created when modal is closed without submission",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_011",
@@ -283,7 +283,7 @@
         "The 'Add Admin' button may be disabled until a permission is selected"
       ],
       "postconditions": "Form requires at least one permission for Limited-Access Admin",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_014",
@@ -301,7 +301,7 @@
         "Focus returns to the 'Add Internal Admin' button or the page"
       ],
       "postconditions": "Modal is closed via X button",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_015",
@@ -319,7 +319,7 @@
         "No errors occur"
       ],
       "postconditions": "Modal is closed via Escape key",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_016",
@@ -340,7 +340,7 @@
         "The field does not crash or break with any input"
       ],
       "postconditions": "Name field handles various character types correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_ADD_017",
@@ -425,7 +425,7 @@
         "The form clearly indicates which fields are required"
       ],
       "postconditions": "Form submission is gated by required field completion",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

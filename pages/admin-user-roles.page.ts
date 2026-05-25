@@ -462,4 +462,53 @@ export class AdminUserRolesPage extends BasePage {
     await nameField.fill(name);
     await expect(nameField).toHaveValue(name);
   }
+
+  // ── Edit Permissions Dialog Methods ──
+
+  /** Click Edit Permissions button for a specific admin */
+  async clickEditPermissionsFor(adminName: string) {
+    await this.page.getByRole('button', { name: `Edit permissions for ${adminName}` }).click();
+  }
+
+  /** Verify Edit Permissions dialog is open */
+  async verifyEditPermissionsDialogOpen() {
+    await expect(this.page.getByRole('heading', { name: 'Edit Permissions', level: 2 })).toBeVisible({ timeout: 10000 });
+  }
+
+  /** Verify Edit Permissions dialog heading */
+  async verifyEditPermissionsDialogHeading() {
+    await expect(this.page.getByRole('heading', { name: 'Select Permissions' })).toBeVisible();
+  }
+
+  /** Verify Edit Permissions dialog shows admin context */
+  async verifyEditPermissionsDialogContext(adminName: string, email: string) {
+    await expect(this.page.getByText(adminName)).toBeVisible();
+  }
+
+  /** Verify Edit Permissions dialog has Update Permissions button */
+  async verifyUpdatePermissionsButtonVisible() {
+    await expect(this.page.getByRole('button', { name: 'Update Permissions' })).toBeVisible();
+  }
+
+  /** Verify Edit Permissions dialog has Cancel button */
+  async verifyEditDialogCancelButtonVisible() {
+    await expect(this.page.getByRole('button', { name: 'Cancel' })).toBeVisible();
+  }
+
+  /** Verify Edit Permissions dialog has checkboxes */
+  async verifyEditDialogHasCheckboxes() {
+    const checkboxes = this.page.getByRole('checkbox');
+    const count = await checkboxes.count();
+    expect(count, 'Edit dialog should have permission checkboxes').toBeGreaterThan(0);
+  }
+
+  /** Close Edit Permissions dialog via Close button */
+  async closeEditPermissionsDialog() {
+    await this.page.getByRole('button', { name: 'Close dialog' }).click();
+  }
+
+  /** Verify Edit Permissions dialog is closed */
+  async verifyEditPermissionsDialogClosed() {
+    await expect(this.page.getByRole('heading', { name: 'Edit Permissions' })).not.toBeVisible();
+  }
 }

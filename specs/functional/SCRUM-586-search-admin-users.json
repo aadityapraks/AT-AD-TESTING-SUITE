@@ -22,7 +22,7 @@
         "The field accepts both alphabetic and special characters"
       ],
       "postconditions": "Search input contains the typed text",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_002",
@@ -43,7 +43,7 @@
         "The 'Showing X admins' count updates to reflect filtered results"
       ],
       "postconditions": "Only matching admin cards are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_003",
@@ -64,7 +64,7 @@
         "The count updates to show filtered total"
       ],
       "postconditions": "Only the admin with matching email is displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_004",
@@ -90,7 +90,7 @@
         "The admin count updates with each keystroke (after 3 chars)"
       ],
       "postconditions": "Results are filtered based on current search text",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_005",
@@ -115,7 +115,7 @@
         "Results appear after the 3rd character is typed"
       ],
       "postconditions": "Partial match filtering works correctly from 3 characters",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_006",
@@ -140,7 +140,7 @@
         "Case does not affect search functionality"
       ],
       "postconditions": "Search works regardless of case used",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_007",
@@ -162,7 +162,7 @@
         "No page reload is required — list restores dynamically"
       ],
       "postconditions": "Full admin list is restored after clearing search",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_008",
@@ -183,7 +183,7 @@
         "The search field still contains the typed query"
       ],
       "postconditions": "Empty state message is displayed for no-match searches",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_009",
@@ -206,7 +206,7 @@
         "Results are accurate based on the special character search"
       ],
       "postconditions": "Special characters are handled correctly in search",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_010",
@@ -227,7 +227,7 @@
         "OR the system shows a hint like 'Type at least 3 characters to search'"
       ],
       "postconditions": "List is not filtered with fewer than 3 characters",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_011",
@@ -249,7 +249,7 @@
         "Results include all admins matching the domain"
       ],
       "postconditions": "Email domain search works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_012",
@@ -269,7 +269,7 @@
         "The search is not cleared by pagination navigation"
       ],
       "postconditions": "Search state is maintained during pagination",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_013",
@@ -289,7 +289,7 @@
         "The count reflects the combined filter results"
       ],
       "postconditions": "Search and role filter work together correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_014",
@@ -308,7 +308,7 @@
         "The search does not fail or return no results due to whitespace"
       ],
       "postconditions": "Whitespace handling works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_015",
@@ -330,7 +330,7 @@
         "When field is completely empty, full admin list is restored"
       ],
       "postconditions": "Backspace clearing works and list restores",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_016",
@@ -350,7 +350,7 @@
         "The system treats spaces-only as empty search"
       ],
       "postconditions": "Spaces-only search is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SEARCH_017",
@@ -371,7 +371,7 @@
         "No race conditions cause incorrect results"
       ],
       "postconditions": "Rapid typing is handled with debouncing/throttling",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }
