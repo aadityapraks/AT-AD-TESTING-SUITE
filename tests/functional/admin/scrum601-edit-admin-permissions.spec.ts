@@ -18,11 +18,12 @@ test.describe('SCRUM-601: Admin - Edit Admin Permissions', () => {
   });
 
   test('TC_EDIT_001: Clicking Edit Permissions opens the permissions editor', async () => {
-    // Click Edit Permissions button for IvAdmin1
-    await adminUserRolesPage.clickEditPermissionsFor(testData.expected.adminName);
+    // Click Edit Permissions button for first admin
+    await adminUserRolesPage.clickFirstEditPermissionsButton();
 
-    // Verify the Edit Permissions dialog is open with heading
+    // Verify the Edit Permissions dialog is open
     await adminUserRolesPage.verifyEditPermissionsDialogOpen();
+    await adminUserRolesPage.verifyEditPermissionsDialogHeading();
 
     // Verify dialog has checkboxes and Update Permissions button
     await adminUserRolesPage.verifyEditDialogHasCheckboxes();

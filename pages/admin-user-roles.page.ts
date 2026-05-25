@@ -467,7 +467,12 @@ export class AdminUserRolesPage extends BasePage {
 
   /** Click Edit Permissions button for a specific admin */
   async clickEditPermissionsFor(adminName: string) {
-    await this.page.getByRole('button', { name: `Edit permissions for ${adminName}` }).click();
+    await this.page.getByRole('button', { name: new RegExp(`Edit permissions for.*${adminName}`, 'i') }).click();
+  }
+
+  /** Click first Edit Permissions button */
+  async clickFirstEditPermissionsButton() {
+    await this.page.getByRole('button', { name: /Edit permissions for/ }).first().click();
   }
 
   /** Verify Edit Permissions dialog is open */
