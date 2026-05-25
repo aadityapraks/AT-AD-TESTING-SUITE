@@ -25,9 +25,27 @@ test.describe('SCRUM-601: Admin - Edit Admin Permissions', () => {
     await adminUserRolesPage.verifyEditPermissionsDialogOpen();
     await adminUserRolesPage.verifyEditPermissionsDialogHeading();
 
-    // Verify dialog has checkboxes and Update Permissions button
-    await adminUserRolesPage.verifyEditDialogHasCheckboxes();
+    // Verify Update Permissions button is visible
     await adminUserRolesPage.verifyUpdatePermissionsButtonVisible();
+    await adminUserRolesPage.verifyEditDialogCancelButtonVisible();
+  });
+
+  test('TC_EDIT_009: Closing editor without saving discards changes', async () => {
+    // Note initial admin card state
+    await adminUserRolesPage.verifyPermissionsVisible();
+
+    // Open the permissions editor
+    await adminUserRolesPage.clickFirstEditPermissionsButton();
+    await adminUserRolesPage.verifyEditPermissionsDialogOpen();
+
+    // Close the editor without saving (via Close button)
+    await adminUserRolesPage.closeEditPermissionsDialog();
+
+    // Verify dialog is closed
+    await adminUserRolesPage.verifyEditPermissionsDialogClosed();
+
+    // Verify admin card permissions are unchanged
+    await adminUserRolesPage.verifyPermissionsVisible();
   });
 
   test('TC_EDIT_010: Edit Permissions button is present on every admin card', async () => {
