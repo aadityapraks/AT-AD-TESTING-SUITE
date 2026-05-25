@@ -1,0 +1,230 @@
+{
+  "jiraStory": "SCRUM-574",
+  "title": "Admin - Comment Moderation - Approve & Publish Content - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Approve & Publish Content feature on the Y4J platform. This feature allows Admins to approve content making it publicly visible, with dashboard counts updating automatically and the action being logged with timestamp and admin name. Covers approval flow, visibility change, dashboard updates, audit logging, and edge cases.",
+  "testCases": [
+    {
+      "id": "TC_APPROVE_001",
+      "title": "Clicking 'Approve & Publish' updates status to Approved",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. A moderation item with pending status (Needs Review, Ready to Approve) exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with pending status",
+        "Click the 'Approve & Publish' (or 'Approve') action button",
+        "Observe the status change"
+      ],
+      "expectedResults": [
+        "The status badge changes to 'Approved'",
+        "The change is immediate (no page refresh required)",
+        "A success notification may be displayed",
+        "The card reflects the new approved state"
+      ],
+      "postconditions": "Content status is updated to Approved",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_002",
+      "title": "Approved content becomes publicly visible",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Content has just been approved.",
+      "steps": [
+        "Approve a pending content item",
+        "Open a new browser/incognito window as a regular user",
+        "Navigate to the product page where the content should appear",
+        "Observe if the approved content is visible"
+      ],
+      "expectedResults": [
+        "The approved content (review/query/response) is now publicly visible",
+        "Regular users can see the content on the relevant product page",
+        "The content displays correctly (author, text, date)",
+        "No admin-only information is exposed to public users"
+      ],
+      "postconditions": "Approved content is confirmed publicly visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_003",
+      "title": "Dashboard counts update automatically after approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Dashboard with moderation counts is visible.",
+      "steps": [
+        "Note the current pending count on the dashboard/moderation page",
+        "Approve a pending content item",
+        "Observe the dashboard counts"
+      ],
+      "expectedResults": [
+        "The pending count decreases by 1 after approval",
+        "The approved count increases by 1",
+        "The count update is automatic (no manual refresh needed)",
+        "The total count remains consistent"
+      ],
+      "postconditions": "Dashboard counts are updated correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_004",
+      "title": "Action is logged with timestamp",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Content has been approved.",
+      "steps": [
+        "Approve a content item",
+        "Observe the card or action log for timestamp",
+        "Verify the timestamp is recorded"
+      ],
+      "expectedResults": [
+        "The approval action is logged with a timestamp",
+        "The timestamp shows the date and time of the approval",
+        "The timestamp is in a recognizable format",
+        "The timestamp is accurate (matches current time)"
+      ],
+      "postconditions": "Approval timestamp is confirmed logged",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_005",
+      "title": "Action is logged with admin name",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin (pv@mailto.plus). Content has been approved.",
+      "steps": [
+        "Approve a content item",
+        "Observe the card or action log for admin name",
+        "Verify the admin name/email is recorded"
+      ],
+      "expectedResults": [
+        "The approval action is logged with the admin's name or email",
+        "The logged admin matches the currently logged-in user (e.g., 'pv@mailto.plus')",
+        "The admin name is automatically recorded by the system",
+        "The log provides accountability for the decision"
+      ],
+      "postconditions": "Admin name is confirmed logged with the action",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_006",
+      "title": "Approve button is available on pending items",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Pending moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find cards with pending status (Needs Review, Ready to Approve, Vendor Flagged)",
+        "Observe the available actions"
+      ],
+      "expectedResults": [
+        "An 'Approve' or 'Approve & Publish' button is visible on pending cards",
+        "The button is clickable and not disabled",
+        "The button is clearly labeled"
+      ],
+      "postconditions": "Approve button is confirmed available on pending items",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_007",
+      "title": "Approve button is NOT available on already-approved items",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Already-approved items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by 'Approved' status",
+        "Observe the available actions on approved cards"
+      ],
+      "expectedResults": [
+        "Already-approved items do NOT show an 'Approve' button",
+        "OR the button is disabled/greyed out",
+        "The admin cannot re-approve already approved content",
+        "This prevents duplicate actions"
+      ],
+      "postconditions": "No duplicate approval is possible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_008",
+      "title": "Approved item moves out of Pending filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Pending filter is active.",
+      "steps": [
+        "Select 'Pending' from the status filter",
+        "Note the items in the list",
+        "Approve one of the pending items",
+        "Observe the list"
+      ],
+      "expectedResults": [
+        "After approval, the item disappears from the Pending filter view",
+        "The item now appears in the 'Approved' filter view",
+        "The pending count decreases",
+        "The transition is smooth and immediate"
+      ],
+      "postconditions": "Approved item is moved to correct filter",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_009",
+      "title": "Approval persists after page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Content has been approved.",
+      "steps": [
+        "Approve a content item",
+        "Refresh the page (F5)",
+        "Find the same item",
+        "Verify the status"
+      ],
+      "expectedResults": [
+        "After refresh, the item still shows 'Approved' status",
+        "The approval is persisted to the backend",
+        "No data loss occurs on refresh",
+        "The action log (timestamp, admin) is still recorded"
+      ],
+      "postconditions": "Approval persists across page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_010",
+      "title": "Multiple items can be approved sequentially",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. Multiple pending items exist.",
+      "steps": [
+        "Approve the first pending item",
+        "Approve the second pending item",
+        "Approve the third pending item",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Each approval completes successfully",
+        "Dashboard counts update correctly after each approval",
+        "No errors occur during sequential approvals",
+        "Each action is logged independently with correct timestamp and admin"
+      ],
+      "postconditions": "Multiple sequential approvals work correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_APPROVE_011",
+      "title": "Approval failure shows error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-574",
+      "preconditions": "User is logged in as Admin. API is configured to fail on approval.",
+      "steps": [
+        "Attempt to approve a pending item (with API failure simulated)",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to approve. Please try again.')",
+        "The item remains in its original pending status",
+        "No partial state change occurs",
+        "The admin can retry the action"
+      ],
+      "postconditions": "Approval failure is handled gracefully",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
