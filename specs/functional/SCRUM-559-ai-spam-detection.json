@@ -1,0 +1,249 @@
+{
+  "jiraStory": "SCRUM-559",
+  "title": "Admin - Comment Moderation - AI Spam Detection - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - AI Spam Detection feature on the Y4J platform. This system feature detects spam indicators including external URLs, suspicious phone numbers, promotional keywords, and excessive punctuation. Detected spam is flagged or blocked, with severe spam marked as 'Device Matcher Blocked'. Admins can override system decisions. Covers detection types, blocking behavior, admin override, and edge cases.",
+  "testCases": [
+    {
+      "id": "TC_SPAM_001",
+      "title": "External URLs are detected and flagged",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content containing external URLs has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with content containing external URLs (e.g., 'Visit http://example.com for deals')",
+        "Observe the flagging behavior"
+      ],
+      "expectedResults": [
+        "The content with external URLs is flagged by the system",
+        "The URL is highlighted or marked as a spam indicator",
+        "Device Matcher Notes explain the URL detection",
+        "The item has a review-required status (Needs Review or Device Matcher Blocked)"
+      ],
+      "postconditions": "External URL content is confirmed flagged",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_002",
+      "title": "Suspicious phone numbers are flagged",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content containing phone numbers has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with content containing suspicious phone numbers (e.g., 'Call 9876543210 for free products')",
+        "Observe the flagging behavior"
+      ],
+      "expectedResults": [
+        "The content with suspicious phone numbers is flagged",
+        "The phone number is identified as a spam indicator",
+        "Device Matcher Notes explain the phone number detection",
+        "The item is marked for review"
+      ],
+      "postconditions": "Phone number content is confirmed flagged",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_003",
+      "title": "Promotional keywords trigger spam detection",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content with promotional language has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with promotional content (e.g., 'Buy now! 50% off! Limited time offer!')",
+        "Observe the flagging behavior"
+      ],
+      "expectedResults": [
+        "The promotional content is flagged by the spam detection system",
+        "Promotional keywords are identified as spam indicators",
+        "Device Matcher Notes explain the promotional language detection",
+        "The item is marked for review or blocked"
+      ],
+      "postconditions": "Promotional content is confirmed flagged",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_004",
+      "title": "Severe spam is marked 'Device Matcher Blocked'",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content with severe spam indicators has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with severe spam (multiple indicators: URLs + phone + promotional language)",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The severe spam content shows 'Device Matcher Blocked' status badge",
+        "The content is automatically blocked (not just flagged for review)",
+        "Device Matcher Notes explain the blocking reason",
+        "The content is NOT visible to users while blocked"
+      ],
+      "postconditions": "Severe spam is confirmed blocked with correct status",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_005",
+      "title": "Admin can override system decision - approve blocked content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. A 'Device Matcher Blocked' item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Device Matcher Blocked' status",
+        "Click the 'Approve' or 'Override' action",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "An override/approve action is available on blocked items",
+        "Clicking it changes the status from 'Device Matcher Blocked' to 'Approved'",
+        "The content becomes visible to users after admin override",
+        "The admin's decision overrides the AI system",
+        "A confirmation may be required before override"
+      ],
+      "postconditions": "Admin override is confirmed working",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_006",
+      "title": "Admin can confirm system block - reject content",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. A flagged/blocked spam item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a flagged spam item",
+        "Click the 'Reject' action",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "A 'Reject' action is available",
+        "Clicking it changes the status to 'Rejected'",
+        "The content remains hidden from users",
+        "The rejection is recorded permanently"
+      ],
+      "postconditions": "Admin rejection is confirmed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_007",
+      "title": "Excessive punctuation triggers spam detection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content with excessive punctuation has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with excessive punctuation (e.g., 'BUY NOW!!!! BEST DEAL EVER!!!!')",
+        "Observe the flagging behavior"
+      ],
+      "expectedResults": [
+        "Content with excessive punctuation is flagged",
+        "The system identifies it as a spam indicator",
+        "Device Matcher Notes mention the excessive punctuation"
+      ],
+      "postconditions": "Excessive punctuation detection is confirmed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_008",
+      "title": "Legitimate content without spam indicators is not flagged",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Clean legitimate content exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with legitimate content (genuine review or query without spam indicators)",
+        "Observe the card"
+      ],
+      "expectedResults": [
+        "Legitimate content is NOT flagged as spam",
+        "No 'Device Matcher Blocked' status is applied",
+        "The content may have 'Ready to Approve' status",
+        "No false positives for genuine content"
+      ],
+      "postconditions": "Legitimate content is confirmed not flagged",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_009",
+      "title": "Government scheme references are not flagged as spam (edge case)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content referencing government schemes has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content that references government schemes (e.g., 'Available under ADIP scheme by Govt of India')",
+        "Observe if it was incorrectly flagged as spam"
+      ],
+      "expectedResults": [
+        "Government scheme references are NOT flagged as spam (false positive avoided)",
+        "OR if flagged, the admin can easily override",
+        "The system distinguishes between legitimate government references and promotional spam",
+        "This is documented as a known behavior"
+      ],
+      "postconditions": "Government scheme handling is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_010",
+      "title": "URL shorteners are detected (edge case)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Content with URL shorteners has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content with URL shorteners (e.g., 'bit.ly/xyz', 'tinyurl.com/abc')",
+        "Observe the flagging behavior"
+      ],
+      "expectedResults": [
+        "URL shorteners are detected as potential spam indicators",
+        "They are flagged similarly to full URLs",
+        "Device Matcher Notes mention the shortened URL",
+        "OR if not detected, this is documented as a limitation"
+      ],
+      "postconditions": "URL shortener detection is verified",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_011",
+      "title": "Blocked items appear in appropriate filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. Device Matcher Blocked items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Observe if blocked items appear"
+      ],
+      "expectedResults": [
+        "Device Matcher Blocked items appear in the moderation list",
+        "They are accessible for admin review",
+        "The 'Device Matcher Blocked' status badge is clearly visible",
+        "Admin can take action (approve/reject) on these items"
+      ],
+      "postconditions": "Blocked items are accessible for admin review",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SPAM_012",
+      "title": "Device Matcher Notes provide clear spam explanation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-559",
+      "preconditions": "User is logged in as Admin. A spam-flagged item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a spam-flagged card",
+        "Read the Device Matcher Notes"
+      ],
+      "expectedResults": [
+        "Device Matcher Notes clearly explain what triggered the spam detection",
+        "The notes specify which indicators were found (URL, phone, promotional language)",
+        "The explanation helps the admin make an informed approve/reject decision",
+        "The notes are labeled as system-generated"
+      ],
+      "postconditions": "Spam explanation notes are clear and helpful",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
