@@ -1,0 +1,212 @@
+{
+  "jiraStory": "SCRUM-571",
+  "title": "Admin - Comment Moderation - Handle Vendor Flagged Content - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Handle Vendor Flagged Content feature on the Y4J platform. This feature allows Admins to review vendor-flagged reviews, see the vendor's flag reason, take action (approve or reject), and trigger vendor notifications after the decision. Covers flag reason display, status marking, admin actions, notification triggering, and dispute resolution flow.",
+  "testCases": [
+    {
+      "id": "TC_VFLAG_001",
+      "title": "Vendor flag reason is displayed clearly on the card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review exists in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Vendor Flagged' status",
+        "Observe the flag reason section on the card"
+      ],
+      "expectedResults": [
+        "The vendor's flag reason is displayed clearly on the card",
+        "The reason text explains why the vendor flagged the review",
+        "The reason is labeled as coming from the vendor (e.g., 'Vendor Flag Reason:')",
+        "The reason is readable and not truncated"
+      ],
+      "postconditions": "Vendor flag reason is confirmed visible and clear",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_002",
+      "title": "Content is marked 'Vendor Flagged' status",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor has flagged a review.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find the vendor-flagged item",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The flagged content shows 'Vendor Flagged' status badge",
+        "The badge is visually distinct from other statuses",
+        "The status indicates the vendor has disputed this review",
+        "The item appears when filtering by 'Pending' status"
+      ],
+      "postconditions": "Vendor Flagged status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_003",
+      "title": "Admin can approve vendor-flagged review",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Vendor Flagged' status",
+        "Click the 'Approve' action button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "An 'Approve' action is available on vendor-flagged cards",
+        "Clicking Approve changes the status to 'Approved'",
+        "The review remains visible to users (vendor's flag is overruled)",
+        "A success notification may be displayed",
+        "The admin's decision is final"
+      ],
+      "postconditions": "Vendor-flagged review is approved and visible to users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_004",
+      "title": "Admin can reject vendor-flagged review",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Vendor Flagged' status",
+        "Click the 'Reject' action button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "A 'Reject' action is available on vendor-flagged cards",
+        "Clicking Reject changes the status to 'Rejected'",
+        "The review is removed/hidden from users (vendor's flag is upheld)",
+        "A success notification may be displayed",
+        "The admin's decision is final"
+      ],
+      "postconditions": "Vendor-flagged review is rejected and hidden from users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_005",
+      "title": "Vendor notification is triggered after approval",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review has been approved.",
+      "steps": [
+        "Approve a vendor-flagged review",
+        "Observe if a notification is triggered to the vendor"
+      ],
+      "expectedResults": [
+        "After approval, a notification is sent to the vendor",
+        "The notification informs the vendor that their flag was reviewed and the review was approved (kept visible)",
+        "The notification is triggered automatically after the admin decision",
+        "OR the system logs the notification for delivery"
+      ],
+      "postconditions": "Vendor is notified of the approval decision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_006",
+      "title": "Vendor notification is triggered after rejection",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review has been rejected.",
+      "steps": [
+        "Reject a vendor-flagged review",
+        "Observe if a notification is triggered to the vendor"
+      ],
+      "expectedResults": [
+        "After rejection, a notification is sent to the vendor",
+        "The notification informs the vendor that their flag was reviewed and the review was rejected (removed)",
+        "The notification is triggered automatically after the admin decision",
+        "OR the system logs the notification for delivery"
+      ],
+      "postconditions": "Vendor is notified of the rejection decision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_007",
+      "title": "Vendor-flagged items appear in Pending filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. Vendor-flagged items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Vendor-flagged items appear in the Pending filter results",
+        "They show 'Vendor Flagged' status badge",
+        "They are grouped with other pending items",
+        "The vendor flag reason is visible on these cards"
+      ],
+      "postconditions": "Vendor-flagged items are accessible via Pending filter",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_008",
+      "title": "Flag reason provides enough context for admin decision",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged item with a detailed reason exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor-flagged card",
+        "Read the flag reason alongside the review content"
+      ],
+      "expectedResults": [
+        "The flag reason is displayed alongside the original review content",
+        "The admin can see both the review and the vendor's objection",
+        "This provides enough context to make a fair decision",
+        "Both the review text and flag reason are fully readable"
+      ],
+      "postconditions": "Sufficient context is available for admin decision",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_009",
+      "title": "Vendor-flagged card shows the original review content",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. A vendor-flagged review exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor-flagged card",
+        "Observe the content text on the card"
+      ],
+      "expectedResults": [
+        "The original review content is displayed on the card",
+        "The content is the user's review (not the vendor's flag reason)",
+        "The admin can read what the user wrote",
+        "The content is not modified or censored before admin review"
+      ],
+      "postconditions": "Original review content is visible for admin review",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VFLAG_010",
+      "title": "Multiple vendor-flagged items can be processed independently",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-571",
+      "preconditions": "User is logged in as Admin. Multiple vendor-flagged items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find multiple vendor-flagged cards",
+        "Approve one flagged item",
+        "Reject another flagged item",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Each vendor-flagged item can be processed independently",
+        "Approving one does not affect others",
+        "Rejecting one does not affect others",
+        "Each decision is recorded separately",
+        "Notifications are sent for each decision independently"
+      ],
+      "postconditions": "Independent processing of multiple flags is confirmed",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
