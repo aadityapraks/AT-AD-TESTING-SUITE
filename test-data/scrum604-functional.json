@@ -1,0 +1,13 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "permissionsLabel": "Permissions:",
+    "superAdminPermissions": ["Dashboard", "User Management", "Partner Management", "Product Management", "Comment Moderation", "Content Management", "Analytics"],
+    "superAdminRole": "Super Admin",
+    "limitedAdminRole": "Limited Access Admin"
+  }
+}
