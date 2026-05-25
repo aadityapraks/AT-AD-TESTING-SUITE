@@ -1,0 +1,431 @@
+{
+  "jiraStory": "SCRUM-592",
+  "title": "Admin - Add Internal Admin - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Add Internal Admin feature on the Y4J platform. This feature allows Super Admins to add new internal administrators via a modal form with Name, Email, and Role fields, a permissions section, and an 'Add Admin' submit button. The new admin should appear in the list immediately after creation. Covers happy path, form validation, edge cases, error handling, and modal behavior.",
+  "testCases": [
+    {
+      "id": "TC_ADD_001",
+      "title": "Clicking 'Add Internal Admin' button opens the modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Locate the 'Add Internal Admin' button in the toolbar",
+        "Click the 'Add Internal Admin' button",
+        "Observe the modal behavior"
+      ],
+      "expectedResults": [
+        "The 'Add Internal Admin' button is visible in the toolbar area",
+        "Clicking the button opens a modal/dialog",
+        "The modal contains form fields for Name, Email, and Role",
+        "The modal has a title/heading indicating its purpose",
+        "The background is dimmed/overlaid while modal is open"
+      ],
+      "postconditions": "Add Internal Admin modal is open and ready for input",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_002",
+      "title": "Modal contains Name, Email, and Role fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Observe the form fields present in the modal"
+      ],
+      "expectedResults": [
+        "A 'Name' text input field is present",
+        "An 'Email' text input field is present",
+        "A 'Role' selection field is present (dropdown or radio buttons)",
+        "Role options include 'Super Admin' and 'Limited-Access Admin'",
+        "All fields have visible labels"
+      ],
+      "postconditions": "All required form fields are visible in the modal",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_003",
+      "title": "Permissions section becomes available after role selection",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Select a role (e.g., 'Limited-Access Admin')",
+        "Observe the permissions section"
+      ],
+      "expectedResults": [
+        "After selecting a role, a permissions section appears or becomes enabled",
+        "The permissions section shows checkboxes for available modules (Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics)",
+        "For 'Limited-Access Admin', individual permissions can be selected/deselected",
+        "For 'Super Admin', all permissions may be pre-selected and locked"
+      ],
+      "postconditions": "Permissions section is visible and interactive",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_004",
+      "title": "Successfully add a new admin with all valid fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open. The email to be used does not already exist.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter a valid name (e.g., 'TestAdmin New')",
+        "Enter a valid email (e.g., 'newadmin@mailto.plus')",
+        "Select role 'Limited-Access Admin'",
+        "Select at least one permission (e.g., 'Dashboard', 'Partner Management')",
+        "Click the 'Add Admin' button"
+      ],
+      "expectedResults": [
+        "The form submits successfully without errors",
+        "A success message or notification is displayed",
+        "The modal closes after successful submission",
+        "The new admin appears in the admin list immediately",
+        "The new admin card shows the correct name, email, role, and permissions"
+      ],
+      "postconditions": "New admin is created and visible in the admin list",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_005",
+      "title": "New admin appears in the admin list immediately after creation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. A new admin has just been created.",
+      "steps": [
+        "Create a new admin via the Add Internal Admin modal",
+        "After modal closes, observe the admin list",
+        "Verify the new admin card is present"
+      ],
+      "expectedResults": [
+        "The admin list updates without requiring a page refresh",
+        "The new admin card is visible in the list",
+        "The admin count ('Showing X admins') increments by 1",
+        "The new admin card displays: name, email, role, status (Active), assigned date (today), assigned by (current user), and selected permissions"
+      ],
+      "postconditions": "New admin is confirmed in the list with correct details",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_006",
+      "title": "Duplicate email shows error and prevents submission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. An admin with email 'aofted@mailto.plus' already exists.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter a valid name (e.g., 'Duplicate Test')",
+        "Enter an email that already exists (e.g., 'aofted@mailto.plus')",
+        "Select a role and permissions",
+        "Click 'Add Admin'"
+      ],
+      "expectedResults": [
+        "The form does NOT submit successfully",
+        "An error message is displayed indicating the email is already in use (e.g., 'This email is already associated with an admin account')",
+        "The modal remains open for the user to correct the input",
+        "No duplicate admin is created in the list"
+      ],
+      "postconditions": "Duplicate email is rejected with clear error message",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_007",
+      "title": "Invalid email format shows validation error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter a valid name",
+        "Enter an invalid email format (e.g., 'notanemail', 'admin@', '@domain.com', 'admin@.com')",
+        "Select a role",
+        "Click 'Add Admin' or tab out of the email field"
+      ],
+      "expectedResults": [
+        "An inline validation error is displayed for the email field",
+        "Error message indicates invalid email format (e.g., 'Please enter a valid email address')",
+        "The form does NOT submit with invalid email",
+        "The email field is highlighted as invalid"
+      ],
+      "postconditions": "Invalid email is rejected with validation error",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_008",
+      "title": "Empty name field shows validation error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Leave the Name field empty",
+        "Enter a valid email and select a role",
+        "Click 'Add Admin'"
+      ],
+      "expectedResults": [
+        "A validation error is displayed for the Name field",
+        "Error message indicates the name is required (e.g., 'Name is required')",
+        "The form does NOT submit with empty name",
+        "The Name field is highlighted as invalid"
+      ],
+      "postconditions": "Empty name is rejected with validation error",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_009",
+      "title": "Admin creation API failure shows error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open. API is configured to fail (or network issue simulated).",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Fill in all fields with valid data",
+        "Click 'Add Admin' (with API failure condition)",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to create admin. Please try again.')",
+        "The modal remains open so the user can retry",
+        "No partial/corrupt admin record is created",
+        "The user can attempt submission again after the error"
+      ],
+      "postconditions": "API failure is handled gracefully with user notification",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_010",
+      "title": "Modal closed before submission does not create admin",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open with data entered.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter name, email, and select role",
+        "Close the modal without clicking 'Add Admin' (click X, press Escape, or click outside)",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "The modal closes without submitting the form",
+        "No new admin is created in the list",
+        "The admin count remains unchanged",
+        "No error messages are shown",
+        "The entered data is discarded (not saved as draft)"
+      ],
+      "postconditions": "No admin is created when modal is closed without submission",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_011",
+      "title": "Add admin with Super Admin role",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter a valid name (e.g., 'SuperAdmin Test')",
+        "Enter a valid unique email",
+        "Select role 'Super Admin'",
+        "Observe the permissions section",
+        "Click 'Add Admin'"
+      ],
+      "expectedResults": [
+        "When 'Super Admin' role is selected, all permissions are automatically assigned",
+        "The admin is created successfully",
+        "The new admin card shows 'Super Admin' role",
+        "All permissions are displayed on the card (Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics)"
+      ],
+      "postconditions": "Super Admin is created with full permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_012",
+      "title": "Add admin with Limited-Access Admin role and specific permissions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter a valid name",
+        "Enter a valid unique email",
+        "Select role 'Limited-Access Admin'",
+        "Select specific permissions (e.g., only 'Dashboard' and 'Partner Management')",
+        "Click 'Add Admin'"
+      ],
+      "expectedResults": [
+        "The admin is created successfully with only the selected permissions",
+        "The new admin card shows 'Limited Access Admin' role",
+        "Only the selected permissions are displayed on the card",
+        "Unselected permissions are NOT shown on the card"
+      ],
+      "postconditions": "Limited-Access Admin is created with specific permissions only",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_013",
+      "title": "Cannot submit form without selecting at least one permission",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter valid name and email",
+        "Select 'Limited-Access Admin' role",
+        "Do NOT select any permissions",
+        "Click 'Add Admin'"
+      ],
+      "expectedResults": [
+        "The form does NOT submit",
+        "A validation error indicates at least one permission must be selected",
+        "The modal remains open for correction",
+        "The 'Add Admin' button may be disabled until a permission is selected"
+      ],
+      "postconditions": "Form requires at least one permission for Limited-Access Admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_014",
+      "title": "Modal can be closed via X button",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Click the X (close) button on the modal"
+      ],
+      "expectedResults": [
+        "The modal closes",
+        "No admin is created",
+        "Focus returns to the 'Add Internal Admin' button or the page"
+      ],
+      "postconditions": "Modal is closed via X button",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_015",
+      "title": "Modal can be closed via Escape key",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Press the Escape key on the keyboard"
+      ],
+      "expectedResults": [
+        "The modal closes",
+        "No admin is created",
+        "No errors occur"
+      ],
+      "postconditions": "Modal is closed via Escape key",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_016",
+      "title": "Name field accepts valid characters",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Enter name with alphabetic characters (e.g., 'John Doe')",
+        "Enter name with numbers (e.g., 'Admin123')",
+        "Enter name with special characters (e.g., 'O'Brien', 'Jean-Pierre')"
+      ],
+      "expectedResults": [
+        "Alphabetic names are accepted",
+        "Names with numbers are accepted (or rejected with clear message if not allowed)",
+        "Names with common special characters (apostrophe, hyphen) are accepted",
+        "The field does not crash or break with any input"
+      ],
+      "postconditions": "Name field handles various character types correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_017",
+      "title": "Email field validates format in real-time",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Type 'test' in the email field and tab out",
+        "Type 'test@' and tab out",
+        "Type 'test@domain' and tab out",
+        "Type 'test@domain.com' and tab out"
+      ],
+      "expectedResults": [
+        "'test' shows validation error (no @ symbol)",
+        "'test@' shows validation error (incomplete domain)",
+        "'test@domain' may show error or be accepted depending on validation rules",
+        "'test@domain.com' is accepted as valid email format",
+        "Validation feedback appears inline near the field"
+      ],
+      "postconditions": "Email validation provides real-time feedback",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_018",
+      "title": "Assigned date and assigned by are set automatically",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin (pv@mailto.plus). A new admin has been created.",
+      "steps": [
+        "Create a new admin via the Add Internal Admin modal",
+        "Observe the new admin card in the list",
+        "Check the 'Assigned' date and 'Assigned By' fields"
+      ],
+      "expectedResults": [
+        "The 'Assigned' date shows today's date (e.g., '2026-05-25')",
+        "The 'Assigned By' shows the current Super Admin's email (e.g., 'pv@mailto.plus')",
+        "These fields are set automatically — not entered by the user in the form"
+      ],
+      "postconditions": "Assignment metadata is automatically populated",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_019",
+      "title": "New admin status is set to Active by default",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. A new admin has been created.",
+      "steps": [
+        "Create a new admin via the Add Internal Admin modal",
+        "Observe the new admin card in the list",
+        "Check the status field"
+      ],
+      "expectedResults": [
+        "The new admin's status is automatically set to 'Active'",
+        "The status is not a field in the creation form — it's set by the system",
+        "The 'Active' status is visible on the admin card"
+      ],
+      "postconditions": "New admin has Active status by default",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ADD_020",
+      "title": "Add Admin button is disabled until required fields are filled",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-592",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open with all fields empty.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Observe the 'Add Admin' button state with all fields empty",
+        "Fill in the Name field only",
+        "Fill in the Email field",
+        "Select a Role",
+        "Select at least one permission",
+        "Observe the button state after all fields are filled"
+      ],
+      "expectedResults": [
+        "With empty fields, the 'Add Admin' button is disabled or shows validation on click",
+        "As required fields are filled, the button becomes enabled",
+        "OR the button is always enabled but shows validation errors on click when fields are empty",
+        "The form clearly indicates which fields are required"
+      ],
+      "postconditions": "Form submission is gated by required field completion",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

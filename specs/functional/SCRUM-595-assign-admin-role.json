@@ -1,0 +1,331 @@
+{
+  "jiraStory": "SCRUM-595",
+  "title": "Admin - Assign Admin Role - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Assign Admin Role feature on the Y4J platform. This feature allows Super Admins to assign or change roles (Super Admin, Limited-Access Admin) via an editable role dropdown on admin cards. Changing a role automatically updates permissions, and the change is saved instantly or on confirmation. Covers happy path, role switching, permission auto-update, edge cases (last Super Admin downgrade, backend error, refresh during update).",
+  "testCases": [
+    {
+      "id": "TC_ROLE_001",
+      "title": "Role dropdown is visible and editable on admin cards",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with at least one admin card.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card",
+        "Locate the role indicator on the card",
+        "Verify the role can be changed (dropdown or editable control)"
+      ],
+      "expectedResults": [
+        "Each admin card displays the current role (Super Admin or Limited Access Admin)",
+        "The role is displayed as an editable dropdown or clickable control",
+        "Clicking/interacting with the role opens a selection with available options",
+        "The dropdown is not disabled or read-only"
+      ],
+      "postconditions": "Role dropdown is confirmed editable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_002",
+      "title": "Role dropdown shows both available roles",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Role dropdown is open on an admin card.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click on the role dropdown for any admin",
+        "Observe the available options"
+      ],
+      "expectedResults": [
+        "The dropdown shows exactly two options: 'Super Admin' and 'Limited-Access Admin'",
+        "Both options are selectable",
+        "The currently assigned role is indicated (highlighted or checked)",
+        "No other role options are present"
+      ],
+      "postconditions": "Both role options are visible in the dropdown",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_003",
+      "title": "Change role from Limited-Access Admin to Super Admin",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Limited-Access Admin card",
+        "Click the role dropdown on that card",
+        "Select 'Super Admin'",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The role changes from 'Limited Access Admin' to 'Super Admin'",
+        "The change is saved (instantly or after confirmation)",
+        "The admin card now displays 'Super Admin' as the role",
+        "A success notification may be shown",
+        "The permissions section updates to show all permissions"
+      ],
+      "postconditions": "Admin role is changed to Super Admin with full permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_004",
+      "title": "Change role from Super Admin to Limited-Access Admin",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Multiple Super Admins exist (not the last one).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Super Admin card (not the last Super Admin)",
+        "Click the role dropdown on that card",
+        "Select 'Limited-Access Admin'",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The role changes from 'Super Admin' to 'Limited Access Admin'",
+        "The change is saved successfully",
+        "The admin card now displays 'Limited Access Admin' as the role",
+        "The permissions section updates (may show reduced permissions or prompt for permission selection)"
+      ],
+      "postconditions": "Admin role is changed to Limited-Access Admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_005",
+      "title": "Changing role updates permissions automatically",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin with specific permissions exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Limited-Access Admin card with partial permissions (e.g., Dashboard, Partner Management)",
+        "Note the current permissions",
+        "Change the role to 'Super Admin'",
+        "Observe the permissions section on the card"
+      ],
+      "expectedResults": [
+        "After changing to Super Admin, all permissions are automatically assigned",
+        "The permissions section shows all available modules (Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics)",
+        "The permission update happens automatically without manual selection",
+        "No user action is needed to assign permissions after role upgrade"
+      ],
+      "postconditions": "Permissions are automatically updated to match the new role",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_006",
+      "title": "Permissions reduce when downgrading from Super Admin to Limited-Access",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. A Super Admin (not the last one) exists with all permissions.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Super Admin card (showing all 7 permissions)",
+        "Change the role to 'Limited-Access Admin'",
+        "Observe the permissions section"
+      ],
+      "expectedResults": [
+        "After downgrading, permissions are adjusted (either reduced to a default set or cleared for re-assignment)",
+        "The admin card no longer shows all 7 permissions",
+        "The system either prompts for new permission selection or assigns a default subset",
+        "The change is reflected immediately on the card"
+      ],
+      "postconditions": "Permissions are adjusted after role downgrade",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_007",
+      "title": "Role change is saved instantly or on confirmation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. An admin card is available for role change.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Change an admin's role via the dropdown",
+        "Observe whether the change saves immediately or requires confirmation",
+        "If confirmation dialog appears, click 'Confirm'",
+        "Refresh the page",
+        "Verify the role change persisted"
+      ],
+      "expectedResults": [
+        "The role change is either saved instantly (auto-save) OR a confirmation dialog appears",
+        "If instant: the card updates immediately and a success notification may appear",
+        "If confirmation: a dialog asks 'Are you sure?' with Confirm/Cancel options",
+        "After page refresh, the role change is still reflected (persisted to backend)",
+        "The change is not lost on refresh"
+      ],
+      "postconditions": "Role change is persisted to the backend",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_008",
+      "title": "Cannot downgrade the last remaining Super Admin",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Only ONE Super Admin exists in the system (the current user or another).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Identify the last remaining Super Admin",
+        "Attempt to change their role to 'Limited-Access Admin'",
+        "Observe the system response"
+      ],
+      "expectedResults": [
+        "The system prevents the role change",
+        "An error message is displayed (e.g., 'Cannot downgrade the last Super Admin. At least one Super Admin must exist.')",
+        "The role dropdown reverts to 'Super Admin'",
+        "No change is saved to the backend",
+        "The admin retains their Super Admin role"
+      ],
+      "postconditions": "Last Super Admin cannot be downgraded — system enforces minimum one Super Admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_009",
+      "title": "Role change fails due to backend error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Backend API is configured to fail on role update (or network issue simulated).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Attempt to change an admin's role",
+        "Observe the error handling when the API fails"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to update role. Please try again.')",
+        "The role dropdown reverts to the original value (no inconsistent state)",
+        "The permissions do not change (remain as before the attempt)",
+        "The user can retry the action",
+        "No partial/corrupt state is saved"
+      ],
+      "postconditions": "Role reverts to original on backend failure",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_010",
+      "title": "Page refresh during role update does not corrupt data",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. About to change an admin's role.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Initiate a role change on an admin card",
+        "Immediately refresh the page (F5) before the save completes",
+        "Observe the admin's role after page reload"
+      ],
+      "expectedResults": [
+        "After refresh, the admin's role is in a consistent state",
+        "Either the old role is shown (change didn't complete) OR the new role is shown (change completed before refresh)",
+        "No corrupted/partial state exists",
+        "The permissions match the displayed role",
+        "No error messages appear on the refreshed page"
+      ],
+      "postconditions": "Data is consistent after refresh during update",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_011",
+      "title": "Role change on one admin does not affect other admins",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Multiple admins exist in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the roles of all visible admins",
+        "Change the role of one specific admin",
+        "Observe all other admin cards"
+      ],
+      "expectedResults": [
+        "Only the targeted admin's role changes",
+        "All other admin cards retain their original roles",
+        "No unintended side effects on other admins",
+        "The admin count remains the same"
+      ],
+      "postconditions": "Role change is isolated to the targeted admin only",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_012",
+      "title": "Selecting the same role (no change) does nothing",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. An admin with 'Super Admin' role exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Super Admin card",
+        "Open the role dropdown",
+        "Select 'Super Admin' (the same role already assigned)",
+        "Observe the behavior"
+      ],
+      "expectedResults": [
+        "No change occurs — the role remains 'Super Admin'",
+        "No API call is made (or if made, it's a no-op)",
+        "No success/error notification is shown (or a neutral message)",
+        "Permissions remain unchanged"
+      ],
+      "postconditions": "No unnecessary update when same role is selected",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_013",
+      "title": "Role change is reflected in the role filter results",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Role filter is available.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Filter by 'Limited-Access Admin' and note the count",
+        "Change one Limited-Access Admin to 'Super Admin'",
+        "Re-apply the 'Limited-Access Admin' filter",
+        "Observe the count and list"
+      ],
+      "expectedResults": [
+        "After the role change, the admin no longer appears in the 'Limited-Access Admin' filter",
+        "The Limited-Access Admin count decreases by 1",
+        "The admin now appears in the 'Super Admin' filter",
+        "The Super Admin count increases by 1"
+      ],
+      "postconditions": "Role change is correctly reflected in filter results",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_014",
+      "title": "Confirmation dialog (if present) can be cancelled",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. Role change triggers a confirmation dialog.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Change an admin's role to trigger confirmation",
+        "In the confirmation dialog, click 'Cancel'",
+        "Observe the admin card"
+      ],
+      "expectedResults": [
+        "The confirmation dialog closes",
+        "The role reverts to the original value",
+        "No change is saved to the backend",
+        "The admin card shows the original role and permissions"
+      ],
+      "postconditions": "Cancelling confirmation reverts the role change",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_ROLE_015",
+      "title": "Super Admin cannot change their own role to Limited-Access (self-downgrade prevention)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-595",
+      "preconditions": "User is logged in as Super Admin. The current user's admin card is visible in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find the current user's own admin card",
+        "Attempt to change own role to 'Limited-Access Admin'"
+      ],
+      "expectedResults": [
+        "The system either prevents self-downgrade with an error message",
+        "OR the dropdown is disabled/hidden for the current user's own card",
+        "OR the system allows it but warns that the user will lose Super Admin access",
+        "The system ensures at least one Super Admin always exists"
+      ],
+      "postconditions": "Self-downgrade is handled safely",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

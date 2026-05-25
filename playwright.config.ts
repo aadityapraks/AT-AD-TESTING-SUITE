@@ -34,6 +34,11 @@ export default defineConfig({
       name: 'caregiver',
       testMatch: '**/scrum36*-caregiver-*.spec.ts',
     },
+    // Accessibility tests
+    {
+      name: 'accessibility',
+      testMatch: '**/tests/accessibility/**/*.spec.ts',
+    },
   ],
   reporter: [
     ['html', { outputFolder: 'playwright-report' }],

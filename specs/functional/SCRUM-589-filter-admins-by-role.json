@@ -1,0 +1,320 @@
+{
+  "jiraStory": "SCRUM-589",
+  "title": "Admin - Filter Admins by Role - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Filter Admins by Role feature on the Y4J platform. This feature provides a role filter dropdown with options (All Roles, Super Admin, Limited-Access Admin) that dynamically updates the admin list, highlights the selected filter, and works in combination with search. Covers happy path, edge cases, filter+search integration, and state management.",
+  "testCases": [
+    {
+      "id": "TC_FILTER_001",
+      "title": "Role filter dropdown is visible with correct options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Locate the role filter dropdown in the toolbar area",
+        "Click on the dropdown to open it",
+        "Observe the available options"
+      ],
+      "expectedResults": [
+        "Role filter dropdown is visible with default text 'All Roles'",
+        "Clicking the dropdown reveals three options: 'All Roles', 'Super Admin', 'Limited-Access Admin'",
+        "All three options are selectable",
+        "The dropdown is positioned in the toolbar area near the search bar"
+      ],
+      "postconditions": "Dropdown is open showing all role options",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_002",
+      "title": "Selecting 'All Roles' shows all administrators",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Admin list contains both Super Admins and Limited-Access Admins.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click the role filter dropdown",
+        "Select 'All Roles'",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "All administrators are displayed regardless of their role",
+        "Both Super Admin and Limited-Access Admin cards are visible",
+        "The 'Showing X admins' count reflects the total number of all admins",
+        "The dropdown shows 'All Roles' as the selected value"
+      ],
+      "postconditions": "Full unfiltered admin list is displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_003",
+      "title": "Selecting 'Super Admin' filters to show only Super Admins",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. At least one Super Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the total admin count",
+        "Click the role filter dropdown",
+        "Select 'Super Admin'",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "Only admin cards with role 'Super Admin' are displayed",
+        "No 'Limited Access Admin' cards are visible",
+        "The admin count updates to show only Super Admin count",
+        "Each visible card shows 'Super Admin' as the role label",
+        "The list updates dynamically without page reload"
+      ],
+      "postconditions": "Only Super Admin cards are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_004",
+      "title": "Selecting 'Limited-Access Admin' filters to show only Limited-Access Admins",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. At least one Limited-Access Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click the role filter dropdown",
+        "Select 'Limited-Access Admin'",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "Only admin cards with role 'Limited Access Admin' are displayed",
+        "No 'Super Admin' cards are visible",
+        "The admin count updates to show only Limited-Access Admin count",
+        "Each visible card shows 'Limited Access Admin' as the role label",
+        "The list updates dynamically without page reload"
+      ],
+      "postconditions": "Only Limited-Access Admin cards are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_005",
+      "title": "Selected filter is visually highlighted",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the default state of the filter dropdown (should show 'All Roles')",
+        "Select 'Super Admin' from the dropdown",
+        "Observe the dropdown appearance",
+        "Select 'Limited-Access Admin'",
+        "Observe the dropdown appearance again"
+      ],
+      "expectedResults": [
+        "The currently selected filter option is visually highlighted/indicated in the dropdown",
+        "When 'Super Admin' is selected, the dropdown button text changes to reflect the selection",
+        "When 'Limited-Access Admin' is selected, the dropdown button text updates accordingly",
+        "The selected state is clearly distinguishable from unselected options"
+      ],
+      "postconditions": "Selected filter is visually indicated",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_006",
+      "title": "Filter works along with search - filter first then search",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Both Super Admins and Limited-Access Admins exist with distinct names.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Select 'Limited-Access Admin' from the role filter",
+        "Verify only Limited-Access Admins are shown",
+        "Type a search query matching one of the visible admins (e.g., 'IvAdmin1')",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "After selecting the role filter, only Limited-Access Admins are shown",
+        "After typing the search query, results are further filtered within the Limited-Access Admins",
+        "Only admins matching BOTH the role filter AND the search query are displayed",
+        "The count updates to reflect the combined filter results"
+      ],
+      "postconditions": "Combined filter + search results are correct",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_007",
+      "title": "Filter works along with search - search first then filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Admins with similar names but different roles exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type a search query that matches admins of different roles (e.g., 'admin')",
+        "Verify mixed-role results are shown",
+        "Select 'Super Admin' from the role filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "After search, admins of all roles matching the query are shown",
+        "After applying the role filter, results narrow to only Super Admins matching the search",
+        "Both filters are applied simultaneously",
+        "The count reflects the combined results"
+      ],
+      "postconditions": "Search + filter combination works in either order",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_008",
+      "title": "No admins in selected role shows empty state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. A role exists with no admins assigned (or simulate by filtering after search that eliminates all).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Apply a search that narrows results",
+        "Then select a role filter that has no matching admins in the filtered set",
+        "Observe the page"
+      ],
+      "expectedResults": [
+        "No admin cards are displayed",
+        "An empty state message is shown (e.g., 'No admins found' or 'Showing 0 admins')",
+        "The page does not crash or show errors",
+        "The filter dropdown still shows the selected role",
+        "User can change the filter to see results again"
+      ],
+      "postconditions": "Empty state is handled gracefully for no-match filter",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_009",
+      "title": "Switching filter while search is applied updates results correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Search is active with results showing.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type a search query (e.g., 'admin')",
+        "Select 'Super Admin' from the role filter",
+        "Observe results",
+        "Switch to 'Limited-Access Admin' without clearing search",
+        "Observe results",
+        "Switch to 'All Roles'",
+        "Observe results"
+      ],
+      "expectedResults": [
+        "With 'Super Admin' filter: only Super Admins matching search are shown",
+        "Switching to 'Limited-Access Admin': results update to show only Limited-Access Admins matching search",
+        "Switching to 'All Roles': all admins matching the search query are shown",
+        "Search query remains in the search field throughout filter changes",
+        "No page reload occurs during filter switches"
+      ],
+      "postconditions": "Filter switching with active search works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_010",
+      "title": "Role filter resets to 'All Roles' on page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. A role filter is currently selected (not 'All Roles').",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Select 'Super Admin' from the role filter",
+        "Verify filtered results are shown",
+        "Refresh the page (F5 or browser refresh)",
+        "Observe the filter state and admin list"
+      ],
+      "expectedResults": [
+        "After page refresh, the role filter resets to 'All Roles'",
+        "The full admin list is displayed (unfiltered)",
+        "The dropdown shows 'All Roles' as the default selection",
+        "No stale filter state persists after refresh"
+      ],
+      "postconditions": "Filter state is reset to default after page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_011",
+      "title": "Admin count updates correctly when filter changes",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Multiple admins of different roles exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the total admin count with 'All Roles' (e.g., 'Showing 9 admins')",
+        "Select 'Super Admin' filter",
+        "Note the count (should be less than total)",
+        "Select 'Limited-Access Admin' filter",
+        "Note the count",
+        "Select 'All Roles' again",
+        "Note the count"
+      ],
+      "expectedResults": [
+        "'All Roles' shows the total count of all admins",
+        "'Super Admin' shows only the count of Super Admins",
+        "'Limited-Access Admin' shows only the count of Limited-Access Admins",
+        "Super Admin count + Limited-Access Admin count = All Roles count",
+        "Returning to 'All Roles' restores the original total count"
+      ],
+      "postconditions": "Admin counts are accurate for each filter state",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_012",
+      "title": "Filter dropdown closes after selection",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click the role filter dropdown to open it",
+        "Select any option (e.g., 'Super Admin')",
+        "Observe the dropdown state"
+      ],
+      "expectedResults": [
+        "After selecting an option, the dropdown closes automatically",
+        "The selected option text is displayed on the dropdown button",
+        "The admin list updates to reflect the selection",
+        "No manual action is needed to close the dropdown"
+      ],
+      "postconditions": "Dropdown is closed with selection applied",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_013",
+      "title": "Pagination resets when filter changes",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. Admin list has multiple pages. User is on page 2.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Navigate to page 2 of the admin list",
+        "Change the role filter to 'Super Admin'",
+        "Observe the pagination state"
+      ],
+      "expectedResults": [
+        "After changing the filter, pagination resets to page 1",
+        "The first page of filtered results is displayed",
+        "User is not left on a page that may not exist for the filtered set"
+      ],
+      "postconditions": "Pagination is reset to page 1 after filter change",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_FILTER_014",
+      "title": "Filter selection persists during same session navigation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-589",
+      "preconditions": "User is logged in as Super Admin. A role filter is selected.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Select 'Super Admin' from the role filter",
+        "Navigate away to another page (e.g., Dashboard)",
+        "Navigate back to User & Roles page",
+        "Observe the filter state"
+      ],
+      "expectedResults": [
+        "After navigating away and back, the filter may reset to 'All Roles' (default behavior)",
+        "OR the filter persists showing 'Super Admin' (if state is maintained)",
+        "Either behavior is acceptable as long as it's consistent",
+        "The admin list matches the displayed filter state"
+      ],
+      "postconditions": "Filter state is consistent with displayed results",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

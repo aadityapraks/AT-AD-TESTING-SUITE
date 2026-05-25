@@ -1,0 +1,271 @@
+{
+  "jiraStory": "SCRUM-607",
+  "title": "Admin - Track Admin Assignment Details - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Track Admin Assignment Details feature on the Y4J platform. This feature displays 'Assigned date' and 'Assigned by' information on each admin card for accountability tracking. The data is stored in audit logs and is immutable. Edge cases include missing assignment records and legacy admin accounts without assignment metadata.",
+  "testCases": [
+    {
+      "id": "TC_TRACK_001",
+      "title": "Admin card displays assigned date",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with at least one admin who was recently assigned.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card",
+        "Locate the 'Assigned' date field on the card"
+      ],
+      "expectedResults": [
+        "The admin card displays an 'Assigned:' label followed by a date",
+        "The date is in a recognizable format (e.g., 'Assigned:2026-05-19')",
+        "The date is not empty or showing placeholder text",
+        "The date represents when the admin was assigned their role"
+      ],
+      "postconditions": "Assigned date is confirmed visible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_002",
+      "title": "Admin card displays assigned by information",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with at least one admin.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card",
+        "Locate the 'Assigned By' field on the card"
+      ],
+      "expectedResults": [
+        "The admin card displays an 'Assigned By:' label followed by the assigner's identifier",
+        "The assigner is shown as an email or name (e.g., 'Assigned By:pv@mailto.plus')",
+        "The field is not empty",
+        "The assigner represents the Super Admin who created/assigned this admin"
+      ],
+      "postconditions": "Assigned by information is confirmed visible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_003",
+      "title": "Newly created admin shows correct assigned date (today)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. About to create a new admin.",
+      "steps": [
+        "Note today's date",
+        "Create a new internal admin via the Add Internal Admin modal",
+        "After creation, find the new admin card in the list",
+        "Check the 'Assigned' date"
+      ],
+      "expectedResults": [
+        "The 'Assigned' date shows today's date (the date of creation)",
+        "The date format is consistent with other admin cards",
+        "The date is automatically set by the system (not entered by the user)"
+      ],
+      "postconditions": "New admin has today's date as assigned date",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_004",
+      "title": "Newly created admin shows correct assigned by (current Super Admin)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin (pv@mailto.plus). About to create a new admin.",
+      "steps": [
+        "Create a new internal admin via the Add Internal Admin modal",
+        "After creation, find the new admin card in the list",
+        "Check the 'Assigned By' field"
+      ],
+      "expectedResults": [
+        "The 'Assigned By' field shows the current Super Admin's email (e.g., 'pv@mailto.plus')",
+        "The assigner is automatically set by the system based on the logged-in user",
+        "The assigner is NOT the newly created admin's email"
+      ],
+      "postconditions": "New admin shows correct assigner",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_005",
+      "title": "Assignment data is immutable - cannot be edited by user",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. Admin cards with assignment data are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the 'Assigned' date and 'Assigned By' fields on any admin card",
+        "Attempt to click on or interact with these fields",
+        "Open the Edit Permissions editor and check if assignment fields are editable"
+      ],
+      "expectedResults": [
+        "The 'Assigned' date is read-only (not clickable, not editable)",
+        "The 'Assigned By' field is read-only (not clickable, not editable)",
+        "No edit controls (pencil icon, input field) exist for these fields",
+        "The Edit Permissions editor does NOT allow changing assignment metadata",
+        "These fields cannot be modified through any UI interaction"
+      ],
+      "postconditions": "Assignment data is confirmed immutable via UI",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_006",
+      "title": "Assignment data persists after page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. Admin cards with assignment data are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the 'Assigned' date and 'Assigned By' for a specific admin",
+        "Refresh the page (F5)",
+        "Find the same admin card",
+        "Compare the assignment data"
+      ],
+      "expectedResults": [
+        "After refresh, the 'Assigned' date is unchanged",
+        "After refresh, the 'Assigned By' is unchanged",
+        "Data is loaded from the backend (persisted in audit logs)",
+        "No data loss occurs on refresh"
+      ],
+      "postconditions": "Assignment data is consistent across page refreshes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_007",
+      "title": "Assignment data does not change when permissions are edited",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. An admin with known assignment data exists.",
+      "steps": [
+        "Note the 'Assigned' date and 'Assigned By' for a specific admin",
+        "Click 'Edit Permissions' on that admin card",
+        "Add or remove a permission",
+        "Save the changes",
+        "Observe the 'Assigned' date and 'Assigned By' fields"
+      ],
+      "expectedResults": [
+        "After editing permissions, the 'Assigned' date remains unchanged",
+        "After editing permissions, the 'Assigned By' remains unchanged",
+        "Permission edits do NOT update the assignment metadata",
+        "Assignment data reflects the original creation/assignment, not the last edit"
+      ],
+      "postconditions": "Assignment data is unaffected by permission edits",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_008",
+      "title": "Assignment data does not change when role is changed",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. An admin with known assignment data exists.",
+      "steps": [
+        "Note the 'Assigned' date and 'Assigned By' for a specific admin",
+        "Change the admin's role (e.g., from Limited-Access to Super Admin)",
+        "Observe the 'Assigned' date and 'Assigned By' fields after role change"
+      ],
+      "expectedResults": [
+        "After role change, the 'Assigned' date remains unchanged",
+        "After role change, the 'Assigned By' remains unchanged",
+        "Role changes do NOT update the assignment metadata",
+        "The original assignment tracking is preserved"
+      ],
+      "postconditions": "Assignment data is unaffected by role changes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_009",
+      "title": "Missing assignment record - legacy admin shows fallback",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. A legacy admin account exists that was created before assignment tracking was implemented.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a legacy admin card (one without assignment metadata)",
+        "Observe the 'Assigned' date and 'Assigned By' fields"
+      ],
+      "expectedResults": [
+        "The card does not crash or show errors for missing data",
+        "A fallback value is displayed (e.g., 'Assigned By:System' or 'N/A' or 'Unknown')",
+        "The date may show the account creation date or a placeholder",
+        "The card layout remains consistent with other admin cards",
+        "No broken UI or empty gaps appear"
+      ],
+      "postconditions": "Legacy admin cards handle missing data gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_010",
+      "title": "System-created admins show 'System' as assigner",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. A system-created admin (initial setup admin) exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card that was created by the system (not by another admin)",
+        "Observe the 'Assigned By' field"
+      ],
+      "expectedResults": [
+        "The 'Assigned By' field shows 'System' (not a user email)",
+        "This indicates the admin was created during system setup or migration",
+        "The field is clearly distinguishable from user-assigned admins"
+      ],
+      "postconditions": "System-created admins show appropriate assigner",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_011",
+      "title": "Assignment date format is consistent across all admin cards",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. Multiple admin cards are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the 'Assigned' date on multiple admin cards",
+        "Compare the date formats"
+      ],
+      "expectedResults": [
+        "All admin cards use the same date format (e.g., YYYY-MM-DD)",
+        "No inconsistencies in date formatting across cards",
+        "Dates are unambiguous (not DD/MM/YY which could be confused)"
+      ],
+      "postconditions": "Date format is consistent across all cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_012",
+      "title": "Assignment details are visible on paginated pages",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. Admin list has multiple pages.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Verify assignment details on page 1 admin cards",
+        "Navigate to page 2",
+        "Verify assignment details on page 2 admin cards"
+      ],
+      "expectedResults": [
+        "Assignment details (date and assigner) are displayed on all pages",
+        "Data on page 2 is correct for those specific admins (not duplicated from page 1)",
+        "Each admin card shows its own unique assignment data"
+      ],
+      "postconditions": "Assignment details work correctly across pagination",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TRACK_013",
+      "title": "Assignment details are visible when search/filter is applied",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-607",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Apply a search query to filter admins",
+        "Observe the filtered admin cards",
+        "Verify assignment details are still visible"
+      ],
+      "expectedResults": [
+        "Assignment details remain visible on admin cards in search/filter results",
+        "Filtering does not hide or break the assignment data display",
+        "The data shown is correct for the filtered admins"
+      ],
+      "postconditions": "Assignment details display correctly with search/filter active",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

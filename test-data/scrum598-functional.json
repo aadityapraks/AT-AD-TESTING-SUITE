@@ -1,0 +1,11 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "permissions": ["Dashboard", "Partner Management", "Product Management", "Comment Moderation", "User Management", "Content Management", "Analytics"],
+    "permissionCount": 7
+  }
+}

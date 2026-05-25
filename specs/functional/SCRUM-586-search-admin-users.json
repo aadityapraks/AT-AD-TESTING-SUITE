@@ -1,0 +1,377 @@
+{
+  "jiraStory": "SCRUM-586",
+  "title": "Admin - Search Admin Users - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Search Admin Users feature on the Y4J platform. This feature allows Super Admins to search administrators by name or email with dynamic filtering, partial match support (minimum 3 characters), case-insensitive matching, and clear functionality to restore the full list. Covers happy path, edge cases, validation, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_SEARCH_001",
+      "title": "Search bar is visible and accepts text input",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with admin list visible.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Locate the search bar in the toolbar area",
+        "Click on the search input field",
+        "Type any text (e.g., 'test')"
+      ],
+      "expectedResults": [
+        "Search bar is visible with placeholder text 'Search admins by name or email...'",
+        "Search field is clickable and gains focus",
+        "Typed text appears in the search field",
+        "The field accepts both alphabetic and special characters"
+      ],
+      "postconditions": "Search input contains the typed text",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_002",
+      "title": "Search by admin name returns matching results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin list contains an admin named 'IvAdmin1'.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click on the search input field",
+        "Type 'IvAdmin1' in the search bar",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "The admin list filters dynamically as the user types",
+        "Only admin cards matching 'IvAdmin1' are displayed",
+        "The matching admin card shows the correct name, email, role, and permissions",
+        "The 'Showing X admins' count updates to reflect filtered results"
+      ],
+      "postconditions": "Only matching admin cards are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_003",
+      "title": "Search by email returns matching results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin list contains an admin with email 'aofted@mailto.plus'.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click on the search input field",
+        "Type 'aofted@mailto.plus' in the search bar",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "The admin list filters to show only the admin with matching email",
+        "The matching admin card is displayed with correct details",
+        "Non-matching admin cards are hidden",
+        "The count updates to show filtered total"
+      ],
+      "postconditions": "Only the admin with matching email is displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_004",
+      "title": "Results filter dynamically as user types",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Multiple admins exist in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the total number of admins displayed",
+        "Type 'Iv' in the search bar (2 characters)",
+        "Observe if filtering starts",
+        "Type 'IvA' (3 characters)",
+        "Observe the results",
+        "Type 'IvAdmin' (more characters)",
+        "Observe the results narrowing further"
+      ],
+      "expectedResults": [
+        "At 2 characters ('Iv'), filtering may not yet activate (minimum 3 chars required)",
+        "At 3 characters ('IvA'), results begin filtering dynamically",
+        "As more characters are typed, results narrow progressively",
+        "No page reload occurs — filtering happens in real-time",
+        "The admin count updates with each keystroke (after 3 chars)"
+      ],
+      "postconditions": "Results are filtered based on current search text",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_005",
+      "title": "Partial matches are supported from 3 characters minimum",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin 'IvAdmin1' exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type 'IvA' (3 characters - partial match) in the search bar",
+        "Observe the results",
+        "Clear and type 'Admin' (partial match of name)",
+        "Observe the results",
+        "Clear and type 'mailto' (partial match of email domain)",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "'IvA' returns all admins whose name or email contains 'IvA'",
+        "'Admin' returns all admins with 'Admin' in their name or email",
+        "'mailto' returns all admins with 'mailto' in their email",
+        "Partial matches work for both name and email fields",
+        "Results appear after the 3rd character is typed"
+      ],
+      "postconditions": "Partial match filtering works correctly from 3 characters",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_006",
+      "title": "Search is case-insensitive",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin 'IvAdmin1' exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type 'ivadmin1' (all lowercase) in the search bar",
+        "Observe the results",
+        "Clear and type 'IVADMIN1' (all uppercase)",
+        "Observe the results",
+        "Clear and type 'IvAdMiN1' (mixed case)",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "'ivadmin1' returns the admin 'IvAdmin1' (case-insensitive match)",
+        "'IVADMIN1' returns the same admin 'IvAdmin1'",
+        "'IvAdMiN1' returns the same admin 'IvAdmin1'",
+        "All three searches produce identical results",
+        "Case does not affect search functionality"
+      ],
+      "postconditions": "Search works regardless of case used",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_007",
+      "title": "Clearing search restores full admin list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Search has been performed with filtered results showing.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type a search query that filters results (e.g., 'IvAdmin1')",
+        "Verify filtered results are shown",
+        "Clear the search field (select all + delete, or click clear button)",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "After clearing the search field, the full admin list is restored",
+        "All admin cards that were previously visible are shown again",
+        "The 'Showing X admins' count returns to the original total",
+        "No page reload is required — list restores dynamically"
+      ],
+      "postconditions": "Full admin list is restored after clearing search",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_008",
+      "title": "No results shows 'No admins found' message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type a search query that matches no admins (e.g., 'xyznonexistent123')",
+        "Observe the page content"
+      ],
+      "expectedResults": [
+        "No admin cards are displayed",
+        "A 'No admins found' message (or similar empty state) is shown",
+        "The message is clearly visible and informative",
+        "The 'Showing 0 admins' count is displayed",
+        "The search field still contains the typed query"
+      ],
+      "postconditions": "Empty state message is displayed for no-match searches",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_009",
+      "title": "Special characters in search (@) work correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admins with email addresses exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type '@mailto' in the search bar (contains @ special character)",
+        "Observe the results",
+        "Clear and type '@illubd' in the search bar",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "'@mailto' returns admins whose email contains '@mailto' (e.g., aofted@mailto.plus)",
+        "'@illubd' returns admins whose email contains '@illubd' (e.g., ir0ijsoebq@illubd.com)",
+        "The @ character does not break the search functionality",
+        "No errors or crashes occur with special characters",
+        "Results are accurate based on the special character search"
+      ],
+      "postconditions": "Special characters are handled correctly in search",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_010",
+      "title": "Search with fewer than 3 characters does not filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Full admin list is displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the total admin count",
+        "Type 'Iv' (2 characters) in the search bar",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "With only 2 characters typed, the full admin list remains unchanged",
+        "No filtering occurs until the 3rd character is entered",
+        "The admin count remains the same as the original total",
+        "OR the system shows a hint like 'Type at least 3 characters to search'"
+      ],
+      "postconditions": "List is not filtered with fewer than 3 characters",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_011",
+      "title": "Search works with email domain partial match",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admins with different email domains exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type 'mailto.plus' in the search bar",
+        "Observe the results",
+        "Clear and type 'illubd.com'",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "'mailto.plus' returns all admins with that email domain",
+        "'illubd.com' returns all admins with that email domain",
+        "Domain-based search correctly filters the list",
+        "Results include all admins matching the domain"
+      ],
+      "postconditions": "Email domain search works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_012",
+      "title": "Search persists after pagination navigation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Search results span multiple pages (if applicable).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type a search query that returns multiple results",
+        "If pagination exists, click 'Next' page",
+        "Observe if the search query is maintained"
+      ],
+      "expectedResults": [
+        "Search query remains in the search field after pagination",
+        "Results on the next page are still filtered by the search query",
+        "The search is not cleared by pagination navigation"
+      ],
+      "postconditions": "Search state is maintained during pagination",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_013",
+      "title": "Search combined with role filter works correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Both Super Admin and Limited-Access Admin exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Select a role filter (e.g., 'Super Admin' from the All Roles dropdown)",
+        "Then type a search query in the search bar",
+        "Observe the combined results"
+      ],
+      "expectedResults": [
+        "Results are filtered by both the role filter AND the search query",
+        "Only admins matching both criteria are shown",
+        "The count reflects the combined filter results"
+      ],
+      "postconditions": "Search and role filter work together correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_014",
+      "title": "Search with leading/trailing spaces is trimmed",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin 'IvAdmin1' exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type '  IvAdmin1  ' (with leading and trailing spaces) in the search bar",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "The search trims leading and trailing spaces",
+        "Results match 'IvAdmin1' correctly despite the extra spaces",
+        "The search does not fail or return no results due to whitespace"
+      ],
+      "postconditions": "Whitespace handling works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_015",
+      "title": "Search field can be cleared using backspace/delete",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Search field has text entered.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type 'IvAdmin' in the search bar",
+        "Use Backspace key to delete characters one by one",
+        "Observe the results updating as characters are removed",
+        "Continue until the field is empty"
+      ],
+      "expectedResults": [
+        "Each backspace removes one character from the search field",
+        "Results update dynamically as characters are removed",
+        "When fewer than 3 characters remain, full list may restore",
+        "When field is completely empty, full admin list is restored"
+      ],
+      "postconditions": "Backspace clearing works and list restores",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_016",
+      "title": "Search with only spaces does not filter results",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Full admin list is displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Type '   ' (only spaces) in the search bar",
+        "Observe the admin list"
+      ],
+      "expectedResults": [
+        "Spaces-only input does not trigger filtering",
+        "Full admin list remains displayed",
+        "No error occurs",
+        "The system treats spaces-only as empty search"
+      ],
+      "postconditions": "Spaces-only search is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SEARCH_017",
+      "title": "Rapid typing does not cause duplicate or stale results",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-586",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Rapidly type 'IvAdmin1' in the search bar (fast typing)",
+        "Observe the results",
+        "Verify no flickering or stale results appear"
+      ],
+      "expectedResults": [
+        "Results settle on the correct filtered list after typing completes",
+        "No duplicate results or flickering occurs",
+        "The final result matches the complete search query",
+        "No race conditions cause incorrect results"
+      ],
+      "postconditions": "Rapid typing is handled with debouncing/throttling",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

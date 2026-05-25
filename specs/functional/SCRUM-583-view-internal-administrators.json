@@ -1,0 +1,436 @@
+{
+  "jiraStory": "SCRUM-583",
+  "title": "Admin - View Internal Administrators - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - View Internal Administrators feature on the Y4J platform. This page allows Super Admins to view a list of internal administrators with their details (name, email, role, status, assigned date, assigned by, permissions). Covers list display, admin card content, role dropdown visibility, Edit Permissions button, auto-loading behavior, pagination, and navigation.",
+  "testCases": [
+    {
+      "id": "TC_UR_001",
+      "title": "Admin list loads automatically when page opens",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. At least one internal admin exists in the system.",
+      "steps": [
+        "Log in as Super Admin",
+        "Navigate to User & Roles section from the sidebar",
+        "Observe the page loading behavior"
+      ],
+      "expectedResults": [
+        "The Internal Administrators page loads without requiring any manual action",
+        "A list of admin cards is displayed automatically",
+        "A 'Showing X admins' count is visible indicating the total number of admins"
+      ],
+      "postconditions": "Admin list is fully loaded and visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_002",
+      "title": "Admin card displays admin name",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded with at least one admin.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the first admin card",
+        "Verify the admin name is displayed prominently on the card"
+      ],
+      "expectedResults": [
+        "Each admin card displays the admin's name as a heading (e.g., 'IvAdmin1', 'Admin Name')",
+        "The name is clearly visible and readable",
+        "The name is not empty or placeholder text"
+      ],
+      "postconditions": "Admin name is confirmed visible on the card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_003",
+      "title": "Admin card displays email ID",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the first admin card",
+        "Verify the email address is displayed below the admin name"
+      ],
+      "expectedResults": [
+        "Each admin card displays the admin's email address (e.g., 'aofted@mailto.plus')",
+        "The email is in valid format (contains @ and domain)",
+        "The email is clearly visible and not truncated"
+      ],
+      "postconditions": "Admin email is confirmed visible on the card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_004",
+      "title": "Admin card displays role label - Super Admin",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. At least one Super Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card with Super Admin role",
+        "Verify the role label is displayed"
+      ],
+      "expectedResults": [
+        "The admin card displays 'Super Admin' as the role label",
+        "The role label is clearly distinguishable from other card content",
+        "The role label is accurate for the admin's actual role"
+      ],
+      "postconditions": "Super Admin role label is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_005",
+      "title": "Admin card displays role label - Limited-Access Admin",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. At least one Limited-Access Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card with Limited-Access Admin role",
+        "Verify the role label is displayed"
+      ],
+      "expectedResults": [
+        "The admin card displays 'Limited Access Admin' as the role label",
+        "The role label is clearly distinguishable from other card content",
+        "The role label is accurate for the admin's actual role"
+      ],
+      "postconditions": "Limited-Access Admin role label is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_006",
+      "title": "Admin card displays Active status",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe any admin card",
+        "Verify the status indicator is displayed"
+      ],
+      "expectedResults": [
+        "Each admin card displays 'Active' as the status",
+        "The status is clearly visible on the card",
+        "The status text is readable and not obscured"
+      ],
+      "postconditions": "Active status is confirmed visible on admin cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_007",
+      "title": "Admin card displays assigned date",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card",
+        "Verify the assigned date is displayed"
+      ],
+      "expectedResults": [
+        "Each admin card displays 'Assigned:' followed by a date (e.g., 'Assigned:2026-05-19')",
+        "The date is in a recognizable format (YYYY-MM-DD)",
+        "The date is not empty or showing placeholder"
+      ],
+      "postconditions": "Assigned date is confirmed visible on admin cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_008",
+      "title": "Admin card displays assigned by information",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card",
+        "Verify the 'Assigned By' information is displayed"
+      ],
+      "expectedResults": [
+        "Each admin card displays 'Assigned By:' followed by the assigner's identifier (e.g., 'Assigned By:pv@mailto.plus' or 'Assigned By:System')",
+        "The assigner information is not empty",
+        "For system-created admins, it shows 'System'"
+      ],
+      "postconditions": "Assigned by information is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_009",
+      "title": "Admin card displays assigned permissions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded with at least one admin who has permissions assigned.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card (Limited-Access Admin)",
+        "Verify the permissions section is displayed"
+      ],
+      "expectedResults": [
+        "The admin card displays 'Permissions:' label",
+        "Permission tags are shown (e.g., 'Dashboard', 'Partner Management', 'Product Management')",
+        "For Super Admins, all permissions are listed (Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics)",
+        "For Limited-Access Admins, only assigned permissions are shown"
+      ],
+      "postconditions": "Permissions are confirmed visible on admin cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_010",
+      "title": "Admin role dropdown is visible on the page",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the filter/toolbar area above the admin list",
+        "Verify the 'All Roles' dropdown filter is visible"
+      ],
+      "expectedResults": [
+        "An 'All Roles' dropdown button is visible in the toolbar area",
+        "The dropdown is clickable",
+        "The dropdown indicates it can filter admins by role"
+      ],
+      "postconditions": "Role dropdown is confirmed visible and accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_011",
+      "title": "Edit Permissions button is available on each admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe each admin card",
+        "Verify the 'Edit Permissions' button is present on each card"
+      ],
+      "expectedResults": [
+        "Each admin card has an 'Edit Permissions' button",
+        "The button text reads 'Edit Permissions'",
+        "The button includes context about which admin (e.g., 'Edit permissions for IvAdmin1')",
+        "The button is clickable"
+      ],
+      "postconditions": "Edit Permissions button is confirmed on all admin cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_012",
+      "title": "Page displays correct admin count",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Multiple admins exist in the system.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the admin count indicator",
+        "Count the visible admin cards",
+        "Compare with the displayed count"
+      ],
+      "expectedResults": [
+        "A 'Showing X admins' text is displayed",
+        "The count matches the actual number of admin cards visible (or total if paginated)",
+        "If paginated, shows 'Showing X to Y of Z admins'"
+      ],
+      "postconditions": "Admin count is accurate",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_013",
+      "title": "Pagination works when admin list exceeds page limit",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. More admins exist than can fit on one page (e.g., more than 5).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the pagination controls at the bottom",
+        "Click 'Next' page button",
+        "Verify new admin cards are loaded",
+        "Click 'Previous' page button",
+        "Verify original admin cards are shown again"
+      ],
+      "expectedResults": [
+        "Pagination controls are visible (Previous, page numbers, Next)",
+        "Clicking 'Next' loads the next set of admin cards",
+        "Clicking 'Previous' returns to the previous set",
+        "Page number buttons allow direct navigation",
+        "'Previous' is disabled on the first page",
+        "The 'Showing X to Y of Z admins' text updates correctly"
+      ],
+      "postconditions": "Pagination navigates correctly through admin list",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_014",
+      "title": "Page heading and subtitle are correct",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the page heading area"
+      ],
+      "expectedResults": [
+        "Page heading displays 'User & Role Management'",
+        "Subtitle displays 'Manage admin roles, permissions, and access control'",
+        "The section header shows 'Internal Administrators' with description 'Manage Super Admins and Limited-Access Admins'"
+      ],
+      "postconditions": "Page headings are correct and informative",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_015",
+      "title": "Search input is visible and functional",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the search input field",
+        "Verify placeholder text is shown"
+      ],
+      "expectedResults": [
+        "A search input field is visible in the toolbar area",
+        "Placeholder text reads 'Search admins by name or email...'",
+        "The search field is editable"
+      ],
+      "postconditions": "Search input is confirmed visible and ready for use",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_016",
+      "title": "Add Internal Admin button is visible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the toolbar area",
+        "Verify the 'Add Internal Admin' button is present"
+      ],
+      "expectedResults": [
+        "An 'Add Internal Admin' button is visible in the toolbar",
+        "The button is clickable",
+        "The button has an icon and text label"
+      ],
+      "postconditions": "Add Internal Admin button is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_017",
+      "title": "Multiple admin cards display simultaneously",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Multiple admins exist (at least 3).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Wait for the admin list to load",
+        "Observe the layout of admin cards"
+      ],
+      "expectedResults": [
+        "Multiple admin cards are displayed on the page simultaneously",
+        "Each card is visually distinct and separated from others",
+        "Cards are arranged in a consistent layout (list or grid)",
+        "All cards show the same set of information fields"
+      ],
+      "postconditions": "Multiple admin cards are displayed correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_018",
+      "title": "Super Admin permissions show all modules",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. A Super Admin exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Super Admin card",
+        "Observe the permissions section"
+      ],
+      "expectedResults": [
+        "Super Admin card shows all available permissions: Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics",
+        "All 7 permission tags are visible"
+      ],
+      "postconditions": "Super Admin has full permissions displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_019",
+      "title": "Limited-Access Admin permissions show only assigned modules",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin with partial permissions exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Limited-Access Admin card",
+        "Observe the permissions section"
+      ],
+      "expectedResults": [
+        "Limited-Access Admin card shows only the specifically assigned permissions",
+        "The number of permission tags is less than the full set (fewer than 7)",
+        "Only the permissions that were explicitly assigned are shown"
+      ],
+      "postconditions": "Limited-Access Admin shows correct subset of permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_020",
+      "title": "Page refresh reloads admin list correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Admin list was previously loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Wait for admin list to load",
+        "Refresh the page (F5 or browser refresh)",
+        "Observe the page reload behavior"
+      ],
+      "expectedResults": [
+        "Page reloads and shows loading state briefly",
+        "Admin list loads again with the same data",
+        "No errors occur during reload",
+        "All admin cards are displayed correctly after refresh"
+      ],
+      "postconditions": "Page refresh works correctly without data loss",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_021",
+      "title": "Navigation to User & Roles from sidebar",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin and on the Admin Dashboard.",
+      "steps": [
+        "From the Admin Dashboard, locate the sidebar navigation",
+        "Click on 'User & Roles' link in the sidebar",
+        "Observe the page navigation"
+      ],
+      "expectedResults": [
+        "Clicking 'User & Roles' navigates to the User & Role Management page",
+        "The URL changes to /admin/users-roles",
+        "The 'User & Roles' link is highlighted/active in the sidebar",
+        "The Internal Administrators page content loads"
+      ],
+      "postconditions": "Navigation to User & Roles works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_UR_022",
+      "title": "Admin card layout consistency across different roles",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-583",
+      "preconditions": "User is logged in as Super Admin. Both Super Admin and Limited-Access Admin cards exist.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Compare a Super Admin card with a Limited-Access Admin card",
+        "Verify both have the same layout structure"
+      ],
+      "expectedResults": [
+        "Both card types have the same layout structure (name, email, role, status, dates, permissions, edit button)",
+        "The only differences are the role label text and the number of permission tags",
+        "Cards are visually consistent in size and spacing"
+      ],
+      "postconditions": "Card layout is consistent regardless of admin role",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
