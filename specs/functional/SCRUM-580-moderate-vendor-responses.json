@@ -1,0 +1,213 @@
+{
+  "jiraStory": "SCRUM-580",
+  "title": "Admin - Comment Moderation - Moderate Vendor Responses - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Moderate Vendor Responses feature on the Y4J platform. This feature allows Admins to moderate vendor responses separately from reviews, with distinct tagging, AI moderation rules applied, independent approve/reject actions, and approved responses becoming visible under the associated review. Covers tagging, AI moderation, admin actions, visibility, and independence from review moderation.",
+  "testCases": [
+    {
+      "id": "TC_VRESP_001",
+      "title": "Vendor responses are tagged distinctly from reviews",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. Both vendor responses and reviews exist in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor response card",
+        "Find a review card",
+        "Compare the content type tags"
+      ],
+      "expectedResults": [
+        "Vendor responses have a distinct 'Vendor Response' type tag",
+        "The tag is visually different from 'Review' and 'Query' tags",
+        "The tag clearly identifies the content as a vendor response",
+        "Admins can easily distinguish vendor responses from reviews at a glance"
+      ],
+      "postconditions": "Vendor response tagging is confirmed distinct",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_002",
+      "title": "AI moderation rules apply to vendor responses",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A vendor response with offensive/spam content has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor response that was flagged by AI moderation",
+        "Observe the flagging indicators"
+      ],
+      "expectedResults": [
+        "AI moderation rules (offensive language, spam detection, sentiment) apply to vendor responses",
+        "Flagged vendor responses show Device Matcher Notes",
+        "Offensive keywords are highlighted with red badges (if applicable)",
+        "The same AI rules that apply to reviews also apply to vendor responses"
+      ],
+      "postconditions": "AI moderation is confirmed applied to vendor responses",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_003",
+      "title": "Admin can approve vendor response independently",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A pending vendor response exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor response card with pending status",
+        "Click 'Approve' action",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "An 'Approve' action is available on vendor response cards",
+        "Clicking Approve changes the status to 'Approved'",
+        "The approval is independent of the associated review's status",
+        "A success notification may be displayed"
+      ],
+      "postconditions": "Vendor response is approved independently",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_004",
+      "title": "Admin can reject vendor response independently",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A pending vendor response exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor response card with pending status",
+        "Click 'Reject' action",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "A 'Reject' action is available on vendor response cards",
+        "Clicking Reject changes the status to 'Rejected'",
+        "The rejection is independent of the associated review's status",
+        "The vendor response is hidden from public view"
+      ],
+      "postconditions": "Vendor response is rejected independently",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_005",
+      "title": "Approved vendor response becomes visible under the review",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A vendor response has been approved. The associated review is also approved.",
+      "steps": [
+        "Approve a vendor response",
+        "Open a new browser/incognito window as a regular user",
+        "Navigate to the product page with the associated review",
+        "Observe if the vendor response appears under the review"
+      ],
+      "expectedResults": [
+        "The approved vendor response is visible under the associated review",
+        "The response is clearly labeled as from the vendor",
+        "The response text matches what was submitted",
+        "The response is positioned below/after the review it responds to"
+      ],
+      "postconditions": "Approved vendor response is publicly visible under the review",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_006",
+      "title": "Rejected vendor response is NOT visible under the review",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A vendor response has been rejected.",
+      "steps": [
+        "Reject a vendor response",
+        "Open a new browser/incognito window as a regular user",
+        "Navigate to the product page with the associated review",
+        "Observe if the vendor response appears"
+      ],
+      "expectedResults": [
+        "The rejected vendor response is NOT visible to public users",
+        "Only the review is shown (without the vendor response)",
+        "No trace of the rejected response is visible to users"
+      ],
+      "postconditions": "Rejected vendor response is confirmed hidden",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_007",
+      "title": "Vendor response moderation is independent from review moderation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A review and its vendor response both exist in moderation.",
+      "steps": [
+        "Find a review and its associated vendor response in the moderation queue",
+        "Approve the review",
+        "Observe the vendor response status — it should remain unchanged",
+        "Separately approve or reject the vendor response"
+      ],
+      "expectedResults": [
+        "Approving the review does NOT auto-approve the vendor response",
+        "The vendor response retains its own independent status",
+        "Each item must be moderated separately",
+        "Admin has full control over each piece of content independently"
+      ],
+      "postconditions": "Independence of moderation is confirmed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_008",
+      "title": "Vendor responses appear when filtering by 'Vendor Responses' type",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. Vendor responses exist in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Vendor Responses' from the content type filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Only vendor response cards are displayed",
+        "No reviews or queries are shown",
+        "Each card has the 'Vendor Response' type tag",
+        "The filter correctly isolates vendor responses"
+      ],
+      "postconditions": "Type filter works for vendor responses",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_009",
+      "title": "Vendor response card shows associated product and review context",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "User is logged in as Admin. A vendor response exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a vendor response card",
+        "Observe the card content"
+      ],
+      "expectedResults": [
+        "The card shows the vendor response text",
+        "The associated product name is displayed",
+        "The vendor's name/role is shown",
+        "Enough context is provided for the admin to make a moderation decision"
+      ],
+      "postconditions": "Vendor response card provides sufficient context",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_VRESP_010",
+      "title": "Pending vendor response is not visible to public users",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-580",
+      "preconditions": "A vendor response is in pending/needs review status (not yet approved).",
+      "steps": [
+        "Verify a vendor response is in pending status",
+        "Open a new browser as a regular user",
+        "Navigate to the product page with the associated review",
+        "Observe if the pending vendor response is visible"
+      ],
+      "expectedResults": [
+        "The pending vendor response is NOT visible to public users",
+        "Only approved vendor responses are shown publicly",
+        "The review is visible but without the pending response",
+        "Content remains hidden until admin approves"
+      ],
+      "postconditions": "Pending vendor responses are confirmed hidden from public",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
