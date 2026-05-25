@@ -21,7 +21,7 @@
         "Permission names are readable within the tags"
       ],
       "postconditions": "Permissions are confirmed displayed as tags",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_002",
@@ -42,7 +42,7 @@
         "The permissions section is consistently positioned across all cards"
       ],
       "postconditions": "Permissions section is present under every admin card",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_003",
@@ -120,7 +120,7 @@
         "All 7 tags are visible"
       ],
       "postconditions": "Super Admin shows full permission set",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_007",
@@ -140,7 +140,7 @@
         "Tags match what was configured for this admin"
       ],
       "postconditions": "Limited-Access Admin shows correct subset of permissions",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_008",
@@ -161,7 +161,7 @@
         "The card layout does not break with many tags"
       ],
       "postconditions": "UI handles many tags gracefully without breaking layout",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_009",
@@ -180,7 +180,7 @@
         "Users can understand the tags are permissions without ambiguity"
       ],
       "postconditions": "Permissions section has clear labeling",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_010",
@@ -202,7 +202,7 @@
         "The display is consistent and reliable"
       ],
       "postconditions": "Permission display is consistent across refreshes",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_011",
@@ -221,7 +221,7 @@
         "Tags are readable and not truncated"
       ],
       "postconditions": "Tag text is accurate and matches system module names",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_012",
@@ -241,7 +241,7 @@
         "Each admin card on every page shows its own correct permissions"
       ],
       "postconditions": "Permission tags work correctly across pagination",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_DISP_013",
@@ -262,7 +262,7 @@
         "Filtering does not hide or break the permissions display"
       ],
       "postconditions": "Permission tags display correctly with search/filter active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

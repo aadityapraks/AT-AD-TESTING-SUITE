@@ -21,7 +21,7 @@
         "The editor has a Save button and a way to close/cancel"
       ],
       "postconditions": "Permissions editor is open for the selected admin",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_002",
@@ -193,7 +193,7 @@
         "Re-opening the editor shows the original pre-selected permissions"
       ],
       "postconditions": "Changes are discarded when editor is closed without saving",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_010",
@@ -212,7 +212,7 @@
         "All buttons are clickable"
       ],
       "postconditions": "Edit Permissions button is confirmed on all cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_011",
