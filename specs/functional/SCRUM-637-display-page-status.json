@@ -1,0 +1,230 @@
+{
+  "jiraStory": "SCRUM-637",
+  "title": "Admin - Content Management - Display Page Status - Functional Test Plan",
+  "overview": "Functional testing of the Admin Content Management - Display Page Status feature on the Y4J platform. This feature displays publishing status labels (Published/Draft) on each informational page in the admin panel. Published pages are visible to users while Draft pages remain internal. Covers status display, visibility rules, consistency, and edge cases.",
+  "testCases": [
+    {
+      "id": "TC_STATUS_001",
+      "title": "Pages display status labels in the page list",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Content Management page is loaded with at least one page.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Observe the page list",
+        "Verify each page entry shows a status label"
+      ],
+      "expectedResults": [
+        "Each page in the list displays a status label",
+        "The status label is clearly visible (e.g., badge, tag, or text)",
+        "Status labels are either 'Published' or 'Draft'",
+        "No page is missing a status label"
+      ],
+      "postconditions": "Status labels are confirmed visible on all pages",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_002",
+      "title": "Published status label is displayed correctly",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. At least one published page exists.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Find a page with 'Published' status",
+        "Observe the status label"
+      ],
+      "expectedResults": [
+        "The page shows 'Published' as its status label",
+        "The label is visually distinct (e.g., green badge or specific styling)",
+        "The label text is readable and unambiguous",
+        "The status accurately reflects the page's publishing state"
+      ],
+      "postconditions": "Published status is confirmed displayed correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_003",
+      "title": "Draft status label is displayed correctly",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. At least one draft page exists.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Find a page with 'Draft' status",
+        "Observe the status label"
+      ],
+      "expectedResults": [
+        "The page shows 'Draft' as its status label",
+        "The label is visually distinct from 'Published' (e.g., different color or style)",
+        "The label text is readable and unambiguous",
+        "The status accurately reflects the page's draft state"
+      ],
+      "postconditions": "Draft status is confirmed displayed correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_004",
+      "title": "Published pages are visible to end users",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "A page with 'Published' status exists. The page has a known slug/URL.",
+      "steps": [
+        "Note the slug of a published page",
+        "Open a new browser/incognito window (as a regular user)",
+        "Navigate to the page URL using the slug",
+        "Observe the page content"
+      ],
+      "expectedResults": [
+        "The published page is accessible to regular users",
+        "The page content is displayed correctly",
+        "No login is required to view published pages",
+        "The page loads without errors"
+      ],
+      "postconditions": "Published pages are publicly accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_005",
+      "title": "Draft pages are NOT visible to end users",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "A page with 'Draft' status exists. The page has a known slug/URL.",
+      "steps": [
+        "Note the slug of a draft page",
+        "Open a new browser/incognito window (as a regular user)",
+        "Navigate to the page URL using the slug",
+        "Observe the response"
+      ],
+      "expectedResults": [
+        "The draft page is NOT accessible to regular users",
+        "A 404 error or 'Page not found' message is shown",
+        "OR the user is redirected away from the draft page",
+        "No draft content is exposed to non-admin users"
+      ],
+      "postconditions": "Draft pages are confirmed hidden from public",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_006",
+      "title": "Draft pages are visible in admin panel",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Draft pages exist.",
+      "steps": [
+        "Navigate to Content Management page as Admin",
+        "Observe the page list",
+        "Verify draft pages are visible in the admin list"
+      ],
+      "expectedResults": [
+        "Draft pages are visible in the admin Content Management list",
+        "They show 'Draft' status label",
+        "Admins can see, edit, and manage draft pages",
+        "Draft pages are only hidden from public users, not admins"
+      ],
+      "postconditions": "Draft pages are accessible to admins",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_007",
+      "title": "Status labels are consistent after page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Pages with various statuses are displayed.",
+      "steps": [
+        "Note the status of each page in the list",
+        "Refresh the browser page (F5)",
+        "Compare the statuses after refresh"
+      ],
+      "expectedResults": [
+        "After refresh, all status labels remain the same",
+        "No status changes occur without admin action",
+        "Statuses are loaded from the backend (not cached incorrectly)",
+        "The display is consistent and reliable"
+      ],
+      "postconditions": "Status labels are consistent across refreshes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_008",
+      "title": "Status updates correctly when page is published",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. A draft page exists.",
+      "steps": [
+        "Find a page with 'Draft' status",
+        "Publish the page (via edit or publish action)",
+        "Observe the status label after publishing"
+      ],
+      "expectedResults": [
+        "The status label changes from 'Draft' to 'Published'",
+        "The change is reflected immediately in the list",
+        "The page becomes accessible to public users",
+        "No page refresh is required to see the status change"
+      ],
+      "postconditions": "Status updates to Published after publishing",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_009",
+      "title": "Status labels are visually distinguishable from each other",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Both Published and Draft pages exist.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Observe a Published page status label",
+        "Observe a Draft page status label",
+        "Compare the visual styling"
+      ],
+      "expectedResults": [
+        "'Published' and 'Draft' labels are visually different (different colors, icons, or styles)",
+        "An admin can quickly distinguish between the two statuses at a glance",
+        "The distinction does not rely solely on color (text is different too)",
+        "Both labels are readable and clear"
+      ],
+      "postconditions": "Status labels are visually distinguishable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_010",
+      "title": "Status is displayed on paginated pages",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Page list has multiple pages (pagination).",
+      "steps": [
+        "Navigate to Content Management page",
+        "Verify status labels on page 1",
+        "Navigate to page 2 (if pagination exists)",
+        "Verify status labels on page 2"
+      ],
+      "expectedResults": [
+        "Status labels are displayed on all pages of the list",
+        "Each page entry shows its correct status regardless of pagination",
+        "No status labels are missing on subsequent pages"
+      ],
+      "postconditions": "Status labels work across pagination",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_STATUS_011",
+      "title": "Status is displayed when search/filter is applied",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-637",
+      "preconditions": "User is logged in as Admin. Search or filter functionality exists.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Apply a search or filter",
+        "Observe the filtered results",
+        "Verify status labels are still visible"
+      ],
+      "expectedResults": [
+        "Status labels remain visible on filtered/searched results",
+        "Filtering does not hide or break the status display",
+        "Each filtered page shows its correct status"
+      ],
+      "postconditions": "Status labels display correctly with filters",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

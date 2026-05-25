@@ -1,0 +1,272 @@
+{
+  "jiraStory": "SCRUM-550",
+  "title": "Admin - Comment Moderation - Filter by Status - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Filter by Status feature on the Y4J platform. This feature provides a status filter with options (All Status, Pending, Approved, Rejected) that dynamically updates the moderation list. 'Needs Review' and 'Vendor Flagged' items are grouped under 'Pending'. The filter works in combination with search. Covers filter options, dynamic updates, grouping logic, filter+search integration, and empty state.",
+  "testCases": [
+    {
+      "id": "TC_SFILTER_001",
+      "title": "Status filter is visible with correct options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Comment Moderation page is loaded.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Locate the status filter control",
+        "Click/open the filter to see available options"
+      ],
+      "expectedResults": [
+        "A status filter control is visible on the page",
+        "The filter shows four options: 'All Status', 'Pending', 'Approved', 'Rejected'",
+        "All options are selectable",
+        "The default selection is 'All Status'"
+      ],
+      "postconditions": "Status filter is confirmed visible with correct options",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_002",
+      "title": "Selecting 'All Status' shows all moderation items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with various statuses exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'All Status' from the filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "All moderation items are displayed regardless of status",
+        "Items with Pending, Approved, and Rejected statuses are all visible",
+        "The list is unfiltered",
+        "The count reflects the total number of items"
+      ],
+      "postconditions": "Full unfiltered list is displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_003",
+      "title": "Selecting 'Pending' shows only pending items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with 'Needs Review' or 'Vendor Flagged' status exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with pending-related statuses are displayed",
+        "Items with 'Needs Review' status are shown (grouped under Pending)",
+        "Items with 'Vendor Flagged' status are shown (grouped under Pending)",
+        "Items with 'Approved' or 'Rejected' status are NOT shown",
+        "The list updates dynamically without page reload"
+      ],
+      "postconditions": "Only pending items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_004",
+      "title": "Selecting 'Approved' shows only approved items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with 'Approved' status exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Approved' from the status filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with 'Approved' status are displayed",
+        "No 'Pending', 'Needs Review', 'Vendor Flagged', or 'Rejected' items are shown",
+        "Each visible card shows 'Approved' status badge",
+        "The list updates dynamically"
+      ],
+      "postconditions": "Only approved items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_005",
+      "title": "Selecting 'Rejected' shows only rejected items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with 'Rejected' status exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Rejected' from the status filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with 'Rejected' status are displayed",
+        "No 'Pending', 'Approved', or other status items are shown",
+        "Each visible card shows 'Rejected' status badge",
+        "The list updates dynamically"
+      ],
+      "postconditions": "Only rejected items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_006",
+      "title": "Selecting a filter updates the list immediately",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Note the current list state",
+        "Select a different status filter (e.g., 'Pending')",
+        "Observe the update behavior"
+      ],
+      "expectedResults": [
+        "The list updates immediately after selecting the filter",
+        "No page reload occurs",
+        "The transition is smooth (no flickering or delay)",
+        "The selected filter is visually indicated"
+      ],
+      "postconditions": "List updates immediately on filter change",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_007",
+      "title": "Needs Review items are grouped under Pending filter",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with 'Needs Review' status exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Look for items with 'Needs Review' status badge"
+      ],
+      "expectedResults": [
+        "Items with 'Needs Review' status are visible when 'Pending' filter is selected",
+        "These items are correctly grouped under the Pending category",
+        "They are NOT shown when 'Approved' or 'Rejected' filter is selected"
+      ],
+      "postconditions": "Needs Review is confirmed grouped under Pending",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_008",
+      "title": "Vendor Flagged items are grouped under Pending filter",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with 'Vendor Flagged' status exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Look for items with 'Vendor Flagged' status badge"
+      ],
+      "expectedResults": [
+        "Items with 'Vendor Flagged' status are visible when 'Pending' filter is selected",
+        "These items are correctly grouped under the Pending category",
+        "They are NOT shown when 'Approved' or 'Rejected' filter is selected"
+      ],
+      "postconditions": "Vendor Flagged is confirmed grouped under Pending",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_009",
+      "title": "Filter works along with search",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with various statuses and searchable content exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Type a search query in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results are filtered by BOTH the status filter AND the search query",
+        "Only items matching both criteria are shown",
+        "The search does not clear the status filter",
+        "The status filter does not clear the search",
+        "Combined filtering works correctly"
+      ],
+      "postconditions": "Filter + search combination works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_010",
+      "title": "Empty results for selected filter shows 'No results found'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. A filter combination that yields no results exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select a status filter that has no matching items",
+        "OR apply a filter + search combination that yields no results",
+        "Observe the page"
+      ],
+      "expectedResults": [
+        "No moderation cards are displayed",
+        "A 'No results found' message (or similar empty state) is shown",
+        "The message is clearly visible",
+        "The filter selection remains active",
+        "The user can change the filter to see results again"
+      ],
+      "postconditions": "Empty state is displayed for no-match filter",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_011",
+      "title": "Switching between filters updates results correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. Items with various statuses exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' filter — note the results",
+        "Switch to 'Approved' filter — note the results",
+        "Switch to 'Rejected' filter — note the results",
+        "Switch back to 'All Status'"
+      ],
+      "expectedResults": [
+        "Each filter switch updates the list immediately",
+        "Results are different for each filter (unless all items have the same status)",
+        "Switching back to 'All Status' restores the full list",
+        "No stale data from previous filter remains"
+      ],
+      "postconditions": "Filter switching works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_012",
+      "title": "Filter selection persists after page refresh",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin. A filter is selected.",
+      "steps": [
+        "Select 'Approved' from the status filter",
+        "Refresh the page (F5)",
+        "Observe the filter state"
+      ],
+      "expectedResults": [
+        "After refresh, the filter resets to 'All Status' (default behavior)",
+        "OR the filter persists (if state is maintained)",
+        "Either behavior is acceptable as long as it's consistent",
+        "The list matches the displayed filter state"
+      ],
+      "postconditions": "Filter state is consistent after refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_SFILTER_013",
+      "title": "Filter is visually highlighted when active",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-550",
+      "preconditions": "User is logged in as Admin.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the filter",
+        "Observe the filter control appearance"
+      ],
+      "expectedResults": [
+        "The selected filter option is visually highlighted or indicated",
+        "The admin can clearly see which filter is currently active",
+        "The selected state is distinguishable from unselected options"
+      ],
+      "postconditions": "Active filter is visually indicated",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

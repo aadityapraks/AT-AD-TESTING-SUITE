@@ -1,0 +1,355 @@
+{
+  "jiraStory": "SCRUM-544",
+  "title": "Admin - Comment Moderation - View List of Moderation Items - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - View List of Moderation Items feature on the Y4J platform. This feature displays all user queries, reviews, and vendor responses in a structured list with moderation cards showing author name, role tag, content type, date/time, product name, content text, report count badge, AI flags/Device Matcher Notes, and status badges. Covers card content, status display, conditional elements, and empty state.",
+  "testCases": [
+    {
+      "id": "TC_MOD_001",
+      "title": "Moderation card displays author name",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Comment Moderation page is loaded with at least one moderation item.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe a moderation card in the list",
+        "Locate the author name field"
+      ],
+      "expectedResults": [
+        "Each moderation card displays the author's name",
+        "The name is clearly visible and readable",
+        "The name is not empty or placeholder text"
+      ],
+      "postconditions": "Author name is confirmed visible on moderation cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_002",
+      "title": "Moderation card displays role tag (PwD / Caregiver / Vendor)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Moderation items from different user roles exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe moderation cards",
+        "Verify role tags are displayed"
+      ],
+      "expectedResults": [
+        "Each card displays a role tag indicating the author's role",
+        "Role tags include: 'PwD', 'Caregiver', or 'Vendor'",
+        "The role tag is visually distinct (badge, colored label, or tag)",
+        "The role tag accurately reflects the author's actual role"
+      ],
+      "postconditions": "Role tags are confirmed visible and accurate",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_003",
+      "title": "Moderation card displays content type (Query / Review / Vendor Response)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Different content types exist in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe moderation cards",
+        "Verify content type labels are displayed"
+      ],
+      "expectedResults": [
+        "Each card displays the content type",
+        "Content types include: 'Query', 'Review', or 'Vendor Response'",
+        "The content type is clearly labeled and distinguishable",
+        "The type accurately reflects the nature of the content"
+      ],
+      "postconditions": "Content types are confirmed visible and accurate",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_004",
+      "title": "Moderation card displays date and time",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe a moderation card",
+        "Locate the date and time field"
+      ],
+      "expectedResults": [
+        "Each card displays the date and time of the content",
+        "The date/time is in a recognizable format",
+        "The timestamp is not empty",
+        "The date represents when the content was submitted"
+      ],
+      "postconditions": "Date and time are confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_005",
+      "title": "Moderation card displays product name",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Moderation items associated with products exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe a moderation card",
+        "Locate the product name field"
+      ],
+      "expectedResults": [
+        "Each card displays the associated product name",
+        "The product name is clearly visible",
+        "The product name links to or identifies the relevant product"
+      ],
+      "postconditions": "Product name is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_006",
+      "title": "Moderation card displays content text",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Moderation items with content text exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe a moderation card",
+        "Locate the content text area"
+      ],
+      "expectedResults": [
+        "Each card displays the actual content text (query, review, or response)",
+        "The text is readable and not truncated (or has a 'show more' option)",
+        "The content matches what the user submitted"
+      ],
+      "postconditions": "Content text is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_007",
+      "title": "Report count badge is displayed when user reports exist",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with user reports exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card that has been reported by users",
+        "Observe the report count badge"
+      ],
+      "expectedResults": [
+        "A report count badge is displayed on the card",
+        "The badge shows the number of reports (e.g., '3 reports')",
+        "The badge is visually distinct (e.g., red badge, warning icon)",
+        "Cards without reports do NOT show the badge"
+      ],
+      "postconditions": "Report count badge is confirmed displayed conditionally",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_008",
+      "title": "Device Matcher Notes displayed when AI flags exist",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with AI flags/Device Matcher Notes exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card that has AI flags",
+        "Observe the Device Matcher Notes section"
+      ],
+      "expectedResults": [
+        "Device Matcher Notes are displayed on the card",
+        "The notes provide context about why the content was flagged",
+        "The notes are clearly labeled as AI/Device Matcher generated",
+        "Cards without AI flags do NOT show this section"
+      ],
+      "postconditions": "Device Matcher Notes are confirmed displayed conditionally",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_009",
+      "title": "Status badge shows 'Ready to Approve'",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Ready to Approve' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Ready to Approve' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays a 'Ready to Approve' status badge",
+        "The badge is visually distinct and clearly readable",
+        "The status accurately reflects the item's moderation state"
+      ],
+      "postconditions": "Ready to Approve status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_010",
+      "title": "Status badge shows 'Needs Review'",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Needs Review' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Needs Review' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays a 'Needs Review' status badge",
+        "The badge is visually distinct from other statuses",
+        "The status indicates the item requires admin attention"
+      ],
+      "postconditions": "Needs Review status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_011",
+      "title": "Status badge shows 'Vendor Flagged'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Vendor Flagged' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Vendor Flagged' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays a 'Vendor Flagged' status badge",
+        "The badge indicates the vendor has flagged this content",
+        "The badge is visually distinct from other statuses"
+      ],
+      "postconditions": "Vendor Flagged status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_012",
+      "title": "Status badge shows 'Device Matcher Blocked'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Device Matcher Blocked' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Device Matcher Blocked' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays a 'Device Matcher Blocked' status badge",
+        "The badge indicates AI/Device Matcher has blocked this content",
+        "The badge is visually distinct from other statuses"
+      ],
+      "postconditions": "Device Matcher Blocked status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_013",
+      "title": "Status badge shows 'Approved'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Approved' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Approved' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays an 'Approved' status badge",
+        "The badge indicates the content has been approved",
+        "The badge is visually distinct (e.g., green)"
+      ],
+      "postconditions": "Approved status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_014",
+      "title": "Status badge shows 'Rejected'",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. A moderation item with 'Rejected' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with 'Rejected' status",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The card displays a 'Rejected' status badge",
+        "The badge indicates the content has been rejected",
+        "The badge is visually distinct (e.g., red)"
+      ],
+      "postconditions": "Rejected status is confirmed displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_015",
+      "title": "Empty state shows 'No content' message",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. No moderation items exist (or all have been processed).",
+      "steps": [
+        "Navigate to Comment Moderation page when no items exist",
+        "Observe the page content"
+      ],
+      "expectedResults": [
+        "A 'No content' message (or similar empty state) is displayed",
+        "The message is clearly visible and informative",
+        "No broken UI or error is shown",
+        "The page layout remains intact"
+      ],
+      "postconditions": "Empty state is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_016",
+      "title": "All status badges are visually distinguishable from each other",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Items with different statuses exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe cards with different status badges",
+        "Compare the visual styling of each status"
+      ],
+      "expectedResults": [
+        "Each status badge has a unique visual style (different colors or icons)",
+        "An admin can quickly distinguish between statuses at a glance",
+        "Status labels are readable and unambiguous",
+        "The distinction does not rely solely on color (text is different too)"
+      ],
+      "postconditions": "Status badges are visually distinguishable",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_017",
+      "title": "Moderation list loads automatically",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe the page loading behavior"
+      ],
+      "expectedResults": [
+        "The moderation list loads automatically without manual action",
+        "A loading indicator may be shown briefly",
+        "Cards appear once data is loaded",
+        "No errors occur during loading"
+      ],
+      "postconditions": "Moderation list is loaded and visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_MOD_018",
+      "title": "Multiple moderation cards display simultaneously",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-544",
+      "preconditions": "User is logged in as Admin. Multiple moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe the list of moderation cards"
+      ],
+      "expectedResults": [
+        "Multiple moderation cards are displayed simultaneously",
+        "Each card is visually distinct and separated",
+        "Cards are arranged in a consistent layout",
+        "All cards show the same set of information fields"
+      ],
+      "postconditions": "Multiple cards are displayed correctly",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

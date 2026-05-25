@@ -1,0 +1,251 @@
+{
+  "jiraStory": "SCRUM-553",
+  "title": "Admin - Comment Moderation - Filter by Content Type - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Filter by Content Type feature on the Y4J platform. This feature provides a content type filter with options (All Types, Queries, Reviews, Vendor Responses) that shows only matching content when selected. The type tag is clearly displayed on each moderation card. Covers filter options, dynamic filtering, type tag display, and integration with other filters.",
+  "testCases": [
+    {
+      "id": "TC_TFILTER_001",
+      "title": "Content type filter is visible with correct options",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Comment Moderation page is loaded.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Locate the content type filter control",
+        "Click/open the filter to see available options"
+      ],
+      "expectedResults": [
+        "A content type filter control is visible on the page",
+        "The filter shows four options: 'All Types', 'Queries', 'Reviews', 'Vendor Responses'",
+        "All options are selectable",
+        "The default selection is 'All Types'"
+      ],
+      "postconditions": "Content type filter is confirmed visible with correct options",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_002",
+      "title": "Selecting 'All Types' shows all content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Items of different content types exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'All Types' from the content type filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "All moderation items are displayed regardless of content type",
+        "Queries, Reviews, and Vendor Responses are all visible",
+        "The list is unfiltered by type",
+        "The count reflects the total number of items"
+      ],
+      "postconditions": "Full unfiltered list is displayed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_003",
+      "title": "Selecting 'Queries' shows only query items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Query-type moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Queries' from the content type filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with 'Query' content type are displayed",
+        "No 'Review' or 'Vendor Response' items are shown",
+        "Each visible card shows a 'Query' type tag",
+        "The list updates dynamically without page reload"
+      ],
+      "postconditions": "Only query items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_004",
+      "title": "Selecting 'Reviews' shows only review items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Review-type moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Reviews' from the content type filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with 'Review' content type are displayed",
+        "No 'Query' or 'Vendor Response' items are shown",
+        "Each visible card shows a 'Review' type tag",
+        "The list updates dynamically"
+      ],
+      "postconditions": "Only review items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_005",
+      "title": "Selecting 'Vendor Responses' shows only vendor response items",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Vendor Response-type moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Vendor Responses' from the content type filter",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "Only items with 'Vendor Response' content type are displayed",
+        "No 'Query' or 'Review' items are shown",
+        "Each visible card shows a 'Vendor Response' type tag",
+        "The list updates dynamically"
+      ],
+      "postconditions": "Only vendor response items are visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_006",
+      "title": "Type tag is clearly displayed on each moderation card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Moderation items of different types exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Observe moderation cards",
+        "Verify each card has a visible type tag"
+      ],
+      "expectedResults": [
+        "Each moderation card displays a content type tag",
+        "The tag shows 'Query', 'Review', or 'Vendor Response'",
+        "The tag is visually distinct (badge, colored label, or tag element)",
+        "The tag is clearly readable and not obscured"
+      ],
+      "postconditions": "Type tags are confirmed visible on all cards",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_007",
+      "title": "Filter updates list immediately on selection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Note the current list",
+        "Select 'Queries' from the type filter",
+        "Observe the update speed"
+      ],
+      "expectedResults": [
+        "The list updates immediately after selection",
+        "No page reload occurs",
+        "The transition is smooth",
+        "The selected filter is visually indicated"
+      ],
+      "postconditions": "Immediate update is confirmed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_008",
+      "title": "Type filter works with status filter combined",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Items with various types and statuses exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Select 'Reviews' from the content type filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results are filtered by BOTH status AND content type",
+        "Only items that are 'Pending' AND 'Review' type are shown",
+        "Both filters are applied simultaneously",
+        "Neither filter overrides the other"
+      ],
+      "postconditions": "Combined type + status filtering works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_009",
+      "title": "Type filter works with search combined",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Queries' from the type filter",
+        "Type a search query in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results are filtered by BOTH the type filter AND the search query",
+        "Only query-type items matching the search are shown",
+        "The search respects the type filter",
+        "Combined filtering works correctly"
+      ],
+      "postconditions": "Type filter + search combination works",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_010",
+      "title": "Empty results for selected type shows empty state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. A type filter + other filter combination yields no results.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Apply filters that yield no results (e.g., type + status + search with no match)",
+        "Observe the page"
+      ],
+      "expectedResults": [
+        "No moderation cards are displayed",
+        "An empty state message is shown (e.g., 'No results found')",
+        "The filter selections remain active",
+        "The user can change filters to see results"
+      ],
+      "postconditions": "Empty state is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_011",
+      "title": "Switching between type filters updates correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Items of all types exist.",
+      "steps": [
+        "Select 'Queries' — note results",
+        "Switch to 'Reviews' — note results",
+        "Switch to 'Vendor Responses' — note results",
+        "Switch back to 'All Types'"
+      ],
+      "expectedResults": [
+        "Each switch updates the list immediately",
+        "Results are different for each type (assuming items of each type exist)",
+        "Switching to 'All Types' restores the full list",
+        "No stale data remains from previous filter"
+      ],
+      "postconditions": "Filter switching works correctly",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_TFILTER_012",
+      "title": "Type tags are visually distinguishable from each other",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-553",
+      "preconditions": "User is logged in as Admin. Items of different types exist.",
+      "steps": [
+        "Navigate to Comment Moderation page with 'All Types' selected",
+        "Observe cards with different type tags",
+        "Compare the visual styling"
+      ],
+      "expectedResults": [
+        "'Query', 'Review', and 'Vendor Response' tags are visually different",
+        "An admin can quickly distinguish between types at a glance",
+        "Tags may use different colors, icons, or styles",
+        "The distinction does not rely solely on color (text is different)"
+      ],
+      "postconditions": "Type tags are visually distinguishable",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

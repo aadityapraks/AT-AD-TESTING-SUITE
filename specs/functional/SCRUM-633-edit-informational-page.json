@@ -1,0 +1,271 @@
+{
+  "jiraStory": "SCRUM-633",
+  "title": "Admin - Content Management - Edit Informational Page - Functional Test Plan",
+  "overview": "Functional testing of the Admin Content Management - Edit Informational Page feature on the Y4J platform. This feature allows Admins to edit existing informational pages via a modal with pre-loaded Title and Content fields. Changes are saved with 'Save Changes' button, and the last updated date and admin name are automatically updated. Covers happy path, pre-loading, save behavior, metadata updates, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_EDIT_PAGE_001",
+      "title": "Clicking Edit opens the edit modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Content Management page is loaded with at least one existing informational page.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Find an existing informational page in the list",
+        "Click the 'Edit' button on that page",
+        "Observe the modal behavior"
+      ],
+      "expectedResults": [
+        "The 'Edit' button is visible on each page in the list",
+        "Clicking Edit opens an edit modal/dialog",
+        "The modal contains Page Title and Page Content fields",
+        "The modal has a 'Save Changes' button",
+        "The modal has a way to close/cancel"
+      ],
+      "postconditions": "Edit modal is open for the selected page",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_002",
+      "title": "Edit modal contains Page Title and Page Content fields",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open for an existing page.",
+      "steps": [
+        "Open the edit modal for any page",
+        "Observe the form fields present"
+      ],
+      "expectedResults": [
+        "A Page Title input field is present",
+        "A Page Content field is present (textarea or rich text editor)",
+        "Both fields have visible labels",
+        "A 'Save Changes' button is visible"
+      ],
+      "postconditions": "Both required fields are visible in the edit modal",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_003",
+      "title": "Existing content loads automatically in the edit modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. A page with known title and content exists.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Find a page with a known title (e.g., 'About Us')",
+        "Click Edit on that page",
+        "Observe the Title and Content fields in the modal"
+      ],
+      "expectedResults": [
+        "The Page Title field is pre-populated with the existing title",
+        "The Page Content field is pre-populated with the existing content",
+        "The pre-loaded data matches exactly what is displayed in the page list",
+        "No empty fields — existing data loads automatically"
+      ],
+      "postconditions": "Edit modal shows the current page data",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_004",
+      "title": "Admin can update the page title",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open with pre-loaded content.",
+      "steps": [
+        "Open the edit modal for a page",
+        "Clear the existing title",
+        "Enter a new title (e.g., 'Updated Page Title')",
+        "Click 'Save Changes'"
+      ],
+      "expectedResults": [
+        "The title field is editable",
+        "The new title can be entered",
+        "Save completes successfully",
+        "The page list shows the updated title"
+      ],
+      "postconditions": "Page title is updated in the list",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_005",
+      "title": "Admin can update the page content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open with pre-loaded content.",
+      "steps": [
+        "Open the edit modal for a page",
+        "Modify the existing content (add, remove, or change text)",
+        "Click 'Save Changes'"
+      ],
+      "expectedResults": [
+        "The content field is editable",
+        "Changes to content are accepted",
+        "Save completes successfully",
+        "The updated content is persisted"
+      ],
+      "postconditions": "Page content is updated",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_006",
+      "title": "Clicking Save Changes updates the page successfully",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open with changes made.",
+      "steps": [
+        "Make changes to the title or content",
+        "Click 'Save Changes' button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The save operation completes successfully",
+        "A success notification may be displayed",
+        "The modal closes after successful save",
+        "The page list reflects the updated content",
+        "No page refresh is required"
+      ],
+      "postconditions": "Page is updated and modal is closed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_007",
+      "title": "Last updated date is updated after save",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. A page has just been edited and saved.",
+      "steps": [
+        "Edit a page and save changes",
+        "Observe the page entry in the list",
+        "Check the 'Last Updated' date"
+      ],
+      "expectedResults": [
+        "The 'Last Updated' date shows today's date/time",
+        "The date is updated automatically by the system",
+        "The previous date is replaced with the current date",
+        "The date format is consistent with other entries"
+      ],
+      "postconditions": "Last updated date reflects the edit time",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_008",
+      "title": "Admin name is updated after save",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin (pv@mailto.plus). A page has just been edited and saved.",
+      "steps": [
+        "Edit a page and save changes",
+        "Observe the page entry in the list",
+        "Check the 'Last Updated By' or editor name field"
+      ],
+      "expectedResults": [
+        "The admin name/email who made the edit is displayed",
+        "It shows the current logged-in admin (e.g., 'pv@mailto.plus' or 'Admin Name')",
+        "The field is updated automatically by the system",
+        "It reflects who last edited the page"
+      ],
+      "postconditions": "Editor name reflects the current admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_009",
+      "title": "Closing modal without saving discards changes",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open with unsaved changes.",
+      "steps": [
+        "Open the edit modal for a page",
+        "Make changes to the title or content",
+        "Close the modal without clicking 'Save Changes' (click X, Escape, or Cancel)",
+        "Observe the page in the list"
+      ],
+      "expectedResults": [
+        "The modal closes without saving",
+        "The page in the list shows the original (unchanged) title and content",
+        "No changes are persisted to the backend",
+        "No error messages are shown",
+        "Re-opening the edit modal shows the original content"
+      ],
+      "postconditions": "Changes are discarded when modal is closed without saving",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_010",
+      "title": "Save fails due to network error - error notification shown",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open. Network/API is configured to fail.",
+      "steps": [
+        "Make changes to the page",
+        "Click 'Save Changes' (with network failure simulated)",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to save changes. Please try again.')",
+        "The modal remains open so the user can retry",
+        "The original page content is not corrupted",
+        "The user can attempt to save again after the error"
+      ],
+      "postconditions": "Network error is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_011",
+      "title": "Updated page persists after page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. A page has been edited and saved.",
+      "steps": [
+        "Edit a page and save changes",
+        "Refresh the browser page (F5)",
+        "Find the edited page in the list"
+      ],
+      "expectedResults": [
+        "After refresh, the page shows the updated title/content",
+        "The changes are persisted to the backend",
+        "The last updated date and admin name are still correct",
+        "No data loss occurs on refresh"
+      ],
+      "postconditions": "Edits persist across page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_012",
+      "title": "Title cannot be saved empty",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open.",
+      "steps": [
+        "Open the edit modal",
+        "Clear the title field completely",
+        "Click 'Save Changes'"
+      ],
+      "expectedResults": [
+        "The form does NOT submit with empty title",
+        "A validation error is displayed (e.g., 'Title is required')",
+        "The modal remains open for correction"
+      ],
+      "postconditions": "Empty title is rejected",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_PAGE_013",
+      "title": "Content cannot be saved empty",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-633",
+      "preconditions": "User is logged in as Admin. Edit modal is open.",
+      "steps": [
+        "Open the edit modal",
+        "Clear the content field completely",
+        "Click 'Save Changes'"
+      ],
+      "expectedResults": [
+        "The form does NOT submit with empty content",
+        "A validation error is displayed (e.g., 'Content is required')",
+        "The modal remains open for correction"
+      ],
+      "postconditions": "Empty content is rejected",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

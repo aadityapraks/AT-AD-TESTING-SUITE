@@ -1,0 +1,209 @@
+{
+  "jiraStory": "SCRUM-638",
+  "title": "Admin - Content Management - Track Page Update History - Functional Test Plan",
+  "overview": "Functional testing of the Admin Content Management - Track Page Update History feature on the Y4J platform. This feature displays page metadata showing the updated date and updated by admin name on each informational page for content accountability. Covers metadata display, accuracy, immutability, and consistency.",
+  "testCases": [
+    {
+      "id": "TC_HISTORY_001",
+      "title": "Page displays updated date",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Content Management page is loaded with at least one page that has been updated.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Observe a page entry in the list",
+        "Locate the 'Updated date' field"
+      ],
+      "expectedResults": [
+        "Each page entry displays an updated date",
+        "The date is in a recognizable format (e.g., 'YYYY-MM-DD' or 'May 25, 2026')",
+        "The date is not empty or showing placeholder text",
+        "The date represents when the page was last modified"
+      ],
+      "postconditions": "Updated date is confirmed visible on page entries",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_002",
+      "title": "Page displays updated by admin name",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Content Management page is loaded with at least one page.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Observe a page entry in the list",
+        "Locate the 'Updated by' field"
+      ],
+      "expectedResults": [
+        "Each page entry displays the name or email of the admin who last updated it",
+        "The admin identifier is not empty",
+        "The name/email corresponds to a valid admin in the system",
+        "The field clearly indicates who made the last change"
+      ],
+      "postconditions": "Updated by admin name is confirmed visible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_003",
+      "title": "Updated date changes after editing a page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. A page with a known previous update date exists.",
+      "steps": [
+        "Note the current 'Updated date' of a page",
+        "Edit the page (change title or content)",
+        "Save the changes",
+        "Observe the 'Updated date' after save"
+      ],
+      "expectedResults": [
+        "The 'Updated date' changes to today's date/time",
+        "The previous date is replaced with the current date",
+        "The update is reflected immediately in the list",
+        "The date is set automatically by the system"
+      ],
+      "postconditions": "Updated date reflects the latest edit",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_004",
+      "title": "Updated by admin name changes after editing a page",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin (pv@mailto.plus). A page exists that was previously updated by a different admin.",
+      "steps": [
+        "Find a page that was last updated by a different admin (or 'System')",
+        "Edit the page and save changes",
+        "Observe the 'Updated by' field"
+      ],
+      "expectedResults": [
+        "The 'Updated by' field now shows the current admin's name/email (e.g., 'pv@mailto.plus')",
+        "The previous admin name is replaced",
+        "The field is updated automatically by the system",
+        "It reflects who made the most recent change"
+      ],
+      "postconditions": "Updated by reflects the current admin",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_005",
+      "title": "Metadata persists after page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Pages with update metadata are displayed.",
+      "steps": [
+        "Note the 'Updated date' and 'Updated by' for a specific page",
+        "Refresh the browser page (F5)",
+        "Find the same page in the list",
+        "Compare the metadata"
+      ],
+      "expectedResults": [
+        "After refresh, the 'Updated date' is unchanged",
+        "After refresh, the 'Updated by' is unchanged",
+        "Data is loaded from the backend (persisted correctly)",
+        "No data loss occurs on refresh"
+      ],
+      "postconditions": "Metadata is consistent across refreshes",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_006",
+      "title": "Metadata is read-only (cannot be edited by admin)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Pages with metadata are displayed.",
+      "steps": [
+        "Observe the 'Updated date' and 'Updated by' fields on a page entry",
+        "Attempt to click on or interact with these fields",
+        "Open the edit modal and check if these fields are editable"
+      ],
+      "expectedResults": [
+        "The 'Updated date' is read-only (not clickable, not editable)",
+        "The 'Updated by' is read-only (not clickable, not editable)",
+        "No edit controls exist for these metadata fields",
+        "The edit modal does NOT allow changing update history",
+        "These fields are system-managed only"
+      ],
+      "postconditions": "Metadata is confirmed immutable via UI",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_007",
+      "title": "Date format is consistent across all pages",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Multiple pages are displayed.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Observe the 'Updated date' on multiple page entries",
+        "Compare the date formats"
+      ],
+      "expectedResults": [
+        "All pages use the same date format",
+        "No inconsistencies in formatting across entries",
+        "Dates are unambiguous and readable"
+      ],
+      "postconditions": "Date format is consistent",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_008",
+      "title": "Newly created page shows creation metadata",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. About to create a new page.",
+      "steps": [
+        "Create a new informational page",
+        "After creation, find the new page in the list",
+        "Observe the 'Updated date' and 'Updated by' fields"
+      ],
+      "expectedResults": [
+        "The new page shows today's date as the updated date",
+        "The 'Updated by' shows the current admin who created it",
+        "Metadata is set automatically upon creation",
+        "No manual entry is required"
+      ],
+      "postconditions": "New page has correct initial metadata",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_009",
+      "title": "Metadata is visible on paginated pages",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. Page list has multiple pages (pagination).",
+      "steps": [
+        "Navigate to Content Management page",
+        "Verify metadata on page 1 entries",
+        "Navigate to page 2 (if pagination exists)",
+        "Verify metadata on page 2 entries"
+      ],
+      "expectedResults": [
+        "Update metadata is displayed on all pages of the list",
+        "Each entry shows its own correct metadata",
+        "Pagination does not hide or break the metadata display"
+      ],
+      "postconditions": "Metadata works across pagination",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_HISTORY_010",
+      "title": "Metadata does not change when page status changes (Draft to Published)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-638",
+      "preconditions": "User is logged in as Admin. A draft page with known metadata exists.",
+      "steps": [
+        "Note the 'Updated date' and 'Updated by' for a draft page",
+        "Publish the page (change status from Draft to Published)",
+        "Observe the metadata after status change"
+      ],
+      "expectedResults": [
+        "If publishing counts as an update: metadata updates to current date/admin",
+        "If publishing is a separate action: metadata may or may not change (depends on implementation)",
+        "Either way, the metadata is consistent and accurate",
+        "No data corruption occurs"
+      ],
+      "postconditions": "Metadata is consistent after status change",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

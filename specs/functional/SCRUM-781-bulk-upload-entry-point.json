@@ -1,0 +1,207 @@
+{
+  "jiraStory": "SCRUM-781",
+  "title": "Admin - Partner Management - Bulk Upload Entry Point - Functional Test Plan",
+  "overview": "Functional testing of the Admin Partner Management - Bulk Upload Entry Point feature on the Y4J platform. This feature provides a 'Bulk Upload' button on the Partner Management screen that opens a bulk upload modal for uploading multiple vendors quickly. Covers button visibility, modal opening, upload flow, authorization, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_BULK_001",
+      "title": "Bulk Upload button is visible on Partner Management screen",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin (Super Admin). Partner Management page is loaded.",
+      "steps": [
+        "Navigate to Partner Management page from the sidebar",
+        "Observe the toolbar/action area on the page",
+        "Locate the 'Bulk Upload' button"
+      ],
+      "expectedResults": [
+        "The 'Bulk Upload' button is visible on the Partner Management page",
+        "The button is clearly labeled (text reads 'Bulk Upload' or similar)",
+        "The button is positioned in the toolbar/action area",
+        "The button is clickable and not disabled"
+      ],
+      "postconditions": "Bulk Upload button is confirmed visible and accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_002",
+      "title": "Clicking Bulk Upload opens the bulk upload modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Partner Management page is loaded with Bulk Upload button visible.",
+      "steps": [
+        "Navigate to Partner Management page",
+        "Click the 'Bulk Upload' button",
+        "Observe the modal behavior"
+      ],
+      "expectedResults": [
+        "Clicking the button opens a bulk upload modal/dialog",
+        "The modal is displayed over the page content",
+        "The modal contains upload-related UI elements (file input, instructions, etc.)",
+        "The modal has a title/heading indicating bulk upload purpose",
+        "The modal has a way to close/cancel"
+      ],
+      "postconditions": "Bulk upload modal is open and ready for use",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_003",
+      "title": "Modal follows the upload flow",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Bulk upload modal is open.",
+      "steps": [
+        "Open the bulk upload modal",
+        "Observe the upload flow elements",
+        "Verify the modal contains file selection/upload functionality"
+      ],
+      "expectedResults": [
+        "The modal contains a file upload area (drag-and-drop or file picker)",
+        "Instructions for the upload format are provided (e.g., CSV template, required columns)",
+        "An upload/submit button is available",
+        "The flow is clear and guides the admin through the bulk upload process"
+      ],
+      "postconditions": "Upload flow is accessible within the modal",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_004",
+      "title": "Bulk Upload button is hidden for unauthorized users",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as a Limited-Access Admin without Partner Management permission.",
+      "steps": [
+        "Log in as a Limited-Access Admin without bulk upload permission",
+        "Navigate to Partner Management page (if accessible)",
+        "Observe the toolbar/action area"
+      ],
+      "expectedResults": [
+        "The 'Bulk Upload' button is NOT visible for unauthorized users",
+        "OR the button is disabled/greyed out with appropriate tooltip",
+        "Unauthorized users cannot access the bulk upload functionality",
+        "No error occurs — the button is simply not rendered"
+      ],
+      "postconditions": "Unauthorized users cannot see or access Bulk Upload",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_005",
+      "title": "Modal can be closed without uploading",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Bulk upload modal is open.",
+      "steps": [
+        "Open the bulk upload modal",
+        "Close the modal without uploading (click X, press Escape, or click Cancel)",
+        "Observe the page state"
+      ],
+      "expectedResults": [
+        "The modal closes without performing any upload",
+        "No data is uploaded or modified",
+        "The Partner Management page returns to its normal state",
+        "No error messages are shown"
+      ],
+      "postconditions": "Modal is closed without side effects",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_006",
+      "title": "Bulk Upload button is keyboard accessible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Partner Management page is loaded.",
+      "steps": [
+        "Tab through the page to reach the Bulk Upload button",
+        "Verify the button receives focus",
+        "Press Enter or Space to activate the button"
+      ],
+      "expectedResults": [
+        "The Bulk Upload button is reachable via Tab key",
+        "A visible focus indicator appears on the button",
+        "Enter/Space opens the bulk upload modal",
+        "The button is fully keyboard accessible"
+      ],
+      "postconditions": "Button is confirmed keyboard accessible",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_007",
+      "title": "Modal handles failure to open gracefully",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. A condition exists that might prevent modal from opening (e.g., JavaScript error).",
+      "steps": [
+        "Click the Bulk Upload button under normal conditions",
+        "Verify the modal opens",
+        "If the modal fails to open, observe the error handling"
+      ],
+      "expectedResults": [
+        "Under normal conditions, the modal opens successfully",
+        "If a failure occurs, an error message is displayed (e.g., 'Unable to open upload dialog')",
+        "The page does not crash or become unresponsive",
+        "The user can retry by clicking the button again"
+      ],
+      "postconditions": "Modal failure is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_008",
+      "title": "Bulk Upload button does not conflict with other navigation",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Partner Management page is loaded.",
+      "steps": [
+        "Click the Bulk Upload button",
+        "Verify the modal opens (not a page navigation)",
+        "Close the modal",
+        "Verify the user is still on the Partner Management page"
+      ],
+      "expectedResults": [
+        "Clicking Bulk Upload opens a modal (not a new page or navigation)",
+        "The URL does not change when the modal opens",
+        "After closing the modal, the user remains on Partner Management",
+        "No navigation conflict occurs"
+      ],
+      "postconditions": "No navigation conflict with Bulk Upload",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_009",
+      "title": "Bulk Upload button is visible after page refresh",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Partner Management page is loaded.",
+      "steps": [
+        "Verify the Bulk Upload button is visible",
+        "Refresh the page (F5)",
+        "Verify the button is still visible after refresh"
+      ],
+      "expectedResults": [
+        "After page refresh, the Bulk Upload button remains visible",
+        "The button is functional after refresh",
+        "No rendering issues occur"
+      ],
+      "postconditions": "Button persists across page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_BULK_010",
+      "title": "Bulk Upload button has appropriate accessible name",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-781",
+      "preconditions": "User is logged in as Admin. Partner Management page is loaded.",
+      "steps": [
+        "Navigate to Partner Management page",
+        "Inspect the Bulk Upload button",
+        "Verify it has an accessible name for screen readers"
+      ],
+      "expectedResults": [
+        "The button has a clear accessible name (e.g., 'Bulk Upload' or 'Upload multiple vendors')",
+        "Screen readers can identify the button's purpose",
+        "The button has appropriate role='button' or is a <button> element"
+      ],
+      "postconditions": "Button is accessible to assistive technologies",
+      "testResult": "NOT RUN"
+    }
+  ]
+}
