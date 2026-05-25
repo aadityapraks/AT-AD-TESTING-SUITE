@@ -21,7 +21,7 @@
         "All management controls are visible (Add Internal Admin, Edit Permissions, role dropdown)"
       ],
       "postconditions": "Super Admin has full access to User & Roles module",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AUTH_002",
@@ -40,7 +40,7 @@
         "The Super Admin can fill in the form and create a new admin"
       ],
       "postconditions": "Super Admin can successfully add admins",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AUTH_003",
@@ -80,7 +80,7 @@
         "The Super Admin can modify and save permissions"
       ],
       "postconditions": "Super Admin can edit admin permissions",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AUTH_005",
