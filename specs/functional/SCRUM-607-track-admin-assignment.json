@@ -21,7 +21,7 @@
         "The date represents when the admin was assigned their role"
       ],
       "postconditions": "Assigned date is confirmed visible on the admin card",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_002",
@@ -41,7 +41,7 @@
         "The assigner represents the Super Admin who created/assigned this admin"
       ],
       "postconditions": "Assigned by information is confirmed visible on the admin card",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_003",
@@ -124,7 +124,7 @@
         "No data loss occurs on refresh"
       ],
       "postconditions": "Assignment data is consistent across page refreshes",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_007",
@@ -206,7 +206,7 @@
         "The field is clearly distinguishable from user-assigned admins"
       ],
       "postconditions": "System-created admins show appropriate assigner",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_011",
@@ -225,7 +225,7 @@
         "Dates are unambiguous (not DD/MM/YY which could be confused)"
       ],
       "postconditions": "Date format is consistent across all cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_012",
@@ -245,7 +245,7 @@
         "Each admin card shows its own unique assignment data"
       ],
       "postconditions": "Assignment details work correctly across pagination",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TRACK_013",
@@ -265,7 +265,7 @@
         "The data shown is correct for the filtered admins"
       ],
       "postconditions": "Assignment details display correctly with search/filter active",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }
