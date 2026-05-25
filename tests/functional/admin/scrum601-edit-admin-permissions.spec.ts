@@ -29,4 +29,12 @@ test.describe('SCRUM-601: Admin - Edit Admin Permissions', () => {
     await adminUserRolesPage.verifyEditDialogHasCheckboxes();
     await adminUserRolesPage.verifyUpdatePermissionsButtonVisible();
   });
+
+  test('TC_EDIT_010: Edit Permissions button is present on every admin card', async () => {
+    // Verify Edit Permissions button is visible
+    await adminUserRolesPage.verifyEditPermissionsButtonVisible();
+
+    // Verify all admin cards have the button
+    await adminUserRolesPage.verifyEditPermissionsButtonOnAllCards();
+  });
 });
