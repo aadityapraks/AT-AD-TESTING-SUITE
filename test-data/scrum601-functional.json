@@ -1,0 +1,12 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "dialogHeading": "Edit Permissions",
+    "adminName": "IvAdmin1",
+    "adminEmail": "aofted@mailto.plus"
+  }
+}

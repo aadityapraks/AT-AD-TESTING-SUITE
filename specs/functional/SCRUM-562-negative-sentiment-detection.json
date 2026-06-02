@@ -1,0 +1,208 @@
+{
+  "jiraStory": "SCRUM-562",
+  "title": "Admin - Comment Moderation - AI Negative Sentiment Detection - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - AI Negative Sentiment Detection feature on the Y4J platform. This system feature detects strong negative sentiment in user content, triggering 'Needs Review' status. Content is NOT auto-rejected based on sentiment alone — admin decision is always required. Covers detection behavior, status marking, admin decision requirement, and edge cases for genuine complaints and mixed reviews.",
+  "testCases": [
+    {
+      "id": "TC_SENT_001",
+      "title": "Negative keywords trigger 'Needs Review' status",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Content with strong negative sentiment has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with content containing strong negative keywords (e.g., 'terrible', 'worst', 'scam', 'dangerous')",
+        "Observe the status badge"
+      ],
+      "expectedResults": [
+        "The content with negative keywords shows 'Needs Review' status",
+        "The status is set automatically by the sentiment detection system",
+        "Device Matcher Notes may explain the negative sentiment detection",
+        "The item requires admin review before being published"
+      ],
+      "postconditions": "Negative sentiment content is confirmed flagged as Needs Review",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_002",
+      "title": "Content is NOT auto-rejected based on sentiment alone",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Content with negative sentiment has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content flagged for negative sentiment",
+        "Observe the status — verify it is NOT 'Rejected'"
+      ],
+      "expectedResults": [
+        "The flagged content shows 'Needs Review' status (NOT 'Rejected')",
+        "The system does NOT auto-reject content based on sentiment",
+        "The content remains in a pending state awaiting admin decision",
+        "No content is automatically removed without admin intervention"
+      ],
+      "postconditions": "No auto-rejection is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_003",
+      "title": "Admin decision is required for flagged content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Sentiment-flagged content exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a sentiment-flagged item",
+        "Verify both Approve and Reject actions are available",
+        "Verify the content stays in 'Needs Review' until admin acts"
+      ],
+      "expectedResults": [
+        "Both 'Approve' and 'Reject' actions are available on the card",
+        "The content remains in 'Needs Review' indefinitely until admin decides",
+        "No timeout or auto-action occurs",
+        "Admin must explicitly approve or reject"
+      ],
+      "postconditions": "Admin decision requirement is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_004",
+      "title": "Admin can approve negative sentiment content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. A sentiment-flagged item exists.",
+      "steps": [
+        "Find a sentiment-flagged item with 'Needs Review' status",
+        "Click 'Approve'",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The status changes to 'Approved'",
+        "The content becomes visible to users",
+        "The admin's approval overrides the sentiment flag",
+        "A success notification may be displayed"
+      ],
+      "postconditions": "Negative sentiment content is approved and visible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_005",
+      "title": "Admin can reject negative sentiment content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. A sentiment-flagged item exists.",
+      "steps": [
+        "Find a sentiment-flagged item with 'Needs Review' status",
+        "Click 'Reject'",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The status changes to 'Rejected'",
+        "The content remains hidden from users",
+        "The rejection is recorded",
+        "A success notification may be displayed"
+      ],
+      "postconditions": "Negative sentiment content is rejected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_006",
+      "title": "Genuine complaint is flagged but can be approved (edge case)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. A genuine complaint with negative language has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content that is a genuine complaint (e.g., 'This product broke after 2 days. Very disappointed with the quality.')",
+        "Observe if it was flagged",
+        "If flagged, approve it as legitimate feedback"
+      ],
+      "expectedResults": [
+        "Genuine complaints may be flagged for review (expected behavior)",
+        "The admin can read the content and determine it's a valid complaint",
+        "The admin can approve it, making it visible to users",
+        "The system correctly identifies it needs human review rather than auto-rejecting"
+      ],
+      "postconditions": "Genuine complaint handling is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_007",
+      "title": "Aggressive but valid feedback is handled correctly (edge case)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Aggressive but valid feedback has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content with aggressive tone but valid points (e.g., 'Absolutely terrible customer service! I waited 3 weeks and nobody responded!')",
+        "Observe the flagging and available actions"
+      ],
+      "expectedResults": [
+        "The aggressive content is flagged as 'Needs Review' (not auto-rejected)",
+        "The admin can review the content in context",
+        "The admin can approve it if the feedback is valid despite the tone",
+        "OR reject it if it crosses into abuse/harassment"
+      ],
+      "postconditions": "Aggressive but valid feedback handling is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_008",
+      "title": "Mixed positive and negative review is handled correctly (edge case)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. A mixed review has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content with mixed sentiment (e.g., 'Great product design but terrible battery life. Would not recommend for outdoor use.')",
+        "Observe if it was flagged and the status"
+      ],
+      "expectedResults": [
+        "Mixed reviews may or may not be flagged depending on the negative keyword strength",
+        "If flagged: admin can review and approve as balanced feedback",
+        "If not flagged: the system correctly identified it as acceptable mixed feedback",
+        "Either way, the content is not auto-rejected"
+      ],
+      "postconditions": "Mixed sentiment handling is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_009",
+      "title": "Positive content is not flagged by sentiment detection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Positive content exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find content with positive sentiment (e.g., 'Excellent product! Very helpful for my daily needs.')",
+        "Observe the status"
+      ],
+      "expectedResults": [
+        "Positive content is NOT flagged by the sentiment detection",
+        "It may have 'Ready to Approve' status (not 'Needs Review' from sentiment)",
+        "No false positives for positive content",
+        "The system correctly distinguishes positive from negative sentiment"
+      ],
+      "postconditions": "Positive content is confirmed not flagged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_SENT_010",
+      "title": "Sentiment-flagged items appear in Pending filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-562",
+      "preconditions": "User is logged in as Admin. Sentiment-flagged items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Sentiment-flagged items with 'Needs Review' status appear in the Pending filter",
+        "They are accessible for admin review",
+        "Device Matcher Notes (if present) explain the sentiment detection"
+      ],
+      "postconditions": "Flagged items are accessible via Pending filter",
+      "testResult": "PASS"
+    }
+  ]
+}

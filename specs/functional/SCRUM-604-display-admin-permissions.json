@@ -1,0 +1,268 @@
+{
+  "jiraStory": "SCRUM-604",
+  "title": "Admin - Display Admin Permissions - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Display Admin Permissions feature on the Y4J platform. This feature displays permissions as tags under each admin card, reflecting the latest permission settings. The edge case of UI overflow when too many permissions are assigned must also be handled gracefully. Covers tag display, positioning, data accuracy, dynamic updates, and overflow behavior.",
+  "testCases": [
+    {
+      "id": "TC_DISP_001",
+      "title": "Permissions are displayed as tags on admin cards",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with at least one admin who has permissions assigned.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe an admin card (Limited-Access Admin with assigned permissions)",
+        "Verify the permissions section on the card"
+      ],
+      "expectedResults": [
+        "Permissions are displayed as individual tags/badges (not plain text list)",
+        "Each permission is a separate visual tag element",
+        "Tags are visually distinct (e.g., colored badges, rounded chips, or bordered labels)",
+        "Permission names are readable within the tags"
+      ],
+      "postconditions": "Permissions are confirmed displayed as tags",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_002",
+      "title": "Permissions appear under each admin card",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Multiple admin cards are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the first admin card - check for permissions section",
+        "Observe the second admin card - check for permissions section",
+        "Observe additional admin cards"
+      ],
+      "expectedResults": [
+        "Every admin card has a 'Permissions:' section",
+        "The permissions section is positioned below/under the admin's other details (name, email, role, status, dates)",
+        "Each card independently shows its own permissions",
+        "The permissions section is consistently positioned across all cards"
+      ],
+      "postconditions": "Permissions section is present under every admin card",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_003",
+      "title": "Tags reflect latest permission settings - after creation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. About to create a new admin with specific permissions.",
+      "steps": [
+        "Create a new Limited-Access Admin with permissions: 'Dashboard', 'Partner Management', 'Product Management'",
+        "After creation, observe the new admin card in the list"
+      ],
+      "expectedResults": [
+        "The new admin card immediately shows 3 permission tags: Dashboard, Partner Management, Product Management",
+        "The tags match exactly what was selected during creation",
+        "No extra or missing permissions are shown"
+      ],
+      "postconditions": "Tags accurately reflect newly created permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DISP_004",
+      "title": "Tags reflect latest permission settings - after edit",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. An admin with permissions 'Dashboard', 'Partner Management' exists.",
+      "steps": [
+        "Find the admin card showing 'Dashboard' and 'Partner Management' tags",
+        "Click 'Edit Permissions' on that card",
+        "Add 'Analytics' permission and remove 'Dashboard'",
+        "Save the changes",
+        "Observe the admin card"
+      ],
+      "expectedResults": [
+        "After save, the admin card shows updated tags: 'Partner Management', 'Analytics'",
+        "'Dashboard' tag is no longer displayed",
+        "'Analytics' tag is now displayed",
+        "The update is immediate without page refresh"
+      ],
+      "postconditions": "Tags update immediately to reflect edited permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DISP_005",
+      "title": "Tags reflect latest permission settings - after role change",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin with partial permissions exists.",
+      "steps": [
+        "Find a Limited-Access Admin card with 2-3 permission tags",
+        "Change the admin's role to 'Super Admin'",
+        "Observe the permission tags on the card"
+      ],
+      "expectedResults": [
+        "After role change to Super Admin, all permission tags are displayed (all 7 modules)",
+        "The tags update automatically to reflect the new full-access role",
+        "No manual permission editing is needed"
+      ],
+      "postconditions": "Tags reflect full permissions after role upgrade",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_DISP_006",
+      "title": "Super Admin card shows all permission tags",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. A Super Admin card exists in the list.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Super Admin card",
+        "Count the permission tags displayed"
+      ],
+      "expectedResults": [
+        "Super Admin card shows all available permission tags",
+        "Tags include: Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics",
+        "All 7 tags are visible"
+      ],
+      "postconditions": "Super Admin shows full permission set",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_007",
+      "title": "Limited-Access Admin card shows only assigned permission tags",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin with 2 permissions exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find a Limited-Access Admin card",
+        "Observe the permission tags"
+      ],
+      "expectedResults": [
+        "Only the specifically assigned permissions are shown as tags",
+        "The number of tags is less than the full set (fewer than 7)",
+        "No unassigned permissions appear as tags",
+        "Tags match what was configured for this admin"
+      ],
+      "postconditions": "Limited-Access Admin shows correct subset of permissions",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_008",
+      "title": "UI handles overflow when all permissions are assigned (many tags)",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. An admin with all 7 permissions exists (Super Admin or Limited-Access with all selected).",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card with all 7 permission tags",
+        "Observe how the tags are displayed when there are many"
+      ],
+      "expectedResults": [
+        "All 7 permission tags are accessible (either all visible or reachable via overflow mechanism)",
+        "Tags wrap to multiple lines if needed (no horizontal overflow/clipping)",
+        "OR a 'show more' mechanism is provided if tags overflow",
+        "No tags are permanently hidden or cut off",
+        "The card layout does not break with many tags"
+      ],
+      "postconditions": "UI handles many tags gracefully without breaking layout",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_009",
+      "title": "Permission tags have a label prefix",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Admin cards with permissions are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe the permissions section on any admin card",
+        "Check for a label/prefix before the tags"
+      ],
+      "expectedResults": [
+        "The permissions section has a 'Permissions:' label before the tags",
+        "The label clearly identifies what the tags represent",
+        "Users can understand the tags are permissions without ambiguity"
+      ],
+      "postconditions": "Permissions section has clear labeling",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_010",
+      "title": "Permission tags are consistent across page refresh",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Admin cards with permissions are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Note the permissions shown on a specific admin card",
+        "Refresh the page (F5)",
+        "Find the same admin card",
+        "Compare the permissions"
+      ],
+      "expectedResults": [
+        "After refresh, the same permissions are displayed",
+        "No permissions are lost or added after refresh",
+        "Tags are loaded from the backend (not cached incorrectly)",
+        "The display is consistent and reliable"
+      ],
+      "postconditions": "Permission display is consistent across refreshes",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_011",
+      "title": "Permission tag text matches module names exactly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Admin cards with permissions are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Read the text of each permission tag on admin cards",
+        "Compare with the known module names in the system"
+      ],
+      "expectedResults": [
+        "Tag text matches the official module names (Dashboard, User Management, Partner Management, Product Management, Comment Moderation, Content Management, Analytics)",
+        "No typos or abbreviations in tag text",
+        "Tags are readable and not truncated"
+      ],
+      "postconditions": "Tag text is accurate and matches system module names",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_012",
+      "title": "Permission tags are visible on paginated pages",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Admin list has multiple pages.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Verify permission tags on page 1 admin cards",
+        "Navigate to page 2",
+        "Verify permission tags on page 2 admin cards"
+      ],
+      "expectedResults": [
+        "Permission tags are displayed on admin cards on all pages",
+        "Tags on page 2 are loaded correctly (not showing page 1 data)",
+        "Each admin card on every page shows its own correct permissions"
+      ],
+      "postconditions": "Permission tags work correctly across pagination",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_DISP_013",
+      "title": "Permission tags are visible when search/filter is applied",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-604",
+      "preconditions": "User is logged in as Super Admin. Admin list is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Apply a search query to filter admins",
+        "Observe the filtered admin cards",
+        "Apply a role filter",
+        "Observe the filtered admin cards"
+      ],
+      "expectedResults": [
+        "Permission tags remain visible on admin cards in search results",
+        "Permission tags remain visible on admin cards in filtered results",
+        "Filtering does not hide or break the permissions display"
+      ],
+      "postconditions": "Permission tags display correctly with search/filter active",
+      "testResult": "PASS"
+    }
+  ]
+}

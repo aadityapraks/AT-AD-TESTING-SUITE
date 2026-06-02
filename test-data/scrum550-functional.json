@@ -1,0 +1,16 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "inputs": {
+    "searchByProduct": "watch",
+    "searchNoResults": "xyznonexistent123"
+  },
+  "expected": {
+    "statusFilterOptions": ["Admin Review", "Vendor Flagged"],
+    "defaultFilter": "All Status",
+    "pageUrl": "/admin/comment-moderation"
+  }
+}

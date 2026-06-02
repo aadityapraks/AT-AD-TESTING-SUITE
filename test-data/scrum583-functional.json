@@ -1,0 +1,20 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "pageHeading": "User & Role Management",
+    "pageSubtitle": "Manage admin roles, permissions, and access control",
+    "sectionTitle": "Internal Administrators",
+    "sectionDescription": "Manage Super Admins and Limited-Access Admins",
+    "searchPlaceholder": "Search admins by name or email...",
+    "roleLabels": ["Super Admin", "Limited Access Admin"],
+    "statusText": "Active",
+    "adminNames": ["IvAdmin1", "IvAdmin4", "IvAdmin6"],
+    "adminEmails": ["aofted@mailto.plus", "dceaku@mailto.plus"],
+    "superAdminPermissions": ["Dashboard", "User Management", "Partner Management", "Product Management", "Comment Moderation", "Content Management", "Analytics"],
+    "pageUrl": "/admin/users-roles"
+  }
+}

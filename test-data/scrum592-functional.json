@@ -1,0 +1,20 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "modalHeading": "Add Internal Admin",
+    "modalSubtitle": "Add a new internal admin with specific roles and permissions",
+    "permissions": ["Dashboard", "Partner Management", "Product Management", "Comment Moderation", "User Management", "Content Management", "Analytics"]
+  },
+  "inputs": {
+    "validName": "TestAdmin",
+    "validEmail": "testadmin@mailto.plus",
+    "invalidEmail": "notanemail",
+    "duplicateEmail": "aofted@mailto.plus",
+    "nameWithNumbers": "Admin123",
+    "nameWithSpecialChars": "Jean-Pierre"
+  }
+}

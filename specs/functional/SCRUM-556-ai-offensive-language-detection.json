@@ -1,0 +1,252 @@
+{
+  "jiraStory": "SCRUM-556",
+  "title": "Admin - Comment Moderation - AI Offensive Language Detection - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - AI Offensive Language Detection feature on the Y4J platform. This system feature detects offensive or prohibited keywords in user content, highlights them as red badges, provides Device Matcher Notes explaining the flagging reason, marks content as 'Needs Review', and requires admin manual approval or rejection. Covers keyword highlighting, notes display, status marking, admin actions, and edge cases.",
+  "testCases": [
+    {
+      "id": "TC_AI_001",
+      "title": "Offensive keywords are highlighted as red badges",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. A moderation item with detected offensive keywords exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card that has been flagged for offensive language",
+        "Observe the content text area on the card"
+      ],
+      "expectedResults": [
+        "Offensive keywords within the content are highlighted",
+        "The highlighting uses red badges/tags to mark the offensive words",
+        "The badges are visually distinct from normal text",
+        "Multiple offensive words are each individually highlighted",
+        "The surrounding context text remains readable"
+      ],
+      "postconditions": "Offensive keywords are confirmed highlighted as red badges",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_002",
+      "title": "Device Matcher Notes explain the reason for flagging",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. A moderation item flagged by AI exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card flagged by the AI/Device Matcher",
+        "Locate the Device Matcher Notes section on the card"
+      ],
+      "expectedResults": [
+        "Device Matcher Notes are displayed on the flagged card",
+        "The notes explain WHY the content was flagged (e.g., 'Contains offensive language: [word]')",
+        "The explanation is clear and actionable for the admin",
+        "The notes are labeled as AI/Device Matcher generated"
+      ],
+      "postconditions": "Device Matcher Notes are confirmed visible with explanation",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_003",
+      "title": "Flagged content is marked as 'Needs Review'",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Content with offensive keywords has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card that was flagged by the AI system",
+        "Observe the status badge on the card"
+      ],
+      "expectedResults": [
+        "The flagged content shows 'Needs Review' status badge",
+        "The status is automatically set by the system (not manually)",
+        "The item appears when filtering by 'Pending' status",
+        "The status clearly indicates admin action is required"
+      ],
+      "postconditions": "Flagged content has 'Needs Review' status",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_004",
+      "title": "Admin can approve flagged content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. A flagged item with 'Needs Review' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a flagged item with 'Needs Review' status",
+        "Click the 'Approve' action button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "An 'Approve' action is available on the flagged card",
+        "Clicking Approve changes the status to 'Approved'",
+        "The content becomes visible to users after approval",
+        "A success notification may be displayed",
+        "The admin's decision overrides the AI flag"
+      ],
+      "postconditions": "Flagged content is approved and visible to users",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_005",
+      "title": "Admin can reject flagged content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. A flagged item with 'Needs Review' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a flagged item with 'Needs Review' status",
+        "Click the 'Reject' action button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "A 'Reject' action is available on the flagged card",
+        "Clicking Reject changes the status to 'Rejected'",
+        "The content remains hidden from users",
+        "A success notification may be displayed",
+        "The rejection is recorded"
+      ],
+      "postconditions": "Flagged content is rejected and hidden from users",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_006",
+      "title": "Admin must manually approve or reject - no auto-action",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Flagged content exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find flagged content",
+        "Verify the content remains in 'Needs Review' until admin takes action"
+      ],
+      "expectedResults": [
+        "Flagged content stays in 'Needs Review' indefinitely until admin acts",
+        "The system does NOT auto-approve or auto-reject flagged content",
+        "Manual admin intervention is required",
+        "The content is not visible to users while in 'Needs Review' state"
+      ],
+      "postconditions": "Manual approval/rejection is confirmed required",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_007",
+      "title": "Multiple offensive keywords are each highlighted individually",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Content with multiple offensive keywords exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with content containing multiple offensive words",
+        "Observe the highlighting"
+      ],
+      "expectedResults": [
+        "Each offensive keyword is individually highlighted with a red badge",
+        "Multiple badges appear if multiple words are flagged",
+        "The Device Matcher Notes may list all flagged words",
+        "Non-offensive words between flagged words are not highlighted"
+      ],
+      "postconditions": "Multiple keywords are individually highlighted",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_008",
+      "title": "Red badge styling is clearly visible and accessible",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Flagged content with red badges exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with red keyword badges",
+        "Observe the badge styling"
+      ],
+      "expectedResults": [
+        "Red badges have sufficient contrast against the background",
+        "The badge text (offensive word) is readable within the badge",
+        "The red color clearly indicates a warning/flag",
+        "The badges do not break the card layout"
+      ],
+      "postconditions": "Red badges are visually clear and accessible",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_009",
+      "title": "Flagged items appear in Pending filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. AI-flagged items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Select 'Pending' from the status filter",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "AI-flagged items with 'Needs Review' status appear in the Pending filter",
+        "They are grouped with other pending items",
+        "The flagged items show their red badges and Device Matcher Notes",
+        "They are distinguishable from non-AI-flagged pending items"
+      ],
+      "postconditions": "Flagged items are accessible via Pending filter",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_010",
+      "title": "Content without offensive keywords is not flagged",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Clean content (no offensive keywords) exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a card with clean content (no offensive language)",
+        "Observe the card"
+      ],
+      "expectedResults": [
+        "No red badges are displayed on clean content",
+        "No Device Matcher Notes section appears",
+        "The content may have 'Ready to Approve' status (not 'Needs Review' from AI)",
+        "The AI system correctly identifies non-offensive content"
+      ],
+      "postconditions": "Clean content is confirmed not flagged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_011",
+      "title": "Obfuscated offensive words are detected (edge case)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Content with obfuscated offensive words (e.g., 'sc@mmer') has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Look for content with obfuscated offensive words",
+        "Observe if the AI detected and flagged them"
+      ],
+      "expectedResults": [
+        "Obfuscated words (e.g., 'sc@mmer', 'h8te') are detected by the AI",
+        "They are highlighted with red badges",
+        "Device Matcher Notes explain the detection",
+        "OR if not detected, this is documented as a known limitation"
+      ],
+      "postconditions": "Obfuscated word detection is verified",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AI_012",
+      "title": "Mixed language abuse is detected (edge case)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-556",
+      "preconditions": "User is logged in as Admin. Content with mixed language offensive text has been submitted.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Look for content with mixed language abuse",
+        "Observe if the AI detected and flagged it"
+      ],
+      "expectedResults": [
+        "Mixed language offensive content is detected by the AI",
+        "It is flagged with appropriate badges and notes",
+        "OR if not detected, this is documented as a known limitation",
+        "The system handles multilingual content gracefully"
+      ],
+      "postconditions": "Mixed language detection is verified",
+      "testResult": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "jiraStory": "SCRUM-601",
+  "title": "Admin - Edit Admin Permissions - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Edit Admin Permissions feature on the Y4J platform. This feature allows Super Admins to edit existing admin permissions by clicking 'Edit Permissions' on an admin card, which opens a permissions editor with pre-selected existing permissions. Admins can add/remove permissions and save changes that reflect immediately on the admin card. Edge cases include removing all permissions (blocked) and permission update failure (resets to old permissions).",
+  "testCases": [
+    {
+      "id": "TC_EDIT_001",
+      "title": "Clicking 'Edit Permissions' opens the permissions editor",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with at least one admin card that has an 'Edit Permissions' button.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Locate an admin card with the 'Edit Permissions' button",
+        "Click the 'Edit Permissions' button"
+      ],
+      "expectedResults": [
+        "A permissions editor (modal/panel) opens",
+        "The editor displays permission checkboxes",
+        "The editor is associated with the correct admin (shows admin name or context)",
+        "The editor has a Save button and a way to close/cancel"
+      ],
+      "postconditions": "Permissions editor is open for the selected admin",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_002",
+      "title": "Existing permissions are pre-selected in the editor",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. An admin with permissions 'Dashboard', 'Partner Management', 'Product Management' exists.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find the admin card showing permissions: Dashboard, Partner Management, Product Management",
+        "Click 'Edit Permissions' on that card",
+        "Observe the checkbox states in the editor"
+      ],
+      "expectedResults": [
+        "'Dashboard' checkbox is pre-checked",
+        "'Partner Management' checkbox is pre-checked",
+        "'Product Management' checkbox is pre-checked",
+        "All other permission checkboxes are unchecked",
+        "The pre-selected state matches exactly what is shown on the admin card"
+      ],
+      "postconditions": "Editor shows correct pre-selected permissions",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_003",
+      "title": "Admin can add new permissions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open for an admin with partial permissions.",
+      "steps": [
+        "Open the permissions editor for an admin with 'Dashboard' and 'Partner Management' only",
+        "Check the 'Analytics' checkbox (adding a new permission)",
+        "Check the 'Comment Moderation' checkbox (adding another)",
+        "Click Save"
+      ],
+      "expectedResults": [
+        "The new checkboxes become checked when clicked",
+        "Save completes successfully",
+        "The admin card now shows 4 permissions: Dashboard, Partner Management, Analytics, Comment Moderation",
+        "A success notification may be displayed"
+      ],
+      "postconditions": "New permissions are added and visible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_004",
+      "title": "Admin can remove existing permissions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open for an admin with multiple permissions.",
+      "steps": [
+        "Open the permissions editor for an admin with 'Dashboard', 'Partner Management', 'Product Management'",
+        "Uncheck the 'Product Management' checkbox (removing a permission)",
+        "Click Save"
+      ],
+      "expectedResults": [
+        "The 'Product Management' checkbox becomes unchecked",
+        "Save completes successfully",
+        "The admin card now shows only 2 permissions: Dashboard, Partner Management",
+        "'Product Management' is no longer displayed on the card"
+      ],
+      "postconditions": "Permission is removed and no longer visible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_005",
+      "title": "Clicking Save updates permissions immediately",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open with changes made.",
+      "steps": [
+        "Open the permissions editor",
+        "Make changes (add or remove permissions)",
+        "Click the Save button",
+        "Observe the admin card immediately after save"
+      ],
+      "expectedResults": [
+        "The editor closes after successful save",
+        "The admin card updates immediately to reflect the new permissions",
+        "No page refresh is required",
+        "The updated permissions are visible as tags on the card",
+        "A success notification may appear"
+      ],
+      "postconditions": "Permissions are updated immediately on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_006",
+      "title": "Updated permissions reflect in admin card after save",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions have just been updated for an admin.",
+      "steps": [
+        "Edit an admin's permissions (add 'Analytics', remove 'Dashboard')",
+        "Save the changes",
+        "Observe the admin card",
+        "Refresh the page",
+        "Observe the admin card again"
+      ],
+      "expectedResults": [
+        "Immediately after save: card shows updated permissions (Analytics present, Dashboard removed)",
+        "After page refresh: card still shows the same updated permissions",
+        "The change is persisted to the backend",
+        "The permissions count on the card matches the number of selected permissions"
+      ],
+      "postconditions": "Updated permissions persist across page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_007",
+      "title": "Cannot save with all permissions removed - validation blocks save",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open for an admin.",
+      "steps": [
+        "Open the permissions editor for an admin with some permissions",
+        "Uncheck ALL permission checkboxes (remove all)",
+        "Attempt to click Save"
+      ],
+      "expectedResults": [
+        "The Save button is disabled OR clicking Save shows a validation error",
+        "Error message states: 'At least one permission must be selected' (or similar)",
+        "The editor remains open for the user to correct",
+        "No changes are saved to the backend",
+        "The admin card retains its original permissions"
+      ],
+      "postconditions": "Save is blocked when all permissions are removed",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_008",
+      "title": "Permission update failure resets to old permissions",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Backend API is configured to fail on permission update.",
+      "steps": [
+        "Open the permissions editor for an admin with 'Dashboard', 'Partner Management'",
+        "Add 'Analytics' permission",
+        "Click Save (with API failure simulated)",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to update permissions. Reverting to previous settings.')",
+        "The permission checkboxes reset to the original state (Dashboard, Partner Management only)",
+        "The admin card still shows the original permissions (no change)",
+        "'Analytics' is NOT shown on the card",
+        "The user can retry the save"
+      ],
+      "postconditions": "Permissions revert to original state on API failure",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_009",
+      "title": "Closing editor without saving discards changes",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open with unsaved changes.",
+      "steps": [
+        "Open the permissions editor",
+        "Make changes (add/remove some permissions)",
+        "Close the editor without clicking Save (click X, press Escape, or click outside)",
+        "Observe the admin card"
+      ],
+      "expectedResults": [
+        "The editor closes without saving",
+        "The admin card shows the original permissions (unchanged)",
+        "No changes are persisted to the backend",
+        "No error messages appear",
+        "Re-opening the editor shows the original pre-selected permissions"
+      ],
+      "postconditions": "Changes are discarded when editor is closed without saving",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_010",
+      "title": "Edit Permissions button is present on every admin card",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Multiple admin cards are displayed.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Observe each admin card in the list",
+        "Verify the 'Edit Permissions' button is present on each card"
+      ],
+      "expectedResults": [
+        "Every admin card (both Super Admin and Limited-Access Admin) has an 'Edit Permissions' button",
+        "The button text includes context (e.g., 'Edit permissions for IvAdmin1')",
+        "All buttons are clickable"
+      ],
+      "postconditions": "Edit Permissions button is confirmed on all cards",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_EDIT_011",
+      "title": "Editing Super Admin permissions shows all permissions pre-selected",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. A Super Admin card exists in the list.",
+      "steps": [
+        "Find a Super Admin card",
+        "Click 'Edit Permissions' on that card",
+        "Observe the checkbox states"
+      ],
+      "expectedResults": [
+        "All permission checkboxes are pre-checked (all 7-8 permissions selected)",
+        "This reflects the Super Admin's full access",
+        "Checkboxes may be editable or locked depending on implementation"
+      ],
+      "postconditions": "Super Admin shows all permissions pre-selected in editor",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_012",
+      "title": "Save button is only enabled when changes are made",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Permissions editor is open with no changes made.",
+      "steps": [
+        "Open the permissions editor",
+        "Do NOT make any changes",
+        "Observe the Save button state",
+        "Make a change (check/uncheck a permission)",
+        "Observe the Save button state again"
+      ],
+      "expectedResults": [
+        "With no changes: Save button may be disabled or clicking it does nothing",
+        "After making a change: Save button becomes enabled/active",
+        "OR Save is always enabled but shows 'No changes to save' if clicked without changes"
+      ],
+      "postconditions": "Save button state reflects whether changes exist",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_013",
+      "title": "Multiple rapid edits and saves work correctly",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. An admin card is available for editing.",
+      "steps": [
+        "Edit permissions for an admin - add 'Analytics' - Save",
+        "Immediately edit again - add 'Content Management' - Save",
+        "Immediately edit again - remove 'Analytics' - Save",
+        "Observe the final state on the admin card"
+      ],
+      "expectedResults": [
+        "Each save operation completes successfully",
+        "The final admin card shows the correct cumulative result",
+        "No race conditions or data corruption occurs",
+        "Each edit starts with the latest saved state"
+      ],
+      "postconditions": "Multiple sequential edits produce correct final state",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_014",
+      "title": "Permissions update is reflected in search and filter results",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. An admin's permissions have been updated.",
+      "steps": [
+        "Edit an admin's permissions and save",
+        "Use the search to find that admin",
+        "Verify the updated permissions are shown in search results",
+        "Apply a role filter and verify the admin card shows updated permissions"
+      ],
+      "expectedResults": [
+        "Search results show the admin with updated permissions",
+        "Filtered views also reflect the updated permissions",
+        "The change is consistent across all views of the admin card"
+      ],
+      "postconditions": "Permission updates are consistent across all views",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_EDIT_015",
+      "title": "Edit permissions for admin on page 2 (pagination)",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-601",
+      "preconditions": "User is logged in as Super Admin. Admin list has multiple pages.",
+      "steps": [
+        "Navigate to page 2 of the admin list",
+        "Click 'Edit Permissions' on an admin card on page 2",
+        "Make changes and save",
+        "Observe the admin card on page 2"
+      ],
+      "expectedResults": [
+        "The permissions editor opens correctly for admins on page 2",
+        "Save works correctly",
+        "The admin card on page 2 updates with new permissions",
+        "User remains on page 2 after save (not redirected to page 1)"
+      ],
+      "postconditions": "Edit works correctly on paginated pages",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

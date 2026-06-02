@@ -1,0 +1,13 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "inputs": {},
+  "expected": {
+    "pageHeading": "Content Management",
+    "activeStatus": "Active",
+    "pageUrl": "/admin/content-management"
+  }
+}

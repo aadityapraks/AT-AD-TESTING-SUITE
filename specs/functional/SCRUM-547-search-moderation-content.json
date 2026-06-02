@@ -1,0 +1,289 @@
+{
+  "jiraStory": "SCRUM-547",
+  "title": "Admin - Comment Moderation - Search Moderation Content - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Search Moderation Content feature on the Y4J platform. This feature allows Admins to search moderation items by author, product, or content text with partial text match (from 3 characters), working across all content types and respecting selected filters. Covers search functionality, partial matching, filter integration, edge cases, and empty state.",
+  "testCases": [
+    {
+      "id": "TC_MSEARCH_001",
+      "title": "Search input is visible and accepts text",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Comment Moderation page is loaded.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Locate the search input field",
+        "Click on the search field",
+        "Type text (e.g., 'test')"
+      ],
+      "expectedResults": [
+        "A search input field is visible on the page",
+        "The field is clickable and gains focus",
+        "Typed text appears in the field",
+        "The field has a placeholder indicating search purpose"
+      ],
+      "postconditions": "Search input is confirmed functional",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_002",
+      "title": "Search by author name returns matching results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items with known author names exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type an author name (3+ characters) in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results filter to show only items matching the author name",
+        "Matching cards display the searched author name",
+        "Non-matching items are hidden",
+        "The result count updates"
+      ],
+      "postconditions": "Search by author returns correct results",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_003",
+      "title": "Search by product name returns matching results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items associated with known products exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a product name (3+ characters) in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results filter to show only items matching the product name",
+        "Matching cards display the searched product name",
+        "Non-matching items are hidden"
+      ],
+      "postconditions": "Search by product returns correct results",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_004",
+      "title": "Search by content text returns matching results",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items with known content text exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a phrase from content text (3+ characters) in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results filter to show items whose content contains the search text",
+        "Matching cards display content containing the searched phrase",
+        "Non-matching items are hidden"
+      ],
+      "postconditions": "Search by content text returns correct results",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_005",
+      "title": "Search supports partial text match from 3 characters",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type 2 characters in the search field",
+        "Observe if filtering starts",
+        "Type a 3rd character",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "At 2 characters, no filtering occurs (or full list remains)",
+        "At 3 characters, results begin filtering dynamically",
+        "Partial matches are returned (not just exact matches)",
+        "Results narrow as more characters are typed"
+      ],
+      "postconditions": "Partial match from 3 characters is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_006",
+      "title": "Search works across all content types (Query, Review, Vendor Response)",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Items of different content types exist with similar text.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a search query that matches items across different content types",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results include matching items from Queries, Reviews, AND Vendor Responses",
+        "Search is not limited to a single content type",
+        "All matching items regardless of type are displayed"
+      ],
+      "postconditions": "Cross-type search is confirmed working",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_007",
+      "title": "Search respects selected status filter",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Status filter is applied (e.g., 'Needs Review').",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Apply a status filter (e.g., 'Needs Review')",
+        "Type a search query in the search field",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results are filtered by BOTH the status filter AND the search query",
+        "Only items matching both criteria are shown",
+        "The search does not override or clear the status filter",
+        "Combined filtering works correctly"
+      ],
+      "postconditions": "Search + status filter combination works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_008",
+      "title": "Search respects selected content type filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Content type filter is applied (e.g., 'Reviews only').",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Apply a content type filter (e.g., 'Reviews')",
+        "Type a search query",
+        "Observe the results"
+      ],
+      "expectedResults": [
+        "Results are filtered by BOTH the type filter AND the search query",
+        "Only items matching both criteria are shown",
+        "The search respects the type filter"
+      ],
+      "postconditions": "Search + type filter combination works",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_009",
+      "title": "No results found shows empty state",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a search query that matches no items (e.g., 'xyznonexistent123')",
+        "Observe the page"
+      ],
+      "expectedResults": [
+        "No moderation cards are displayed",
+        "An empty state message is shown (e.g., 'No results found')",
+        "The message is clearly visible",
+        "The search field still contains the typed query"
+      ],
+      "postconditions": "Empty state is displayed for no-match search",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_010",
+      "title": "Special characters in search are supported",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type special characters in the search field (e.g., '@', '#', '&', '!')",
+        "Observe the behavior"
+      ],
+      "expectedResults": [
+        "Special characters are accepted in the search field",
+        "No errors or crashes occur",
+        "Results are filtered based on the special character search",
+        "The search handles special characters gracefully"
+      ],
+      "postconditions": "Special characters are handled correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_011",
+      "title": "Very long search query is supported",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a very long search query (100+ characters)",
+        "Observe the behavior"
+      ],
+      "expectedResults": [
+        "The long query is accepted in the search field",
+        "No errors or crashes occur",
+        "Results are filtered (or empty state shown if no match)",
+        "The search field handles long input gracefully"
+      ],
+      "postconditions": "Long search queries are handled correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_012",
+      "title": "Clearing search restores full list",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Search has been performed with filtered results.",
+      "steps": [
+        "Perform a search that filters results",
+        "Clear the search field (select all + delete or clear button)",
+        "Observe the moderation list"
+      ],
+      "expectedResults": [
+        "After clearing search, the full moderation list is restored",
+        "All items that were previously visible are shown again",
+        "No page refresh is required",
+        "Any active filters (status/type) remain applied"
+      ],
+      "postconditions": "Full list is restored after clearing search",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_013",
+      "title": "Search is case-insensitive",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items with known text exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type a search query in lowercase",
+        "Note the results",
+        "Clear and type the same query in uppercase",
+        "Compare the results"
+      ],
+      "expectedResults": [
+        "Both lowercase and uppercase searches return the same results",
+        "Search is case-insensitive",
+        "Mixed case also returns the same results"
+      ],
+      "postconditions": "Case-insensitive search is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_MSEARCH_014",
+      "title": "Search results update dynamically as user types",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-547",
+      "preconditions": "User is logged in as Admin. Moderation items exist.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Type characters one at a time in the search field (starting from 3rd character)",
+        "Observe the results updating"
+      ],
+      "expectedResults": [
+        "Results update dynamically as each character is typed (after 3 chars)",
+        "No page reload occurs",
+        "Results narrow progressively with more characters",
+        "The filtering is real-time"
+      ],
+      "postconditions": "Dynamic filtering is confirmed",
+      "testResult": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "jiraStory": "SCRUM-610",
+  "title": "Admin - Prevent Unauthorized Access - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Prevent Unauthorized Access feature on the Y4J platform. This feature restricts admin management actions (add admins, edit roles, edit permissions) to Super Admins only. Limited-access admins cannot access the User & Roles module, and unauthorized access returns an error message. Edge cases include manual URL entry, token expiration, and permission mismatch due to caching.",
+  "testCases": [
+    {
+      "id": "TC_AUTH_001",
+      "title": "Super Admin can access User & Roles module",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin.",
+      "steps": [
+        "Log in as Super Admin (pv@mailto.plus)",
+        "Navigate to User & Roles from the sidebar",
+        "Observe the page"
+      ],
+      "expectedResults": [
+        "The User & Roles page loads successfully",
+        "The admin list is displayed",
+        "No access denied error is shown",
+        "All management controls are visible (Add Internal Admin, Edit Permissions, role dropdown)"
+      ],
+      "postconditions": "Super Admin has full access to User & Roles module",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AUTH_002",
+      "title": "Super Admin can add admins",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Click 'Add Internal Admin' button",
+        "Verify the modal opens"
+      ],
+      "expectedResults": [
+        "The 'Add Internal Admin' button is visible and clickable",
+        "Clicking it opens the Add Internal Admin modal",
+        "The Super Admin can fill in the form and create a new admin"
+      ],
+      "postconditions": "Super Admin can successfully add admins",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AUTH_003",
+      "title": "Super Admin can edit roles",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with admin cards.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card with a role dropdown",
+        "Click the role dropdown",
+        "Verify role options are available"
+      ],
+      "expectedResults": [
+        "The role dropdown is visible and interactive on admin cards",
+        "Clicking it shows role options (Super Admin, Limited-Access Admin)",
+        "The Super Admin can change an admin's role"
+      ],
+      "postconditions": "Super Admin can edit admin roles",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_004",
+      "title": "Super Admin can edit permissions",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin. User & Roles page is loaded with admin cards.",
+      "steps": [
+        "Navigate to User & Roles page",
+        "Find an admin card with 'Edit Permissions' button",
+        "Click 'Edit Permissions'",
+        "Verify the permissions editor opens"
+      ],
+      "expectedResults": [
+        "The 'Edit Permissions' button is visible on admin cards",
+        "Clicking it opens the permissions editor",
+        "The Super Admin can modify and save permissions"
+      ],
+      "postconditions": "Super Admin can edit admin permissions",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_AUTH_005",
+      "title": "Limited-Access Admin cannot access User & Roles module via navigation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as a Limited-Access Admin.",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Observe the sidebar navigation",
+        "Look for 'User & Roles' link in the sidebar"
+      ],
+      "expectedResults": [
+        "The 'User & Roles' link is NOT visible in the sidebar navigation",
+        "OR the link is visible but disabled/greyed out",
+        "The Limited-Access Admin cannot navigate to the User & Roles module via normal navigation",
+        "Only modules the admin has permission for are shown in the sidebar"
+      ],
+      "postconditions": "Limited-Access Admin cannot see or access User & Roles via navigation",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_006",
+      "title": "Limited-Access Admin cannot access User & Roles via direct URL",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as a Limited-Access Admin.",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Manually type the URL: https://hub-ui-admin-qa.swarajability.org/admin/users-roles",
+        "Press Enter to navigate",
+        "Observe the page response"
+      ],
+      "expectedResults": [
+        "The User & Roles page does NOT load",
+        "An error/access denied message is displayed (e.g., 'You do not have permission to access this page')",
+        "OR the user is redirected to their dashboard/home page",
+        "No admin management controls are accessible",
+        "The system prevents unauthorized access even via direct URL"
+      ],
+      "postconditions": "Direct URL access is blocked for unauthorized users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_007",
+      "title": "Unauthorized access returns clear error message",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as a Limited-Access Admin. Attempting to access User & Roles.",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Attempt to access the User & Roles module (via URL or any method)",
+        "Observe the error message"
+      ],
+      "expectedResults": [
+        "A clear error message is displayed",
+        "The message indicates the user does not have permission (e.g., 'Access Denied' or 'You do not have permission to access this page')",
+        "The message is user-friendly (not a technical error or stack trace)",
+        "The user is not left on a blank/broken page"
+      ],
+      "postconditions": "Clear error message is shown for unauthorized access",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_008",
+      "title": "Limited-Access Admin cannot add admins via API manipulation",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as a Limited-Access Admin. Developer tools are open.",
+      "steps": [
+        "Log in as a Limited-Access Admin",
+        "Open browser developer tools (Network tab)",
+        "Attempt to call the admin creation API endpoint directly (e.g., via fetch/XHR)",
+        "Observe the API response"
+      ],
+      "expectedResults": [
+        "The API returns a 403 Forbidden or 401 Unauthorized response",
+        "No admin is created in the system",
+        "The backend enforces authorization regardless of frontend restrictions",
+        "The error response is clear and does not expose sensitive information"
+      ],
+      "postconditions": "Backend API enforces authorization for admin creation",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_009",
+      "title": "Token expiration redirects to login",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User was logged in as Super Admin. Session token has expired.",
+      "steps": [
+        "Log in as Super Admin",
+        "Navigate to User & Roles page",
+        "Wait for the session token to expire (or manually invalidate it)",
+        "Attempt to perform an action (e.g., click Add Internal Admin)",
+        "Observe the system response"
+      ],
+      "expectedResults": [
+        "The system detects the expired token",
+        "An appropriate message is shown (e.g., 'Your session has expired. Please log in again.')",
+        "The user is redirected to the login page",
+        "No admin management action is performed with an expired token",
+        "After re-login, the user can access User & Roles again"
+      ],
+      "postconditions": "Expired token is handled securely with redirect to login",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_010",
+      "title": "Permission mismatch due to caching is handled correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as Super Admin. Their role is about to be downgraded by another Super Admin.",
+      "steps": [
+        "User A is logged in as Super Admin on the User & Roles page",
+        "User B (another Super Admin) downgrades User A to Limited-Access Admin",
+        "User A (still on the page with cached permissions) attempts to add a new admin",
+        "Observe the system response"
+      ],
+      "expectedResults": [
+        "The system detects the permission mismatch on the API call",
+        "An error message is displayed (e.g., 'Your permissions have changed. Please refresh the page.')",
+        "The action is NOT performed (no admin is created)",
+        "After refresh, User A no longer has access to User & Roles",
+        "The system does not rely solely on cached frontend permissions"
+      ],
+      "postconditions": "Permission mismatch is detected and handled securely",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_011",
+      "title": "Limited-Access Admin with User Management permission still cannot access User & Roles",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "A Limited-Access Admin exists with 'User Management' permission assigned.",
+      "steps": [
+        "Log in as the Limited-Access Admin who has 'User Management' permission",
+        "Attempt to navigate to User & Roles module",
+        "Observe the access"
+      ],
+      "expectedResults": [
+        "Even with 'User Management' permission, a Limited-Access Admin CANNOT access the full User & Roles admin management page",
+        "OR if they can view the page, they cannot add/edit/delete admins",
+        "The system distinguishes between 'User Management' permission (for their allowed scope) and full admin management (Super Admin only)"
+      ],
+      "postconditions": "User Management permission does not grant full admin management access",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_012",
+      "title": "Vendor/Partner user cannot access admin User & Roles",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is logged in as a Vendor/Partner (not an admin at all).",
+      "steps": [
+        "Log in as a Vendor/Partner user",
+        "Manually type the admin URL: https://hub-ui-admin-qa.swarajability.org/admin/users-roles",
+        "Observe the response"
+      ],
+      "expectedResults": [
+        "The Vendor/Partner user cannot access the admin User & Roles page",
+        "They are redirected to their own portal or shown an access denied message",
+        "No admin data is exposed to non-admin users",
+        "The system enforces role-based access at the highest level"
+      ],
+      "postconditions": "Non-admin users cannot access admin management pages",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_013",
+      "title": "Unauthenticated user cannot access User & Roles",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "User is not logged in (no active session).",
+      "steps": [
+        "Open a new browser/incognito window",
+        "Navigate directly to: https://hub-ui-admin-qa.swarajability.org/admin/users-roles",
+        "Observe the response"
+      ],
+      "expectedResults": [
+        "The user is redirected to the login page",
+        "No admin data is displayed",
+        "The User & Roles page is not accessible without authentication",
+        "The login page loads correctly for the user to authenticate"
+      ],
+      "postconditions": "Unauthenticated access is blocked with redirect to login",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_014",
+      "title": "Add Internal Admin button is not visible to Limited-Access Admin (if they somehow reach the page)",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "A Limited-Access Admin has somehow reached the User & Roles page (e.g., via cached page or race condition).",
+      "steps": [
+        "Simulate a Limited-Access Admin viewing the User & Roles page content",
+        "Observe the available controls"
+      ],
+      "expectedResults": [
+        "The 'Add Internal Admin' button is NOT rendered/visible",
+        "The role dropdowns are NOT editable",
+        "The 'Edit Permissions' buttons are NOT visible",
+        "Even if the page content loads, management controls are hidden based on the user's role"
+      ],
+      "postconditions": "Management controls are hidden for unauthorized users",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_AUTH_015",
+      "title": "Multiple Super Admins can independently manage User & Roles",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-610",
+      "preconditions": "Two Super Admin accounts exist. Both are logged in simultaneously.",
+      "steps": [
+        "Super Admin A logs in and navigates to User & Roles",
+        "Super Admin B logs in (different browser/session) and navigates to User & Roles",
+        "Both attempt to perform management actions"
+      ],
+      "expectedResults": [
+        "Both Super Admins can access User & Roles independently",
+        "Both can perform management actions (add, edit roles, edit permissions)",
+        "Actions by one do not block the other",
+        "Changes made by one are visible to the other after refresh"
+      ],
+      "postconditions": "Multiple Super Admins can manage concurrently",
+      "testResult": "NOT RUN"
+    }
+  ]
+}

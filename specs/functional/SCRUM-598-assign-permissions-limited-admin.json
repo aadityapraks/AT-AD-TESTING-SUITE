@@ -1,0 +1,291 @@
+{
+  "jiraStory": "SCRUM-598",
+  "title": "Admin - Assign Permissions to Limited Access Admin - Functional Test Plan",
+  "overview": "Functional testing of the Admin User & Role Management - Assign Permissions to Limited Access Admin feature on the Y4J platform. This feature allows Super Admins to assign specific module permissions to Limited-Access Admins via checkboxes. The permissions list includes User Management, Vendor Management, Product Approval, Content Management, Content Moderation, Comment Management, Analytics, and System Settings. At least one permission must be selected, and selected permissions are saved with the admin record and displayed on the admin card. Covers happy path, validation, edge cases, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_PERM_001",
+      "title": "Permissions section displays all available permissions as checkboxes",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open with 'Limited-Access Admin' role selected.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Select 'Limited-Access Admin' as the role",
+        "Observe the permissions section that appears"
+      ],
+      "expectedResults": [
+        "A permissions section is displayed with checkboxes",
+        "The following permissions are listed: User Management, Vendor Management, Product Approval, Content Management, Content Moderation, Comment Management, Analytics, System Settings",
+        "All 8 permissions are visible as selectable checkboxes",
+        "No permissions are pre-selected by default (or a default set is pre-selected)"
+      ],
+      "postconditions": "All 8 permission checkboxes are visible and selectable",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_002",
+      "title": "Permissions are selectable via checkboxes - single selection",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible with all checkboxes unchecked.",
+      "steps": [
+        "In the permissions section, click on the 'Dashboard' checkbox",
+        "Observe the checkbox state"
+      ],
+      "expectedResults": [
+        "The 'Dashboard' checkbox becomes checked (shows checkmark or filled state)",
+        "Only the clicked checkbox is selected — others remain unchecked",
+        "The checkbox is toggleable (can be unchecked by clicking again)"
+      ],
+      "postconditions": "Single permission is selected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_003",
+      "title": "Multiple permissions can be selected simultaneously",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible.",
+      "steps": [
+        "Click on 'User Management' checkbox",
+        "Click on 'Vendor Management' checkbox",
+        "Click on 'Analytics' checkbox",
+        "Observe all three checkboxes"
+      ],
+      "expectedResults": [
+        "All three checkboxes are checked simultaneously",
+        "Multiple selections are allowed",
+        "Each checkbox operates independently",
+        "Selecting one does not deselect others"
+      ],
+      "postconditions": "Multiple permissions are selected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_004",
+      "title": "At least one permission must be selected - validation error",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open with all fields filled except permissions (none selected).",
+      "steps": [
+        "Fill in Name, Email, and select 'Limited-Access Admin' role",
+        "Do NOT select any permission checkboxes",
+        "Click 'Add Admin' button"
+      ],
+      "expectedResults": [
+        "The form does NOT submit",
+        "A validation error is displayed (e.g., 'At least one permission must be selected')",
+        "The modal remains open for the user to select permissions",
+        "The 'Add Admin' button may be disabled until a permission is selected"
+      ],
+      "postconditions": "Form submission is blocked without at least one permission",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_005",
+      "title": "Selected permissions are saved with admin record",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Fill in valid Name and Email",
+        "Select 'Limited-Access Admin' role",
+        "Select permissions: 'Dashboard', 'Partner Management', 'Product Management'",
+        "Click 'Add Admin'",
+        "After creation, refresh the page",
+        "Find the newly created admin card"
+      ],
+      "expectedResults": [
+        "The admin is created successfully",
+        "After page refresh, the admin card still shows the same 3 permissions",
+        "Permissions are persisted to the backend (not just in-memory)",
+        "The saved permissions match exactly what was selected"
+      ],
+      "postconditions": "Permissions are persisted and survive page refresh",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_006",
+      "title": "Permissions appear in admin card after creation",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. A new Limited-Access Admin has just been created with specific permissions.",
+      "steps": [
+        "Create a new Limited-Access Admin with permissions: 'Comment Moderation', 'Product Management'",
+        "After modal closes, observe the new admin card in the list"
+      ],
+      "expectedResults": [
+        "The new admin card displays a 'Permissions:' section",
+        "The permissions section shows tags/badges for 'Comment Moderation' and 'Product Management'",
+        "Only the selected permissions are shown (not all 8)",
+        "The permissions are displayed immediately without page refresh"
+      ],
+      "postconditions": "Selected permissions are visible on the admin card",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_007",
+      "title": "Deselecting a permission removes it from selection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible with some checkboxes checked.",
+      "steps": [
+        "Select 'User Management', 'Vendor Management', and 'Analytics' checkboxes",
+        "Click on 'Vendor Management' checkbox again to deselect it",
+        "Observe the checkbox states"
+      ],
+      "expectedResults": [
+        "'Vendor Management' checkbox becomes unchecked",
+        "'User Management' and 'Analytics' remain checked",
+        "The deselection is immediate and visual",
+        "Only 2 permissions remain selected"
+      ],
+      "postconditions": "Permission is successfully deselected",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_008",
+      "title": "Selecting all permissions equals Super Admin behavior",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open with 'Limited-Access Admin' role.",
+      "steps": [
+        "Select ALL 8 permission checkboxes",
+        "Click 'Add Admin'",
+        "Observe the new admin card"
+      ],
+      "expectedResults": [
+        "The admin is created successfully with all 8 permissions",
+        "The admin card shows all permissions listed",
+        "The admin effectively has the same access as a Super Admin",
+        "The role still shows 'Limited Access Admin' (role label doesn't auto-change)",
+        "OR the system may show a warning/info message that all permissions selected equals Super Admin access"
+      ],
+      "postconditions": "Admin with all permissions is created (functionally equivalent to Super Admin)",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_009",
+      "title": "Permission list fails to load - error handling",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. API for permissions list is configured to fail.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Select 'Limited-Access Admin' role",
+        "Observe the permissions section when the API fails to load the list"
+      ],
+      "expectedResults": [
+        "An error message is displayed (e.g., 'Failed to load permissions. Please try again.')",
+        "The form cannot be submitted without permissions loaded",
+        "A retry option may be available",
+        "The modal does not crash or show a blank permissions area"
+      ],
+      "postconditions": "Permission load failure is handled gracefully",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_010",
+      "title": "Permissions section only appears for Limited-Access Admin role",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Add Internal Admin modal is open.",
+      "steps": [
+        "Open the Add Internal Admin modal",
+        "Select 'Super Admin' role",
+        "Observe if permissions section appears",
+        "Switch to 'Limited-Access Admin' role",
+        "Observe if permissions section appears"
+      ],
+      "expectedResults": [
+        "With 'Super Admin' role: permissions section is either hidden or shows all permissions as pre-selected/locked",
+        "With 'Limited-Access Admin' role: permissions section appears with selectable checkboxes",
+        "The permissions section is contextual to the selected role"
+      ],
+      "postconditions": "Permissions section visibility is role-dependent",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_011",
+      "title": "Permission checkboxes are independent - no cascading selection",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible.",
+      "steps": [
+        "Select 'Content Management' checkbox",
+        "Observe if any other checkboxes are automatically selected",
+        "Select 'Analytics' checkbox",
+        "Observe if any other checkboxes change state"
+      ],
+      "expectedResults": [
+        "Selecting one permission does NOT auto-select any other permission",
+        "Each checkbox is fully independent",
+        "No cascading or dependent selections occur",
+        "User has full control over which permissions to assign"
+      ],
+      "postconditions": "Checkboxes operate independently",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PERM_012",
+      "title": "Permissions are correctly mapped to module access",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. A Limited-Access Admin has been created with only 'Partner Management' and 'Product Management' permissions.",
+      "steps": [
+        "Create a Limited-Access Admin with only 'Partner Management' and 'Product Management'",
+        "Log out and log in as the newly created Limited-Access Admin",
+        "Observe the available navigation/modules"
+      ],
+      "expectedResults": [
+        "The Limited-Access Admin can only access Partner Management and Product Management modules",
+        "Other modules (User Management, Content Management, etc.) are not accessible",
+        "Navigation only shows the permitted modules",
+        "Attempting to access restricted modules shows an access denied message"
+      ],
+      "postconditions": "Permissions correctly restrict module access",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_013",
+      "title": "Select all / Deselect all functionality (if available)",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible.",
+      "steps": [
+        "Look for a 'Select All' or 'Deselect All' option in the permissions section",
+        "If present, click 'Select All'",
+        "Verify all checkboxes are checked",
+        "Click 'Deselect All'",
+        "Verify all checkboxes are unchecked"
+      ],
+      "expectedResults": [
+        "If 'Select All' exists: all 8 checkboxes become checked",
+        "If 'Deselect All' exists: all checkboxes become unchecked",
+        "If neither exists: this test is N/A (manual selection only)",
+        "Bulk selection/deselection works correctly"
+      ],
+      "postconditions": "Bulk selection works if available",
+      "testResult": "NOT RUN"
+    },
+    {
+      "id": "TC_PERM_014",
+      "title": "Permission labels match the actual module names in the system",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-598",
+      "preconditions": "User is logged in as Super Admin. Permissions section is visible.",
+      "steps": [
+        "Observe the permission checkbox labels",
+        "Compare with the actual module names in the admin sidebar navigation"
+      ],
+      "expectedResults": [
+        "Permission labels match or closely correspond to the sidebar navigation module names",
+        "Users can clearly understand which module each permission grants access to",
+        "No ambiguous or unclear permission names exist"
+      ],
+      "postconditions": "Permission labels are clear and match system modules",
+      "testResult": "PASS"
+    }
+  ]
+}

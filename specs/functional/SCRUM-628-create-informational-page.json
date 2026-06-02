@@ -1,0 +1,324 @@
+{
+  "jiraStory": "SCRUM-628",
+  "title": "Admin - Content Management - Create New Informational Page - Functional Test Plan",
+  "overview": "Functional testing of the Admin Content Management - Create New Informational Page feature on the Y4J platform. This feature allows Admins to create new informational pages via a modal with Title and Content fields, auto-generated slug from the title, and save options (Draft or Published). The new page appears in the page list after saving. Covers happy path, form validation, slug generation, save states, and error handling.",
+  "testCases": [
+    {
+      "id": "TC_PAGE_001",
+      "title": "Clicking Add Article opens the page creation modal",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Content Management page is loaded.",
+      "steps": [
+        "Navigate to Content Management page",
+        "Locate the 'Add Article' button",
+        "Click the 'Add Article' button",
+        "Observe the modal behavior"
+      ],
+      "expectedResults": [
+        "The 'Add Article' button is visible on the Content Management page",
+        "Clicking the button opens a page creation modal/dialog",
+        "The modal contains fields for Page Title and Page Content",
+        "The modal has Save as Draft and Publish buttons",
+        "The modal has a way to close/cancel"
+      ],
+      "postconditions": "Page creation modal is open and ready for input",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_002",
+      "title": "Admin can enter Page Title",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Open the page creation modal",
+        "Locate the Page Title input field",
+        "Type a title (e.g., 'Getting Started with Assistive Technology')",
+        "Observe the field behavior"
+      ],
+      "expectedResults": [
+        "A Page Title input field is present and visible",
+        "The field accepts text input",
+        "The typed title appears in the field",
+        "The field has a label or placeholder indicating its purpose"
+      ],
+      "postconditions": "Page Title field contains the entered text",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_003",
+      "title": "Admin can enter Page Content",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Open the page creation modal",
+        "Locate the Page Content field (text area or rich text editor)",
+        "Enter content text (e.g., 'This page provides information about assistive technology products available on our platform.')",
+        "Observe the field behavior"
+      ],
+      "expectedResults": [
+        "A Page Content field is present (textarea or rich text editor)",
+        "The field accepts text input",
+        "The entered content is displayed in the field",
+        "The field supports multi-line text"
+      ],
+      "postconditions": "Page Content field contains the entered text",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_004",
+      "title": "System auto-generates slug from the title",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Open the page creation modal",
+        "Enter a title: 'Getting Started with Assistive Technology'",
+        "Observe the slug field or slug preview"
+      ],
+      "expectedResults": [
+        "A slug is automatically generated from the title",
+        "The slug is in URL-friendly format (lowercase, hyphens instead of spaces)",
+        "Example: 'getting-started-with-assistive-technology'",
+        "The slug updates as the title changes",
+        "Special characters are removed or replaced in the slug"
+      ],
+      "postconditions": "Slug is auto-generated and matches the title",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_005",
+      "title": "Admin can save page as Draft",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open with title and content filled.",
+      "steps": [
+        "Enter a valid Page Title",
+        "Enter valid Page Content",
+        "Click 'Save as Draft' button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The page is saved successfully as a Draft",
+        "A success notification may be displayed",
+        "The modal closes after saving",
+        "The page appears in the page list with 'Draft' status",
+        "The page is NOT publicly visible (draft only)"
+      ],
+      "postconditions": "Page is saved as Draft and visible in the page list",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_006",
+      "title": "Admin can save page as Published",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open with title and content filled.",
+      "steps": [
+        "Enter a valid Page Title",
+        "Enter valid Page Content",
+        "Click 'Publish' button",
+        "Observe the result"
+      ],
+      "expectedResults": [
+        "The page is saved and published successfully",
+        "A success notification may be displayed",
+        "The modal closes after publishing",
+        "The page appears in the page list with 'Published' status",
+        "The page is publicly accessible via its slug URL"
+      ],
+      "postconditions": "Page is published and visible in the page list",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_007",
+      "title": "Page appears in page list after saving",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. A page has just been created (Draft or Published).",
+      "steps": [
+        "Create a new page with title and content",
+        "Save the page (as Draft or Published)",
+        "After modal closes, observe the page list",
+        "Verify the new page is present"
+      ],
+      "expectedResults": [
+        "The page list updates immediately without page refresh",
+        "The new page is visible in the list",
+        "The page shows the correct title",
+        "The page shows the correct status (Draft or Published)",
+        "The page shows the auto-generated slug"
+      ],
+      "postconditions": "New page is confirmed in the page list",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_008",
+      "title": "Empty title field shows validation error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Leave the Page Title field empty",
+        "Enter valid Page Content",
+        "Click Save/Publish",
+        "Observe the validation behavior"
+      ],
+      "expectedResults": [
+        "The form does NOT submit",
+        "A validation error is displayed for the Title field (e.g., 'Title is required')",
+        "The modal remains open for correction",
+        "No page is created in the list"
+      ],
+      "postconditions": "Empty title is rejected with validation error",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_009",
+      "title": "Empty content field shows validation error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Enter a valid Page Title",
+        "Leave the Page Content field empty",
+        "Click Save/Publish",
+        "Observe the validation behavior"
+      ],
+      "expectedResults": [
+        "The form does NOT submit",
+        "A validation error is displayed for the Content field (e.g., 'Content is required')",
+        "The modal remains open for correction",
+        "No page is created in the list"
+      ],
+      "postconditions": "Empty content is rejected with validation error",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_010",
+      "title": "Duplicate slug shows error",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. A page with slug 'getting-started' already exists.",
+      "steps": [
+        "Open the page creation modal",
+        "Enter a title that would generate a duplicate slug (e.g., 'Getting Started')",
+        "Enter valid content",
+        "Click Save/Publish",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "The system detects the duplicate slug",
+        "An error message is displayed (e.g., 'A page with this URL already exists')",
+        "The modal remains open for the user to modify the title",
+        "OR the system auto-appends a number to make the slug unique (e.g., 'getting-started-2')",
+        "No duplicate page is created"
+      ],
+      "postconditions": "Duplicate slug is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_011",
+      "title": "API failure during save shows error notification",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open. API is configured to fail.",
+      "steps": [
+        "Enter valid title and content",
+        "Click Save/Publish (with API failure simulated)",
+        "Observe the error handling"
+      ],
+      "expectedResults": [
+        "An error notification is displayed (e.g., 'Failed to save page. Please try again.')",
+        "The modal remains open so the user can retry",
+        "No partial/corrupt page is created",
+        "The user can attempt to save again"
+      ],
+      "postconditions": "API failure is handled gracefully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_012",
+      "title": "Slug generation handles special characters correctly",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Enter a title with special characters: 'FAQ's & Tips: Getting Started!'",
+        "Observe the auto-generated slug"
+      ],
+      "expectedResults": [
+        "Special characters are removed or replaced (apostrophes, ampersands, colons, exclamation marks)",
+        "The slug is URL-safe (e.g., 'faqs-tips-getting-started')",
+        "No invalid URL characters remain in the slug",
+        "The slug is readable and meaningful"
+      ],
+      "postconditions": "Slug handles special characters correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_013",
+      "title": "Modal can be closed without saving",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open with data entered.",
+      "steps": [
+        "Enter title and content in the modal",
+        "Close the modal without saving (click X, press Escape, or click Cancel)",
+        "Observe the page list"
+      ],
+      "expectedResults": [
+        "The modal closes without saving",
+        "No new page is created in the list",
+        "No error messages are shown",
+        "The entered data is discarded"
+      ],
+      "postconditions": "No page is created when modal is closed without saving",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_014",
+      "title": "Title field accepts various character types",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Enter a title with alphabetic characters",
+        "Enter a title with numbers",
+        "Enter a title with Unicode/special characters",
+        "Enter a very long title (100+ characters)"
+      ],
+      "expectedResults": [
+        "Alphabetic titles are accepted",
+        "Titles with numbers are accepted",
+        "Unicode characters are handled (accepted or sanitized)",
+        "Long titles are either accepted or truncated with clear feedback",
+        "The field does not crash with any input"
+      ],
+      "postconditions": "Title field handles various inputs correctly",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_PAGE_015",
+      "title": "Content field supports rich text or multi-line input",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-628",
+      "preconditions": "User is logged in as Admin. Page creation modal is open.",
+      "steps": [
+        "Enter multi-line content with paragraphs",
+        "Enter content with formatting (if rich text editor is available)",
+        "Enter a large amount of content (1000+ characters)"
+      ],
+      "expectedResults": [
+        "Multi-line content is preserved",
+        "If rich text: formatting options work (bold, italic, links, etc.)",
+        "Large content is accepted without truncation",
+        "The content field scrolls or expands for long content"
+      ],
+      "postconditions": "Content field supports expected input types",
+      "testResult": "PASS"
+    }
+  ]
+}

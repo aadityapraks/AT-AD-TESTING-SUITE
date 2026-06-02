@@ -1,0 +1,30 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "inputs": {
+    "searchByName": "IvAdmin1",
+    "searchByEmail": "aofted@mailto.plus",
+    "searchPartial3Chars": "IvA",
+    "searchPartialName": "Admin",
+    "searchPartialDomain": "mailto",
+    "searchLowercase": "ivadmin1",
+    "searchUppercase": "IVADMIN1",
+    "searchMixedCase": "IvAdMiN1",
+    "searchNoResults": "xyznonexistent123",
+    "searchSpecialChar": "@mailto",
+    "search2Chars": "Iv",
+    "searchDomainFull": "mailto.plus",
+    "searchWithSpaces": "  IvAdmin1  ",
+    "searchSpacesOnly": "   ",
+    "searchGenericText": "test"
+  },
+  "expected": {
+    "searchPlaceholder": "Search admins by name or email...",
+    "adminName": "IvAdmin1",
+    "adminEmail": "aofted@mailto.plus",
+    "noResultsCount": 0
+  }
+}

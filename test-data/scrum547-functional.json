@@ -1,0 +1,22 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "inputs": {
+    "searchByProduct": "watch",
+    "searchByAuthor": "User",
+    "searchByContent": "queries",
+    "searchNoResults": "xyznonexistent123",
+    "searchSpecialChars": "@#&!",
+    "searchLongQuery": "this is a very long search query that contains more than one hundred characters to test the boundary behavior of the search input field on the comment moderation page",
+    "searchTwoChars": "wa",
+    "searchThreeChars": "wat",
+    "contentTypeFilter": "Reviews"
+  },
+  "expected": {
+    "searchPlaceholder": "Search content, author, product...",
+    "pageUrl": "/admin/comment-moderation"
+  }
+}
