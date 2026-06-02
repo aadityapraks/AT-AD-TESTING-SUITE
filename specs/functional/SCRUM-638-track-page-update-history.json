@@ -21,7 +21,7 @@
         "The date represents when the page was last modified"
       ],
       "postconditions": "Updated date is confirmed visible on page entries",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_002",
@@ -41,7 +41,7 @@
         "The field clearly indicates who made the last change"
       ],
       "postconditions": "Updated by admin name is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_003",
@@ -62,7 +62,7 @@
         "The date is set automatically by the system"
       ],
       "postconditions": "Updated date reflects the latest edit",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_004",
@@ -82,7 +82,7 @@
         "It reflects who made the most recent change"
       ],
       "postconditions": "Updated by reflects the current admin",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_005",
@@ -103,7 +103,7 @@
         "No data loss occurs on refresh"
       ],
       "postconditions": "Metadata is consistent across refreshes",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_006",
@@ -124,7 +124,7 @@
         "These fields are system-managed only"
       ],
       "postconditions": "Metadata is confirmed immutable via UI",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_007",
@@ -143,7 +143,7 @@
         "Dates are unambiguous and readable"
       ],
       "postconditions": "Date format is consistent",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_008",
@@ -163,7 +163,7 @@
         "No manual entry is required"
       ],
       "postconditions": "New page has correct initial metadata",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_009",
@@ -183,7 +183,7 @@
         "Pagination does not hide or break the metadata display"
       ],
       "postconditions": "Metadata works across pagination",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_HISTORY_010",
@@ -203,7 +203,7 @@
         "No data corruption occurs"
       ],
       "postconditions": "Metadata is consistent after status change",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

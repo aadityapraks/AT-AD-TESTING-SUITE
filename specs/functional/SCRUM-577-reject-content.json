@@ -1,0 +1,412 @@
+{
+  "jiraStory": "SCRUM-577",
+  "title": "Admin - Comment Moderation - Reject Content - Functional Test Plan",
+  "overview": "Functional testing of the Admin Comment Moderation - Reject Content feature on the Y4J platform. This feature allows Admins to reject inappropriate content (reviews, queries, vendor responses) to maintain platform standards. Covers reject action, status update, public visibility removal, optional rejection reason, action logging, and vendor/user notification.",
+  "testCases": [
+    {
+      "id": "TC_REJECT_001",
+      "title": "Clicking Reject updates content status to Rejected",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item (review/query/vendor response) with 'Pending' or 'Needs Review' status exists in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Identify a content card with pending/needs review status",
+        "Note the current status of the content item",
+        "Click the 'Reject' button on the content card",
+        "Observe the status change on the card"
+      ],
+      "expectedResults": [
+        "A 'Reject' button/action is visible on the content card",
+        "Clicking 'Reject' updates the content status to 'Rejected'",
+        "The status label on the card changes to reflect 'Rejected'",
+        "The status change is immediate without page reload",
+        "The card visually indicates the rejected state (e.g., color change, icon)"
+      ],
+      "postconditions": "Content item status is updated to Rejected in the system",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_002",
+      "title": "Rejected content is not publicly visible",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item has been rejected.",
+      "steps": [
+        "Reject a content item (review/query/vendor response) from the moderation queue",
+        "Note the product/page associated with the rejected content",
+        "Open a new browser/incognito window as a regular (non-admin) user",
+        "Navigate to the product page where the rejected content was originally posted",
+        "Search for the rejected content text"
+      ],
+      "expectedResults": [
+        "The rejected content is NOT visible to public/regular users",
+        "The product page does not display the rejected review/query/response",
+        "No trace of the rejected content appears in the public-facing UI",
+        "Other approved content on the same page remains visible",
+        "The rejection effectively hides the content from all non-admin users"
+      ],
+      "postconditions": "Rejected content confirmed hidden from public view",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_003",
+      "title": "Admin can provide optional rejection reason",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A pending content item exists in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a content card with pending status",
+        "Click the 'Reject' button",
+        "Observe if a rejection reason input/dialog appears",
+        "Enter a rejection reason (e.g., 'Contains inappropriate language')",
+        "Confirm the rejection"
+      ],
+      "expectedResults": [
+        "After clicking Reject, an option to provide a reason is presented",
+        "The rejection reason field is optional (not mandatory)",
+        "Admin can type a free-text reason for rejection",
+        "The rejection proceeds successfully with the reason provided",
+        "The reason is saved and associated with the rejection action"
+      ],
+      "postconditions": "Content is rejected with the provided reason stored",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_004",
+      "title": "Admin can reject content without providing a reason",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A pending content item exists in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a content card with pending status",
+        "Click the 'Reject' button",
+        "If a reason dialog appears, leave the reason field empty",
+        "Confirm the rejection without entering a reason"
+      ],
+      "expectedResults": [
+        "The rejection proceeds successfully without a reason",
+        "No validation error is shown for empty reason field",
+        "The content status changes to 'Rejected'",
+        "The system does not force the admin to provide a reason",
+        "The rejection is recorded even without a reason"
+      ],
+      "postconditions": "Content is rejected without a reason",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_005",
+      "title": "Rejection action is logged in the system",
+      "priority": "Highest",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A pending content item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Note the admin's username/identity",
+        "Reject a content item",
+        "Check the content item's history/audit log (if accessible via UI)",
+        "Verify the rejection action is recorded"
+      ],
+      "expectedResults": [
+        "The rejection action is logged with timestamp",
+        "The log records which admin performed the rejection",
+        "The log includes the content item identifier",
+        "If a reason was provided, it is included in the log",
+        "The action log is accessible for audit purposes"
+      ],
+      "postconditions": "Rejection action is confirmed logged",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_006",
+      "title": "Reject action available on Review content type",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A review with pending status exists in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by content type 'Reviews' (if filter available)",
+        "Find a review card with pending/needs review status",
+        "Verify the 'Reject' action is available",
+        "Click 'Reject' on the review"
+      ],
+      "expectedResults": [
+        "The Reject button is visible on review cards",
+        "Clicking Reject changes the review status to Rejected",
+        "The rejected review is removed from the pending queue",
+        "The review is no longer publicly visible on the product page"
+      ],
+      "postconditions": "Review is rejected successfully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_007",
+      "title": "Reject action available on Query content type",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A query with pending status exists in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by content type 'Queries' (if filter available)",
+        "Find a query card with pending/needs review status",
+        "Verify the 'Reject' action is available",
+        "Click 'Reject' on the query"
+      ],
+      "expectedResults": [
+        "The Reject button is visible on query cards",
+        "Clicking Reject changes the query status to Rejected",
+        "The rejected query is removed from the pending queue",
+        "The query is no longer publicly visible"
+      ],
+      "postconditions": "Query is rejected successfully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_008",
+      "title": "Reject action available on Vendor Response content type",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A vendor response with pending status exists in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by content type 'Vendor Responses' (if filter available)",
+        "Find a vendor response card with pending/needs review status",
+        "Verify the 'Reject' action is available",
+        "Click 'Reject' on the vendor response"
+      ],
+      "expectedResults": [
+        "The Reject button is visible on vendor response cards",
+        "Clicking Reject changes the vendor response status to Rejected",
+        "The rejected vendor response is removed from the pending queue",
+        "The vendor response is no longer visible under the associated review"
+      ],
+      "postconditions": "Vendor response is rejected successfully",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_009",
+      "title": "Rejected content moves to Rejected status filter",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item has just been rejected.",
+      "steps": [
+        "Reject a content item from the moderation queue",
+        "Note the content item details",
+        "Apply the 'Rejected' status filter",
+        "Search for the recently rejected item"
+      ],
+      "expectedResults": [
+        "The rejected item appears in the 'Rejected' status filter view",
+        "The item shows 'Rejected' status label",
+        "The rejection timestamp is visible",
+        "The item is no longer in the 'Pending' or 'Needs Review' filter"
+      ],
+      "postconditions": "Rejected content is correctly categorized under Rejected filter",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_010",
+      "title": "Vendor/User notification on content rejection",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item from a known vendor/user exists in pending status.",
+      "steps": [
+        "Reject a content item with a rejection reason",
+        "Check if the vendor/user receives a notification",
+        "Verify the notification contains the rejection reason",
+        "Check notification channel (email, in-app, or both)"
+      ],
+      "expectedResults": [
+        "The vendor/user is notified about the content rejection",
+        "The notification includes the rejection reason (if provided)",
+        "The notification identifies which content was rejected",
+        "The notification is sent through the appropriate channel",
+        "The notification is timely (sent shortly after rejection)"
+      ],
+      "postconditions": "Vendor/User has been notified of the rejection",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_011",
+      "title": "Reject button is not available on already rejected content",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item with 'Rejected' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by 'Rejected' status",
+        "Find a previously rejected content card",
+        "Observe the available actions on the card"
+      ],
+      "expectedResults": [
+        "The 'Reject' button is NOT available on already rejected content",
+        "No duplicate rejection is possible",
+        "The card may show other actions (e.g., Approve to reverse decision) or no actions",
+        "The rejected status is clearly displayed"
+      ],
+      "postconditions": "Confirmed that double-rejection is prevented",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_012",
+      "title": "Reject button is not available on already approved content",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item with 'Approved' status exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Filter by 'Approved' status",
+        "Find an approved content card",
+        "Observe the available actions on the card"
+      ],
+      "expectedResults": [
+        "The 'Reject' button is NOT available on already approved content (or if available, it allows status reversal)",
+        "The approved status is clearly displayed",
+        "If reject is available on approved content, it should require confirmation"
+      ],
+      "postconditions": "Confirmed behavior of reject on approved content",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_013",
+      "title": "Multiple content items can be rejected in sequence",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. Multiple pending content items exist in the moderation queue.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Reject the first pending content item",
+        "Verify the first item is rejected",
+        "Reject the second pending content item",
+        "Verify the second item is rejected",
+        "Reject the third pending content item",
+        "Verify the third item is rejected"
+      ],
+      "expectedResults": [
+        "Each rejection is processed independently and successfully",
+        "No errors occur when rejecting multiple items in sequence",
+        "Each rejected item's status updates correctly",
+        "The moderation queue updates after each rejection",
+        "Performance remains acceptable for sequential rejections"
+      ],
+      "postconditions": "Multiple items rejected successfully in sequence",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_014",
+      "title": "Rejection reason with special characters is handled correctly",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A pending content item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Click Reject on a pending content item",
+        "Enter a rejection reason with special characters (e.g., '<script>alert(1)</script>', '\"quotes\"', 'emoji 🚫')",
+        "Confirm the rejection",
+        "Verify the reason is stored correctly"
+      ],
+      "expectedResults": [
+        "Special characters in the reason are handled safely (no XSS)",
+        "The reason is stored and displayed correctly",
+        "HTML/script tags are escaped or sanitized",
+        "Unicode characters and emojis are preserved",
+        "No application errors occur"
+      ],
+      "postconditions": "Rejection reason with special characters is safely stored",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_015",
+      "title": "Rejection reason with maximum length boundary",
+      "priority": "Low",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A pending content item exists.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Click Reject on a pending content item",
+        "Enter a very long rejection reason (500+ characters)",
+        "Attempt to confirm the rejection",
+        "Observe if there is a character limit or truncation"
+      ],
+      "expectedResults": [
+        "If a character limit exists, it is clearly communicated to the admin",
+        "The system either accepts the long reason or shows a validation message",
+        "No application crash or error occurs with long input",
+        "If truncated, the admin is informed before submission"
+      ],
+      "postconditions": "Boundary behavior for rejection reason length is confirmed",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_016",
+      "title": "Page refresh after rejection retains the rejected status",
+      "priority": "Medium",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. A content item has just been rejected.",
+      "steps": [
+        "Reject a content item",
+        "Note the content item details",
+        "Refresh the page (F5 or browser reload)",
+        "Navigate back to the moderation queue",
+        "Search for the rejected item"
+      ],
+      "expectedResults": [
+        "After page refresh, the rejected status persists",
+        "The item does not revert to pending status",
+        "The rejection is permanently stored in the database",
+        "The item appears under 'Rejected' filter after refresh"
+      ],
+      "postconditions": "Rejection persistence confirmed after page refresh",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_017",
+      "title": "AI-flagged content can be rejected by admin",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. Content flagged by AI (offensive/spam/negative sentiment) exists in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a content item flagged by AI moderation",
+        "Observe the AI flagging indicators (Device Matcher Notes, badges)",
+        "Click 'Reject' on the AI-flagged content",
+        "Confirm the rejection"
+      ],
+      "expectedResults": [
+        "AI-flagged content has the Reject action available",
+        "The rejection works the same as for non-flagged content",
+        "The AI flags are preserved in the rejection record",
+        "The content status changes to Rejected",
+        "The AI flagging aids the admin's decision but doesn't auto-reject"
+      ],
+      "postconditions": "AI-flagged content rejected by admin action",
+      "testResult": "PASS"
+    },
+    {
+      "id": "TC_REJECT_018",
+      "title": "Vendor-flagged content can be rejected by admin",
+      "priority": "High",
+      "relatedJiraIssue": "SCRUM-577",
+      "preconditions": "User is logged in as Admin. Content flagged by a vendor exists in moderation.",
+      "steps": [
+        "Navigate to Comment Moderation page",
+        "Find a content item flagged by a vendor",
+        "Observe the vendor flagging indicator",
+        "Click 'Reject' on the vendor-flagged content",
+        "Provide a rejection reason",
+        "Confirm the rejection"
+      ],
+      "expectedResults": [
+        "Vendor-flagged content has the Reject action available",
+        "The rejection works correctly on vendor-flagged items",
+        "The content status changes to Rejected",
+        "The vendor flag information is preserved",
+        "The original flagger may be notified of the action taken"
+      ],
+      "postconditions": "Vendor-flagged content rejected successfully",
+      "testResult": "PASS"
+    }
+  ]
+}

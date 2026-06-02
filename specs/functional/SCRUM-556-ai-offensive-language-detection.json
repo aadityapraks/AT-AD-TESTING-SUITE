@@ -22,7 +22,7 @@
         "The surrounding context text remains readable"
       ],
       "postconditions": "Offensive keywords are confirmed highlighted as red badges",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_002",
@@ -42,7 +42,7 @@
         "The notes are labeled as AI/Device Matcher generated"
       ],
       "postconditions": "Device Matcher Notes are confirmed visible with explanation",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_003",
@@ -62,7 +62,7 @@
         "The status clearly indicates admin action is required"
       ],
       "postconditions": "Flagged content has 'Needs Review' status",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_004",
@@ -84,7 +84,7 @@
         "The admin's decision overrides the AI flag"
       ],
       "postconditions": "Flagged content is approved and visible to users",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_005",
@@ -106,7 +106,7 @@
         "The rejection is recorded"
       ],
       "postconditions": "Flagged content is rejected and hidden from users",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_006",
@@ -126,7 +126,7 @@
         "The content is not visible to users while in 'Needs Review' state"
       ],
       "postconditions": "Manual approval/rejection is confirmed required",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_007",
@@ -146,7 +146,7 @@
         "Non-offensive words between flagged words are not highlighted"
       ],
       "postconditions": "Multiple keywords are individually highlighted",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_008",
@@ -166,7 +166,7 @@
         "The badges do not break the card layout"
       ],
       "postconditions": "Red badges are visually clear and accessible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_009",
@@ -186,7 +186,7 @@
         "They are distinguishable from non-AI-flagged pending items"
       ],
       "postconditions": "Flagged items are accessible via Pending filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_010",
@@ -206,7 +206,7 @@
         "The AI system correctly identifies non-offensive content"
       ],
       "postconditions": "Clean content is confirmed not flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_011",
@@ -226,7 +226,7 @@
         "OR if not detected, this is documented as a known limitation"
       ],
       "postconditions": "Obfuscated word detection is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_AI_012",
@@ -246,7 +246,7 @@
         "The system handles multilingual content gracefully"
       ],
       "postconditions": "Mixed language detection is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

@@ -21,7 +21,7 @@
         "The item requires admin review before being published"
       ],
       "postconditions": "Negative sentiment content is confirmed flagged as Needs Review",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_002",
@@ -41,7 +41,7 @@
         "No content is automatically removed without admin intervention"
       ],
       "postconditions": "No auto-rejection is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_003",
@@ -62,7 +62,7 @@
         "Admin must explicitly approve or reject"
       ],
       "postconditions": "Admin decision requirement is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_004",
@@ -82,7 +82,7 @@
         "A success notification may be displayed"
       ],
       "postconditions": "Negative sentiment content is approved and visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_005",
@@ -102,7 +102,7 @@
         "A success notification may be displayed"
       ],
       "postconditions": "Negative sentiment content is rejected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_006",
@@ -123,7 +123,7 @@
         "The system correctly identifies it needs human review rather than auto-rejecting"
       ],
       "postconditions": "Genuine complaint handling is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_007",
@@ -143,7 +143,7 @@
         "OR reject it if it crosses into abuse/harassment"
       ],
       "postconditions": "Aggressive but valid feedback handling is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_008",
@@ -163,7 +163,7 @@
         "Either way, the content is not auto-rejected"
       ],
       "postconditions": "Mixed sentiment handling is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_009",
@@ -183,7 +183,7 @@
         "The system correctly distinguishes positive from negative sentiment"
       ],
       "postconditions": "Positive content is confirmed not flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SENT_010",
@@ -202,7 +202,7 @@
         "Device Matcher Notes (if present) explain the sentiment detection"
       ],
       "postconditions": "Flagged items are accessible via Pending filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

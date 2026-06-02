@@ -22,7 +22,7 @@
         "The card reflects the new approved state"
       ],
       "postconditions": "Content status is updated to Approved",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_002",
@@ -43,7 +43,7 @@
         "No admin-only information is exposed to public users"
       ],
       "postconditions": "Approved content is confirmed publicly visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_003",
@@ -63,7 +63,7 @@
         "The total count remains consistent"
       ],
       "postconditions": "Dashboard counts are updated correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_004",
@@ -83,7 +83,7 @@
         "The timestamp is accurate (matches current time)"
       ],
       "postconditions": "Approval timestamp is confirmed logged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_005",
@@ -103,7 +103,7 @@
         "The log provides accountability for the decision"
       ],
       "postconditions": "Admin name is confirmed logged with the action",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_006",
@@ -122,7 +122,7 @@
         "The button is clearly labeled"
       ],
       "postconditions": "Approve button is confirmed available on pending items",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_007",
@@ -142,7 +142,7 @@
         "This prevents duplicate actions"
       ],
       "postconditions": "No duplicate approval is possible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_008",
@@ -163,7 +163,7 @@
         "The transition is smooth and immediate"
       ],
       "postconditions": "Approved item is moved to correct filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_009",
@@ -184,7 +184,7 @@
         "The action log (timestamp, admin) is still recorded"
       ],
       "postconditions": "Approval persists across page refresh",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_010",
@@ -205,7 +205,7 @@
         "Each action is logged independently with correct timestamp and admin"
       ],
       "postconditions": "Multiple sequential approvals work correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_APPROVE_011",
@@ -224,7 +224,7 @@
         "The admin can retry the action"
       ],
       "postconditions": "Approval failure is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

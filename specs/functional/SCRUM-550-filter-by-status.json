@@ -21,7 +21,7 @@
         "The default selection is 'All Status'"
       ],
       "postconditions": "Status filter is confirmed visible with correct options",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_002",
@@ -41,7 +41,7 @@
         "The count reflects the total number of items"
       ],
       "postconditions": "Full unfiltered list is displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_003",
@@ -62,7 +62,7 @@
         "The list updates dynamically without page reload"
       ],
       "postconditions": "Only pending items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_004",
@@ -82,7 +82,7 @@
         "The list updates dynamically"
       ],
       "postconditions": "Only approved items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_005",
@@ -102,7 +102,7 @@
         "The list updates dynamically"
       ],
       "postconditions": "Only rejected items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_006",
@@ -123,7 +123,7 @@
         "The selected filter is visually indicated"
       ],
       "postconditions": "List updates immediately on filter change",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_007",
@@ -142,7 +142,7 @@
         "They are NOT shown when 'Approved' or 'Rejected' filter is selected"
       ],
       "postconditions": "Needs Review is confirmed grouped under Pending",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_008",
@@ -161,7 +161,7 @@
         "They are NOT shown when 'Approved' or 'Rejected' filter is selected"
       ],
       "postconditions": "Vendor Flagged is confirmed grouped under Pending",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_009",
@@ -183,7 +183,7 @@
         "Combined filtering works correctly"
       ],
       "postconditions": "Filter + search combination works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_010",
@@ -205,7 +205,7 @@
         "The user can change the filter to see results again"
       ],
       "postconditions": "Empty state is displayed for no-match filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_011",
@@ -227,7 +227,7 @@
         "No stale data from previous filter remains"
       ],
       "postconditions": "Filter switching works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_012",
@@ -247,7 +247,7 @@
         "The list matches the displayed filter state"
       ],
       "postconditions": "Filter state is consistent after refresh",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SFILTER_013",
@@ -266,7 +266,7 @@
         "The selected state is distinguishable from unselected options"
       ],
       "postconditions": "Active filter is visually indicated",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

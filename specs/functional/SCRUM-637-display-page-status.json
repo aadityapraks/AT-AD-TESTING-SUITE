@@ -21,7 +21,7 @@
         "No page is missing a status label"
       ],
       "postconditions": "Status labels are confirmed visible on all pages",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_002",
@@ -41,7 +41,7 @@
         "The status accurately reflects the page's publishing state"
       ],
       "postconditions": "Published status is confirmed displayed correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_003",
@@ -61,7 +61,7 @@
         "The status accurately reflects the page's draft state"
       ],
       "postconditions": "Draft status is confirmed displayed correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_004",
@@ -82,7 +82,7 @@
         "The page loads without errors"
       ],
       "postconditions": "Published pages are publicly accessible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_005",
@@ -103,7 +103,7 @@
         "No draft content is exposed to non-admin users"
       ],
       "postconditions": "Draft pages are confirmed hidden from public",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_006",
@@ -123,7 +123,7 @@
         "Draft pages are only hidden from public users, not admins"
       ],
       "postconditions": "Draft pages are accessible to admins",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_007",
@@ -143,7 +143,7 @@
         "The display is consistent and reliable"
       ],
       "postconditions": "Status labels are consistent across refreshes",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_008",
@@ -163,7 +163,7 @@
         "No page refresh is required to see the status change"
       ],
       "postconditions": "Status updates to Published after publishing",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_009",
@@ -184,7 +184,7 @@
         "Both labels are readable and clear"
       ],
       "postconditions": "Status labels are visually distinguishable",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_010",
@@ -204,7 +204,7 @@
         "No status labels are missing on subsequent pages"
       ],
       "postconditions": "Status labels work across pagination",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_STATUS_011",
@@ -224,7 +224,7 @@
         "Each filtered page shows its correct status"
       ],
       "postconditions": "Status labels display correctly with filters",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

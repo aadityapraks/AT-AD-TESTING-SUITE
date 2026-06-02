@@ -23,7 +23,7 @@
         "The modal has a way to close/cancel"
       ],
       "postconditions": "Edit modal is open for the selected page",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_002",
@@ -42,7 +42,7 @@
         "A 'Save Changes' button is visible"
       ],
       "postconditions": "Both required fields are visible in the edit modal",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_003",
@@ -63,7 +63,7 @@
         "No empty fields — existing data loads automatically"
       ],
       "postconditions": "Edit modal shows the current page data",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_004",
@@ -84,7 +84,7 @@
         "The page list shows the updated title"
       ],
       "postconditions": "Page title is updated in the list",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_005",
@@ -104,7 +104,7 @@
         "The updated content is persisted"
       ],
       "postconditions": "Page content is updated",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_006",
@@ -125,7 +125,7 @@
         "No page refresh is required"
       ],
       "postconditions": "Page is updated and modal is closed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_007",
@@ -145,7 +145,7 @@
         "The date format is consistent with other entries"
       ],
       "postconditions": "Last updated date reflects the edit time",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_008",
@@ -165,7 +165,7 @@
         "It reflects who last edited the page"
       ],
       "postconditions": "Editor name reflects the current admin",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_009",
@@ -187,7 +187,7 @@
         "Re-opening the edit modal shows the original content"
       ],
       "postconditions": "Changes are discarded when modal is closed without saving",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_010",
@@ -207,7 +207,7 @@
         "The user can attempt to save again after the error"
       ],
       "postconditions": "Network error is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_011",
@@ -227,7 +227,7 @@
         "No data loss occurs on refresh"
       ],
       "postconditions": "Edits persist across page refresh",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_012",
@@ -246,7 +246,7 @@
         "The modal remains open for correction"
       ],
       "postconditions": "Empty title is rejected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_EDIT_PAGE_013",
@@ -265,7 +265,7 @@
         "The modal remains open for correction"
       ],
       "postconditions": "Empty content is rejected",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

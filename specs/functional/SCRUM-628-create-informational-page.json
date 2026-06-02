@@ -23,7 +23,7 @@
         "The modal has a way to close/cancel"
       ],
       "postconditions": "Page creation modal is open and ready for input",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_002",
@@ -44,7 +44,7 @@
         "The field has a label or placeholder indicating its purpose"
       ],
       "postconditions": "Page Title field contains the entered text",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_003",
@@ -65,7 +65,7 @@
         "The field supports multi-line text"
       ],
       "postconditions": "Page Content field contains the entered text",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_004",
@@ -86,7 +86,7 @@
         "Special characters are removed or replaced in the slug"
       ],
       "postconditions": "Slug is auto-generated and matches the title",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_005",
@@ -108,7 +108,7 @@
         "The page is NOT publicly visible (draft only)"
       ],
       "postconditions": "Page is saved as Draft and visible in the page list",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_006",
@@ -130,7 +130,7 @@
         "The page is publicly accessible via its slug URL"
       ],
       "postconditions": "Page is published and visible in the page list",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_007",
@@ -152,7 +152,7 @@
         "The page shows the auto-generated slug"
       ],
       "postconditions": "New page is confirmed in the page list",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_008",
@@ -173,7 +173,7 @@
         "No page is created in the list"
       ],
       "postconditions": "Empty title is rejected with validation error",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_009",
@@ -194,7 +194,7 @@
         "No page is created in the list"
       ],
       "postconditions": "Empty content is rejected with validation error",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_010",
@@ -217,7 +217,7 @@
         "No duplicate page is created"
       ],
       "postconditions": "Duplicate slug is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_011",
@@ -237,7 +237,7 @@
         "The user can attempt to save again"
       ],
       "postconditions": "API failure is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_012",
@@ -256,7 +256,7 @@
         "The slug is readable and meaningful"
       ],
       "postconditions": "Slug handles special characters correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_013",
@@ -276,7 +276,7 @@
         "The entered data is discarded"
       ],
       "postconditions": "No page is created when modal is closed without saving",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_014",
@@ -298,7 +298,7 @@
         "The field does not crash with any input"
       ],
       "postconditions": "Title field handles various inputs correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_PAGE_015",
@@ -318,7 +318,7 @@
         "The content field scrolls or expands for long content"
       ],
       "postconditions": "Content field supports expected input types",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

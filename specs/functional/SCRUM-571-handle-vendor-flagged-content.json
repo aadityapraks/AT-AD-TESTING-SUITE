@@ -21,7 +21,7 @@
         "The reason is readable and not truncated"
       ],
       "postconditions": "Vendor flag reason is confirmed visible and clear",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_002",
@@ -41,7 +41,7 @@
         "The item appears when filtering by 'Pending' status"
       ],
       "postconditions": "Vendor Flagged status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_003",
@@ -63,7 +63,7 @@
         "The admin's decision is final"
       ],
       "postconditions": "Vendor-flagged review is approved and visible to users",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_004",
@@ -85,7 +85,7 @@
         "The admin's decision is final"
       ],
       "postconditions": "Vendor-flagged review is rejected and hidden from users",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_005",
@@ -104,7 +104,7 @@
         "OR the system logs the notification for delivery"
       ],
       "postconditions": "Vendor is notified of the approval decision",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_006",
@@ -123,7 +123,7 @@
         "OR the system logs the notification for delivery"
       ],
       "postconditions": "Vendor is notified of the rejection decision",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_007",
@@ -143,7 +143,7 @@
         "The vendor flag reason is visible on these cards"
       ],
       "postconditions": "Vendor-flagged items are accessible via Pending filter",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_008",
@@ -163,7 +163,7 @@
         "Both the review text and flag reason are fully readable"
       ],
       "postconditions": "Sufficient context is available for admin decision",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_009",
@@ -183,7 +183,7 @@
         "The content is not modified or censored before admin review"
       ],
       "postconditions": "Original review content is visible for admin review",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_VFLAG_010",
@@ -206,7 +206,7 @@
         "Notifications are sent for each decision independently"
       ],
       "postconditions": "Independent processing of multiple flags is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

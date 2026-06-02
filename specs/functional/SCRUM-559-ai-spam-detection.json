@@ -21,7 +21,7 @@
         "The item has a review-required status (Needs Review or Device Matcher Blocked)"
       ],
       "postconditions": "External URL content is confirmed flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_002",
@@ -41,7 +41,7 @@
         "The item is marked for review"
       ],
       "postconditions": "Phone number content is confirmed flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_003",
@@ -61,7 +61,7 @@
         "The item is marked for review or blocked"
       ],
       "postconditions": "Promotional content is confirmed flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_004",
@@ -81,7 +81,7 @@
         "The content is NOT visible to users while blocked"
       ],
       "postconditions": "Severe spam is confirmed blocked with correct status",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_005",
@@ -103,7 +103,7 @@
         "A confirmation may be required before override"
       ],
       "postconditions": "Admin override is confirmed working",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_006",
@@ -124,7 +124,7 @@
         "The rejection is recorded permanently"
       ],
       "postconditions": "Admin rejection is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_007",
@@ -143,7 +143,7 @@
         "Device Matcher Notes mention the excessive punctuation"
       ],
       "postconditions": "Excessive punctuation detection is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_008",
@@ -163,7 +163,7 @@
         "No false positives for genuine content"
       ],
       "postconditions": "Legitimate content is confirmed not flagged",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_009",
@@ -183,7 +183,7 @@
         "This is documented as a known behavior"
       ],
       "postconditions": "Government scheme handling is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_010",
@@ -203,7 +203,7 @@
         "OR if not detected, this is documented as a limitation"
       ],
       "postconditions": "URL shortener detection is verified",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_011",
@@ -223,7 +223,7 @@
         "Admin can take action (approve/reject) on these items"
       ],
       "postconditions": "Blocked items are accessible for admin review",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_SPAM_012",
@@ -243,7 +243,7 @@
         "The notes are labeled as system-generated"
       ],
       "postconditions": "Spam explanation notes are clear and helpful",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

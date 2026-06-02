@@ -20,7 +20,7 @@
         "The name is not empty or placeholder text"
       ],
       "postconditions": "Author name is confirmed visible on moderation cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_002",
@@ -40,7 +40,7 @@
         "The role tag accurately reflects the author's actual role"
       ],
       "postconditions": "Role tags are confirmed visible and accurate",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_003",
@@ -60,7 +60,7 @@
         "The type accurately reflects the nature of the content"
       ],
       "postconditions": "Content types are confirmed visible and accurate",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_004",
@@ -80,7 +80,7 @@
         "The date represents when the content was submitted"
       ],
       "postconditions": "Date and time are confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_005",
@@ -99,7 +99,7 @@
         "The product name links to or identifies the relevant product"
       ],
       "postconditions": "Product name is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_006",
@@ -118,7 +118,7 @@
         "The content matches what the user submitted"
       ],
       "postconditions": "Content text is confirmed visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_007",
@@ -138,7 +138,7 @@
         "Cards without reports do NOT show the badge"
       ],
       "postconditions": "Report count badge is confirmed displayed conditionally",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_008",
@@ -158,7 +158,7 @@
         "Cards without AI flags do NOT show this section"
       ],
       "postconditions": "Device Matcher Notes are confirmed displayed conditionally",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_009",
@@ -177,7 +177,7 @@
         "The status accurately reflects the item's moderation state"
       ],
       "postconditions": "Ready to Approve status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_010",
@@ -196,7 +196,7 @@
         "The status indicates the item requires admin attention"
       ],
       "postconditions": "Needs Review status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_011",
@@ -215,7 +215,7 @@
         "The badge is visually distinct from other statuses"
       ],
       "postconditions": "Vendor Flagged status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_012",
@@ -234,7 +234,7 @@
         "The badge is visually distinct from other statuses"
       ],
       "postconditions": "Device Matcher Blocked status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_013",
@@ -253,7 +253,7 @@
         "The badge is visually distinct (e.g., green)"
       ],
       "postconditions": "Approved status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_014",
@@ -272,7 +272,7 @@
         "The badge is visually distinct (e.g., red)"
       ],
       "postconditions": "Rejected status is confirmed displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_015",
@@ -291,7 +291,7 @@
         "The page layout remains intact"
       ],
       "postconditions": "Empty state is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_016",
@@ -311,7 +311,7 @@
         "The distinction does not rely solely on color (text is different too)"
       ],
       "postconditions": "Status badges are visually distinguishable",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_017",
@@ -330,7 +330,7 @@
         "No errors occur during loading"
       ],
       "postconditions": "Moderation list is loaded and visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MOD_018",
@@ -349,7 +349,7 @@
         "All cards show the same set of information fields"
       ],
       "postconditions": "Multiple cards are displayed correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

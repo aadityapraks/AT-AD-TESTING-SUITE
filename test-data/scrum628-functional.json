@@ -1,0 +1,20 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "inputs": {
+    "title": "Getting Started with Assistive Technology",
+    "subtitle": "A guide to AT products on our platform",
+    "content": "This page provides information about assistive technology products available on our platform.",
+    "specialCharsTitle": "FAQ's & Tips: Getting Started!",
+    "longTitle": "This is a very long title that contains more than one hundred characters to test the boundary behavior of the title input field on the content management page creation modal"
+  },
+  "expected": {
+    "pageHeading": "Content Management",
+    "pageSubtitle": "Manage help articles and success stories",
+    "modalHeading": "Add New Article",
+    "pageUrl": "/admin/content-management"
+  }
+}

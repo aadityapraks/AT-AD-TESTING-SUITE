@@ -22,7 +22,7 @@
         "The field has a placeholder indicating search purpose"
       ],
       "postconditions": "Search input is confirmed functional",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_002",
@@ -42,7 +42,7 @@
         "The result count updates"
       ],
       "postconditions": "Search by author returns correct results",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_003",
@@ -61,7 +61,7 @@
         "Non-matching items are hidden"
       ],
       "postconditions": "Search by product returns correct results",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_004",
@@ -80,7 +80,7 @@
         "Non-matching items are hidden"
       ],
       "postconditions": "Search by content text returns correct results",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_005",
@@ -102,7 +102,7 @@
         "Results narrow as more characters are typed"
       ],
       "postconditions": "Partial match from 3 characters is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_006",
@@ -121,7 +121,7 @@
         "All matching items regardless of type are displayed"
       ],
       "postconditions": "Cross-type search is confirmed working",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_007",
@@ -142,7 +142,7 @@
         "Combined filtering works correctly"
       ],
       "postconditions": "Search + status filter combination works",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_008",
@@ -162,7 +162,7 @@
         "The search respects the type filter"
       ],
       "postconditions": "Search + type filter combination works",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_009",
@@ -182,7 +182,7 @@
         "The search field still contains the typed query"
       ],
       "postconditions": "Empty state is displayed for no-match search",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_010",
@@ -202,7 +202,7 @@
         "The search handles special characters gracefully"
       ],
       "postconditions": "Special characters are handled correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_011",
@@ -222,7 +222,7 @@
         "The search field handles long input gracefully"
       ],
       "postconditions": "Long search queries are handled correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_012",
@@ -242,7 +242,7 @@
         "Any active filters (status/type) remain applied"
       ],
       "postconditions": "Full list is restored after clearing search",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_013",
@@ -263,7 +263,7 @@
         "Mixed case also returns the same results"
       ],
       "postconditions": "Case-insensitive search is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_MSEARCH_014",
@@ -283,7 +283,7 @@
         "The filtering is real-time"
       ],
       "postconditions": "Dynamic filtering is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

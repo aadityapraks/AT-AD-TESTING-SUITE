@@ -21,7 +21,7 @@
         "The default selection is 'All Types'"
       ],
       "postconditions": "Content type filter is confirmed visible with correct options",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_002",
@@ -41,7 +41,7 @@
         "The count reflects the total number of items"
       ],
       "postconditions": "Full unfiltered list is displayed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_003",
@@ -61,7 +61,7 @@
         "The list updates dynamically without page reload"
       ],
       "postconditions": "Only query items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_004",
@@ -81,7 +81,7 @@
         "The list updates dynamically"
       ],
       "postconditions": "Only review items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_005",
@@ -101,7 +101,7 @@
         "The list updates dynamically"
       ],
       "postconditions": "Only vendor response items are visible",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_006",
@@ -121,7 +121,7 @@
         "The tag is clearly readable and not obscured"
       ],
       "postconditions": "Type tags are confirmed visible on all cards",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_007",
@@ -142,7 +142,7 @@
         "The selected filter is visually indicated"
       ],
       "postconditions": "Immediate update is confirmed",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_008",
@@ -163,7 +163,7 @@
         "Neither filter overrides the other"
       ],
       "postconditions": "Combined type + status filtering works",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_009",
@@ -184,7 +184,7 @@
         "Combined filtering works correctly"
       ],
       "postconditions": "Type filter + search combination works",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_010",
@@ -204,7 +204,7 @@
         "The user can change filters to see results"
       ],
       "postconditions": "Empty state is handled gracefully",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_011",
@@ -225,7 +225,7 @@
         "No stale data remains from previous filter"
       ],
       "postconditions": "Filter switching works correctly",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     },
     {
       "id": "TC_TFILTER_012",
@@ -245,7 +245,7 @@
         "The distinction does not rely solely on color (text is different)"
       ],
       "postconditions": "Type tags are visually distinguishable",
-      "testResult": "NOT RUN"
+      "testResult": "PASS"
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "url": "https://hub-ui-admin-qa.swarajability.org/",
+  "credentials": {
+    "email": "pv@mailto.plus",
+    "password": "23456789"
+  },
+  "expected": {
+    "pageHeading": "Comment Moderation",
+    "pageSubtitle": "Review and moderate user queries, reviews, and partner responses",
+    "searchPlaceholder": "Search content, author, product...",
+    "roleTypes": ["PwD", "Caregiver", "Vendor"],
+    "contentTypes": ["Query", "Review", "Vendor Response"],
+    "statusBadges": ["Admin Review Required", "Approved", "Rejected"],
+    "tabs": ["Needs Attention", "Recently Approved", "Rejected Content"],
+    "actionButtons": ["Approve and publish content", "Reject content", "View product details"],
+    "pageUrl": "/admin/comment-moderation"
+  }
+}
