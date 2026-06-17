@@ -33,7 +33,7 @@ export class ProductUploadPage extends BasePage {
   constructor(page: Page) {
     super(page);
     // Navigation
-    this.productUploadTab = page.getByRole('link', { name: 'Product Upload' });
+    this.productUploadTab = page.getByRole('tab', { name: 'Product Upload' });
     
     // Basic Information - using placeholders since labels are not standard
     this.productNameField = page.getByPlaceholder('e.g., Ergonomic Wheelchair Model XR-100');
@@ -2177,58 +2177,26 @@ export class ProductUploadPage extends BasePage {
     await this.productNameField.fill(productData.productName);
     await this.page.waitForTimeout(300);
 
-    // Select product type using combobox (first combobox)
-    const productTypeCombobox = this.page.getByRole('combobox').first();
-    await productTypeCombobox.click();
+    // Select product type using named combobox
+    await this.page.getByRole('combobox', { name: 'Product Type *' }).selectOption(productData.productType);
+    await this.page.waitForTimeout(300);
+
+    // Select usage environment
+    await this.page.getByRole('combobox', { name: 'Usage Environment *' }).selectOption('Indoor');
+    await this.page.waitForTimeout(300);
+
+    // Select disability percentage
+    await this.page.getByRole('combobox', { name: 'Disability Percentage *' }).selectOption('60–80%');
+    await this.page.waitForTimeout(300);
+
+    // Select disability type from multi-select dropdown
+    await this.page.getByText('Select disability types').click();
     await this.page.waitForTimeout(500);
-    // Try to find and click the Device option
-    const deviceOption = this.page.getByRole('option', { name: /Device/i });
-    if (await deviceOption.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await deviceOption.click();
-    } else {
-      // Try clicking on text containing the product type
-      const typeOption = this.page.locator(`text="${productData.productType}"`).first();
-      if (await typeOption.isVisible({ timeout: 2000 }).catch(() => false)) {
-        await typeOption.click();
-      } else {
-        await this.page.keyboard.press('Escape');
-      }
+    const disabilityCheckbox = this.page.getByRole('checkbox', { name: /Locomotor Disability.*Lower Limb/i });
+    if (await disabilityCheckbox.isVisible({ timeout: 3000 }).catch(() => false)) {
+      await disabilityCheckbox.click();
     }
-    await this.page.waitForTimeout(300);
-
-    // Select usage environment (second combobox)
-    const usageEnvCombobox = this.page.getByRole('combobox').nth(1);
-    if (await usageEnvCombobox.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await usageEnvCombobox.click();
-      await this.page.waitForTimeout(500);
-      // Select first available option (e.g., "Indoor", "Outdoor", etc.)
-      const firstOption = this.page.getByRole('option').first();
-      if (await firstOption.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await firstOption.click();
-      } else {
-        await this.page.keyboard.press('Escape');
-      }
-    }
-    await this.page.waitForTimeout(300);
-
-    // Select disability type - this is a custom multi-select dropdown
-    const disabilityTypeSelector = this.page.locator('text=Select disability types').first();
-    if (await disabilityTypeSelector.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await disabilityTypeSelector.click();
-      await this.page.waitForTimeout(500);
-      // Look for the disability type option in the dropdown
-      const disabilityOption = this.page.getByRole('option', { name: new RegExp(productData.disabilityType, 'i') });
-      if (await disabilityOption.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await disabilityOption.click();
-      } else {
-        // Try clicking on checkbox or list item with the disability type
-        const checkboxOption = this.page.locator(`text=${productData.disabilityType}`).first();
-        if (await checkboxOption.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await checkboxOption.click();
-        }
-      }
-      await this.page.keyboard.press('Escape');
-    }
+    await this.page.keyboard.press('Escape');
     await this.page.waitForTimeout(300);
 
     // Fill short description
@@ -2237,29 +2205,24 @@ export class ProductUploadPage extends BasePage {
 
     // Fill detailed description (rich text editor)
     const detailedDescEditor = this.page.locator('[contenteditable="true"]').first();
-    if (await detailedDescEditor.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await detailedDescEditor.click();
-      await detailedDescEditor.fill('This is a detailed description for the test product. It includes all necessary information about the product features and benefits.');
-    }
+    await detailedDescEditor.click();
+    await this.page.keyboard.type('This is a detailed description for the test product with advanced features and benefits for users with mobility challenges.');
     await this.page.waitForTimeout(300);
 
-    // Fill support helpline number with valid 10-digit format
-    const helplineField = this.page.getByPlaceholder(/\+91|mobile|phone/i);
-    if (await helplineField.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await helplineField.fill('9876543210'); // Just 10 digits without +91
-    }
+    // Fill support helpline number
+    await this.page.getByPlaceholder(/\+91/i).fill('9876543210');
     await this.page.waitForTimeout(300);
 
     // Upload primary image
-    const primaryImageUpload = this.page.locator('input[type="file"]').first();
-    if (await primaryImageUpload.count() > 0) {
-      await primaryImageUpload.setInputFiles('test-assets/test-image-1.jpg');
-      await this.page.waitForTimeout(2000); // Wait for image to upload
-      
-      // Fill ALT text for the primary image (required when image is uploaded)
-      const altTextField = this.page.getByPlaceholder(/ALT Text/i);
-      if (await altTextField.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await altTextField.fill('Primary product image showing the assistive device');
+    const fileInput = this.page.locator('input[type="file"]').first();
+    if (await fileInput.count() > 0) {
+      await fileInput.setInputFiles('test-assets/test-image-1.jpg');
+      await this.page.waitForTimeout(3000);
+
+      // Fill ALT text for the primary image (required)
+      const altTextField = this.page.getByRole('textbox', { name: /ALT Text for Primary Image/i });
+      if (await altTextField.isVisible({ timeout: 5000 }).catch(() => false)) {
+        await altTextField.fill('Mobility assistive device product image');
       }
     }
 

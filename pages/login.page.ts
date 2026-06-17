@@ -18,19 +18,22 @@ export class LoginPage extends BasePage {
     await this.page.getByRole('button', { name: 'Continue' }).click();
     // After password submit, handle two possible flows:
     // 1. Consent screen appears → click Continue → lands on product-management
-    // 2. Already consented → redirects directly to product-management
-    await this.page.waitForURL(
-      url => url.href.includes('implicit-consent') || url.href.includes('partner/product-management'),
-      { timeout: 45000 }
-    );
+    // 2. Already consented → redirects directly via auth/callback to product-management
+    try {
+      await this.page.waitForURL(
+        url => url.href.includes('implicit-consent') || url.href.includes('partner') || url.href.includes('auth/callback'),
+        { timeout: 30000 }
+      );
+    } catch {
+      // May have already navigated
+    }
     if (this.page.url().includes('implicit-consent')) {
       const continueBtn = this.page.getByRole('button', { name: 'Continue' });
       await continueBtn.waitFor({ state: 'visible', timeout: 15000 });
-      await Promise.all([
-        this.page.waitForURL(/partner\/product-management/, { timeout: 30000 }),
-        continueBtn.click()
-      ]);
+      await continueBtn.click();
     }
+    // Wait for final destination
+    await this.page.waitForURL(url => url.href.includes('partner'), { timeout: 30000 });
   }
 
   async loginAsAdmin(email: string, password: string) {
